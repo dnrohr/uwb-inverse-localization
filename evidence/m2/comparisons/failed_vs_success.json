@@ -1,0 +1,5887 @@
+{
+  "alignment": "aligned",
+  "artifact_type": "comparison",
+  "common_elapsed_times_s": [
+    0.0,
+    0.6451612903225806,
+    0.8695652173913043,
+    1.2903225806451613,
+    1.7391304347826086,
+    1.935483870967742,
+    2.5806451612903225,
+    2.608695652173913,
+    3.225806451612903,
+    3.4782608695652173,
+    3.870967741935484,
+    4.3478260869565215,
+    4.516129032258064,
+    5.161290322580645,
+    5.217391304347826,
+    5.806451612903226,
+    6.08695652173913,
+    6.451612903225806,
+    6.956521739130435,
+    7.096774193548387,
+    7.741935483870968,
+    7.826086956521739,
+    8.387096774193548,
+    8.695652173913043,
+    9.032258064516128,
+    9.565217391304348,
+    9.67741935483871,
+    10.32258064516129,
+    10.434782608695652,
+    10.96774193548387,
+    11.304347826086957,
+    11.612903225806452,
+    12.17391304347826,
+    12.258064516129032,
+    12.903225806451612,
+    13.043478260869565,
+    13.548387096774194,
+    13.91304347826087,
+    14.193548387096774,
+    14.782608695652174,
+    14.838709677419354,
+    15.483870967741936,
+    15.652173913043478,
+    16.129032258064516,
+    16.52173913043478,
+    16.774193548387096,
+    17.391304347826086,
+    17.419354838709676,
+    18.064516129032256,
+    18.26086956521739,
+    18.70967741935484,
+    19.130434782608695,
+    19.35483870967742,
+    20.0
+  ],
+  "id": "9eb7e1e0fffc5446841d62907529b994",
+  "interpolation": "Piecewise linear rendering on the union of elapsed epoch times, no extrapolation; statistics use original fitted samples only",
+  "runs": [
+    {
+      "diagnostics": {
+        "failure_count": 1,
+        "truth_jacobian": {
+          "absolute_tolerance": 1.026559391733951e-05,
+          "condition_number": 41.43545449675127,
+          "full_column_rank": true,
+          "interpretation": "Local measurement rank only; full rank does not prove global uniqueness",
+          "measurement_count": 128,
+          "parameter_count": 70,
+          "parameter_scale_m": 7.953233972742543,
+          "rank": 70,
+          "relative_tolerance": 1e-08,
+          "scaling": "J of normalized range residuals with respect to theta / parameter_scale_m; all parameters in metres",
+          "singular_values": [
+            1026.559391733951,
+            765.2165376664154,
+            664.3395930154871,
+            416.16949567125283,
+            372.9063675121667,
+            304.3826699501822,
+            227.20921965324084,
+            226.76458530276642,
+            225.931324525729,
+            224.9177248138001,
+            223.78796463336863,
+            223.44548188746973,
+            223.071625678041,
+            222.8646659304911,
+            222.0987260094911,
+            221.44116718656034,
+            220.8067929801933,
+            220.62395862684457,
+            220.21414088109032,
+            219.5064287113544,
+            218.33889473272973,
+            217.70089063679032,
+            216.526091576428,
+            214.69739151199335,
+            213.56432192964027,
+            212.92056641019042,
+            211.92787726335197,
+            210.43836388658727,
+            209.60403120825237,
+            207.70412850593524,
+            206.90282764054712,
+            205.93720660824437,
+            203.8399748668359,
+            200.91866707351312,
+            199.11154099311221,
+            198.31870723710963,
+            197.85017895455366,
+            195.0951299835635,
+            194.47992609122227,
+            193.38949871072418,
+            190.9719066287838,
+            188.3609553832942,
+            188.03919105249855,
+            185.11259970367885,
+            184.65905163480735,
+            182.01004393160966,
+            181.66304200440456,
+            181.47429860903935,
+            181.37293356081113,
+            181.1833914622251,
+            181.0025467028232,
+            180.5008012437609,
+            180.23286635583148,
+            180.02493722136856,
+            179.4477089042426,
+            179.12649211781326,
+            178.2959812937029,
+            177.78832974974077,
+            177.28894925705876,
+            176.203641464603,
+            174.7535163787804,
+            173.39249380035656,
+            172.85793065030452,
+            169.40730059248062,
+            165.29710548370974,
+            162.1944531525837,
+            135.94314910190224,
+            103.90117962921971,
+            39.58037074239698,
+            24.774903623041908
+          ]
+        },
+        "warnings": [
+          "Deliberately invalid negative-baseline diagnostic; no estimate exists"
+        ]
+      },
+      "experiment": {
+        "config": {
+          "assumed_std_m": [
+            0.05,
+            0.05,
+            0.05,
+            0.05
+          ],
+          "duration_s": 20.0,
+          "noise_std_m": [
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "samples": 32,
+          "scenario": "informative",
+          "seed": 7
+        },
+        "coordinate_convention": "Right-handed Cartesian frame in metres. The planar tag trajectory is z=0. For the informative map, beacon b0=(0,0,h), b1=(d,0,h), b2 has positive y, and all four beacons share height h>0. Beacon IDs are zero-based.",
+        "estimator_input": {
+          "observations": [
+            {
+              "actual_time_s": 0.0,
+              "assumed_time_s": 0.0,
+              "beacon_id": 0,
+              "epoch": 0,
+              "range_m": 3.562302626111375,
+              "sigma_m": 0.05
+            },
+            {
+              "actual_time_s": 0.0,
+              "assumed_time_s": 0.0,
+              "beacon_id": 1,
+              "epoch": 0,
+              "range_m": 9.093404203047394,
+              "sigma_m": 0.05
+            },
+            {
+              "actual_time_s": 0.0,
+              "assumed_time_s": 0.0,
+              "beacon_id": 2,
+              "epoch": 0,
+              "range_m": 7.449161026585477,
+              "sigma_m": 0.05
+            },
+            {
+              "actual_time_s": 0.0,
+              "assumed_time_s": 0.0,
+              "beacon_id": 3,
+              "epoch": 0,
+              "range_m": 12.652667702899654,
+              "sigma_m": 0.05
+            },
+            {
+              "actual_time_s": 0.6451612903225806,
+              "assumed_time_s": 0.6451612903225806,
+              "beacon_id": 0,
+              "epoch": 1,
+              "range_m": 3.9736030667324953,
+              "sigma_m": 0.05
+            },
+            {
+              "actual_time_s": 0.6451612903225806,
+              "assumed_time_s": 0.6451612903225806,
+              "beacon_id": 1,
+              "epoch": 1,
+              "range_m": 8.338552441270418,
+              "sigma_m": 0.05
+            },
+            {
+              "actual_time_s": 0.6451612903225806,
+              "assumed_time_s": 0.6451612903225806,
+              "beacon_id": 2,
+              "epoch": 1,
+              "range_m": 7.5474310119624795,
+              "sigma_m": 0.05
+            },
+            {
+              "actual_time_s": 0.6451612903225806,
+              "assumed_time_s": 0.6451612903225806,
+              "beacon_id": 3,
+              "epoch": 1,
+              "range_m": 12.054279338235196,
+              "sigma_m": 0.05
+            },
+            {
+              "actual_time_s": 1.2903225806451613,
+              "assumed_time_s": 1.2903225806451613,
+              "beacon_id": 0,
+              "epoch": 2,
+              "range_m": 4.4956274281733855,
+              "sigma_m": 0.05
+            },
+            {
+              "actual_time_s": 1.2903225806451613,
+              "assumed_time_s": 1.2903225806451613,
+              "beacon_id": 1,
+              "epoch": 2,
+              "range_m": 7.595691998803452,
+              "sigma_m": 0.05
+            },
+            {
+              "actual_time_s": 1.2903225806451613,
+              "assumed_time_s": 1.2903225806451613,
+              "beacon_id": 2,
+              "epoch": 2,
+              "range_m": 7.730397989089504,
+              "sigma_m": 0.05
+            },
+            {
+              "actual_time_s": 1.2903225806451613,
+              "assumed_time_s": 1.2903225806451613,
+              "beacon_id": 3,
+              "epoch": 2,
+              "range_m": 11.482287404409497,
+              "sigma_m": 0.05
+            },
+            {
+              "actual_time_s": 1.935483870967742,
+              "assumed_time_s": 1.935483870967742,
+              "beacon_id": 0,
+              "epoch": 3,
+              "range_m": 5.094451287724408,
+              "sigma_m": 0.05
+            },
+            {
+              "actual_time_s": 1.935483870967742,
+              "assumed_time_s": 1.935483870967742,
+              "beacon_id": 1,
+              "epoch": 3,
+              "range_m": 6.8687146086156305,
+              "sigma_m": 0.05
+            },
+            {
+              "actual_time_s": 1.935483870967742,
+              "assumed_time_s": 1.935483870967742,
+              "beacon_id": 2,
+              "epoch": 3,
+              "range_m": 7.992247153845917,
+              "sigma_m": 0.05
+            },
+            {
+              "actual_time_s": 1.935483870967742,
+              "assumed_time_s": 1.935483870967742,
+              "beacon_id": 3,
+              "epoch": 3,
+              "range_m": 10.940832738862753,
+              "sigma_m": 0.05
+            },
+            {
+              "actual_time_s": 2.5806451612903225,
+              "assumed_time_s": 2.5806451612903225,
+              "beacon_id": 0,
+              "epoch": 4,
+              "range_m": 5.746113920042134,
+              "sigma_m": 0.05
+            },
+            {
+              "actual_time_s": 2.5806451612903225,
+              "assumed_time_s": 2.5806451612903225,
+              "beacon_id": 1,
+              "epoch": 4,
+              "range_m": 6.163243230441733,
+              "sigma_m": 0.05
+            },
+            {
+              "actual_time_s": 2.5806451612903225,
+              "assumed_time_s": 2.5806451612903225,
+              "beacon_id": 2,
+              "epoch": 4,
+              "range_m": 8.325538984092884,
+              "sigma_m": 0.05
+            },
+            {
+              "actual_time_s": 2.5806451612903225,
+              "assumed_time_s": 2.5806451612903225,
+              "beacon_id": 3,
+              "epoch": 4,
+              "range_m": 10.434670158233763,
+              "sigma_m": 0.05
+            },
+            {
+              "actual_time_s": 3.225806451612903,
+              "assumed_time_s": 3.225806451612903,
+              "beacon_id": 0,
+              "epoch": 5,
+              "range_m": 6.434581552071599,
+              "sigma_m": 0.05
+            },
+            {
+              "actual_time_s": 3.225806451612903,
+              "assumed_time_s": 3.225806451612903,
+              "beacon_id": 1,
+              "epoch": 5,
+              "range_m": 5.4875784431400145,
+              "sigma_m": 0.05
+            },
+            {
+              "actual_time_s": 3.225806451612903,
+              "assumed_time_s": 3.225806451612903,
+              "beacon_id": 2,
+              "epoch": 5,
+              "range_m": 8.722087335735386,
+              "sigma_m": 0.05
+            },
+            {
+              "actual_time_s": 3.225806451612903,
+              "assumed_time_s": 3.225806451612903,
+              "beacon_id": 3,
+              "epoch": 5,
+              "range_m": 9.969176741915575,
+              "sigma_m": 0.05
+            },
+            {
+              "actual_time_s": 3.870967741935484,
+              "assumed_time_s": 3.870967741935484,
+              "beacon_id": 0,
+              "epoch": 6,
+              "range_m": 7.149229163166571,
+              "sigma_m": 0.05
+            },
+            {
+              "actual_time_s": 3.870967741935484,
+              "assumed_time_s": 3.870967741935484,
+              "beacon_id": 1,
+              "epoch": 6,
+              "range_m": 4.8541827871122845,
+              "sigma_m": 0.05
+            },
+            {
+              "actual_time_s": 3.870967741935484,
+              "assumed_time_s": 3.870967741935484,
+              "beacon_id": 2,
+              "epoch": 6,
+              "range_m": 9.173692763429239,
+              "sigma_m": 0.05
+            },
+            {
+              "actual_time_s": 3.870967741935484,
+              "assumed_time_s": 3.870967741935484,
+              "beacon_id": 3,
+              "epoch": 6,
+              "range_m": 9.550301137713918,
+              "sigma_m": 0.05
+            },
+            {
+              "actual_time_s": 4.516129032258064,
+              "assumed_time_s": 4.516129032258064,
+              "beacon_id": 0,
+              "epoch": 7,
+              "range_m": 7.8829397317076895,
+              "sigma_m": 0.05
+            },
+            {
+              "actual_time_s": 4.516129032258064,
+              "assumed_time_s": 4.516129032258064,
+              "beacon_id": 1,
+              "epoch": 7,
+              "range_m": 4.281855579165703,
+              "sigma_m": 0.05
+            },
+            {
+              "actual_time_s": 4.516129032258064,
+              "assumed_time_s": 4.516129032258064,
+              "beacon_id": 2,
+              "epoch": 7,
+              "range_m": 9.672646672573405,
+              "sigma_m": 0.05
+            },
+            {
+              "actual_time_s": 4.516129032258064,
+              "assumed_time_s": 4.516129032258064,
+              "beacon_id": 3,
+              "epoch": 7,
+              "range_m": 9.184423881743598,
+              "sigma_m": 0.05
+            },
+            {
+              "actual_time_s": 5.161290322580645,
+              "assumed_time_s": 5.161290322580645,
+              "beacon_id": 0,
+              "epoch": 8,
+              "range_m": 8.630852988497319,
+              "sigma_m": 0.05
+            },
+            {
+              "actual_time_s": 5.161290322580645,
+              "assumed_time_s": 5.161290322580645,
+              "beacon_id": 1,
+              "epoch": 8,
+              "range_m": 3.798303197484478,
+              "sigma_m": 0.05
+            },
+            {
+              "actual_time_s": 5.161290322580645,
+              "assumed_time_s": 5.161290322580645,
+              "beacon_id": 2,
+              "epoch": 8,
+              "range_m": 10.212011148454051,
+              "sigma_m": 0.05
+            },
+            {
+              "actual_time_s": 5.161290322580645,
+              "assumed_time_s": 5.161290322580645,
+              "beacon_id": 3,
+              "epoch": 8,
+              "range_m": 8.878099772311504,
+              "sigma_m": 0.05
+            },
+            {
+              "actual_time_s": 5.806451612903226,
+              "assumed_time_s": 5.806451612903226,
+              "beacon_id": 0,
+              "epoch": 9,
+              "range_m": 9.140494912336846,
+              "sigma_m": 0.05
+            },
+            {
+              "actual_time_s": 5.806451612903226,
+              "assumed_time_s": 5.806451612903226,
+              "beacon_id": 1,
+              "epoch": 9,
+              "range_m": 3.6808487122477302,
+              "sigma_m": 0.05
+            },
+            {
+              "actual_time_s": 5.806451612903226,
+              "assumed_time_s": 5.806451612903226,
+              "beacon_id": 2,
+              "epoch": 9,
+              "range_m": 10.358116755777893,
+              "sigma_m": 0.05
+            },
+            {
+              "actual_time_s": 5.806451612903226,
+              "assumed_time_s": 5.806451612903226,
+              "beacon_id": 3,
+              "epoch": 9,
+              "range_m": 8.441464604072602,
+              "sigma_m": 0.05
+            },
+            {
+              "actual_time_s": 6.451612903225806,
+              "assumed_time_s": 6.451612903225806,
+              "beacon_id": 0,
+              "epoch": 10,
+              "range_m": 9.309908230434127,
+              "sigma_m": 0.05
+            },
+            {
+              "actual_time_s": 6.451612903225806,
+              "assumed_time_s": 6.451612903225806,
+              "beacon_id": 1,
+              "epoch": 10,
+              "range_m": 4.083428860541726,
+              "sigma_m": 0.05
+            },
+            {
+              "actual_time_s": 6.451612903225806,
+              "assumed_time_s": 6.451612903225806,
+              "beacon_id": 2,
+              "epoch": 10,
+              "range_m": 9.869644123780393,
+              "sigma_m": 0.05
+            },
+            {
+              "actual_time_s": 6.451612903225806,
+              "assumed_time_s": 6.451612903225806,
+              "beacon_id": 3,
+              "epoch": 10,
+              "range_m": 7.729929534862773,
+              "sigma_m": 0.05
+            },
+            {
+              "actual_time_s": 7.096774193548387,
+              "assumed_time_s": 7.096774193548387,
+              "beacon_id": 0,
+              "epoch": 11,
+              "range_m": 9.545771764755719,
+              "sigma_m": 0.05
+            },
+            {
+              "actual_time_s": 7.096774193548387,
+              "assumed_time_s": 7.096774193548387,
+              "beacon_id": 1,
+              "epoch": 11,
+              "range_m": 4.595841444698403,
+              "sigma_m": 0.05
+            },
+            {
+              "actual_time_s": 7.096774193548387,
+              "assumed_time_s": 7.096774193548387,
+              "beacon_id": 2,
+              "epoch": 11,
+              "range_m": 9.426069745279417,
+              "sigma_m": 0.05
+            },
+            {
+              "actual_time_s": 7.096774193548387,
+              "assumed_time_s": 7.096774193548387,
+              "beacon_id": 3,
+              "epoch": 11,
+              "range_m": 7.040377821902036,
+              "sigma_m": 0.05
+            },
+            {
+              "actual_time_s": 7.741935483870968,
+              "assumed_time_s": 7.741935483870968,
+              "beacon_id": 0,
+              "epoch": 12,
+              "range_m": 9.843309871154263,
+              "sigma_m": 0.05
+            },
+            {
+              "actual_time_s": 7.741935483870968,
+              "assumed_time_s": 7.741935483870968,
+              "beacon_id": 1,
+              "epoch": 12,
+              "range_m": 5.185629105476303,
+              "sigma_m": 0.05
+            },
+            {
+              "actual_time_s": 7.741935483870968,
+              "assumed_time_s": 7.741935483870968,
+              "beacon_id": 2,
+              "epoch": 12,
+              "range_m": 9.034009622793427,
+              "sigma_m": 0.05
+            },
+            {
+              "actual_time_s": 7.741935483870968,
+              "assumed_time_s": 7.741935483870968,
+              "beacon_id": 3,
+              "epoch": 12,
+              "range_m": 6.379941413944912,
+              "sigma_m": 0.05
+            },
+            {
+              "actual_time_s": 8.387096774193548,
+              "assumed_time_s": 8.387096774193548,
+              "beacon_id": 0,
+              "epoch": 13,
+              "range_m": 10.1971252401533,
+              "sigma_m": 0.05
+            },
+            {
+              "actual_time_s": 8.387096774193548,
+              "assumed_time_s": 8.387096774193548,
+              "beacon_id": 1,
+              "epoch": 13,
+              "range_m": 5.829353580232675,
+              "sigma_m": 0.05
+            },
+            {
+              "actual_time_s": 8.387096774193548,
+              "assumed_time_s": 8.387096774193548,
+              "beacon_id": 2,
+              "epoch": 13,
+              "range_m": 8.700430575300832,
+              "sigma_m": 0.05
+            },
+            {
+              "actual_time_s": 8.387096774193548,
+              "assumed_time_s": 8.387096774193548,
+              "beacon_id": 3,
+              "epoch": 13,
+              "range_m": 5.758646396911501,
+              "sigma_m": 0.05
+            },
+            {
+              "actual_time_s": 9.032258064516128,
+              "assumed_time_s": 9.032258064516128,
+              "beacon_id": 0,
+              "epoch": 14,
+              "range_m": 10.60158480682172,
+              "sigma_m": 0.05
+            },
+            {
+              "actual_time_s": 9.032258064516128,
+              "assumed_time_s": 9.032258064516128,
+              "beacon_id": 1,
+              "epoch": 14,
+              "range_m": 6.511036815763916,
+              "sigma_m": 0.05
+            },
+            {
+              "actual_time_s": 9.032258064516128,
+              "assumed_time_s": 9.032258064516128,
+              "beacon_id": 2,
+              "epoch": 14,
+              "range_m": 8.432275958220766,
+              "sigma_m": 0.05
+            },
+            {
+              "actual_time_s": 9.032258064516128,
+              "assumed_time_s": 9.032258064516128,
+              "beacon_id": 3,
+              "epoch": 14,
+              "range_m": 5.190567166794711,
+              "sigma_m": 0.05
+            },
+            {
+              "actual_time_s": 9.67741935483871,
+              "assumed_time_s": 9.67741935483871,
+              "beacon_id": 0,
+              "epoch": 15,
+              "range_m": 11.05112939830802,
+              "sigma_m": 0.05
+            },
+            {
+              "actual_time_s": 9.67741935483871,
+              "assumed_time_s": 9.67741935483871,
+              "beacon_id": 1,
+              "epoch": 15,
+              "range_m": 7.219934970493002,
+              "sigma_m": 0.05
+            },
+            {
+              "actual_time_s": 9.67741935483871,
+              "assumed_time_s": 9.67741935483871,
+              "beacon_id": 2,
+              "epoch": 15,
+              "range_m": 8.235938731231515,
+              "sigma_m": 0.05
+            },
+            {
+              "actual_time_s": 9.67741935483871,
+              "assumed_time_s": 9.67741935483871,
+              "beacon_id": 3,
+              "epoch": 15,
+              "range_m": 4.695060171116641,
+              "sigma_m": 0.05
+            },
+            {
+              "actual_time_s": 10.32258064516129,
+              "assumed_time_s": 10.32258064516129,
+              "beacon_id": 0,
+              "epoch": 16,
+              "range_m": 10.988426888971722,
+              "sigma_m": 0.05
+            },
+            {
+              "actual_time_s": 10.32258064516129,
+              "assumed_time_s": 10.32258064516129,
+              "beacon_id": 1,
+              "epoch": 16,
+              "range_m": 7.672975808142582,
+              "sigma_m": 0.05
+            },
+            {
+              "actual_time_s": 10.32258064516129,
+              "assumed_time_s": 10.32258064516129,
+              "beacon_id": 2,
+              "epoch": 16,
+              "range_m": 7.794769317951829,
+              "sigma_m": 0.05
+            },
+            {
+              "actual_time_s": 10.32258064516129,
+              "assumed_time_s": 10.32258064516129,
+              "beacon_id": 3,
+              "epoch": 16,
+              "range_m": 4.7209597518034165,
+              "sigma_m": 0.05
+            },
+            {
+              "actual_time_s": 10.96774193548387,
+              "assumed_time_s": 10.96774193548387,
+              "beacon_id": 0,
+              "epoch": 17,
+              "range_m": 10.404220007507538,
+              "sigma_m": 0.05
+            },
+            {
+              "actual_time_s": 10.96774193548387,
+              "assumed_time_s": 10.96774193548387,
+              "beacon_id": 1,
+              "epoch": 17,
+              "range_m": 7.9142207916391705,
+              "sigma_m": 0.05
+            },
+            {
+              "actual_time_s": 10.96774193548387,
+              "assumed_time_s": 10.96774193548387,
+              "beacon_id": 2,
+              "epoch": 17,
+              "range_m": 7.063037847982943,
+              "sigma_m": 0.05
+            },
+            {
+              "actual_time_s": 10.96774193548387,
+              "assumed_time_s": 10.96774193548387,
+              "beacon_id": 3,
+              "epoch": 17,
+              "range_m": 5.260570350849146,
+              "sigma_m": 0.05
+            },
+            {
+              "actual_time_s": 11.612903225806452,
+              "assumed_time_s": 11.612903225806452,
+              "beacon_id": 0,
+              "epoch": 18,
+              "range_m": 9.852496421923565,
+              "sigma_m": 0.05
+            },
+            {
+              "actual_time_s": 11.612903225806452,
+              "assumed_time_s": 11.612903225806452,
+              "beacon_id": 1,
+              "epoch": 18,
+              "range_m": 8.229024670903547,
+              "sigma_m": 0.05
+            },
+            {
+              "actual_time_s": 11.612903225806452,
+              "assumed_time_s": 11.612903225806452,
+              "beacon_id": 2,
+              "epoch": 18,
+              "range_m": 6.351078796003786,
+              "sigma_m": 0.05
+            },
+            {
+              "actual_time_s": 11.612903225806452,
+              "assumed_time_s": 11.612903225806452,
+              "beacon_id": 3,
+              "epoch": 18,
+              "range_m": 5.863562327064623,
+              "sigma_m": 0.05
+            },
+            {
+              "actual_time_s": 12.258064516129032,
+              "assumed_time_s": 12.258064516129032,
+              "beacon_id": 0,
+              "epoch": 19,
+              "range_m": 9.339014981916783,
+              "sigma_m": 0.05
+            },
+            {
+              "actual_time_s": 12.258064516129032,
+              "assumed_time_s": 12.258064516129032,
+              "beacon_id": 1,
+              "epoch": 19,
+              "range_m": 8.609322077778122,
+              "sigma_m": 0.05
+            },
+            {
+              "actual_time_s": 12.258064516129032,
+              "assumed_time_s": 12.258064516129032,
+              "beacon_id": 2,
+              "epoch": 19,
+              "range_m": 5.666350096235788,
+              "sigma_m": 0.05
+            },
+            {
+              "actual_time_s": 12.258064516129032,
+              "assumed_time_s": 12.258064516129032,
+              "beacon_id": 3,
+              "epoch": 19,
+              "range_m": 6.512353585268769,
+              "sigma_m": 0.05
+            },
+            {
+              "actual_time_s": 12.903225806451612,
+              "assumed_time_s": 12.903225806451612,
+              "beacon_id": 0,
+              "epoch": 20,
+              "range_m": 8.870419337887515,
+              "sigma_m": 0.05
+            },
+            {
+              "actual_time_s": 12.903225806451612,
+              "assumed_time_s": 12.903225806451612,
+              "beacon_id": 1,
+              "epoch": 20,
+              "range_m": 9.04685744071108,
+              "sigma_m": 0.05
+            },
+            {
+              "actual_time_s": 12.903225806451612,
+              "assumed_time_s": 12.903225806451612,
+              "beacon_id": 2,
+              "epoch": 20,
+              "range_m": 5.020006799021974,
+              "sigma_m": 0.05
+            },
+            {
+              "actual_time_s": 12.903225806451612,
+              "assumed_time_s": 12.903225806451612,
+              "beacon_id": 3,
+              "epoch": 20,
+              "range_m": 7.194564516689491,
+              "sigma_m": 0.05
+            },
+            {
+              "actual_time_s": 13.548387096774194,
+              "assumed_time_s": 13.548387096774194,
+              "beacon_id": 0,
+              "epoch": 21,
+              "range_m": 8.454176538050552,
+              "sigma_m": 0.05
+            },
+            {
+              "actual_time_s": 13.548387096774194,
+              "assumed_time_s": 13.548387096774194,
+              "beacon_id": 1,
+              "epoch": 21,
+              "range_m": 9.533753498766064,
+              "sigma_m": 0.05
+            },
+            {
+              "actual_time_s": 13.548387096774194,
+              "assumed_time_s": 13.548387096774194,
+              "beacon_id": 2,
+              "epoch": 21,
+              "range_m": 4.428886589245135,
+              "sigma_m": 0.05
+            },
+            {
+              "actual_time_s": 13.548387096774194,
+              "assumed_time_s": 13.548387096774194,
+              "beacon_id": 3,
+              "epoch": 21,
+              "range_m": 7.90154359977246,
+              "sigma_m": 0.05
+            },
+            {
+              "actual_time_s": 14.193548387096774,
+              "assumed_time_s": 14.193548387096774,
+              "beacon_id": 0,
+              "epoch": 22,
+              "range_m": 8.098363164994096,
+              "sigma_m": 0.05
+            },
+            {
+              "actual_time_s": 14.193548387096774,
+              "assumed_time_s": 14.193548387096774,
+              "beacon_id": 1,
+              "epoch": 22,
+              "range_m": 10.06284777321867,
+              "sigma_m": 0.05
+            },
+            {
+              "actual_time_s": 14.193548387096774,
+              "assumed_time_s": 14.193548387096774,
+              "beacon_id": 2,
+              "epoch": 22,
+              "range_m": 3.918064303660298,
+              "sigma_m": 0.05
+            },
+            {
+              "actual_time_s": 14.193548387096774,
+              "assumed_time_s": 14.193548387096774,
+              "beacon_id": 3,
+              "epoch": 22,
+              "range_m": 8.627203906391445,
+              "sigma_m": 0.05
+            },
+            {
+              "actual_time_s": 14.838709677419354,
+              "assumed_time_s": 14.838709677419354,
+              "beacon_id": 0,
+              "epoch": 23,
+              "range_m": 7.811241532355468,
+              "sigma_m": 0.05
+            },
+            {
+              "actual_time_s": 14.838709677419354,
+              "assumed_time_s": 14.838709677419354,
+              "beacon_id": 1,
+              "epoch": 23,
+              "range_m": 10.627839768634205,
+              "sigma_m": 0.05
+            },
+            {
+              "actual_time_s": 14.838709677419354,
+              "assumed_time_s": 14.838709677419354,
+              "beacon_id": 2,
+              "epoch": 23,
+              "range_m": 3.5226471103265196,
+              "sigma_m": 0.05
+            },
+            {
+              "actual_time_s": 14.838709677419354,
+              "assumed_time_s": 14.838709677419354,
+              "beacon_id": 3,
+              "epoch": 23,
+              "range_m": 9.367204841085709,
+              "sigma_m": 0.05
+            },
+            {
+              "actual_time_s": 15.483870967741936,
+              "assumed_time_s": 15.483870967741936,
+              "beacon_id": 0,
+              "epoch": 24,
+              "range_m": 7.600600365136288,
+              "sigma_m": 0.05
+            },
+            {
+              "actual_time_s": 15.483870967741936,
+              "assumed_time_s": 15.483870967741936,
+              "beacon_id": 1,
+              "epoch": 24,
+              "range_m": 11.223309418242316,
+              "sigma_m": 0.05
+            },
+            {
+              "actual_time_s": 15.483870967741936,
+              "assumed_time_s": 15.483870967741936,
+              "beacon_id": 2,
+              "epoch": 24,
+              "range_m": 3.2845822792585913,
+              "sigma_m": 0.05
+            },
+            {
+              "actual_time_s": 15.483870967741936,
+              "assumed_time_s": 15.483870967741936,
+              "beacon_id": 3,
+              "epoch": 24,
+              "range_m": 10.118400522627889,
+              "sigma_m": 0.05
+            },
+            {
+              "actual_time_s": 16.129032258064516,
+              "assumed_time_s": 16.129032258064516,
+              "beacon_id": 0,
+              "epoch": 25,
+              "range_m": 6.941543489352217,
+              "sigma_m": 0.05
+            },
+            {
+              "actual_time_s": 16.129032258064516,
+              "assumed_time_s": 16.129032258064516,
+              "beacon_id": 1,
+              "epoch": 25,
+              "range_m": 10.871293667938888,
+              "sigma_m": 0.05
+            },
+            {
+              "actual_time_s": 16.129032258064516,
+              "assumed_time_s": 16.129032258064516,
+              "beacon_id": 2,
+              "epoch": 25,
+              "range_m": 3.598098989348237,
+              "sigma_m": 0.05
+            },
+            {
+              "actual_time_s": 16.129032258064516,
+              "assumed_time_s": 16.129032258064516,
+              "beacon_id": 3,
+              "epoch": 25,
+              "range_m": 10.382267460794457,
+              "sigma_m": 0.05
+            },
+            {
+              "actual_time_s": 16.774193548387096,
+              "assumed_time_s": 16.774193548387096,
+              "beacon_id": 0,
+              "epoch": 26,
+              "range_m": 6.242205545545644,
+              "sigma_m": 0.05
+            },
+            {
+              "actual_time_s": 16.774193548387096,
+              "assumed_time_s": 16.774193548387096,
+              "beacon_id": 1,
+              "epoch": 26,
+              "range_m": 10.438636408690591,
+              "sigma_m": 0.05
+            },
+            {
+              "actual_time_s": 16.774193548387096,
+              "assumed_time_s": 16.774193548387096,
+              "beacon_id": 2,
+              "epoch": 26,
+              "range_m": 4.090583333502039,
+              "sigma_m": 0.05
+            },
+            {
+              "actual_time_s": 16.774193548387096,
+              "assumed_time_s": 16.774193548387096,
+              "beacon_id": 3,
+              "epoch": 26,
+              "range_m": 10.639729308129043,
+              "sigma_m": 0.05
+            },
+            {
+              "actual_time_s": 17.419354838709676,
+              "assumed_time_s": 17.419354838709676,
+              "beacon_id": 0,
+              "epoch": 27,
+              "range_m": 5.573765104502208,
+              "sigma_m": 0.05
+            },
+            {
+              "actual_time_s": 17.419354838709676,
+              "assumed_time_s": 17.419354838709676,
+              "beacon_id": 1,
+              "epoch": 27,
+              "range_m": 10.053201352811277,
+              "sigma_m": 0.05
+            },
+            {
+              "actual_time_s": 17.419354838709676,
+              "assumed_time_s": 17.419354838709676,
+              "beacon_id": 2,
+              "epoch": 27,
+              "range_m": 4.6734410222611755,
+              "sigma_m": 0.05
+            },
+            {
+              "actual_time_s": 17.419354838709676,
+              "assumed_time_s": 17.419354838709676,
+              "beacon_id": 3,
+              "epoch": 27,
+              "range_m": 10.951612903225806,
+              "sigma_m": 0.05
+            },
+            {
+              "actual_time_s": 18.064516129032256,
+              "assumed_time_s": 18.064516129032256,
+              "beacon_id": 0,
+              "epoch": 28,
+              "range_m": 4.948758239856263,
+              "sigma_m": 0.05
+            },
+            {
+              "actual_time_s": 18.064516129032256,
+              "assumed_time_s": 18.064516129032256,
+              "beacon_id": 1,
+              "epoch": 28,
+              "range_m": 9.720607394424755,
+              "sigma_m": 0.05
+            },
+            {
+              "actual_time_s": 18.064516129032256,
+              "assumed_time_s": 18.064516129032256,
+              "beacon_id": 2,
+              "epoch": 28,
+              "range_m": 5.317034255845603,
+              "sigma_m": 0.05
+            },
+            {
+              "actual_time_s": 18.064516129032256,
+              "assumed_time_s": 18.064516129032256,
+              "beacon_id": 3,
+              "epoch": 28,
+              "range_m": 11.313418312914841,
+              "sigma_m": 0.05
+            },
+            {
+              "actual_time_s": 18.70967741935484,
+              "assumed_time_s": 18.70967741935484,
+              "beacon_id": 0,
+              "epoch": 29,
+              "range_m": 4.385793212404924,
+              "sigma_m": 0.05
+            },
+            {
+              "actual_time_s": 18.70967741935484,
+              "assumed_time_s": 18.70967741935484,
+              "beacon_id": 1,
+              "epoch": 29,
+              "range_m": 9.44643753496402,
+              "sigma_m": 0.05
+            },
+            {
+              "actual_time_s": 18.70967741935484,
+              "assumed_time_s": 18.70967741935484,
+              "beacon_id": 2,
+              "epoch": 29,
+              "range_m": 6.001856285864455,
+              "sigma_m": 0.05
+            },
+            {
+              "actual_time_s": 18.70967741935484,
+              "assumed_time_s": 18.70967741935484,
+              "beacon_id": 3,
+              "epoch": 29,
+              "range_m": 11.720523280679274,
+              "sigma_m": 0.05
+            },
+            {
+              "actual_time_s": 19.35483870967742,
+              "assumed_time_s": 19.35483870967742,
+              "beacon_id": 0,
+              "epoch": 30,
+              "range_m": 3.9117488923066133,
+              "sigma_m": 0.05
+            },
+            {
+              "actual_time_s": 19.35483870967742,
+              "assumed_time_s": 19.35483870967742,
+              "beacon_id": 1,
+              "epoch": 30,
+              "range_m": 9.235896242187978,
+              "sigma_m": 0.05
+            },
+            {
+              "actual_time_s": 19.35483870967742,
+              "assumed_time_s": 19.35483870967742,
+              "beacon_id": 2,
+              "epoch": 30,
+              "range_m": 6.715305486987081,
+              "sigma_m": 0.05
+            },
+            {
+              "actual_time_s": 19.35483870967742,
+              "assumed_time_s": 19.35483870967742,
+              "beacon_id": 3,
+              "epoch": 30,
+              "range_m": 12.16838203427004,
+              "sigma_m": 0.05
+            },
+            {
+              "actual_time_s": 20.0,
+              "assumed_time_s": 20.0,
+              "beacon_id": 0,
+              "epoch": 31,
+              "range_m": 3.562302626111375,
+              "sigma_m": 0.05
+            },
+            {
+              "actual_time_s": 20.0,
+              "assumed_time_s": 20.0,
+              "beacon_id": 1,
+              "epoch": 31,
+              "range_m": 9.093404203047394,
+              "sigma_m": 0.05
+            },
+            {
+              "actual_time_s": 20.0,
+              "assumed_time_s": 20.0,
+              "beacon_id": 2,
+              "epoch": 31,
+              "range_m": 7.449161026585477,
+              "sigma_m": 0.05
+            },
+            {
+              "actual_time_s": 20.0,
+              "assumed_time_s": 20.0,
+              "beacon_id": 3,
+              "epoch": 31,
+              "range_m": 12.652667702899654,
+              "sigma_m": 0.05
+            }
+          ],
+          "times_s": [
+            0.0,
+            0.6451612903225806,
+            1.2903225806451613,
+            1.935483870967742,
+            2.5806451612903225,
+            3.225806451612903,
+            3.870967741935484,
+            4.516129032258064,
+            5.161290322580645,
+            5.806451612903226,
+            6.451612903225806,
+            7.096774193548387,
+            7.741935483870968,
+            8.387096774193548,
+            9.032258064516128,
+            9.67741935483871,
+            10.32258064516129,
+            10.96774193548387,
+            11.612903225806452,
+            12.258064516129032,
+            12.903225806451612,
+            13.548387096774194,
+            14.193548387096774,
+            14.838709677419354,
+            15.483870967741936,
+            16.129032258064516,
+            16.774193548387096,
+            17.419354838709676,
+            18.064516129032256,
+            18.70967741935484,
+            19.35483870967742,
+            20.0
+          ]
+        },
+        "schema_version": "1.0",
+        "software_versions": {
+          "flask": "3.1.3",
+          "numpy": "2.5.4",
+          "plotly": "7.1.0",
+          "python": "3.12.10",
+          "scipy": "1.18.1"
+        },
+        "truth": {
+          "beacons": [
+            [
+              0.0,
+              0.0,
+              3.0
+            ],
+            [
+              10.0,
+              0.0,
+              3.0
+            ],
+            [
+              1.0,
+              8.0,
+              3.0
+            ],
+            [
+              11.0,
+              9.0,
+              3.0
+            ]
+          ],
+          "times_s": [
+            0.0,
+            0.6451612903225806,
+            1.2903225806451613,
+            1.935483870967742,
+            2.5806451612903225,
+            3.225806451612903,
+            3.870967741935484,
+            4.516129032258064,
+            5.161290322580645,
+            5.806451612903226,
+            6.451612903225806,
+            7.096774193548387,
+            7.741935483870968,
+            8.387096774193548,
+            9.032258064516128,
+            9.67741935483871,
+            10.32258064516129,
+            10.96774193548387,
+            11.612903225806452,
+            12.258064516129032,
+            12.903225806451612,
+            13.548387096774194,
+            14.193548387096774,
+            14.838709677419354,
+            15.483870967741936,
+            16.129032258064516,
+            16.774193548387096,
+            17.419354838709676,
+            18.064516129032256,
+            18.70967741935484,
+            19.35483870967742,
+            20.0
+          ],
+          "trajectory": [
+            [
+              1.5,
+              1.2,
+              0.0
+            ],
+            [
+              2.3129032258064517,
+              1.2,
+              0.0
+            ],
+            [
+              3.1258064516129034,
+              1.2,
+              0.0
+            ],
+            [
+              3.938709677419355,
+              1.2,
+              0.0
+            ],
+            [
+              4.751612903225807,
+              1.2,
+              0.0
+            ],
+            [
+              5.564516129032258,
+              1.2,
+              0.0
+            ],
+            [
+              6.37741935483871,
+              1.2,
+              0.0
+            ],
+            [
+              7.190322580645162,
+              1.2,
+              0.0
+            ],
+            [
+              8.003225806451614,
+              1.2,
+              0.0
+            ],
+            [
+              8.5,
+              1.5161290322580647,
+              0.0
+            ],
+            [
+              8.5,
+              2.329032258064516,
+              0.0
+            ],
+            [
+              8.5,
+              3.141935483870969,
+              0.0
+            ],
+            [
+              8.5,
+              3.9548387096774205,
+              0.0
+            ],
+            [
+              8.5,
+              4.767741935483872,
+              0.0
+            ],
+            [
+              8.5,
+              5.580645161290325,
+              0.0
+            ],
+            [
+              8.5,
+              6.393548387096776,
+              0.0
+            ],
+            [
+              8.093548387096773,
+              6.8,
+              0.0
+            ],
+            [
+              7.280645161290321,
+              6.8,
+              0.0
+            ],
+            [
+              6.46774193548387,
+              6.8,
+              0.0
+            ],
+            [
+              5.654838709677417,
+              6.8,
+              0.0
+            ],
+            [
+              4.8419354838709685,
+              6.8,
+              0.0
+            ],
+            [
+              4.029032258064514,
+              6.8,
+              0.0
+            ],
+            [
+              3.2161290322580625,
+              6.8,
+              0.0
+            ],
+            [
+              2.403225806451612,
+              6.8,
+              0.0
+            ],
+            [
+              1.5903225806451609,
+              6.8,
+              0.0
+            ],
+            [
+              1.5,
+              6.077419354838709,
+              0.0
+            ],
+            [
+              1.5,
+              5.264516129032259,
+              0.0
+            ],
+            [
+              1.5,
+              4.451612903225808,
+              0.0
+            ],
+            [
+              1.5,
+              3.638709677419353,
+              0.0
+            ],
+            [
+              1.5,
+              2.8258064516129022,
+              0.0
+            ],
+            [
+              1.5,
+              2.0129032258064514,
+              0.0
+            ],
+            [
+              1.5,
+              1.2,
+              0.0
+            ]
+          ]
+        },
+        "units": "metres, seconds"
+      },
+      "options": {
+        "diagnostic_note": "Explicit truth-derived fixture with deliberately invalid negative d; no solver fit",
+        "initialization": "truth_near",
+        "mode": "joint",
+        "seed": 19,
+        "starts": 1
+      },
+      "schema_version": "1.0",
+      "selected_start": null,
+      "starts": [
+        {
+          "diagnostics": {},
+          "estimate": null,
+          "index": 0,
+          "initial": {
+            "beacons": [
+              [
+                0.0,
+                0.0,
+                3.0
+              ],
+              [
+                -10.0,
+                0.0,
+                3.0
+              ],
+              [
+                1.0,
+                8.0,
+                3.0
+              ],
+              [
+                11.0,
+                9.0,
+                3.0
+              ]
+            ],
+            "trajectory": [
+              [
+                1.5,
+                1.2,
+                0.0
+              ],
+              [
+                2.3129032258064517,
+                1.2,
+                0.0
+              ],
+              [
+                3.1258064516129034,
+                1.2,
+                0.0
+              ],
+              [
+                3.938709677419355,
+                1.2,
+                0.0
+              ],
+              [
+                4.751612903225807,
+                1.2,
+                0.0
+              ],
+              [
+                5.564516129032258,
+                1.2,
+                0.0
+              ],
+              [
+                6.37741935483871,
+                1.2,
+                0.0
+              ],
+              [
+                7.190322580645162,
+                1.2,
+                0.0
+              ],
+              [
+                8.003225806451614,
+                1.2,
+                0.0
+              ],
+              [
+                8.5,
+                1.5161290322580647,
+                0.0
+              ],
+              [
+                8.5,
+                2.329032258064516,
+                0.0
+              ],
+              [
+                8.5,
+                3.141935483870969,
+                0.0
+              ],
+              [
+                8.5,
+                3.9548387096774205,
+                0.0
+              ],
+              [
+                8.5,
+                4.767741935483872,
+                0.0
+              ],
+              [
+                8.5,
+                5.580645161290325,
+                0.0
+              ],
+              [
+                8.5,
+                6.393548387096776,
+                0.0
+              ],
+              [
+                8.093548387096773,
+                6.8,
+                0.0
+              ],
+              [
+                7.280645161290321,
+                6.8,
+                0.0
+              ],
+              [
+                6.46774193548387,
+                6.8,
+                0.0
+              ],
+              [
+                5.654838709677417,
+                6.8,
+                0.0
+              ],
+              [
+                4.8419354838709685,
+                6.8,
+                0.0
+              ],
+              [
+                4.029032258064514,
+                6.8,
+                0.0
+              ],
+              [
+                3.2161290322580625,
+                6.8,
+                0.0
+              ],
+              [
+                2.403225806451612,
+                6.8,
+                0.0
+              ],
+              [
+                1.5903225806451609,
+                6.8,
+                0.0
+              ],
+              [
+                1.5,
+                6.077419354838709,
+                0.0
+              ],
+              [
+                1.5,
+                5.264516129032259,
+                0.0
+              ],
+              [
+                1.5,
+                4.451612903225808,
+                0.0
+              ],
+              [
+                1.5,
+                3.638709677419353,
+                0.0
+              ],
+              [
+                1.5,
+                2.8258064516129022,
+                0.0
+              ],
+              [
+                1.5,
+                2.0129032258064514,
+                0.0
+              ],
+              [
+                1.5,
+                1.2,
+                0.0
+              ]
+            ]
+          },
+          "solver": {
+            "final_objective": null,
+            "initial_objective": null,
+            "iterations": null,
+            "message": "ValueError: Joint initial d, beacon 2 y, and shared height must be positive",
+            "nfev": null,
+            "njev": null,
+            "runtime_s": 0.0001783999614417553,
+            "status": null
+          },
+          "status": "failed",
+          "success": false
+        }
+      ],
+      "status": "failed"
+    },
+    {
+      "diagnostics": {
+        "acceptance_geometry_tolerance_m": 1e-05,
+        "acceptance_max_range_residual_m": 1e-07,
+        "ambiguity": "Full measurement rank is local only; finite multistart exploration does not prove global uniqueness",
+        "distinct_low_residual_solution_count": 1,
+        "distinct_solution_count": 1,
+        "failure_count": 0,
+        "geometric_recovery": false,
+        "geometric_recovery_count": 0,
+        "low_residual_max_abs_threshold_m": 1e-07,
+        "range_recovery_count": 0,
+        "solution_grouping": "Proper planar rigid aligned geometry RMS; no scale or reflections",
+        "solution_grouping_rms_threshold_m": 0.001,
+        "start_recovery_outcomes": [
+          {
+            "classification": "converged_geometry_inaccurate",
+            "geometric_recovery": false,
+            "index": 0,
+            "optimizer_converged": true,
+            "range_recovery": false
+          },
+          {
+            "classification": "converged_geometry_inaccurate",
+            "geometric_recovery": false,
+            "index": 1,
+            "optimizer_converged": true,
+            "range_recovery": false
+          }
+        ],
+        "surveyed_map_source": null,
+        "truth_jacobian": {
+          "absolute_tolerance": 8.973844259178877e-06,
+          "condition_number": 36.50702579384697,
+          "full_column_rank": true,
+          "interpretation": "Local measurement rank only; full rank does not prove global uniqueness",
+          "measurement_count": 96,
+          "parameter_count": 54,
+          "parameter_scale_m": 8.013735961645565,
+          "rank": 54,
+          "relative_tolerance": 1e-08,
+          "scaling": "J of normalized range residuals with respect to theta / parameter_scale_m; all parameters in metres",
+          "singular_values": [
+            897.3844259178877,
+            671.6874959567444,
+            587.3393132963843,
+            374.5268669670189,
+            337.3480708254839,
+            279.2214410137987,
+            228.78908026443193,
+            227.81084212689893,
+            226.2423495515605,
+            225.36342916805543,
+            224.74165778571233,
+            223.87325775479766,
+            223.6944020980201,
+            222.31219925080387,
+            222.3022932945193,
+            221.23920492251003,
+            219.93530051056015,
+            218.46901473540973,
+            216.79452895051165,
+            215.70421759902814,
+            213.6538623442286,
+            213.20360740064717,
+            210.2306643880955,
+            209.14551175210502,
+            207.2209759924586,
+            205.4448048372557,
+            201.76396371057928,
+            199.85917904241742,
+            198.58056394448369,
+            195.7908650095674,
+            194.16347943278177,
+            191.83962985280735,
+            191.818874385007,
+            185.94102915096803,
+            183.9590251888381,
+            183.29605287105696,
+            182.81616049334426,
+            182.58622339048196,
+            182.4623590014263,
+            182.24696506036423,
+            181.62486627355062,
+            181.42102403385175,
+            180.17900803932173,
+            179.28769079998716,
+            177.85717240978025,
+            176.94152413455328,
+            175.45416720865546,
+            173.21526809094044,
+            168.04555379399352,
+            163.42830180313285,
+            133.7486657052623,
+            100.24528828297765,
+            38.63957633345557,
+            24.58114311983027
+          ]
+        },
+        "warnings": [],
+        "weak_condition_threshold": 1000.0
+      },
+      "experiment": {
+        "config": {
+          "assumed_std_m": [
+            0.05,
+            0.05,
+            0.05,
+            0.05
+          ],
+          "duration_s": 20.0,
+          "noise_std_m": [
+            0.05,
+            0.05,
+            0.05,
+            0.05
+          ],
+          "path": {
+            "center_m": [
+              5.0,
+              4.0
+            ],
+            "rotation_deg": 0.0,
+            "scale": 1.0,
+            "size_m": [
+              7.0,
+              5.6
+            ],
+            "type": "rectangle"
+          },
+          "samples": 24,
+          "scenario": "informative",
+          "seed": 8
+        },
+        "coordinate_convention": "Right-handed Cartesian frame in metres. The planar tag trajectory is z=0. For the informative map, beacon b0=(0,0,h), b1=(d,0,h), b2 has positive y, and all four beacons share height h>0. Beacon IDs are zero-based.",
+        "estimator_input": {
+          "observations": [
+            {
+              "actual_time_s": 0.0,
+              "assumed_time_s": 0.0,
+              "beacon_id": 0,
+              "epoch": 0,
+              "range_m": 3.4753893061865315,
+              "sigma_m": 0.05
+            },
+            {
+              "actual_time_s": 0.0,
+              "assumed_time_s": 0.0,
+              "beacon_id": 1,
+              "epoch": 0,
+              "range_m": 9.026572063388336,
+              "sigma_m": 0.05
+            },
+            {
+              "actual_time_s": 0.0,
+              "assumed_time_s": 0.0,
+              "beacon_id": 2,
+              "epoch": 0,
+              "range_m": 7.381105691157228,
+              "sigma_m": 0.05
+            },
+            {
+              "actual_time_s": 0.0,
+              "assumed_time_s": 0.0,
+              "beacon_id": 3,
+              "epoch": 0,
+              "range_m": 12.635086846335733,
+              "sigma_m": 0.05
+            },
+            {
+              "actual_time_s": 0.8695652173913043,
+              "assumed_time_s": 0.8695652173913043,
+              "beacon_id": 0,
+              "epoch": 1,
+              "range_m": 4.028934855609432,
+              "sigma_m": 0.05
+            },
+            {
+              "actual_time_s": 0.8695652173913043,
+              "assumed_time_s": 0.8695652173913043,
+              "beacon_id": 1,
+              "epoch": 1,
+              "range_m": 8.069191580194703,
+              "sigma_m": 0.05
+            },
+            {
+              "actual_time_s": 0.8695652173913043,
+              "assumed_time_s": 0.8695652173913043,
+              "beacon_id": 2,
+              "epoch": 1,
+              "range_m": 7.55385583537184,
+              "sigma_m": 0.05
+            },
+            {
+              "actual_time_s": 0.8695652173913043,
+              "assumed_time_s": 0.8695652173913043,
+              "beacon_id": 3,
+              "epoch": 1,
+              "range_m": 11.896813251066408,
+              "sigma_m": 0.05
+            },
+            {
+              "actual_time_s": 1.7391304347826086,
+              "assumed_time_s": 1.7391304347826086,
+              "beacon_id": 0,
+              "epoch": 2,
+              "range_m": 4.953525575079726,
+              "sigma_m": 0.05
+            },
+            {
+              "actual_time_s": 1.7391304347826086,
+              "assumed_time_s": 1.7391304347826086,
+              "beacon_id": 1,
+              "epoch": 2,
+              "range_m": 7.1576056337837795,
+              "sigma_m": 0.05
+            },
+            {
+              "actual_time_s": 1.7391304347826086,
+              "assumed_time_s": 1.7391304347826086,
+              "beacon_id": 2,
+              "epoch": 2,
+              "range_m": 7.942999941649519,
+              "sigma_m": 0.05
+            },
+            {
+              "actual_time_s": 1.7391304347826086,
+              "assumed_time_s": 1.7391304347826086,
+              "beacon_id": 3,
+              "epoch": 2,
+              "range_m": 11.099466873613757,
+              "sigma_m": 0.05
+            },
+            {
+              "actual_time_s": 2.608695652173913,
+              "assumed_time_s": 2.608695652173913,
+              "beacon_id": 0,
+              "epoch": 3,
+              "range_m": 5.818364383484656,
+              "sigma_m": 0.05
+            },
+            {
+              "actual_time_s": 2.608695652173913,
+              "assumed_time_s": 2.608695652173913,
+              "beacon_id": 1,
+              "epoch": 3,
+              "range_m": 6.208447975640061,
+              "sigma_m": 0.05
+            },
+            {
+              "actual_time_s": 2.608695652173913,
+              "assumed_time_s": 2.608695652173913,
+              "beacon_id": 2,
+              "epoch": 3,
+              "range_m": 8.308845295622286,
+              "sigma_m": 0.05
+            },
+            {
+              "actual_time_s": 2.608695652173913,
+              "assumed_time_s": 2.608695652173913,
+              "beacon_id": 3,
+              "epoch": 3,
+              "range_m": 10.444062067339944,
+              "sigma_m": 0.05
+            },
+            {
+              "actual_time_s": 3.4782608695652173,
+              "assumed_time_s": 3.4782608695652173,
+              "beacon_id": 0,
+              "epoch": 4,
+              "range_m": 6.709429842260144,
+              "sigma_m": 0.05
+            },
+            {
+              "actual_time_s": 3.4782608695652173,
+              "assumed_time_s": 3.4782608695652173,
+              "beacon_id": 1,
+              "epoch": 4,
+              "range_m": 5.305824596497991,
+              "sigma_m": 0.05
+            },
+            {
+              "actual_time_s": 3.4782608695652173,
+              "assumed_time_s": 3.4782608695652173,
+              "beacon_id": 2,
+              "epoch": 4,
+              "range_m": 8.850841439053719,
+              "sigma_m": 0.05
+            },
+            {
+              "actual_time_s": 3.4782608695652173,
+              "assumed_time_s": 3.4782608695652173,
+              "beacon_id": 3,
+              "epoch": 4,
+              "range_m": 9.784294780112011,
+              "sigma_m": 0.05
+            },
+            {
+              "actual_time_s": 4.3478260869565215,
+              "assumed_time_s": 4.3478260869565215,
+              "beacon_id": 0,
+              "epoch": 5,
+              "range_m": 7.7081185397821725,
+              "sigma_m": 0.05
+            },
+            {
+              "actual_time_s": 4.3478260869565215,
+              "assumed_time_s": 4.3478260869565215,
+              "beacon_id": 1,
+              "epoch": 5,
+              "range_m": 4.436807340064743,
+              "sigma_m": 0.05
+            },
+            {
+              "actual_time_s": 4.3478260869565215,
+              "assumed_time_s": 4.3478260869565215,
+              "beacon_id": 2,
+              "epoch": 5,
+              "range_m": 9.456350464130429,
+              "sigma_m": 0.05
+            },
+            {
+              "actual_time_s": 4.3478260869565215,
+              "assumed_time_s": 4.3478260869565215,
+              "beacon_id": 3,
+              "epoch": 5,
+              "range_m": 9.29240184603972,
+              "sigma_m": 0.05
+            },
+            {
+              "actual_time_s": 5.217391304347826,
+              "assumed_time_s": 5.217391304347826,
+              "beacon_id": 0,
+              "epoch": 6,
+              "range_m": 8.69051529671047,
+              "sigma_m": 0.05
+            },
+            {
+              "actual_time_s": 5.217391304347826,
+              "assumed_time_s": 5.217391304347826,
+              "beacon_id": 1,
+              "epoch": 6,
+              "range_m": 3.7496360554787467,
+              "sigma_m": 0.05
+            },
+            {
+              "actual_time_s": 5.217391304347826,
+              "assumed_time_s": 5.217391304347826,
+              "beacon_id": 2,
+              "epoch": 6,
+              "range_m": 10.252851162851778,
+              "sigma_m": 0.05
+            },
+            {
+              "actual_time_s": 5.217391304347826,
+              "assumed_time_s": 5.217391304347826,
+              "beacon_id": 3,
+              "epoch": 6,
+              "range_m": 8.8654381175266,
+              "sigma_m": 0.05
+            },
+            {
+              "actual_time_s": 6.08695652173913,
+              "assumed_time_s": 6.08695652173913,
+              "beacon_id": 0,
+              "epoch": 7,
+              "range_m": 9.114899857568048,
+              "sigma_m": 0.05
+            },
+            {
+              "actual_time_s": 6.08695652173913,
+              "assumed_time_s": 6.08695652173913,
+              "beacon_id": 1,
+              "epoch": 7,
+              "range_m": 3.917580893540297,
+              "sigma_m": 0.05
+            },
+            {
+              "actual_time_s": 6.08695652173913,
+              "assumed_time_s": 6.08695652173913,
+              "beacon_id": 2,
+              "epoch": 7,
+              "range_m": 10.097550709035165,
+              "sigma_m": 0.05
+            },
+            {
+              "actual_time_s": 6.08695652173913,
+              "assumed_time_s": 6.08695652173913,
+              "beacon_id": 3,
+              "epoch": 7,
+              "range_m": 8.017697913020708,
+              "sigma_m": 0.05
+            },
+            {
+              "actual_time_s": 6.956521739130435,
+              "assumed_time_s": 6.956521739130435,
+              "beacon_id": 0,
+              "epoch": 8,
+              "range_m": 9.484974685167293,
+              "sigma_m": 0.05
+            },
+            {
+              "actual_time_s": 6.956521739130435,
+              "assumed_time_s": 6.956521739130435,
+              "beacon_id": 1,
+              "epoch": 8,
+              "range_m": 4.549760682127962,
+              "sigma_m": 0.05
+            },
+            {
+              "actual_time_s": 6.956521739130435,
+              "assumed_time_s": 6.956521739130435,
+              "beacon_id": 2,
+              "epoch": 8,
+              "range_m": 9.49242253562789,
+              "sigma_m": 0.05
+            },
+            {
+              "actual_time_s": 6.956521739130435,
+              "assumed_time_s": 6.956521739130435,
+              "beacon_id": 3,
+              "epoch": 8,
+              "range_m": 7.2656512272451055,
+              "sigma_m": 0.05
+            },
+            {
+              "actual_time_s": 7.826086956521739,
+              "assumed_time_s": 7.826086956521739,
+              "beacon_id": 0,
+              "epoch": 9,
+              "range_m": 9.964234793527185,
+              "sigma_m": 0.05
+            },
+            {
+              "actual_time_s": 7.826086956521739,
+              "assumed_time_s": 7.826086956521739,
+              "beacon_id": 1,
+              "epoch": 9,
+              "range_m": 5.223803846726717,
+              "sigma_m": 0.05
+            },
+            {
+              "actual_time_s": 7.826086956521739,
+              "assumed_time_s": 7.826086956521739,
+              "beacon_id": 2,
+              "epoch": 9,
+              "range_m": 8.863776204768058,
+              "sigma_m": 0.05
+            },
+            {
+              "actual_time_s": 7.826086956521739,
+              "assumed_time_s": 7.826086956521739,
+              "beacon_id": 3,
+              "epoch": 9,
+              "range_m": 6.234669171272309,
+              "sigma_m": 0.05
+            },
+            {
+              "actual_time_s": 8.695652173913043,
+              "assumed_time_s": 8.695652173913043,
+              "beacon_id": 0,
+              "epoch": 10,
+              "range_m": 10.443961947107502,
+              "sigma_m": 0.05
+            },
+            {
+              "actual_time_s": 8.695652173913043,
+              "assumed_time_s": 8.695652173913043,
+              "beacon_id": 1,
+              "epoch": 10,
+              "range_m": 6.110560943138425,
+              "sigma_m": 0.05
+            },
+            {
+              "actual_time_s": 8.695652173913043,
+              "assumed_time_s": 8.695652173913043,
+              "beacon_id": 2,
+              "epoch": 10,
+              "range_m": 8.48807334558099,
+              "sigma_m": 0.05
+            },
+            {
+              "actual_time_s": 8.695652173913043,
+              "assumed_time_s": 8.695652173913043,
+              "beacon_id": 3,
+              "epoch": 10,
+              "range_m": 5.412378459626943,
+              "sigma_m": 0.05
+            },
+            {
+              "actual_time_s": 9.565217391304348,
+              "assumed_time_s": 9.565217391304348,
+              "beacon_id": 0,
+              "epoch": 11,
+              "range_m": 10.969953338835555,
+              "sigma_m": 0.05
+            },
+            {
+              "actual_time_s": 9.565217391304348,
+              "assumed_time_s": 9.565217391304348,
+              "beacon_id": 1,
+              "epoch": 11,
+              "range_m": 7.0937406390143565,
+              "sigma_m": 0.05
+            },
+            {
+              "actual_time_s": 9.565217391304348,
+              "assumed_time_s": 9.565217391304348,
+              "beacon_id": 2,
+              "epoch": 11,
+              "range_m": 8.308279857742566,
+              "sigma_m": 0.05
+            },
+            {
+              "actual_time_s": 9.565217391304348,
+              "assumed_time_s": 9.565217391304348,
+              "beacon_id": 3,
+              "epoch": 11,
+              "range_m": 4.824444457067231,
+              "sigma_m": 0.05
+            },
+            {
+              "actual_time_s": 10.434782608695652,
+              "assumed_time_s": 10.434782608695652,
+              "beacon_id": 0,
+              "epoch": 12,
+              "range_m": 10.838104814072743,
+              "sigma_m": 0.05
+            },
+            {
+              "actual_time_s": 10.434782608695652,
+              "assumed_time_s": 10.434782608695652,
+              "beacon_id": 1,
+              "epoch": 12,
+              "range_m": 7.7014805616901585,
+              "sigma_m": 0.05
+            },
+            {
+              "actual_time_s": 10.434782608695652,
+              "assumed_time_s": 10.434782608695652,
+              "beacon_id": 2,
+              "epoch": 12,
+              "range_m": 7.609640210254058,
+              "sigma_m": 0.05
+            },
+            {
+              "actual_time_s": 10.434782608695652,
+              "assumed_time_s": 10.434782608695652,
+              "beacon_id": 3,
+              "epoch": 12,
+              "range_m": 4.812881783948269,
+              "sigma_m": 0.05
+            },
+            {
+              "actual_time_s": 11.304347826086957,
+              "assumed_time_s": 11.304347826086957,
+              "beacon_id": 0,
+              "epoch": 13,
+              "range_m": 10.054437288792494,
+              "sigma_m": 0.05
+            },
+            {
+              "actual_time_s": 11.304347826086957,
+              "assumed_time_s": 11.304347826086957,
+              "beacon_id": 1,
+              "epoch": 13,
+              "range_m": 8.009774010270421,
+              "sigma_m": 0.05
+            },
+            {
+              "actual_time_s": 11.304347826086957,
+              "assumed_time_s": 11.304347826086957,
+              "beacon_id": 2,
+              "epoch": 13,
+              "range_m": 6.7948815016192965,
+              "sigma_m": 0.05
+            },
+            {
+              "actual_time_s": 11.304347826086957,
+              "assumed_time_s": 11.304347826086957,
+              "beacon_id": 3,
+              "epoch": 13,
+              "range_m": 5.570139184738149,
+              "sigma_m": 0.05
+            },
+            {
+              "actual_time_s": 12.17391304347826,
+              "assumed_time_s": 12.17391304347826,
+              "beacon_id": 0,
+              "epoch": 14,
+              "range_m": 9.435754952750049,
+              "sigma_m": 0.05
+            },
+            {
+              "actual_time_s": 12.17391304347826,
+              "assumed_time_s": 12.17391304347826,
+              "beacon_id": 1,
+              "epoch": 14,
+              "range_m": 8.683202415110541,
+              "sigma_m": 0.05
+            },
+            {
+              "actual_time_s": 12.17391304347826,
+              "assumed_time_s": 12.17391304347826,
+              "beacon_id": 2,
+              "epoch": 14,
+              "range_m": 5.793062793157451,
+              "sigma_m": 0.05
+            },
+            {
+              "actual_time_s": 12.17391304347826,
+              "assumed_time_s": 12.17391304347826,
+              "beacon_id": 3,
+              "epoch": 14,
+              "range_m": 6.419904725023925,
+              "sigma_m": 0.05
+            },
+            {
+              "actual_time_s": 13.043478260869565,
+              "assumed_time_s": 13.043478260869565,
+              "beacon_id": 0,
+              "epoch": 15,
+              "range_m": 8.777936236345747,
+              "sigma_m": 0.05
+            },
+            {
+              "actual_time_s": 13.043478260869565,
+              "assumed_time_s": 13.043478260869565,
+              "beacon_id": 1,
+              "epoch": 15,
+              "range_m": 9.111540645218263,
+              "sigma_m": 0.05
+            },
+            {
+              "actual_time_s": 13.043478260869565,
+              "assumed_time_s": 13.043478260869565,
+              "beacon_id": 2,
+              "epoch": 15,
+              "range_m": 4.940801092987803,
+              "sigma_m": 0.05
+            },
+            {
+              "actual_time_s": 13.043478260869565,
+              "assumed_time_s": 13.043478260869565,
+              "beacon_id": 3,
+              "epoch": 15,
+              "range_m": 7.3298777446015215,
+              "sigma_m": 0.05
+            },
+            {
+              "actual_time_s": 13.91304347826087,
+              "assumed_time_s": 13.91304347826087,
+              "beacon_id": 0,
+              "epoch": 16,
+              "range_m": 8.333244664374433,
+              "sigma_m": 0.05
+            },
+            {
+              "actual_time_s": 13.91304347826087,
+              "assumed_time_s": 13.91304347826087,
+              "beacon_id": 1,
+              "epoch": 16,
+              "range_m": 9.810808241591493,
+              "sigma_m": 0.05
+            },
+            {
+              "actual_time_s": 13.91304347826087,
+              "assumed_time_s": 13.91304347826087,
+              "beacon_id": 2,
+              "epoch": 16,
+              "range_m": 4.1105951772982285,
+              "sigma_m": 0.05
+            },
+            {
+              "actual_time_s": 13.91304347826087,
+              "assumed_time_s": 13.91304347826087,
+              "beacon_id": 3,
+              "epoch": 16,
+              "range_m": 8.288745990234084,
+              "sigma_m": 0.05
+            },
+            {
+              "actual_time_s": 14.782608695652174,
+              "assumed_time_s": 14.782608695652174,
+              "beacon_id": 0,
+              "epoch": 17,
+              "range_m": 7.86456279109854,
+              "sigma_m": 0.05
+            },
+            {
+              "actual_time_s": 14.782608695652174,
+              "assumed_time_s": 14.782608695652174,
+              "beacon_id": 1,
+              "epoch": 17,
+              "range_m": 10.586774887704705,
+              "sigma_m": 0.05
+            },
+            {
+              "actual_time_s": 14.782608695652174,
+              "assumed_time_s": 14.782608695652174,
+              "beacon_id": 2,
+              "epoch": 17,
+              "range_m": 3.6199684807233283,
+              "sigma_m": 0.05
+            },
+            {
+              "actual_time_s": 14.782608695652174,
+              "assumed_time_s": 14.782608695652174,
+              "beacon_id": 3,
+              "epoch": 17,
+              "range_m": 9.27470634441291,
+              "sigma_m": 0.05
+            },
+            {
+              "actual_time_s": 15.652173913043478,
+              "assumed_time_s": 15.652173913043478,
+              "beacon_id": 0,
+              "epoch": 18,
+              "range_m": 7.487742014882475,
+              "sigma_m": 0.05
+            },
+            {
+              "actual_time_s": 15.652173913043478,
+              "assumed_time_s": 15.652173913043478,
+              "beacon_id": 1,
+              "epoch": 18,
+              "range_m": 11.315149654684923,
+              "sigma_m": 0.05
+            },
+            {
+              "actual_time_s": 15.652173913043478,
+              "assumed_time_s": 15.652173913043478,
+              "beacon_id": 2,
+              "epoch": 18,
+              "range_m": 3.304152553086416,
+              "sigma_m": 0.05
+            },
+            {
+              "actual_time_s": 15.652173913043478,
+              "assumed_time_s": 15.652173913043478,
+              "beacon_id": 3,
+              "epoch": 18,
+              "range_m": 10.256023221365298,
+              "sigma_m": 0.05
+            },
+            {
+              "actual_time_s": 16.52173913043478,
+              "assumed_time_s": 16.52173913043478,
+              "beacon_id": 0,
+              "epoch": 19,
+              "range_m": 6.591313962329721,
+              "sigma_m": 0.05
+            },
+            {
+              "actual_time_s": 16.52173913043478,
+              "assumed_time_s": 16.52173913043478,
+              "beacon_id": 1,
+              "epoch": 19,
+              "range_m": 10.63029082635558,
+              "sigma_m": 0.05
+            },
+            {
+              "actual_time_s": 16.52173913043478,
+              "assumed_time_s": 16.52173913043478,
+              "beacon_id": 2,
+              "epoch": 19,
+              "range_m": 3.8533462619578014,
+              "sigma_m": 0.05
+            },
+            {
+              "actual_time_s": 16.52173913043478,
+              "assumed_time_s": 16.52173913043478,
+              "beacon_id": 3,
+              "epoch": 19,
+              "range_m": 10.429145471835612,
+              "sigma_m": 0.05
+            },
+            {
+              "actual_time_s": 17.391304347826086,
+              "assumed_time_s": 17.391304347826086,
+              "beacon_id": 0,
+              "epoch": 20,
+              "range_m": 5.721691636960635,
+              "sigma_m": 0.05
+            },
+            {
+              "actual_time_s": 17.391304347826086,
+              "assumed_time_s": 17.391304347826086,
+              "beacon_id": 1,
+              "epoch": 20,
+              "range_m": 10.090417284187405,
+              "sigma_m": 0.05
+            },
+            {
+              "actual_time_s": 17.391304347826086,
+              "assumed_time_s": 17.391304347826086,
+              "beacon_id": 2,
+              "epoch": 20,
+              "range_m": 4.709689169406908,
+              "sigma_m": 0.05
+            },
+            {
+              "actual_time_s": 17.391304347826086,
+              "assumed_time_s": 17.391304347826086,
+              "beacon_id": 3,
+              "epoch": 20,
+              "range_m": 10.91316569020907,
+              "sigma_m": 0.05
+            },
+            {
+              "actual_time_s": 18.26086956521739,
+              "assumed_time_s": 18.26086956521739,
+              "beacon_id": 0,
+              "epoch": 21,
+              "range_m": 4.86071917395572,
+              "sigma_m": 0.05
+            },
+            {
+              "actual_time_s": 18.26086956521739,
+              "assumed_time_s": 18.26086956521739,
+              "beacon_id": 1,
+              "epoch": 21,
+              "range_m": 9.656706181292732,
+              "sigma_m": 0.05
+            },
+            {
+              "actual_time_s": 18.26086956521739,
+              "assumed_time_s": 18.26086956521739,
+              "beacon_id": 2,
+              "epoch": 21,
+              "range_m": 5.524271795998527,
+              "sigma_m": 0.05
+            },
+            {
+              "actual_time_s": 18.26086956521739,
+              "assumed_time_s": 18.26086956521739,
+              "beacon_id": 3,
+              "epoch": 21,
+              "range_m": 11.387645773402731,
+              "sigma_m": 0.05
+            },
+            {
+              "actual_time_s": 19.130434782608695,
+              "assumed_time_s": 19.130434782608695,
+              "beacon_id": 0,
+              "epoch": 22,
+              "range_m": 4.082891848071071,
+              "sigma_m": 0.05
+            },
+            {
+              "actual_time_s": 19.130434782608695,
+              "assumed_time_s": 19.130434782608695,
+              "beacon_id": 1,
+              "epoch": 22,
+              "range_m": 9.2772872779111,
+              "sigma_m": 0.05
+            },
+            {
+              "actual_time_s": 19.130434782608695,
+              "assumed_time_s": 19.130434782608695,
+              "beacon_id": 2,
+              "epoch": 22,
+              "range_m": 6.453347918229804,
+              "sigma_m": 0.05
+            },
+            {
+              "actual_time_s": 19.130434782608695,
+              "assumed_time_s": 19.130434782608695,
+              "beacon_id": 3,
+              "epoch": 22,
+              "range_m": 11.927133274344058,
+              "sigma_m": 0.05
+            },
+            {
+              "actual_time_s": 20.0,
+              "assumed_time_s": 20.0,
+              "beacon_id": 0,
+              "epoch": 23,
+              "range_m": 3.5377749295995016,
+              "sigma_m": 0.05
+            },
+            {
+              "actual_time_s": 20.0,
+              "assumed_time_s": 20.0,
+              "beacon_id": 1,
+              "epoch": 23,
+              "range_m": 9.101398154789292,
+              "sigma_m": 0.05
+            },
+            {
+              "actual_time_s": 20.0,
+              "assumed_time_s": 20.0,
+              "beacon_id": 2,
+              "epoch": 23,
+              "range_m": 7.3866207185853225,
+              "sigma_m": 0.05
+            },
+            {
+              "actual_time_s": 20.0,
+              "assumed_time_s": 20.0,
+              "beacon_id": 3,
+              "epoch": 23,
+              "range_m": 12.65636252837799,
+              "sigma_m": 0.05
+            }
+          ],
+          "times_s": [
+            0.0,
+            0.8695652173913043,
+            1.7391304347826086,
+            2.608695652173913,
+            3.4782608695652173,
+            4.3478260869565215,
+            5.217391304347826,
+            6.08695652173913,
+            6.956521739130435,
+            7.826086956521739,
+            8.695652173913043,
+            9.565217391304348,
+            10.434782608695652,
+            11.304347826086957,
+            12.17391304347826,
+            13.043478260869565,
+            13.91304347826087,
+            14.782608695652174,
+            15.652173913043478,
+            16.52173913043478,
+            17.391304347826086,
+            18.26086956521739,
+            19.130434782608695,
+            20.0
+          ]
+        },
+        "schema_version": "1.0",
+        "software_versions": {
+          "flask": "3.1.3",
+          "numpy": "2.5.4",
+          "plotly": "7.1.0",
+          "python": "3.12.10",
+          "scipy": "1.18.1"
+        },
+        "truth": {
+          "beacons": [
+            [
+              0.0,
+              0.0,
+              3.0
+            ],
+            [
+              10.0,
+              0.0,
+              3.0
+            ],
+            [
+              1.0,
+              8.0,
+              3.0
+            ],
+            [
+              11.0,
+              9.0,
+              3.0
+            ]
+          ],
+          "times_s": [
+            0.0,
+            0.8695652173913043,
+            1.7391304347826086,
+            2.608695652173913,
+            3.4782608695652173,
+            4.3478260869565215,
+            5.217391304347826,
+            6.08695652173913,
+            6.956521739130435,
+            7.826086956521739,
+            8.695652173913043,
+            9.565217391304348,
+            10.434782608695652,
+            11.304347826086957,
+            12.17391304347826,
+            13.043478260869565,
+            13.91304347826087,
+            14.782608695652174,
+            15.652173913043478,
+            16.52173913043478,
+            17.391304347826086,
+            18.26086956521739,
+            19.130434782608695,
+            20.0
+          ],
+          "trajectory": [
+            [
+              1.5,
+              1.2000000000000002,
+              0.0
+            ],
+            [
+              2.5956521739130434,
+              1.2000000000000002,
+              0.0
+            ],
+            [
+              3.691304347826087,
+              1.2000000000000002,
+              0.0
+            ],
+            [
+              4.786956521739131,
+              1.2000000000000002,
+              0.0
+            ],
+            [
+              5.882608695652174,
+              1.2000000000000002,
+              0.0
+            ],
+            [
+              6.978260869565218,
+              1.2000000000000002,
+              0.0
+            ],
+            [
+              8.073913043478262,
+              1.2000000000000002,
+              0.0
+            ],
+            [
+              8.5,
+              1.8695652173913055,
+              0.0
+            ],
+            [
+              8.5,
+              2.965217391304349,
+              0.0
+            ],
+            [
+              8.5,
+              4.060869565217392,
+              0.0
+            ],
+            [
+              8.5,
+              5.156521739130436,
+              0.0
+            ],
+            [
+              8.5,
+              6.252173913043479,
+              0.0
+            ],
+            [
+              7.952173913043476,
+              6.8,
+              0.0
+            ],
+            [
+              6.856521739130432,
+              6.8,
+              0.0
+            ],
+            [
+              5.760869565217389,
+              6.8,
+              0.0
+            ],
+            [
+              4.665217391304348,
+              6.8,
+              0.0
+            ],
+            [
+              3.569565217391303,
+              6.8,
+              0.0
+            ],
+            [
+              2.473913043478259,
+              6.8,
+              0.0
+            ],
+            [
+              1.5,
+              6.678260869565217,
+              0.0
+            ],
+            [
+              1.5,
+              5.582608695652173,
+              0.0
+            ],
+            [
+              1.5,
+              4.486956521739131,
+              0.0
+            ],
+            [
+              1.5,
+              3.3913043478260865,
+              0.0
+            ],
+            [
+              1.5,
+              2.2956521739130453,
+              0.0
+            ],
+            [
+              1.5,
+              1.2000000000000002,
+              0.0
+            ]
+          ]
+        },
+        "units": "metres, seconds"
+      },
+      "id": "23f9cdd806af5ca7bf6d61c9ad0342db",
+      "options": {
+        "initialization": "independent",
+        "max_nfev": 500,
+        "mode": "joint",
+        "seed": 27,
+        "starts": 2
+      },
+      "schema_version": "1.0",
+      "selected_start": 0,
+      "software_versions": {
+        "flask": "3.1.3",
+        "numpy": "2.5.4",
+        "plotly": "7.1.0",
+        "python": "3.12.10",
+        "scipy": "1.18.1"
+      },
+      "starts": [
+        {
+          "diagnostics": {
+            "evaluation": {
+              "aligned": {
+                "beacon_errors_m": [
+                  0.10937277535326177,
+                  0.10832536526081404,
+                  0.10974330265415386,
+                  0.09755276540935913
+                ],
+                "height_error_m": -0.08421613569792674,
+                "map_rmse_m": 0.1063683731940779,
+                "position_errors_m": [
+                  0.0618317099402698,
+                  0.04859975809067585,
+                  0.028058922950388143,
+                  0.06597016131057762,
+                  0.09080881395810525,
+                  0.07936898225422565,
+                  0.040427321346576665,
+                  0.14569188534283944,
+                  0.07832585490393155,
+                  0.07050526925542805,
+                  0.0347013427099895,
+                  0.055512768145694426,
+                  0.07353416555804852,
+                  0.13598662261434102,
+                  0.04867287790165652,
+                  0.08698274893560945,
+                  0.049988336535727415,
+                  0.06809341478391628,
+                  0.03356088086708627,
+                  0.10524220179219916,
+                  0.061813928834674625,
+                  0.0750444965966444,
+                  0.08924011248710671,
+                  0.06976874849496072
+                ],
+                "position_max_error_m": 0.14569188534283944,
+                "position_rmse_m": 0.07626134143134833
+              },
+              "aligned_geometry": {
+                "beacons": [
+                  [
+                    -0.04539449164902454,
+                    -0.05300364708687599,
+                    2.9157838643020733
+                  ],
+                  [
+                    10.048085787124002,
+                    -0.04826783943437223,
+                    2.9157838643020733
+                  ],
+                  [
+                    0.9672475878637055,
+                    8.062277720452855,
+                    2.9157838643020733
+                  ],
+                  [
+                    11.030061116661315,
+                    9.038993766068394,
+                    2.9157838643020733
+                  ]
+                ],
+                "trajectory": [
+                  [
+                    1.541140756515401,
+                    1.2461584066826203,
+                    0.0
+                  ],
+                  [
+                    2.554704682325486,
+                    1.2261770781249386,
+                    0.0
+                  ],
+                  [
+                    3.693958573451589,
+                    1.227933103004585,
+                    0.0
+                  ],
+                  [
+                    4.75414413461564,
+                    1.257231192846225,
+                    0.0
+                  ],
+                  [
+                    5.836750240727805,
+                    1.2783788415608919,
+                    0.0
+                  ],
+                  [
+                    6.9350043881861785,
+                    1.266545564561257,
+                    0.0
+                  ],
+                  [
+                    8.040072768410308,
+                    1.2221179586441562,
+                    0.0
+                  ],
+                  [
+                    8.412038755775768,
+                    1.9857071347565536,
+                    0.0
+                  ],
+                  [
+                    8.421953745803496,
+                    2.9718296339138095,
+                    0.0
+                  ],
+                  [
+                    8.467924436924854,
+                    4.123656118285647,
+                    0.0
+                  ],
+                  [
+                    8.481235931070774,
+                    5.185712369529511,
+                    0.0
+                  ],
+                  [
+                    8.491448121890855,
+                    6.197323819078163,
+                    0.0
+                  ],
+                  [
+                    7.891817293408138,
+                    6.7579958100838295,
+                    0.0
+                  ],
+                  [
+                    6.8999306062021315,
+                    6.671127847113479,
+                    0.0
+                  ],
+                  [
+                    5.751189923564631,
+                    6.847700666459744,
+                    0.0
+                  ],
+                  [
+                    4.7140780059126905,
+                    6.728037239126821,
+                    0.0
+                  ],
+                  [
+                    3.618384379942354,
+                    6.810748169956938,
+                    0.0
+                  ],
+                  [
+                    2.535230919325361,
+                    6.770388663682065,
+                    0.0
+                  ],
+                  [
+                    1.4664986763561567,
+                    6.680259378680839,
+                    0.0
+                  ],
+                  [
+                    1.5861089399635782,
+                    5.64311631084579,
+                    0.0
+                  ],
+                  [
+                    1.555972429603622,
+                    4.513187208391329,
+                    0.0
+                  ],
+                  [
+                    1.549340360983473,
+                    3.447848182569269,
+                    0.0
+                  ],
+                  [
+                    1.5786418383014567,
+                    2.33783343687753,
+                    0.0
+                  ],
+                  [
+                    1.5000579099395661,
+                    1.2697687244615523,
+                    0.0
+                  ]
+                ]
+              },
+              "alignment": {
+                "applied": true,
+                "description": "Map-only least-squares planar proper rigid alignment; no scale, reflection, z translation, or 3D tilt",
+                "reflection_allowed": false,
+                "rotation_xy": [
+                  [
+                    0.9999998899281755,
+                    0.0004691946682834815
+                  ],
+                  [
+                    -0.0004691946682833298,
+                    0.999999889928175
+                  ]
+                ],
+                "scale": 1.0,
+                "translation_xy_m": [
+                  -0.04539449164902454,
+                  -0.05300364708687599
+                ]
+              },
+              "raw": {
+                "beacon_errors_m": [
+                  0.08421613569792674,
+                  0.12582180950561558,
+                  0.14332904545456177,
+                  0.14485130898568432
+                ],
+                "height_error_m": -0.08421613569792674,
+                "map_rmse_m": 0.1269336462929954,
+                "position_errors_m": [
+                  0.13145415462451035,
+                  0.07812382022966971,
+                  0.09293311918264915,
+                  0.10878613634216915,
+                  0.12862257075272757,
+                  0.11630656684261338,
+                  0.0723554948563056,
+                  0.1703378395788601,
+                  0.06380941528135589,
+                  0.11283441014555742,
+                  0.08342801512986345,
+                  0.040202576080264785,
+                  0.013834366656130132,
+                  0.12131536992184973,
+                  0.10544234268202925,
+                  0.09971437964785677,
+                  0.11550453148348237,
+                  0.11212930515592585,
+                  0.05633999488479948,
+                  0.17525588014006674,
+                  0.1298986112537078,
+                  0.1453470564408323,
+                  0.1567805569140619,
+                  0.1304538455943456
+                ],
+                "position_max_error_m": 0.17525588014006674,
+                "position_rmse_m": 0.11345451293332694
+              }
+            },
+            "exact_reference_geometry": false,
+            "geometric_recovery": false,
+            "jacobian": {
+              "absolute_tolerance": 8.87051743437629e-06,
+              "condition_number": 36.61201054687384,
+              "full_column_rank": true,
+              "interpretation": "Local measurement rank only; full rank does not prove global uniqueness",
+              "measurement_count": 96,
+              "parameter_count": 54,
+              "parameter_scale_m": 8.013735961645565,
+              "rank": 54,
+              "relative_tolerance": 1e-08,
+              "scaling": "J of normalized range residuals with respect to theta / parameter_scale_m; all parameters in metres",
+              "singular_values": [
+                887.051743437629,
+                677.0798515583667,
+                591.8017517157901,
+                370.7253572566597,
+                335.225139390411,
+                277.5530641587926,
+                229.67613253911077,
+                228.76555514038657,
+                227.2689821700167,
+                226.83588312089844,
+                226.2764913599931,
+                225.39429059507023,
+                225.01411992012032,
+                224.02485801208132,
+                223.95602568140202,
+                222.8374353905599,
+                221.52322045682988,
+                220.10215144687984,
+                218.1098256917829,
+                217.20643724981062,
+                215.44456332662074,
+                214.80866002087828,
+                211.93437416535957,
+                210.72532767493885,
+                208.6181970292827,
+                207.21636654020568,
+                203.1059218202976,
+                201.32340790771482,
+                199.96696996322646,
+                197.4282721250356,
+                195.7008101376663,
+                193.6581184534523,
+                193.38866533920168,
+                187.6785405778886,
+                185.88809350299817,
+                184.7012795190242,
+                184.4960782602088,
+                184.1804507509766,
+                184.10823644785722,
+                183.7837713047095,
+                182.99531729058253,
+                182.879433658457,
+                181.6770638259635,
+                181.1613747536777,
+                179.38166009540032,
+                179.0090992623592,
+                177.644905828608,
+                174.94383112795578,
+                169.89594002072974,
+                165.4512266155288,
+                133.56241097449887,
+                101.30655586412712,
+                37.643452819802455,
+                24.22843570150154
+              ]
+            },
+            "max_abs_residual_m": 0.1057040991333702,
+            "noisy_geometric_accuracy": true,
+            "range_recovery": false,
+            "range_rmse_m": 0.038603641385628676,
+            "recovery_classification": "converged_geometry_inaccurate",
+            "residuals_m": [
+              0.08925817693814109,
+              0.058880517730408144,
+              0.054661344724212135,
+              -0.014877336069696767,
+              0.08185759665335368,
+              0.07186276018213533,
+              0.0457551784970649,
+              -0.006751567804629488,
+              -0.041768674892527,
+              -0.05088930088158783,
+              -0.028139570657864432,
+              0.006066195531348129,
+              -0.05172915103711073,
+              -0.02524965383500355,
+              0.006865091471361495,
+              -0.03038076556894076,
+              -0.010623864548090722,
+              -0.01459278869933378,
+              -0.005778656427102291,
+              -0.0016868760865058618,
+              -0.028992665902378256,
+              0.02657765644447352,
+              0.04616984922531664,
+              -0.0359318818543759,
+              -0.0012971807797974577,
+              0.011719006544463895,
+              0.009431095250722166,
+              -0.0028553531911619245,
+              0.06041018242380147,
+              -0.004078673310610181,
+              -0.05506988206340857,
+              0.051049754917823265,
+              -0.03259942307237118,
+              -0.04786222618100311,
+              -0.006269407710396635,
+              -0.04661388091212171,
+              -0.043404106602812575,
+              0.1057040991333702,
+              0.09583812077210041,
+              0.028467750485492438,
+              -0.020461219821669374,
+              0.08228677358802372,
+              0.06975608619134732,
+              0.05077840165185954,
+              0.004839177926292848,
+              -0.02745933064371986,
+              -0.026164048733885892,
+              -0.02637822490981634,
+              0.019650021516167016,
+              0.01062124177878232,
+              0.01614581165764495,
+              0.040294651410003546,
+              0.04275443016890357,
+              -0.03713611689488694,
+              -0.03960050750086985,
+              0.012562901787549485,
+              0.03640987103881699,
+              -0.05073514092516085,
+              -0.060428386994561656,
+              -0.0035161718717038326,
+              0.004824690542367449,
+              -0.008148691057360935,
+              -0.009195737026055362,
+              0.0004672860228955855,
+              -0.02444450013796029,
+              0.032410558472049544,
+              0.024214135040359963,
+              -0.018327256606657016,
+              -0.00834832853759071,
+              -0.03031429168000166,
+              -0.06618956159090139,
+              -0.011310383132379087,
+              0.0038831405130972385,
+              -0.027168816291439413,
+              -0.03903052019400066,
+              0.0166176271791727,
+              0.012426005737381729,
+              -0.023750332336632596,
+              -0.014449696253112432,
+              0.021788072588419638,
+              -0.07224294806546805,
+              -0.01943635015545553,
+              -0.0788754239177667,
+              -0.016235985421959143,
+              -0.03361462498105361,
+              -0.01547718282062327,
+              -0.03486495190916461,
+              -0.0013921961128406934,
+              0.022639969657636705,
+              -0.007618694494080813,
+              -6.496855597948326e-05,
+              0.020112084992888413,
+              0.017495160820089506,
+              0.025912320712963677,
+              0.024442689810109997,
+              -0.019764314832459107
+            ],
+            "residuals_normalized": [
+              1.7851635387628217,
+              1.1776103546081629,
+              1.0932268944842427,
+              -0.29754672139393534,
+              1.6371519330670736,
+              1.4372552036427066,
+              0.9151035699412979,
+              -0.13503135609258976,
+              -0.83537349785054,
+              -1.0177860176317566,
+              -0.5627914131572886,
+              0.12132391062696257,
+              -1.0345830207422146,
+              -0.504993076700071,
+              0.1373018294272299,
+              -0.6076153113788152,
+              -0.21247729096181445,
+              -0.2918557739866756,
+              -0.11557312854204582,
+              -0.03373752173011724,
+              -0.5798533180475651,
+              0.5315531288894704,
+              0.9233969845063328,
+              -0.718637637087518,
+              -0.025943615595949154,
+              0.2343801308892779,
+              0.18862190501444331,
+              -0.05710706382323849,
+              1.2082036484760295,
+              -0.08157346621220363,
+              -1.1013976412681714,
+              1.0209950983564653,
+              -0.6519884614474236,
+              -0.9572445236200622,
+              -0.1253881542079327,
+              -0.9322776182424342,
+              -0.8680821320562515,
+              2.114081982667404,
+              1.9167624154420082,
+              0.5693550097098488,
+              -0.4092243964333875,
+              1.6457354717604744,
+              1.3951217238269464,
+              1.0155680330371908,
+              0.09678355852585696,
+              -0.5491866128743972,
+              -0.5232809746777178,
+              -0.5275644981963268,
+              0.3930004303233403,
+              0.2124248355756464,
+              0.32291623315289897,
+              0.8058930282000709,
+              0.8550886033780714,
+              -0.7427223378977388,
+              -0.792010150017397,
+              0.2512580357509897,
+              0.7281974207763398,
+              -1.014702818503217,
+              -1.2085677398912331,
+              -0.07032343743407665,
+              0.09649381084734898,
+              -0.1629738211472187,
+              -0.18391474052110723,
+              0.00934572045791171,
+              -0.4888900027592058,
+              0.6482111694409909,
+              0.48428270080719926,
+              -0.36654513213314033,
+              -0.1669665707518142,
+              -0.6062858336000332,
+              -1.3237912318180278,
+              -0.22620766264758174,
+              0.07766281026194477,
+              -0.5433763258287883,
+              -0.7806104038800132,
+              0.332352543583454,
+              0.24852011474763458,
+              -0.4750066467326519,
+              -0.28899392506224864,
+              0.43576145176839276,
+              -1.444858961309361,
+              -0.38872700310911057,
+              -1.577508478355334,
+              -0.32471970843918285,
+              -0.6722924996210722,
+              -0.3095436564124654,
+              -0.6972990381832922,
+              -0.02784392225681387,
+              0.4527993931527341,
+              -0.15237388988161626,
+              -0.0012993711195896651,
+              0.40224169985776825,
+              0.3499032164017901,
+              0.5182464142592735,
+              0.48885379620219993,
+              -0.39528629664918213
+            ]
+          },
+          "estimate": {
+            "beacons": [
+              [
+                0.0,
+                0.0,
+                2.9157838643020733
+              ],
+              [
+                10.093481389780939,
+                0.0,
+                2.9157838643020733
+              ],
+              [
+                1.0164496147986377,
+                8.114805348011322,
+                2.9157838643020733
+              ],
+              [
+                11.079720305925035,
+                9.086799867662304,
+                2.9157838643020733
+              ]
+            ],
+            "trajectory": [
+              [
+                1.587144633440461,
+                1.298417516888877,
+                0.0
+              ],
+              [
+                2.600699072552891,
+                1.277960631740622,
+                0.0
+              ],
+              [
+                3.739953662196751,
+                1.279182124575442,
+                0.0
+              ],
+              [
+                4.800152853171788,
+                1.3079827777794983,
+                0.0
+              ],
+              [
+                5.882768762483547,
+                1.3286224711535661,
+                0.0
+              ],
+              [
+                6.981017236944607,
+                1.316273900466034,
+                0.0
+              ],
+              [
+                8.086064650336024,
+                1.2713278072470708,
+                0.0
+              ],
+              [
+                8.458388868728697,
+                2.0347423748517603,
+                0.0
+              ],
+              [
+                8.468766541083944,
+                3.020860113404257,
+                0.0
+              ],
+              [
+                8.51527765799048,
+                4.172664901789281,
+                0.0
+              ],
+              [
+                8.529087461801682,
+                5.234714790448596,
+                0.0
+              ],
+              [
+                8.53977429419619,
+                6.246321337141847,
+                0.0
+              ],
+              [
+                7.940406596024767,
+                6.807274610020987,
+                0.0
+              ],
+              [
+                6.9484792600124665,
+                6.72087204455753,
+                0.0
+              ],
+              [
+                5.799821550844349,
+                6.897983827471637,
+                0.0
+              ],
+              [
+                4.762653601907117,
+                6.7788070206924615,
+                0.0
+              ],
+              [
+                3.666998904069531,
+                6.862032036025812,
+                0.0
+              ],
+              [
+                2.583826626212057,
+                6.822180744022039,
+                0.0
+              ],
+              [
+                1.5150522127001815,
+                6.732552912411731,
+                0.0
+              ],
+              [
+                1.6341758411442078,
+                5.695353838238955,
+                0.0
+              ],
+              [
+                1.6035091773910224,
+                4.565439000047832,
+                0.0
+              ],
+              [
+                1.5963772581100477,
+                3.500103203220818,
+                0.0
+              ],
+              [
+                1.6251579192023697,
+                2.390074831613496,
+                0.0
+              ],
+              [
+                1.5460728692219083,
+                1.3220471079215494,
+                0.0
+              ]
+            ]
+          },
+          "index": 0,
+          "initial": {
+            "beacons": [
+              [
+                0.0,
+                0.0,
+                2.4041207884936697
+              ],
+              [
+                8.815109557810123,
+                0.0,
+                2.4041207884936697
+              ],
+              [
+                0.8013735961645566,
+                7.212362365481009,
+                2.4041207884936697
+              ],
+              [
+                9.616483153974679,
+                8.414422759727843,
+                2.4041207884936697
+              ]
+            ],
+            "trajectory": [
+              [
+                0.39671688084093804,
+                0.5593716777703157,
+                0.0
+              ],
+              [
+                1.5643601113732049,
+                0.5440605371804846,
+                0.0
+              ],
+              [
+                2.8585997694252208,
+                0.6098531116616636,
+                0.0
+              ],
+              [
+                4.070282118655288,
+                0.6562912263722639,
+                0.0
+              ],
+              [
+                5.311519732591768,
+                0.6743687403690987,
+                0.0
+              ],
+              [
+                6.5648124920607485,
+                0.7016412751942903,
+                0.0
+              ],
+              [
+                7.830808937468414,
+                0.637495799427669,
+                0.0
+              ],
+              [
+                8.239907245284577,
+                1.412495081426253,
+                0.0
+              ],
+              [
+                8.243019241754407,
+                2.589972405842987,
+                0.0
+              ],
+              [
+                8.334506892243294,
+                3.9339716767594166,
+                0.0
+              ],
+              [
+                8.32973461356929,
+                5.079645728061287,
+                0.0
+              ],
+              [
+                8.27100185387967,
+                6.1324815371013575,
+                0.0
+              ],
+              [
+                7.586215403391906,
+                6.763282033121701,
+                0.0
+              ],
+              [
+                6.417496009343841,
+                6.6219413235433455,
+                0.0
+              ],
+              [
+                5.09683857645864,
+                6.808327452698729,
+                0.0
+              ],
+              [
+                3.9533640400615373,
+                6.693284357514256,
+                0.0
+              ],
+              [
+                2.738549959299331,
+                6.774359534216229,
+                0.0
+              ],
+              [
+                1.453581256696587,
+                6.716620467328182,
+                0.0
+              ],
+              [
+                0.23158693936846386,
+                6.618862261689167,
+                0.0
+              ],
+              [
+                0.3805551521960243,
+                5.472732099148155,
+                0.0
+              ],
+              [
+                0.3999692470706596,
+                4.208685755969474,
+                0.0
+              ],
+              [
+                0.38911176395372926,
+                3.02950231600541,
+                0.0
+              ],
+              [
+                0.4244832311450073,
+                1.8043862833253324,
+                0.0
+              ],
+              [
+                0.3511183867224649,
+                0.5985686366434485,
+                0.0
+              ]
+            ]
+          },
+          "solver": {
+            "active_bounds": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "final_objective": 28.61262966202029,
+            "ftol": 1e-12,
+            "gtol": 1e-12,
+            "initial_objective": 9214.164973456289,
+            "iterations": null,
+            "iterations_note": "SciPy least_squares exposes evaluations, not iteration count",
+            "loss": "linear",
+            "max_nfev": 500,
+            "message": "`ftol` termination condition is satisfied.",
+            "method": "scipy.optimize.least_squares/trf",
+            "nfev": 10,
+            "njev": 10,
+            "optimality": 6.27551791495653e-06,
+            "positive_floor_m": 1e-06,
+            "runtime_s": 0.10250069992616773,
+            "status": 2,
+            "x_scale": "jac",
+            "xtol": 1e-12
+          },
+          "status": "success",
+          "success": true
+        },
+        {
+          "diagnostics": {
+            "evaluation": {
+              "aligned": {
+                "beacon_errors_m": [
+                  0.10937277203876086,
+                  0.10832536195472281,
+                  0.109743298343922,
+                  0.09755276176433815
+                ],
+                "height_error_m": -0.08421613310737586,
+                "map_rmse_m": 0.10636836955283893,
+                "position_errors_m": [
+                  0.061831707274788074,
+                  0.04859975290209509,
+                  0.028058920170979437,
+                  0.06597015877931742,
+                  0.09080881145591739,
+                  0.07936897980455404,
+                  0.040427320479827514,
+                  0.14569188412367648,
+                  0.07832585557152762,
+                  0.07050527036168623,
+                  0.034701345457782966,
+                  0.055512766211047546,
+                  0.07353416520109508,
+                  0.13598661978784712,
+                  0.04867288031615142,
+                  0.08698274673036463,
+                  0.04998833706286249,
+                  0.06809341402252446,
+                  0.033560880426742976,
+                  0.10524220298522556,
+                  0.061813928829957836,
+                  0.07504449603610679,
+                  0.0892401125092954,
+                  0.06976874391563248
+                ],
+                "position_max_error_m": 0.14569188412367648,
+                "position_rmse_m": 0.07626134037275258
+              },
+              "aligned_geometry": {
+                "beacons": [
+                  [
+                    -0.04539449368854864,
+                    -0.05300364261674684,
+                    2.915783866892624
+                  ],
+                  [
+                    10.048085789693456,
+                    -0.04826783397480347,
+                    2.915783866892624
+                  ],
+                  [
+                    0.9672475857647487,
+                    8.062277715256794,
+                    2.915783866892624
+                  ],
+                  [
+                    11.030061118230343,
+                    9.038993761334755,
+                    2.915783866892624
+                  ]
+                ],
+                "trajectory": [
+                  [
+                    1.541140760589642,
+                    1.2461583994807106,
+                    0.0
+                  ],
+                  [
+                    2.554704684618146,
+                    1.2261770720782321,
+                    0.0
+                  ],
+                  [
+                    3.693958573923269,
+                    1.2279331001678375,
+                    0.0
+                  ],
+                  [
+                    4.754144134864949,
+                    1.2572311900713882,
+                    0.0
+                  ],
+                  [
+                    5.836750240629329,
+                    1.2783788386042692,
+                    0.0
+                  ],
+                  [
+                    6.935004387571827,
+                    1.266545561240185,
+                    0.0
+                  ],
+                  [
+                    8.040072767230455,
+                    1.2221179552547434,
+                    0.0
+                  ],
+                  [
+                    8.41203875433984,
+                    1.9857071321396842,
+                    0.0
+                  ],
+                  [
+                    8.421953745050082,
+                    2.9718296329291123,
+                    0.0
+                  ],
+                  [
+                    8.467924434644004,
+                    4.123656118362693,
+                    0.0
+                  ],
+                  [
+                    8.481235928700858,
+                    5.185712371272634,
+                    0.0
+                  ],
+                  [
+                    8.491448120460198,
+                    6.197323821259243,
+                    0.0
+                  ],
+                  [
+                    7.891817291379064,
+                    6.757995813624342,
+                    0.0
+                  ],
+                  [
+                    6.899930605043059,
+                    6.671127849705593,
+                    0.0
+                  ],
+                  [
+                    5.751189922860052,
+                    6.847700668780473,
+                    0.0
+                  ],
+                  [
+                    4.714078005478427,
+                    6.72803724149749,
+                    0.0
+                  ],
+                  [
+                    3.618384379921282,
+                    6.810748172504285,
+                    0.0
+                  ],
+                  [
+                    2.5352309194593112,
+                    6.770388665710319,
+                    0.0
+                  ],
+                  [
+                    1.466498676924321,
+                    6.680259380810397,
+                    0.0
+                  ],
+                  [
+                    1.5861089406716942,
+                    5.64311631191312,
+                    0.0
+                  ],
+                  [
+                    1.5559724296902162,
+                    4.5131872081954345,
+                    0.0
+                  ],
+                  [
+                    1.549340361617909,
+                    3.447848181271717,
+                    0.0
+                  ],
+                  [
+                    1.5786418399585103,
+                    2.337833433835098,
+                    0.0
+                  ],
+                  [
+                    1.5000579120745499,
+                    1.2697687198804504,
+                    0.0
+                  ]
+                ]
+              },
+              "alignment": {
+                "applied": true,
+                "description": "Map-only least-squares planar proper rigid alignment; no scale, reflection, z translation, or 3D tilt",
+                "reflection_allowed": false,
+                "rotation_xy": [
+                  [
+                    0.9999998899281292,
+                    0.0004691947660967969
+                  ],
+                  [
+                    -0.00046919476609635143,
+                    0.9999998899281288
+                  ]
+                ],
+                "scale": 1.0,
+                "translation_xy_m": [
+                  -0.04539449368854864,
+                  -0.05300364261674684
+                ]
+              },
+              "raw": {
+                "beacon_errors_m": [
+                  0.08421613310737586,
+                  0.12582181119635064,
+                  0.14332903619403364,
+                  0.1448513037866931
+                ],
+                "height_error_m": -0.08421613310737586,
+                "map_rmse_m": 0.12693364218490777,
+                "position_errors_m": [
+                  0.13145414990102527,
+                  0.07812380976654483,
+                  0.09293311402254344,
+                  0.10878612897634396,
+                  0.1286225627522321,
+                  0.11630655840702854,
+                  0.07235548649294865,
+                  0.17033783170876604,
+                  0.06380940902889827,
+                  0.11283440499011474,
+                  0.08342801185508984,
+                  0.04020257774092244,
+                  0.013834365184023664,
+                  0.12131537275538042,
+                  0.10544234089894258,
+                  0.09971438240877106,
+                  0.11550453252579788,
+                  0.1121293074062088,
+                  0.05633999335765946,
+                  0.1752558803761992,
+                  0.12989861038749712,
+                  0.14534705400391643,
+                  0.1567805554275581,
+                  0.13045383850158088
+                ],
+                "position_max_error_m": 0.1752558803761992,
+                "position_rmse_m": 0.11345450972040493
+              }
+            },
+            "exact_reference_geometry": false,
+            "geometric_recovery": false,
+            "jacobian": {
+              "absolute_tolerance": 8.870517437905526e-06,
+              "condition_number": 36.612010460484626,
+              "full_column_rank": true,
+              "interpretation": "Local measurement rank only; full rank does not prove global uniqueness",
+              "measurement_count": 96,
+              "parameter_count": 54,
+              "parameter_scale_m": 8.013735961645565,
+              "rank": 54,
+              "relative_tolerance": 1e-08,
+              "scaling": "J of normalized range residuals with respect to theta / parameter_scale_m; all parameters in metres",
+              "singular_values": [
+                887.0517437905527,
+                677.0798514272353,
+                591.8017517807222,
+                370.72535734652934,
+                335.22513939380485,
+                277.5530641832163,
+                229.67613255940898,
+                228.7655551808141,
+                227.26898220051157,
+                226.83588316785173,
+                226.27649139839232,
+                225.39429060717717,
+                225.01411995440287,
+                224.02485800387058,
+                223.95602569528043,
+                222.83743537560687,
+                221.5232204971348,
+                220.10215145551487,
+                218.1098256910395,
+                217.2064372469708,
+                215.44456334166262,
+                214.80866000822212,
+                211.93437419833845,
+                210.72532767876643,
+                208.61819701192303,
+                207.21636656826578,
+                203.10592177260318,
+                201.32340781507128,
+                199.96696997635163,
+                197.42827197170112,
+                195.70081004819255,
+                193.65811838686506,
+                193.3886651976114,
+                187.67854048237157,
+                185.8880933832649,
+                184.70127936190585,
+                184.4960781190493,
+                184.1804506008965,
+                184.1082363059889,
+                183.78377116642642,
+                182.9953171595832,
+                182.87943351796707,
+                181.6770636995218,
+                181.1613746257135,
+                179.3816599951219,
+                179.00909913790454,
+                177.64490571895746,
+                174.94383103550558,
+                169.89593994066414,
+                165.4512265338148,
+                133.56241100234743,
+                101.30655579720418,
+                37.643452830660905,
+                24.22843576831019
+              ]
+            },
+            "max_abs_residual_m": 0.10570409777532586,
+            "noisy_geometric_accuracy": true,
+            "range_recovery": false,
+            "range_rmse_m": 0.03860364138562868,
+            "recovery_classification": "converged_geometry_inaccurate",
+            "residuals_m": [
+              0.08925817752426424,
+              0.05888051534891403,
+              0.05466134805518941,
+              -0.014877335830671967,
+              0.08185759795837377,
+              0.07186275956348354,
+              0.045755181173531945,
+              -0.006751566822362776,
+              -0.041768673348451024,
+              -0.050889299432920865,
+              -0.028139570855145735,
+              0.006066195602214108,
+              -0.051729149468392244,
+              -0.025249652365502584,
+              0.006865091467707529,
+              -0.03038076551199609,
+              -0.010623863192151362,
+              -0.014592787258509432,
+              -0.005778656189370679,
+              -0.0016868758388604022,
+              -0.028992664962049552,
+              0.026577657770829433,
+              0.04616984961167425,
+              -0.0359318812585272,
+              -0.001297180263930997,
+              0.011719007565513806,
+              0.009431095416028157,
+              -0.002855352597096683,
+              0.06041018222872019,
+              -0.004078673903631813,
+              -0.05506988238036037,
+              0.05104975497859421,
+              -0.03259942286675965,
+              -0.047862227626037424,
+              -0.006269408116628128,
+              -0.04661388217749529,
+              -0.04340410789800586,
+              0.10570409777532586,
+              0.09583811914484386,
+              0.028467749490983962,
+              -0.020461220737834296,
+              0.08228677291643471,
+              0.06975608450359516,
+              0.050778400303991056,
+              0.004839177784512927,
+              -0.02745933159130054,
+              -0.02616404887589141,
+              -0.02637822584369598,
+              0.01965002163634111,
+              0.010621242350296711,
+              0.016145811217357142,
+              0.04029465140420996,
+              0.04275443027195358,
+              -0.037136116891884896,
+              -0.039600507161132725,
+              0.012562902051668878,
+              0.036409871087299095,
+              -0.05073514092789999,
+              -0.06042838610589474,
+              -0.003516171233123977,
+              0.004824690651350494,
+              -0.008148690766914157,
+              -0.009195736276810251,
+              0.0004672865397195025,
+              -0.02444449992720088,
+              0.03241055890227962,
+              0.024214135855668673,
+              -0.018327256230016076,
+              -0.008348328983029063,
+              -0.030314291447520958,
+              -0.06618956110644802,
+              -0.011310382656942508,
+              0.003883139943976488,
+              -0.02716881608575683,
+              -0.039030520573492655,
+              0.016617627270372637,
+              0.012426004624909837,
+              -0.023750332496323523,
+              -0.0144496977799764,
+              0.021788072204197206,
+              -0.07224294989711044,
+              -0.01943634987334697,
+              -0.07887542584094032,
+              -0.01623598532457038,
+              -0.033614626715850804,
+              -0.015477182781719279,
+              -0.034864953520416186,
+              -0.0013921963585374897,
+              0.022639968584829084,
+              -0.007618695034075529,
+              -6.496894003493736e-05,
+              0.020112084606898506,
+              0.017495161391712255,
+              0.025912320497500474,
+              0.024442690570093184,
+              -0.019764314755315482
+            ],
+            "residuals_normalized": [
+              1.7851635504852847,
+              1.1776103069782806,
+              1.0932269611037881,
+              -0.29754671661343934,
+              1.6371519591674755,
+              1.4372551912696707,
+              0.9151036234706389,
+              -0.1350313364472555,
+              -0.8353734669690205,
+              -1.0177859886584173,
+              -0.5627914171029147,
+              0.12132391204428217,
+              -1.0345829893678449,
+              -0.5049930473100517,
+              0.13730182935415058,
+              -0.6076153102399218,
+              -0.21247726384302723,
+              -0.29185574517018864,
+              -0.11557312378741358,
+              -0.03373751677720804,
+              -0.579853299240991,
+              0.5315531554165887,
+              0.923396992233485,
+              -0.718637625170544,
+              -0.02594360527861994,
+              0.23438015131027612,
+              0.18862190832056314,
+              -0.05710705194193366,
+              1.2082036445744038,
+              -0.08157347807263626,
+              -1.1013976476072074,
+              1.0209950995718842,
+              -0.6519884573351931,
+              -0.9572445525207485,
+              -0.12538816233256256,
+              -0.9322776435499058,
+              -0.8680821579601172,
+              2.114081955506517,
+              1.9167623828968772,
+              0.5693549898196792,
+              -0.4092244147566859,
+              1.6457354583286943,
+              1.3951216900719032,
+              1.0155680060798211,
+              0.09678355569025854,
+              -0.5491866318260108,
+              -0.5232809775178282,
+              -0.5275645168739196,
+              0.39300043272682217,
+              0.21242484700593423,
+              0.32291622434714284,
+              0.8058930280841992,
+              0.8550886054390716,
+              -0.7427223378376979,
+              -0.7920101432226545,
+              0.25125804103337757,
+              0.7281974217459819,
+              -1.0147028185579998,
+              -1.2085677221178948,
+              -0.07032342466247954,
+              0.09649381302700988,
+              -0.16297381533828315,
+              -0.18391472553620503,
+              0.00934573079439005,
+              -0.4888899985440176,
+              0.6482111780455924,
+              0.48428271711337345,
+              -0.3665451246003215,
+              -0.16696657966058126,
+              -0.6062858289504192,
+              -1.3237912221289605,
+              -0.22620765313885016,
+              0.07766279887952976,
+              -0.5433763217151366,
+              -0.7806104114698531,
+              0.33235254540745274,
+              0.24852009249819673,
+              -0.47500664992647046,
+              -0.288993955599528,
+              0.4357614440839441,
+              -1.4448589979422088,
+              -0.3887269974669394,
+              -1.5775085168188063,
+              -0.3247197064914076,
+              -0.6722925343170161,
+              -0.3095436556343856,
+              -0.6972990704083237,
+              -0.027843927170749794,
+              0.4527993716965817,
+              -0.15237390068151058,
+              -0.0012993788006987472,
+              0.4022416921379701,
+              0.3499032278342451,
+              0.5182464099500095,
+              0.4888538114018637,
+              -0.39528629510630964
+            ]
+          },
+          "estimate": {
+            "beacons": [
+              [
+                0.0,
+                0.0,
+                2.915783866892624
+              ],
+              [
+                10.093481394390386,
+                0.0,
+                2.915783866892624
+              ],
+              [
+                1.0164496155284037,
+                8.114805338245741,
+                2.915783866892624
+              ],
+              [
+                11.079720310418079,
+                9.086799857373101,
+                2.915783866892624
+              ]
+            ],
+            "trajectory": [
+              [
+                1.5871446396757518,
+                1.2984175050587274,
+                0.0
+              ],
+              [
+                2.600699077005143,
+                1.2779606209673722,
+                0.0
+              ],
+              [
+                3.739953664829649,
+                1.279182116901571,
+                0.0
+              ],
+              [
+                4.800152855585161,
+                1.3079827700639408,
+                0.0
+              ],
+              [
+                5.882768764551069,
+                1.3286224631504915,
+                0.0
+              ],
+              [
+                6.981017238494875,
+                1.3162738919913288,
+                0.0
+              ],
+              [
+                8.086064651316361,
+                1.271327798596202,
+                0.0
+              ],
+              [
+                8.458388869527997,
+                2.0347423669371367,
+                0.0
+              ],
+              [
+                8.468766542662978,
+                3.0208601071204706,
+                0.0
+              ],
+              [
+                8.515277658155236,
+                4.172664896563406,
+                0.0
+              ],
+              [
+                8.529087461982035,
+                5.234714786887488,
+                0.0
+              ],
+              [
+                8.539774295414956,
+                6.24632133401721,
+                0.0
+              ],
+              [
+                7.940406596700623,
+                6.807274608314691,
+                0.0
+              ],
+              [
+                6.948479261549428,
+                6.72087204199945,
+                0.0
+              ],
+              [
+                5.799821552853001,
+                6.897983824754313,
+                0.0
+              ],
+              [
+                4.76265360417445,
+                6.778807018126399,
+                0.0
+              ],
+              [
+                3.6669989067582787,
+                6.862032033743404,
+                0.0
+              ],
+              [
+                2.5838266290516847,
+                6.822180741326413,
+                0.0
+              ],
+              [
+                1.5150522159653035,
+                6.732552909921746,
+                0.0
+              ],
+              [
+                1.6341758444473318,
+                5.695353834675024,
+                0.0
+              ],
+              [
+                1.6035091799615115,
+                4.5654389952239685,
+                0.0
+              ],
+              [
+                1.5963772611236575,
+                3.5001031972957373,
+                0.0
+              ],
+              [
+                1.6251579231292033,
+                2.39007482394024,
+                0.0
+              ],
+              [
+                1.546072873521483,
+                1.3220470987171347,
+                0.0
+              ]
+            ]
+          },
+          "index": 1,
+          "initial": {
+            "beacons": [
+              [
+                0.0,
+                0.0,
+                2.0430229443896764
+              ],
+              [
+                10.476011523953433,
+                0.0,
+                2.0430229443896764
+              ],
+              [
+                1.7255949451281145,
+                7.704052968693238,
+                2.0430229443896764
+              ],
+              [
+                12.12318102615862,
+                9.865069589672524,
+                2.0430229443896764
+              ]
+            ],
+            "trajectory": [
+              [
+                2.1652039428532666,
+                2.6214855613744437,
+                0.0
+              ],
+              [
+                2.9176072460889046,
+                0.2132441749345586,
+                0.0
+              ],
+              [
+                3.9799488732803563,
+                0.25978358515246436,
+                0.0
+              ],
+              [
+                3.6905481660726447,
+                1.2191338163784198,
+                0.0
+              ],
+              [
+                6.893722889472275,
+                -0.7939728709110452,
+                0.0
+              ],
+              [
+                7.589145675533954,
+                1.4578719884590978,
+                0.0
+              ],
+              [
+                8.814518017414041,
+                -0.1574378685689004,
+                0.0
+              ],
+              [
+                8.67641007698448,
+                1.5590939584722265,
+                0.0
+              ],
+              [
+                9.374600427494418,
+                1.5540599284005718,
+                0.0
+              ],
+              [
+                9.379987329902503,
+                4.945440708025684,
+                0.0
+              ],
+              [
+                6.782708290590124,
+                5.24201082002264,
+                0.0
+              ],
+              [
+                7.44042721478845,
+                5.820881034546963,
+                0.0
+              ],
+              [
+                7.661305640259045,
+                7.828401769319067,
+                0.0
+              ],
+              [
+                7.38039539835472,
+                7.331026530832403,
+                0.0
+              ],
+              [
+                5.195218376291022,
+                7.275350367934761,
+                0.0
+              ],
+              [
+                6.604470057601928,
+                6.130259057500921,
+                0.0
+              ],
+              [
+                4.847250203355854,
+                7.433337829839853,
+                0.0
+              ],
+              [
+                3.0540129118919794,
+                5.8144790851318975,
+                0.0
+              ],
+              [
+                2.353850587572982,
+                6.761603366597522,
+                0.0
+              ],
+              [
+                2.8101630173216874,
+                6.726585035355319,
+                0.0
+              ],
+              [
+                3.750346455459546,
+                4.030374407721368,
+                0.0
+              ],
+              [
+                3.120890693978401,
+                4.447647885702699,
+                0.0
+              ],
+              [
+                2.4159431954498065,
+                3.256249759295681,
+                0.0
+              ],
+              [
+                2.4343745862231065,
+                2.22885156081685,
+                0.0
+              ]
+            ]
+          },
+          "solver": {
+            "active_bounds": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "final_objective": 28.612629662020296,
+            "ftol": 1e-12,
+            "gtol": 1e-12,
+            "initial_objective": 19442.61934797954,
+            "iterations": null,
+            "iterations_note": "SciPy least_squares exposes evaluations, not iteration count",
+            "loss": "linear",
+            "max_nfev": 500,
+            "message": "`ftol` termination condition is satisfied.",
+            "method": "scipy.optimize.least_squares/trf",
+            "nfev": 9,
+            "njev": 9,
+            "optimality": 1.1471627639366943e-05,
+            "positive_floor_m": 1e-06,
+            "runtime_s": 0.09803920006379485,
+            "status": 2,
+            "x_scale": "jac",
+            "xtol": 1e-12
+          },
+          "status": "success",
+          "success": true
+        }
+      ],
+      "status": "success"
+    }
+  ],
+  "schema_version": "2.0",
+  "shared_bounds_m": {
+    "x": [
+      -0.5991672720645411,
+      11.583833897076833
+    ],
+    "y": [
+      -1.5985055250799274,
+      10.584495644061446
+    ],
+    "z": [
+      -4.591500584570687,
+      7.591500584570687
+    ]
+  },
+  "spatial_convention": "Shared metre axes and equal aspect ratio; proper planar rigid map-to-truth alignment only, scale=1, reflections forbidden",
+  "table": [
+    {
+      "full_column_rank": null,
+      "id": null,
+      "map_rmse_m": null,
+      "mode": "joint",
+      "optimizer_converged": false,
+      "position_rmse_m": null,
+      "range_rmse_m": null,
+      "runtime_s": 0.0001783999614417553,
+      "samples": 32,
+      "selected_start": null,
+      "side": "left",
+      "starts": 1,
+      "status": "failed"
+    },
+    {
+      "full_column_rank": true,
+      "id": "23f9cdd806af5ca7bf6d61c9ad0342db",
+      "map_rmse_m": 0.1063683731940779,
+      "mode": "joint",
+      "optimizer_converged": true,
+      "position_rmse_m": 0.07626134143134833,
+      "range_rmse_m": 0.038603641385628676,
+      "runtime_s": 0.20053989998996258,
+      "samples": 24,
+      "selected_start": 0,
+      "side": "right",
+      "starts": 2,
+      "status": "success"
+    }
+  ],
+  "time_reference": "Elapsed seconds from each run's first fitted epoch; no time warping",
+  "views": [
+    {
+      "alignment": {
+        "applied": false,
+        "reflection_allowed": false,
+        "scale": 1.0
+      },
+      "color_quantity": "Euclidean matched-time position error in metres at fitted epochs",
+      "estimate": null,
+      "id": null,
+      "index": 0,
+      "initial": null,
+      "interpolated_trajectory": [
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ],
+      "position_errors_m": [],
+      "residuals_m": [],
+      "sample_kind": "fitted epoch samples",
+      "times_elapsed_s": [
+        0.0,
+        0.6451612903225806,
+        1.2903225806451613,
+        1.935483870967742,
+        2.5806451612903225,
+        3.225806451612903,
+        3.870967741935484,
+        4.516129032258064,
+        5.161290322580645,
+        5.806451612903226,
+        6.451612903225806,
+        7.096774193548387,
+        7.741935483870968,
+        8.387096774193548,
+        9.032258064516128,
+        9.67741935483871,
+        10.32258064516129,
+        10.96774193548387,
+        11.612903225806452,
+        12.258064516129032,
+        12.903225806451612,
+        13.548387096774194,
+        14.193548387096774,
+        14.838709677419354,
+        15.483870967741936,
+        16.129032258064516,
+        16.774193548387096,
+        17.419354838709676,
+        18.064516129032256,
+        18.70967741935484,
+        19.35483870967742,
+        20.0
+      ],
+      "truth": {
+        "beacons": [
+          [
+            0.0,
+            0.0,
+            3.0
+          ],
+          [
+            10.0,
+            0.0,
+            3.0
+          ],
+          [
+            1.0,
+            8.0,
+            3.0
+          ],
+          [
+            11.0,
+            9.0,
+            3.0
+          ]
+        ],
+        "times_s": [
+          0.0,
+          0.6451612903225806,
+          1.2903225806451613,
+          1.935483870967742,
+          2.5806451612903225,
+          3.225806451612903,
+          3.870967741935484,
+          4.516129032258064,
+          5.161290322580645,
+          5.806451612903226,
+          6.451612903225806,
+          7.096774193548387,
+          7.741935483870968,
+          8.387096774193548,
+          9.032258064516128,
+          9.67741935483871,
+          10.32258064516129,
+          10.96774193548387,
+          11.612903225806452,
+          12.258064516129032,
+          12.903225806451612,
+          13.548387096774194,
+          14.193548387096774,
+          14.838709677419354,
+          15.483870967741936,
+          16.129032258064516,
+          16.774193548387096,
+          17.419354838709676,
+          18.064516129032256,
+          18.70967741935484,
+          19.35483870967742,
+          20.0
+        ],
+        "trajectory": [
+          [
+            1.5,
+            1.2,
+            0.0
+          ],
+          [
+            2.3129032258064517,
+            1.2,
+            0.0
+          ],
+          [
+            3.1258064516129034,
+            1.2,
+            0.0
+          ],
+          [
+            3.938709677419355,
+            1.2,
+            0.0
+          ],
+          [
+            4.751612903225807,
+            1.2,
+            0.0
+          ],
+          [
+            5.564516129032258,
+            1.2,
+            0.0
+          ],
+          [
+            6.37741935483871,
+            1.2,
+            0.0
+          ],
+          [
+            7.190322580645162,
+            1.2,
+            0.0
+          ],
+          [
+            8.003225806451614,
+            1.2,
+            0.0
+          ],
+          [
+            8.5,
+            1.5161290322580647,
+            0.0
+          ],
+          [
+            8.5,
+            2.329032258064516,
+            0.0
+          ],
+          [
+            8.5,
+            3.141935483870969,
+            0.0
+          ],
+          [
+            8.5,
+            3.9548387096774205,
+            0.0
+          ],
+          [
+            8.5,
+            4.767741935483872,
+            0.0
+          ],
+          [
+            8.5,
+            5.580645161290325,
+            0.0
+          ],
+          [
+            8.5,
+            6.393548387096776,
+            0.0
+          ],
+          [
+            8.093548387096773,
+            6.8,
+            0.0
+          ],
+          [
+            7.280645161290321,
+            6.8,
+            0.0
+          ],
+          [
+            6.46774193548387,
+            6.8,
+            0.0
+          ],
+          [
+            5.654838709677417,
+            6.8,
+            0.0
+          ],
+          [
+            4.8419354838709685,
+            6.8,
+            0.0
+          ],
+          [
+            4.029032258064514,
+            6.8,
+            0.0
+          ],
+          [
+            3.2161290322580625,
+            6.8,
+            0.0
+          ],
+          [
+            2.403225806451612,
+            6.8,
+            0.0
+          ],
+          [
+            1.5903225806451609,
+            6.8,
+            0.0
+          ],
+          [
+            1.5,
+            6.077419354838709,
+            0.0
+          ],
+          [
+            1.5,
+            5.264516129032259,
+            0.0
+          ],
+          [
+            1.5,
+            4.451612903225808,
+            0.0
+          ],
+          [
+            1.5,
+            3.638709677419353,
+            0.0
+          ],
+          [
+            1.5,
+            2.8258064516129022,
+            0.0
+          ],
+          [
+            1.5,
+            2.0129032258064514,
+            0.0
+          ],
+          [
+            1.5,
+            1.2,
+            0.0
+          ]
+        ]
+      }
+    },
+    {
+      "alignment": {
+        "applied": true,
+        "description": "Map-only least-squares planar proper rigid alignment; no scale, reflection, z translation, or 3D tilt",
+        "reflection_allowed": false,
+        "rotation_xy": [
+          [
+            0.9999998899281755,
+            0.0004691946682834815
+          ],
+          [
+            -0.0004691946682833298,
+            0.999999889928175
+          ]
+        ],
+        "scale": 1.0,
+        "translation_xy_m": [
+          -0.04539449164902454,
+          -0.05300364708687599
+        ]
+      },
+      "color_quantity": "Euclidean matched-time position error in metres at fitted epochs",
+      "estimate": {
+        "beacons": [
+          [
+            -0.04539449164902454,
+            -0.05300364708687599,
+            2.9157838643020733
+          ],
+          [
+            10.048085787124002,
+            -0.04826783943437223,
+            2.9157838643020733
+          ],
+          [
+            0.9672475878637055,
+            8.062277720452855,
+            2.9157838643020733
+          ],
+          [
+            11.030061116661315,
+            9.038993766068394,
+            2.9157838643020733
+          ]
+        ],
+        "trajectory": [
+          [
+            1.541140756515401,
+            1.2461584066826203,
+            0.0
+          ],
+          [
+            2.554704682325486,
+            1.2261770781249386,
+            0.0
+          ],
+          [
+            3.693958573451589,
+            1.227933103004585,
+            0.0
+          ],
+          [
+            4.75414413461564,
+            1.257231192846225,
+            0.0
+          ],
+          [
+            5.836750240727805,
+            1.2783788415608919,
+            0.0
+          ],
+          [
+            6.9350043881861785,
+            1.266545564561257,
+            0.0
+          ],
+          [
+            8.040072768410308,
+            1.2221179586441562,
+            0.0
+          ],
+          [
+            8.412038755775768,
+            1.9857071347565536,
+            0.0
+          ],
+          [
+            8.421953745803496,
+            2.9718296339138095,
+            0.0
+          ],
+          [
+            8.467924436924854,
+            4.123656118285647,
+            0.0
+          ],
+          [
+            8.481235931070774,
+            5.185712369529511,
+            0.0
+          ],
+          [
+            8.491448121890855,
+            6.197323819078163,
+            0.0
+          ],
+          [
+            7.891817293408138,
+            6.7579958100838295,
+            0.0
+          ],
+          [
+            6.8999306062021315,
+            6.671127847113479,
+            0.0
+          ],
+          [
+            5.751189923564631,
+            6.847700666459744,
+            0.0
+          ],
+          [
+            4.7140780059126905,
+            6.728037239126821,
+            0.0
+          ],
+          [
+            3.618384379942354,
+            6.810748169956938,
+            0.0
+          ],
+          [
+            2.535230919325361,
+            6.770388663682065,
+            0.0
+          ],
+          [
+            1.4664986763561567,
+            6.680259378680839,
+            0.0
+          ],
+          [
+            1.5861089399635782,
+            5.64311631084579,
+            0.0
+          ],
+          [
+            1.555972429603622,
+            4.513187208391329,
+            0.0
+          ],
+          [
+            1.549340360983473,
+            3.447848182569269,
+            0.0
+          ],
+          [
+            1.5786418383014567,
+            2.33783343687753,
+            0.0
+          ],
+          [
+            1.5000579099395661,
+            1.2697687244615523,
+            0.0
+          ]
+        ]
+      },
+      "id": "23f9cdd806af5ca7bf6d61c9ad0342db",
+      "index": 1,
+      "initial": {
+        "beacons": [
+          [
+            -0.04539449164902454,
+            -0.05300364708687599,
+            2.4041207884936697
+          ],
+          [
+            8.769714095865908,
+            -0.04886764468201672,
+            2.4041207884936697
+          ],
+          [
+            0.7525950143392672,
+            7.159733924734868,
+            2.4041207884936697
+          ],
+          [
+            9.56713960152626,
+            8.36593018907358,
+            2.4041207884936697
+          ]
+        ],
+        "trajectory": [
+          [
+            0.35105989131576404,
+            0.506554106557687,
+            0.0
+          ],
+          [
+            1.51871017722894,
+            0.49179081963140403,
+            0.0
+          ],
+          [
+            2.8129188232964766,
+            0.5581906372177133,
+            0.0
+          ],
+          [
+            4.024579250638629,
+            0.6051972617146976,
+            0.0
+          ],
+          [
+            5.265808246076637,
+            0.6238571557922392,
+            0.0
+          ],
+          [
+            6.519088071465466,
+            0.6517177258960344,
+            0.0
+          ],
+          [
+            7.785114474237818,
+            0.5881662559722738,
+            0.0
+          ],
+          [
+            8.193849111492746,
+            1.3633573994101034,
+            0.0
+          ],
+          [
+            8.196408641537392,
+            2.540836054351911,
+            0.0
+          ],
+          [
+            8.287265684663975,
+            3.884878102849711,
+            0.0
+          ],
+          [
+            8.281955862358803,
+            5.030549788917439,
+            0.0
+          ],
+          [
+            8.222729124185825,
+            6.08335792497225,
+            0.0
+          ],
+          [
+            7.537646780844273,
+            6.71383705340775,
+            0.0
+          ],
+          [
+            6.36899383174663,
+            6.571948002478618,
+            0.0
+          ],
+          [
+            5.04824909285056,
+            6.757714465692001,
+            0.0
+          ],
+          [
+            3.90482865992467,
+            6.642134871014736,
+            0.0
+          ],
+          [
+            2.689976672838627,
+            6.722640054502967,
+            0.0
+          ],
+          [
+            1.4050352025370685,
+            6.664298093506193,
+            0.0
+          ],
+          [
+            0.18308688734495607,
+            6.565966545409238,
+            0.0
+          ],
+          [
+            0.3325928419367365,
+            5.419906404116068,
+            0.0
+          ],
+          [
+            0.3526000184791094,
+            4.155869309063078,
+            0.0
+          ],
+          [
+            0.34229580314024116,
+            2.976680904620699,
+            0.0
+          ],
+          [
+            0.37824208434867923,
+            1.751581602895194,
+            0.0
+          ],
+          [
+            0.30544301121228423,
+            0.5457296665460167,
+            0.0
+          ]
+        ]
+      },
+      "interpolated_trajectory": [
+        [
+          1.541140756515401,
+          1.2461584066826203,
+          0.0
+        ],
+        [
+          2.293139798245464,
+          1.231333550010792,
+          0.0
+        ],
+        [
+          2.554704682325486,
+          1.2261770781249386,
+          0.0
+        ],
+        [
+          3.105956565128439,
+          1.2270267675828321,
+          0.0
+        ],
+        [
+          3.693958573451589,
+          1.227933103004585,
+          0.0
+        ],
+        [
+          3.933355313069278,
+          1.234548800710762,
+          0.0
+        ],
+        [
+          4.719944600384541,
+          1.256286093173914,
+          0.0
+        ],
+        [
+          4.75414413461564,
+          1.257231192846225,
+          0.0
+        ],
+        [
+          5.522445242179112,
+          1.2722392016114725,
+          0.0
+        ],
+        [
+          5.836750240727805,
+          1.2783788415608919,
+          0.0
+        ],
+        [
+          6.332735984741264,
+          1.2730347809804117,
+          0.0
+        ],
+        [
+          6.9350043881861785,
+          1.266545564561257,
+          0.0
+        ],
+        [
+          7.148888590810203,
+          1.2579466730934312,
+          0.0
+        ],
+        [
+          7.9687780342023,
+          1.2249842558000983,
+          0.0
+        ],
+        [
+          8.040072768410308,
+          1.2221179586441562,
+          0.0
+        ],
+        [
+          8.292049727593362,
+          1.7393880456880386,
+          0.0
+        ],
+        [
+          8.412038755775768,
+          1.9857071347565536,
+          0.0
+        ],
+        [
+          8.416196654819654,
+          2.399242376338629,
+          0.0
+        ],
+        [
+          8.421953745803496,
+          2.9718296339138095,
+          0.0
+        ],
+        [
+          8.429368373403715,
+          3.1576080991350737,
+          0.0
+        ],
+        [
+          8.463475660364722,
+          4.012189039152888,
+          0.0
+        ],
+        [
+          8.467924436924854,
+          4.123656118285647,
+          0.0
+        ],
+        [
+          8.476512497664157,
+          4.808853699733301,
+          0.0
+        ],
+        [
+          8.481235931070774,
+          5.185712369529511,
+          0.0
+        ],
+        [
+          8.485189037194676,
+          5.577303898387053,
+          0.0
+        ],
+        [
+          8.491448121890855,
+          6.197323819078163,
+          0.0
+        ],
+        [
+          8.414076402086634,
+          6.269668592111153,
+          0.0
+        ],
+        [
+          7.96918901321236,
+          6.68565103705084,
+          0.0
+        ],
+        [
+          7.891817293408138,
+          6.7579958100838295,
+          0.0
+        ],
+        [
+          7.2838867431851035,
+          6.7047541553600665,
+          0.0
+        ],
+        [
+          6.8999306062021315,
+          6.671127847113479,
+          0.0
+        ],
+        [
+          6.492312944621083,
+          6.733782718494412,
+          0.0
+        ],
+        [
+          5.751189923564631,
+          6.847700666459744,
+          0.0
+        ],
+        [
+          5.6508242541144424,
+          6.836120334782364,
+          0.0
+        ],
+        [
+          4.881354121663003,
+          6.747337791922454,
+          0.0
+        ],
+        [
+          4.7140780059126905,
+          6.728037239126821,
+          0.0
+        ],
+        [
+          4.077868803736365,
+          6.776062940899147,
+          0.0
+        ],
+        [
+          3.618384379942354,
+          6.810748169956938,
+          0.0
+        ],
+        [
+          3.26898003780784,
+          6.797728974384398,
+          0.0
+        ],
+        [
+          2.535230919325361,
+          6.770388663682065,
+          0.0
+        ],
+        [
+          2.4662804520370263,
+          6.764573871101341,
+          0.0
+        ],
+        [
+          1.6733500782211639,
+          6.697703756423012,
+          0.0
+        ],
+        [
+          1.4664986763561567,
+          6.680259378680839,
+          0.0
+        ],
+        [
+          1.5320914015602265,
+          6.111503502771296,
+          0.0
+        ],
+        [
+          1.5861089399635782,
+          5.64311631084579,
+          0.0
+        ],
+        [
+          1.577359630504236,
+          5.31507237787514,
+          0.0
+        ],
+        [
+          1.555972429603622,
+          4.513187208391329,
+          0.0
+        ],
+        [
+          1.5557584919061977,
+          4.4788214333648115,
+          0.0
+        ],
+        [
+          1.5508379248654423,
+          3.688408607754897,
+          0.0
+        ],
+        [
+          1.549340360983473,
+          3.447848182569269,
+          0.0
+        ],
+        [
+          1.5644637041153355,
+          2.874937346083208,
+          0.0
+        ],
+        [
+          1.5786418383014567,
+          2.33783343687753,
+          0.0
+        ],
+        [
+          1.5583621148532267,
+          2.0622038336734057,
+          0.0
+        ],
+        [
+          1.5000579099395661,
+          1.2697687244615523,
+          0.0
+        ]
+      ],
+      "position_errors_m": [
+        0.0618317099402698,
+        0.04859975809067585,
+        0.028058922950388143,
+        0.06597016131057762,
+        0.09080881395810525,
+        0.07936898225422565,
+        0.040427321346576665,
+        0.14569188534283944,
+        0.07832585490393155,
+        0.07050526925542805,
+        0.0347013427099895,
+        0.055512768145694426,
+        0.07353416555804852,
+        0.13598662261434102,
+        0.04867287790165652,
+        0.08698274893560945,
+        0.049988336535727415,
+        0.06809341478391628,
+        0.03356088086708627,
+        0.10524220179219916,
+        0.061813928834674625,
+        0.0750444965966444,
+        0.08924011248710671,
+        0.06976874849496072
+      ],
+      "residuals_m": [
+        0.08925817693814109,
+        0.058880517730408144,
+        0.054661344724212135,
+        -0.014877336069696767,
+        0.08185759665335368,
+        0.07186276018213533,
+        0.0457551784970649,
+        -0.006751567804629488,
+        -0.041768674892527,
+        -0.05088930088158783,
+        -0.028139570657864432,
+        0.006066195531348129,
+        -0.05172915103711073,
+        -0.02524965383500355,
+        0.006865091471361495,
+        -0.03038076556894076,
+        -0.010623864548090722,
+        -0.01459278869933378,
+        -0.005778656427102291,
+        -0.0016868760865058618,
+        -0.028992665902378256,
+        0.02657765644447352,
+        0.04616984922531664,
+        -0.0359318818543759,
+        -0.0012971807797974577,
+        0.011719006544463895,
+        0.009431095250722166,
+        -0.0028553531911619245,
+        0.06041018242380147,
+        -0.004078673310610181,
+        -0.05506988206340857,
+        0.051049754917823265,
+        -0.03259942307237118,
+        -0.04786222618100311,
+        -0.006269407710396635,
+        -0.04661388091212171,
+        -0.043404106602812575,
+        0.1057040991333702,
+        0.09583812077210041,
+        0.028467750485492438,
+        -0.020461219821669374,
+        0.08228677358802372,
+        0.06975608619134732,
+        0.05077840165185954,
+        0.004839177926292848,
+        -0.02745933064371986,
+        -0.026164048733885892,
+        -0.02637822490981634,
+        0.019650021516167016,
+        0.01062124177878232,
+        0.01614581165764495,
+        0.040294651410003546,
+        0.04275443016890357,
+        -0.03713611689488694,
+        -0.03960050750086985,
+        0.012562901787549485,
+        0.03640987103881699,
+        -0.05073514092516085,
+        -0.060428386994561656,
+        -0.0035161718717038326,
+        0.004824690542367449,
+        -0.008148691057360935,
+        -0.009195737026055362,
+        0.0004672860228955855,
+        -0.02444450013796029,
+        0.032410558472049544,
+        0.024214135040359963,
+        -0.018327256606657016,
+        -0.00834832853759071,
+        -0.03031429168000166,
+        -0.06618956159090139,
+        -0.011310383132379087,
+        0.0038831405130972385,
+        -0.027168816291439413,
+        -0.03903052019400066,
+        0.0166176271791727,
+        0.012426005737381729,
+        -0.023750332336632596,
+        -0.014449696253112432,
+        0.021788072588419638,
+        -0.07224294806546805,
+        -0.01943635015545553,
+        -0.0788754239177667,
+        -0.016235985421959143,
+        -0.03361462498105361,
+        -0.01547718282062327,
+        -0.03486495190916461,
+        -0.0013921961128406934,
+        0.022639969657636705,
+        -0.007618694494080813,
+        -6.496855597948326e-05,
+        0.020112084992888413,
+        0.017495160820089506,
+        0.025912320712963677,
+        0.024442689810109997,
+        -0.019764314832459107
+      ],
+      "sample_kind": "fitted epoch samples",
+      "times_elapsed_s": [
+        0.0,
+        0.8695652173913043,
+        1.7391304347826086,
+        2.608695652173913,
+        3.4782608695652173,
+        4.3478260869565215,
+        5.217391304347826,
+        6.08695652173913,
+        6.956521739130435,
+        7.826086956521739,
+        8.695652173913043,
+        9.565217391304348,
+        10.434782608695652,
+        11.304347826086957,
+        12.17391304347826,
+        13.043478260869565,
+        13.91304347826087,
+        14.782608695652174,
+        15.652173913043478,
+        16.52173913043478,
+        17.391304347826086,
+        18.26086956521739,
+        19.130434782608695,
+        20.0
+      ],
+      "truth": {
+        "beacons": [
+          [
+            0.0,
+            0.0,
+            3.0
+          ],
+          [
+            10.0,
+            0.0,
+            3.0
+          ],
+          [
+            1.0,
+            8.0,
+            3.0
+          ],
+          [
+            11.0,
+            9.0,
+            3.0
+          ]
+        ],
+        "times_s": [
+          0.0,
+          0.8695652173913043,
+          1.7391304347826086,
+          2.608695652173913,
+          3.4782608695652173,
+          4.3478260869565215,
+          5.217391304347826,
+          6.08695652173913,
+          6.956521739130435,
+          7.826086956521739,
+          8.695652173913043,
+          9.565217391304348,
+          10.434782608695652,
+          11.304347826086957,
+          12.17391304347826,
+          13.043478260869565,
+          13.91304347826087,
+          14.782608695652174,
+          15.652173913043478,
+          16.52173913043478,
+          17.391304347826086,
+          18.26086956521739,
+          19.130434782608695,
+          20.0
+        ],
+        "trajectory": [
+          [
+            1.5,
+            1.2000000000000002,
+            0.0
+          ],
+          [
+            2.5956521739130434,
+            1.2000000000000002,
+            0.0
+          ],
+          [
+            3.691304347826087,
+            1.2000000000000002,
+            0.0
+          ],
+          [
+            4.786956521739131,
+            1.2000000000000002,
+            0.0
+          ],
+          [
+            5.882608695652174,
+            1.2000000000000002,
+            0.0
+          ],
+          [
+            6.978260869565218,
+            1.2000000000000002,
+            0.0
+          ],
+          [
+            8.073913043478262,
+            1.2000000000000002,
+            0.0
+          ],
+          [
+            8.5,
+            1.8695652173913055,
+            0.0
+          ],
+          [
+            8.5,
+            2.965217391304349,
+            0.0
+          ],
+          [
+            8.5,
+            4.060869565217392,
+            0.0
+          ],
+          [
+            8.5,
+            5.156521739130436,
+            0.0
+          ],
+          [
+            8.5,
+            6.252173913043479,
+            0.0
+          ],
+          [
+            7.952173913043476,
+            6.8,
+            0.0
+          ],
+          [
+            6.856521739130432,
+            6.8,
+            0.0
+          ],
+          [
+            5.760869565217389,
+            6.8,
+            0.0
+          ],
+          [
+            4.665217391304348,
+            6.8,
+            0.0
+          ],
+          [
+            3.569565217391303,
+            6.8,
+            0.0
+          ],
+          [
+            2.473913043478259,
+            6.8,
+            0.0
+          ],
+          [
+            1.5,
+            6.678260869565217,
+            0.0
+          ],
+          [
+            1.5,
+            5.582608695652173,
+            0.0
+          ],
+          [
+            1.5,
+            4.486956521739131,
+            0.0
+          ],
+          [
+            1.5,
+            3.3913043478260865,
+            0.0
+          ],
+          [
+            1.5,
+            2.2956521739130453,
+            0.0
+          ],
+          [
+            1.5,
+            1.2000000000000002,
+            0.0
+          ]
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,8 @@
+{
+  "artifacts_reopened_without_solving_or_regeneration": 7,
+  "full_path_and_benchmark_runs_validated": 10,
+  "prior_evidence_and_runs_unchanged": true,
+  "m2_roadmap_checked": true,
+  "browser_circle_configuration_verified": true,
+  "final_live_port": 5051
+}

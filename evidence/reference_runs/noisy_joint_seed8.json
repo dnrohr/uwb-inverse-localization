@@ -1,0 +1,4815 @@
+{
+  "diagnostics": {
+    "acceptance_geometry_tolerance_m": 1e-05,
+    "acceptance_max_range_residual_m": 1e-07,
+    "ambiguity": "Full Jacobian rank is local only and does not prove global uniqueness. In joint mode, d>0 fixes x direction, beacon 2 y>0 selects the planar reflection, and h>0 selects beacons above the fixed tag plane. These conventions select branches rather than supply new measurements.",
+    "distinct_low_residual_solution_count": 0,
+    "distinct_solution_count": 1,
+    "failure_count": 0,
+    "geometric_recovery": false,
+    "geometric_recovery_count": 0,
+    "low_residual_max_abs_threshold_m": 1e-07,
+    "range_recovery_count": 0,
+    "solution_grouping": "Raw canonical geometry RMS over trajectory and beacon xyz, all finite starts",
+    "solution_grouping_rms_threshold_m": 0.001,
+    "start_recovery_outcomes": [
+      {
+        "classification": "converged_geometry_inaccurate",
+        "geometric_recovery": false,
+        "index": 0,
+        "optimizer_converged": true,
+        "range_recovery": false
+      },
+      {
+        "classification": "converged_geometry_inaccurate",
+        "geometric_recovery": false,
+        "index": 1,
+        "optimizer_converged": true,
+        "range_recovery": false
+      },
+      {
+        "classification": "converged_geometry_inaccurate",
+        "geometric_recovery": false,
+        "index": 2,
+        "optimizer_converged": true,
+        "range_recovery": false
+      }
+    ],
+    "surveyed_map_source": null,
+    "truth_jacobian": {
+      "absolute_tolerance": 1.0250535494860645e-05,
+      "condition_number": 41.43545449675126,
+      "full_column_rank": true,
+      "interpretation": "Local measurement rank only; full rank does not prove global uniqueness",
+      "measurement_count": 128,
+      "parameter_count": 70,
+      "parameter_scale_m": 7.941567511142836,
+      "rank": 70,
+      "relative_tolerance": 1e-08,
+      "scaling": "J of normalized range residuals with respect to theta / parameter_scale_m; all parameters in metres",
+      "singular_values": [
+        1025.0535494860644,
+        764.0940547389998,
+        663.3650847365101,
+        415.5590238233408,
+        372.3593576000006,
+        303.93617626688797,
+        226.87593037176512,
+        226.43194824774258,
+        225.59990976655249,
+        224.58779688654127,
+        223.45969393181255,
+        223.11771356794063,
+        222.7444057617307,
+        222.53774959986129,
+        221.77293322290723,
+        221.1163389616609,
+        220.48289530786442,
+        220.30032915107205,
+        219.89111255989337,
+        219.1844385209204,
+        218.0186171777311,
+        217.38154895898472,
+        216.20847319108074,
+        214.38245561519764,
+        213.25104811305215,
+        212.60823690745917,
+        211.61700391919115,
+        210.12967548388195,
+        209.29656667374786,
+        207.39945090590246,
+        206.5993254549191,
+        205.6351208754369,
+        203.54096552706065,
+        200.62394294970264,
+        198.8194677113485,
+        198.02779694949393,
+        197.5599559429864,
+        194.80894830576509,
+        194.19464684539193,
+        193.1058189939917,
+        190.69177323613602,
+        188.0846519499494,
+        187.76335960969524,
+        184.84106122719666,
+        184.38817846015675,
+        181.74305654062306,
+        181.39656362455372,
+        181.20809709361652,
+        181.10688073602734,
+        180.91761667347336,
+        180.73703719212673,
+        180.23602773481542,
+        179.96848587594724,
+        179.76086174914178,
+        179.1844801582681,
+        178.8637345591968,
+        178.0344419970754,
+        177.52753511839836,
+        177.02888715833913,
+        175.94517138514593,
+        174.49717346277492,
+        173.13814734487298,
+        172.60436833627628,
+        169.15879994810797,
+        165.05463401357864,
+        161.9565329095889,
+        135.74373644358286,
+        103.74876878270591,
+        39.52231097992164,
+        24.738561744663222
+      ]
+    },
+    "warnings": [],
+    "weak_condition_threshold": 1000.0
+  },
+  "experiment": {
+    "config": {
+      "assumed_std_m": [
+        0.05,
+        0.05,
+        0.05,
+        0.05
+      ],
+      "duration_s": 20.0,
+      "noise_std_m": [
+        0.05,
+        0.05,
+        0.05,
+        0.05
+      ],
+      "samples": 32,
+      "scenario": "informative",
+      "seed": 8
+    },
+    "coordinate_convention": "Right-handed Cartesian frame in metres. The planar tag trajectory is z=0. For the informative map, beacon b0=(0,0,h), b1=(d,0,h), b2 has positive y, and all four beacons share height h>0. Beacon IDs are zero-based.",
+    "estimator_input": {
+      "observations": [
+        {
+          "actual_time_s": 0.0,
+          "assumed_time_s": 0.0,
+          "beacon_id": 0,
+          "epoch": 0,
+          "range_m": 3.475389306186531,
+          "sigma_m": 0.05
+        },
+        {
+          "actual_time_s": 0.0,
+          "assumed_time_s": 0.0,
+          "beacon_id": 1,
+          "epoch": 0,
+          "range_m": 9.026572063388336,
+          "sigma_m": 0.05
+        },
+        {
+          "actual_time_s": 0.0,
+          "assumed_time_s": 0.0,
+          "beacon_id": 2,
+          "epoch": 0,
+          "range_m": 7.381105691157228,
+          "sigma_m": 0.05
+        },
+        {
+          "actual_time_s": 0.0,
+          "assumed_time_s": 0.0,
+          "beacon_id": 3,
+          "epoch": 0,
+          "range_m": 12.635086846335733,
+          "sigma_m": 0.05
+        },
+        {
+          "actual_time_s": 0.6451612903225806,
+          "assumed_time_s": 0.6451612903225806,
+          "beacon_id": 0,
+          "epoch": 1,
+          "range_m": 3.85797398774766,
+          "sigma_m": 0.05
+        },
+        {
+          "actual_time_s": 0.6451612903225806,
+          "assumed_time_s": 0.6451612903225806,
+          "beacon_id": 1,
+          "epoch": 1,
+          "range_m": 8.329107581466188,
+          "sigma_m": 0.05
+        },
+        {
+          "actual_time_s": 0.6451612903225806,
+          "assumed_time_s": 0.6451612903225806,
+          "beacon_id": 2,
+          "epoch": 1,
+          "range_m": 7.499569550557662,
+          "sigma_m": 0.05
+        },
+        {
+          "actual_time_s": 0.6451612903225806,
+          "assumed_time_s": 0.6451612903225806,
+          "beacon_id": 3,
+          "epoch": 1,
+          "range_m": 12.098959347481694,
+          "sigma_m": 0.05
+        },
+        {
+          "actual_time_s": 1.2903225806451613,
+          "assumed_time_s": 1.2903225806451613,
+          "beacon_id": 0,
+          "epoch": 2,
+          "range_m": 4.543469790052347,
+          "sigma_m": 0.05
+        },
+        {
+          "actual_time_s": 1.2903225806451613,
+          "assumed_time_s": 1.2903225806451613,
+          "beacon_id": 1,
+          "epoch": 2,
+          "range_m": 7.6653049102604065,
+          "sigma_m": 0.05
+        },
+        {
+          "actual_time_s": 1.2903225806451613,
+          "assumed_time_s": 1.2903225806451613,
+          "beacon_id": 2,
+          "epoch": 2,
+          "range_m": 7.768771494744239,
+          "sigma_m": 0.05
+        },
+        {
+          "actual_time_s": 1.2903225806451613,
+          "assumed_time_s": 1.2903225806451613,
+          "beacon_id": 3,
+          "epoch": 2,
+          "range_m": 11.479635915471635,
+          "sigma_m": 0.05
+        },
+        {
+          "actual_time_s": 1.935483870967742,
+          "assumed_time_s": 1.935483870967742,
+          "beacon_id": 0,
+          "epoch": 3,
+          "range_m": 5.137440987171604,
+          "sigma_m": 0.05
+        },
+        {
+          "actual_time_s": 1.935483870967742,
+          "assumed_time_s": 1.935483870967742,
+          "beacon_id": 1,
+          "epoch": 3,
+          "range_m": 6.943988666434823,
+          "sigma_m": 0.05
+        },
+        {
+          "actual_time_s": 1.935483870967742,
+          "assumed_time_s": 1.935483870967742,
+          "beacon_id": 2,
+          "epoch": 3,
+          "range_m": 7.959567427175065,
+          "sigma_m": 0.05
+        },
+        {
+          "actual_time_s": 1.935483870967742,
+          "assumed_time_s": 1.935483870967742,
+          "beacon_id": 3,
+          "epoch": 3,
+          "range_m": 10.971350296154261,
+          "sigma_m": 0.05
+        },
+        {
+          "actual_time_s": 2.5806451612903225,
+          "assumed_time_s": 2.5806451612903225,
+          "beacon_id": 0,
+          "epoch": 4,
+          "range_m": 5.743980228656592,
+          "sigma_m": 0.05
+        },
+        {
+          "actual_time_s": 2.5806451612903225,
+          "assumed_time_s": 2.5806451612903225,
+          "beacon_id": 1,
+          "epoch": 4,
+          "range_m": 6.235244066712495,
+          "sigma_m": 0.05
+        },
+        {
+          "actual_time_s": 2.5806451612903225,
+          "assumed_time_s": 2.5806451612903225,
+          "beacon_id": 2,
+          "epoch": 4,
+          "range_m": 8.283694233088042,
+          "sigma_m": 0.05
+        },
+        {
+          "actual_time_s": 2.5806451612903225,
+          "assumed_time_s": 2.5806451612903225,
+          "beacon_id": 3,
+          "epoch": 4,
+          "range_m": 10.419592827755487,
+          "sigma_m": 0.05
+        },
+        {
+          "actual_time_s": 3.225806451612903,
+          "assumed_time_s": 3.225806451612903,
+          "beacon_id": 0,
+          "epoch": 5,
+          "range_m": 6.452698481730071,
+          "sigma_m": 0.05
+        },
+        {
+          "actual_time_s": 3.225806451612903,
+          "assumed_time_s": 3.225806451612903,
+          "beacon_id": 1,
+          "epoch": 5,
+          "range_m": 5.500483956491064,
+          "sigma_m": 0.05
+        },
+        {
+          "actual_time_s": 3.225806451612903,
+          "assumed_time_s": 3.225806451612903,
+          "beacon_id": 2,
+          "epoch": 5,
+          "range_m": 8.640114937613005,
+          "sigma_m": 0.05
+        },
+        {
+          "actual_time_s": 3.225806451612903,
+          "assumed_time_s": 3.225806451612903,
+          "beacon_id": 3,
+          "epoch": 5,
+          "range_m": 9.987184503527445,
+          "sigma_m": 0.05
+        },
+        {
+          "actual_time_s": 3.870967741935484,
+          "assumed_time_s": 3.870967741935484,
+          "beacon_id": 0,
+          "epoch": 6,
+          "range_m": 7.143304278190723,
+          "sigma_m": 0.05
+        },
+        {
+          "actual_time_s": 3.870967741935484,
+          "assumed_time_s": 3.870967741935484,
+          "beacon_id": 1,
+          "epoch": 6,
+          "range_m": 4.842195394652206,
+          "sigma_m": 0.05
+        },
+        {
+          "actual_time_s": 3.870967741935484,
+          "assumed_time_s": 3.870967741935484,
+          "beacon_id": 2,
+          "epoch": 6,
+          "range_m": 9.165927680329125,
+          "sigma_m": 0.05
+        },
+        {
+          "actual_time_s": 3.870967741935484,
+          "assumed_time_s": 3.870967741935484,
+          "beacon_id": 3,
+          "epoch": 6,
+          "range_m": 9.561249722967828,
+          "sigma_m": 0.05
+        },
+        {
+          "actual_time_s": 4.516129032258064,
+          "assumed_time_s": 4.516129032258064,
+          "beacon_id": 0,
+          "epoch": 7,
+          "range_m": 7.792119948634958,
+          "sigma_m": 0.05
+        },
+        {
+          "actual_time_s": 4.516129032258064,
+          "assumed_time_s": 4.516129032258064,
+          "beacon_id": 1,
+          "epoch": 7,
+          "range_m": 4.3594789075655465,
+          "sigma_m": 0.05
+        },
+        {
+          "actual_time_s": 4.516129032258064,
+          "assumed_time_s": 4.516129032258064,
+          "beacon_id": 2,
+          "epoch": 7,
+          "range_m": 9.629574588908977,
+          "sigma_m": 0.05
+        },
+        {
+          "actual_time_s": 4.516129032258064,
+          "assumed_time_s": 4.516129032258064,
+          "beacon_id": 3,
+          "epoch": 7,
+          "range_m": 9.072355488834233,
+          "sigma_m": 0.05
+        },
+        {
+          "actual_time_s": 5.161290322580645,
+          "assumed_time_s": 5.161290322580645,
+          "beacon_id": 0,
+          "epoch": 8,
+          "range_m": 8.626754263805577,
+          "sigma_m": 0.05
+        },
+        {
+          "actual_time_s": 5.161290322580645,
+          "assumed_time_s": 5.161290322580645,
+          "beacon_id": 1,
+          "epoch": 8,
+          "range_m": 3.8711772183606987,
+          "sigma_m": 0.05
+        },
+        {
+          "actual_time_s": 5.161290322580645,
+          "assumed_time_s": 5.161290322580645,
+          "beacon_id": 2,
+          "epoch": 8,
+          "range_m": 10.186081099898889,
+          "sigma_m": 0.05
+        },
+        {
+          "actual_time_s": 5.161290322580645,
+          "assumed_time_s": 5.161290322580645,
+          "beacon_id": 3,
+          "epoch": 8,
+          "range_m": 8.955663553356787,
+          "sigma_m": 0.05
+        },
+        {
+          "actual_time_s": 5.806451612903226,
+          "assumed_time_s": 5.806451612903226,
+          "beacon_id": 0,
+          "epoch": 9,
+          "range_m": 9.218342012388275,
+          "sigma_m": 0.05
+        },
+        {
+          "actual_time_s": 5.806451612903226,
+          "assumed_time_s": 5.806451612903226,
+          "beacon_id": 1,
+          "epoch": 9,
+          "range_m": 3.6377121163921613,
+          "sigma_m": 0.05
+        },
+        {
+          "actual_time_s": 5.806451612903226,
+          "assumed_time_s": 5.806451612903226,
+          "beacon_id": 2,
+          "epoch": 9,
+          "range_m": 10.234860715014024,
+          "sigma_m": 0.05
+        },
+        {
+          "actual_time_s": 5.806451612903226,
+          "assumed_time_s": 5.806451612903226,
+          "beacon_id": 3,
+          "epoch": 9,
+          "range_m": 8.37970546623221,
+          "sigma_m": 0.05
+        },
+        {
+          "actual_time_s": 6.451612903225806,
+          "assumed_time_s": 6.451612903225806,
+          "beacon_id": 0,
+          "epoch": 10,
+          "range_m": 9.369279841561843,
+          "sigma_m": 0.05
+        },
+        {
+          "actual_time_s": 6.451612903225806,
+          "assumed_time_s": 6.451612903225806,
+          "beacon_id": 1,
+          "epoch": 10,
+          "range_m": 4.042590251860681,
+          "sigma_m": 0.05
+        },
+        {
+          "actual_time_s": 6.451612903225806,
+          "assumed_time_s": 6.451612903225806,
+          "beacon_id": 2,
+          "epoch": 10,
+          "range_m": 9.794110249267867,
+          "sigma_m": 0.05
+        },
+        {
+          "actual_time_s": 6.451612903225806,
+          "assumed_time_s": 6.451612903225806,
+          "beacon_id": 3,
+          "epoch": 10,
+          "range_m": 7.663044801160075,
+          "sigma_m": 0.05
+        },
+        {
+          "actual_time_s": 7.096774193548387,
+          "assumed_time_s": 7.096774193548387,
+          "beacon_id": 0,
+          "epoch": 11,
+          "range_m": 9.545780771966733,
+          "sigma_m": 0.05
+        },
+        {
+          "actual_time_s": 7.096774193548387,
+          "assumed_time_s": 7.096774193548387,
+          "beacon_id": 1,
+          "epoch": 11,
+          "range_m": 4.594536020511942,
+          "sigma_m": 0.05
+        },
+        {
+          "actual_time_s": 7.096774193548387,
+          "assumed_time_s": 7.096774193548387,
+          "beacon_id": 2,
+          "epoch": 11,
+          "range_m": 9.469671991024903,
+          "sigma_m": 0.05
+        },
+        {
+          "actual_time_s": 7.096774193548387,
+          "assumed_time_s": 7.096774193548387,
+          "beacon_id": 3,
+          "epoch": 11,
+          "range_m": 7.08983032042538,
+          "sigma_m": 0.05
+        },
+        {
+          "actual_time_s": 7.741935483870968,
+          "assumed_time_s": 7.741935483870968,
+          "beacon_id": 0,
+          "epoch": 12,
+          "range_m": 9.796697420029476,
+          "sigma_m": 0.05
+        },
+        {
+          "actual_time_s": 7.741935483870968,
+          "assumed_time_s": 7.741935483870968,
+          "beacon_id": 1,
+          "epoch": 12,
+          "range_m": 5.177791170540468,
+          "sigma_m": 0.05
+        },
+        {
+          "actual_time_s": 7.741935483870968,
+          "assumed_time_s": 7.741935483870968,
+          "beacon_id": 2,
+          "epoch": 12,
+          "range_m": 8.977312890465178,
+          "sigma_m": 0.05
+        },
+        {
+          "actual_time_s": 7.741935483870968,
+          "assumed_time_s": 7.741935483870968,
+          "beacon_id": 3,
+          "epoch": 12,
+          "range_m": 6.3835359475479985,
+          "sigma_m": 0.05
+        },
+        {
+          "actual_time_s": 8.387096774193548,
+          "assumed_time_s": 8.387096774193548,
+          "beacon_id": 0,
+          "epoch": 13,
+          "range_m": 10.139594849054397,
+          "sigma_m": 0.05
+        },
+        {
+          "actual_time_s": 8.387096774193548,
+          "assumed_time_s": 8.387096774193548,
+          "beacon_id": 1,
+          "epoch": 13,
+          "range_m": 5.769341002460041,
+          "sigma_m": 0.05
+        },
+        {
+          "actual_time_s": 8.387096774193548,
+          "assumed_time_s": 8.387096774193548,
+          "beacon_id": 2,
+          "epoch": 13,
+          "range_m": 8.806601671998463,
+          "sigma_m": 0.05
+        },
+        {
+          "actual_time_s": 8.387096774193548,
+          "assumed_time_s": 8.387096774193548,
+          "beacon_id": 3,
+          "epoch": 13,
+          "range_m": 5.760265841332776,
+          "sigma_m": 0.05
+        },
+        {
+          "actual_time_s": 9.032258064516128,
+          "assumed_time_s": 9.032258064516128,
+          "beacon_id": 0,
+          "epoch": 14,
+          "range_m": 10.633743737440236,
+          "sigma_m": 0.05
+        },
+        {
+          "actual_time_s": 9.032258064516128,
+          "assumed_time_s": 9.032258064516128,
+          "beacon_id": 1,
+          "epoch": 14,
+          "range_m": 6.637941734696558,
+          "sigma_m": 0.05
+        },
+        {
+          "actual_time_s": 9.032258064516128,
+          "assumed_time_s": 9.032258064516128,
+          "beacon_id": 2,
+          "epoch": 14,
+          "range_m": 8.471567899405294,
+          "sigma_m": 0.05
+        },
+        {
+          "actual_time_s": 9.032258064516128,
+          "assumed_time_s": 9.032258064516128,
+          "beacon_id": 3,
+          "epoch": 14,
+          "range_m": 5.184860036698111,
+          "sigma_m": 0.05
+        },
+        {
+          "actual_time_s": 9.67741935483871,
+          "assumed_time_s": 9.67741935483871,
+          "beacon_id": 0,
+          "epoch": 15,
+          "range_m": 11.053858895885242,
+          "sigma_m": 0.05
+        },
+        {
+          "actual_time_s": 9.67741935483871,
+          "assumed_time_s": 9.67741935483871,
+          "beacon_id": 1,
+          "epoch": 15,
+          "range_m": 7.182710372136503,
+          "sigma_m": 0.05
+        },
+        {
+          "actual_time_s": 9.67741935483871,
+          "assumed_time_s": 9.67741935483871,
+          "beacon_id": 2,
+          "epoch": 15,
+          "range_m": 8.290655653278353,
+          "sigma_m": 0.05
+        },
+        {
+          "actual_time_s": 9.67741935483871,
+          "assumed_time_s": 9.67741935483871,
+          "beacon_id": 3,
+          "epoch": 15,
+          "range_m": 4.678546236843908,
+          "sigma_m": 0.05
+        },
+        {
+          "actual_time_s": 10.32258064516129,
+          "assumed_time_s": 10.32258064516129,
+          "beacon_id": 0,
+          "epoch": 16,
+          "range_m": 11.076564165251696,
+          "sigma_m": 0.05
+        },
+        {
+          "actual_time_s": 10.32258064516129,
+          "assumed_time_s": 10.32258064516129,
+          "beacon_id": 1,
+          "epoch": 16,
+          "range_m": 7.655737881070451,
+          "sigma_m": 0.05
+        },
+        {
+          "actual_time_s": 10.32258064516129,
+          "assumed_time_s": 10.32258064516129,
+          "beacon_id": 2,
+          "epoch": 16,
+          "range_m": 7.777088171355639,
+          "sigma_m": 0.05
+        },
+        {
+          "actual_time_s": 10.32258064516129,
+          "assumed_time_s": 10.32258064516129,
+          "beacon_id": 3,
+          "epoch": 16,
+          "range_m": 4.699990881791023,
+          "sigma_m": 0.05
+        },
+        {
+          "actual_time_s": 10.96774193548387,
+          "assumed_time_s": 10.96774193548387,
+          "beacon_id": 0,
+          "epoch": 17,
+          "range_m": 10.435504701494253,
+          "sigma_m": 0.05
+        },
+        {
+          "actual_time_s": 10.96774193548387,
+          "assumed_time_s": 10.96774193548387,
+          "beacon_id": 1,
+          "epoch": 17,
+          "range_m": 7.923567595110607,
+          "sigma_m": 0.05
+        },
+        {
+          "actual_time_s": 10.96774193548387,
+          "assumed_time_s": 10.96774193548387,
+          "beacon_id": 2,
+          "epoch": 17,
+          "range_m": 7.131609468351836,
+          "sigma_m": 0.05
+        },
+        {
+          "actual_time_s": 10.96774193548387,
+          "assumed_time_s": 10.96774193548387,
+          "beacon_id": 3,
+          "epoch": 17,
+          "range_m": 5.23290286971784,
+          "sigma_m": 0.05
+        },
+        {
+          "actual_time_s": 11.612903225806452,
+          "assumed_time_s": 11.612903225806452,
+          "beacon_id": 0,
+          "epoch": 18,
+          "range_m": 9.867008329150718,
+          "sigma_m": 0.05
+        },
+        {
+          "actual_time_s": 11.612903225806452,
+          "assumed_time_s": 11.612903225806452,
+          "beacon_id": 1,
+          "epoch": 18,
+          "range_m": 8.325922757631636,
+          "sigma_m": 0.05
+        },
+        {
+          "actual_time_s": 11.612903225806452,
+          "assumed_time_s": 11.612903225806452,
+          "beacon_id": 2,
+          "epoch": 18,
+          "range_m": 6.339059711656081,
+          "sigma_m": 0.05
+        },
+        {
+          "actual_time_s": 11.612903225806452,
+          "assumed_time_s": 11.612903225806452,
+          "beacon_id": 3,
+          "epoch": 18,
+          "range_m": 5.89019296676643,
+          "sigma_m": 0.05
+        },
+        {
+          "actual_time_s": 12.258064516129032,
+          "assumed_time_s": 12.258064516129032,
+          "beacon_id": 0,
+          "epoch": 19,
+          "range_m": 9.417609093925039,
+          "sigma_m": 0.05
+        },
+        {
+          "actual_time_s": 12.258064516129032,
+          "assumed_time_s": 12.258064516129032,
+          "beacon_id": 1,
+          "epoch": 19,
+          "range_m": 8.636994366773639,
+          "sigma_m": 0.05
+        },
+        {
+          "actual_time_s": 12.258064516129032,
+          "assumed_time_s": 12.258064516129032,
+          "beacon_id": 2,
+          "epoch": 19,
+          "range_m": 5.634624837830484,
+          "sigma_m": 0.05
+        },
+        {
+          "actual_time_s": 12.258064516129032,
+          "assumed_time_s": 12.258064516129032,
+          "beacon_id": 3,
+          "epoch": 19,
+          "range_m": 6.409236084360481,
+          "sigma_m": 0.05
+        },
+        {
+          "actual_time_s": 12.903225806451612,
+          "assumed_time_s": 12.903225806451612,
+          "beacon_id": 0,
+          "epoch": 20,
+          "range_m": 8.990077520112512,
+          "sigma_m": 0.05
+        },
+        {
+          "actual_time_s": 12.903225806451612,
+          "assumed_time_s": 12.903225806451612,
+          "beacon_id": 1,
+          "epoch": 20,
+          "range_m": 9.068373154817598,
+          "sigma_m": 0.05
+        },
+        {
+          "actual_time_s": 12.903225806451612,
+          "assumed_time_s": 12.903225806451612,
+          "beacon_id": 2,
+          "epoch": 20,
+          "range_m": 5.083033243402326,
+          "sigma_m": 0.05
+        },
+        {
+          "actual_time_s": 12.903225806451612,
+          "assumed_time_s": 12.903225806451612,
+          "beacon_id": 3,
+          "epoch": 20,
+          "range_m": 7.1707488392325756,
+          "sigma_m": 0.05
+        },
+        {
+          "actual_time_s": 13.548387096774194,
+          "assumed_time_s": 13.548387096774194,
+          "beacon_id": 0,
+          "epoch": 21,
+          "range_m": 8.545100624208043,
+          "sigma_m": 0.05
+        },
+        {
+          "actual_time_s": 13.548387096774194,
+          "assumed_time_s": 13.548387096774194,
+          "beacon_id": 1,
+          "epoch": 21,
+          "range_m": 9.559730466775717,
+          "sigma_m": 0.05
+        },
+        {
+          "actual_time_s": 13.548387096774194,
+          "assumed_time_s": 13.548387096774194,
+          "beacon_id": 2,
+          "epoch": 21,
+          "range_m": 4.431376461410855,
+          "sigma_m": 0.05
+        },
+        {
+          "actual_time_s": 13.548387096774194,
+          "assumed_time_s": 13.548387096774194,
+          "beacon_id": 3,
+          "epoch": 21,
+          "range_m": 7.8564527402112985,
+          "sigma_m": 0.05
+        },
+        {
+          "actual_time_s": 14.193548387096774,
+          "assumed_time_s": 14.193548387096774,
+          "beacon_id": 0,
+          "epoch": 22,
+          "range_m": 8.116772401023177,
+          "sigma_m": 0.05
+        },
+        {
+          "actual_time_s": 14.193548387096774,
+          "assumed_time_s": 14.193548387096774,
+          "beacon_id": 1,
+          "epoch": 22,
+          "range_m": 10.038521271597117,
+          "sigma_m": 0.05
+        },
+        {
+          "actual_time_s": 14.193548387096774,
+          "assumed_time_s": 14.193548387096774,
+          "beacon_id": 2,
+          "epoch": 22,
+          "range_m": 3.906925844691759,
+          "sigma_m": 0.05
+        },
+        {
+          "actual_time_s": 14.193548387096774,
+          "assumed_time_s": 14.193548387096774,
+          "beacon_id": 3,
+          "epoch": 22,
+          "range_m": 8.546078365521831,
+          "sigma_m": 0.05
+        },
+        {
+          "actual_time_s": 14.838709677419354,
+          "assumed_time_s": 14.838709677419354,
+          "beacon_id": 0,
+          "epoch": 23,
+          "range_m": 7.786713835843594,
+          "sigma_m": 0.05
+        },
+        {
+          "actual_time_s": 14.838709677419354,
+          "assumed_time_s": 14.838709677419354,
+          "beacon_id": 1,
+          "epoch": 23,
+          "range_m": 10.635833720376104,
+          "sigma_m": 0.05
+        },
+        {
+          "actual_time_s": 14.838709677419354,
+          "assumed_time_s": 14.838709677419354,
+          "beacon_id": 2,
+          "epoch": 23,
+          "range_m": 3.4601068023263646,
+          "sigma_m": 0.05
+        },
+        {
+          "actual_time_s": 14.838709677419354,
+          "assumed_time_s": 14.838709677419354,
+          "beacon_id": 3,
+          "epoch": 23,
+          "range_m": 9.370899666564044,
+          "sigma_m": 0.05
+        },
+        {
+          "actual_time_s": 15.483870967741936,
+          "assumed_time_s": 15.483870967741936,
+          "beacon_id": 0,
+          "epoch": 24,
+          "range_m": 7.633765059084181,
+          "sigma_m": 0.05
+        },
+        {
+          "actual_time_s": 15.483870967741936,
+          "assumed_time_s": 15.483870967741936,
+          "beacon_id": 1,
+          "epoch": 24,
+          "range_m": 11.20797142120746,
+          "sigma_m": 0.05
+        },
+        {
+          "actual_time_s": 15.483870967741936,
+          "assumed_time_s": 15.483870967741936,
+          "beacon_id": 2,
+          "epoch": 24,
+          "range_m": 3.2535430712606113,
+          "sigma_m": 0.05
+        },
+        {
+          "actual_time_s": 15.483870967741936,
+          "assumed_time_s": 15.483870967741936,
+          "beacon_id": 3,
+          "epoch": 24,
+          "range_m": 10.087394313247408,
+          "sigma_m": 0.05
+        },
+        {
+          "actual_time_s": 16.129032258064516,
+          "assumed_time_s": 16.129032258064516,
+          "beacon_id": 0,
+          "epoch": 25,
+          "range_m": 6.988600604651259,
+          "sigma_m": 0.05
+        },
+        {
+          "actual_time_s": 16.129032258064516,
+          "assumed_time_s": 16.129032258064516,
+          "beacon_id": 1,
+          "epoch": 25,
+          "range_m": 10.794568415673943,
+          "sigma_m": 0.05
+        },
+        {
+          "actual_time_s": 16.129032258064516,
+          "assumed_time_s": 16.129032258064516,
+          "beacon_id": 2,
+          "epoch": 25,
+          "range_m": 3.5830764196827083,
+          "sigma_m": 0.05
+        },
+        {
+          "actual_time_s": 16.129032258064516,
+          "assumed_time_s": 16.129032258064516,
+          "beacon_id": 3,
+          "epoch": 25,
+          "range_m": 10.361297205420206,
+          "sigma_m": 0.05
+        },
+        {
+          "actual_time_s": 16.774193548387096,
+          "assumed_time_s": 16.774193548387096,
+          "beacon_id": 0,
+          "epoch": 26,
+          "range_m": 6.249405397668611,
+          "sigma_m": 0.05
+        },
+        {
+          "actual_time_s": 16.774193548387096,
+          "assumed_time_s": 16.774193548387096,
+          "beacon_id": 1,
+          "epoch": 26,
+          "range_m": 10.435157904341569,
+          "sigma_m": 0.05
+        },
+        {
+          "actual_time_s": 16.774193548387096,
+          "assumed_time_s": 16.774193548387096,
+          "beacon_id": 2,
+          "epoch": 26,
+          "range_m": 4.035208025670834,
+          "sigma_m": 0.05
+        },
+        {
+          "actual_time_s": 16.774193548387096,
+          "assumed_time_s": 16.774193548387096,
+          "beacon_id": 3,
+          "epoch": 26,
+          "range_m": 10.741733782487566,
+          "sigma_m": 0.05
+        },
+        {
+          "actual_time_s": 17.419354838709676,
+          "assumed_time_s": 17.419354838709676,
+          "beacon_id": 0,
+          "epoch": 27,
+          "range_m": 5.582645692981603,
+          "sigma_m": 0.05
+        },
+        {
+          "actual_time_s": 17.419354838709676,
+          "assumed_time_s": 17.419354838709676,
+          "beacon_id": 1,
+          "epoch": 27,
+          "range_m": 9.98609943646254,
+          "sigma_m": 0.05
+        },
+        {
+          "actual_time_s": 17.419354838709676,
+          "assumed_time_s": 17.419354838709676,
+          "beacon_id": 2,
+          "epoch": 27,
+          "range_m": 4.628869349769342,
+          "sigma_m": 0.05
+        },
+        {
+          "actual_time_s": 17.419354838709676,
+          "assumed_time_s": 17.419354838709676,
+          "beacon_id": 3,
+          "epoch": 27,
+          "range_m": 10.95649214700103,
+          "sigma_m": 0.05
+        },
+        {
+          "actual_time_s": 18.064516129032256,
+          "assumed_time_s": 18.064516129032256,
+          "beacon_id": 0,
+          "epoch": 28,
+          "range_m": 4.979406736774636,
+          "sigma_m": 0.05
+        },
+        {
+          "actual_time_s": 18.064516129032256,
+          "assumed_time_s": 18.064516129032256,
+          "beacon_id": 1,
+          "epoch": 28,
+          "range_m": 9.65349964119566,
+          "sigma_m": 0.05
+        },
+        {
+          "actual_time_s": 18.064516129032256,
+          "assumed_time_s": 18.064516129032256,
+          "beacon_id": 2,
+          "epoch": 28,
+          "range_m": 5.352601099550651,
+          "sigma_m": 0.05
+        },
+        {
+          "actual_time_s": 18.064516129032256,
+          "assumed_time_s": 18.064516129032256,
+          "beacon_id": 3,
+          "epoch": 28,
+          "range_m": 11.244753708769323,
+          "sigma_m": 0.05
+        },
+        {
+          "actual_time_s": 18.70967741935484,
+          "assumed_time_s": 18.70967741935484,
+          "beacon_id": 0,
+          "epoch": 29,
+          "range_m": 4.346073770469743,
+          "sigma_m": 0.05
+        },
+        {
+          "actual_time_s": 18.70967741935484,
+          "assumed_time_s": 18.70967741935484,
+          "beacon_id": 1,
+          "epoch": 29,
+          "range_m": 9.489092598092428,
+          "sigma_m": 0.05
+        },
+        {
+          "actual_time_s": 18.70967741935484,
+          "assumed_time_s": 18.70967741935484,
+          "beacon_id": 2,
+          "epoch": 29,
+          "range_m": 6.086906147329188,
+          "sigma_m": 0.05
+        },
+        {
+          "actual_time_s": 18.70967741935484,
+          "assumed_time_s": 18.70967741935484,
+          "beacon_id": 3,
+          "epoch": 29,
+          "range_m": 11.716287887098186,
+          "sigma_m": 0.05
+        },
+        {
+          "actual_time_s": 19.35483870967742,
+          "assumed_time_s": 19.35483870967742,
+          "beacon_id": 0,
+          "epoch": 30,
+          "range_m": 3.8962719614363275,
+          "sigma_m": 0.05
+        },
+        {
+          "actual_time_s": 19.35483870967742,
+          "assumed_time_s": 19.35483870967742,
+          "beacon_id": 1,
+          "epoch": 30,
+          "range_m": 9.299291199619955,
+          "sigma_m": 0.05
+        },
+        {
+          "actual_time_s": 19.35483870967742,
+          "assumed_time_s": 19.35483870967742,
+          "beacon_id": 2,
+          "epoch": 30,
+          "range_m": 6.661706542640581,
+          "sigma_m": 0.05
+        },
+        {
+          "actual_time_s": 19.35483870967742,
+          "assumed_time_s": 19.35483870967742,
+          "beacon_id": 3,
+          "epoch": 30,
+          "range_m": 12.18227812580594,
+          "sigma_m": 0.05
+        },
+        {
+          "actual_time_s": 20.0,
+          "assumed_time_s": 20.0,
+          "beacon_id": 0,
+          "epoch": 31,
+          "range_m": 3.573964904719229,
+          "sigma_m": 0.05
+        },
+        {
+          "actual_time_s": 20.0,
+          "assumed_time_s": 20.0,
+          "beacon_id": 1,
+          "epoch": 31,
+          "range_m": 9.14387029105793,
+          "sigma_m": 0.05
+        },
+        {
+          "actual_time_s": 20.0,
+          "assumed_time_s": 20.0,
+          "beacon_id": 2,
+          "epoch": 31,
+          "range_m": 7.46408994845213,
+          "sigma_m": 0.05
+        },
+        {
+          "actual_time_s": 20.0,
+          "assumed_time_s": 20.0,
+          "beacon_id": 3,
+          "epoch": 31,
+          "range_m": 12.639347986179777,
+          "sigma_m": 0.05
+        }
+      ],
+      "times_s": [
+        0.0,
+        0.6451612903225806,
+        1.2903225806451613,
+        1.935483870967742,
+        2.5806451612903225,
+        3.225806451612903,
+        3.870967741935484,
+        4.516129032258064,
+        5.161290322580645,
+        5.806451612903226,
+        6.451612903225806,
+        7.096774193548387,
+        7.741935483870968,
+        8.387096774193548,
+        9.032258064516128,
+        9.67741935483871,
+        10.32258064516129,
+        10.96774193548387,
+        11.612903225806452,
+        12.258064516129032,
+        12.903225806451612,
+        13.548387096774194,
+        14.193548387096774,
+        14.838709677419354,
+        15.483870967741936,
+        16.129032258064516,
+        16.774193548387096,
+        17.419354838709676,
+        18.064516129032256,
+        18.70967741935484,
+        19.35483870967742,
+        20.0
+      ]
+    },
+    "schema_version": "1.0",
+    "software_versions": {
+      "flask": "3.1.3",
+      "numpy": "2.5.4",
+      "plotly": "7.1.0",
+      "python": "3.12.10",
+      "scipy": "1.18.1"
+    },
+    "truth": {
+      "beacons": [
+        [
+          0.0,
+          0.0,
+          3.0
+        ],
+        [
+          10.0,
+          0.0,
+          3.0
+        ],
+        [
+          1.0,
+          8.0,
+          3.0
+        ],
+        [
+          11.0,
+          9.0,
+          3.0
+        ]
+      ],
+      "times_s": [
+        0.0,
+        0.6451612903225806,
+        1.2903225806451613,
+        1.935483870967742,
+        2.5806451612903225,
+        3.225806451612903,
+        3.870967741935484,
+        4.516129032258064,
+        5.161290322580645,
+        5.806451612903226,
+        6.451612903225806,
+        7.096774193548387,
+        7.741935483870968,
+        8.387096774193548,
+        9.032258064516128,
+        9.67741935483871,
+        10.32258064516129,
+        10.96774193548387,
+        11.612903225806452,
+        12.258064516129032,
+        12.903225806451612,
+        13.548387096774194,
+        14.193548387096774,
+        14.838709677419354,
+        15.483870967741936,
+        16.129032258064516,
+        16.774193548387096,
+        17.419354838709676,
+        18.064516129032256,
+        18.70967741935484,
+        19.35483870967742,
+        20.0
+      ],
+      "trajectory": [
+        [
+          1.5,
+          1.2,
+          0.0
+        ],
+        [
+          2.3129032258064517,
+          1.2,
+          0.0
+        ],
+        [
+          3.1258064516129034,
+          1.2,
+          0.0
+        ],
+        [
+          3.938709677419355,
+          1.2,
+          0.0
+        ],
+        [
+          4.751612903225807,
+          1.2,
+          0.0
+        ],
+        [
+          5.564516129032258,
+          1.2,
+          0.0
+        ],
+        [
+          6.37741935483871,
+          1.2,
+          0.0
+        ],
+        [
+          7.190322580645162,
+          1.2,
+          0.0
+        ],
+        [
+          8.003225806451614,
+          1.2,
+          0.0
+        ],
+        [
+          8.5,
+          1.5161290322580647,
+          0.0
+        ],
+        [
+          8.5,
+          2.329032258064516,
+          0.0
+        ],
+        [
+          8.5,
+          3.141935483870969,
+          0.0
+        ],
+        [
+          8.5,
+          3.9548387096774205,
+          0.0
+        ],
+        [
+          8.5,
+          4.767741935483872,
+          0.0
+        ],
+        [
+          8.5,
+          5.580645161290325,
+          0.0
+        ],
+        [
+          8.5,
+          6.393548387096776,
+          0.0
+        ],
+        [
+          8.093548387096773,
+          6.8,
+          0.0
+        ],
+        [
+          7.280645161290321,
+          6.8,
+          0.0
+        ],
+        [
+          6.46774193548387,
+          6.8,
+          0.0
+        ],
+        [
+          5.654838709677417,
+          6.8,
+          0.0
+        ],
+        [
+          4.8419354838709685,
+          6.8,
+          0.0
+        ],
+        [
+          4.029032258064514,
+          6.8,
+          0.0
+        ],
+        [
+          3.2161290322580625,
+          6.8,
+          0.0
+        ],
+        [
+          2.403225806451612,
+          6.8,
+          0.0
+        ],
+        [
+          1.5903225806451609,
+          6.8,
+          0.0
+        ],
+        [
+          1.5,
+          6.077419354838709,
+          0.0
+        ],
+        [
+          1.5,
+          5.264516129032259,
+          0.0
+        ],
+        [
+          1.5,
+          4.451612903225808,
+          0.0
+        ],
+        [
+          1.5,
+          3.638709677419353,
+          0.0
+        ],
+        [
+          1.5,
+          2.8258064516129022,
+          0.0
+        ],
+        [
+          1.5,
+          2.0129032258064514,
+          0.0
+        ],
+        [
+          1.5,
+          1.2,
+          0.0
+        ]
+      ]
+    },
+    "units": "metres, seconds"
+  },
+  "options": {
+    "initialization": "independent",
+    "max_nfev": 2000,
+    "mode": "joint",
+    "seed": 19,
+    "starts": 3
+  },
+  "schema_version": "1.0",
+  "selected_start": 1,
+  "software_versions": {
+    "numpy": "2.5.4",
+    "python": "3.12.10",
+    "scipy": "1.18.1"
+  },
+  "starts": [
+    {
+      "diagnostics": {
+        "evaluation": {
+          "aligned": {
+            "beacon_errors_m": [
+              0.13672875052884764,
+              0.13567376697737027,
+              0.13658200707806967,
+              0.13259104015656148
+            ],
+            "height_error_m": -0.11378808679519903,
+            "map_rmse_m": 0.13540416431399221,
+            "position_errors_m": [
+              0.06749248461479893,
+              0.028090028710751967,
+              0.025652038653593813,
+              0.060252690022678676,
+              0.0857932880611184,
+              0.08032125697829691,
+              0.03191225614143759,
+              0.14803274228114602,
+              0.08970524545927018,
+              0.1237943060529517,
+              0.08851856034097418,
+              0.03970730917345126,
+              0.08987599845770809,
+              0.07696512513296581,
+              0.07572529822638177,
+              0.0491941225888511,
+              0.009570321971660313,
+              0.035768672365916576,
+              0.06212976940126309,
+              0.0695611415161614,
+              0.08154982243546229,
+              0.07324931338930347,
+              0.08348896782207899,
+              0.035128926567991894,
+              0.07375438069473743,
+              0.1035647150473297,
+              0.025136034305940597,
+              0.0759675219034951,
+              0.1285845427886441,
+              0.05548412222110549,
+              0.06088569870773214,
+              0.03520962759224563
+            ],
+            "position_max_error_m": 0.14803274228114602,
+            "position_rmse_m": 0.07473586574846046
+          },
+          "aligned_geometry": {
+            "beacons": [
+              [
+                -0.06190206123906972,
+                -0.043762510657211706,
+                2.886211913204801
+              ],
+              [
+                10.062930150799453,
+                -0.03872258345818586,
+                2.886211913204801
+              ],
+              [
+                0.9408758038425378,
+                8.047023881057353,
+                2.886211913204801
+              ],
+              [
+                11.058096106597077,
+                9.035461213058047,
+                2.886211913204801
+              ]
+            ],
+            "trajectory": [
+              [
+                1.5568099928985704,
+                1.2364398159482626,
+                0.0
+              ],
+              [
+                2.2906285342556387,
+                1.2171139659134582,
+                0.0
+              ],
+              [
+                3.1412087475135673,
+                1.2205133217220874,
+                0.0
+              ],
+              [
+                3.916388292645547,
+                1.2559655468725948,
+                0.0
+              ],
+              [
+                4.716782913835321,
+                1.2784051026107144,
+                0.0
+              ],
+              [
+                5.535059515717946,
+                1.274724910536077,
+                0.0
+              ],
+              [
+                6.358990538103205,
+                1.2260532302366882,
+                0.0
+              ],
+              [
+                7.111424547022859,
+                1.3252549123899344,
+                0.0
+              ],
+              [
+                7.913541298289599,
+                1.2019287453552543,
+                0.0
+              ],
+              [
+                8.482923185797109,
+                1.6387398500018993,
+                0.0
+              ],
+              [
+                8.486157884934173,
+                2.4164618375862266,
+                0.0
+              ],
+              [
+                8.46937641933632,
+                3.1166596711415795,
+                0.0
+              ],
+              [
+                8.410591294947029,
+                3.963991772526584,
+                0.0
+              ],
+              [
+                8.504301344984132,
+                4.690897098844963,
+                0.0
+              ],
+              [
+                8.470663181263198,
+                5.650456849838006,
+                0.0
+              ],
+              [
+                8.51270864525921,
+                6.346024161348612,
+                0.0
+              ],
+              [
+                8.096307725074553,
+                6.809163902911185,
+                0.0
+              ],
+              [
+                7.31343718712933,
+                6.78571430911037,
+                0.0
+              ],
+              [
+                6.420293596700476,
+                6.8401093928220105,
+                0.0
+              ],
+              [
+                5.69622805726607,
+                6.855907730370827,
+                0.0
+              ],
+              [
+                4.9127084184171625,
+                6.840516234708763,
+                0.0
+              ],
+              [
+                4.08648015331518,
+                6.845444485289998,
+                0.0
+              ],
+              [
+                3.2985773952830937,
+                6.786859407072403,
+                0.0
+              ],
+              [
+                2.417334806913705,
+                6.767828932442643,
+                0.0
+              ],
+              [
+                1.663963493150753,
+                6.795910418480091,
+                0.0
+              ],
+              [
+                1.6014656390798474,
+                6.0566738905403925,
+                0.0
+              ],
+              [
+                1.4830895493904028,
+                5.245918901260094,
+                0.0
+              ],
+              [
+                1.5751991354067034,
+                4.440835407308746,
+                0.0
+              ],
+              [
+                1.6275466634490137,
+                3.6224052826992574,
+                0.0
+              ],
+              [
+                1.527454605262597,
+                2.777590972059946,
+                0.0
+              ],
+              [
+                1.4825405182940963,
+                2.0712319049076444,
+                0.0
+              ],
+              [
+                1.5217613763865794,
+                1.2276796021096086,
+                0.0
+              ]
+            ]
+          },
+          "alignment": {
+            "applied": true,
+            "description": "Map-only least-squares planar proper rigid alignment; no scale, reflection, z translation, or 3D tilt",
+            "reflection_allowed": false,
+            "rotation_xy": [
+              [
+                0.9999998761081377,
+                0.0004977787749042749
+              ],
+              [
+                -0.0004977787749040169,
+                0.9999998761081373
+              ]
+            ],
+            "scale": 1.0,
+            "translation_xy_m": [
+              -0.06190206123906972,
+              -0.043762510657211706
+            ]
+          },
+          "raw": {
+            "beacon_errors_m": [
+              0.11378808679519903,
+              0.16891158348583804,
+              0.14541541136934527,
+              0.1840702030025661
+            ],
+            "height_error_m": -0.11378808679519903,
+            "map_rmse_m": 0.15532734243310706,
+            "position_errors_m": [
+              0.14334573538363282,
+              0.07200807363816289,
+              0.10001267384193759,
+              0.10570153931261893,
+              0.12295637438714294,
+              0.12034305384441074,
+              0.07989589800280421,
+              0.1662490428977463,
+              0.04978451282787977,
+              0.16842738517311426,
+              0.13616829071706105,
+              0.03580404417548516,
+              0.054975993685783896,
+              0.0780714773082792,
+              0.11491420412349497,
+              0.07820377789210267,
+              0.08379435569899644,
+              0.1014301131655769,
+              0.0826026041691018,
+              0.14408716701355237,
+              0.15879248056295628,
+              0.15055963153832544,
+              0.15055932269547248,
+              0.0800739805770585,
+              0.14426651958157677,
+              0.16787693662617206,
+              0.05350922822154206,
+              0.14299880027740536,
+              0.19311650140794492,
+              0.09091227459028532,
+              0.11106749088772286,
+              0.10998989021912421
+            ],
+            "position_max_error_m": 0.19311650140794492,
+            "position_rmse_m": 0.11908468824849465
+          }
+        },
+        "geometric_recovery": false,
+        "jacobian": {
+          "absolute_tolerance": 1.0094818415136761e-05,
+          "condition_number": 42.04911056652696,
+          "full_column_rank": true,
+          "interpretation": "Local measurement rank only; full rank does not prove global uniqueness",
+          "measurement_count": 128,
+          "parameter_count": 70,
+          "parameter_scale_m": 7.941567511142836,
+          "rank": 70,
+          "relative_tolerance": 1e-08,
+          "scaling": "J of normalized range residuals with respect to theta / parameter_scale_m; all parameters in metres",
+          "singular_values": [
+            1009.481841513676,
+            771.3925089824475,
+            669.7806093449486,
+            410.6650816129992,
+            372.4423810913872,
+            302.1998775663439,
+            228.75350567542023,
+            228.38128371051937,
+            227.60608395018807,
+            226.5319004144779,
+            225.7797968623463,
+            225.43583326436521,
+            225.04458981106703,
+            224.87877656804488,
+            224.12837749683064,
+            223.41581391966844,
+            222.92236223594549,
+            222.44736614309946,
+            222.05756905857947,
+            221.4722801608121,
+            220.3577269706715,
+            219.8453523232646,
+            218.74811139008,
+            216.55278851462356,
+            215.55819848683075,
+            214.47074563873332,
+            213.62320498448358,
+            212.53252912409505,
+            211.53774438198923,
+            209.43315240176875,
+            208.6391640275887,
+            207.5482099675058,
+            205.87043891890517,
+            202.5835176430783,
+            200.83317041718917,
+            199.86020660218423,
+            199.47095818766437,
+            196.92162730511757,
+            196.37724958851496,
+            194.6385310161501,
+            192.81959317870474,
+            190.21388116661828,
+            189.88866154618538,
+            186.98525925144352,
+            186.41852285058,
+            182.95030900616788,
+            182.73136024915263,
+            182.43719584594496,
+            182.09582138042248,
+            182.02045786119083,
+            181.72955221190924,
+            181.5646615793293,
+            181.30530480653564,
+            181.16733276194748,
+            180.6630491703909,
+            180.0686359547334,
+            179.75542345416457,
+            179.09818020361746,
+            178.411462101767,
+            177.52711146294004,
+            176.28212221272273,
+            174.90821361086637,
+            174.29203115579605,
+            171.042400860779,
+            167.16517730214366,
+            164.23045638719637,
+            136.53536336195847,
+            104.87197341855675,
+            38.61737935144007,
+            24.007210328897425
+          ]
+        },
+        "max_abs_residual_m": 0.07430036347599867,
+        "range_recovery": false,
+        "range_rmse_m": 0.033422194504094574,
+        "recovery_classification": "converged_geometry_inaccurate",
+        "residuals_m": [
+          0.07276034104960072,
+          0.045932469177802915,
+          0.04140395458196444,
+          -0.008551621862562087,
+          0.07323815354327712,
+          0.05635704878493719,
+          0.03698941823996105,
+          -0.0024614858310982868,
+          -0.050304820744892176,
+          -0.060956058614628716,
+          -0.0374759572780059,
+          0.013002389488546484,
+          -0.05351471201114322,
+          -0.031216908537500032,
+          -0.0032889581137700574,
+          -0.023530306403792167,
+          -0.006892422417116961,
+          -0.018626431001433907,
+          -0.013150485597195782,
+          0.007026553292618587,
+          -0.018834387602544744,
+          0.027352511372160215,
+          0.037487065965532196,
+          -0.03413570683215461,
+          0.01005248601695019,
+          0.020833056974751685,
+          0.01077254910492087,
+          -0.0009848001777985615,
+          0.06033460655545042,
+          -0.01183136593684786,
+          -0.05940901729894854,
+          0.05747018343024912,
+          -0.05414306917641554,
+          -0.06469493587132558,
+          0.0023246008077073554,
+          -0.034751320130363084,
+          -0.043644638418072645,
+          0.05559553841417397,
+          0.07430036347599867,
+          -0.032656784054896804,
+          -0.0176889664761255,
+          0.06159791727416675,
+          0.05295681745538339,
+          0.0022169788753769737,
+          -0.0010859057984120568,
+          -0.030977115925685972,
+          -0.018903135115134972,
+          -0.014245502212149042,
+          0.010211230147756822,
+          0.026261588424569382,
+          0.011458990346183029,
+          0.024217420199546424,
+          0.06467198509721861,
+          -0.013574737098670298,
+          -0.043085705070481595,
+          0.0472572309309216,
+          0.022663863197127654,
+          -0.06281466866643282,
+          -0.058990964112732414,
+          -0.03866893161409202,
+          0.022401379571611812,
+          -0.0064720177139134805,
+          -0.01078416679194838,
+          0.01637529512751623,
+          -0.03803135716473882,
+          0.0313533960960779,
+          0.037175870306087155,
+          -0.0033102094422741146,
+          0.02239192584871752,
+          -0.02022212209428087,
+          -0.023117390001567983,
+          0.0029400197219144886,
+          0.019182653186529564,
+          -0.02427535298486916,
+          -0.029473264152102274,
+          -0.0030034043909994423,
+          0.021232524858978863,
+          0.019461810321246276,
+          0.05416694483232298,
+          0.05839884428662234,
+          -0.01955565813989324,
+          -0.003113653953695561,
+          -0.027211428225128564,
+          -0.03535869545351655,
+          -0.0010695358421202172,
+          0.002692343934555197,
+          0.003580018159060394,
+          0.00038004888914500157,
+          0.024507422726960826,
+          -0.0048152305351845115,
+          0.027154798063345975,
+          0.032765374810491465,
+          0.015504607909727852,
+          -0.00030407164752155325,
+          0.02507470115901622,
+          0.017131607676590832,
+          -0.012088281804242484,
+          -0.0014970248862056224,
+          -0.02579464385854946,
+          -0.007933289540041244,
+          -0.03789304358624346,
+          0.02580399317826121,
+          -0.01543136683691726,
+          -0.03505621850282736,
+          -0.028637943051434966,
+          0.046794183677059564,
+          0.023166533389896493,
+          -0.047267890663741596,
+          -0.003941719673020927,
+          0.03578844907226575,
+          0.03344559080356024,
+          -0.031010900438280586,
+          -0.017023993543339166,
+          -0.015565680073887478,
+          -0.02540804707973443,
+          0.0054310236152108615,
+          -0.008296771162511263,
+          -0.048955732592105505,
+          -0.050250029856068856,
+          0.04484669201679736,
+          0.000999323356522197,
+          -0.003850736871246596,
+          -0.003350167901954748,
+          0.004681047388448434,
+          -0.04483269726162753,
+          -0.039719713626679365,
+          -0.03636461352404474,
+          0.018983380110524806
+        ],
+        "residuals_normalized": [
+          1.4552068209920144,
+          0.9186493835560583,
+          0.8280790916392888,
+          -0.17103243725124173,
+          1.4647630708655424,
+          1.1271409756987438,
+          0.7397883647992209,
+          -0.049229716621965736,
+          -1.0060964148978435,
+          -1.2191211722925743,
+          -0.749519145560118,
+          0.2600477897709297,
+          -1.0702942402228643,
+          -0.6243381707500006,
+          -0.06577916227540115,
+          -0.47060612807584334,
+          -0.13784844834233922,
+          -0.37252862002867815,
+          -0.26300971194391565,
+          0.14053106585237174,
+          -0.3766877520508949,
+          0.5470502274432043,
+          0.7497413193106439,
+          -0.6827141366430922,
+          0.2010497203390038,
+          0.4166611394950337,
+          0.2154509820984174,
+          -0.01969600355597123,
+          1.2066921311090084,
+          -0.2366273187369572,
+          -1.1881803459789708,
+          1.1494036686049824,
+          -1.0828613835283107,
+          -1.2938987174265115,
+          0.04649201615414711,
+          -0.6950264026072617,
+          -0.8728927683614529,
+          1.1119107682834795,
+          1.4860072695199733,
+          -0.6531356810979361,
+          -0.35377932952251,
+          1.231958345483335,
+          1.0591363491076677,
+          0.044339577507539474,
+          -0.021718115968241136,
+          -0.6195423185137194,
+          -0.37806270230269945,
+          -0.28491004424298083,
+          0.20422460295513645,
+          0.5252317684913876,
+          0.22917980692366058,
+          0.4843484039909285,
+          1.2934397019443722,
+          -0.27149474197340595,
+          -0.8617141014096319,
+          0.945144618618432,
+          0.4532772639425531,
+          -1.2562933733286563,
+          -1.1798192822546483,
+          -0.7733786322818403,
+          0.44802759143223625,
+          -0.1294403542782696,
+          -0.2156833358389676,
+          0.32750590255032463,
+          -0.7606271432947764,
+          0.627067921921558,
+          0.7435174061217431,
+          -0.06620418884548229,
+          0.4478385169743504,
+          -0.4044424418856174,
+          -0.46234780003135967,
+          0.05880039443828977,
+          0.38365306373059127,
+          -0.48550705969738317,
+          -0.5894652830420455,
+          -0.06006808781998885,
+          0.42465049717957726,
+          0.3892362064249255,
+          1.0833388966464597,
+          1.1679768857324468,
+          -0.3911131627978648,
+          -0.06227307907391122,
+          -0.5442285645025713,
+          -0.7071739090703311,
+          -0.021390716842404345,
+          0.05384687869110394,
+          0.07160036318120788,
+          0.007600977782900031,
+          0.4901484545392165,
+          -0.09630461070369023,
+          0.5430959612669195,
+          0.6553074962098293,
+          0.31009215819455704,
+          -0.006081432950431065,
+          0.5014940231803244,
+          0.34263215353181664,
+          -0.2417656360848497,
+          -0.029940497724112447,
+          -0.5158928771709892,
+          -0.15866579080082488,
+          -0.7578608717248692,
+          0.5160798635652242,
+          -0.3086273367383452,
+          -0.7011243700565473,
+          -0.5727588610286993,
+          0.9358836735411913,
+          0.46333066779792986,
+          -0.9453578132748319,
+          -0.07883439346041854,
+          0.715768981445315,
+          0.6689118160712049,
+          -0.6202180087656117,
+          -0.34047987086678333,
+          -0.31131360147774956,
+          -0.5081609415946886,
+          0.10862047230421723,
+          -0.16593542325022526,
+          -0.9791146518421101,
+          -1.0050005971213771,
+          0.8969338403359473,
+          0.01998646713044394,
+          -0.07701473742493192,
+          -0.06700335803909496,
+          0.09362094776896868,
+          -0.8966539452325506,
+          -0.7943942725335873,
+          -0.7272922704808948,
+          0.3796676022104961
+        ]
+      },
+      "estimate": {
+        "beacons": [
+          [
+            0.0,
+            0.0,
+            2.886211913204801
+          ],
+          [
+            10.124833466422997,
+            0.0,
+            2.886211913204801
+          ],
+          [
+            1.0068051625836687,
+            8.090286227794797,
+            2.886211913204801
+          ],
+          [
+            11.12451623502114,
+            9.073687299808409,
+            2.886211913204801
+          ]
+        ],
+        "trajectory": [
+          [
+            1.6193491111381568,
+            1.2793964074955937,
+            0.0
+          ],
+          [
+            2.3531579415831256,
+            1.259705280560586,
+            0.0
+          ],
+          [
+            3.203739741588258,
+            1.2626812351715493,
+            0.0
+          ],
+          [
+            3.9789368380470034,
+            1.2977475880055078,
+            0.0
+          ],
+          [
+            4.779342530008963,
+            1.3197887215095734,
+            0.0
+          ],
+          [
+            5.597617198592273,
+            1.3157012091664637,
+            0.0
+          ],
+          [
+            6.421523891169793,
+            1.2666193995221715,
+            0.0
+          ],
+          [
+            7.174007187360807,
+            1.3654465237059803,
+            0.0
+          ],
+          [
+            7.976062450103469,
+            1.2417210952566329,
+            0.0
+          ],
+          [
+            8.545661702365733,
+            1.6782487195675209,
+            0.0
+          ],
+          [
+            8.549283534600237,
+            2.45596900063385,
+            0.0
+          ],
+          [
+            8.53285061470125,
+            3.156175100897776,
+            0.0
+          ],
+          [
+            8.474487281530322,
+            4.003536359292431,
+            0.0
+          ],
+          [
+            8.568559158000319,
+            4.730394948679252,
+            0.0
+          ],
+          [
+            8.535398646924177,
+            5.689971325154579,
+            0.0
+          ],
+          [
+            8.577790344355282,
+            6.3855176211504965,
+            0.0
+          ],
+          [
+            8.161620016892476,
+            6.848864580873744,
+            0.0
+          ],
+          [
+            7.378737903228469,
+            6.825804686315429,
+            0.0
+          ],
+          [
+            6.485621500170967,
+            6.880644351210219,
+            0.0
+          ],
+          [
+            5.761563914519499,
+            6.8968031112589205,
+            0.0
+          ],
+          [
+            4.978036711182445,
+            6.881801636949676,
+            0.0
+          ],
+          [
+            4.151811001621957,
+            6.887141165813936,
+            0.0
+          ],
+          [
+            3.363879178796147,
+            6.828948296124192,
+            0.0
+          ],
+          [
+            2.4826272266391967,
+            6.810356487708185,
+            0.0
+          ],
+          [
+            1.7292699845805362,
+            6.838812982516178,
+            0.0
+          ],
+          [
+            1.666404161999364,
+            6.099607656267103,
+            0.0
+          ],
+          [
+            1.5476245103504422,
+            5.288911692537653,
+            0.0
+          ],
+          [
+            1.6393333314798002,
+            4.483782448132713,
+            0.0
+          ],
+          [
+            1.6912734558919051,
+            3.6653263674316783,
+            0.0
+          ],
+          [
+            1.5907608794735084,
+            2.8205619851600856,
+            0.0
+          ],
+          [
+            1.5454951875184082,
+            2.114225362799111,
+            0.0
+          ],
+          [
+            1.584296138319892,
+            1.2706536411996483,
+            0.0
+          ]
+        ]
+      },
+      "index": 0,
+      "initial": {
+        "beacons": [
+          [
+            0.0,
+            0.0,
+            2.382470253342851
+          ],
+          [
+            8.73572426225712,
+            0.0,
+            2.382470253342851
+          ],
+          [
+            0.7941567511142836,
+            7.147410760028552,
+            2.382470253342851
+          ],
+          [
+            9.529881013371403,
+            8.338645886699977,
+            2.382470253342851
+          ]
+        ],
+        "trajectory": [
+          [
+            0.31289545102075494,
+            0.49699633892435674,
+            0.0
+          ],
+          [
+            1.1691134092037834,
+            0.4788524224039597,
+            0.0
+          ],
+          [
+            2.145522329997133,
+            0.5423106726139384,
+            0.0
+          ],
+          [
+            3.0424732467009012,
+            0.5838395458442847,
+            0.0
+          ],
+          [
+            3.9742492497289623,
+            0.6017815229499995,
+            0.0
+          ],
+          [
+            4.918806989591808,
+            0.6162288041399848,
+            0.0
+          ],
+          [
+            5.875226140025709,
+            0.5542735794692726,
+            0.0
+          ],
+          [
+            6.747448446812448,
+            0.617351651528518,
+            0.0
+          ],
+          [
+            7.681131361417189,
+            0.5839772071557326,
+            0.0
+          ],
+          [
+            8.339403570866024,
+            1.1126215686231713,
+            0.0
+          ],
+          [
+            8.339432172088602,
+            1.951669222602174,
+            0.0
+          ],
+          [
+            8.291768072298368,
+            2.6771135627007063,
+            0.0
+          ],
+          [
+            8.225462179291094,
+            3.633512102801049,
+            0.0
+          ],
+          [
+            8.288946161074017,
+            4.379114817818906,
+            0.0
+          ],
+          [
+            8.231517349551694,
+            5.467820610448807,
+            0.0
+          ],
+          [
+            8.29465172240423,
+            6.270618768554493,
+            0.0
+          ],
+          [
+            7.862539563192291,
+            6.845431225882281,
+            0.0
+          ],
+          [
+            6.893100121149271,
+            6.7466159064743065,
+            0.0
+          ],
+          [
+            5.857645186202486,
+            6.800198542366735,
+            0.0
+          ],
+          [
+            5.041854588605323,
+            6.8489465494045545,
+            0.0
+          ],
+          [
+            4.143189223917718,
+            6.7957918064705,
+            0.0
+          ],
+          [
+            3.180515165102688,
+            6.801954970480375,
+            0.0
+          ],
+          [
+            2.252659291070411,
+            6.737338455556786,
+            0.0
+          ],
+          [
+            1.2384310546254982,
+            6.703000882655014,
+            0.0
+          ],
+          [
+            0.3790558660335668,
+            6.7173879298377,
+            0.0
+          ],
+          [
+            0.34165063659973144,
+            5.877839930319405,
+            0.0
+          ],
+          [
+            0.21395343438737877,
+            4.960243693994251,
+            0.0
+          ],
+          [
+            0.31087399465229393,
+            4.071923638434199,
+            0.0
+          ],
+          [
+            0.3696836857724635,
+            3.186153513777747,
+            0.0
+          ],
+          [
+            0.2570335437286854,
+            2.263406127455341,
+            0.0
+          ],
+          [
+            0.21797213062733917,
+            1.4509243479649656,
+            0.0
+          ],
+          [
+            0.2751566804782181,
+            0.528021603343847,
+            0.0
+          ]
+        ]
+      },
+      "solver": {
+        "active_bounds": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "final_objective": 28.596302988019964,
+        "ftol": 1e-12,
+        "gtol": 1e-12,
+        "initial_objective": 13463.40270540845,
+        "iterations": null,
+        "iterations_note": "SciPy least_squares exposes evaluations, not iteration count",
+        "loss": "linear",
+        "max_nfev": 2000,
+        "message": "`ftol` termination condition is satisfied.",
+        "method": "scipy.optimize.least_squares/trf",
+        "nfev": 10,
+        "njev": 10,
+        "optimality": 9.756072048006104e-07,
+        "positive_floor_m": 1e-06,
+        "runtime_s": 0.022764199879020452,
+        "status": 2,
+        "x_scale": "jac",
+        "xtol": 1e-12
+      },
+      "status": "success",
+      "success": true
+    },
+    {
+      "diagnostics": {
+        "evaluation": {
+          "aligned": {
+            "beacon_errors_m": [
+              0.13672875071526988,
+              0.13567376716613702,
+              0.13658200729103043,
+              0.1325910403499571
+            ],
+            "height_error_m": -0.11378808695985043,
+            "map_rmse_m": 0.13540416450938705,
+            "position_errors_m": [
+              0.06749248420248226,
+              0.028090028285852314,
+              0.025652039224048667,
+              0.060252690561185776,
+              0.08579328825809296,
+              0.08032125701730786,
+              0.03191225606938137,
+              0.14803274221108362,
+              0.08970524562879613,
+              0.12379430587131444,
+              0.08851856015964028,
+              0.039707309190487476,
+              0.08987599842269335,
+              0.07696512518335843,
+              0.07572529806622284,
+              0.04919412258097636,
+              0.009570322040786776,
+              0.03576867240706645,
+              0.06212976925394852,
+              0.069561141912332,
+              0.08154982229533478,
+              0.07324931338968332,
+              0.08348896773352796,
+              0.03512892633091225,
+              0.0737543808602688,
+              0.10356471525552152,
+              0.025136034260091228,
+              0.07596752187508443,
+              0.12858454291141022,
+              0.05548412219429171,
+              0.06088569875261044,
+              0.03520962811079755
+            ],
+            "position_max_error_m": 0.14803274221108362,
+            "position_rmse_m": 0.07473586576493771
+          },
+          "aligned_geometry": {
+            "beacons": [
+              [
+                -0.061902061277736564,
+                -0.04376251075684845,
+                2.8862119130401496
+              ],
+              [
+                10.062930150847379,
+                -0.03872258355785204,
+                2.8862119130401496
+              ],
+              [
+                0.9408758037628431,
+                8.047023881177278,
+                2.8862119130401496
+              ],
+              [
+                11.058096106667518,
+                9.035461213137424,
+                2.8862119130401496
+              ]
+            ],
+            "trajectory": [
+              [
+                1.556809992862639,
+                1.236439815240602,
+                0.0
+              ],
+              [
+                2.290628534247515,
+                1.2171139652054752,
+                0.0
+              ],
+              [
+                3.1412087475371586,
+                1.2205133224177314,
+                0.0
+              ],
+              [
+                3.9163882926486466,
+                1.2559655474535896,
+                0.0
+              ],
+              [
+                4.716782913832316,
+                1.2784051028249153,
+                0.0
+              ],
+              [
+                5.535059515719784,
+                1.274724910578734,
+                0.0
+              ],
+              [
+                6.358990538101456,
+                1.2260532301471905,
+                0.0
+              ],
+              [
+                7.11142454699076,
+                1.3252549122869115,
+                0.0
+              ],
+              [
+                7.913541298138657,
+                1.2019287462212336,
+                0.0
+              ],
+              [
+                8.482923185867632,
+                1.638739849828331,
+                0.0
+              ],
+              [
+                8.486157885031172,
+                2.4164618374179914,
+                0.0
+              ],
+              [
+                8.469376419212635,
+                3.1166596712646712,
+                0.0
+              ],
+              [
+                8.410591294981236,
+                3.963991772516909,
+                0.0
+              ],
+              [
+                8.504301344980766,
+                4.690897098794303,
+                0.0
+              ],
+              [
+                8.47066318113398,
+                5.65045684960998,
+                0.0
+              ],
+              [
+                8.512708645230228,
+                6.346024161349013,
+                0.0
+              ],
+              [
+                8.096307725040461,
+                6.809163902993642,
+                0.0
+              ],
+              [
+                7.313437187117558,
+                6.7857143089803165,
+                0.0
+              ],
+              [
+                6.4202935967095565,
+                6.840109392604561,
+                0.0
+              ],
+              [
+                5.696228057192804,
+                6.855907730917988,
+                0.0
+              ],
+              [
+                4.912708418480356,
+                6.840516234316333,
+                0.0
+              ],
+              [
+                4.0864801533346204,
+                6.845444485266035,
+                0.0
+              ],
+              [
+                3.298577395240243,
+                6.786859407366155,
+                0.0
+              ],
+              [
+                2.4173348068746616,
+                6.767828932684397,
+                0.0
+              ],
+              [
+                1.663963493295998,
+                6.795910418110201,
+                0.0
+              ],
+              [
+                1.6014656392448914,
+                6.056673890308292,
+                0.0
+              ],
+              [
+                1.4830895494370067,
+                5.245918901279687,
+                0.0
+              ],
+              [
+                1.5751991353847958,
+                4.440835407356146,
+                0.0
+              ],
+              [
+                1.6275466635756175,
+                3.622405282721464,
+                0.0
+              ],
+              [
+                1.5274546053906077,
+                2.777590972163693,
+                0.0
+              ],
+              [
+                1.482540518331771,
+                2.0712319049657673,
+                0.0
+              ],
+              [
+                1.5217613764720561,
+                1.2276796027020278,
+                0.0
+              ]
+            ]
+          },
+          "alignment": {
+            "applied": true,
+            "description": "Map-only least-squares planar proper rigid alignment; no scale, reflection, z translation, or 3D tilt",
+            "reflection_allowed": false,
+            "rotation_xy": [
+              [
+                0.9999998761081375,
+                0.0004977787748971106
+              ],
+              [
+                -0.0004977787748966633,
+                0.9999998761081372
+              ]
+            ],
+            "scale": 1.0,
+            "translation_xy_m": [
+              -0.061902061277736564,
+              -0.04376251075684845
+            ]
+          },
+          "raw": {
+            "beacon_errors_m": [
+              0.11378808695985043,
+              0.1689115836607531,
+              0.1454154116326078,
+              0.184070203249848
+            ],
+            "height_error_m": -0.11378808695985043,
+            "map_rmse_m": 0.15532734264569067,
+            "position_errors_m": [
+              0.14334573504888432,
+              0.07200807315065656,
+              0.10001267438917666,
+              0.1057015399580617,
+              0.12295637470098729,
+              0.12034305399239373,
+              0.07989589803165974,
+              0.1662490428937811,
+              0.04978451369819402,
+              0.16842738513154765,
+              0.13616829070219172,
+              0.035804044186185734,
+              0.05497599373166741,
+              0.07807147731582151,
+              0.11491420397352434,
+              0.07820377789146436,
+              0.08379435580896963,
+              0.10143011318379722,
+              0.08260260406441672,
+              0.1440871674227093,
+              0.1587924804992545,
+              0.15055963162950037,
+              0.15055932276715273,
+              0.08007398062096113,
+              0.14426651968580095,
+              0.16787693681046686,
+              0.05350922835179795,
+              0.14299880032685341,
+              0.1931165015884556,
+              0.09091227474503748,
+              0.11106749106291265,
+              0.10998989075904475
+            ],
+            "position_max_error_m": 0.1931165015884556,
+            "position_rmse_m": 0.11908468834965717
+          }
+        },
+        "geometric_recovery": false,
+        "jacobian": {
+          "absolute_tolerance": 1.0094818414915316e-05,
+          "condition_number": 42.049110568758074,
+          "full_column_rank": true,
+          "interpretation": "Local measurement rank only; full rank does not prove global uniqueness",
+          "measurement_count": 128,
+          "parameter_count": 70,
+          "parameter_scale_m": 7.941567511142836,
+          "rank": 70,
+          "relative_tolerance": 1e-08,
+          "scaling": "J of normalized range residuals with respect to theta / parameter_scale_m; all parameters in metres",
+          "singular_values": [
+            1009.4818414915316,
+            771.3925089940905,
+            669.7806093519832,
+            410.665081605339,
+            372.4423810882924,
+            302.19987756464326,
+            228.75350567770627,
+            228.38128371227984,
+            227.60608395247175,
+            226.53190041694592,
+            225.7797968645855,
+            225.43583326643122,
+            225.04458981314434,
+            224.87877657006737,
+            224.12837749919763,
+            223.41581392247986,
+            222.92236223777678,
+            222.44736614567898,
+            222.05756906100032,
+            221.4722801630884,
+            220.35772697276514,
+            219.84535232563204,
+            218.74811139251608,
+            216.55278851724145,
+            215.55819849016922,
+            214.47074564090943,
+            213.62320498675666,
+            212.5325291262417,
+            211.53774438448596,
+            209.43315240376347,
+            208.63916402966,
+            207.54820996940325,
+            205.87043892146772,
+            202.58351764570722,
+            200.83317042026948,
+            199.86020660602625,
+            199.47095818998568,
+            196.9216273089738,
+            196.377249591974,
+            194.6385310198596,
+            192.81959318252734,
+            190.21388117189983,
+            189.88866154989046,
+            186.98525925365055,
+            186.41852285450807,
+            182.95030900766236,
+            182.73136025119072,
+            182.43719585023385,
+            182.0958213834626,
+            182.02045786366202,
+            181.72955221423604,
+            181.56466158526445,
+            181.30530480876925,
+            181.16733276446482,
+            180.66304917311592,
+            180.06863595805032,
+            179.75542345908707,
+            179.09818020776956,
+            178.41146210563232,
+            177.52711146701907,
+            176.28212221635687,
+            174.90821361403042,
+            174.29203115865923,
+            171.04240086240324,
+            167.16517730421435,
+            164.23045639034478,
+            136.53536336303102,
+            104.87197341987937,
+            38.61737934925028,
+            24.007210327096978
+          ]
+        },
+        "max_abs_residual_m": 0.07430036372223903,
+        "range_recovery": false,
+        "range_rmse_m": 0.033422194504094546,
+        "recovery_classification": "converged_geometry_inaccurate",
+        "residuals_m": [
+          0.07276034069753434,
+          0.04593246911858806,
+          0.04140395528093066,
+          -0.008551621334026649,
+          0.07323815324555394,
+          0.0563570486891134,
+          0.036989418940005514,
+          -0.002461485304543487,
+          -0.05030482058249941,
+          -0.06095605852327157,
+          -0.037475957818419836,
+          0.013002389060412511,
+          -0.053514711897927114,
+          -0.031216908438907787,
+          -0.003288958536079356,
+          -0.023530306759717234,
+          -0.006892422397918985,
+          -0.018626430967577434,
+          -0.013150485696797887,
+          0.007026553191405327,
+          -0.018834387612009174,
+          0.02735251135775929,
+          0.037487066014238124,
+          -0.03413570681320088,
+          0.010052485985455384,
+          0.020833056917510362,
+          0.010772549254818742,
+          -0.0009848000540753077,
+          0.060334606500341614,
+          -0.011831365992878595,
+          -0.05940901716132352,
+          0.05747018357656408,
+          -0.05414306919598921,
+          -0.0646949355691433,
+          0.002324600211068173,
+          -0.03475132079631926,
+          -0.04364463838173194,
+          0.05559553824227059,
+          0.07430036372223903,
+          -0.032656783887707874,
+          -0.017688966420976726,
+          0.061597917098504595,
+          0.05295681770729033,
+          0.0022169790182839932,
+          -0.0010859058504415486,
+          -0.03097711581587248,
+          -0.018903135202110732,
+          -0.014245502244856212,
+          0.010211230199020704,
+          0.026261588406825354,
+          0.011458990446838513,
+          0.02421742021083606,
+          0.06467198510300776,
+          -0.013574737127074243,
+          -0.043085704993501395,
+          0.04725723097882906,
+          0.022663863011423757,
+          -0.06281466880687514,
+          -0.05899096411441995,
+          -0.03866893140384953,
+          0.0224013795939193,
+          -0.006472017674489905,
+          -0.010784166778405435,
+          0.016375295125438782,
+          -0.0380313570913593,
+          0.03135339621748212,
+          0.03717587029296965,
+          -0.0033102094789967396,
+          0.022391925802379475,
+          -0.020222122159879063,
+          -0.02311738996317292,
+          0.0029400197799391847,
+          0.019182653087733925,
+          -0.02427535312266471,
+          -0.029473264085789985,
+          -0.003003404312693192,
+          0.021232525260325374,
+          0.01946181084266385,
+          0.054166944664708616,
+          0.05839884417464436,
+          -0.01955565836108164,
+          -0.0031136542369569753,
+          -0.02721142808460275,
+          -0.035358695368739035,
+          -0.0010695358085115458,
+          0.002692343957164667,
+          0.003580018161206233,
+          0.0003800489027216969,
+          0.024507422996919104,
+          -0.004815230253718994,
+          0.027154797908951256,
+          0.03276537480138053,
+          0.015504608146746257,
+          -0.0003040714111790521,
+          0.02507470099516773,
+          0.017131607687520756,
+          -0.012088282067471923,
+          -0.0014970251663513068,
+          -0.025794643765529646,
+          -0.007933289557081835,
+          -0.03789304372212232,
+          0.02580399296815372,
+          -0.015431366728412499,
+          -0.03505621854563046,
+          -0.028637943005265676,
+          0.04679418369293131,
+          0.023166533358923047,
+          -0.04726789066565118,
+          -0.003941719635087715,
+          0.03578844914972912,
+          0.033445590765591504,
+          -0.031010900388173113,
+          -0.017023993492820466,
+          -0.015565680145760652,
+          -0.0254080470611866,
+          0.005431023553398973,
+          -0.008296771078709853,
+          -0.04895573265416964,
+          -0.05025002990048666,
+          0.04484669191677426,
+          0.000999323350453274,
+          -0.00385073687709081,
+          -0.0033501679083123292,
+          0.004681047387347093,
+          -0.04483269709124782,
+          -0.039719713617834884,
+          -0.036364614008899565,
+          0.01898337974520814
+        ],
+        "residuals_normalized": [
+          1.4552068139506869,
+          0.9186493823717612,
+          0.8280791056186132,
+          -0.17103242668053298,
+          1.4647630649110788,
+          1.127140973782268,
+          0.7397883788001103,
+          -0.04922970609086974,
+          -1.0060964116499882,
+          -1.2191211704654314,
+          -0.7495191563683967,
+          0.26004778120825023,
+          -1.0702942379585423,
+          -0.6243381687781557,
+          -0.06577917072158712,
+          -0.4706061351943447,
+          -0.1378484479583797,
+          -0.3725286193515487,
+          -0.26300971393595773,
+          0.14053106382810654,
+          -0.37668775224018347,
+          0.5470502271551858,
+          0.7497413202847625,
+          -0.6827141362640177,
+          0.20104971970910768,
+          0.41666113835020724,
+          0.21545098509637484,
+          -0.019696001081506154,
+          1.2066921300068323,
+          -0.2366273198575719,
+          -1.1881803432264704,
+          1.1494036715312816,
+          -1.0828613839197843,
+          -1.293898711382866,
+          0.04649200422136346,
+          -0.6950264159263853,
+          -0.8728927676346387,
+          1.1119107648454118,
+          1.4860072744447805,
+          -0.6531356777541575,
+          -0.3537793284195345,
+          1.231958341970092,
+          1.0591363541458065,
+          0.044339580365679865,
+          -0.021718117008830973,
+          -0.6195423163174496,
+          -0.37806270404221465,
+          -0.28491004489712424,
+          0.2042246039804141,
+          0.5252317681365071,
+          0.22917980893677026,
+          0.4843484042167212,
+          1.2934397020601551,
+          -0.27149474254148487,
+          -0.8617140998700279,
+          0.9451446195765811,
+          0.45327726022847514,
+          -1.2562933761375028,
+          -1.179819282288399,
+          -0.7733786280769905,
+          0.44802759187838603,
+          -0.1294403534897981,
+          -0.2156833355681087,
+          0.32750590250877565,
+          -0.7606271418271859,
+          0.6270679243496424,
+          0.743517405859393,
+          -0.06620418957993479,
+          0.4478385160475895,
+          -0.40444244319758127,
+          -0.46234779926345837,
+          0.058800395598783695,
+          0.3836530617546785,
+          -0.4855070624532942,
+          -0.5894652817157997,
+          -0.06006808625386384,
+          0.4246505052065075,
+          0.38923621685327703,
+          1.0833388932941723,
+          1.1679768834928872,
+          -0.3911131672216328,
+          -0.062273084739139506,
+          -0.544228561692055,
+          -0.7071739073747807,
+          -0.021390716170230917,
+          0.053846879143293336,
+          0.07160036322412466,
+          0.007600978054433938,
+          0.4901484599383821,
+          -0.09630460507437988,
+          0.5430959581790251,
+          0.6553074960276106,
+          0.31009216293492514,
+          -0.006081428223581042,
+          0.5014940199033546,
+          0.3426321537504151,
+          -0.24176564134943845,
+          -0.029940503327026136,
+          -0.5158928753105929,
+          -0.1586657911416367,
+          -0.7578608744424464,
+          0.5160798593630744,
+          -0.30862733456825,
+          -0.7011243709126092,
+          -0.5727588601053135,
+          0.9358836738586263,
+          0.46333066717846094,
+          -0.9453578133130236,
+          -0.0788343927017543,
+          0.7157689829945824,
+          0.6689118153118301,
+          -0.6202180077634623,
+          -0.3404798698564093,
+          -0.31131360291521304,
+          -0.508160941223732,
+          0.10862047106797945,
+          -0.16593542157419705,
+          -0.9791146530833927,
+          -1.0050005980097332,
+          0.8969338383354852,
+          0.01998646700906548,
+          -0.0770147375418162,
+          -0.06700335816624658,
+          0.09362094774694185,
+          -0.8966539418249564,
+          -0.7943942723566977,
+          -0.7272922801779913,
+          0.3796675949041628
+        ]
+      },
+      "estimate": {
+        "beacons": [
+          [
+            0.0,
+            0.0,
+            2.8862119130401496
+          ],
+          [
+            10.12483346650959,
+            0.0,
+            2.8862119130401496
+          ],
+          [
+            1.0068051625426908,
+            8.090286228014387,
+            2.8862119130401496
+          ],
+          [
+            11.124516235130274,
+            9.073687299987448,
+            2.8862119130401496
+          ]
+        ],
+        "trajectory": [
+          [
+            1.6193491111405809,
+            1.2793964068875803,
+            0.0
+          ],
+          [
+            2.3531579416133575,
+            1.2597052799522417,
+            0.0
+          ],
+          [
+            3.2037397416509035,
+            1.262681235966822,
+            0.0
+          ],
+          [
+            3.9789368380891004,
+            1.2977475886861471,
+            0.0
+          ],
+          [
+            4.779342530044771,
+            1.3197887218234277,
+            0.0
+          ],
+          [
+            5.5976171986328405,
+            1.3157012093087777,
+            0.0
+          ],
+          [
+            6.421523891206708,
+            1.2666193995323383,
+            0.0
+          ],
+          [
+            7.174007187367365,
+            1.3654465237026425,
+            0.0
+          ],
+          [
+            7.976062449991668,
+            1.241721096222362,
+            0.0
+          ],
+          [
+            8.545661702474876,
+            1.6782487194935964,
+            0.0
+          ],
+          [
+            8.549283534735855,
+            2.4559690005652453,
+            0.0
+          ],
+          [
+            8.532850614616322,
+            3.1561751011206085,
+            0.0
+          ],
+          [
+            8.474487281603214,
+            4.003536359382418,
+            0.0
+          ],
+          [
+            8.568559158035612,
+            4.730394948728273,
+            0.0
+          ],
+          [
+            8.535398646833523,
+            5.6899713250262955,
+            0.0
+          ],
+          [
+            8.577790344364974,
+            6.385517621250592,
+            0.0
+          ],
+          [
+            8.161620016897094,
+            6.848864581055895,
+            0.0
+          ],
+          [
+            7.3787379032553,
+            6.825804686285053,
+            0.0
+          ],
+          [
+            6.485621500218607,
+            6.88064435109243,
+            0.0
+          ],
+          [
+            5.761563914485173,
+            6.896803111905777,
+            0.0
+          ],
+          [
+            4.97803671128411,
+            6.881801636656869,
+            0.0
+          ],
+          [
+            4.151811001680052,
+            6.887141165889611,
+            0.0
+          ],
+          [
+            3.3638791787921094,
+            6.828948296517607,
+            0.0
+          ],
+          [
+            2.4826272266389404,
+            6.810356488049594,
+            0.0
+          ],
+          [
+            1.7292699847642634,
+            6.838812982245846,
+            0.0
+          ],
+          [
+            1.6664041622029644,
+            6.09960765613455,
+            0.0
+          ],
+          [
+            1.5476245104357338,
+            5.288911692656852,
+            0.0
+          ],
+          [
+            1.6393333314966,
+            4.4837824482797535,
+            0.0
+          ],
+          [
+            1.6912734560572098,
+            3.6653263675534515,
+            0.0
+          ],
+          [
+            1.5907608796402668,
+            2.8205619853633985,
+            0.0
+          ],
+          [
+            1.545495187594813,
+            2.114225362956844,
+            0.0
+          ],
+          [
+            1.5842961384443708,
+            1.2706536418916539,
+            0.0
+          ]
+        ]
+      },
+      "index": 1,
+      "initial": {
+        "beacons": [
+          [
+            0.0,
+            0.0,
+            4.1147152819317
+          ],
+          [
+            8.685626255213357,
+            0.0,
+            4.1147152819317
+          ],
+          [
+            1.1198584125942306,
+            6.615502598967224,
+            4.1147152819317
+          ],
+          [
+            10.009013797316848,
+            7.139258457245866,
+            4.1147152819317
+          ]
+        ],
+        "trajectory": [
+          [
+            0.8152710573328261,
+            -0.5169369880259967,
+            0.0
+          ],
+          [
+            1.7067527352614018,
+            0.36669418141034743,
+            0.0
+          ],
+          [
+            1.3528954162064777,
+            0.46151240074552397,
+            0.0
+          ],
+          [
+            3.305376082005824,
+            -0.6605813828106358,
+            0.0
+          ],
+          [
+            5.819054397067006,
+            0.6832171705579249,
+            0.0
+          ],
+          [
+            3.727464888389506,
+            -1.0573573440939878,
+            0.0
+          ],
+          [
+            6.111651325047904,
+            0.05437192369537869,
+            0.0
+          ],
+          [
+            5.9932211336838686,
+            0.9287665296234584,
+            0.0
+          ],
+          [
+            7.706521518423676,
+            -1.135685490117801,
+            0.0
+          ],
+          [
+            7.92461128834536,
+            0.06817579110257208,
+            0.0
+          ],
+          [
+            6.8213975826799,
+            0.37388470346227565,
+            0.0
+          ],
+          [
+            6.547529948384743,
+            1.6908720925684695,
+            0.0
+          ],
+          [
+            8.810902444400277,
+            1.8109718432180735,
+            0.0
+          ],
+          [
+            8.616644149699756,
+            2.7279927957838597,
+            0.0
+          ],
+          [
+            8.11985471606643,
+            4.5760372800929705,
+            0.0
+          ],
+          [
+            7.200652051553141,
+            5.433513633155885,
+            0.0
+          ],
+          [
+            6.766371780956241,
+            6.904529477492935,
+            0.0
+          ],
+          [
+            7.010217497416773,
+            7.709638771469303,
+            0.0
+          ],
+          [
+            4.538268740317891,
+            7.72723634905993,
+            0.0
+          ],
+          [
+            5.042723919151034,
+            7.175378995379836,
+            0.0
+          ],
+          [
+            4.038412440324849,
+            8.257782067967618,
+            0.0
+          ],
+          [
+            4.577462649652671,
+            7.86394788269097,
+            0.0
+          ],
+          [
+            2.5761194578128213,
+            4.5984604745980775,
+            0.0
+          ],
+          [
+            1.8444347756516448,
+            6.816812002363797,
+            0.0
+          ],
+          [
+            0.32773509277529767,
+            7.329016961504254,
+            0.0
+          ],
+          [
+            1.5352818185687807,
+            6.242865592303811,
+            0.0
+          ],
+          [
+            -0.1953647476534132,
+            4.237678121285073,
+            0.0
+          ],
+          [
+            0.6795328861669481,
+            5.033167277832667,
+            0.0
+          ],
+          [
+            0.8900861032389371,
+            3.4324918351343867,
+            0.0
+          ],
+          [
+            -0.19330624971789567,
+            0.7977256910861334,
+            0.0
+          ],
+          [
+            1.0788952288793832,
+            1.6579931620050057,
+            0.0
+          ],
+          [
+            -1.526774945169391,
+            -0.6326733110802446,
+            0.0
+          ]
+        ]
+      },
+      "solver": {
+        "active_bounds": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "final_objective": 28.596302988019907,
+        "ftol": 1e-12,
+        "gtol": 1e-12,
+        "initial_objective": 14106.592745440883,
+        "iterations": null,
+        "iterations_note": "SciPy least_squares exposes evaluations, not iteration count",
+        "loss": "linear",
+        "max_nfev": 2000,
+        "message": "`ftol` termination condition is satisfied.",
+        "method": "scipy.optimize.least_squares/trf",
+        "nfev": 12,
+        "njev": 12,
+        "optimality": 5.516480321432482e-07,
+        "positive_floor_m": 1e-06,
+        "runtime_s": 0.026811399962753057,
+        "status": 2,
+        "x_scale": "jac",
+        "xtol": 1e-12
+      },
+      "status": "success",
+      "success": true
+    },
+    {
+      "diagnostics": {
+        "evaluation": {
+          "aligned": {
+            "beacon_errors_m": [
+              0.1367287690268846,
+              0.1356737854492155,
+              0.13658202635974592,
+              0.13259105787576347
+            ],
+            "height_error_m": -0.11378810261245365,
+            "map_rmse_m": 0.1354041828110152,
+            "position_errors_m": [
+              0.06749248644618015,
+              0.028090028224614188,
+              0.02565205032860561,
+              0.060252701431334356,
+              0.08579329603328546,
+              0.08032126375843601,
+              0.03191226167145421,
+              0.1480327480648102,
+              0.089705249653195,
+              0.1237943105529278,
+              0.08851856317665793,
+              0.03970730991493224,
+              0.08987600079942232,
+              0.07696512656327677,
+              0.07572529436564207,
+              0.04919412685942753,
+              0.009570316598012557,
+              0.035768674939011195,
+              0.0621297635419862,
+              0.06956113975685067,
+              0.08154981883997947,
+              0.07324931063615,
+              0.08348897055762448,
+              0.03512893193724,
+              0.0737543856419586,
+              0.10356472112555501,
+              0.025136034103018626,
+              0.0759675249260262,
+              0.1285845467052621,
+              0.05548412062868687,
+              0.06088570309781008,
+              0.03520963912167943
+            ],
+            "position_max_error_m": 0.1480327480648102,
+            "position_rmse_m": 0.07473586850557024
+          },
+          "aligned_geometry": {
+            "beacons": [
+              [
+                -0.06190206537907805,
+                -0.043762521468366344,
+                2.8862118973875464
+              ],
+              [
+                10.06293015510004,
+                -0.03872259470983946,
+                2.8862118973875464
+              ],
+              [
+                0.9408757998957971,
+                8.047023893824631,
+                2.8862118973875464
+              ],
+              [
+                11.058096110383243,
+                9.035461222353577,
+                2.8862118973875464
+              ]
+            ],
+            "trajectory": [
+              [
+                1.5568099944361895,
+                1.2364398169431177,
+                0.0
+              ],
+              [
+                2.290628535668949,
+                1.2171139669550302,
+                0.0
+              ],
+              [
+                3.1412087487368217,
+                1.2205133354032895,
+                0.0
+              ],
+              [
+                3.9163882930708933,
+                1.2559655593248362,
+                0.0
+              ],
+              [
+                4.716782913706576,
+                1.278405111276914,
+                0.0
+              ],
+              [
+                5.535059515031163,
+                1.2747249175532682,
+                0.0
+              ],
+              [
+                6.358990536760912,
+                1.2260532360608576,
+                0.0
+              ],
+              [
+                7.111424544812255,
+                1.3252549178329094,
+                0.0
+              ],
+              [
+                7.913541294425299,
+                1.2019287607274727,
+                0.0
+              ],
+              [
+                8.48292318369634,
+                1.638739854252723,
+                0.0
+              ],
+              [
+                8.486157883035883,
+                2.4164618401566873,
+                0.0
+              ],
+              [
+                8.469376415431011,
+                3.116659674708324,
+                0.0
+              ],
+              [
+                8.410591292632622,
+                3.963991772912883,
+                0.0
+              ],
+              [
+                8.504301342503089,
+                4.690897097273538,
+                0.0
+              ],
+              [
+                8.470663178149,
+                5.650456844341558,
+                0.0
+              ],
+              [
+                8.512708643568367,
+                6.3460241564758215,
+                0.0
+              ],
+              [
+                8.09630772388479,
+                6.809163897657465,
+                0.0
+              ],
+              [
+                7.313437186700905,
+                6.7857143016844015,
+                0.0
+              ],
+              [
+                6.420293597090924,
+                6.8401093842078335,
+                0.0
+              ],
+              [
+                5.696228057485865,
+                6.855907728019152,
+                0.0
+              ],
+              [
+                4.9127084203540425,
+                6.840516224088582,
+                0.0
+              ],
+              [
+                4.086480155417151,
+                6.845444478195178,
+                0.0
+              ],
+              [
+                3.2985773973698427,
+                6.786859402785015,
+                0.0
+              ],
+              [
+                2.417334809526675,
+                6.767828927725686,
+                0.0
+              ],
+              [
+                1.6639634975227877,
+                6.795910407985483,
+                0.0
+              ],
+              [
+                1.601465643741573,
+                6.0566738829973135,
+                0.0
+              ],
+              [
+                1.4830895530380261,
+                5.245918898217582,
+                0.0
+              ],
+              [
+                1.5751991383588717,
+                4.440835406602302,
+                0.0
+              ],
+              [
+                1.6275466675397412,
+                3.6224052838119705,
+                0.0
+              ],
+              [
+                1.5274546090933865,
+                2.777590976073735,
+                0.0
+              ],
+              [
+                1.4825405209306637,
+                2.071231910279377,
+                0.0
+              ],
+              [
+                1.5217613791736404,
+                1.2276796145843822,
+                0.0
+              ]
+            ]
+          },
+          "alignment": {
+            "applied": true,
+            "description": "Map-only least-squares planar proper rigid alignment; no scale, reflection, z translation, or 3D tilt",
+            "reflection_allowed": false,
+            "rotation_xy": [
+              [
+                0.9999998761081597,
+                0.000497778730982526
+              ],
+              [
+                -0.0004977787309824037,
+                0.9999998761081597
+              ]
+            ],
+            "scale": 1.0,
+            "translation_xy_m": [
+              -0.06190206537907805,
+              -0.043762521468366344
+            ]
+          },
+          "raw": {
+            "beacon_errors_m": [
+              0.11378810261245365,
+              0.16891160037903144,
+              0.14541543840625365,
+              0.18407022612252408
+            ],
+            "height_error_m": -0.11378810261245365,
+            "map_rmse_m": 0.15532736310002498,
+            "position_errors_m": [
+              0.14334574664585661,
+              0.07200808662606133,
+              0.10001269342414114,
+              0.10570156270513634,
+              0.12295639445902423,
+              0.12034307215618069,
+              0.07989591362607783,
+              0.16624905920177271,
+              0.04978453493610724,
+              0.16842740056621605,
+              0.13616830431518545,
+              0.03580405013744068,
+              0.05497600316517917,
+              0.07807147398706366,
+              0.11491420977575258,
+              0.07820377940390529,
+              0.08379436130254657,
+              0.10143011740992908,
+              0.08260260750535046,
+              0.14408717587354616,
+              0.15879248572193097,
+              0.15055963863806898,
+              0.1505593297970396,
+              0.08007398778158455,
+              0.1442665275950898,
+              0.16787694552778196,
+              0.053509238520461626,
+              0.1429988092893988,
+              0.19311651105966182,
+              0.09091228157248984,
+              0.11106750845059181,
+              0.10998991049467835
+            ],
+            "position_max_error_m": 0.19311651105966182,
+            "position_rmse_m": 0.11908469862852547
+          }
+        },
+        "geometric_recovery": false,
+        "jacobian": {
+          "absolute_tolerance": 1.0094818393770233e-05,
+          "condition_number": 42.04911075751917,
+          "full_column_rank": true,
+          "interpretation": "Local measurement rank only; full rank does not prove global uniqueness",
+          "measurement_count": 128,
+          "parameter_count": 70,
+          "parameter_scale_m": 7.941567511142836,
+          "rank": 70,
+          "relative_tolerance": 1e-08,
+          "scaling": "J of normalized range residuals with respect to theta / parameter_scale_m; all parameters in metres",
+          "singular_values": [
+            1009.4818393770233,
+            771.3925100763327,
+            669.7806100648874,
+            410.6650808848683,
+            372.44238079039724,
+            302.1998772947538,
+            228.75350583993531,
+            228.38128385650722,
+            227.60608410193387,
+            226.5319005760201,
+            225.7797970463178,
+            225.43583345428158,
+            225.04458997553556,
+            224.87877677530793,
+            224.12837771775654,
+            223.4158141695275,
+            222.92236241046234,
+            222.4473664170671,
+            222.05756930277366,
+            221.47228038877236,
+            220.3577271650383,
+            219.84535255962138,
+            218.74811161557375,
+            216.55278874887395,
+            215.55819874835973,
+            214.47074586442443,
+            213.62320520206455,
+            212.53252934075059,
+            211.53774462285523,
+            209.43315259730963,
+            208.63916424688296,
+            207.54821015733435,
+            205.87043915270516,
+            202.58351789294483,
+            200.83317067771716,
+            199.86020701131284,
+            199.4709584124756,
+            196.9216276352212,
+            196.3772499227267,
+            194.63853138153246,
+            192.81959349447402,
+            190.21388159139477,
+            189.88866189660502,
+            186.98525958711147,
+            186.41852319249415,
+            182.95030935459764,
+            182.7313605986299,
+            182.4371961966122,
+            182.095821710651,
+            182.02045815244165,
+            181.72955249314938,
+            181.56466199955867,
+            181.3053051033763,
+            181.16733309136262,
+            180.6630494855108,
+            180.06863629269847,
+            179.75542378495882,
+            179.09818053868233,
+            178.41146243845637,
+            177.52711181326663,
+            176.28212257573952,
+            174.90821395022937,
+            174.2920314916741,
+            171.04240118388674,
+            167.1651776255921,
+            164.23045672616658,
+            136.5353633729451,
+            104.87197361840266,
+            38.61737922762572,
+            24.00721016904047
+          ]
+        },
+        "max_abs_residual_m": 0.07430036569211218,
+        "range_recovery": false,
+        "range_rmse_m": 0.033422194504094546,
+        "recovery_classification": "converged_geometry_inaccurate",
+        "residuals_m": [
+          0.07276033503310586,
+          0.04593246845765364,
+          0.041403959688473435,
+          -0.00855161865905174,
+          0.07323814905540615,
+          0.05635704785798623,
+          0.03698942376878289,
+          -0.002461482550458527,
+          -0.05030482019021143,
+          -0.060956057688209775,
+          -0.03747596251841756,
+          0.013002384299529268,
+          -0.053514711470922016,
+          -0.031216907256319537,
+          -0.003288961947641056,
+          -0.023530310624504835,
+          -0.006892422544543919,
+          -0.01862643031581257,
+          -0.013150486017595497,
+          0.007026551763402722,
+          -0.018834388040527728,
+          0.027352511539562308,
+          0.037487066918121315,
+          -0.034135707160308115,
+          0.01005248509929313,
+          0.020833056326188704,
+          0.010772550828630045,
+          -0.0009847995965923673,
+          0.06033460533805801,
+          -0.01183136677938279,
+          -0.05940901580542857,
+          0.05747018427575412,
+          -0.05414307044051725,
+          -0.0646949345765595,
+          0.002324594633217103,
+          -0.03475132788703661,
+          -0.043644638732546426,
+          0.05559553583303467,
+          0.07430036569211218,
+          -0.032656783237579035,
+          -0.01768896578830592,
+          0.06159791680101456,
+          0.0529568202194568,
+          0.002216980634131893,
+          -0.0010859056108127874,
+          -0.03097711281796034,
+          -0.018903135112813274,
+          -0.014245501057947862,
+          0.010211231645891772,
+          0.026261590703878568,
+          0.011458992247781907,
+          0.024217422646930054,
+          0.06467198630318904,
+          -0.013574735239338054,
+          -0.04308570352358565,
+          0.04725723395551373,
+          0.02266386257439379,
+          -0.0628146688342257,
+          -0.058990963591233125,
+          -0.038668927285999466,
+          0.022401380771796653,
+          -0.006472017105865646,
+          -0.01078416661862569,
+          0.0163752964894055,
+          -0.03803135566984395,
+          0.03135339690504857,
+          0.037175869843202314,
+          -0.0033102091278713885,
+          0.022391926311644994,
+          -0.020222122921961017,
+          -0.023117389686640344,
+          0.0029400212019803362,
+          0.019182653069099942,
+          -0.024275354582867337,
+          -0.029473263530999105,
+          -0.0030034027917942296,
+          0.021232528865823497,
+          0.01946181419461901,
+          0.05416694345590223,
+          0.05839884410976737,
+          -0.019555659712500173,
+          -0.0031136571675389746,
+          -0.02721142705144164,
+          -0.03535869413242221,
+          -0.0010695351580469747,
+          0.0026923435271548612,
+          0.003580017536910951,
+          0.00038004914175893134,
+          0.024507425163223573,
+          -0.004815228855013842,
+          0.02715479553795408,
+          0.03276537458636675,
+          0.015504609524839452,
+          -0.00030407054465264594,
+          0.02507469725647571,
+          0.017131607278265903,
+          -0.012088285582446012,
+          -0.0014970285517623694,
+          -0.025794647121965664,
+          -0.007933290218119282,
+          -0.037893045179571594,
+          0.02580399076591,
+          -0.015431366708139382,
+          -0.03505621886822219,
+          -0.028637941850054638,
+          0.046794183995004346,
+          0.023166534067679656,
+          -0.047267890436511806,
+          -0.003941717652081955,
+          0.03578845037250922,
+          0.033445592372087773,
+          -0.031010899686636506,
+          -0.01702399113152442,
+          -0.015565679930103826,
+          -0.025408044933361573,
+          0.005431023239207633,
+          -0.008296769123933068,
+          -0.04895573244907325,
+          -0.05025002902181708,
+          0.044846690909350784,
+          0.0009993231104008515,
+          -0.003850736473143712,
+          -0.003350167585327135,
+          0.004681046787995413,
+          -0.044832698699684315,
+          -0.039719713920776556,
+          -0.03636461887503817,
+          0.01898337529575045
+        ],
+        "residuals_normalized": [
+          1.4552067006621172,
+          0.9186493691530728,
+          0.8280791937694687,
+          -0.1710323731810348,
+          1.464762981108123,
+          1.1271409571597246,
+          0.7397884753756578,
+          -0.04922965100917054,
+          -1.0060964038042286,
+          -1.2191211537641955,
+          -0.7495192503683512,
+          0.26004768599058536,
+          -1.0702942294184403,
+          -0.6243381451263907,
+          -0.06577923895282112,
+          -0.4706062124900967,
+          -0.13784845089087838,
+          -0.3725286063162514,
+          -0.26300972035190995,
+          0.14053103526805444,
+          -0.37668776081055455,
+          0.5470502307912462,
+          0.7497413383624263,
+          -0.6827141432061623,
+          0.20104970198586258,
+          0.4166611265237741,
+          0.2154510165726009,
+          -0.019695991931847345,
+          1.2066921067611602,
+          -0.2366273355876558,
+          -1.1881803161085713,
+          1.1494036855150824,
+          -1.082861408810345,
+          -1.29389869153119,
+          0.04649189266434206,
+          -0.6950265577407322,
+          -0.8728927746509285,
+          1.1119107166606934,
+          1.4860073138422436,
+          -0.6531356647515807,
+          -0.35377931576611843,
+          1.2319583360202913,
+          1.059136404389136,
+          0.04433961268263786,
+          -0.021718112216255747,
+          -0.6195422563592068,
+          -0.3780627022562655,
+          -0.28491002115895725,
+          0.20422463291783544,
+          0.5252318140775714,
+          0.22917984495563815,
+          0.48434845293860107,
+          1.2934397260637809,
+          -0.2714947047867611,
+          -0.861714070471713,
+          0.9451446791102747,
+          0.4532772514878758,
+          -1.2562933766845141,
+          -1.1798192718246625,
+          -0.7733785457199893,
+          0.44802761543593306,
+          -0.12944034211731292,
+          -0.2156833323725138,
+          0.32750592978811,
+          -0.7606271133968789,
+          0.6270679381009714,
+          0.7435173968640463,
+          -0.06620418255742777,
+          0.4478385262328999,
+          -0.40444245843922033,
+          -0.4623477937328069,
+          0.058800424039606725,
+          0.38365306138199884,
+          -0.48550709165734673,
+          -0.5894652706199821,
+          -0.06006805583588459,
+          0.42465057731646993,
+          0.3892362838923802,
+          1.0833388691180446,
+          1.1679768821953473,
+          -0.39111319425000346,
+          -0.06227314335077949,
+          -0.5442285410288328,
+          -0.7071738826484442,
+          -0.021390703160939495,
+          0.053846870543097225,
+          0.07160035073821902,
+          0.007600982835178627,
+          0.49014850326447146,
+          -0.09630457710027684,
+          0.5430959107590816,
+          0.6553074917273349,
+          0.31009219049678904,
+          -0.006081410893052919,
+          0.5014939451295142,
+          0.34263214556531807,
+          -0.24176571164892025,
+          -0.029940571035247387,
+          -0.5158929424393133,
+          -0.15866580436238564,
+          -0.7578609035914319,
+          0.5160798153182,
+          -0.30862733416278765,
+          -0.7011243773644438,
+          -0.5727588370010928,
+          0.9358836799000869,
+          0.4633306813535931,
+          -0.9453578087302361,
+          -0.0788343530416391,
+          0.7157690074501843,
+          0.6689118474417555,
+          -0.6202179937327301,
+          -0.34047982263048837,
+          -0.3113135986020765,
+          -0.5081608986672315,
+          0.10862046478415266,
+          -0.16593538247866135,
+          -0.979114648981465,
+          -1.0050005804363416,
+          0.8969338181870157,
+          0.01998646220801703,
+          -0.07701472946287424,
+          -0.0670033517065427,
+          0.09362093575990826,
+          -0.8966539739936863,
+          -0.7943942784155311,
+          -0.7272923775007634,
+          0.379667505915009
+        ]
+      },
+      "estimate": {
+        "beacons": [
+          [
+            0.0,
+            0.0,
+            2.8862118973875464
+          ],
+          [
+            10.124833474863369,
+            0.0,
+            2.8862118973875464
+          ],
+          [
+            1.0068051624333345,
+            8.090286251417348,
+            2.8862118973875464
+          ],
+          [
+            11.12451624255879,
+            9.073687320399749,
+            2.8862118973875464
+          ]
+        ],
+        "trajectory": [
+          [
+            1.6193491167654672,
+            1.2793964193698997,
+            0.0
+          ],
+          [
+            2.3531579470870154,
+            1.259705292513901,
+            0.0
+          ],
+          [
+            3.2037397469082527,
+            1.2626812598019466,
+            0.0
+          ],
+          [
+            3.978936842566938,
+            1.29774761144139,
+            0.0
+          ],
+          [
+            4.7793425339719535,
+            1.3197887411948448,
+            0.0
+          ],
+          [
+            5.597617201996584,
+            1.3157012272389452,
+            0.0
+          ],
+          [
+            6.421523893920155,
+            1.2666194164381448,
+            0.0
+          ],
+          [
+            7.1740071892383295,
+            1.365446540274242,
+            0.0
+          ],
+          [
+            7.976062450337672,
+            1.2417211217901876,
+            0.0
+          ],
+          [
+            8.545661704338755,
+            1.678248735003822,
+            0.0
+          ],
+          [
+            8.549283536740749,
+            2.4559690143898463,
+            0.0
+          ],
+          [
+            8.532850614804483,
+            3.156175115650333,
+            0.0
+          ],
+          [
+            8.474487283185656,
+            4.003536370861187,
+            0.0
+          ],
+          [
+            8.568559159456116,
+            4.730394958294498,
+            0.0
+          ],
+          [
+            8.535398647702717,
+            5.68997133084366,
+            0.0
+          ],
+          [
+            8.57779034652694,
+            6.38551762746439,
+            0.0
+          ],
+          [
+            8.161620019544674,
+            6.848864586788179,
+            0.0
+          ],
+          [
+            7.378737906641935,
+            6.825804690022852,
+            0.0
+          ],
+          [
+            6.485621504400307,
+            6.8806443536897985,
+            0.0
+          ],
+          [
+            5.761563918580594,
+            6.896803119969284,
+            0.0
+          ],
+          [
+            4.978036716957166,
+            6.881801637356267,
+            0.0
+          ],
+          [
+            4.151811007563291,
+            6.887141169709515,
+            0.0
+          ],
+          [
+            3.3638791847262124,
+            6.828948302792602,
+            0.0
+          ],
+          [
+            2.4826272330960855,
+            6.810356493908059,
+            0.0
+          ],
+          [
+            1.7292699927923638,
+            6.838812982904437,
+            0.0
+          ],
+          [
+            1.666404170534819,
+            6.099607659603985,
+            0.0
+          ],
+          [
+            1.5476245179096422,
+            5.28891170037039,
+            0.0
+          ],
+          [
+            1.6393333383800706,
+            4.4837824583058925,
+            0.0
+          ],
+          [
+            1.6912734639675882,
+            3.6653263794257294,
+            0.0
+          ],
+          [
+            1.590760887327801,
+            2.820562000050928,
+            0.0
+          ],
+          [
+            1.545495194210178,
+            2.114225379046503,
+            0.0
+          ],
+          [
+            1.5842961452027422,
+            1.27065366455171,
+            0.0
+          ]
+        ]
+      },
+      "index": 2,
+      "initial": {
+        "beacons": [
+          [
+            0.0,
+            0.0,
+            1.6975849989107339
+          ],
+          [
+            11.81351884253031,
+            0.0,
+            1.6975849989107339
+          ],
+          [
+            0.5649993177129354,
+            11.455209750153243,
+            1.6975849989107339
+          ],
+          [
+            14.000667421598763,
+            12.035207650432628,
+            1.6975849989107339
+          ]
+        ],
+        "trajectory": [
+          [
+            3.1313089035600123,
+            2.6751920325877228,
+            0.0
+          ],
+          [
+            4.628838587733679,
+            5.68529545590186,
+            0.0
+          ],
+          [
+            5.421172273540054,
+            3.001545177258935,
+            0.0
+          ],
+          [
+            6.265091087417502,
+            3.427080470607353,
+            0.0
+          ],
+          [
+            3.744418236474871,
+            4.376883286604759,
+            0.0
+          ],
+          [
+            3.9180924645906217,
+            4.194987066593623,
+            0.0
+          ],
+          [
+            8.141103381531723,
+            5.03530234062499,
+            0.0
+          ],
+          [
+            10.39237800287321,
+            4.719322644684575,
+            0.0
+          ],
+          [
+            7.5116145897515505,
+            4.656171335077101,
+            0.0
+          ],
+          [
+            9.567784363742867,
+            3.86147746826563,
+            0.0
+          ],
+          [
+            7.274331271771546,
+            4.6000493339244395,
+            0.0
+          ],
+          [
+            8.267143713320321,
+            5.042574236476867,
+            0.0
+          ],
+          [
+            8.72375197061133,
+            6.757896840858126,
+            0.0
+          ],
+          [
+            9.53699160959549,
+            7.874936081968142,
+            0.0
+          ],
+          [
+            8.451171522458548,
+            8.083908002106378,
+            0.0
+          ],
+          [
+            7.349964247895566,
+            7.766802188836376,
+            0.0
+          ],
+          [
+            7.2047558370124705,
+            7.275938903043209,
+            0.0
+          ],
+          [
+            9.029993515230805,
+            7.140664947640876,
+            0.0
+          ],
+          [
+            8.678746948482466,
+            9.716310458704532,
+            0.0
+          ],
+          [
+            7.242656840206865,
+            7.826970084653997,
+            0.0
+          ],
+          [
+            5.158779021490583,
+            7.28009142519987,
+            0.0
+          ],
+          [
+            5.350089507577427,
+            7.134279248456334,
+            0.0
+          ],
+          [
+            4.676537846923651,
+            7.291955096799247,
+            0.0
+          ],
+          [
+            4.632676253463283,
+            6.264430047310258,
+            0.0
+          ],
+          [
+            3.9005784916517956,
+            8.930477147065004,
+            0.0
+          ],
+          [
+            2.4363300158076964,
+            8.881795413117752,
+            0.0
+          ],
+          [
+            4.7408692359098765,
+            7.545744133284864,
+            0.0
+          ],
+          [
+            1.9083970879028844,
+            6.570554149251898,
+            0.0
+          ],
+          [
+            1.8217501083549115,
+            5.3020204450920785,
+            0.0
+          ],
+          [
+            2.0590511217132645,
+            5.285158350066684,
+            0.0
+          ],
+          [
+            2.498745084627644,
+            4.936355110082385,
+            0.0
+          ],
+          [
+            4.109043259041844,
+            3.3443292652608534,
+            0.0
+          ]
+        ]
+      },
+      "solver": {
+        "active_bounds": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "final_objective": 28.59630298801991,
+        "ftol": 1e-12,
+        "gtol": 1e-12,
+        "initial_objective": 76916.66792976555,
+        "iterations": null,
+        "iterations_note": "SciPy least_squares exposes evaluations, not iteration count",
+        "loss": "linear",
+        "max_nfev": 2000,
+        "message": "`ftol` termination condition is satisfied.",
+        "method": "scipy.optimize.least_squares/trf",
+        "nfev": 15,
+        "njev": 14,
+        "optimality": 3.260443181662964e-06,
+        "positive_floor_m": 1e-06,
+        "runtime_s": 0.030199300032109022,
+        "status": 2,
+        "x_scale": "jac",
+        "xtol": 1e-12
+      },
+      "status": "success",
+      "success": true
+    }
+  ],
+  "status": "success"
+}

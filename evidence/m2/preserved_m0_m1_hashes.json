@@ -1,0 +1,74 @@
+[
+  {
+    "Path": "C:\\Users\\dnroh\\Documents\\uwb-inverse-localization\\evidence\\reference_runs\\exact_joint_independent.json",
+    "Hash": "CC735A21DCDD765813FC2B2D4D7EFCF79FBB7AFE02AAF95180F24A093BE64B77"
+  },
+  {
+    "Path": "C:\\Users\\dnroh\\Documents\\uwb-inverse-localization\\evidence\\reference_runs\\exact_joint_truth_near.json",
+    "Hash": "3E22F65BC5CD5540EF151868B77EE733E250A6BE055B8F757E96CF62BDC7EAAC"
+  },
+  {
+    "Path": "C:\\Users\\dnroh\\Documents\\uwb-inverse-localization\\evidence\\reference_runs\\exact_known_map.json",
+    "Hash": "C9E17236F8313417A7FA695F679F480F20B461F067D3DDFEC4B260389D1ECE28"
+  },
+  {
+    "Path": "C:\\Users\\dnroh\\Documents\\uwb-inverse-localization\\evidence\\reference_runs\\failed_initialization.json",
+    "Hash": "619BAC68EEF5BC5DE4E8F2B0BC3276A98C935B2A9D0CA7C3E9391D17384C1335"
+  },
+  {
+    "Path": "C:\\Users\\dnroh\\Documents\\uwb-inverse-localization\\evidence\\reference_runs\\forced_nonconvergence.json",
+    "Hash": "4014D595BAF6A411DDDBD22E7FB9982832E91C720512D23B34EE24D3D14E6743"
+  },
+  {
+    "Path": "C:\\Users\\dnroh\\Documents\\uwb-inverse-localization\\evidence\\reference_runs\\narrow_coverage.json",
+    "Hash": "15528A658939E6FDFD8942FE59FB957094424DF8D8E87709EE249577BECF5D34"
+  },
+  {
+    "Path": "C:\\Users\\dnroh\\Documents\\uwb-inverse-localization\\evidence\\reference_runs\\nearly_collinear.json",
+    "Hash": "12F1FB8B9B9117CA172709AA3C7E7D95415F9DA11A687EC98F0AE9F153A31437"
+  },
+  {
+    "Path": "C:\\Users\\dnroh\\Documents\\uwb-inverse-localization\\evidence\\reference_runs\\noisy_joint_seed7.json",
+    "Hash": "C44D00A0DDCDA48E066B34E409C90E5579E1E82EC4DA08F1BEB26DD5F88F27AB"
+  },
+  {
+    "Path": "C:\\Users\\dnroh\\Documents\\uwb-inverse-localization\\evidence\\reference_runs\\noisy_joint_seed8.json",
+    "Hash": "703BD95B0A283432C0A1D376C800E7EDFE9B5225097A2826F124A4AA80926767"
+  },
+  {
+    "Path": "C:\\Users\\dnroh\\Documents\\uwb-inverse-localization\\evidence\\reference_runs\\straight_line.json",
+    "Hash": "15488CE5AC700BEA6F16E650C35CF71991DEA8885E2FF973CEBE802F53AB2231"
+  },
+  {
+    "Path": "C:\\Users\\dnroh\\Documents\\uwb-inverse-localization\\evidence\\screenshots\\app_full.jpg",
+    "Hash": "FE84163731B9FD303D90BDC0787B52359E9A32A3DAF90529DDE03D89C18DD0D1"
+  },
+  {
+    "Path": "C:\\Users\\dnroh\\Documents\\uwb-inverse-localization\\evidence\\screenshots\\failed_run.jpg",
+    "Hash": "76E5E411E8F4FA2C508AF9EA085633EBDEBF52C4B310B16FEB153F175579EB1F"
+  },
+  {
+    "Path": "C:\\Users\\dnroh\\Documents\\uwb-inverse-localization\\evidence\\screenshots\\known_map_scene.png",
+    "Hash": "93A4106C69C0059C296452131E714742C8905F7B47610D85FAAC153842DD478D"
+  },
+  {
+    "Path": "C:\\Users\\dnroh\\Documents\\uwb-inverse-localization\\evidence\\screenshots\\noisy_scene.jpg",
+    "Hash": "0BBCB05478E1CB9E042E4D4DDA7791E99EB6E3194D7F8BEF8A76FA6647C707A6"
+  },
+  {
+    "Path": "C:\\Users\\dnroh\\Documents\\uwb-inverse-localization\\evidence\\screenshots\\rotated_aligned.jpg",
+    "Hash": "9C97AED22667908B1B59E6220C3DE02A851AF138B0C3FC6FDFA637B43EEA37CA"
+  },
+  {
+    "Path": "C:\\Users\\dnroh\\Documents\\uwb-inverse-localization\\evidence\\screenshots\\side_view.jpg",
+    "Hash": "8DFDBA5370D110BE36B837372794AD302F7480FABCDECEB3896922894F139943"
+  },
+  {
+    "Path": "C:\\Users\\dnroh\\Documents\\uwb-inverse-localization\\evidence\\screenshots\\straight_line_diagnostics.jpg",
+    "Hash": "1F29897DCF8D987996973E8E0E639B2CB5AC545A10A561C16EAA375550B0C387"
+  },
+  {
+    "Path": "C:\\Users\\dnroh\\Documents\\uwb-inverse-localization\\evidence\\screenshots\\top_view.jpg",
+    "Hash": "2DBB97FCD00029D6384D3E18A7D3BA3FE5512F4EB270A9152DA3F59B5ED40EC2"
+  }
+]

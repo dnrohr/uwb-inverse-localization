@@ -1,0 +1,42 @@
+{
+  "browser": "Codex in-app browser",
+  "viewport": {
+    "width": 1360,
+    "height": 900
+  },
+  "timing_boundary": "performance.now around resolved Plotly.react; includes concurrent chart updates, excludes network and solver",
+  "records": [
+    {
+      "case": "first page 32-sample primary scene",
+      "ms": 1235.7
+    },
+    {
+      "case": "24-sample saved sweep primary scene",
+      "ms": 209.6
+    },
+    {
+      "case": "100-sample primary scene",
+      "ms": 299.6
+    },
+    {
+      "case": "initial 24-start sweep chart",
+      "ms": 93.8
+    },
+    {
+      "case": "warm 24-start sweep chart",
+      "ms": 50.7
+    },
+    {
+      "case": "initial two-run 32/32 comparison",
+      "ms": 407.2
+    },
+    {
+      "case": "warm comparison redraw preserving camera",
+      "ms": 92.8
+    },
+    {
+      "case": "final saved comparison reopen",
+      "ms": 918.6
+    }
+  ]
+}

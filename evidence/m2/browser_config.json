@@ -1,0 +1,36 @@
+{
+  "schema_version": "1.0",
+  "artifact_type": "experiment_config",
+  "config": {
+    "scenario": "informative",
+    "samples": 32,
+    "duration_s": 15,
+    "noise_std_m": 0.05,
+    "assumed_std_m": 0.05,
+    "seed": 7,
+    "path": {
+      "type": "arc",
+      "center_m": [
+        5,
+        4
+      ],
+      "size_m": [
+        7,
+        7
+      ],
+      "scale": 1,
+      "rotation_deg": 0,
+      "start_angle_deg": 0,
+      "arc_angle_deg": 180
+    }
+  },
+  "options": {
+    "mode": "joint",
+    "initialization": "independent",
+    "starts": 3,
+    "seed": 19,
+    "max_nfev": 2000
+  },
+  "path_motion": null,
+  "sampling_density_hz": 2.066666666666667
+}

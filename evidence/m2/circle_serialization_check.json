@@ -1,0 +1,20 @@
+{
+  "run_id": "7da609495c244988a7a142cbe52244a2",
+  "configuration_reproduces_complete_experiment": true,
+  "path": {
+    "type": "circle",
+    "center_m": [
+      5,
+      4
+    ],
+    "size_m": [
+      7,
+      7
+    ],
+    "scale": 1,
+    "rotation_deg": 0,
+    "start_angle_deg": 45
+  },
+  "duration_s": 15,
+  "starts": 3
+}
