@@ -409,6 +409,32 @@ def _validate_payload(data: Any) -> None:
     an ``error`` message) so they can be inspected later.
     """
     _validate_json_values(data)
+    if isinstance(data, dict) and data.get("schema_version") == "7.0":
+        from .m7 import validate_run
+        validate_run(data)
+        return
+    if isinstance(data, dict) and data.get("schema_version") == "6.0":
+        from .m6 import validate_experiment, validate_run
+        validate_run(data) if "experiment" in data else validate_experiment(data)
+        return
+    if isinstance(data, dict) and data.get("schema_version") == "5.0":
+        from .m5 import validate_experiment, validate_run
+        (validate_experiment if "estimator_input" in data else validate_run)(data)
+        return
+    if isinstance(data, dict) and data.get("schema_version") == "4.0":
+        from .m4 import validate_experiment, validate_run
+        if "estimator_input" in data:
+            validate_experiment(data)
+        else:
+            validate_run(data)
+        return
+    if isinstance(data, dict) and data.get("schema_version") == "3.0":
+        from .m3 import validate_experiment, validate_run
+        if "estimator_input" in data:
+            validate_experiment(data)
+        else:
+            validate_run(data)
+        return
     if not isinstance(data, dict):
         raise ExperimentFormatError("saved payload must be a JSON object")
     if "config" in data and "estimator_input" in data:

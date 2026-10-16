@@ -1,0 +1,1638 @@
+{
+  "status": "passed",
+  "attempt": "20261014_165451_229006a4",
+  "author": "Independent mathematical review agent",
+  "checks": {
+    "distance_jacobian_scaling": {
+      "status": "passed",
+      "evidence": {
+        "cases": [
+          {
+            "mode": "joint",
+            "parameterization": "h",
+            "gap_m": 2.2,
+            "jacobian_max_direct_error": 0.0,
+            "finite_difference_max_error": 2.9405320844944072e-08,
+            "native_rank": 74,
+            "parameter_count": 74,
+            "native_condition": 14.293239768220765,
+            "native_height_column_norm": 137.48358964299584
+          },
+          {
+            "mode": "joint",
+            "parameterization": "h",
+            "gap_m": 1e-05,
+            "jacobian_max_direct_error": 0.0,
+            "finite_difference_max_error": 2.450740114135836e-08,
+            "native_rank": 74,
+            "parameter_count": 74,
+            "native_condition": 67570.69219247463,
+            "native_height_column_norm": 0.0018556408067637734
+          },
+          {
+            "mode": "joint",
+            "parameterization": "q",
+            "gap_m": 2.2,
+            "jacobian_max_direct_error": 0.0,
+            "finite_difference_max_error": 2.9405320844944072e-08,
+            "native_rank": 74,
+            "parameter_count": 74,
+            "native_condition": 23.601599601805574,
+            "native_height_column_norm": 31.24627037340815
+          },
+          {
+            "mode": "joint",
+            "parameterization": "q",
+            "gap_m": 1e-05,
+            "jacobian_max_direct_error": 0.0,
+            "finite_difference_max_error": 1.5077714010658383e-07,
+            "native_rank": 74,
+            "parameter_count": 74,
+            "native_condition": 52.614425207323336,
+            "native_height_column_norm": 92.78204033818865
+          },
+          {
+            "mode": "known_map",
+            "parameterization": "h",
+            "gap_m": 2.2,
+            "jacobian_max_direct_error": 0.0,
+            "finite_difference_max_error": 2.9405320844944072e-08,
+            "native_rank": 61,
+            "parameter_count": 61,
+            "native_condition": 5.843813067108495,
+            "native_height_column_norm": 137.48358964299587
+          },
+          {
+            "mode": "known_map",
+            "parameterization": "h",
+            "gap_m": 1e-05,
+            "jacobian_max_direct_error": 0.0,
+            "finite_difference_max_error": 2.450740114135836e-08,
+            "native_rank": 61,
+            "parameter_count": 61,
+            "native_condition": 29916.71706110735,
+            "native_height_column_norm": 0.0018556408067637734
+          },
+          {
+            "mode": "known_map",
+            "parameterization": "q",
+            "gap_m": 2.2,
+            "jacobian_max_direct_error": 0.0,
+            "finite_difference_max_error": 2.9405320844944072e-08,
+            "native_rank": 61,
+            "parameter_count": 61,
+            "native_condition": 9.92200010832466,
+            "native_height_column_norm": 31.246270373408148
+          },
+          {
+            "mode": "known_map",
+            "parameterization": "q",
+            "gap_m": 1e-05,
+            "jacobian_max_direct_error": 0.0,
+            "finite_difference_max_error": 1.5077714010658383e-07,
+            "native_rank": 61,
+            "parameter_count": 61,
+            "native_condition": 25.74162830325415,
+            "native_height_column_norm": 92.78204033818865
+          }
+        ],
+        "q_zero_finite_distance_derivatives": true,
+        "q_zero_is_outside_solver_floor": true,
+        "interpretation": "q at zero has finite distance derivative but a singular inverse to physical h; rank changes are coordinate dependent, not new height information"
+      }
+    },
+    "all_supported_h_model_jacobians": {
+      "status": "passed",
+      "evidence": {
+        "cases": [
+          {
+            "mode": "joint",
+            "tag_height_model": "fixed",
+            "beacon_height_model": "shared",
+            "below_beacons": false,
+            "parameter_count": 70,
+            "measurement_rows": 180,
+            "prior_rows": 84,
+            "direct_jacobian_max_error": 0.0,
+            "finite_difference_max_error": 2.193180037579623e-08,
+            "lm_chain_max_error": 5.8550881476548966e-08
+          },
+          {
+            "mode": "joint",
+            "tag_height_model": "fixed",
+            "beacon_height_model": "shared",
+            "below_beacons": true,
+            "parameter_count": 70,
+            "measurement_rows": 180,
+            "prior_rows": 84,
+            "direct_jacobian_max_error": 0.0,
+            "finite_difference_max_error": 2.193180037579623e-08,
+            "lm_chain_max_error": 5.8550881476548966e-08
+          },
+          {
+            "mode": "joint",
+            "tag_height_model": "fixed",
+            "beacon_height_model": "independent",
+            "below_beacons": false,
+            "parameter_count": 75,
+            "measurement_rows": 180,
+            "prior_rows": 84,
+            "direct_jacobian_max_error": 0.0,
+            "finite_difference_max_error": 2.3440634322469123e-08,
+            "lm_chain_max_error": 5.55205232899425e-08
+          },
+          {
+            "mode": "joint",
+            "tag_height_model": "fixed",
+            "beacon_height_model": "independent",
+            "below_beacons": true,
+            "parameter_count": 75,
+            "measurement_rows": 180,
+            "prior_rows": 84,
+            "direct_jacobian_max_error": 0.0,
+            "finite_difference_max_error": 2.3440634322469123e-08,
+            "lm_chain_max_error": 5.55205232899425e-08
+          },
+          {
+            "mode": "joint",
+            "tag_height_model": "shared",
+            "beacon_height_model": "shared",
+            "below_beacons": false,
+            "parameter_count": 70,
+            "measurement_rows": 180,
+            "prior_rows": 84,
+            "direct_jacobian_max_error": 0.0,
+            "finite_difference_max_error": 2.9390079703262018e-08,
+            "lm_chain_max_error": 7.06322147436822e-08
+          },
+          {
+            "mode": "joint",
+            "tag_height_model": "shared",
+            "beacon_height_model": "shared",
+            "below_beacons": true,
+            "parameter_count": 70,
+            "measurement_rows": 180,
+            "prior_rows": 84,
+            "direct_jacobian_max_error": 0.0,
+            "finite_difference_max_error": 2.9390079703262018e-08,
+            "lm_chain_max_error": 7.06322147436822e-08
+          },
+          {
+            "mode": "joint",
+            "tag_height_model": "shared",
+            "beacon_height_model": "independent",
+            "below_beacons": false,
+            "parameter_count": 75,
+            "measurement_rows": 180,
+            "prior_rows": 84,
+            "direct_jacobian_max_error": 0.0,
+            "finite_difference_max_error": 2.6344373793563136e-08,
+            "lm_chain_max_error": 5.431601124428198e-08
+          },
+          {
+            "mode": "joint",
+            "tag_height_model": "shared",
+            "beacon_height_model": "independent",
+            "below_beacons": true,
+            "parameter_count": 75,
+            "measurement_rows": 180,
+            "prior_rows": 84,
+            "direct_jacobian_max_error": 0.0,
+            "finite_difference_max_error": 2.6344373793563136e-08,
+            "lm_chain_max_error": 5.431601124428198e-08
+          },
+          {
+            "mode": "joint",
+            "tag_height_model": "soft",
+            "beacon_height_model": "shared",
+            "below_beacons": false,
+            "parameter_count": 99,
+            "measurement_rows": 180,
+            "prior_rows": 114,
+            "direct_jacobian_max_error": 0.0,
+            "finite_difference_max_error": 2.479547234202073e-08,
+            "lm_chain_max_error": 4.472361325724705e-08
+          },
+          {
+            "mode": "joint",
+            "tag_height_model": "soft",
+            "beacon_height_model": "shared",
+            "below_beacons": true,
+            "parameter_count": 99,
+            "measurement_rows": 180,
+            "prior_rows": 114,
+            "direct_jacobian_max_error": 0.0,
+            "finite_difference_max_error": 2.479547234202073e-08,
+            "lm_chain_max_error": 4.472361325724705e-08
+          },
+          {
+            "mode": "joint",
+            "tag_height_model": "soft",
+            "beacon_height_model": "independent",
+            "below_beacons": false,
+            "parameter_count": 102,
+            "measurement_rows": 180,
+            "prior_rows": 114,
+            "direct_jacobian_max_error": 0.0,
+            "finite_difference_max_error": 5.074885289779729e-08,
+            "lm_chain_max_error": 5.8633663257978696e-08
+          },
+          {
+            "mode": "joint",
+            "tag_height_model": "free",
+            "beacon_height_model": "shared",
+            "below_beacons": false,
+            "parameter_count": 99,
+            "measurement_rows": 180,
+            "prior_rows": 84,
+            "direct_jacobian_max_error": 0.0,
+            "finite_difference_max_error": 2.479547234202073e-08,
+            "lm_chain_max_error": 4.472361325724705e-08
+          },
+          {
+            "mode": "joint",
+            "tag_height_model": "free",
+            "beacon_height_model": "shared",
+            "below_beacons": true,
+            "parameter_count": 99,
+            "measurement_rows": 180,
+            "prior_rows": 84,
+            "direct_jacobian_max_error": 0.0,
+            "finite_difference_max_error": 2.479547234202073e-08,
+            "lm_chain_max_error": 4.472361325724705e-08
+          },
+          {
+            "mode": "joint",
+            "tag_height_model": "free",
+            "beacon_height_model": "independent",
+            "below_beacons": false,
+            "parameter_count": 102,
+            "measurement_rows": 180,
+            "prior_rows": 84,
+            "direct_jacobian_max_error": 0.0,
+            "finite_difference_max_error": 5.074885289779729e-08,
+            "lm_chain_max_error": 5.8633663257978696e-08
+          },
+          {
+            "mode": "known_map",
+            "tag_height_model": "fixed",
+            "beacon_height_model": "shared",
+            "below_beacons": false,
+            "parameter_count": 60,
+            "measurement_rows": 180,
+            "prior_rows": 84,
+            "direct_jacobian_max_error": 0.0,
+            "finite_difference_max_error": 1.72373191276165e-08,
+            "lm_chain_max_error": 5.044957163136132e-08
+          },
+          {
+            "mode": "known_map",
+            "tag_height_model": "fixed",
+            "beacon_height_model": "shared",
+            "below_beacons": true,
+            "parameter_count": 60,
+            "measurement_rows": 180,
+            "prior_rows": 84,
+            "direct_jacobian_max_error": 0.0,
+            "finite_difference_max_error": 1.72373191276165e-08,
+            "lm_chain_max_error": 5.044957163136132e-08
+          },
+          {
+            "mode": "known_map",
+            "tag_height_model": "fixed",
+            "beacon_height_model": "independent",
+            "below_beacons": false,
+            "parameter_count": 60,
+            "measurement_rows": 180,
+            "prior_rows": 84,
+            "direct_jacobian_max_error": 0.0,
+            "finite_difference_max_error": 1.72373191276165e-08,
+            "lm_chain_max_error": 5.044957163136132e-08
+          },
+          {
+            "mode": "known_map",
+            "tag_height_model": "fixed",
+            "beacon_height_model": "independent",
+            "below_beacons": true,
+            "parameter_count": 60,
+            "measurement_rows": 180,
+            "prior_rows": 84,
+            "direct_jacobian_max_error": 0.0,
+            "finite_difference_max_error": 1.72373191276165e-08,
+            "lm_chain_max_error": 5.044957163136132e-08
+          },
+          {
+            "mode": "known_map",
+            "tag_height_model": "shared",
+            "beacon_height_model": "shared",
+            "below_beacons": false,
+            "parameter_count": 61,
+            "measurement_rows": 180,
+            "prior_rows": 84,
+            "direct_jacobian_max_error": 0.0,
+            "finite_difference_max_error": 1.72373191276165e-08,
+            "lm_chain_max_error": 5.044957163136132e-08
+          },
+          {
+            "mode": "known_map",
+            "tag_height_model": "shared",
+            "beacon_height_model": "shared",
+            "below_beacons": true,
+            "parameter_count": 61,
+            "measurement_rows": 180,
+            "prior_rows": 84,
+            "direct_jacobian_max_error": 0.0,
+            "finite_difference_max_error": 1.72373191276165e-08,
+            "lm_chain_max_error": 5.044957163136132e-08
+          },
+          {
+            "mode": "known_map",
+            "tag_height_model": "shared",
+            "beacon_height_model": "independent",
+            "below_beacons": false,
+            "parameter_count": 61,
+            "measurement_rows": 180,
+            "prior_rows": 84,
+            "direct_jacobian_max_error": 0.0,
+            "finite_difference_max_error": 1.72373191276165e-08,
+            "lm_chain_max_error": 5.044957163136132e-08
+          },
+          {
+            "mode": "known_map",
+            "tag_height_model": "shared",
+            "beacon_height_model": "independent",
+            "below_beacons": true,
+            "parameter_count": 61,
+            "measurement_rows": 180,
+            "prior_rows": 84,
+            "direct_jacobian_max_error": 0.0,
+            "finite_difference_max_error": 1.72373191276165e-08,
+            "lm_chain_max_error": 5.044957163136132e-08
+          },
+          {
+            "mode": "known_map",
+            "tag_height_model": "soft",
+            "beacon_height_model": "shared",
+            "below_beacons": false,
+            "parameter_count": 90,
+            "measurement_rows": 180,
+            "prior_rows": 114,
+            "direct_jacobian_max_error": 0.0,
+            "finite_difference_max_error": 2.982952729269073e-08,
+            "lm_chain_max_error": 5.044957163136132e-08
+          },
+          {
+            "mode": "known_map",
+            "tag_height_model": "soft",
+            "beacon_height_model": "shared",
+            "below_beacons": true,
+            "parameter_count": 90,
+            "measurement_rows": 180,
+            "prior_rows": 114,
+            "direct_jacobian_max_error": 0.0,
+            "finite_difference_max_error": 2.982952729269073e-08,
+            "lm_chain_max_error": 5.044957163136132e-08
+          },
+          {
+            "mode": "known_map",
+            "tag_height_model": "soft",
+            "beacon_height_model": "independent",
+            "below_beacons": false,
+            "parameter_count": 90,
+            "measurement_rows": 180,
+            "prior_rows": 114,
+            "direct_jacobian_max_error": 0.0,
+            "finite_difference_max_error": 2.982952729269073e-08,
+            "lm_chain_max_error": 5.044957163136132e-08
+          },
+          {
+            "mode": "known_map",
+            "tag_height_model": "soft",
+            "beacon_height_model": "independent",
+            "below_beacons": true,
+            "parameter_count": 90,
+            "measurement_rows": 180,
+            "prior_rows": 114,
+            "direct_jacobian_max_error": 0.0,
+            "finite_difference_max_error": 2.982952729269073e-08,
+            "lm_chain_max_error": 5.044957163136132e-08
+          },
+          {
+            "mode": "known_map",
+            "tag_height_model": "free",
+            "beacon_height_model": "shared",
+            "below_beacons": false,
+            "parameter_count": 90,
+            "measurement_rows": 180,
+            "prior_rows": 84,
+            "direct_jacobian_max_error": 0.0,
+            "finite_difference_max_error": 2.982952729269073e-08,
+            "lm_chain_max_error": 5.044957163136132e-08
+          },
+          {
+            "mode": "known_map",
+            "tag_height_model": "free",
+            "beacon_height_model": "shared",
+            "below_beacons": true,
+            "parameter_count": 90,
+            "measurement_rows": 180,
+            "prior_rows": 84,
+            "direct_jacobian_max_error": 0.0,
+            "finite_difference_max_error": 2.982952729269073e-08,
+            "lm_chain_max_error": 5.044957163136132e-08
+          },
+          {
+            "mode": "known_map",
+            "tag_height_model": "free",
+            "beacon_height_model": "independent",
+            "below_beacons": false,
+            "parameter_count": 90,
+            "measurement_rows": 180,
+            "prior_rows": 84,
+            "direct_jacobian_max_error": 0.0,
+            "finite_difference_max_error": 2.982952729269073e-08,
+            "lm_chain_max_error": 5.044957163136132e-08
+          },
+          {
+            "mode": "known_map",
+            "tag_height_model": "free",
+            "beacon_height_model": "independent",
+            "below_beacons": true,
+            "parameter_count": 90,
+            "measurement_rows": 180,
+            "prior_rows": 84,
+            "direct_jacobian_max_error": 0.0,
+            "finite_difference_max_error": 2.982952729269073e-08,
+            "lm_chain_max_error": 5.044957163136132e-08
+          }
+        ],
+        "supported_model_count": 30,
+        "explicitly_unsupported_coupled_bounds": [
+          {
+            "mode": "joint",
+            "tag_height_model": "soft",
+            "beacon_height_model": "independent",
+            "below_beacons": true,
+            "prior_sigma_m": 0.3,
+            "height_prior_sigma_m": 0.2,
+            "solver": "lm",
+            "starts": 1
+          },
+          {
+            "mode": "joint",
+            "tag_height_model": "free",
+            "beacon_height_model": "independent",
+            "below_beacons": true,
+            "prior_sigma_m": 0.3,
+            "height_prior_sigma_m": 0.2,
+            "solver": "lm",
+            "starts": 1
+          }
+        ]
+      }
+    },
+    "algebraic_physics_support": {
+      "status": "passed",
+      "evidence": {
+        "exact_cases": [
+          {
+            "beacon_count": 3,
+            "trajectory_max_error_m": 1.2011463857246401e-14,
+            "map_max_error_m": 8.00901069769441e-15,
+            "design_condition": 5.998764448879561,
+            "all_physical_coefficients_checked": true
+          },
+          {
+            "beacon_count": 4,
+            "trajectory_max_error_m": 1.3322676295501878e-14,
+            "map_max_error_m": 1.5694642960426368e-14,
+            "design_condition": 5.998764448879561,
+            "all_physical_coefficients_checked": true
+          },
+          {
+            "beacon_count": 5,
+            "trajectory_max_error_m": 1.8115356374411762e-14,
+            "map_max_error_m": 1.6091724337024826e-14,
+            "design_condition": 5.998764448879559,
+            "all_physical_coefficients_checked": true
+          },
+          {
+            "beacon_count": 6,
+            "trajectory_max_error_m": 2.072640988447872e-14,
+            "map_max_error_m": 2.021947487277524e-14,
+            "design_condition": 5.998764448879561,
+            "all_physical_coefficients_checked": true
+          },
+          {
+            "beacon_count": 7,
+            "trajectory_max_error_m": 2.072640988447872e-14,
+            "map_max_error_m": 2.2718103953473912e-14,
+            "design_condition": 5.998764448879561,
+            "all_physical_coefficients_checked": true
+          },
+          {
+            "beacon_count": 8,
+            "trajectory_max_error_m": 8.296271088900922e-15,
+            "map_max_error_m": 2.0928808318295785e-14,
+            "design_condition": 5.99876444887956,
+            "all_physical_coefficients_checked": true
+          }
+        ],
+        "retained_failures": [
+          {
+            "case": "noisy_unconstrained_invalid_fit",
+            "proposal": {
+              "status": "failed",
+              "diagnostics": {
+                "method": "lifted_squared_range_ordinary_least_squares",
+                "measurement_only": true,
+                "reference_beacon_ids": [
+                  0,
+                  1,
+                  2
+                ],
+                "warnings": [],
+                "support": "Joint planar fixed/shared tag height, shared beacon height, 3\u20138 beacons, complete synchronized epochs, at least six rank-six samples",
+                "statistical_note": "Squared noisy ranges are biased and heteroscedastic; differences share correlated noise and explanatory variables are noisy. This ordinary linear fit is only an initializer; final estimation uses unsquared normalized range residuals.",
+                "branch": {
+                  "d_positive": true,
+                  "beacon2_y_positive": true,
+                  "height_separation_sign": "positive",
+                  "ambiguity": "Horizontal y reflection and height-separation sign reflection preserve ranges. These conventions select a branch; full lifted rank does not prove global uniqueness."
+                },
+                "physical_tolerance": 1e-07,
+                "epoch_count": 30,
+                "missing_epoch_beacon_pairs": [],
+                "range_scale_m": 6.789398907765176,
+                "scaling": {
+                  "squared_range_units": "D/L\u00b2, u/L\u00b2, v/L\u00b2",
+                  "difference_centers": [
+                    -0.1482136591782854,
+                    0.28061047712985054
+                  ],
+                  "difference_standard_deviations": [
+                    1.102611623698432,
+                    0.7294288201751011
+                  ],
+                  "design": "Centered standardized u,v polynomial; each design column divided by its RMS. Rank and condition refer to this dimensionless design.",
+                  "design_column_rms": [
+                    1.2364418579152863,
+                    0.9767062731687332,
+                    1.2965064821429597,
+                    1.0,
+                    1.0,
+                    1.0
+                  ]
+                },
+                "design": {
+                  "rank": 6,
+                  "column_count": 6,
+                  "row_count": 30,
+                  "full_column_rank": true,
+                  "singular_values": [
+                    9.437767302058198,
+                    6.818027925893107,
+                    4.573821460333658,
+                    3.6987561626259917,
+                    2.7026392967376274,
+                    1.5931555115869547
+                  ],
+                  "relative_tolerance": 1e-08,
+                  "absolute_cutoff": 9.437767302058198e-08,
+                  "condition_number": 5.923946051353872
+                },
+                "coefficients_dimensionless": {
+                  "alpha": 0.22874634388141032,
+                  "beta": 0.10657814573656395,
+                  "gamma": 0.34023563358629894,
+                  "delta": -0.5970086485867326,
+                  "eta": -0.6303463398186453,
+                  "kappa": 0.6849881160948393
+                },
+                "coefficients_physical": {
+                  "alpha": 0.004962397038538961,
+                  "beta": 0.0023120941117655163,
+                  "gamma": 0.007381032946211334,
+                  "delta": -0.5970086485867326,
+                  "eta": -0.6303463398186453,
+                  "kappa": 31.575169407452748
+                },
+                "lifted_fit": {
+                  "dimensionless_residuals": [
+                    -0.0007530929993464497,
+                    -0.006000661809189012,
+                    0.010010656829045228,
+                    0.00715732601370711,
+                    -0.002820747765638676,
+                    -0.051490189346129256,
+                    0.011518882239419187,
+                    0.030429646174524372,
+                    0.011092056199359268,
+                    0.004163126027927899,
+                    0.010323713424388703,
+                    -0.0004180348015394575,
+                    0.0016749756768394963,
+                    0.028660722264697736,
+                    0.00013891372289080717,
+                    0.010842591077600217,
+                    -0.007347574421328051,
+                    -0.0003084769145864641,
+                    0.004761539438855156,
+                    -0.005084621690969016,
+                    -0.0046029203869466795,
+                    -0.014684434553821735,
+                    -0.0009991939981217612,
+                    -0.005353522889283369,
+                    0.004782176676751737,
+                    0.0012806487747294426,
+                    -0.029341109022102962,
+                    -0.007965755220452397,
+                    -0.00559674285162215,
+                    0.005930104130307756
+                  ],
+                  "rmse": 0.014696078003967062,
+                  "max_abs": 0.051490189346129256
+                },
+                "quadratic_positivity": {
+                  "gamma": 0.34023563358629894,
+                  "schur_complement": 0.22039999503714447
+                },
+                "physical_coefficients": {
+                  "expected_delta": -0.6002121640309683,
+                  "expected_eta": -0.6398262774510506,
+                  "delta_error": 0.003203515444235694,
+                  "eta_error": 0.009479937632405289,
+                  "max_abs_error": 0.009479937632405289
+                },
+                "recovered_parameters": {
+                  "d_m": 7.2309530269061355,
+                  "a_m": -1.1325409355166443,
+                  "b_m": 5.81984518990229,
+                  "height_squared_m2": 4.738369093920736,
+                  "intercept_height_squared_m2": 4.637632641901405,
+                  "epoch_height_squared_m2": [
+                    4.417887533423192,
+                    4.854755146226265,
+                    4.355381189352036,
+                    4.358116776543502,
+                    4.849907197924858,
+                    6.74505447642397,
+                    4.362218651617087,
+                    2.855052787266675,
+                    4.595561338873258,
+                    4.866040209466812,
+                    4.289527014877883,
+                    5.033330511043868,
+                    4.724209430571266,
+                    2.9500151243966717,
+                    5.1983099256815235,
+                    4.520047590232508,
+                    4.546372743892681,
+                    4.863457342105682,
+                    4.40984671552889,
+                    5.094061783440091,
+                    5.299791691477849,
+                    5.102625584458215,
+                    4.669453303151681,
+                    5.290277468466231,
+                    4.574818022217116,
+                    4.416952401482758,
+                    6.475221785319272,
+                    4.808260903807333,
+                    4.940195625064253,
+                    4.684322543288619
+                  ],
+                  "height_squared_dimensionless_max_departure": 0.0435328033246119
+                }
+              },
+              "geometry": null,
+              "error": {
+                "code": "physical_coefficient_mismatch",
+                "message": "Unconstrained lifted linear coefficients disagree with the recovered physical beacon model"
+              }
+            }
+          },
+          {
+            "case": "missing",
+            "proposal": {
+              "status": "unsupported",
+              "diagnostics": {
+                "method": "lifted_squared_range_ordinary_least_squares",
+                "measurement_only": true,
+                "reference_beacon_ids": [
+                  0,
+                  1,
+                  2
+                ],
+                "warnings": [],
+                "support": "Joint planar fixed/shared tag height, shared beacon height, 3\u20138 beacons, complete synchronized epochs, at least six rank-six samples",
+                "statistical_note": "Squared noisy ranges are biased and heteroscedastic; differences share correlated noise and explanatory variables are noisy. This ordinary linear fit is only an initializer; final estimation uses unsquared normalized range residuals.",
+                "branch": {
+                  "d_positive": true,
+                  "beacon2_y_positive": true,
+                  "height_separation_sign": "positive",
+                  "ambiguity": "Horizontal y reflection and height-separation sign reflection preserve ranges. These conventions select a branch; full lifted rank does not prove global uniqueness."
+                },
+                "physical_tolerance": 1e-07,
+                "epoch_count": 30,
+                "missing_epoch_beacon_pairs": [
+                  [
+                    29,
+                    3
+                  ]
+                ]
+              },
+              "geometry": null,
+              "error": {
+                "code": "missing_observations",
+                "message": "Complete synchronized observations for every epoch and beacon are required; no interpolation or fabricated ranges are used"
+              }
+            }
+          },
+          {
+            "case": "asynchronous",
+            "proposal": {
+              "status": "unsupported",
+              "diagnostics": {
+                "method": "lifted_squared_range_ordinary_least_squares",
+                "measurement_only": true,
+                "reference_beacon_ids": [
+                  0,
+                  1,
+                  2
+                ],
+                "warnings": [],
+                "support": "Joint planar fixed/shared tag height, shared beacon height, 3\u20138 beacons, complete synchronized epochs, at least six rank-six samples",
+                "statistical_note": "Squared noisy ranges are biased and heteroscedastic; differences share correlated noise and explanatory variables are noisy. This ordinary linear fit is only an initializer; final estimation uses unsquared normalized range residuals.",
+                "branch": {
+                  "d_positive": true,
+                  "beacon2_y_positive": true,
+                  "height_separation_sign": "positive",
+                  "ambiguity": "Horizontal y reflection and height-separation sign reflection preserve ranges. These conventions select a branch; full lifted rank does not prove global uniqueness."
+                },
+                "physical_tolerance": 1e-07,
+                "epoch_count": 30
+              },
+              "geometry": null,
+              "error": {
+                "code": "asynchronous_observations",
+                "message": "All assumed ping times must coincide with their common-position epoch; grouped asynchronous approximation is unsupported"
+              }
+            }
+          },
+          {
+            "case": "negative_range",
+            "proposal": {
+              "status": "failed",
+              "diagnostics": {
+                "method": "lifted_squared_range_ordinary_least_squares",
+                "measurement_only": true,
+                "reference_beacon_ids": [
+                  0,
+                  1,
+                  2
+                ],
+                "warnings": [],
+                "support": "Joint planar fixed/shared tag height, shared beacon height, 3\u20138 beacons, complete synchronized epochs, at least six rank-six samples",
+                "statistical_note": "Squared noisy ranges are biased and heteroscedastic; differences share correlated noise and explanatory variables are noisy. This ordinary linear fit is only an initializer; final estimation uses unsquared normalized range residuals.",
+                "branch": {
+                  "d_positive": true,
+                  "beacon2_y_positive": true,
+                  "height_separation_sign": "positive",
+                  "ambiguity": "Horizontal y reflection and height-separation sign reflection preserve ranges. These conventions select a branch; full lifted rank does not prove global uniqueness."
+                },
+                "physical_tolerance": 1e-07,
+                "epoch_count": 30
+              },
+              "geometry": null,
+              "error": {
+                "code": "invalid_squared_range",
+                "message": "Nonpositive measured ranges cannot be squared into a valid physical distance"
+              }
+            }
+          },
+          {
+            "case": "insufficient_epochs",
+            "proposal": {
+              "status": "unsupported",
+              "diagnostics": {
+                "method": "lifted_squared_range_ordinary_least_squares",
+                "measurement_only": true,
+                "reference_beacon_ids": [
+                  0,
+                  1,
+                  2
+                ],
+                "warnings": [],
+                "support": "Joint planar fixed/shared tag height, shared beacon height, 3\u20138 beacons, complete synchronized epochs, at least six rank-six samples",
+                "statistical_note": "Squared noisy ranges are biased and heteroscedastic; differences share correlated noise and explanatory variables are noisy. This ordinary linear fit is only an initializer; final estimation uses unsquared normalized range residuals.",
+                "branch": {
+                  "d_positive": true,
+                  "beacon2_y_positive": true,
+                  "height_separation_sign": "positive",
+                  "ambiguity": "Horizontal y reflection and height-separation sign reflection preserve ranges. These conventions select a branch; full lifted rank does not prove global uniqueness."
+                },
+                "physical_tolerance": 1e-07,
+                "epoch_count": 5
+              },
+              "geometry": null,
+              "error": {
+                "code": "insufficient_epochs",
+                "message": "The six-coefficient lifted fit requires at least six informative synchronized epochs"
+              }
+            }
+          },
+          {
+            "case": "independent_beacon_heights",
+            "proposal": {
+              "status": "unsupported",
+              "diagnostics": {
+                "method": "lifted_squared_range_ordinary_least_squares",
+                "measurement_only": true,
+                "reference_beacon_ids": [
+                  0,
+                  1,
+                  2
+                ],
+                "warnings": [],
+                "support": "Joint planar fixed/shared tag height, shared beacon height, 3\u20138 beacons, complete synchronized epochs, at least six rank-six samples",
+                "statistical_note": "Squared noisy ranges are biased and heteroscedastic; differences share correlated noise and explanatory variables are noisy. This ordinary linear fit is only an initializer; final estimation uses unsquared normalized range residuals.",
+                "branch": {
+                  "d_positive": true,
+                  "beacon2_y_positive": true,
+                  "height_separation_sign": "positive",
+                  "ambiguity": "Horizontal y reflection and height-separation sign reflection preserve ranges. These conventions select a branch; full lifted rank does not prove global uniqueness."
+                }
+              },
+              "geometry": null,
+              "error": {
+                "code": "unsupported_model",
+                "message": "Algebraic calibration requires joint planar fixed/shared tags and shared beacon height"
+              }
+            }
+          },
+          {
+            "case": "straight_line_lifted_rank_loss",
+            "proposal": {
+              "status": "failed",
+              "diagnostics": {
+                "method": "lifted_squared_range_ordinary_least_squares",
+                "measurement_only": true,
+                "reference_beacon_ids": [
+                  0,
+                  1,
+                  2
+                ],
+                "warnings": [],
+                "support": "Joint planar fixed/shared tag height, shared beacon height, 3\u20138 beacons, complete synchronized epochs, at least six rank-six samples",
+                "statistical_note": "Squared noisy ranges are biased and heteroscedastic; differences share correlated noise and explanatory variables are noisy. This ordinary linear fit is only an initializer; final estimation uses unsquared normalized range residuals.",
+                "branch": {
+                  "d_positive": true,
+                  "beacon2_y_positive": true,
+                  "height_separation_sign": "positive",
+                  "ambiguity": "Horizontal y reflection and height-separation sign reflection preserve ranges. These conventions select a branch; full lifted rank does not prove global uniqueness."
+                },
+                "physical_tolerance": 1e-07,
+                "epoch_count": 30,
+                "missing_epoch_beacon_pairs": [],
+                "range_scale_m": 5.724124280249207,
+                "scaling": {
+                  "squared_range_units": "D/L\u00b2, u/L\u00b2, v/L\u00b2",
+                  "difference_centers": [
+                    0.06683839398111656,
+                    0.5905584125728793
+                  ],
+                  "difference_standard_deviations": [
+                    0.3989764176610974,
+                    0.060119734168110554
+                  ],
+                  "design": "Centered standardized u,v polynomial; each design column divided by its RMS. Rank and condition refer to this dimensionless design.",
+                  "design_column_rms": [
+                    1.3406455038803236,
+                    1.3406455038803229,
+                    1.3406455038803224,
+                    0.9999999999999998,
+                    0.9999999999999998,
+                    1.0
+                  ]
+                },
+                "design": {
+                  "rank": 3,
+                  "column_count": 6,
+                  "row_count": 30,
+                  "full_column_rank": false,
+                  "singular_values": [
+                    10.440906521720004,
+                    7.745966692414835,
+                    3.314735435099555,
+                    3.4536823083488035e-14,
+                    1.5205471264628026e-14,
+                    3.459484191851408e-16
+                  ],
+                  "relative_tolerance": 1e-08,
+                  "absolute_cutoff": 1.0440906521720004e-07,
+                  "condition_number": null
+                }
+              },
+              "geometry": null,
+              "error": {
+                "code": "lifted_rank_loss",
+                "message": "Lifted design has fewer than six independent columns; motion or reference geometry does not support this initializer"
+              }
+            }
+          },
+          {
+            "case": "negative_gamma",
+            "proposal": {
+              "status": "failed",
+              "diagnostics": {
+                "method": "lifted_squared_range_ordinary_least_squares",
+                "measurement_only": true,
+                "reference_beacon_ids": [
+                  0,
+                  1,
+                  2
+                ],
+                "warnings": [],
+                "support": "Joint planar fixed/shared tag height, shared beacon height, 3\u20138 beacons, complete synchronized epochs, at least six rank-six samples",
+                "statistical_note": "Squared noisy ranges are biased and heteroscedastic; differences share correlated noise and explanatory variables are noisy. This ordinary linear fit is only an initializer; final estimation uses unsquared normalized range residuals.",
+                "branch": {
+                  "d_positive": true,
+                  "beacon2_y_positive": true,
+                  "height_separation_sign": "positive",
+                  "ambiguity": "Horizontal y reflection and height-separation sign reflection preserve ranges. These conventions select a branch; full lifted rank does not prove global uniqueness."
+                },
+                "physical_tolerance": 1e-07,
+                "epoch_count": 30,
+                "missing_epoch_beacon_pairs": [],
+                "range_scale_m": 3.1608040839368776,
+                "scaling": {
+                  "squared_range_units": "D/L\u00b2, u/L\u00b2, v/L\u00b2",
+                  "difference_centers": [
+                    0.004219530222133801,
+                    0.0011435451147615943
+                  ],
+                  "difference_standard_deviations": [
+                    0.019764752068668977,
+                    0.016080281903348575
+                  ],
+                  "design": "Centered standardized u,v polynomial; each design column divided by its RMS. Rank and condition refer to this dimensionless design.",
+                  "design_column_rms": [
+                    1.300057980876993,
+                    1.074095885682497,
+                    1.48457166342708,
+                    1.0,
+                    1.0,
+                    1.0
+                  ]
+                },
+                "design": {
+                  "rank": 6,
+                  "column_count": 6,
+                  "row_count": 30,
+                  "full_column_rank": true,
+                  "singular_values": [
+                    8.499517466408383,
+                    6.124925192365555,
+                    5.475403834450912,
+                    4.92497773050615,
+                    3.3748367620475794,
+                    2.149073814315271
+                  ],
+                  "relative_tolerance": 1e-08,
+                  "absolute_cutoff": 8.499517466408383e-08,
+                  "condition_number": 3.9549676748150526
+                },
+                "coefficients_dimensionless": {
+                  "alpha": 0.9990682457021969,
+                  "beta": 1.3008946844851708e-12,
+                  "gamma": -0.9990682457024628,
+                  "delta": -0.5000000000000232,
+                  "eta": -0.5000000000000067,
+                  "kappa": 1.000932623272538
+                },
+                "coefficients_physical": {
+                  "alpha": 0.09999999999989916,
+                  "beta": 1.3021079291430414e-13,
+                  "gamma": -0.09999999999992577,
+                  "delta": -0.5000000000000232,
+                  "eta": -0.5000000000000067,
+                  "kappa": 10.000000000000009
+                },
+                "lifted_fit": {
+                  "dimensionless_residuals": [
+                    -1.1102230246251565e-16,
+                    2.220446049250313e-16,
+                    4.440892098500626e-16,
+                    1.1102230246251565e-15,
+                    8.881784197001252e-16,
+                    -6.661338147750939e-16,
+                    8.881784197001252e-16,
+                    1.3322676295501878e-15,
+                    -2.220446049250313e-16,
+                    1.1102230246251565e-15,
+                    8.881784197001252e-16,
+                    1.1102230246251565e-16,
+                    6.661338147750939e-16,
+                    1.3322676295501878e-15,
+                    0.0,
+                    1.1102230246251565e-15,
+                    1.4432899320127035e-15,
+                    6.661338147750939e-16,
+                    4.440892098500626e-16,
+                    1.2212453270876722e-15,
+                    1.1102230246251565e-15,
+                    1.3322676295501878e-15,
+                    -5.551115123125783e-16,
+                    1.3322676295501878e-15,
+                    5.551115123125783e-16,
+                    0.0,
+                    2.220446049250313e-15,
+                    7.771561172376096e-16,
+                    -5.551115123125783e-16,
+                    2.886579864025407e-15
+                  ],
+                  "rmse": 1.0741085019148343e-15,
+                  "max_abs": 2.886579864025407e-15
+                }
+              },
+              "geometry": null,
+              "error": {
+                "code": "nonpositive_quadratic",
+                "message": "Lifted gamma must be positive to recover nonzero beacon2.y"
+              }
+            }
+          },
+          {
+            "case": "physical_linear_mismatch",
+            "proposal": {
+              "status": "failed",
+              "diagnostics": {
+                "method": "lifted_squared_range_ordinary_least_squares",
+                "measurement_only": true,
+                "reference_beacon_ids": [
+                  0,
+                  1,
+                  2
+                ],
+                "warnings": [],
+                "support": "Joint planar fixed/shared tag height, shared beacon height, 3\u20138 beacons, complete synchronized epochs, at least six rank-six samples",
+                "statistical_note": "Squared noisy ranges are biased and heteroscedastic; differences share correlated noise and explanatory variables are noisy. This ordinary linear fit is only an initializer; final estimation uses unsquared normalized range residuals.",
+                "branch": {
+                  "d_positive": true,
+                  "beacon2_y_positive": true,
+                  "height_separation_sign": "positive",
+                  "ambiguity": "Horizontal y reflection and height-separation sign reflection preserve ranges. These conventions select a branch; full lifted rank does not prove global uniqueness."
+                },
+                "physical_tolerance": 1e-07,
+                "epoch_count": 30,
+                "missing_epoch_beacon_pairs": [],
+                "range_scale_m": 3.162307957486231,
+                "scaling": {
+                  "squared_range_units": "D/L\u00b2, u/L\u00b2, v/L\u00b2",
+                  "difference_centers": [
+                    0.004215517879816459,
+                    0.0011424577201431677
+                  ],
+                  "difference_standard_deviations": [
+                    0.019745957807947558,
+                    0.016064991197474066
+                  ],
+                  "design": "Centered standardized u,v polynomial; each design column divided by its RMS. Rank and condition refer to this dimensionless design.",
+                  "design_column_rms": [
+                    1.3000579808769943,
+                    1.074095885682497,
+                    1.4845716634270776,
+                    1.0,
+                    0.9999999999999999,
+                    1.0
+                  ]
+                },
+                "design": {
+                  "rank": 6,
+                  "column_count": 6,
+                  "row_count": 30,
+                  "full_column_rank": true,
+                  "singular_values": [
+                    8.499517466408385,
+                    6.124925192365555,
+                    5.475403834450916,
+                    4.924977730506142,
+                    3.374836762047584,
+                    2.149073814315268
+                  ],
+                  "relative_tolerance": 1e-08,
+                  "absolute_cutoff": 8.499517466408385e-08,
+                  "condition_number": 3.9549676748150584
+                },
+                "coefficients_dimensionless": {
+                  "alpha": 1.0000191617980019,
+                  "beta": 9.775291903330077e-13,
+                  "gamma": 1.0000191617978351,
+                  "delta": -0.400000000000021,
+                  "eta": -0.5000000000000101,
+                  "kappa": 0.9999808385690947
+                },
+                "coefficients_physical": {
+                  "alpha": 0.09999999999999282,
+                  "beta": 9.775104594749683e-14,
+                  "gamma": 0.09999999999997614,
+                  "delta": -0.400000000000021,
+                  "eta": -0.5000000000000101,
+                  "kappa": 10.00000000000001
+                },
+                "lifted_fit": {
+                  "dimensionless_residuals": [
+                    4.440892098500626e-16,
+                    5.551115123125783e-16,
+                    6.661338147750939e-16,
+                    1.3322676295501878e-15,
+                    1.5543122344752192e-15,
+                    -2.220446049250313e-16,
+                    8.881784197001252e-16,
+                    2.220446049250313e-15,
+                    0.0,
+                    6.661338147750939e-16,
+                    1.1102230246251565e-15,
+                    6.661338147750939e-16,
+                    8.881784197001252e-16,
+                    1.1102230246251565e-15,
+                    4.440892098500626e-16,
+                    9.992007221626409e-16,
+                    8.881784197001252e-16,
+                    1.1102230246251565e-15,
+                    5.551115123125783e-16,
+                    5.551115123125783e-16,
+                    7.771561172376096e-16,
+                    8.881784197001252e-16,
+                    2.220446049250313e-16,
+                    1.1102230246251565e-15,
+                    7.771561172376096e-16,
+                    5.551115123125783e-16,
+                    2.4424906541753444e-15,
+                    8.881784197001252e-16,
+                    4.440892098500626e-16,
+                    2.220446049250313e-15
+                  ],
+                  "rmse": 1.0700845329855372e-15,
+                  "max_abs": 2.4424906541753444e-15
+                },
+                "quadratic_positivity": {
+                  "gamma": 1.0000191617978351,
+                  "schur_complement": 1.0000191617980019
+                },
+                "physical_coefficients": {
+                  "expected_delta": -0.5000000000002444,
+                  "expected_eta": -0.5000000000002444,
+                  "delta_error": 0.10000000000022335,
+                  "eta_error": 2.3425705819590803e-13,
+                  "max_abs_error": 0.10000000000022335
+                },
+                "recovered_parameters": {
+                  "d_m": 1.5811388300842464,
+                  "a_m": -7.727898721448673e-13,
+                  "b_m": 1.5811388300843785,
+                  "height_squared_m2": 8.754215598655929,
+                  "intercept_height_squared_m2": 8.749999999999206,
+                  "epoch_height_squared_m2": [
+                    8.771887855220207,
+                    8.77131815089518,
+                    8.768661403926332,
+                    8.735686781684157,
+                    8.724631967462246,
+                    8.77678794682597,
+                    8.756827501462071,
+                    8.720157845216669,
+                    8.77462443068315,
+                    8.77908820851358,
+                    8.737177796249158,
+                    8.768819667381573,
+                    8.724944476632052,
+                    8.746296802837389,
+                    8.76906222648388,
+                    8.744523999960585,
+                    8.751064982430453,
+                    8.727022393007683,
+                    8.768840391154255,
+                    8.74987204449921,
+                    8.734896751692427,
+                    8.766601169359339,
+                    8.778753697350622,
+                    8.752300594043746,
+                    8.764229013356479,
+                    8.77956564133019,
+                    8.72180764978159,
+                    8.755938659141226,
+                    8.77803771666675,
+                    8.72704019442966
+                  ],
+                  "height_squared_dimensionless_max_departure": 0.003405710084397051
+                }
+              },
+              "geometry": null,
+              "error": {
+                "code": "physical_coefficient_mismatch",
+                "message": "Unconstrained lifted linear coefficients disagree with the recovered physical beacon model"
+              }
+            }
+          },
+          {
+            "case": "negative_height_squared",
+            "proposal": {
+              "status": "failed",
+              "diagnostics": {
+                "method": "lifted_squared_range_ordinary_least_squares",
+                "measurement_only": true,
+                "reference_beacon_ids": [
+                  0,
+                  1,
+                  2
+                ],
+                "warnings": [],
+                "support": "Joint planar fixed/shared tag height, shared beacon height, 3\u20138 beacons, complete synchronized epochs, at least six rank-six samples",
+                "statistical_note": "Squared noisy ranges are biased and heteroscedastic; differences share correlated noise and explanatory variables are noisy. This ordinary linear fit is only an initializer; final estimation uses unsquared normalized range residuals.",
+                "branch": {
+                  "d_positive": true,
+                  "beacon2_y_positive": true,
+                  "height_separation_sign": "positive",
+                  "ambiguity": "Horizontal y reflection and height-separation sign reflection preserve ranges. These conventions select a branch; full lifted rank does not prove global uniqueness."
+                },
+                "physical_tolerance": 1e-07,
+                "epoch_count": 30,
+                "missing_epoch_beacon_pairs": [],
+                "range_scale_m": 6.449920636894023,
+                "scaling": {
+                  "squared_range_units": "D/L\u00b2, u/L\u00b2, v/L\u00b2",
+                  "difference_centers": [
+                    -0.1604235595073023,
+                    0.3116476113705673
+                  ],
+                  "difference_standard_deviations": [
+                    1.2273453207940088,
+                    0.8047195645572373
+                  ],
+                  "design": "Centered standardized u,v polynomial; each design column divided by its RMS. Rank and condition refer to this dimensionless design.",
+                  "design_column_rms": [
+                    1.2367797294683625,
+                    0.9756519540009714,
+                    1.2917518203016298,
+                    1.0,
+                    1.0,
+                    1.0
+                  ]
+                },
+                "design": {
+                  "rank": 6,
+                  "column_count": 6,
+                  "row_count": 30,
+                  "full_column_rank": true,
+                  "singular_values": [
+                    9.44560950849997,
+                    6.8178352575324945,
+                    4.557726932622481,
+                    3.6721089897101793,
+                    2.749724104232703,
+                    1.574592499671197
+                  ],
+                  "relative_tolerance": 1e-08,
+                  "absolute_cutoff": 9.44560950849997e-08,
+                  "condition_number": 5.998764448879555
+                },
+                "coefficients_dimensionless": {
+                  "alpha": 0.20218541580316626,
+                  "beta": 0.09317353738303732,
+                  "gamma": 0.30916673768007913,
+                  "delta": -0.5960370074764225,
+                  "eta": -0.6373365041617125,
+                  "kappa": 0.6486787753653339
+                },
+                "coefficients_physical": {
+                  "alpha": 0.004860053877009308,
+                  "beta": 0.0022396690176404448,
+                  "gamma": 0.007431629013079675,
+                  "delta": -0.5960370074764225,
+                  "eta": -0.6373365041617125,
+                  "kappa": 26.985994649227127
+                },
+                "lifted_fit": {
+                  "dimensionless_residuals": [
+                    -4.440892098500626e-16,
+                    -5.551115123125783e-16,
+                    2.220446049250313e-16,
+                    4.440892098500626e-16,
+                    0.0,
+                    6.661338147750939e-16,
+                    -9.71445146547012e-17,
+                    8.881784197001252e-16,
+                    6.661338147750939e-16,
+                    4.440892098500626e-16,
+                    -2.7755575615628914e-16,
+                    4.440892098500626e-16,
+                    0.0,
+                    8.881784197001252e-16,
+                    -6.886852199627924e-16,
+                    2.220446049250313e-16,
+                    -4.440892098500626e-16,
+                    -7.771561172376096e-16,
+                    1.1102230246251565e-16,
+                    0.0,
+                    -2.0469737016526324e-16,
+                    0.0,
+                    0.0,
+                    2.220446049250313e-16,
+                    0.0,
+                    3.3306690738754696e-16,
+                    4.440892098500626e-16,
+                    3.3306690738754696e-16,
+                    -5.551115123125783e-16,
+                    -3.191891195797325e-16
+                  ],
+                  "rmse": 4.455483398572373e-16,
+                  "max_abs": 8.881784197001252e-16
+                },
+                "quadratic_positivity": {
+                  "gamma": 0.30916673768007913,
+                  "schur_complement": 0.19516549175375936
+                },
+                "physical_coefficients": {
+                  "expected_delta": -0.5960370074764222,
+                  "expected_eta": -0.6373365041617122,
+                  "delta_error": -3.3306690738754696e-16,
+                  "eta_error": -3.3306690738754696e-16,
+                  "max_abs_error": 3.3306690738754696e-16
+                },
+                "recovered_parameters": {
+                  "d_m": 7.300000000000005,
+                  "a_m": -1.0999999999999983,
+                  "b_m": 5.799999999999997,
+                  "height_squared_m2": -0.0009999999999927526,
+                  "intercept_height_squared_m2": -0.0009999999999879769,
+                  "epoch_height_squared_m2": [
+                    -0.0009999999999487181,
+                    -0.0009999999999856675,
+                    -0.0009999999999804716,
+                    -0.0010000000000110704,
+                    -0.0009999999999995236,
+                    -0.0009999999999995236,
+                    -0.0010000000000041423,
+                    -0.0010000000000179984,
+                    -0.0009999999999928844,
+                    -0.0010000000000095549,
+                    -0.001000000000001833,
+                    -0.0010000000000079312,
+                    -0.0009999999999706567,
+                    -0.0009999999999764301,
+                    -0.001000000000000606,
+                    -0.0009999999999748426,
+                    -0.0009999999999533368,
+                    -0.0009999999999764301,
+                    -0.0010000000000041423,
+                    -0.0009999999999803272,
+                    -0.0010000000000057842,
+                    -0.0009999999999625742,
+                    -0.0009999999999902862,
+                    -0.000999999999999235,
+                    -0.0010000000000038537,
+                    -0.0009999999999995236,
+                    -0.0010000000000263698,
+                    -0.0010000000000179984,
+                    -0.0009999999999833582,
+                    -0.0009999999999975029
+                  ],
+                  "height_squared_dimensionless_max_departure": 1.0584862522068639e-15
+                }
+              },
+              "geometry": null,
+              "error": {
+                "code": "nonpositive_height_squared",
+                "message": "Recovered shared height squared must be positive; negative/zero values are retained and never clipped"
+              }
+            }
+          }
+        ],
+        "truth_metadata_excluded": true
+      }
+    },
+    "lm_domains_and_failures": {
+      "status": "passed",
+      "evidence": {
+        "chain_finite_difference_max_error": 2.6755486715046572e-11,
+        "explicitly_rejected": [
+          "lower_boundary",
+          "upper_boundary",
+          "underflow",
+          "bound_roundoff",
+          "overflow"
+        ],
+        "budget_exhaustion_statuses": [
+          "not_converged",
+          "not_converged"
+        ],
+        "historical_pre_fix_reproducer": {
+          "status": "failed_contract",
+          "method": "Reconstruction of former lower+exp(u), upper-exp(u) equations",
+          "cases": [
+            {
+              "coordinate": -1000.0,
+              "former_lower_plus_exp": 1e-06,
+              "lower_bound": 1e-06,
+              "former_upper_minus_exp": 2.0,
+              "upper_bound": 2.0,
+              "former_derivative_magnitude": 0.0,
+              "failed_strict_interior_contract": true
+            },
+            {
+              "coordinate": -100.0,
+              "former_lower_plus_exp": 1e-06,
+              "lower_bound": 1e-06,
+              "former_upper_minus_exp": 2.0,
+              "upper_bound": 2.0,
+              "former_derivative_magnitude": 3.720075976020836e-44,
+              "failed_strict_interior_contract": true
+            }
+          ]
+        },
+        "repaired_current_source_status": "passed"
+      }
+    },
+    "truth_independence_and_pairing": {
+      "status": "passed",
+      "evidence": {
+        "independent_and_algebraic_truth_poisoning_invariance": true,
+        "variants_cannot_override_start_controls": true
+      }
+    },
+    "native_projection_and_failed_seeds": {
+      "status": "passed",
+      "evidence": {
+        "native_branch_projection": [
+          {
+            "coordinate": "h",
+            "native_projected_map_rmse_m": 3.000002,
+            "preceding_m4_projected_map_rmse_m": 0.0,
+            "reflected_positive_branch_max_range_error_m": 1.7763568394002505e-15,
+            "interpretation": "Model projection displacement is not a lower bound: a reflected positive-height geometry has the same ranges"
+          },
+          {
+            "coordinate": "q",
+            "native_projected_map_rmse_m": 3.000002,
+            "preceding_m4_projected_map_rmse_m": 0.0,
+            "reflected_positive_branch_max_range_error_m": 1.7763568394002505e-15,
+            "interpretation": "Model projection displacement is not a lower bound: a reflected positive-height geometry has the same ranges"
+          }
+        ],
+        "retained_truth_near_degenerate_cases": [
+          {
+            "solver": "trf",
+            "requested_start_count": 3,
+            "retained_failed_start_count": 3,
+            "original_seed_errors": [
+              "ValueError: Truth-near initialization failed: ValueError: Joint3D gauge requires a noncollinear first-three beacon triangle; reorder/edit coordinates or use known map",
+              "ValueError: Truth-near initialization failed: ValueError: Joint3D gauge requires a noncollinear first-three beacon triangle; reorder/edit coordinates or use known map",
+              "ValueError: Truth-near initialization failed: ValueError: Joint3D gauge requires a noncollinear first-three beacon triangle; reorder/edit coordinates or use known map"
+            ],
+            "native_projection_unavailable_disclosed": true
+          },
+          {
+            "solver": "lm",
+            "requested_start_count": 3,
+            "retained_failed_start_count": 3,
+            "original_seed_errors": [
+              "ValueError: Truth-near initialization failed: ValueError: Joint3D gauge requires a noncollinear first-three beacon triangle; reorder/edit coordinates or use known map",
+              "ValueError: Truth-near initialization failed: ValueError: Joint3D gauge requires a noncollinear first-three beacon triangle; reorder/edit coordinates or use known map",
+              "ValueError: Truth-near initialization failed: ValueError: Joint3D gauge requires a noncollinear first-three beacon triangle; reorder/edit coordinates or use known map"
+            ],
+            "native_projection_unavailable_disclosed": true
+          }
+        ],
+        "near_surveyed_plane_inverse_cancellation": {
+          "surveyed_plane_z_m": 10.0,
+          "native_height_m": 1e-06,
+          "world_z_recovered_gap_m": 9.999999992515995e-07,
+          "inverse_pack": {
+            "status": "failed_due_to_roundoff",
+            "error": "Shared relative height must be positive (at least 1e-6 m); negative/reflected branch not selected"
+          },
+          "native_coordinates_remain_valid": true
+        }
+      }
+    },
+    "retained_acceptance_artifacts": {
+      "status": "passed",
+      "evidence": {
+        "source": "evidence\\m5\\acceptance_20261014_124422_c74e2389",
+        "sweep_count": 9,
+        "fixture_file_count": 8,
+        "sweep_run_count": 160,
+        "sweep_start_count": 320,
+        "fixture_start_count": 16,
+        "total_attempt_count": 336,
+        "finite_estimate_count": 285,
+        "files": [
+          {
+            "path": "evidence\\m5\\acceptance_20261014_124422_c74e2389\\demo_runs\\async_knots_lm.json",
+            "sha256": "a0db33c84dae7b683a54e7ec1496538425a9b558bc37b6293928f9d3ee798eb1",
+            "attempts_checked": 2
+          },
+          {
+            "path": "evidence\\m5\\acceptance_20261014_124422_c74e2389\\demo_runs\\async_knots_trf.json",
+            "sha256": "4a9c695012e8ac479d7d3743df302f6c9815e9c554a1f5754ec0ac80314ca894",
+            "attempts_checked": 2
+          },
+          {
+            "path": "evidence\\m5\\acceptance_20261014_124422_c74e2389\\demo_runs\\forced_nonconvergence_lm.json",
+            "sha256": "5a92f67aecade3dbcdd333d134b30ac210aa18c8baf403e0771c1f488731e92c",
+            "attempts_checked": 2
+          },
+          {
+            "path": "evidence\\m5\\acceptance_20261014_124422_c74e2389\\demo_runs\\forced_nonconvergence_trf.json",
+            "sha256": "1c92ae40197b6bce8e5101143b8282d9f2835acb61fca28bdab8c125dbcf24ef",
+            "attempts_checked": 2
+          },
+          {
+            "path": "evidence\\m5\\acceptance_20261014_124422_c74e2389\\demo_runs\\known_height_prior_lm.json",
+            "sha256": "8deb7eb81ed73f22782c9b9afed51def554e67dd491303ac31830aa2762b96e5",
+            "attempts_checked": 2
+          },
+          {
+            "path": "evidence\\m5\\acceptance_20261014_124422_c74e2389\\demo_runs\\known_height_prior_trf.json",
+            "sha256": "d35d84ca98983c24a35fdcb99c78ae80d2169abafd7214dfbaecccd3b9edc479",
+            "attempts_checked": 2
+          },
+          {
+            "path": "evidence\\m5\\acceptance_20261014_124422_c74e2389\\demo_runs\\spatial_diverse_lm.json",
+            "sha256": "eea81355b29399f47eb48b13b1b5cf36f0a15a0fb3233c55aeefc44e58f4df31",
+            "attempts_checked": 2
+          },
+          {
+            "path": "evidence\\m5\\acceptance_20261014_124422_c74e2389\\demo_runs\\spatial_diverse_trf.json",
+            "sha256": "eba6782e8dc854a3a9c31abfb7b2913a91701a0f446cbbeaad04291f7e79ad00",
+            "attempts_checked": 2
+          },
+          {
+            "path": "evidence\\m5\\acceptance_20261014_124422_c74e2389\\sweeps\\independent_basin.json",
+            "sha256": "96e35272c98f59d60e88690c3ca5fbec08b565288c566f28ee0a83506aa69ff9",
+            "attempts_checked": 48
+          },
+          {
+            "path": "evidence\\m5\\acceptance_20261014_124422_c74e2389\\sweeps\\initializer_degenerate.json",
+            "sha256": "1922f4cc099da29fd065a222ddee6d64d946bcf0175253d08b9646ff2abd57ae",
+            "attempts_checked": 32
+          },
+          {
+            "path": "evidence\\m5\\acceptance_20261014_124422_c74e2389\\sweeps\\initializer_noisy.json",
+            "sha256": "a6a8ab2ec69f222750c9d14431ff3ab4482ef4b64e3b7d938b3b5ae33eb8396d",
+            "attempts_checked": 32
+          },
+          {
+            "path": "evidence\\m5\\acceptance_20261014_124422_c74e2389\\sweeps\\initializer_noisy_relaxed.json",
+            "sha256": "93ca019d85b67572f88f74ac4f978980e7fa755ac27e1fe45985ab6acae13eeb",
+            "attempts_checked": 32
+          },
+          {
+            "path": "evidence\\m5\\acceptance_20261014_124422_c74e2389\\sweeps\\initializer_valid.json",
+            "sha256": "ac349656a8c8d6c50cb6de2e8a6c6127c844448b8ce5f53456536dd1a0cf422a",
+            "attempts_checked": 32
+          },
+          {
+            "path": "evidence\\m5\\acceptance_20261014_124422_c74e2389\\sweeps\\near_zero_height.json",
+            "sha256": "d784d43caa11ad2afe36ffa7795bf4eb6bf09e529562f2c75fb217b886190812",
+            "attempts_checked": 32
+          },
+          {
+            "path": "evidence\\m5\\acceptance_20261014_124422_c74e2389\\sweeps\\noise.json",
+            "sha256": "fc12c30ebf14d1ff014cd632d7a8576b27079345c73d29a177108bf07b0f7c83",
+            "attempts_checked": 32
+          },
+          {
+            "path": "evidence\\m5\\acceptance_20261014_124422_c74e2389\\sweeps\\truth_near_basin.json",
+            "sha256": "58a58fe3bf1abf0358d01d5ed8f4139d360a8166e2fa2019b1f2d94d4b774f0c",
+            "attempts_checked": 48
+          },
+          {
+            "path": "evidence\\m5\\acceptance_20261014_124422_c74e2389\\sweeps\\weak_geometry.json",
+            "sha256": "5384c76bfde8beeb8cdf8382b3c43a5618e0a4f891ab398c1cc9f8eced323d1e",
+            "attempts_checked": 32
+          }
+        ],
+        "retained_status_counts": {
+          "success": 280,
+          "not_converged": 5,
+          "failed": 51
+        },
+        "invalid_algebraic_attempt_count": 40,
+        "paired_reference_count": 94,
+        "maximum_direct_residual_disagreement": 0.0,
+        "maximum_direct_jacobian_disagreement": 3.552713678800501e-15,
+        "preservation_checked_files": 649,
+        "preservation_changes": [],
+        "historical_bound_invalid_estimates": []
+      }
+    }
+  },
+  "failures": [],
+  "software_versions": {
+    "numpy": "2.5.4"
+  },
+  "independence": "Distance residuals, analytic range Jacobian and physical lifted coefficients are assembled directly; simulator residuals/Jacobians are not used as expected values. Native model unpack/bases define declared coordinates."
+}

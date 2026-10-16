@@ -1,0 +1,173 @@
+{
+  "status": "passed",
+  "recorded_at": "2026-10-16T02:18:42.634867+00:00",
+  "scope": "Independent mathematical/read-only review of survey, uncertainty, strict saved-record boundaries and retained coverage; not UI certification.",
+  "source_hashes": {
+    "uwb/m7.py": "9b7431fcd4ef941f20c6aa35cc72516962804319bb49080f308a0ec6b4ab06ee",
+    "uwb/m7_service.py": "80b0e17f934eab86c639f79d1650bbd7f0568b1009c58ad3bf3e6960360f5430",
+    "scripts/validate_m7.py": "b2d9fb3c50e42b48a8a016d3a3f892d1ac836660466c0d1145194fb988d6c20d"
+  },
+  "findings": [
+    {
+      "id": "R1",
+      "severity": "P2",
+      "description": "Empty running/pending M7 envelopes initially accepted survey beacon7 for a four-beacon experiment and selected_start999 with no attempts.",
+      "initial_reproduction": "Both malformed envelopes accepted by m7.validate_run before the fix.",
+      "resolution": "Science owner moved _problem construction before early lifecycle return and rejects nonnull selection on empty starts; independent regression now required to pass."
+    },
+    {
+      "id": "R2",
+      "severity": "P3",
+      "description": "Omitted survey beacon_count originally raised raw TypeError before model validation.",
+      "resolution": "Explicit ValueError requires count3\u20138; unseen beacons cannot safely be inferred."
+    },
+    {
+      "id": "R3",
+      "severity": "none",
+      "description": "Suspected free/soft below-beacon constraint hole was ruled out by existing inherited M4 option guard. M7 now also rejects all nonfixed tag models explicitly; no silent acceptance was reproduced."
+    }
+  ],
+  "limitations": [
+    "Full local rank and Gaussian covariance do not establish unique geometry; direct coplanar-reflection test retains equal-distance alternatives with finite local intervals.",
+    "Coverage uses only one predeclared coordinate in 32 independent datasets; no simultaneous, unconditional prior-posterior, robust or general real-world calibration is certified.",
+    "Declared misspecified-offset intervals are suppressed, so 0 available intervals is not 0% coverage.",
+    "The review does not certify global optimum recovery or all future survey geometries."
+  ],
+  "tests": {
+    "run": 8,
+    "failures": 0,
+    "errors": 0,
+    "seconds": 0.6763626000029035
+  },
+  "direct_objective_jacobian_checks": [
+    {
+      "tag_height_model": "fixed",
+      "loss": "gaussian",
+      "residual_max_abs_error": 5.329070518200751e-15,
+      "jacobian_max_abs_error_per_m": 8.30512103533465e-09
+    },
+    {
+      "tag_height_model": "fixed",
+      "loss": "huber",
+      "residual_max_abs_error": 5.329070518200751e-15,
+      "jacobian_max_abs_error_per_m": 8.003503637610265e-09
+    },
+    {
+      "tag_height_model": "fixed",
+      "loss": "soft_l1",
+      "residual_max_abs_error": 5.329070518200751e-15,
+      "jacobian_max_abs_error_per_m": 6.681100117589267e-09
+    },
+    {
+      "tag_height_model": "fixed",
+      "loss": "cauchy",
+      "residual_max_abs_error": 5.329070518200751e-15,
+      "jacobian_max_abs_error_per_m": 6.403670482768575e-09
+    },
+    {
+      "tag_height_model": "shared",
+      "loss": "gaussian",
+      "residual_max_abs_error": 5.329070518200751e-15,
+      "jacobian_max_abs_error_per_m": 9.805710465826678e-09
+    },
+    {
+      "tag_height_model": "shared",
+      "loss": "huber",
+      "residual_max_abs_error": 5.329070518200751e-15,
+      "jacobian_max_abs_error_per_m": 9.805710243782073e-09
+    },
+    {
+      "tag_height_model": "shared",
+      "loss": "soft_l1",
+      "residual_max_abs_error": 5.329070518200751e-15,
+      "jacobian_max_abs_error_per_m": 7.975454963116135e-09
+    },
+    {
+      "tag_height_model": "shared",
+      "loss": "cauchy",
+      "residual_max_abs_error": 5.329070518200751e-15,
+      "jacobian_max_abs_error_per_m": 9.798051037179789e-09
+    },
+    {
+      "tag_height_model": "soft",
+      "loss": "gaussian",
+      "residual_max_abs_error": 5.329070518200751e-15,
+      "jacobian_max_abs_error_per_m": 1.0822324147952145e-08
+    },
+    {
+      "tag_height_model": "soft",
+      "loss": "huber",
+      "residual_max_abs_error": 5.329070518200751e-15,
+      "jacobian_max_abs_error_per_m": 1.0822324147952145e-08
+    },
+    {
+      "tag_height_model": "soft",
+      "loss": "soft_l1",
+      "residual_max_abs_error": 5.329070518200751e-15,
+      "jacobian_max_abs_error_per_m": 9.08723962744773e-09
+    },
+    {
+      "tag_height_model": "soft",
+      "loss": "cauchy",
+      "residual_max_abs_error": 5.329070518200751e-15,
+      "jacobian_max_abs_error_per_m": 7.650461375519058e-09
+    },
+    {
+      "tag_height_model": "free",
+      "loss": "gaussian",
+      "residual_max_abs_error": 5.329070518200751e-15,
+      "jacobian_max_abs_error_per_m": 1.0822324147952145e-08
+    },
+    {
+      "tag_height_model": "free",
+      "loss": "huber",
+      "residual_max_abs_error": 5.329070518200751e-15,
+      "jacobian_max_abs_error_per_m": 1.0822324147952145e-08
+    },
+    {
+      "tag_height_model": "free",
+      "loss": "soft_l1",
+      "residual_max_abs_error": 5.329070518200751e-15,
+      "jacobian_max_abs_error_per_m": 9.08723962744773e-09
+    },
+    {
+      "tag_height_model": "free",
+      "loss": "cauchy",
+      "residual_max_abs_error": 5.329070518200751e-15,
+      "jacobian_max_abs_error_per_m": 7.650461375519058e-09
+    }
+  ],
+  "retained_acceptance": {
+    "path": "evidence/m7/acceptance_20261015_190356_30ad31d9/acceptance_summary.json",
+    "runs": 75,
+    "attempts": 94,
+    "coverage": {
+      "assumed_model": {
+        "requested": 32,
+        "available": 32,
+        "covered": 31,
+        "unavailable": 0,
+        "fraction": 0.96875,
+        "wilson_95": [
+          0.8425573617998744,
+          0.9944621398359969
+        ],
+        "unavailable_counted_as_misses": false
+      },
+      "misspecified_offset": {
+        "requested": 32,
+        "available": 0,
+        "covered": 0,
+        "unavailable": 32,
+        "fraction": null,
+        "wilson_95": null,
+        "unavailable_counted_as_misses": false
+      }
+    },
+    "independent_covariance_max_abs_error_m2": 2.710505431213761e-19,
+    "strict_offline_reopen_and_csv": 75,
+    "source_hashes_unchanged": true
+  },
+  "source_hashes_unchanged_during_review": true,
+  "retained_original_report": "evidence\\m7\\independent_review_20261016T021842Z\\review.json"
+}

@@ -1,0 +1,97 @@
+{
+  "experiment_heights": {
+    "empty": {
+      "height": 720,
+      "pageHeight": 10627,
+      "rows": 0,
+      "width": 1280
+    },
+    "current": {
+      "height": 720,
+      "pageHeight": 10627,
+      "rows": 0,
+      "width": 1280
+    },
+    "ten_thousand": {
+      "height": 720,
+      "pageHeight": 10627,
+      "rows": 0,
+      "width": 1280
+    }
+  },
+  "desktop": {
+    "height": 900,
+    "pageHeight": 900,
+    "pageWidth": 1360,
+    "renderMs": "32.20",
+    "rows": 25,
+    "width": 1360
+  },
+  "maxPage": {
+    "page": "1–50 · Page 1 of 4",
+    "rows": 50
+  },
+  "secondPage": "51–100 · Page 2 of 4",
+  "mobileDefault": {
+    "height": 844,
+    "pageHeight": 844,
+    "pageWidth": 390,
+    "renderMs": "31.50",
+    "rows": 25,
+    "width": 390
+  },
+  "mobilePreview": {
+    "focus": "Use as A",
+    "height": 844,
+    "pageHeight": 844,
+    "pageWidth": 390,
+    "previewContentHeight": 715,
+    "previewHeight": 210,
+    "trayHeight": 114.8000030517578,
+    "width": 390
+  },
+  "keyboard": {
+    "enterPreview": true,
+    "escapeReturnsOriginatingRow": true
+  },
+  "ten_thousand": {
+    "cold": {
+      "counts": "10000 matching groups · 10000 groups · 10000 saved records",
+      "height": 720,
+      "pageHeight": 720,
+      "pageWidth": 1280,
+      "renderMs": "113189.80",
+      "rows": 25,
+      "width": 1280
+    },
+    "warm": [
+      {
+        "renderMs": 93.3,
+        "rows": 25
+      },
+      {
+        "renderMs": 84.3,
+        "rows": 25
+      },
+      {
+        "libraryDOM": 242,
+        "pageHeight": 720,
+        "pageWidth": 1280,
+        "renderMs": 88.5,
+        "rows": 25
+      }
+    ]
+  },
+  "strictFixtureOpenError": "METADATA PREVIEW\nIsolated metadata fixture 09997\nBack\n\nOpen failed: M6 experiment requires schema6.0\n\nOpen in viewer\nUse as A\nUse as B\nExport source JSON\nCopy ID\nOutcome\nfailed\nSaved\nOct 15, 2026, 03:09 PM\nAttempts\n{}\nUnattempted data cells\nunavailable\nUnattempted scheduled runs\nunavailable · variant/run combinations\nSource\nbundled\nSummary validation\nmetadata only; full record unchecked\nOriginal ID\n0000000000000000000000000000270d\nFull indexed metadata and provenance\n\nOpen retained runs or benchmarks to inspect every start, failure messages, complete settings, CSV tables and scene/chart PNG exports. No fitting occurs when opening saved results.",
+  "ports": {
+    "production": 5057,
+    "emptyFixture": 5059,
+    "initialTenThousand": 5058,
+    "finalTenThousand": 5070
+  },
+  "limitations": [
+    "Complete Experiment surface is not mobile-certified;390x844 acceptance covers Library.",
+    "Port5060 browser smoke attempt was blocked as an unsafe port; no browser barrier was bypassed; replacement5070 succeeded.",
+    "Earlier queued40.7s fixture request is not reported as warm."
+  ]
+}

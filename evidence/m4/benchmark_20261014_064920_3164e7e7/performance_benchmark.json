@@ -1,0 +1,2286 @@
+[
+  {
+    "beacons": 3,
+    "samples": 12,
+    "wrapper_wall_s": 0.17358000000058382,
+    "start_table": [
+      {
+        "entry_index": 0,
+        "value_index": 0,
+        "value": 0.2,
+        "seed": 7,
+        "variant": "fixed",
+        "start_index": 0,
+        "selected": false,
+        "status": "success",
+        "optimizer_converged": true,
+        "converged": true,
+        "tag_height_model": "fixed",
+        "beacon_height_model": "shared",
+        "geometric_accuracy": false,
+        "exact_data": false,
+        "error_frame": "raw",
+        "classification": "converged_geometry_inaccurate",
+        "position_rmse_m": 1.049767315466814,
+        "position_max_error_m": 3.5509370455935785,
+        "map_rmse_m": 0.0,
+        "height_error_frame": "known-map world z or saved evaluation-aligned joint frame",
+        "height_rmse_m": 0.203100960115899,
+        "height_max_error_m": 0.2969464325642798,
+        "plane_departure_rmse_m": 0.0,
+        "plane_departure_max_m": 0.0,
+        "range_rmse_m": 0.08213990465559555,
+        "normalized_residual_rms": 1.642798093111911,
+        "low_residual": true,
+        "measurement_full_column_rank": true,
+        "measurement_rank": 26,
+        "parameter_count": 26,
+        "condition_number": 2389.009970492479,
+        "augmented_full_column_rank": true,
+        "measurement_objective": 48.578140345178355,
+        "prior_objective": 0.0,
+        "height_prior_objective": 0.0,
+        "motion_prior_objective": 0.0,
+        "interpolation_display_rmse_m": 0.203100960115899,
+        "interpolation_ping_rmse_m": 0.20368183249590252,
+        "timing_approximation_position_rmse_m": 0.03119157115073359,
+        "runtime_s": 0.009702600000309758,
+        "nfev": 44
+      },
+      {
+        "entry_index": 0,
+        "value_index": 0,
+        "value": 0.2,
+        "seed": 7,
+        "variant": "fixed",
+        "start_index": 1,
+        "selected": true,
+        "status": "success",
+        "optimizer_converged": true,
+        "converged": true,
+        "tag_height_model": "fixed",
+        "beacon_height_model": "shared",
+        "geometric_accuracy": false,
+        "exact_data": false,
+        "error_frame": "raw",
+        "classification": "converged_geometry_inaccurate",
+        "position_rmse_m": 1.0497687553099224,
+        "position_max_error_m": 3.550942154347631,
+        "map_rmse_m": 0.0,
+        "height_error_frame": "known-map world z or saved evaluation-aligned joint frame",
+        "height_rmse_m": 0.203100960115899,
+        "height_max_error_m": 0.2969464325642798,
+        "plane_departure_rmse_m": 0.0,
+        "plane_departure_max_m": 0.0,
+        "range_rmse_m": 0.08213990465559272,
+        "normalized_residual_rms": 1.6427980931118542,
+        "low_residual": true,
+        "measurement_full_column_rank": true,
+        "measurement_rank": 26,
+        "parameter_count": 26,
+        "condition_number": 2388.733925028174,
+        "augmented_full_column_rank": true,
+        "measurement_objective": 48.57814034517501,
+        "prior_objective": 0.0,
+        "height_prior_objective": 0.0,
+        "motion_prior_objective": 0.0,
+        "interpolation_display_rmse_m": 0.203100960115899,
+        "interpolation_ping_rmse_m": 0.20368183249590252,
+        "timing_approximation_position_rmse_m": 0.03119157115073359,
+        "runtime_s": 0.00990529999944556,
+        "nfev": 51
+      },
+      {
+        "entry_index": 1,
+        "value_index": 0,
+        "value": 0.2,
+        "seed": 7,
+        "variant": "free",
+        "start_index": 0,
+        "selected": true,
+        "status": "success",
+        "optimizer_converged": true,
+        "converged": true,
+        "tag_height_model": "free",
+        "beacon_height_model": "shared",
+        "geometric_accuracy": true,
+        "exact_data": false,
+        "error_frame": "raw",
+        "classification": "geometrically_accurate",
+        "position_rmse_m": 0.1050947611033724,
+        "position_max_error_m": 0.16602351364850576,
+        "map_rmse_m": 0.0,
+        "height_error_frame": "known-map world z or saved evaluation-aligned joint frame",
+        "height_rmse_m": 0.08371748231513049,
+        "height_max_error_m": 0.14967784442753174,
+        "plane_departure_rmse_m": 0.0678728478527668,
+        "plane_departure_max_m": 0.11382977250750732,
+        "range_rmse_m": 2.1299990005788588e-13,
+        "normalized_residual_rms": 4.259998001157717e-12,
+        "low_residual": true,
+        "measurement_full_column_rank": false,
+        "measurement_rank": 36,
+        "parameter_count": 39,
+        "condition_number": null,
+        "augmented_full_column_rank": false,
+        "measurement_objective": 3.2665649345761946e-22,
+        "prior_objective": 0.0,
+        "height_prior_objective": 0.0,
+        "motion_prior_objective": 0.0,
+        "interpolation_display_rmse_m": 0.0,
+        "interpolation_ping_rmse_m": 0.015378486486119256,
+        "timing_approximation_position_rmse_m": 0.03119157115073359,
+        "runtime_s": 0.01074970000081521,
+        "nfev": 51
+      },
+      {
+        "entry_index": 1,
+        "value_index": 0,
+        "value": 0.2,
+        "seed": 7,
+        "variant": "free",
+        "start_index": 1,
+        "selected": false,
+        "status": "success",
+        "optimizer_converged": true,
+        "converged": true,
+        "tag_height_model": "free",
+        "beacon_height_model": "shared",
+        "geometric_accuracy": false,
+        "exact_data": false,
+        "error_frame": "raw",
+        "classification": "converged_geometry_inaccurate",
+        "position_rmse_m": 0.1497167682340086,
+        "position_max_error_m": 0.3776698797716733,
+        "map_rmse_m": 0.0,
+        "height_error_frame": "known-map world z or saved evaluation-aligned joint frame",
+        "height_rmse_m": 0.08966391172978493,
+        "height_max_error_m": 0.14967784442001558,
+        "plane_departure_rmse_m": 0.07333865024675548,
+        "plane_departure_max_m": 0.13588844462005534,
+        "range_rmse_m": 4.503772381549261e-13,
+        "normalized_residual_rms": 9.007544763098522e-12,
+        "low_residual": true,
+        "measurement_full_column_rank": false,
+        "measurement_rank": 36,
+        "parameter_count": 39,
+        "condition_number": null,
+        "augmented_full_column_rank": false,
+        "measurement_objective": 1.460445527866025e-21,
+        "prior_objective": 0.0,
+        "height_prior_objective": 0.0,
+        "motion_prior_objective": 0.0,
+        "interpolation_display_rmse_m": 0.0,
+        "interpolation_ping_rmse_m": 0.015378486486119256,
+        "timing_approximation_position_rmse_m": 0.03119157115073359,
+        "runtime_s": 0.01327579999997397,
+        "nfev": 54
+      }
+    ],
+    "aggregates": [
+      {
+        "value_index": 0,
+        "value": 0.2,
+        "variant": "fixed",
+        "run_count": 1,
+        "start_count": 2,
+        "failed_run_count": 0,
+        "failed_start_count": 0,
+        "optimizer_converged_count": 2,
+        "geometric_accuracy_count": 0,
+        "measurement_rank_deficient_count": 0,
+        "nonconvergence_rate": 0.0,
+        "all_start_position_rmse_m": {
+          "count": 2,
+          "min": 1.049767315466814,
+          "median": 1.049768035388368,
+          "p90": 1.0497686113256115,
+          "max": 1.0497687553099224
+        },
+        "selected_position_rmse_m": {
+          "count": 1,
+          "min": 1.0497687553099224,
+          "median": 1.0497687553099224,
+          "p90": 1.0497687553099224,
+          "max": 1.0497687553099224
+        },
+        "all_start_map_rmse_m": {
+          "count": 2,
+          "min": 0.0,
+          "median": 0.0,
+          "p90": 0.0,
+          "max": 0.0
+        },
+        "selected_map_rmse_m": {
+          "count": 1,
+          "min": 0.0,
+          "median": 0.0,
+          "p90": 0.0,
+          "max": 0.0
+        },
+        "all_start_height_rmse_m": {
+          "count": 2,
+          "min": 0.203100960115899,
+          "median": 0.203100960115899,
+          "p90": 0.203100960115899,
+          "max": 0.203100960115899
+        },
+        "selected_height_rmse_m": {
+          "count": 1,
+          "min": 0.203100960115899,
+          "median": 0.203100960115899,
+          "p90": 0.203100960115899,
+          "max": 0.203100960115899
+        },
+        "all_start_plane_departure_rmse_m": {
+          "count": 2,
+          "min": 0.0,
+          "median": 0.0,
+          "p90": 0.0,
+          "max": 0.0
+        },
+        "selected_plane_departure_rmse_m": {
+          "count": 1,
+          "min": 0.0,
+          "median": 0.0,
+          "p90": 0.0,
+          "max": 0.0
+        },
+        "all_start_range_rmse_m": {
+          "count": 2,
+          "min": 0.08213990465559272,
+          "median": 0.08213990465559413,
+          "p90": 0.08213990465559527,
+          "max": 0.08213990465559555
+        },
+        "selected_range_rmse_m": {
+          "count": 1,
+          "min": 0.08213990465559272,
+          "median": 0.08213990465559272,
+          "p90": 0.08213990465559272,
+          "max": 0.08213990465559272
+        },
+        "all_start_measurement_objective": {
+          "count": 2,
+          "min": 48.57814034517501,
+          "median": 48.57814034517668,
+          "p90": 48.57814034517802,
+          "max": 48.578140345178355
+        },
+        "selected_measurement_objective": {
+          "count": 1,
+          "min": 48.57814034517501,
+          "median": 48.57814034517501,
+          "p90": 48.57814034517501,
+          "max": 48.57814034517501
+        },
+        "all_start_prior_objective": {
+          "count": 2,
+          "min": 0.0,
+          "median": 0.0,
+          "p90": 0.0,
+          "max": 0.0
+        },
+        "selected_prior_objective": {
+          "count": 1,
+          "min": 0.0,
+          "median": 0.0,
+          "p90": 0.0,
+          "max": 0.0
+        },
+        "all_start_height_prior_objective": {
+          "count": 2,
+          "min": 0.0,
+          "median": 0.0,
+          "p90": 0.0,
+          "max": 0.0
+        },
+        "selected_height_prior_objective": {
+          "count": 1,
+          "min": 0.0,
+          "median": 0.0,
+          "p90": 0.0,
+          "max": 0.0
+        },
+        "all_start_motion_prior_objective": {
+          "count": 2,
+          "min": 0.0,
+          "median": 0.0,
+          "p90": 0.0,
+          "max": 0.0
+        },
+        "selected_motion_prior_objective": {
+          "count": 1,
+          "min": 0.0,
+          "median": 0.0,
+          "p90": 0.0,
+          "max": 0.0
+        },
+        "all_start_interpolation_display_rmse_m": {
+          "count": 2,
+          "min": 0.203100960115899,
+          "median": 0.203100960115899,
+          "p90": 0.203100960115899,
+          "max": 0.203100960115899
+        },
+        "selected_interpolation_display_rmse_m": {
+          "count": 1,
+          "min": 0.203100960115899,
+          "median": 0.203100960115899,
+          "p90": 0.203100960115899,
+          "max": 0.203100960115899
+        },
+        "all_start_interpolation_ping_rmse_m": {
+          "count": 2,
+          "min": 0.20368183249590252,
+          "median": 0.20368183249590252,
+          "p90": 0.20368183249590252,
+          "max": 0.20368183249590252
+        },
+        "selected_interpolation_ping_rmse_m": {
+          "count": 1,
+          "min": 0.20368183249590252,
+          "median": 0.20368183249590252,
+          "p90": 0.20368183249590252,
+          "max": 0.20368183249590252
+        },
+        "all_start_timing_approximation_position_rmse_m": {
+          "count": 2,
+          "min": 0.03119157115073359,
+          "median": 0.03119157115073359,
+          "p90": 0.03119157115073359,
+          "max": 0.03119157115073359
+        },
+        "selected_timing_approximation_position_rmse_m": {
+          "count": 1,
+          "min": 0.03119157115073359,
+          "median": 0.03119157115073359,
+          "p90": 0.03119157115073359,
+          "max": 0.03119157115073359
+        },
+        "all_start_runtime_s": {
+          "count": 2,
+          "min": 0.009702600000309758,
+          "median": 0.00980394999987766,
+          "p90": 0.00988502999953198,
+          "max": 0.00990529999944556
+        },
+        "selected_runtime_s": {
+          "count": 1,
+          "min": 0.00990529999944556,
+          "median": 0.00990529999944556,
+          "p90": 0.00990529999944556,
+          "max": 0.00990529999944556
+        }
+      },
+      {
+        "value_index": 0,
+        "value": 0.2,
+        "variant": "free",
+        "run_count": 1,
+        "start_count": 2,
+        "failed_run_count": 0,
+        "failed_start_count": 0,
+        "optimizer_converged_count": 2,
+        "geometric_accuracy_count": 1,
+        "measurement_rank_deficient_count": 2,
+        "nonconvergence_rate": 0.0,
+        "all_start_position_rmse_m": {
+          "count": 2,
+          "min": 0.1050947611033724,
+          "median": 0.1274057646686905,
+          "p90": 0.14525456752094498,
+          "max": 0.1497167682340086
+        },
+        "selected_position_rmse_m": {
+          "count": 1,
+          "min": 0.1050947611033724,
+          "median": 0.1050947611033724,
+          "p90": 0.1050947611033724,
+          "max": 0.1050947611033724
+        },
+        "all_start_map_rmse_m": {
+          "count": 2,
+          "min": 0.0,
+          "median": 0.0,
+          "p90": 0.0,
+          "max": 0.0
+        },
+        "selected_map_rmse_m": {
+          "count": 1,
+          "min": 0.0,
+          "median": 0.0,
+          "p90": 0.0,
+          "max": 0.0
+        },
+        "all_start_height_rmse_m": {
+          "count": 2,
+          "min": 0.08371748231513049,
+          "median": 0.08669069702245771,
+          "p90": 0.08906926878831949,
+          "max": 0.08966391172978493
+        },
+        "selected_height_rmse_m": {
+          "count": 1,
+          "min": 0.08371748231513049,
+          "median": 0.08371748231513049,
+          "p90": 0.08371748231513049,
+          "max": 0.08371748231513049
+        },
+        "all_start_plane_departure_rmse_m": {
+          "count": 2,
+          "min": 0.0678728478527668,
+          "median": 0.07060574904976114,
+          "p90": 0.07279207000735662,
+          "max": 0.07333865024675548
+        },
+        "selected_plane_departure_rmse_m": {
+          "count": 1,
+          "min": 0.0678728478527668,
+          "median": 0.0678728478527668,
+          "p90": 0.0678728478527668,
+          "max": 0.0678728478527668
+        },
+        "all_start_range_rmse_m": {
+          "count": 2,
+          "min": 2.1299990005788588e-13,
+          "median": 3.31688569106406e-13,
+          "p90": 4.266395043452221e-13,
+          "max": 4.503772381549261e-13
+        },
+        "selected_range_rmse_m": {
+          "count": 1,
+          "min": 2.1299990005788588e-13,
+          "median": 2.1299990005788588e-13,
+          "p90": 2.1299990005788588e-13,
+          "max": 2.1299990005788588e-13
+        },
+        "all_start_measurement_objective": {
+          "count": 2,
+          "min": 3.2665649345761946e-22,
+          "median": 8.935510106618223e-22,
+          "p90": 1.3470666244251845e-21,
+          "max": 1.460445527866025e-21
+        },
+        "selected_measurement_objective": {
+          "count": 1,
+          "min": 3.2665649345761946e-22,
+          "median": 3.2665649345761946e-22,
+          "p90": 3.2665649345761946e-22,
+          "max": 3.2665649345761946e-22
+        },
+        "all_start_prior_objective": {
+          "count": 2,
+          "min": 0.0,
+          "median": 0.0,
+          "p90": 0.0,
+          "max": 0.0
+        },
+        "selected_prior_objective": {
+          "count": 1,
+          "min": 0.0,
+          "median": 0.0,
+          "p90": 0.0,
+          "max": 0.0
+        },
+        "all_start_height_prior_objective": {
+          "count": 2,
+          "min": 0.0,
+          "median": 0.0,
+          "p90": 0.0,
+          "max": 0.0
+        },
+        "selected_height_prior_objective": {
+          "count": 1,
+          "min": 0.0,
+          "median": 0.0,
+          "p90": 0.0,
+          "max": 0.0
+        },
+        "all_start_motion_prior_objective": {
+          "count": 2,
+          "min": 0.0,
+          "median": 0.0,
+          "p90": 0.0,
+          "max": 0.0
+        },
+        "selected_motion_prior_objective": {
+          "count": 1,
+          "min": 0.0,
+          "median": 0.0,
+          "p90": 0.0,
+          "max": 0.0
+        },
+        "all_start_interpolation_display_rmse_m": {
+          "count": 2,
+          "min": 0.0,
+          "median": 0.0,
+          "p90": 0.0,
+          "max": 0.0
+        },
+        "selected_interpolation_display_rmse_m": {
+          "count": 1,
+          "min": 0.0,
+          "median": 0.0,
+          "p90": 0.0,
+          "max": 0.0
+        },
+        "all_start_interpolation_ping_rmse_m": {
+          "count": 2,
+          "min": 0.015378486486119256,
+          "median": 0.015378486486119256,
+          "p90": 0.015378486486119256,
+          "max": 0.015378486486119256
+        },
+        "selected_interpolation_ping_rmse_m": {
+          "count": 1,
+          "min": 0.015378486486119256,
+          "median": 0.015378486486119256,
+          "p90": 0.015378486486119256,
+          "max": 0.015378486486119256
+        },
+        "all_start_timing_approximation_position_rmse_m": {
+          "count": 2,
+          "min": 0.03119157115073359,
+          "median": 0.03119157115073359,
+          "p90": 0.03119157115073359,
+          "max": 0.03119157115073359
+        },
+        "selected_timing_approximation_position_rmse_m": {
+          "count": 1,
+          "min": 0.03119157115073359,
+          "median": 0.03119157115073359,
+          "p90": 0.03119157115073359,
+          "max": 0.03119157115073359
+        },
+        "all_start_runtime_s": {
+          "count": 2,
+          "min": 0.01074970000081521,
+          "median": 0.01201275000039459,
+          "p90": 0.013023190000058093,
+          "max": 0.01327579999997397
+        },
+        "selected_runtime_s": {
+          "count": 1,
+          "min": 0.01074970000081521,
+          "median": 0.01074970000081521,
+          "p90": 0.01074970000081521,
+          "max": 0.01074970000081521
+        }
+      }
+    ]
+  },
+  {
+    "beacons": 3,
+    "samples": 24,
+    "wrapper_wall_s": 0.3513963000004878,
+    "start_table": [
+      {
+        "entry_index": 0,
+        "value_index": 0,
+        "value": 0.2,
+        "seed": 7,
+        "variant": "fixed",
+        "start_index": 0,
+        "selected": true,
+        "status": "success",
+        "optimizer_converged": true,
+        "converged": true,
+        "tag_height_model": "fixed",
+        "beacon_height_model": "shared",
+        "geometric_accuracy": false,
+        "exact_data": false,
+        "error_frame": "raw",
+        "classification": "converged_geometry_inaccurate",
+        "position_rmse_m": 0.7957904946201029,
+        "position_max_error_m": 3.733449373184914,
+        "map_rmse_m": 0.0,
+        "height_error_frame": "known-map world z or saved evaluation-aligned joint frame",
+        "height_rmse_m": 0.2076655965729519,
+        "height_max_error_m": 0.29930063075716173,
+        "plane_departure_rmse_m": 0.0,
+        "plane_departure_max_m": 0.0,
+        "range_rmse_m": 0.1134939410137281,
+        "normalized_residual_rms": 2.2698788202745623,
+        "low_residual": false,
+        "measurement_full_column_rank": true,
+        "measurement_rank": 50,
+        "parameter_count": 50,
+        "condition_number": 217.64701086071213,
+        "augmented_full_column_rank": true,
+        "measurement_objective": 185.48459491431737,
+        "prior_objective": 0.0,
+        "height_prior_objective": 0.0,
+        "motion_prior_objective": 0.0,
+        "interpolation_display_rmse_m": 0.2076655965729519,
+        "interpolation_ping_rmse_m": 0.2078005721305352,
+        "timing_approximation_position_rmse_m": 0.03189259286301958,
+        "runtime_s": 0.04350029999841354,
+        "nfev": 40
+      },
+      {
+        "entry_index": 0,
+        "value_index": 0,
+        "value": 0.2,
+        "seed": 7,
+        "variant": "fixed",
+        "start_index": 1,
+        "selected": false,
+        "status": "success",
+        "optimizer_converged": true,
+        "converged": true,
+        "tag_height_model": "fixed",
+        "beacon_height_model": "shared",
+        "geometric_accuracy": false,
+        "exact_data": false,
+        "error_frame": "raw",
+        "classification": "converged_geometry_inaccurate",
+        "position_rmse_m": 0.7957893581681349,
+        "position_max_error_m": 3.7334435237255836,
+        "map_rmse_m": 0.0,
+        "height_error_frame": "known-map world z or saved evaluation-aligned joint frame",
+        "height_rmse_m": 0.2076655965729519,
+        "height_max_error_m": 0.29930063075716173,
+        "plane_departure_rmse_m": 0.0,
+        "plane_departure_max_m": 0.0,
+        "range_rmse_m": 0.11349394101372937,
+        "normalized_residual_rms": 2.269878820274587,
+        "low_residual": false,
+        "measurement_full_column_rank": true,
+        "measurement_rank": 50,
+        "parameter_count": 50,
+        "condition_number": 217.65940109367196,
+        "augmented_full_column_rank": true,
+        "measurement_objective": 185.4845949143215,
+        "prior_objective": 0.0,
+        "height_prior_objective": 0.0,
+        "motion_prior_objective": 0.0,
+        "interpolation_display_rmse_m": 0.2076655965729519,
+        "interpolation_ping_rmse_m": 0.2078005721305352,
+        "timing_approximation_position_rmse_m": 0.03189259286301958,
+        "runtime_s": 0.026383300000816234,
+        "nfev": 24
+      },
+      {
+        "entry_index": 1,
+        "value_index": 0,
+        "value": 0.2,
+        "seed": 7,
+        "variant": "free",
+        "start_index": 0,
+        "selected": false,
+        "status": "success",
+        "optimizer_converged": true,
+        "converged": true,
+        "tag_height_model": "free",
+        "beacon_height_model": "shared",
+        "geometric_accuracy": true,
+        "exact_data": false,
+        "error_frame": "raw",
+        "classification": "geometrically_accurate",
+        "position_rmse_m": 0.10448679657848756,
+        "position_max_error_m": 0.23093139791240155,
+        "map_rmse_m": 0.0,
+        "height_error_frame": "known-map world z or saved evaluation-aligned joint frame",
+        "height_rmse_m": 0.07417970262396682,
+        "height_max_error_m": 0.1800902555106471,
+        "plane_departure_rmse_m": 0.0656014225948074,
+        "plane_departure_max_m": 0.15886751843790453,
+        "range_rmse_m": 3.1823069845404386e-13,
+        "normalized_residual_rms": 6.364613969080877e-12,
+        "low_residual": true,
+        "measurement_full_column_rank": false,
+        "measurement_rank": 72,
+        "parameter_count": 75,
+        "condition_number": null,
+        "augmented_full_column_rank": false,
+        "measurement_objective": 1.4582991951150997e-21,
+        "prior_objective": 0.0,
+        "height_prior_objective": 0.0,
+        "motion_prior_objective": 0.0,
+        "interpolation_display_rmse_m": 1.6214242969954306e-15,
+        "interpolation_ping_rmse_m": 0.007491744516511385,
+        "timing_approximation_position_rmse_m": 0.03189259286301958,
+        "runtime_s": 0.04172939999989467,
+        "nfev": 47
+      },
+      {
+        "entry_index": 1,
+        "value_index": 0,
+        "value": 0.2,
+        "seed": 7,
+        "variant": "free",
+        "start_index": 1,
+        "selected": true,
+        "status": "success",
+        "optimizer_converged": true,
+        "converged": true,
+        "tag_height_model": "free",
+        "beacon_height_model": "shared",
+        "geometric_accuracy": false,
+        "exact_data": false,
+        "error_frame": "raw",
+        "classification": "converged_geometry_inaccurate",
+        "position_rmse_m": 0.19853526412347494,
+        "position_max_error_m": 0.8330239272011004,
+        "map_rmse_m": 0.0,
+        "height_error_frame": "known-map world z or saved evaluation-aligned joint frame",
+        "height_rmse_m": 0.11277291549678745,
+        "height_max_error_m": 0.4161660285944983,
+        "plane_departure_rmse_m": 0.10525853233057889,
+        "plane_departure_max_m": 0.37200462041748766,
+        "range_rmse_m": 1.5700293048058722e-13,
+        "normalized_residual_rms": 3.1400586096117445e-12,
+        "low_residual": true,
+        "measurement_full_column_rank": false,
+        "measurement_rank": 72,
+        "parameter_count": 75,
+        "condition_number": null,
+        "augmented_full_column_rank": false,
+        "measurement_objective": 3.549588505846863e-22,
+        "prior_objective": 0.0,
+        "height_prior_objective": 0.0,
+        "motion_prior_objective": 0.0,
+        "interpolation_display_rmse_m": 1.6214242969954306e-15,
+        "interpolation_ping_rmse_m": 0.007491744516511385,
+        "timing_approximation_position_rmse_m": 0.03189259286301958,
+        "runtime_s": 0.052242400000977796,
+        "nfev": 54
+      }
+    ],
+    "aggregates": [
+      {
+        "value_index": 0,
+        "value": 0.2,
+        "variant": "fixed",
+        "run_count": 1,
+        "start_count": 2,
+        "failed_run_count": 0,
+        "failed_start_count": 0,
+        "optimizer_converged_count": 2,
+        "geometric_accuracy_count": 0,
+        "measurement_rank_deficient_count": 0,
+        "nonconvergence_rate": 0.0,
+        "all_start_position_rmse_m": {
+          "count": 2,
+          "min": 0.7957893581681349,
+          "median": 0.7957899263941188,
+          "p90": 0.7957903809749061,
+          "max": 0.7957904946201029
+        },
+        "selected_position_rmse_m": {
+          "count": 1,
+          "min": 0.7957904946201029,
+          "median": 0.7957904946201029,
+          "p90": 0.7957904946201029,
+          "max": 0.7957904946201029
+        },
+        "all_start_map_rmse_m": {
+          "count": 2,
+          "min": 0.0,
+          "median": 0.0,
+          "p90": 0.0,
+          "max": 0.0
+        },
+        "selected_map_rmse_m": {
+          "count": 1,
+          "min": 0.0,
+          "median": 0.0,
+          "p90": 0.0,
+          "max": 0.0
+        },
+        "all_start_height_rmse_m": {
+          "count": 2,
+          "min": 0.2076655965729519,
+          "median": 0.2076655965729519,
+          "p90": 0.2076655965729519,
+          "max": 0.2076655965729519
+        },
+        "selected_height_rmse_m": {
+          "count": 1,
+          "min": 0.2076655965729519,
+          "median": 0.2076655965729519,
+          "p90": 0.2076655965729519,
+          "max": 0.2076655965729519
+        },
+        "all_start_plane_departure_rmse_m": {
+          "count": 2,
+          "min": 0.0,
+          "median": 0.0,
+          "p90": 0.0,
+          "max": 0.0
+        },
+        "selected_plane_departure_rmse_m": {
+          "count": 1,
+          "min": 0.0,
+          "median": 0.0,
+          "p90": 0.0,
+          "max": 0.0
+        },
+        "all_start_range_rmse_m": {
+          "count": 2,
+          "min": 0.1134939410137281,
+          "median": 0.11349394101372873,
+          "p90": 0.11349394101372924,
+          "max": 0.11349394101372937
+        },
+        "selected_range_rmse_m": {
+          "count": 1,
+          "min": 0.1134939410137281,
+          "median": 0.1134939410137281,
+          "p90": 0.1134939410137281,
+          "max": 0.1134939410137281
+        },
+        "all_start_measurement_objective": {
+          "count": 2,
+          "min": 185.48459491431737,
+          "median": 185.48459491431942,
+          "p90": 185.4845949143211,
+          "max": 185.4845949143215
+        },
+        "selected_measurement_objective": {
+          "count": 1,
+          "min": 185.48459491431737,
+          "median": 185.48459491431737,
+          "p90": 185.48459491431737,
+          "max": 185.48459491431737
+        },
+        "all_start_prior_objective": {
+          "count": 2,
+          "min": 0.0,
+          "median": 0.0,
+          "p90": 0.0,
+          "max": 0.0
+        },
+        "selected_prior_objective": {
+          "count": 1,
+          "min": 0.0,
+          "median": 0.0,
+          "p90": 0.0,
+          "max": 0.0
+        },
+        "all_start_height_prior_objective": {
+          "count": 2,
+          "min": 0.0,
+          "median": 0.0,
+          "p90": 0.0,
+          "max": 0.0
+        },
+        "selected_height_prior_objective": {
+          "count": 1,
+          "min": 0.0,
+          "median": 0.0,
+          "p90": 0.0,
+          "max": 0.0
+        },
+        "all_start_motion_prior_objective": {
+          "count": 2,
+          "min": 0.0,
+          "median": 0.0,
+          "p90": 0.0,
+          "max": 0.0
+        },
+        "selected_motion_prior_objective": {
+          "count": 1,
+          "min": 0.0,
+          "median": 0.0,
+          "p90": 0.0,
+          "max": 0.0
+        },
+        "all_start_interpolation_display_rmse_m": {
+          "count": 2,
+          "min": 0.2076655965729519,
+          "median": 0.2076655965729519,
+          "p90": 0.2076655965729519,
+          "max": 0.2076655965729519
+        },
+        "selected_interpolation_display_rmse_m": {
+          "count": 1,
+          "min": 0.2076655965729519,
+          "median": 0.2076655965729519,
+          "p90": 0.2076655965729519,
+          "max": 0.2076655965729519
+        },
+        "all_start_interpolation_ping_rmse_m": {
+          "count": 2,
+          "min": 0.2078005721305352,
+          "median": 0.2078005721305352,
+          "p90": 0.2078005721305352,
+          "max": 0.2078005721305352
+        },
+        "selected_interpolation_ping_rmse_m": {
+          "count": 1,
+          "min": 0.2078005721305352,
+          "median": 0.2078005721305352,
+          "p90": 0.2078005721305352,
+          "max": 0.2078005721305352
+        },
+        "all_start_timing_approximation_position_rmse_m": {
+          "count": 2,
+          "min": 0.03189259286301958,
+          "median": 0.03189259286301958,
+          "p90": 0.03189259286301958,
+          "max": 0.03189259286301958
+        },
+        "selected_timing_approximation_position_rmse_m": {
+          "count": 1,
+          "min": 0.03189259286301958,
+          "median": 0.03189259286301958,
+          "p90": 0.03189259286301958,
+          "max": 0.03189259286301958
+        },
+        "all_start_runtime_s": {
+          "count": 2,
+          "min": 0.026383300000816234,
+          "median": 0.034941799999614886,
+          "p90": 0.04178859999865381,
+          "max": 0.04350029999841354
+        },
+        "selected_runtime_s": {
+          "count": 1,
+          "min": 0.04350029999841354,
+          "median": 0.04350029999841354,
+          "p90": 0.04350029999841354,
+          "max": 0.04350029999841354
+        }
+      },
+      {
+        "value_index": 0,
+        "value": 0.2,
+        "variant": "free",
+        "run_count": 1,
+        "start_count": 2,
+        "failed_run_count": 0,
+        "failed_start_count": 0,
+        "optimizer_converged_count": 2,
+        "geometric_accuracy_count": 1,
+        "measurement_rank_deficient_count": 2,
+        "nonconvergence_rate": 0.0,
+        "all_start_position_rmse_m": {
+          "count": 2,
+          "min": 0.10448679657848756,
+          "median": 0.15151103035098124,
+          "p90": 0.1891304173689762,
+          "max": 0.19853526412347494
+        },
+        "selected_position_rmse_m": {
+          "count": 1,
+          "min": 0.19853526412347494,
+          "median": 0.19853526412347494,
+          "p90": 0.19853526412347494,
+          "max": 0.19853526412347494
+        },
+        "all_start_map_rmse_m": {
+          "count": 2,
+          "min": 0.0,
+          "median": 0.0,
+          "p90": 0.0,
+          "max": 0.0
+        },
+        "selected_map_rmse_m": {
+          "count": 1,
+          "min": 0.0,
+          "median": 0.0,
+          "p90": 0.0,
+          "max": 0.0
+        },
+        "all_start_height_rmse_m": {
+          "count": 2,
+          "min": 0.07417970262396682,
+          "median": 0.09347630906037713,
+          "p90": 0.10891359420950539,
+          "max": 0.11277291549678745
+        },
+        "selected_height_rmse_m": {
+          "count": 1,
+          "min": 0.11277291549678745,
+          "median": 0.11277291549678745,
+          "p90": 0.11277291549678745,
+          "max": 0.11277291549678745
+        },
+        "all_start_plane_departure_rmse_m": {
+          "count": 2,
+          "min": 0.0656014225948074,
+          "median": 0.08542997746269315,
+          "p90": 0.10129282135700174,
+          "max": 0.10525853233057889
+        },
+        "selected_plane_departure_rmse_m": {
+          "count": 1,
+          "min": 0.10525853233057889,
+          "median": 0.10525853233057889,
+          "p90": 0.10525853233057889,
+          "max": 0.10525853233057889
+        },
+        "all_start_range_rmse_m": {
+          "count": 2,
+          "min": 1.5700293048058722e-13,
+          "median": 2.3761681446731553e-13,
+          "p90": 3.021079216566982e-13,
+          "max": 3.1823069845404386e-13
+        },
+        "selected_range_rmse_m": {
+          "count": 1,
+          "min": 1.5700293048058722e-13,
+          "median": 1.5700293048058722e-13,
+          "p90": 1.5700293048058722e-13,
+          "max": 1.5700293048058722e-13
+        },
+        "all_start_measurement_objective": {
+          "count": 2,
+          "min": 3.549588505846863e-22,
+          "median": 9.06629022849893e-22,
+          "p90": 1.3479651606620584e-21,
+          "max": 1.4582991951150997e-21
+        },
+        "selected_measurement_objective": {
+          "count": 1,
+          "min": 3.549588505846863e-22,
+          "median": 3.549588505846863e-22,
+          "p90": 3.549588505846863e-22,
+          "max": 3.549588505846863e-22
+        },
+        "all_start_prior_objective": {
+          "count": 2,
+          "min": 0.0,
+          "median": 0.0,
+          "p90": 0.0,
+          "max": 0.0
+        },
+        "selected_prior_objective": {
+          "count": 1,
+          "min": 0.0,
+          "median": 0.0,
+          "p90": 0.0,
+          "max": 0.0
+        },
+        "all_start_height_prior_objective": {
+          "count": 2,
+          "min": 0.0,
+          "median": 0.0,
+          "p90": 0.0,
+          "max": 0.0
+        },
+        "selected_height_prior_objective": {
+          "count": 1,
+          "min": 0.0,
+          "median": 0.0,
+          "p90": 0.0,
+          "max": 0.0
+        },
+        "all_start_motion_prior_objective": {
+          "count": 2,
+          "min": 0.0,
+          "median": 0.0,
+          "p90": 0.0,
+          "max": 0.0
+        },
+        "selected_motion_prior_objective": {
+          "count": 1,
+          "min": 0.0,
+          "median": 0.0,
+          "p90": 0.0,
+          "max": 0.0
+        },
+        "all_start_interpolation_display_rmse_m": {
+          "count": 2,
+          "min": 1.6214242969954306e-15,
+          "median": 1.6214242969954306e-15,
+          "p90": 1.6214242969954306e-15,
+          "max": 1.6214242969954306e-15
+        },
+        "selected_interpolation_display_rmse_m": {
+          "count": 1,
+          "min": 1.6214242969954306e-15,
+          "median": 1.6214242969954306e-15,
+          "p90": 1.6214242969954306e-15,
+          "max": 1.6214242969954306e-15
+        },
+        "all_start_interpolation_ping_rmse_m": {
+          "count": 2,
+          "min": 0.007491744516511385,
+          "median": 0.007491744516511385,
+          "p90": 0.007491744516511385,
+          "max": 0.007491744516511385
+        },
+        "selected_interpolation_ping_rmse_m": {
+          "count": 1,
+          "min": 0.007491744516511385,
+          "median": 0.007491744516511385,
+          "p90": 0.007491744516511385,
+          "max": 0.007491744516511385
+        },
+        "all_start_timing_approximation_position_rmse_m": {
+          "count": 2,
+          "min": 0.03189259286301958,
+          "median": 0.03189259286301958,
+          "p90": 0.03189259286301958,
+          "max": 0.03189259286301958
+        },
+        "selected_timing_approximation_position_rmse_m": {
+          "count": 1,
+          "min": 0.03189259286301958,
+          "median": 0.03189259286301958,
+          "p90": 0.03189259286301958,
+          "max": 0.03189259286301958
+        },
+        "all_start_runtime_s": {
+          "count": 2,
+          "min": 0.04172939999989467,
+          "median": 0.04698590000043623,
+          "p90": 0.05119110000086948,
+          "max": 0.052242400000977796
+        },
+        "selected_runtime_s": {
+          "count": 1,
+          "min": 0.052242400000977796,
+          "median": 0.052242400000977796,
+          "p90": 0.052242400000977796,
+          "max": 0.052242400000977796
+        }
+      }
+    ]
+  },
+  {
+    "beacons": 8,
+    "samples": 12,
+    "wrapper_wall_s": 0.1926684000009118,
+    "start_table": [
+      {
+        "entry_index": 0,
+        "value_index": 0,
+        "value": 0.2,
+        "seed": 7,
+        "variant": "fixed",
+        "start_index": 0,
+        "selected": true,
+        "status": "success",
+        "optimizer_converged": true,
+        "converged": true,
+        "tag_height_model": "fixed",
+        "beacon_height_model": "shared",
+        "geometric_accuracy": false,
+        "exact_data": false,
+        "error_frame": "raw",
+        "classification": "converged_geometry_inaccurate",
+        "position_rmse_m": 0.2101161006592567,
+        "position_max_error_m": 0.30873601184917004,
+        "map_rmse_m": 0.0,
+        "height_error_frame": "known-map world z or saved evaluation-aligned joint frame",
+        "height_rmse_m": 0.203100960115899,
+        "height_max_error_m": 0.2969464325642798,
+        "plane_departure_rmse_m": 0.0,
+        "plane_departure_max_m": 0.0,
+        "range_rmse_m": 0.1037204807035074,
+        "normalized_residual_rms": 2.074409614070148,
+        "low_residual": false,
+        "measurement_full_column_rank": true,
+        "measurement_rank": 26,
+        "parameter_count": 26,
+        "condition_number": 2.8899861390068295,
+        "augmented_full_column_rank": true,
+        "measurement_objective": 206.55241185343968,
+        "prior_objective": 0.0,
+        "height_prior_objective": 0.0,
+        "motion_prior_objective": 0.0,
+        "interpolation_display_rmse_m": 0.203100960115899,
+        "interpolation_ping_rmse_m": 0.20811018550588714,
+        "timing_approximation_position_rmse_m": 0.10010939075457656,
+        "runtime_s": 0.002084899999317713,
+        "nfev": 6
+      },
+      {
+        "entry_index": 0,
+        "value_index": 0,
+        "value": 0.2,
+        "seed": 7,
+        "variant": "fixed",
+        "start_index": 1,
+        "selected": false,
+        "status": "success",
+        "optimizer_converged": true,
+        "converged": true,
+        "tag_height_model": "fixed",
+        "beacon_height_model": "shared",
+        "geometric_accuracy": false,
+        "exact_data": false,
+        "error_frame": "raw",
+        "classification": "converged_geometry_inaccurate",
+        "position_rmse_m": 0.2101161009457551,
+        "position_max_error_m": 0.30873601320551686,
+        "map_rmse_m": 0.0,
+        "height_error_frame": "known-map world z or saved evaluation-aligned joint frame",
+        "height_rmse_m": 0.203100960115899,
+        "height_max_error_m": 0.2969464325642798,
+        "plane_departure_rmse_m": 0.0,
+        "plane_departure_max_m": 0.0,
+        "range_rmse_m": 0.10372048070350742,
+        "normalized_residual_rms": 2.0744096140701482,
+        "low_residual": false,
+        "measurement_full_column_rank": true,
+        "measurement_rank": 26,
+        "parameter_count": 26,
+        "condition_number": 2.8899861397281863,
+        "augmented_full_column_rank": true,
+        "measurement_objective": 206.55241185343976,
+        "prior_objective": 0.0,
+        "height_prior_objective": 0.0,
+        "motion_prior_objective": 0.0,
+        "interpolation_display_rmse_m": 0.203100960115899,
+        "interpolation_ping_rmse_m": 0.20811018550588714,
+        "timing_approximation_position_rmse_m": 0.10010939075457656,
+        "runtime_s": 0.002078800000163028,
+        "nfev": 7
+      },
+      {
+        "entry_index": 1,
+        "value_index": 0,
+        "value": 0.2,
+        "seed": 7,
+        "variant": "free",
+        "start_index": 0,
+        "selected": false,
+        "status": "success",
+        "optimizer_converged": true,
+        "converged": true,
+        "tag_height_model": "free",
+        "beacon_height_model": "shared",
+        "geometric_accuracy": true,
+        "exact_data": false,
+        "error_frame": "raw",
+        "classification": "geometrically_accurate",
+        "position_rmse_m": 0.061930026593719004,
+        "position_max_error_m": 0.1146058064136441,
+        "map_rmse_m": 0.0,
+        "height_error_frame": "known-map world z or saved evaluation-aligned joint frame",
+        "height_rmse_m": 0.03983288213205671,
+        "height_max_error_m": 0.0967350476506304,
+        "plane_departure_rmse_m": 0.047634873580081324,
+        "plane_departure_max_m": 0.10637891490091239,
+        "range_rmse_m": 0.03779857696565113,
+        "normalized_residual_rms": 0.7559715393130225,
+        "low_residual": true,
+        "measurement_full_column_rank": true,
+        "measurement_rank": 39,
+        "parameter_count": 39,
+        "condition_number": 5.343401908962436,
+        "augmented_full_column_rank": true,
+        "measurement_objective": 27.431662476062435,
+        "prior_objective": 0.0,
+        "height_prior_objective": 0.0,
+        "motion_prior_objective": 0.0,
+        "interpolation_display_rmse_m": 0.0,
+        "interpolation_ping_rmse_m": 0.04540773206140919,
+        "timing_approximation_position_rmse_m": 0.10010939075457656,
+        "runtime_s": 0.0032049000001279637,
+        "nfev": 5
+      },
+      {
+        "entry_index": 1,
+        "value_index": 0,
+        "value": 0.2,
+        "seed": 7,
+        "variant": "free",
+        "start_index": 1,
+        "selected": true,
+        "status": "success",
+        "optimizer_converged": true,
+        "converged": true,
+        "tag_height_model": "free",
+        "beacon_height_model": "shared",
+        "geometric_accuracy": true,
+        "exact_data": false,
+        "error_frame": "raw",
+        "classification": "geometrically_accurate",
+        "position_rmse_m": 0.06193002655593723,
+        "position_max_error_m": 0.11460580619849828,
+        "map_rmse_m": 0.0,
+        "height_error_frame": "known-map world z or saved evaluation-aligned joint frame",
+        "height_rmse_m": 0.039832882083729516,
+        "height_max_error_m": 0.09673504727089621,
+        "plane_departure_rmse_m": 0.047634873445246466,
+        "plane_departure_max_m": 0.10637891451295532,
+        "range_rmse_m": 0.03779857696565098,
+        "normalized_residual_rms": 0.7559715393130195,
+        "low_residual": true,
+        "measurement_full_column_rank": true,
+        "measurement_rank": 39,
+        "parameter_count": 39,
+        "condition_number": 5.3434019089720985,
+        "augmented_full_column_rank": true,
+        "measurement_objective": 27.431662476062222,
+        "prior_objective": 0.0,
+        "height_prior_objective": 0.0,
+        "motion_prior_objective": 0.0,
+        "interpolation_display_rmse_m": 0.0,
+        "interpolation_ping_rmse_m": 0.04540773206140919,
+        "timing_approximation_position_rmse_m": 0.10010939075457656,
+        "runtime_s": 0.0030602000006183516,
+        "nfev": 7
+      }
+    ],
+    "aggregates": [
+      {
+        "value_index": 0,
+        "value": 0.2,
+        "variant": "fixed",
+        "run_count": 1,
+        "start_count": 2,
+        "failed_run_count": 0,
+        "failed_start_count": 0,
+        "optimizer_converged_count": 2,
+        "geometric_accuracy_count": 0,
+        "measurement_rank_deficient_count": 0,
+        "nonconvergence_rate": 0.0,
+        "all_start_position_rmse_m": {
+          "count": 2,
+          "min": 0.2101161006592567,
+          "median": 0.21011610080250592,
+          "p90": 0.21011610091710528,
+          "max": 0.2101161009457551
+        },
+        "selected_position_rmse_m": {
+          "count": 1,
+          "min": 0.2101161006592567,
+          "median": 0.2101161006592567,
+          "p90": 0.2101161006592567,
+          "max": 0.2101161006592567
+        },
+        "all_start_map_rmse_m": {
+          "count": 2,
+          "min": 0.0,
+          "median": 0.0,
+          "p90": 0.0,
+          "max": 0.0
+        },
+        "selected_map_rmse_m": {
+          "count": 1,
+          "min": 0.0,
+          "median": 0.0,
+          "p90": 0.0,
+          "max": 0.0
+        },
+        "all_start_height_rmse_m": {
+          "count": 2,
+          "min": 0.203100960115899,
+          "median": 0.203100960115899,
+          "p90": 0.203100960115899,
+          "max": 0.203100960115899
+        },
+        "selected_height_rmse_m": {
+          "count": 1,
+          "min": 0.203100960115899,
+          "median": 0.203100960115899,
+          "p90": 0.203100960115899,
+          "max": 0.203100960115899
+        },
+        "all_start_plane_departure_rmse_m": {
+          "count": 2,
+          "min": 0.0,
+          "median": 0.0,
+          "p90": 0.0,
+          "max": 0.0
+        },
+        "selected_plane_departure_rmse_m": {
+          "count": 1,
+          "min": 0.0,
+          "median": 0.0,
+          "p90": 0.0,
+          "max": 0.0
+        },
+        "all_start_range_rmse_m": {
+          "count": 2,
+          "min": 0.1037204807035074,
+          "median": 0.10372048070350741,
+          "p90": 0.10372048070350742,
+          "max": 0.10372048070350742
+        },
+        "selected_range_rmse_m": {
+          "count": 1,
+          "min": 0.1037204807035074,
+          "median": 0.1037204807035074,
+          "p90": 0.1037204807035074,
+          "max": 0.1037204807035074
+        },
+        "all_start_measurement_objective": {
+          "count": 2,
+          "min": 206.55241185343968,
+          "median": 206.5524118534397,
+          "p90": 206.55241185343976,
+          "max": 206.55241185343976
+        },
+        "selected_measurement_objective": {
+          "count": 1,
+          "min": 206.55241185343968,
+          "median": 206.55241185343968,
+          "p90": 206.55241185343968,
+          "max": 206.55241185343968
+        },
+        "all_start_prior_objective": {
+          "count": 2,
+          "min": 0.0,
+          "median": 0.0,
+          "p90": 0.0,
+          "max": 0.0
+        },
+        "selected_prior_objective": {
+          "count": 1,
+          "min": 0.0,
+          "median": 0.0,
+          "p90": 0.0,
+          "max": 0.0
+        },
+        "all_start_height_prior_objective": {
+          "count": 2,
+          "min": 0.0,
+          "median": 0.0,
+          "p90": 0.0,
+          "max": 0.0
+        },
+        "selected_height_prior_objective": {
+          "count": 1,
+          "min": 0.0,
+          "median": 0.0,
+          "p90": 0.0,
+          "max": 0.0
+        },
+        "all_start_motion_prior_objective": {
+          "count": 2,
+          "min": 0.0,
+          "median": 0.0,
+          "p90": 0.0,
+          "max": 0.0
+        },
+        "selected_motion_prior_objective": {
+          "count": 1,
+          "min": 0.0,
+          "median": 0.0,
+          "p90": 0.0,
+          "max": 0.0
+        },
+        "all_start_interpolation_display_rmse_m": {
+          "count": 2,
+          "min": 0.203100960115899,
+          "median": 0.203100960115899,
+          "p90": 0.203100960115899,
+          "max": 0.203100960115899
+        },
+        "selected_interpolation_display_rmse_m": {
+          "count": 1,
+          "min": 0.203100960115899,
+          "median": 0.203100960115899,
+          "p90": 0.203100960115899,
+          "max": 0.203100960115899
+        },
+        "all_start_interpolation_ping_rmse_m": {
+          "count": 2,
+          "min": 0.20811018550588714,
+          "median": 0.20811018550588714,
+          "p90": 0.20811018550588714,
+          "max": 0.20811018550588714
+        },
+        "selected_interpolation_ping_rmse_m": {
+          "count": 1,
+          "min": 0.20811018550588714,
+          "median": 0.20811018550588714,
+          "p90": 0.20811018550588714,
+          "max": 0.20811018550588714
+        },
+        "all_start_timing_approximation_position_rmse_m": {
+          "count": 2,
+          "min": 0.10010939075457656,
+          "median": 0.10010939075457656,
+          "p90": 0.10010939075457656,
+          "max": 0.10010939075457656
+        },
+        "selected_timing_approximation_position_rmse_m": {
+          "count": 1,
+          "min": 0.10010939075457656,
+          "median": 0.10010939075457656,
+          "p90": 0.10010939075457656,
+          "max": 0.10010939075457656
+        },
+        "all_start_runtime_s": {
+          "count": 2,
+          "min": 0.002078800000163028,
+          "median": 0.0020818499997403705,
+          "p90": 0.0020842899994022446,
+          "max": 0.002084899999317713
+        },
+        "selected_runtime_s": {
+          "count": 1,
+          "min": 0.002084899999317713,
+          "median": 0.002084899999317713,
+          "p90": 0.002084899999317713,
+          "max": 0.002084899999317713
+        }
+      },
+      {
+        "value_index": 0,
+        "value": 0.2,
+        "variant": "free",
+        "run_count": 1,
+        "start_count": 2,
+        "failed_run_count": 0,
+        "failed_start_count": 0,
+        "optimizer_converged_count": 2,
+        "geometric_accuracy_count": 2,
+        "measurement_rank_deficient_count": 0,
+        "nonconvergence_rate": 0.0,
+        "all_start_position_rmse_m": {
+          "count": 2,
+          "min": 0.06193002655593723,
+          "median": 0.061930026574828115,
+          "p90": 0.061930026589940824,
+          "max": 0.061930026593719004
+        },
+        "selected_position_rmse_m": {
+          "count": 1,
+          "min": 0.06193002655593723,
+          "median": 0.06193002655593723,
+          "p90": 0.06193002655593723,
+          "max": 0.06193002655593723
+        },
+        "all_start_map_rmse_m": {
+          "count": 2,
+          "min": 0.0,
+          "median": 0.0,
+          "p90": 0.0,
+          "max": 0.0
+        },
+        "selected_map_rmse_m": {
+          "count": 1,
+          "min": 0.0,
+          "median": 0.0,
+          "p90": 0.0,
+          "max": 0.0
+        },
+        "all_start_height_rmse_m": {
+          "count": 2,
+          "min": 0.039832882083729516,
+          "median": 0.03983288210789311,
+          "p90": 0.039832882127223995,
+          "max": 0.03983288213205671
+        },
+        "selected_height_rmse_m": {
+          "count": 1,
+          "min": 0.039832882083729516,
+          "median": 0.039832882083729516,
+          "p90": 0.039832882083729516,
+          "max": 0.039832882083729516
+        },
+        "all_start_plane_departure_rmse_m": {
+          "count": 2,
+          "min": 0.047634873445246466,
+          "median": 0.04763487351266389,
+          "p90": 0.04763487356659784,
+          "max": 0.047634873580081324
+        },
+        "selected_plane_departure_rmse_m": {
+          "count": 1,
+          "min": 0.047634873445246466,
+          "median": 0.047634873445246466,
+          "p90": 0.047634873445246466,
+          "max": 0.047634873445246466
+        },
+        "all_start_range_rmse_m": {
+          "count": 2,
+          "min": 0.03779857696565098,
+          "median": 0.03779857696565106,
+          "p90": 0.037798576965651115,
+          "max": 0.03779857696565113
+        },
+        "selected_range_rmse_m": {
+          "count": 1,
+          "min": 0.03779857696565098,
+          "median": 0.03779857696565098,
+          "p90": 0.03779857696565098,
+          "max": 0.03779857696565098
+        },
+        "all_start_measurement_objective": {
+          "count": 2,
+          "min": 27.431662476062222,
+          "median": 27.43166247606233,
+          "p90": 27.431662476062414,
+          "max": 27.431662476062435
+        },
+        "selected_measurement_objective": {
+          "count": 1,
+          "min": 27.431662476062222,
+          "median": 27.431662476062222,
+          "p90": 27.431662476062222,
+          "max": 27.431662476062222
+        },
+        "all_start_prior_objective": {
+          "count": 2,
+          "min": 0.0,
+          "median": 0.0,
+          "p90": 0.0,
+          "max": 0.0
+        },
+        "selected_prior_objective": {
+          "count": 1,
+          "min": 0.0,
+          "median": 0.0,
+          "p90": 0.0,
+          "max": 0.0
+        },
+        "all_start_height_prior_objective": {
+          "count": 2,
+          "min": 0.0,
+          "median": 0.0,
+          "p90": 0.0,
+          "max": 0.0
+        },
+        "selected_height_prior_objective": {
+          "count": 1,
+          "min": 0.0,
+          "median": 0.0,
+          "p90": 0.0,
+          "max": 0.0
+        },
+        "all_start_motion_prior_objective": {
+          "count": 2,
+          "min": 0.0,
+          "median": 0.0,
+          "p90": 0.0,
+          "max": 0.0
+        },
+        "selected_motion_prior_objective": {
+          "count": 1,
+          "min": 0.0,
+          "median": 0.0,
+          "p90": 0.0,
+          "max": 0.0
+        },
+        "all_start_interpolation_display_rmse_m": {
+          "count": 2,
+          "min": 0.0,
+          "median": 0.0,
+          "p90": 0.0,
+          "max": 0.0
+        },
+        "selected_interpolation_display_rmse_m": {
+          "count": 1,
+          "min": 0.0,
+          "median": 0.0,
+          "p90": 0.0,
+          "max": 0.0
+        },
+        "all_start_interpolation_ping_rmse_m": {
+          "count": 2,
+          "min": 0.04540773206140919,
+          "median": 0.04540773206140919,
+          "p90": 0.04540773206140919,
+          "max": 0.04540773206140919
+        },
+        "selected_interpolation_ping_rmse_m": {
+          "count": 1,
+          "min": 0.04540773206140919,
+          "median": 0.04540773206140919,
+          "p90": 0.04540773206140919,
+          "max": 0.04540773206140919
+        },
+        "all_start_timing_approximation_position_rmse_m": {
+          "count": 2,
+          "min": 0.10010939075457656,
+          "median": 0.10010939075457656,
+          "p90": 0.10010939075457656,
+          "max": 0.10010939075457656
+        },
+        "selected_timing_approximation_position_rmse_m": {
+          "count": 1,
+          "min": 0.10010939075457656,
+          "median": 0.10010939075457656,
+          "p90": 0.10010939075457656,
+          "max": 0.10010939075457656
+        },
+        "all_start_runtime_s": {
+          "count": 2,
+          "min": 0.0030602000006183516,
+          "median": 0.0031325500003731577,
+          "p90": 0.0031904300001770027,
+          "max": 0.0032049000001279637
+        },
+        "selected_runtime_s": {
+          "count": 1,
+          "min": 0.0030602000006183516,
+          "median": 0.0030602000006183516,
+          "p90": 0.0030602000006183516,
+          "max": 0.0030602000006183516
+        }
+      }
+    ]
+  },
+  {
+    "beacons": 8,
+    "samples": 24,
+    "wrapper_wall_s": 0.34035100000073726,
+    "start_table": [
+      {
+        "entry_index": 0,
+        "value_index": 0,
+        "value": 0.2,
+        "seed": 7,
+        "variant": "fixed",
+        "start_index": 0,
+        "selected": false,
+        "status": "success",
+        "optimizer_converged": true,
+        "converged": true,
+        "tag_height_model": "fixed",
+        "beacon_height_model": "shared",
+        "geometric_accuracy": false,
+        "exact_data": false,
+        "error_frame": "raw",
+        "classification": "converged_geometry_inaccurate",
+        "position_rmse_m": 0.214450616365934,
+        "position_max_error_m": 0.3043880166672697,
+        "map_rmse_m": 0.0,
+        "height_error_frame": "known-map world z or saved evaluation-aligned joint frame",
+        "height_rmse_m": 0.2076655965729519,
+        "height_max_error_m": 0.29930063075716173,
+        "plane_departure_rmse_m": 0.0,
+        "plane_departure_max_m": 0.0,
+        "range_rmse_m": 0.09526450922404503,
+        "normalized_residual_rms": 1.9052901844809007,
+        "low_residual": true,
+        "measurement_full_column_rank": true,
+        "measurement_rank": 50,
+        "parameter_count": 50,
+        "condition_number": 2.9322714458098953,
+        "augmented_full_column_rank": true,
+        "measurement_objective": 348.49254595960934,
+        "prior_objective": 0.0,
+        "height_prior_objective": 0.0,
+        "motion_prior_objective": 0.0,
+        "interpolation_display_rmse_m": 0.2076655965729519,
+        "interpolation_ping_rmse_m": 0.20907849403194648,
+        "timing_approximation_position_rmse_m": 0.10334379804641534,
+        "runtime_s": 0.010989999998855637,
+        "nfev": 7
+      },
+      {
+        "entry_index": 0,
+        "value_index": 0,
+        "value": 0.2,
+        "seed": 7,
+        "variant": "fixed",
+        "start_index": 1,
+        "selected": true,
+        "status": "success",
+        "optimizer_converged": true,
+        "converged": true,
+        "tag_height_model": "fixed",
+        "beacon_height_model": "shared",
+        "geometric_accuracy": false,
+        "exact_data": false,
+        "error_frame": "raw",
+        "classification": "converged_geometry_inaccurate",
+        "position_rmse_m": 0.21445061635279974,
+        "position_max_error_m": 0.3043880167776455,
+        "map_rmse_m": 0.0,
+        "height_error_frame": "known-map world z or saved evaluation-aligned joint frame",
+        "height_rmse_m": 0.2076655965729519,
+        "height_max_error_m": 0.29930063075716173,
+        "plane_departure_rmse_m": 0.0,
+        "plane_departure_max_m": 0.0,
+        "range_rmse_m": 0.09526450922404502,
+        "normalized_residual_rms": 1.9052901844809005,
+        "low_residual": true,
+        "measurement_full_column_rank": true,
+        "measurement_rank": 50,
+        "parameter_count": 50,
+        "condition_number": 2.932271445826766,
+        "augmented_full_column_rank": true,
+        "measurement_objective": 348.4925459596093,
+        "prior_objective": 0.0,
+        "height_prior_objective": 0.0,
+        "motion_prior_objective": 0.0,
+        "interpolation_display_rmse_m": 0.2076655965729519,
+        "interpolation_ping_rmse_m": 0.20907849403194648,
+        "timing_approximation_position_rmse_m": 0.10334379804641534,
+        "runtime_s": 0.01105439999992086,
+        "nfev": 8
+      },
+      {
+        "entry_index": 1,
+        "value_index": 0,
+        "value": 0.2,
+        "seed": 7,
+        "variant": "free",
+        "start_index": 0,
+        "selected": false,
+        "status": "success",
+        "optimizer_converged": true,
+        "converged": true,
+        "tag_height_model": "free",
+        "beacon_height_model": "shared",
+        "geometric_accuracy": true,
+        "exact_data": false,
+        "error_frame": "raw",
+        "classification": "geometrically_accurate",
+        "position_rmse_m": 0.0667691089764036,
+        "position_max_error_m": 0.13245934186203873,
+        "map_rmse_m": 0.0,
+        "height_error_frame": "known-map world z or saved evaluation-aligned joint frame",
+        "height_rmse_m": 0.04586629294994002,
+        "height_max_error_m": 0.10215437927388529,
+        "plane_departure_rmse_m": 0.056682801666747794,
+        "plane_departure_max_m": 0.129436497197155,
+        "range_rmse_m": 0.034627975058924336,
+        "normalized_residual_rms": 0.6925595011784866,
+        "low_residual": true,
+        "measurement_full_column_rank": true,
+        "measurement_rank": 75,
+        "parameter_count": 75,
+        "condition_number": 5.294572074734894,
+        "augmented_full_column_rank": true,
+        "measurement_objective": 46.04531161656905,
+        "prior_objective": 0.0,
+        "height_prior_objective": 0.0,
+        "motion_prior_objective": 0.0,
+        "interpolation_display_rmse_m": 1.6214242969954306e-15,
+        "interpolation_ping_rmse_m": 0.024274216896936426,
+        "timing_approximation_position_rmse_m": 0.10334379804641534,
+        "runtime_s": 0.01358050000089861,
+        "nfev": 5
+      },
+      {
+        "entry_index": 1,
+        "value_index": 0,
+        "value": 0.2,
+        "seed": 7,
+        "variant": "free",
+        "start_index": 1,
+        "selected": true,
+        "status": "success",
+        "optimizer_converged": true,
+        "converged": true,
+        "tag_height_model": "free",
+        "beacon_height_model": "shared",
+        "geometric_accuracy": true,
+        "exact_data": false,
+        "error_frame": "raw",
+        "classification": "geometrically_accurate",
+        "position_rmse_m": 0.06676910902048037,
+        "position_max_error_m": 0.1324593420991201,
+        "map_rmse_m": 0.0,
+        "height_error_frame": "known-map world z or saved evaluation-aligned joint frame",
+        "height_rmse_m": 0.04586629295382648,
+        "height_max_error_m": 0.10215437884032788,
+        "plane_departure_rmse_m": 0.056682801705968476,
+        "plane_departure_max_m": 0.12943649701426002,
+        "range_rmse_m": 0.03462797505892424,
+        "normalized_residual_rms": 0.6925595011784849,
+        "low_residual": true,
+        "measurement_full_column_rank": true,
+        "measurement_rank": 75,
+        "parameter_count": 75,
+        "condition_number": 5.294572074802833,
+        "augmented_full_column_rank": true,
+        "measurement_objective": 46.04531161656881,
+        "prior_objective": 0.0,
+        "height_prior_objective": 0.0,
+        "motion_prior_objective": 0.0,
+        "interpolation_display_rmse_m": 1.6214242969954306e-15,
+        "interpolation_ping_rmse_m": 0.024274216896936426,
+        "timing_approximation_position_rmse_m": 0.10334379804641534,
+        "runtime_s": 0.015586999999868567,
+        "nfev": 8
+      }
+    ],
+    "aggregates": [
+      {
+        "value_index": 0,
+        "value": 0.2,
+        "variant": "fixed",
+        "run_count": 1,
+        "start_count": 2,
+        "failed_run_count": 0,
+        "failed_start_count": 0,
+        "optimizer_converged_count": 2,
+        "geometric_accuracy_count": 0,
+        "measurement_rank_deficient_count": 0,
+        "nonconvergence_rate": 0.0,
+        "all_start_position_rmse_m": {
+          "count": 2,
+          "min": 0.21445061635279974,
+          "median": 0.21445061635936685,
+          "p90": 0.21445061636462057,
+          "max": 0.214450616365934
+        },
+        "selected_position_rmse_m": {
+          "count": 1,
+          "min": 0.21445061635279974,
+          "median": 0.21445061635279974,
+          "p90": 0.21445061635279974,
+          "max": 0.21445061635279974
+        },
+        "all_start_map_rmse_m": {
+          "count": 2,
+          "min": 0.0,
+          "median": 0.0,
+          "p90": 0.0,
+          "max": 0.0
+        },
+        "selected_map_rmse_m": {
+          "count": 1,
+          "min": 0.0,
+          "median": 0.0,
+          "p90": 0.0,
+          "max": 0.0
+        },
+        "all_start_height_rmse_m": {
+          "count": 2,
+          "min": 0.2076655965729519,
+          "median": 0.2076655965729519,
+          "p90": 0.2076655965729519,
+          "max": 0.2076655965729519
+        },
+        "selected_height_rmse_m": {
+          "count": 1,
+          "min": 0.2076655965729519,
+          "median": 0.2076655965729519,
+          "p90": 0.2076655965729519,
+          "max": 0.2076655965729519
+        },
+        "all_start_plane_departure_rmse_m": {
+          "count": 2,
+          "min": 0.0,
+          "median": 0.0,
+          "p90": 0.0,
+          "max": 0.0
+        },
+        "selected_plane_departure_rmse_m": {
+          "count": 1,
+          "min": 0.0,
+          "median": 0.0,
+          "p90": 0.0,
+          "max": 0.0
+        },
+        "all_start_range_rmse_m": {
+          "count": 2,
+          "min": 0.09526450922404502,
+          "median": 0.09526450922404503,
+          "p90": 0.09526450922404503,
+          "max": 0.09526450922404503
+        },
+        "selected_range_rmse_m": {
+          "count": 1,
+          "min": 0.09526450922404502,
+          "median": 0.09526450922404502,
+          "p90": 0.09526450922404502,
+          "max": 0.09526450922404502
+        },
+        "all_start_measurement_objective": {
+          "count": 2,
+          "min": 348.4925459596093,
+          "median": 348.4925459596093,
+          "p90": 348.49254595960934,
+          "max": 348.49254595960934
+        },
+        "selected_measurement_objective": {
+          "count": 1,
+          "min": 348.4925459596093,
+          "median": 348.4925459596093,
+          "p90": 348.4925459596093,
+          "max": 348.4925459596093
+        },
+        "all_start_prior_objective": {
+          "count": 2,
+          "min": 0.0,
+          "median": 0.0,
+          "p90": 0.0,
+          "max": 0.0
+        },
+        "selected_prior_objective": {
+          "count": 1,
+          "min": 0.0,
+          "median": 0.0,
+          "p90": 0.0,
+          "max": 0.0
+        },
+        "all_start_height_prior_objective": {
+          "count": 2,
+          "min": 0.0,
+          "median": 0.0,
+          "p90": 0.0,
+          "max": 0.0
+        },
+        "selected_height_prior_objective": {
+          "count": 1,
+          "min": 0.0,
+          "median": 0.0,
+          "p90": 0.0,
+          "max": 0.0
+        },
+        "all_start_motion_prior_objective": {
+          "count": 2,
+          "min": 0.0,
+          "median": 0.0,
+          "p90": 0.0,
+          "max": 0.0
+        },
+        "selected_motion_prior_objective": {
+          "count": 1,
+          "min": 0.0,
+          "median": 0.0,
+          "p90": 0.0,
+          "max": 0.0
+        },
+        "all_start_interpolation_display_rmse_m": {
+          "count": 2,
+          "min": 0.2076655965729519,
+          "median": 0.2076655965729519,
+          "p90": 0.2076655965729519,
+          "max": 0.2076655965729519
+        },
+        "selected_interpolation_display_rmse_m": {
+          "count": 1,
+          "min": 0.2076655965729519,
+          "median": 0.2076655965729519,
+          "p90": 0.2076655965729519,
+          "max": 0.2076655965729519
+        },
+        "all_start_interpolation_ping_rmse_m": {
+          "count": 2,
+          "min": 0.20907849403194648,
+          "median": 0.20907849403194648,
+          "p90": 0.20907849403194648,
+          "max": 0.20907849403194648
+        },
+        "selected_interpolation_ping_rmse_m": {
+          "count": 1,
+          "min": 0.20907849403194648,
+          "median": 0.20907849403194648,
+          "p90": 0.20907849403194648,
+          "max": 0.20907849403194648
+        },
+        "all_start_timing_approximation_position_rmse_m": {
+          "count": 2,
+          "min": 0.10334379804641534,
+          "median": 0.10334379804641534,
+          "p90": 0.10334379804641534,
+          "max": 0.10334379804641534
+        },
+        "selected_timing_approximation_position_rmse_m": {
+          "count": 1,
+          "min": 0.10334379804641534,
+          "median": 0.10334379804641534,
+          "p90": 0.10334379804641534,
+          "max": 0.10334379804641534
+        },
+        "all_start_runtime_s": {
+          "count": 2,
+          "min": 0.010989999998855637,
+          "median": 0.011022199999388249,
+          "p90": 0.011047959999814339,
+          "max": 0.01105439999992086
+        },
+        "selected_runtime_s": {
+          "count": 1,
+          "min": 0.01105439999992086,
+          "median": 0.01105439999992086,
+          "p90": 0.01105439999992086,
+          "max": 0.01105439999992086
+        }
+      },
+      {
+        "value_index": 0,
+        "value": 0.2,
+        "variant": "free",
+        "run_count": 1,
+        "start_count": 2,
+        "failed_run_count": 0,
+        "failed_start_count": 0,
+        "optimizer_converged_count": 2,
+        "geometric_accuracy_count": 2,
+        "measurement_rank_deficient_count": 0,
+        "nonconvergence_rate": 0.0,
+        "all_start_position_rmse_m": {
+          "count": 2,
+          "min": 0.0667691089764036,
+          "median": 0.06676910899844199,
+          "p90": 0.06676910901607269,
+          "max": 0.06676910902048037
+        },
+        "selected_position_rmse_m": {
+          "count": 1,
+          "min": 0.06676910902048037,
+          "median": 0.06676910902048037,
+          "p90": 0.06676910902048037,
+          "max": 0.06676910902048037
+        },
+        "all_start_map_rmse_m": {
+          "count": 2,
+          "min": 0.0,
+          "median": 0.0,
+          "p90": 0.0,
+          "max": 0.0
+        },
+        "selected_map_rmse_m": {
+          "count": 1,
+          "min": 0.0,
+          "median": 0.0,
+          "p90": 0.0,
+          "max": 0.0
+        },
+        "all_start_height_rmse_m": {
+          "count": 2,
+          "min": 0.04586629294994002,
+          "median": 0.04586629295188325,
+          "p90": 0.04586629295343783,
+          "max": 0.04586629295382648
+        },
+        "selected_height_rmse_m": {
+          "count": 1,
+          "min": 0.04586629295382648,
+          "median": 0.04586629295382648,
+          "p90": 0.04586629295382648,
+          "max": 0.04586629295382648
+        },
+        "all_start_plane_departure_rmse_m": {
+          "count": 2,
+          "min": 0.056682801666747794,
+          "median": 0.056682801686358135,
+          "p90": 0.056682801702046405,
+          "max": 0.056682801705968476
+        },
+        "selected_plane_departure_rmse_m": {
+          "count": 1,
+          "min": 0.056682801705968476,
+          "median": 0.056682801705968476,
+          "p90": 0.056682801705968476,
+          "max": 0.056682801705968476
+        },
+        "all_start_range_rmse_m": {
+          "count": 2,
+          "min": 0.03462797505892424,
+          "median": 0.03462797505892429,
+          "p90": 0.03462797505892433,
+          "max": 0.034627975058924336
+        },
+        "selected_range_rmse_m": {
+          "count": 1,
+          "min": 0.03462797505892424,
+          "median": 0.03462797505892424,
+          "p90": 0.03462797505892424,
+          "max": 0.03462797505892424
+        },
+        "all_start_measurement_objective": {
+          "count": 2,
+          "min": 46.04531161656881,
+          "median": 46.04531161656893,
+          "p90": 46.04531161656903,
+          "max": 46.04531161656905
+        },
+        "selected_measurement_objective": {
+          "count": 1,
+          "min": 46.04531161656881,
+          "median": 46.04531161656881,
+          "p90": 46.04531161656881,
+          "max": 46.04531161656881
+        },
+        "all_start_prior_objective": {
+          "count": 2,
+          "min": 0.0,
+          "median": 0.0,
+          "p90": 0.0,
+          "max": 0.0
+        },
+        "selected_prior_objective": {
+          "count": 1,
+          "min": 0.0,
+          "median": 0.0,
+          "p90": 0.0,
+          "max": 0.0
+        },
+        "all_start_height_prior_objective": {
+          "count": 2,
+          "min": 0.0,
+          "median": 0.0,
+          "p90": 0.0,
+          "max": 0.0
+        },
+        "selected_height_prior_objective": {
+          "count": 1,
+          "min": 0.0,
+          "median": 0.0,
+          "p90": 0.0,
+          "max": 0.0
+        },
+        "all_start_motion_prior_objective": {
+          "count": 2,
+          "min": 0.0,
+          "median": 0.0,
+          "p90": 0.0,
+          "max": 0.0
+        },
+        "selected_motion_prior_objective": {
+          "count": 1,
+          "min": 0.0,
+          "median": 0.0,
+          "p90": 0.0,
+          "max": 0.0
+        },
+        "all_start_interpolation_display_rmse_m": {
+          "count": 2,
+          "min": 1.6214242969954306e-15,
+          "median": 1.6214242969954306e-15,
+          "p90": 1.6214242969954306e-15,
+          "max": 1.6214242969954306e-15
+        },
+        "selected_interpolation_display_rmse_m": {
+          "count": 1,
+          "min": 1.6214242969954306e-15,
+          "median": 1.6214242969954306e-15,
+          "p90": 1.6214242969954306e-15,
+          "max": 1.6214242969954306e-15
+        },
+        "all_start_interpolation_ping_rmse_m": {
+          "count": 2,
+          "min": 0.024274216896936426,
+          "median": 0.024274216896936426,
+          "p90": 0.024274216896936426,
+          "max": 0.024274216896936426
+        },
+        "selected_interpolation_ping_rmse_m": {
+          "count": 1,
+          "min": 0.024274216896936426,
+          "median": 0.024274216896936426,
+          "p90": 0.024274216896936426,
+          "max": 0.024274216896936426
+        },
+        "all_start_timing_approximation_position_rmse_m": {
+          "count": 2,
+          "min": 0.10334379804641534,
+          "median": 0.10334379804641534,
+          "p90": 0.10334379804641534,
+          "max": 0.10334379804641534
+        },
+        "selected_timing_approximation_position_rmse_m": {
+          "count": 1,
+          "min": 0.10334379804641534,
+          "median": 0.10334379804641534,
+          "p90": 0.10334379804641534,
+          "max": 0.10334379804641534
+        },
+        "all_start_runtime_s": {
+          "count": 2,
+          "min": 0.01358050000089861,
+          "median": 0.014583750000383588,
+          "p90": 0.015386349999971571,
+          "max": 0.015586999999868567
+        },
+        "selected_runtime_s": {
+          "count": 1,
+          "min": 0.015586999999868567,
+          "median": 0.015586999999868567,
+          "p90": 0.015586999999868567,
+          "max": 0.015586999999868567
+        }
+      }
+    ]
+  }
+]

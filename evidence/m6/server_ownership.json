@@ -1,0 +1,20 @@
+[
+  {
+    "ProcessId": 26756,
+    "ParentProcessId": 21192,
+    "ExecutablePath": "C:\\Users\\dnroh\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\native\\powershell\\pwsh.exe",
+    "CommandLine": "\"C:\\Users\\dnroh\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\native\\powershell\\pwsh.exe\" -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\nStart-Process -FilePath (Join-Path (Get-Location) '.venv\\Scripts\\python.exe') -ArgumentList @('app.py','--port','5056') -WorkingDirectory (Get-Location).Path -WindowStyle Hidden -RedirectStandardOutput evidence/m6/server_stdout.txt -RedirectStandardError evidence/m6/server_stderr.txt -PassThru | Select-Object Id,ProcessName; Get-CimInstance Win32_Process | Where-Object { $_.CommandLine -match 'app.py --port 5056' } | Select-Object ProcessId,ParentProcessId,ExecutablePath,CommandLine | ConvertTo-Json | Set-Content evidence/m6/server_ownership.json\""
+  },
+  {
+    "ProcessId": 632,
+    "ParentProcessId": 26756,
+    "ExecutablePath": "C:\\Users\\dnroh\\Documents\\uwb-inverse-localization\\.venv\\Scripts\\python.exe",
+    "CommandLine": "\"C:\\Users\\dnroh\\Documents\\uwb-inverse-localization\\.venv\\Scripts\\python.exe\" app.py --port 5056"
+  },
+  {
+    "ProcessId": 30680,
+    "ParentProcessId": 632,
+    "ExecutablePath": "C:\\Users\\dnroh\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+    "CommandLine": "\"C:\\Users\\dnroh\\AppData\\Local\\Programs\\Python\\Python312\\python.exe\" app.py --port 5056"
+  }
+]

@@ -1,0 +1,11 @@
+test_algebraic_exact_three_through_eight_and_noisy_invalidity (test_m5.M5Tests.test_algebraic_exact_three_through_eight_and_noisy_invalidity) ... ok
+test_invalid_algebraic_initializer_retains_every_attempt (test_m5.M5Tests.test_invalid_algebraic_initializer_retains_every_attempt) ... ok
+test_lm_bound_transform_exact_chain_rule_and_boundary_rejection (test_m5.M5Tests.test_lm_bound_transform_exact_chain_rule_and_boundary_rejection) ... ok
+test_paired_solvers_and_parameterizations_recover_exact_geometry (test_m5.M5Tests.test_paired_solvers_and_parameterizations_recover_exact_geometry) ... ok
+test_physical_h_q_equivalence_and_analytic_derivatives (test_m5.M5Tests.test_physical_h_q_equivalence_and_analytic_derivatives) ... ok
+test_sweep_pairing_persistence_and_tampering (test_m5.M5Tests.test_sweep_pairing_persistence_and_tampering) ... ok
+
+----------------------------------------------------------------------
+Ran 6 tests in 0.926s
+
+OK

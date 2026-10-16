@@ -371,14 +371,36 @@ def build_comparison(left_run, right_run, alignment="aligned", *, _validate=True
         truth = copy.deepcopy(run["experiment"]["truth"])
         selected = next((s for s in run["starts"] if s["index"] == run.get("selected_start")), None)
         estimate = selected.get("estimate") if selected else None
-        evaluation = evaluate_geometry(estimate, truth, run.get("options", {}).get("mode", "joint")) if estimate else None
+        if estimate and run.get("schema_version") == "7.0":
+            from .m7 import evaluate_geometry as evaluate_m7
+            evaluation = evaluate_m7(estimate, truth, run.get("options"))
+        elif estimate and run.get("schema_version") in ("4.0","5.0","6.0","7.0"):
+            from .m4 import evaluate_geometry as evaluate_m4
+            options = run.get("options", {})
+            if run.get("schema_version") == "6.0":
+                from .m6 import base_options as m6_base_options
+                options = m6_base_options(options)
+            if run.get("schema_version") in ("5.0", "6.0"):
+                from .m5 import base_options
+                options = base_options(options)
+            evaluation = evaluate_m4(estimate, truth, options)
+            if alignment == "raw" and run.get("options", {}).get("mode") == "joint":
+                canonical = evaluation["truth_canonical_transform"]
+                for key in ("trajectory", "beacons"):
+                    truth[key] = (np.asarray(truth[key]) @ np.asarray(canonical["rotation_xyz"]) + np.asarray(canonical["translation_xyz_m"])).tolist()
+        else:
+            evaluation = evaluate_geometry(estimate, truth, run.get("options", {}).get("mode", "joint")) if estimate else None
         geometry = copy.deepcopy(evaluation["aligned_geometry"] if alignment == "aligned" and evaluation else estimate)
         transform = evaluation["alignment"] if alignment == "aligned" and evaluation else {"applied": False, "scale": 1., "reflection_allowed": False}
         initial = copy.deepcopy(selected.get("initial")) if selected else None
         if initial and transform.get("applied"):
             for key in ("trajectory", "beacons"):
                 array = np.asarray(initial[key], dtype=float)
-                array[:, :2] = array[:, :2] @ np.asarray(transform["rotation_xy"]) + np.asarray(transform["translation_xy_m"])
+                if "rotation_xyz" in transform:
+                    array = array @ np.asarray(transform["rotation_xyz"]) + np.asarray(transform["translation_xyz_m"])
+                else:
+                    array[:, :2] = array[:, :2] @ np.asarray(transform["rotation_xy"]) + np.asarray(transform["translation_xy_m"])
+                    array[:, 2] += transform.get("gauge_translation_z_m", 0.)
                 initial[key] = array.tolist()
         interpolated = []
         for t in common:
@@ -392,8 +414,9 @@ def build_comparison(left_run, right_run, alignment="aligned", *, _validate=True
                       "truth": truth, "estimate": geometry, "initial": initial,
                       "alignment": transform, "position_errors_m": error.get("position_errors_m", []),
                       "residuals_m": diagnostics.get("residuals_m", []),
-                      "interpolated_trajectory": interpolated, "sample_kind": "fitted epoch samples",
-                      "color_quantity": "Euclidean matched-time position error in metres at fitted epochs"})
+                      "interpolated_trajectory": interpolated,
+                      "sample_kind": "interpolated M4 display samples; trajectory parameters are saved knots" if run.get("schema_version") in ("4.0","5.0","6.0","7.0") else "interpolated M3 display samples; trajectory parameters are saved knots" if run.get("schema_version") == "3.0" else "fitted epoch samples",
+                      "color_quantity": "Euclidean matched-time position error in metres at saved display times" if run.get("schema_version") in ("3.0","4.0","5.0","6.0","7.0") else "Euclidean matched-time position error in metres at fitted epochs"})
         table.append({"side": "left" if index == 0 else "right", "id": run.get("id"), "status": run["status"],
                       "mode": run.get("options", {}).get("mode"), "samples": len(times), "starts": len(run["starts"]),
                       "selected_start": run.get("selected_start"), "position_rmse_m": error.get("position_rmse_m"),
@@ -412,9 +435,16 @@ def build_comparison(left_run, right_run, alignment="aligned", *, _validate=True
     bounds = {axis: [float(c - half), float(c + half)] for axis, c in zip(("x", "y", "z"), center)}
     result = {"schema_version": SCHEMA_VERSION, "artifact_type": "comparison", "runs": [copy.deepcopy(left_run), copy.deepcopy(right_run)],
               "alignment": alignment, "views": views, "table": table, "shared_bounds_m": bounds,
-              "common_elapsed_times_s": common.tolist(), "time_reference": "Elapsed seconds from each run's first fitted epoch; no time warping",
-              "interpolation": "Piecewise linear rendering on the union of elapsed epoch times, no extrapolation; statistics use original fitted samples only",
-              "spatial_convention": "Shared metre axes and equal aspect ratio; proper planar rigid map-to-truth alignment only, scale=1, reflections forbidden"}
+              "common_elapsed_times_s": common.tolist(), "time_reference": "Elapsed seconds from each run's first saved display time; no time warping" if any(r.get("schema_version") in ("3.0","4.0","5.0","6.0","7.0") for r in (left_run, right_run)) else "Elapsed seconds from each run's first fitted epoch; no time warping",
+              "interpolation": "Piecewise linear rendering on union of saved display times, no extrapolation; M4 statistics use saved display samples, trajectory parameters are knots" if any(r.get("schema_version") in ("4.0","5.0","6.0","7.0") for r in (left_run, right_run)) else "Piecewise linear rendering on union of saved display times, no extrapolation; M3 statistics use saved display samples, trajectory parameters are knots" if any(r.get("schema_version") == "3.0" for r in (left_run, right_run)) else "Piecewise linear rendering on the union of elapsed epoch times, no extrapolation; statistics use original fitted samples only",
+              "spatial_convention": "Shared metre axes and equal aspect ratio; model-valid proper planar/3D rigid alignment, scale=1, reflections forbidden" if any(r.get("schema_version") in ("4.0","5.0","6.0","7.0") for r in (left_run, right_run)) else "Shared metre axes and equal aspect ratio; proper planar rigid map-to-truth alignment only, scale=1, reflections forbidden"}
+    same_data = left_run['experiment']['estimator_input'] == right_run['experiment']['estimator_input']
+    left_initials = [a.get('initial') for a in left_run['starts']]
+    right_initials = [a.get('initial') for a in right_run['starts']]
+    same_starts = bool(left_initials) and all(a is not None for a in left_initials) and left_initials == right_initials
+    result['pairing'] = {'identical_estimator_inputs': same_data, 'identical_physical_starts': same_starts,
+                         'paired': same_data and same_starts,
+                         'interpretation': 'Exact source-record equality; differing projected starts require separate recorded model-specific compatibility evidence.'}
     if _validate:
         validate_artifact(result)
     return result
@@ -485,7 +515,16 @@ def _validate_artifact(data):
             if transform.get("scale") != 1. or transform.get("reflection_allowed") is not False:
                 raise ExperimentFormatError("Comparison alignment must preserve scale and forbid reflections")
         reference = build_comparison(*data["runs"], alignment=data["alignment"], _validate=False)
+        if "pairing" in data and data["pairing"] != reference["pairing"]:
+            raise ExperimentFormatError("Saved pairing claim disagrees with source observations/physical starts")
         for key in ("views", "table", "shared_bounds_m", "common_elapsed_times_s", "time_reference", "interpolation", "spatial_convention"):
+            # Early M3 comparison exports used the historical epoch wording.
+            # Accept those exact labels while still validating all source data.
+            legacy_labels = {
+                "time_reference": "Elapsed seconds from each run's first fitted epoch; no time warping",
+                "interpolation": "Piecewise linear rendering on the union of elapsed epoch times, no extrapolation; statistics use original fitted samples only"}
+            if key in legacy_labels and any(run.get("schema_version") == "3.0" for run in data["runs"]) and data.get(key) == legacy_labels[key]:
+                continue
             if data.get(key) != reference[key]:
                 raise ExperimentFormatError(f"Saved comparison {key} disagrees with source runs")
     else:

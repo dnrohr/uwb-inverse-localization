@@ -1,0 +1,132 @@
+{
+  "status": "passed",
+  "recorded_utc": "2026-10-16T02:44:42.861860+00:00",
+  "base_head": "38d77728fd5712a9814e4b57aafc5796fc4c1817",
+  "delivery": "M7.1 through M7.5 complete in current uncommitted working tree",
+  "publication": {
+    "commit_created": false,
+    "pushed": false,
+    "externally_published": false
+  },
+  "preservation": {
+    "checked": 1665,
+    "exact_hashes_unchanged": 1663,
+    "append_only_live_logs": [
+      {
+        "path": "evidence/m5/server_final_ui_stderr.txt",
+        "original_prefix_bytes": 8662,
+        "appended_bytes": 79,
+        "original_sha256": "18811bd5c9f571d9b23b03d714831beec1f02571ea31ede8f0ccd57f96054070",
+        "current_sha256": "8d7b34e7a91386c3baf8d59c90bf11e6ce8f155c342c2b23f0a6ddaa7b4d8ca5"
+      },
+      {
+        "path": "evidence/m6/server_final_stderr.txt",
+        "original_prefix_bytes": 4434,
+        "appended_bytes": 833,
+        "original_sha256": "84017084fe932b22734f546361d01279413dbc883865b8dd7b84d8e5c243e6bb",
+        "current_sha256": "2b2e01cebff791d20bd0c8fc277fd45cfe84ea17af140622577f49be94c6919b"
+      }
+    ],
+    "unexplained_changes": [],
+    "interpretation": "All original scientific bytes retained. Active preserved servers appended logs; their original prefixes match the initial SHA256 exactly."
+  },
+  "preservation_scope": "Original scientific history and prior evidence bytes; two live server logs appended with original prefixes preserved. Authorized application integrations changed source files; this is not an unchanged-source claim.",
+  "validation": {
+    "full_suite": {
+      "count": 208,
+      "seconds": 155.728,
+      "log": "evidence/m7/test_results_final_208.txt",
+      "final_metadata_focus": "evidence/m7/library_final_focused.txt",
+      "final_import_focus": "evidence/m7/integration_final.txt"
+    },
+    "independent_math_review": "evidence/m7/independent_math_review.json",
+    "integration_review": "evidence/m7/integration_review.json",
+    "final_audit": "evidence/m7/final_audit.json",
+    "ui": "evidence/m7/visual/ui_validation.json",
+    "final_ui_checks": [
+      "evidence/m7/ui_lifecycle_final.json",
+      "evidence/m7/ui_regressions_final.json"
+    ]
+  },
+  "library": {
+    "metadata_cache_schema": 4,
+    "observed_groups": 179,
+    "observed_indexed_sources": 915,
+    "counts_are_invariants": false
+  },
+  "app_url": "http://127.0.0.1:5057",
+  "app_http_status": 200,
+  "limitations": [
+    "Full Experiment mobile layout is not certified;390x844 certification covers the Library, preview/actions and tray.",
+    "Browser render measurements include metadata fetch and DOM rendering, not solving. Metadata-shaped10k fixtures are deliberately not valid numerical run records.",
+    "Cold scanning remains expensive; successful warm targets do not imply cold usability under1second.",
+    "A tab blocked port5060 as unsafe. The test used a different ordinary local port5070; no browser security warning was bypassed.",
+    "Survey support is physical h with independent beacon heights; unsupported shared/coupled constraints reject explicitly.",
+    "Local covariance is conditional, not global uniqueness or generally calibrated robust uncertainty.",
+    "Cold index building remains material; warm targets do not certify first-ever bundle-copy speed.",
+    "Single-run optimizer internal state is not checkpointed; sweep recovery requires readable main JSON; no permanent-write durability guarantee.",
+    "Historical provisional M7 development evidence remains unchanged; current strict contract is represented by the cited final bundle."
+  ],
+  "file_sha256": {
+    "app.py": "3ccf0ee32ffa2e468080ccbfbf38b1ef8e94137f9f5bb0f4437f676320c83e8f",
+    "docs/M7.md": "36f18759055ecf8dd9911381c9b59dcb3fe6185d57a815522c2920fc5bf542e3",
+    "docs/M7_ACCEPTANCE.md": "1440e258e1ba8448770b185285c3ff5fe7d11ae8ac80f66f879069df35d8b65e",
+    "docs/M7_NUMERICS.md": "7514ce1d869ab95daf4a5d984a7d421135b3386a96af3baa7a0d3e975f22ca54",
+    "docs/M7_UI_PLAN.md": "f1b3e8138af7c4b2889e1daae38ba81d26228cd02dfa83ab110b4c3589381db3",
+    "README.md": "df02668170380aa9a886c2676609013b173bcf29bb2f69c99432bb946be7c06e",
+    "ROADMAP.md": "c3bc5d0a38d6930e443bafefd4f965d6167462cdf067c3ae60baccca6f678208",
+    "scripts/audit_m7_delivery.py": "19b015b6ca13cb2054476163a545794e871668f0d7101d385efc1d67b5aa6171",
+    "scripts/check_m7_ui_lifecycle.cjs": "eb9eb7a8877c9fb64a75042076b1462f68045a8af42d5d1f6d6d878d1fc7e2c1",
+    "scripts/check_m7_ui_regressions.cjs": "01757ab2b62f04117cea8d1915e8a0e95c0d4966b69af738ebc718d2edad7253",
+    "scripts/package_m7_investigations.py": "b02ba05cea028efe567ea760ee5f534144241cb2f8c5f85f9cb6d83019f8ca03",
+    "scripts/review_m7.py": "b3b73553f26521fbb439280efc2fbc790dc5f95bff46938fec4cbd4838556f22",
+    "scripts/serve_m7_fixture.py": "fb0a9d03b53df8217152fe1557b834e0ea3cb4766d1fcdf7c414cba905f60273",
+    "scripts/validate_m7.py": "b2d9fb3c50e42b48a8a016d3a3f892d1ac836660466c0d1145194fb988d6c20d",
+    "scripts/validate_m7_library.py": "92e597b1c565431944a650fe0315f2af2925e02d937f37aa1eb99f00246708a7",
+    "tests/test_m7.py": "2e225829052c022239b542cd2c022f604777854893e128138ea54b40825bfc2d",
+    "tests/test_m7_integration.py": "3fe5a729ff81722ee325cef01dedb95466e6208686d03b4966ecc9122cad9767",
+    "tests/test_m7_library.py": "40e9f615babfbe610264675220959cb3209845e39d867aee54540f3c55428d61",
+    "tests/test_m7_library_integration_review.py": "5b6d28df55e1a61129f8160aea36f4bbc31271c1e3550ac52a2609533477d46d",
+    "tests/test_m7_review.py": "a89aff448f5fd6b8ef4be94685bf177b93155700034475987133eca4d1c69d5b",
+    "tests/test_m7_service.py": "80c18c73046bccf1cf2a8d58be4702c6a0223c91a568f82d1c1aead24fcd165e",
+    "uwb/__init__.py": "5c38ee3026c68f3a0627a297e540a5be1c167186741e46a11f24a02eeba2baf3",
+    "uwb/estimation.py": "a669d0b48a164e36e8972517e91fdd093e2767c45782391d7ce0fc0c3a24149b",
+    "uwb/experiments.py": "5ca65b96d6c66626f60964890cd913029288487481afe85f9608e36ff40a0693",
+    "uwb/library.py": "9a2d654e6614e770f5ef2a23910272d5250079650302d7e1521035cefa07feb0",
+    "uwb/lifecycle.py": "c29c7d367e51813f51404584ec588e84feca9cbf2eee39fba9eeb495416f1097",
+    "uwb/m3.py": "e9f978773d7371569afe89b27a1ccbeed8298f4f3881f90fcda4ca870027f5d2",
+    "uwb/m3_sweeps.py": "27a9f752a917a47f17f47d43763707aa7ea3418f101a7904d612be8acf0ad81b",
+    "uwb/m4.py": "cdc4eed63dd0d53f44db044073d98698928612021227717f6eadf909dc9ae8d3",
+    "uwb/m4_service.py": "1d09a224690fbeeb0397338ab682e6657e6778c56d7a040ce35bf4b29b7e7cd4",
+    "uwb/m4_sweeps.py": "ccc42f2726b6659dba09eaacf5264660a34827aff78d4db07269a540492b1fac",
+    "uwb/m5.py": "962bc5abb578f9da8e8786ccc0383dcfa23bddf03b52cd37221a7efee16c4560",
+    "uwb/m5_algebraic.py": "2c2b9ec7d016b74e8f8600aff49bbba75c5d7f1024430d6270b2ba75abfb87a3",
+    "uwb/m5_service.py": "ffaa85b58f758469362ec20125a7d6c734a94a5df9d7ab5c335dcdf2b6680ee1",
+    "uwb/m5_sweeps.py": "5389415a2b176f28259a6238530bd8180b997b8071aa79f588b34eb3b4088855",
+    "uwb/m6.py": "b4d8532c5e759e92a2afe6851046709ee27cfba40f492bb52a34374e14ffad9c",
+    "uwb/m6_service.py": "617d00e6db36447e9beab8d5fa6c0f9bc7394fc8bb488e4222f8aad6e23918d6",
+    "uwb/m6_sweeps.py": "d4def7aeac628384b36552777c4b97689bb7d31c8031ad75ef91b46ee3e9403b",
+    "uwb/m7.py": "9b7431fcd4ef941f20c6aa35cc72516962804319bb49080f308a0ec6b4ab06ee",
+    "uwb/m7_service.py": "80b0e17f934eab86c639f79d1650bbd7f0568b1009c58ad3bf3e6960360f5430",
+    "uwb/sweeps.py": "21c3cf055832334bc8713be78b6bf8d9a3291bab328512e7fa7370195113b709",
+    "web/app.js": "f3c319985e3baee2cbf2599c479134f87642d4c5b832509bdb631ef87bc5b7fb",
+    "web/index.html": "f37d4c5d4a31a7a3aa0cfbc56281d4b7f1deb4a272f20240fc1c96bd16152c1a",
+    "web/library.js": "0f2fe520892b9eb343551f85321982daa5508748bbe0c779ca6ca1033539b203",
+    "web/m2.js": "2b0ecdc6b353b739c8307d5b3c24ed41f783895ba10caad41407db0f3b9722a5",
+    "web/m3.js": "f1ecb547c339bdbc35ba07f870f8db19d130e927e79a25bb1406318427640b5a",
+    "web/m4.js": "6fb6e1fde5dd4e525688510fb905f8446074f67a05be77e7f439c8ac14bf6b5f",
+    "web/m5.js": "49fa2ee4392d65bc254c34cf35fc0096e8c5de7c5c96a1a7a20494adaa3832c4",
+    "web/m6.js": "37df693e8d6901f832563477f6996b0824420ce38e6ba5291b64d45317356ec4",
+    "web/m7.js": "c355b6b24307aca10e74e82445cecf9ce155077fb65702b5249a527cbe4ce91c",
+    "web/style.css": "3cb9397d6ae0f2a7c76aef5036a63d42901e5113e11327ee5a160a52dac806b6"
+  },
+  "temporary_fixture_cleanup": {
+    "status": "retained",
+    "reason": "Automatic approval review blocked recursive deletion. Owned fixture servers stopped; three isolated metadata fixture folders retained.",
+    "paths": [
+      "C:\\Users\\dnroh\\AppData\\Local\\Temp\\uwb-m7-browser-gcton1yq",
+      "C:\\Users\\dnroh\\AppData\\Local\\Temp\\uwb-m7-browser-bak0gzs4",
+      "C:\\Users\\dnroh\\AppData\\Local\\Temp\\uwb-m7-browser-w55psg0w"
+    ]
+  }
+}

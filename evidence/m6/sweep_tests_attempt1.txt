@@ -1,0 +1,8 @@
+test_failed_cells_and_checkpoint_prefix_accounting (test_m6_sweeps.M6SweepTests.test_failed_cells_and_checkpoint_prefix_accounting) ... ok
+test_pairing_offline_roundtrip_and_tamper (test_m6_sweeps.M6SweepTests.test_pairing_offline_roundtrip_and_tamper) ... ok
+test_reject_variants_that_break_physical_pairing (test_m6_sweeps.M6SweepTests.test_reject_variants_that_break_physical_pairing) ... ok
+
+----------------------------------------------------------------------
+Ran 3 tests in 4.688s
+
+OK

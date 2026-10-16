@@ -1,0 +1,73 @@
+{
+  "status": "passed",
+  "recorded_utc": "2026-10-16T02:32:30.350483+00:00",
+  "reviewer": "Root integration/visual verification using live Codex in-app browser and explicit exported-image viewing",
+  "measurements": "evidence/m7/visual/browser_measurements_final.json",
+  "viewports": [
+    {
+      "surface": "Library",
+      "width": 1360,
+      "height": 900
+    },
+    {
+      "surface": "Library with10000 metadata records",
+      "width": 1280,
+      "height": 720
+    },
+    {
+      "surface": "Library and preview/actions/tray",
+      "width": 390,
+      "height": 844
+    }
+  ],
+  "inspected_images": [
+    "library_desktop_final.jpg",
+    "library_parent_children_ab_final.jpg",
+    "library_mobile_final.jpg",
+    "library_mobile_failure_preview.jpg",
+    "library_mobile_tray_final.jpg",
+    "library_10000_final.jpg",
+    "m7_saved_world_scene_compact.jpg",
+    "m7_uncertainty_information.jpg",
+    "m7_scene_export.png",
+    "comparison_export.png",
+    "legacy_benchmark_export.png",
+    "legacy_benchmark_attempts_final.jpg"
+  ],
+  "checks": {
+    "visible_page_only": true,
+    "default_rows": 25,
+    "maximum_rows": 50,
+    "second_page": "51\u00e2\u20ac\u201c100 \u00c2\u00b7 Page 2 of 4",
+    "search_type_status_model_source_sort": "Backend combination tests plus live search/type/status and stable pages; loaded facets rendered as labeled selects",
+    "grouping": "Live retained16-run/32-attempt parent; cell/seed/variant labels and unattempted denominators shown",
+    "preview_vs_open": "Metadata selection did not replace active scene; explicit strict Open displayed saved M7/M6 records",
+    "all_attempts": {
+      "benchmark_rows": 32,
+      "non_success_rows": 11,
+      "rows_after_non_success_selection": 32
+    },
+    "ab_tray": "Two source keys retained across search/navigation; Gaussian/Huber labels distinguish selected variants; source comparison saved without fitting",
+    "navigation": "navigation_final.json records exact same camera, generation, ping, layers, comparison alignment, seed and unsaved survey text across hide/return",
+    "keyboard": "Enter previews; Arrow/Tab controls available; Escape closes preview and returns focus to originating row; Back and parent return retained filter state",
+    "live_survey": "m7_live_survey_fit.json: explicit Run on saved observations completed successfully in surveyed world frame, source persisted, covariance available",
+    "offline_failure": "Unchecked metadata-shaped fixture Open rejected with visible error; actual failed survey preview retained failure message",
+    "exports": "M7 complete JSON+32 source rows CSV validated; M7 scene, saved comparison scene and legacy mixed benchmark chart PNG downloaded and opened for visual review",
+    "console_errors": []
+  },
+  "cold_browser_10000_ms": 113189.8,
+  "warm_browser_10000_ms": [
+    93.3,
+    84.3,
+    88.5
+  ],
+  "warm_desktop_ms": 32.2,
+  "warm_mobile_ms": 31.5,
+  "navigation_equal_hidden_returned": true,
+  "limitations": [
+    "Full Experiment mobile layout is not certified;390x844 certification covers the Library, preview/actions and tray.",
+    "Browser render measurements include metadata fetch and DOM rendering, not solving. Metadata-shaped10k fixtures are deliberately not valid numerical run records.",
+    "Cold scanning remains expensive; successful warm targets do not imply cold usability under1second.",
+    "A tab blocked port5060 as unsafe. The test used a different ordinary local port5070; no browser security warning was bypassed."
+  ]
+}

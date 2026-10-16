@@ -1,0 +1,43 @@
+WARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.
+ * Running on http://127.0.0.1:5052
+Press CTRL+C to quit
+127.0.0.1 - - [13/Oct/2026 22:29:23] "GET / HTTP/1.1" 304 -
+127.0.0.1 - - [13/Oct/2026 22:29:23] "GET /style.css HTTP/1.1" 304 -
+127.0.0.1 - - [13/Oct/2026 22:29:23] "GET /vendor/plotly.min.js HTTP/1.1" 200 -
+127.0.0.1 - - [13/Oct/2026 22:29:23] "GET /app.js HTTP/1.1" 304 -
+127.0.0.1 - - [13/Oct/2026 22:29:23] "GET /m2.js HTTP/1.1" 304 -
+127.0.0.1 - - [13/Oct/2026 22:29:23] "GET /m3.js HTTP/1.1" 304 -
+127.0.0.1 - - [13/Oct/2026 22:29:23] "GET /api/scenarios HTTP/1.1" 200 -
+127.0.0.1 - - [13/Oct/2026 22:29:24] "GET /api/comparisons HTTP/1.1" 200 -
+127.0.0.1 - - [13/Oct/2026 22:29:24] "GET /api/sweeps HTTP/1.1" 200 -
+127.0.0.1 - - [13/Oct/2026 22:29:24] "GET /api/m3/sweeps HTTP/1.1" 200 -
+127.0.0.1 - - [13/Oct/2026 22:29:24] "GET /api/runs HTTP/1.1" 200 -
+127.0.0.1 - - [13/Oct/2026 22:29:25] "GET /api/runs HTTP/1.1" 200 -
+127.0.0.1 - - [13/Oct/2026 22:29:26] "GET /api/runs/862fcdb2689d4e11a8674ec9fb5b2ba3 HTTP/1.1" 200 -
+127.0.0.1 - - [13/Oct/2026 22:29:26] "GET /api/runs HTTP/1.1" 200 -
+127.0.0.1 - - [13/Oct/2026 22:29:27] "GET /api/runs HTTP/1.1" 200 -
+127.0.0.1 - - [13/Oct/2026 22:29:41] "GET /api/m3/sweeps HTTP/1.1" 200 -
+127.0.0.1 - - [13/Oct/2026 22:29:41] "GET /api/m3/sweeps/1befadd27e2b430c80e7c953db666e4c HTTP/1.1" 200 -
+127.0.0.1 - - [13/Oct/2026 22:29:56] "GET /api/runs/6cf001be711451b88625d315cf1dfc27 HTTP/1.1" 200 -
+127.0.0.1 - - [13/Oct/2026 22:29:56] "GET /api/runs/221b4bae9cb959bf9e14f327553cf299 HTTP/1.1" 200 -
+127.0.0.1 - - [13/Oct/2026 22:29:56] "POST /api/comparisons HTTP/1.1" 200 -
+127.0.0.1 - - [13/Oct/2026 22:29:56] "GET /api/comparisons HTTP/1.1" 200 -
+127.0.0.1 - - [13/Oct/2026 22:33:02] "GET / HTTP/1.1" 304 -
+127.0.0.1 - - [13/Oct/2026 22:33:02] "GET /style.css HTTP/1.1" 304 -
+127.0.0.1 - - [13/Oct/2026 22:33:02] "GET /vendor/plotly.min.js HTTP/1.1" 200 -
+127.0.0.1 - - [13/Oct/2026 22:33:02] "GET /app.js HTTP/1.1" 304 -
+127.0.0.1 - - [13/Oct/2026 22:33:02] "GET /m3.js HTTP/1.1" 304 -
+127.0.0.1 - - [13/Oct/2026 22:33:02] "GET /m2.js HTTP/1.1" 200 -
+127.0.0.1 - - [13/Oct/2026 22:33:03] "GET /api/scenarios HTTP/1.1" 200 -
+127.0.0.1 - - [13/Oct/2026 22:33:03] "GET /api/sweeps HTTP/1.1" 200 -
+127.0.0.1 - - [13/Oct/2026 22:33:04] "GET /api/comparisons HTTP/1.1" 200 -
+127.0.0.1 - - [13/Oct/2026 22:33:04] "GET /api/m3/sweeps HTTP/1.1" 200 -
+127.0.0.1 - - [13/Oct/2026 22:33:04] "GET /api/runs HTTP/1.1" 200 -
+127.0.0.1 - - [13/Oct/2026 22:33:05] "GET /api/runs HTTP/1.1" 200 -
+127.0.0.1 - - [13/Oct/2026 22:33:05] "GET /api/runs/3b528c77e2e657c6982015f8b8b1d1f0 HTTP/1.1" 200 -
+127.0.0.1 - - [13/Oct/2026 22:33:06] "GET /api/runs HTTP/1.1" 200 -
+127.0.0.1 - - [13/Oct/2026 22:33:07] "GET /api/runs HTTP/1.1" 200 -
+127.0.0.1 - - [13/Oct/2026 22:33:58] "GET /api/runs/6cf001be711451b88625d315cf1dfc27 HTTP/1.1" 200 -
+127.0.0.1 - - [13/Oct/2026 22:33:58] "GET /api/runs/221b4bae9cb959bf9e14f327553cf299 HTTP/1.1" 200 -
+127.0.0.1 - - [13/Oct/2026 22:33:58] "POST /api/comparisons HTTP/1.1" 200 -
+127.0.0.1 - - [13/Oct/2026 22:33:58] "GET /api/comparisons HTTP/1.1" 200 -

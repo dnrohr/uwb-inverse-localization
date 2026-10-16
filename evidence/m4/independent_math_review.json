@@ -1,0 +1,187 @@
+{
+  "jacobians": [
+    {
+      "mode": "known_map",
+      "tag": "fixed",
+      "beacon": "shared",
+      "directional_jacobian_max_abs": 2.875478610775417e-08
+    },
+    {
+      "mode": "known_map",
+      "tag": "fixed",
+      "beacon": "independent",
+      "directional_jacobian_max_abs": 3.25399227563139e-08
+    },
+    {
+      "mode": "known_map",
+      "tag": "shared",
+      "beacon": "shared",
+      "directional_jacobian_max_abs": 3.386287517059827e-08
+    },
+    {
+      "mode": "known_map",
+      "tag": "shared",
+      "beacon": "independent",
+      "directional_jacobian_max_abs": 3.0325313815637855e-08
+    },
+    {
+      "mode": "known_map",
+      "tag": "soft",
+      "beacon": "shared",
+      "directional_jacobian_max_abs": 2.88827699534977e-08
+    },
+    {
+      "mode": "known_map",
+      "tag": "soft",
+      "beacon": "independent",
+      "directional_jacobian_max_abs": 2.866794446276799e-08
+    },
+    {
+      "mode": "known_map",
+      "tag": "free",
+      "beacon": "shared",
+      "directional_jacobian_max_abs": 2.88827699534977e-08
+    },
+    {
+      "mode": "known_map",
+      "tag": "free",
+      "beacon": "independent",
+      "directional_jacobian_max_abs": 2.866794446276799e-08
+    },
+    {
+      "mode": "joint",
+      "tag": "fixed",
+      "beacon": "shared",
+      "directional_jacobian_max_abs": 4.882392090621579e-08
+    },
+    {
+      "mode": "joint",
+      "tag": "fixed",
+      "beacon": "independent",
+      "directional_jacobian_max_abs": 3.625461886258563e-08
+    },
+    {
+      "mode": "joint",
+      "tag": "shared",
+      "beacon": "shared",
+      "directional_jacobian_max_abs": 4.489860927492373e-08
+    },
+    {
+      "mode": "joint",
+      "tag": "shared",
+      "beacon": "independent",
+      "directional_jacobian_max_abs": 3.686919525236476e-08
+    },
+    {
+      "mode": "joint",
+      "tag": "soft",
+      "beacon": "shared",
+      "directional_jacobian_max_abs": 2.914809371645788e-08
+    },
+    {
+      "mode": "joint",
+      "tag": "soft",
+      "beacon": "independent",
+      "directional_jacobian_max_abs": 3.393328906753368e-08
+    },
+    {
+      "mode": "joint",
+      "tag": "free",
+      "beacon": "shared",
+      "directional_jacobian_max_abs": 2.914809371645788e-08
+    },
+    {
+      "mode": "joint",
+      "tag": "free",
+      "beacon": "independent",
+      "directional_jacobian_max_abs": 3.393328906753368e-08
+    }
+  ],
+  "spatial_free_ranks": [
+    {
+      "count": 3,
+      "beacon_height_model": "shared",
+      "rank": 36,
+      "parameters": 39,
+      "full": false
+    },
+    {
+      "count": 3,
+      "beacon_height_model": "independent",
+      "rank": 36,
+      "parameters": 39,
+      "full": false
+    },
+    {
+      "count": 4,
+      "beacon_height_model": "shared",
+      "rank": 39,
+      "parameters": 41,
+      "full": false
+    },
+    {
+      "count": 4,
+      "beacon_height_model": "independent",
+      "rank": 42,
+      "parameters": 42,
+      "full": true
+    },
+    {
+      "count": 5,
+      "beacon_height_model": "shared",
+      "rank": 42,
+      "parameters": 43,
+      "full": false
+    },
+    {
+      "count": 5,
+      "beacon_height_model": "independent",
+      "rank": 45,
+      "parameters": 45,
+      "full": true
+    },
+    {
+      "count": 6,
+      "beacon_height_model": "shared",
+      "rank": 45,
+      "parameters": 45,
+      "full": true
+    },
+    {
+      "count": 6,
+      "beacon_height_model": "independent",
+      "rank": 48,
+      "parameters": 48,
+      "full": true
+    },
+    {
+      "count": 7,
+      "beacon_height_model": "shared",
+      "rank": 47,
+      "parameters": 47,
+      "full": true
+    },
+    {
+      "count": 7,
+      "beacon_height_model": "independent",
+      "rank": 51,
+      "parameters": 51,
+      "full": true
+    },
+    {
+      "count": 8,
+      "beacon_height_model": "shared",
+      "rank": 49,
+      "parameters": 49,
+      "full": true
+    },
+    {
+      "count": 8,
+      "beacon_height_model": "independent",
+      "rank": 54,
+      "parameters": 54,
+      "full": true
+    }
+  ],
+  "truth_geometry_invariance": true
+}

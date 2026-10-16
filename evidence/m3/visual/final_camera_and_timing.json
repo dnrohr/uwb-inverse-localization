@@ -1,0 +1,10 @@
+{
+  "camera_before": "{\"up\":{\"x\":0,\"y\":0,\"z\":1},\"center\":{\"x\":0,\"y\":0,\"z\":0},\"eye\":{\"x\":1.25,\"y\":1.25,\"z\":1.25},\"projection\":{\"type\":\"perspective\"}}",
+  "camera_after": "{\"up\":{\"x\":0,\"y\":0,\"z\":1},\"center\":{\"x\":0,\"y\":0,\"z\":0},\"eye\":{\"x\":1.25,\"y\":1.25,\"z\":1.25},\"projection\":{\"type\":\"perspective\"}}",
+  "camera_equal": true,
+  "ping_index": "17",
+  "ping_detail": "Actual tag position (8.500, 5.086, 0.000) m · actual 2.1733 s · assumed 2.1733 s · delivered 2.1733 s · range 6.0922 m · common cycle 2.1333 s at (8.500, 4.829, 0.000) m · receiver B1 at (10.000, 0.000, 3.000) m",
+  "scene_render_ms": "322.10",
+  "ping_render_ms": "22.30",
+  "speed_render_ms": "67.30"
+}

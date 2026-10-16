@@ -1,0 +1,10 @@
+test_failed_initializer_and_all_sweep_attempts_saved (test_m5_service.M5ServiceTests.test_failed_initializer_and_all_sweep_attempts_saved) ... ok
+test_interrupted_unique_temporary_checkpoint_is_recovered (test_m5_service.M5ServiceTests.test_interrupted_unique_temporary_checkpoint_is_recovered) ... ok
+test_persistence_failure_keeps_numerical_success_separate (test_m5_service.M5ServiceTests.test_persistence_failure_keeps_numerical_success_separate) ... ok
+test_run_offline_import_and_shared_comparison (test_m5_service.M5ServiceTests.test_run_offline_import_and_shared_comparison) ... ok
+test_unsupported_q_rejected_before_queue (test_m5_service.M5ServiceTests.test_unsupported_q_rejected_before_queue) ... ok
+
+----------------------------------------------------------------------
+Ran 5 tests in 0.895s
+
+OK

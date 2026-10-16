@@ -1,0 +1,261 @@
+{
+  "records": [
+    {
+      "count": 4,
+      "samples": 12,
+      "solver": "trf",
+      "height_parameterization": "h",
+      "wrapper_wall_s": 0.03404949999821838,
+      "status": "success",
+      "start_runtimes_s": [
+        0.004807299999811221,
+        0.0037717000013799407
+      ],
+      "start_statuses": [
+        "success",
+        "success"
+      ]
+    },
+    {
+      "count": 4,
+      "samples": 12,
+      "solver": "trf",
+      "height_parameterization": "q",
+      "wrapper_wall_s": 0.03378569999767933,
+      "status": "success",
+      "start_runtimes_s": [
+        0.0034663999977055937,
+        0.003968299999542069
+      ],
+      "start_statuses": [
+        "success",
+        "success"
+      ]
+    },
+    {
+      "count": 4,
+      "samples": 12,
+      "solver": "lm",
+      "height_parameterization": "h",
+      "wrapper_wall_s": 0.02988750000076834,
+      "status": "success",
+      "start_runtimes_s": [
+        0.001971500001673121,
+        0.002043799999228213
+      ],
+      "start_statuses": [
+        "success",
+        "success"
+      ]
+    },
+    {
+      "count": 4,
+      "samples": 12,
+      "solver": "lm",
+      "height_parameterization": "q",
+      "wrapper_wall_s": 0.03081489999749465,
+      "status": "success",
+      "start_runtimes_s": [
+        0.002090699999826029,
+        0.0022433999984059483
+      ],
+      "start_statuses": [
+        "success",
+        "success"
+      ]
+    },
+    {
+      "count": 4,
+      "samples": 24,
+      "solver": "trf",
+      "height_parameterization": "h",
+      "wrapper_wall_s": 0.07479310000053374,
+      "status": "success",
+      "start_runtimes_s": [
+        0.017810900004405994,
+        0.017544599999382626
+      ],
+      "start_statuses": [
+        "success",
+        "success"
+      ]
+    },
+    {
+      "count": 4,
+      "samples": 24,
+      "solver": "trf",
+      "height_parameterization": "q",
+      "wrapper_wall_s": 0.07423700000072131,
+      "status": "success",
+      "start_runtimes_s": [
+        0.01613540000107605,
+        0.018423400004394352
+      ],
+      "start_statuses": [
+        "success",
+        "success"
+      ]
+    },
+    {
+      "count": 4,
+      "samples": 24,
+      "solver": "lm",
+      "height_parameterization": "h",
+      "wrapper_wall_s": 0.04431299999851035,
+      "status": "success",
+      "start_runtimes_s": [
+        0.003487500005576294,
+        0.0034544000009191222
+      ],
+      "start_statuses": [
+        "success",
+        "success"
+      ]
+    },
+    {
+      "count": 4,
+      "samples": 24,
+      "solver": "lm",
+      "height_parameterization": "q",
+      "wrapper_wall_s": 0.04412199999933364,
+      "status": "success",
+      "start_runtimes_s": [
+        0.0033035000014933757,
+        0.0037863000034121796
+      ],
+      "start_statuses": [
+        "success",
+        "success"
+      ]
+    },
+    {
+      "count": 8,
+      "samples": 12,
+      "solver": "trf",
+      "height_parameterization": "h",
+      "wrapper_wall_s": 0.047495400001935195,
+      "status": "success",
+      "start_runtimes_s": [
+        0.005285899998852983,
+        0.006725100000039674
+      ],
+      "start_statuses": [
+        "success",
+        "success"
+      ]
+    },
+    {
+      "count": 8,
+      "samples": 12,
+      "solver": "trf",
+      "height_parameterization": "q",
+      "wrapper_wall_s": 0.04857819999597268,
+      "status": "success",
+      "start_runtimes_s": [
+        0.006427200001780875,
+        0.005785699999250937
+      ],
+      "start_statuses": [
+        "success",
+        "success"
+      ]
+    },
+    {
+      "count": 8,
+      "samples": 12,
+      "solver": "lm",
+      "height_parameterization": "h",
+      "wrapper_wall_s": 0.03940150000562426,
+      "status": "success",
+      "start_runtimes_s": [
+        0.0032653000016580336,
+        0.0026584000006550923
+      ],
+      "start_statuses": [
+        "success",
+        "success"
+      ]
+    },
+    {
+      "count": 8,
+      "samples": 12,
+      "solver": "lm",
+      "height_parameterization": "q",
+      "wrapper_wall_s": 0.040379100006248336,
+      "status": "success",
+      "start_runtimes_s": [
+        0.0029418000049190596,
+        0.0027442999999038875
+      ],
+      "start_statuses": [
+        "success",
+        "success"
+      ]
+    },
+    {
+      "count": 8,
+      "samples": 24,
+      "solver": "trf",
+      "height_parameterization": "h",
+      "wrapper_wall_s": 0.0995653999998467,
+      "status": "success",
+      "start_runtimes_s": [
+        0.02305799999885494,
+        0.023078999998688232
+      ],
+      "start_statuses": [
+        "success",
+        "success"
+      ]
+    },
+    {
+      "count": 8,
+      "samples": 24,
+      "solver": "trf",
+      "height_parameterization": "q",
+      "wrapper_wall_s": 0.0934620999978506,
+      "status": "success",
+      "start_runtimes_s": [
+        0.017767800003639422,
+        0.022050599996873643
+      ],
+      "start_statuses": [
+        "success",
+        "success"
+      ]
+    },
+    {
+      "count": 8,
+      "samples": 24,
+      "solver": "lm",
+      "height_parameterization": "h",
+      "wrapper_wall_s": 0.06346019999909913,
+      "status": "success",
+      "start_runtimes_s": [
+        0.007135300002119038,
+        0.006711100002576131
+      ],
+      "start_statuses": [
+        "success",
+        "success"
+      ]
+    },
+    {
+      "count": 8,
+      "samples": 24,
+      "solver": "lm",
+      "height_parameterization": "q",
+      "wrapper_wall_s": 0.06745049999881303,
+      "status": "success",
+      "start_runtimes_s": [
+        0.007332900000619702,
+        0.006605900001886766
+      ],
+      "start_statuses": [
+        "success",
+        "success"
+      ]
+    }
+  ],
+  "scope": "Same noisy observations and physical starts per size; wrapper includes fitting, diagnostic evaluation and validation; excludes JSON disk save; no accuracy guarantee"
+}

@@ -1,0 +1,1266 @@
+{
+  "status": "passed",
+  "runs": [
+    {
+      "label": "selected_fixed_coordinates",
+      "path": "evidence/m7/acceptance_20261015_190047_336f00ce/runs/selected_fixed_coordinates.json",
+      "status": "success",
+      "attempts": 3,
+      "statuses": {
+        "success": 3
+      }
+    },
+    {
+      "label": "uncertain_survey",
+      "path": "evidence/m7/acceptance_20261015_190047_336f00ce/runs/uncertain_survey.json",
+      "status": "success",
+      "attempts": 3,
+      "statuses": {
+        "success": 3
+      }
+    },
+    {
+      "label": "biased_survey_diagnostic",
+      "path": "evidence/m7/acceptance_20261015_190047_336f00ce/runs/biased_survey_diagnostic.json",
+      "status": "success",
+      "attempts": 3,
+      "statuses": {
+        "success": 3
+      }
+    },
+    {
+      "label": "remaining_rigid_freedom",
+      "path": "evidence/m7/acceptance_20261015_190047_336f00ce/runs/remaining_rigid_freedom.json",
+      "status": "success",
+      "attempts": 3,
+      "statuses": {
+        "success": 3
+      }
+    },
+    {
+      "label": "forced_nonconvergence",
+      "path": "evidence/m7/acceptance_20261015_190047_336f00ce/runs/forced_nonconvergence.json",
+      "status": "not_converged",
+      "attempts": 3,
+      "statuses": {
+        "not_converged": 3
+      }
+    },
+    {
+      "label": "robust_uncertainty_unavailable",
+      "path": "evidence/m7/acceptance_20261015_190047_336f00ce/runs/robust_uncertainty_unavailable.json",
+      "status": "success",
+      "attempts": 3,
+      "statuses": {
+        "success": 3
+      }
+    },
+    {
+      "label": "exact_informative_partial",
+      "path": "evidence/m7/acceptance_20261015_190047_336f00ce/runs/exact_informative_partial.json",
+      "status": "success",
+      "attempts": 3,
+      "statuses": {
+        "success": 3
+      }
+    },
+    {
+      "label": "exact_straight_line_partial",
+      "path": "evidence/m7/acceptance_20261015_190047_336f00ce/runs/exact_straight_line_partial.json",
+      "status": "success",
+      "attempts": 3,
+      "statuses": {
+        "success": 3
+      }
+    },
+    {
+      "label": "noisy_narrow_coverage_partial",
+      "path": "evidence/m7/acceptance_20261015_190047_336f00ce/runs/noisy_narrow_coverage_partial.json",
+      "status": "success",
+      "attempts": 3,
+      "statuses": {
+        "success": 3
+      }
+    },
+    {
+      "label": "coplanar_reflection_oracle_diagnostic",
+      "path": "evidence/m7/acceptance_20261015_190047_336f00ce/runs/coplanar_reflection_oracle_diagnostic.json",
+      "status": "success",
+      "attempts": 2,
+      "statuses": {
+        "success": 2
+      }
+    },
+    {
+      "label": "invalid_physical_start",
+      "path": "evidence/m7/acceptance_20261015_190047_336f00ce/runs/invalid_physical_start.json",
+      "status": "failed",
+      "attempts": 1,
+      "statuses": {
+        "failed": 1
+      }
+    },
+    {
+      "label": "assumed_model_100",
+      "path": "evidence/m7/acceptance_20261015_190047_336f00ce/runs/assumed_model_100.json",
+      "status": "success",
+      "attempts": 1,
+      "statuses": {
+        "success": 1
+      }
+    },
+    {
+      "label": "assumed_model_101",
+      "path": "evidence/m7/acceptance_20261015_190047_336f00ce/runs/assumed_model_101.json",
+      "status": "success",
+      "attempts": 1,
+      "statuses": {
+        "success": 1
+      }
+    },
+    {
+      "label": "assumed_model_102",
+      "path": "evidence/m7/acceptance_20261015_190047_336f00ce/runs/assumed_model_102.json",
+      "status": "success",
+      "attempts": 1,
+      "statuses": {
+        "success": 1
+      }
+    },
+    {
+      "label": "assumed_model_103",
+      "path": "evidence/m7/acceptance_20261015_190047_336f00ce/runs/assumed_model_103.json",
+      "status": "success",
+      "attempts": 1,
+      "statuses": {
+        "success": 1
+      }
+    },
+    {
+      "label": "assumed_model_104",
+      "path": "evidence/m7/acceptance_20261015_190047_336f00ce/runs/assumed_model_104.json",
+      "status": "success",
+      "attempts": 1,
+      "statuses": {
+        "success": 1
+      }
+    },
+    {
+      "label": "assumed_model_105",
+      "path": "evidence/m7/acceptance_20261015_190047_336f00ce/runs/assumed_model_105.json",
+      "status": "success",
+      "attempts": 1,
+      "statuses": {
+        "success": 1
+      }
+    },
+    {
+      "label": "assumed_model_106",
+      "path": "evidence/m7/acceptance_20261015_190047_336f00ce/runs/assumed_model_106.json",
+      "status": "success",
+      "attempts": 1,
+      "statuses": {
+        "success": 1
+      }
+    },
+    {
+      "label": "assumed_model_107",
+      "path": "evidence/m7/acceptance_20261015_190047_336f00ce/runs/assumed_model_107.json",
+      "status": "success",
+      "attempts": 1,
+      "statuses": {
+        "success": 1
+      }
+    },
+    {
+      "label": "assumed_model_108",
+      "path": "evidence/m7/acceptance_20261015_190047_336f00ce/runs/assumed_model_108.json",
+      "status": "success",
+      "attempts": 1,
+      "statuses": {
+        "success": 1
+      }
+    },
+    {
+      "label": "assumed_model_109",
+      "path": "evidence/m7/acceptance_20261015_190047_336f00ce/runs/assumed_model_109.json",
+      "status": "success",
+      "attempts": 1,
+      "statuses": {
+        "success": 1
+      }
+    },
+    {
+      "label": "assumed_model_110",
+      "path": "evidence/m7/acceptance_20261015_190047_336f00ce/runs/assumed_model_110.json",
+      "status": "success",
+      "attempts": 1,
+      "statuses": {
+        "success": 1
+      }
+    },
+    {
+      "label": "assumed_model_111",
+      "path": "evidence/m7/acceptance_20261015_190047_336f00ce/runs/assumed_model_111.json",
+      "status": "success",
+      "attempts": 1,
+      "statuses": {
+        "success": 1
+      }
+    },
+    {
+      "label": "assumed_model_112",
+      "path": "evidence/m7/acceptance_20261015_190047_336f00ce/runs/assumed_model_112.json",
+      "status": "success",
+      "attempts": 1,
+      "statuses": {
+        "success": 1
+      }
+    },
+    {
+      "label": "assumed_model_113",
+      "path": "evidence/m7/acceptance_20261015_190047_336f00ce/runs/assumed_model_113.json",
+      "status": "success",
+      "attempts": 1,
+      "statuses": {
+        "success": 1
+      }
+    },
+    {
+      "label": "assumed_model_114",
+      "path": "evidence/m7/acceptance_20261015_190047_336f00ce/runs/assumed_model_114.json",
+      "status": "success",
+      "attempts": 1,
+      "statuses": {
+        "success": 1
+      }
+    },
+    {
+      "label": "assumed_model_115",
+      "path": "evidence/m7/acceptance_20261015_190047_336f00ce/runs/assumed_model_115.json",
+      "status": "success",
+      "attempts": 1,
+      "statuses": {
+        "success": 1
+      }
+    },
+    {
+      "label": "assumed_model_116",
+      "path": "evidence/m7/acceptance_20261015_190047_336f00ce/runs/assumed_model_116.json",
+      "status": "success",
+      "attempts": 1,
+      "statuses": {
+        "success": 1
+      }
+    },
+    {
+      "label": "assumed_model_117",
+      "path": "evidence/m7/acceptance_20261015_190047_336f00ce/runs/assumed_model_117.json",
+      "status": "success",
+      "attempts": 1,
+      "statuses": {
+        "success": 1
+      }
+    },
+    {
+      "label": "assumed_model_118",
+      "path": "evidence/m7/acceptance_20261015_190047_336f00ce/runs/assumed_model_118.json",
+      "status": "success",
+      "attempts": 1,
+      "statuses": {
+        "success": 1
+      }
+    },
+    {
+      "label": "assumed_model_119",
+      "path": "evidence/m7/acceptance_20261015_190047_336f00ce/runs/assumed_model_119.json",
+      "status": "success",
+      "attempts": 1,
+      "statuses": {
+        "success": 1
+      }
+    },
+    {
+      "label": "assumed_model_120",
+      "path": "evidence/m7/acceptance_20261015_190047_336f00ce/runs/assumed_model_120.json",
+      "status": "success",
+      "attempts": 1,
+      "statuses": {
+        "success": 1
+      }
+    },
+    {
+      "label": "assumed_model_121",
+      "path": "evidence/m7/acceptance_20261015_190047_336f00ce/runs/assumed_model_121.json",
+      "status": "success",
+      "attempts": 1,
+      "statuses": {
+        "success": 1
+      }
+    },
+    {
+      "label": "assumed_model_122",
+      "path": "evidence/m7/acceptance_20261015_190047_336f00ce/runs/assumed_model_122.json",
+      "status": "success",
+      "attempts": 1,
+      "statuses": {
+        "success": 1
+      }
+    },
+    {
+      "label": "assumed_model_123",
+      "path": "evidence/m7/acceptance_20261015_190047_336f00ce/runs/assumed_model_123.json",
+      "status": "success",
+      "attempts": 1,
+      "statuses": {
+        "success": 1
+      }
+    },
+    {
+      "label": "assumed_model_124",
+      "path": "evidence/m7/acceptance_20261015_190047_336f00ce/runs/assumed_model_124.json",
+      "status": "success",
+      "attempts": 1,
+      "statuses": {
+        "success": 1
+      }
+    },
+    {
+      "label": "assumed_model_125",
+      "path": "evidence/m7/acceptance_20261015_190047_336f00ce/runs/assumed_model_125.json",
+      "status": "success",
+      "attempts": 1,
+      "statuses": {
+        "success": 1
+      }
+    },
+    {
+      "label": "assumed_model_126",
+      "path": "evidence/m7/acceptance_20261015_190047_336f00ce/runs/assumed_model_126.json",
+      "status": "success",
+      "attempts": 1,
+      "statuses": {
+        "success": 1
+      }
+    },
+    {
+      "label": "assumed_model_127",
+      "path": "evidence/m7/acceptance_20261015_190047_336f00ce/runs/assumed_model_127.json",
+      "status": "success",
+      "attempts": 1,
+      "statuses": {
+        "success": 1
+      }
+    },
+    {
+      "label": "assumed_model_128",
+      "path": "evidence/m7/acceptance_20261015_190047_336f00ce/runs/assumed_model_128.json",
+      "status": "success",
+      "attempts": 1,
+      "statuses": {
+        "success": 1
+      }
+    },
+    {
+      "label": "assumed_model_129",
+      "path": "evidence/m7/acceptance_20261015_190047_336f00ce/runs/assumed_model_129.json",
+      "status": "success",
+      "attempts": 1,
+      "statuses": {
+        "success": 1
+      }
+    },
+    {
+      "label": "assumed_model_130",
+      "path": "evidence/m7/acceptance_20261015_190047_336f00ce/runs/assumed_model_130.json",
+      "status": "success",
+      "attempts": 1,
+      "statuses": {
+        "success": 1
+      }
+    },
+    {
+      "label": "assumed_model_131",
+      "path": "evidence/m7/acceptance_20261015_190047_336f00ce/runs/assumed_model_131.json",
+      "status": "success",
+      "attempts": 1,
+      "statuses": {
+        "success": 1
+      }
+    },
+    {
+      "label": "misspecified_offset_100",
+      "path": "evidence/m7/acceptance_20261015_190047_336f00ce/runs/misspecified_offset_100.json",
+      "status": "success",
+      "attempts": 1,
+      "statuses": {
+        "success": 1
+      }
+    },
+    {
+      "label": "misspecified_offset_101",
+      "path": "evidence/m7/acceptance_20261015_190047_336f00ce/runs/misspecified_offset_101.json",
+      "status": "success",
+      "attempts": 1,
+      "statuses": {
+        "success": 1
+      }
+    },
+    {
+      "label": "misspecified_offset_102",
+      "path": "evidence/m7/acceptance_20261015_190047_336f00ce/runs/misspecified_offset_102.json",
+      "status": "success",
+      "attempts": 1,
+      "statuses": {
+        "success": 1
+      }
+    },
+    {
+      "label": "misspecified_offset_103",
+      "path": "evidence/m7/acceptance_20261015_190047_336f00ce/runs/misspecified_offset_103.json",
+      "status": "success",
+      "attempts": 1,
+      "statuses": {
+        "success": 1
+      }
+    },
+    {
+      "label": "misspecified_offset_104",
+      "path": "evidence/m7/acceptance_20261015_190047_336f00ce/runs/misspecified_offset_104.json",
+      "status": "success",
+      "attempts": 1,
+      "statuses": {
+        "success": 1
+      }
+    },
+    {
+      "label": "misspecified_offset_105",
+      "path": "evidence/m7/acceptance_20261015_190047_336f00ce/runs/misspecified_offset_105.json",
+      "status": "success",
+      "attempts": 1,
+      "statuses": {
+        "success": 1
+      }
+    },
+    {
+      "label": "misspecified_offset_106",
+      "path": "evidence/m7/acceptance_20261015_190047_336f00ce/runs/misspecified_offset_106.json",
+      "status": "success",
+      "attempts": 1,
+      "statuses": {
+        "success": 1
+      }
+    },
+    {
+      "label": "misspecified_offset_107",
+      "path": "evidence/m7/acceptance_20261015_190047_336f00ce/runs/misspecified_offset_107.json",
+      "status": "success",
+      "attempts": 1,
+      "statuses": {
+        "success": 1
+      }
+    },
+    {
+      "label": "misspecified_offset_108",
+      "path": "evidence/m7/acceptance_20261015_190047_336f00ce/runs/misspecified_offset_108.json",
+      "status": "success",
+      "attempts": 1,
+      "statuses": {
+        "success": 1
+      }
+    },
+    {
+      "label": "misspecified_offset_109",
+      "path": "evidence/m7/acceptance_20261015_190047_336f00ce/runs/misspecified_offset_109.json",
+      "status": "success",
+      "attempts": 1,
+      "statuses": {
+        "success": 1
+      }
+    },
+    {
+      "label": "misspecified_offset_110",
+      "path": "evidence/m7/acceptance_20261015_190047_336f00ce/runs/misspecified_offset_110.json",
+      "status": "success",
+      "attempts": 1,
+      "statuses": {
+        "success": 1
+      }
+    },
+    {
+      "label": "misspecified_offset_111",
+      "path": "evidence/m7/acceptance_20261015_190047_336f00ce/runs/misspecified_offset_111.json",
+      "status": "success",
+      "attempts": 1,
+      "statuses": {
+        "success": 1
+      }
+    },
+    {
+      "label": "misspecified_offset_112",
+      "path": "evidence/m7/acceptance_20261015_190047_336f00ce/runs/misspecified_offset_112.json",
+      "status": "success",
+      "attempts": 1,
+      "statuses": {
+        "success": 1
+      }
+    },
+    {
+      "label": "misspecified_offset_113",
+      "path": "evidence/m7/acceptance_20261015_190047_336f00ce/runs/misspecified_offset_113.json",
+      "status": "success",
+      "attempts": 1,
+      "statuses": {
+        "success": 1
+      }
+    },
+    {
+      "label": "misspecified_offset_114",
+      "path": "evidence/m7/acceptance_20261015_190047_336f00ce/runs/misspecified_offset_114.json",
+      "status": "success",
+      "attempts": 1,
+      "statuses": {
+        "success": 1
+      }
+    },
+    {
+      "label": "misspecified_offset_115",
+      "path": "evidence/m7/acceptance_20261015_190047_336f00ce/runs/misspecified_offset_115.json",
+      "status": "success",
+      "attempts": 1,
+      "statuses": {
+        "success": 1
+      }
+    },
+    {
+      "label": "misspecified_offset_116",
+      "path": "evidence/m7/acceptance_20261015_190047_336f00ce/runs/misspecified_offset_116.json",
+      "status": "success",
+      "attempts": 1,
+      "statuses": {
+        "success": 1
+      }
+    },
+    {
+      "label": "misspecified_offset_117",
+      "path": "evidence/m7/acceptance_20261015_190047_336f00ce/runs/misspecified_offset_117.json",
+      "status": "success",
+      "attempts": 1,
+      "statuses": {
+        "success": 1
+      }
+    },
+    {
+      "label": "misspecified_offset_118",
+      "path": "evidence/m7/acceptance_20261015_190047_336f00ce/runs/misspecified_offset_118.json",
+      "status": "success",
+      "attempts": 1,
+      "statuses": {
+        "success": 1
+      }
+    },
+    {
+      "label": "misspecified_offset_119",
+      "path": "evidence/m7/acceptance_20261015_190047_336f00ce/runs/misspecified_offset_119.json",
+      "status": "success",
+      "attempts": 1,
+      "statuses": {
+        "success": 1
+      }
+    },
+    {
+      "label": "misspecified_offset_120",
+      "path": "evidence/m7/acceptance_20261015_190047_336f00ce/runs/misspecified_offset_120.json",
+      "status": "success",
+      "attempts": 1,
+      "statuses": {
+        "success": 1
+      }
+    },
+    {
+      "label": "misspecified_offset_121",
+      "path": "evidence/m7/acceptance_20261015_190047_336f00ce/runs/misspecified_offset_121.json",
+      "status": "success",
+      "attempts": 1,
+      "statuses": {
+        "success": 1
+      }
+    },
+    {
+      "label": "misspecified_offset_122",
+      "path": "evidence/m7/acceptance_20261015_190047_336f00ce/runs/misspecified_offset_122.json",
+      "status": "success",
+      "attempts": 1,
+      "statuses": {
+        "success": 1
+      }
+    },
+    {
+      "label": "misspecified_offset_123",
+      "path": "evidence/m7/acceptance_20261015_190047_336f00ce/runs/misspecified_offset_123.json",
+      "status": "success",
+      "attempts": 1,
+      "statuses": {
+        "success": 1
+      }
+    },
+    {
+      "label": "misspecified_offset_124",
+      "path": "evidence/m7/acceptance_20261015_190047_336f00ce/runs/misspecified_offset_124.json",
+      "status": "success",
+      "attempts": 1,
+      "statuses": {
+        "success": 1
+      }
+    },
+    {
+      "label": "misspecified_offset_125",
+      "path": "evidence/m7/acceptance_20261015_190047_336f00ce/runs/misspecified_offset_125.json",
+      "status": "success",
+      "attempts": 1,
+      "statuses": {
+        "success": 1
+      }
+    },
+    {
+      "label": "misspecified_offset_126",
+      "path": "evidence/m7/acceptance_20261015_190047_336f00ce/runs/misspecified_offset_126.json",
+      "status": "success",
+      "attempts": 1,
+      "statuses": {
+        "success": 1
+      }
+    },
+    {
+      "label": "misspecified_offset_127",
+      "path": "evidence/m7/acceptance_20261015_190047_336f00ce/runs/misspecified_offset_127.json",
+      "status": "success",
+      "attempts": 1,
+      "statuses": {
+        "success": 1
+      }
+    },
+    {
+      "label": "misspecified_offset_128",
+      "path": "evidence/m7/acceptance_20261015_190047_336f00ce/runs/misspecified_offset_128.json",
+      "status": "success",
+      "attempts": 1,
+      "statuses": {
+        "success": 1
+      }
+    },
+    {
+      "label": "misspecified_offset_129",
+      "path": "evidence/m7/acceptance_20261015_190047_336f00ce/runs/misspecified_offset_129.json",
+      "status": "success",
+      "attempts": 1,
+      "statuses": {
+        "success": 1
+      }
+    },
+    {
+      "label": "misspecified_offset_130",
+      "path": "evidence/m7/acceptance_20261015_190047_336f00ce/runs/misspecified_offset_130.json",
+      "status": "success",
+      "attempts": 1,
+      "statuses": {
+        "success": 1
+      }
+    },
+    {
+      "label": "misspecified_offset_131",
+      "path": "evidence/m7/acceptance_20261015_190047_336f00ce/runs/misspecified_offset_131.json",
+      "status": "success",
+      "attempts": 1,
+      "statuses": {
+        "success": 1
+      }
+    }
+  ],
+  "errors": [],
+  "coverage": {
+    "assumed_model": {
+      "trials": [
+        {
+          "seed": 100,
+          "status": "success",
+          "interval_available": true,
+          "covered": true,
+          "error_m": -0.009095449832588143,
+          "half_width_m": 0.0321566530692347
+        },
+        {
+          "seed": 101,
+          "status": "success",
+          "interval_available": true,
+          "covered": true,
+          "error_m": 0.020508449624624836,
+          "half_width_m": 0.032102717067703894
+        },
+        {
+          "seed": 102,
+          "status": "success",
+          "interval_available": true,
+          "covered": true,
+          "error_m": -0.01317190742265395,
+          "half_width_m": 0.032157371807208006
+        },
+        {
+          "seed": 103,
+          "status": "success",
+          "interval_available": true,
+          "covered": false,
+          "error_m": 0.033580866230654705,
+          "half_width_m": 0.032071785634054314
+        },
+        {
+          "seed": 104,
+          "status": "success",
+          "interval_available": true,
+          "covered": true,
+          "error_m": -0.00786322133766415,
+          "half_width_m": 0.032145624335880044
+        },
+        {
+          "seed": 105,
+          "status": "success",
+          "interval_available": true,
+          "covered": true,
+          "error_m": -0.006845392878006562,
+          "half_width_m": 0.03215350363512676
+        },
+        {
+          "seed": 106,
+          "status": "success",
+          "interval_available": true,
+          "covered": true,
+          "error_m": 0.0031018081784104368,
+          "half_width_m": 0.03212902196075515
+        },
+        {
+          "seed": 107,
+          "status": "success",
+          "interval_available": true,
+          "covered": true,
+          "error_m": 0.012857936269168757,
+          "half_width_m": 0.0321155547815273
+        },
+        {
+          "seed": 108,
+          "status": "success",
+          "interval_available": true,
+          "covered": true,
+          "error_m": 0.030522188031580688,
+          "half_width_m": 0.03207911444048213
+        },
+        {
+          "seed": 109,
+          "status": "success",
+          "interval_available": true,
+          "covered": true,
+          "error_m": -0.0016451418465781575,
+          "half_width_m": 0.03213294834324435
+        },
+        {
+          "seed": 110,
+          "status": "success",
+          "interval_available": true,
+          "covered": true,
+          "error_m": 0.005411997168158322,
+          "half_width_m": 0.032128616915847764
+        },
+        {
+          "seed": 111,
+          "status": "success",
+          "interval_available": true,
+          "covered": true,
+          "error_m": 0.015204941912602132,
+          "half_width_m": 0.03210657784828454
+        },
+        {
+          "seed": 112,
+          "status": "success",
+          "interval_available": true,
+          "covered": true,
+          "error_m": -0.022212976480074476,
+          "half_width_m": 0.032174559908592616
+        },
+        {
+          "seed": 113,
+          "status": "success",
+          "interval_available": true,
+          "covered": true,
+          "error_m": 0.016387894213739207,
+          "half_width_m": 0.032097119655189216
+        },
+        {
+          "seed": 114,
+          "status": "success",
+          "interval_available": true,
+          "covered": true,
+          "error_m": -0.01721044177129527,
+          "half_width_m": 0.03216578146733147
+        },
+        {
+          "seed": 115,
+          "status": "success",
+          "interval_available": true,
+          "covered": true,
+          "error_m": 0.01975817172122918,
+          "half_width_m": 0.03209786452412217
+        },
+        {
+          "seed": 116,
+          "status": "success",
+          "interval_available": true,
+          "covered": true,
+          "error_m": 0.013917979024166804,
+          "half_width_m": 0.032109452917300274
+        },
+        {
+          "seed": 117,
+          "status": "success",
+          "interval_available": true,
+          "covered": true,
+          "error_m": -0.029948214652227856,
+          "half_width_m": 0.032187020849742086
+        },
+        {
+          "seed": 118,
+          "status": "success",
+          "interval_available": true,
+          "covered": true,
+          "error_m": 0.006976735335409989,
+          "half_width_m": 0.0321181149548444
+        },
+        {
+          "seed": 119,
+          "status": "success",
+          "interval_available": true,
+          "covered": true,
+          "error_m": -0.029165466154912556,
+          "half_width_m": 0.03218374170552393
+        },
+        {
+          "seed": 120,
+          "status": "success",
+          "interval_available": true,
+          "covered": true,
+          "error_m": -0.009311916809810583,
+          "half_width_m": 0.032150294879180814
+        },
+        {
+          "seed": 121,
+          "status": "success",
+          "interval_available": true,
+          "covered": true,
+          "error_m": 0.015813261160070535,
+          "half_width_m": 0.032104763566462725
+        },
+        {
+          "seed": 122,
+          "status": "success",
+          "interval_available": true,
+          "covered": true,
+          "error_m": -0.009132774519769127,
+          "half_width_m": 0.03215642495342114
+        },
+        {
+          "seed": 123,
+          "status": "success",
+          "interval_available": true,
+          "covered": true,
+          "error_m": 0.005233788907194947,
+          "half_width_m": 0.032131441580021985
+        },
+        {
+          "seed": 124,
+          "status": "success",
+          "interval_available": true,
+          "covered": true,
+          "error_m": 0.009947529861797033,
+          "half_width_m": 0.03211062228862317
+        },
+        {
+          "seed": 125,
+          "status": "success",
+          "interval_available": true,
+          "covered": true,
+          "error_m": 0.02670677832475077,
+          "half_width_m": 0.032088393636903086
+        },
+        {
+          "seed": 126,
+          "status": "success",
+          "interval_available": true,
+          "covered": true,
+          "error_m": 0.0032008567575274594,
+          "half_width_m": 0.032138841303487056
+        },
+        {
+          "seed": 127,
+          "status": "success",
+          "interval_available": true,
+          "covered": true,
+          "error_m": 0.022762528449871366,
+          "half_width_m": 0.03209621371616552
+        },
+        {
+          "seed": 128,
+          "status": "success",
+          "interval_available": true,
+          "covered": true,
+          "error_m": 0.014478199091714439,
+          "half_width_m": 0.03210708187293852
+        },
+        {
+          "seed": 129,
+          "status": "success",
+          "interval_available": true,
+          "covered": true,
+          "error_m": 0.0229061343805117,
+          "half_width_m": 0.03209183354867555
+        },
+        {
+          "seed": 130,
+          "status": "success",
+          "interval_available": true,
+          "covered": true,
+          "error_m": -0.01656218436544976,
+          "half_width_m": 0.03216161327350667
+        },
+        {
+          "seed": 131,
+          "status": "success",
+          "interval_available": true,
+          "covered": true,
+          "error_m": -0.016373291300471937,
+          "half_width_m": 0.03216046474537112
+        }
+      ],
+      "requested_trials": 32,
+      "intervals_available": 32,
+      "covered": 31,
+      "fraction": 0.96875,
+      "binomial_wilson_95": [
+        0.8425573617998744,
+        0.9944621398359969
+      ],
+      "interpretation": "Finite-sample calibration diagnostic under the assumed model"
+    },
+    "misspecified_offset": {
+      "trials": [
+        {
+          "seed": 100,
+          "status": "success",
+          "interval_available": false,
+          "covered": null,
+          "unavailable_reasons": [
+            "Declared contamination/correlation/quantization is outside the assumed independent Gaussian range model"
+          ]
+        },
+        {
+          "seed": 101,
+          "status": "success",
+          "interval_available": false,
+          "covered": null,
+          "unavailable_reasons": [
+            "Declared contamination/correlation/quantization is outside the assumed independent Gaussian range model"
+          ]
+        },
+        {
+          "seed": 102,
+          "status": "success",
+          "interval_available": false,
+          "covered": null,
+          "unavailable_reasons": [
+            "Declared contamination/correlation/quantization is outside the assumed independent Gaussian range model"
+          ]
+        },
+        {
+          "seed": 103,
+          "status": "success",
+          "interval_available": false,
+          "covered": null,
+          "unavailable_reasons": [
+            "Declared contamination/correlation/quantization is outside the assumed independent Gaussian range model"
+          ]
+        },
+        {
+          "seed": 104,
+          "status": "success",
+          "interval_available": false,
+          "covered": null,
+          "unavailable_reasons": [
+            "Declared contamination/correlation/quantization is outside the assumed independent Gaussian range model"
+          ]
+        },
+        {
+          "seed": 105,
+          "status": "success",
+          "interval_available": false,
+          "covered": null,
+          "unavailable_reasons": [
+            "Declared contamination/correlation/quantization is outside the assumed independent Gaussian range model"
+          ]
+        },
+        {
+          "seed": 106,
+          "status": "success",
+          "interval_available": false,
+          "covered": null,
+          "unavailable_reasons": [
+            "Declared contamination/correlation/quantization is outside the assumed independent Gaussian range model"
+          ]
+        },
+        {
+          "seed": 107,
+          "status": "success",
+          "interval_available": false,
+          "covered": null,
+          "unavailable_reasons": [
+            "Declared contamination/correlation/quantization is outside the assumed independent Gaussian range model"
+          ]
+        },
+        {
+          "seed": 108,
+          "status": "success",
+          "interval_available": false,
+          "covered": null,
+          "unavailable_reasons": [
+            "Declared contamination/correlation/quantization is outside the assumed independent Gaussian range model"
+          ]
+        },
+        {
+          "seed": 109,
+          "status": "success",
+          "interval_available": false,
+          "covered": null,
+          "unavailable_reasons": [
+            "Declared contamination/correlation/quantization is outside the assumed independent Gaussian range model"
+          ]
+        },
+        {
+          "seed": 110,
+          "status": "success",
+          "interval_available": false,
+          "covered": null,
+          "unavailable_reasons": [
+            "Declared contamination/correlation/quantization is outside the assumed independent Gaussian range model"
+          ]
+        },
+        {
+          "seed": 111,
+          "status": "success",
+          "interval_available": false,
+          "covered": null,
+          "unavailable_reasons": [
+            "Declared contamination/correlation/quantization is outside the assumed independent Gaussian range model"
+          ]
+        },
+        {
+          "seed": 112,
+          "status": "success",
+          "interval_available": false,
+          "covered": null,
+          "unavailable_reasons": [
+            "Declared contamination/correlation/quantization is outside the assumed independent Gaussian range model"
+          ]
+        },
+        {
+          "seed": 113,
+          "status": "success",
+          "interval_available": false,
+          "covered": null,
+          "unavailable_reasons": [
+            "Declared contamination/correlation/quantization is outside the assumed independent Gaussian range model"
+          ]
+        },
+        {
+          "seed": 114,
+          "status": "success",
+          "interval_available": false,
+          "covered": null,
+          "unavailable_reasons": [
+            "Declared contamination/correlation/quantization is outside the assumed independent Gaussian range model"
+          ]
+        },
+        {
+          "seed": 115,
+          "status": "success",
+          "interval_available": false,
+          "covered": null,
+          "unavailable_reasons": [
+            "Declared contamination/correlation/quantization is outside the assumed independent Gaussian range model"
+          ]
+        },
+        {
+          "seed": 116,
+          "status": "success",
+          "interval_available": false,
+          "covered": null,
+          "unavailable_reasons": [
+            "Declared contamination/correlation/quantization is outside the assumed independent Gaussian range model"
+          ]
+        },
+        {
+          "seed": 117,
+          "status": "success",
+          "interval_available": false,
+          "covered": null,
+          "unavailable_reasons": [
+            "Declared contamination/correlation/quantization is outside the assumed independent Gaussian range model"
+          ]
+        },
+        {
+          "seed": 118,
+          "status": "success",
+          "interval_available": false,
+          "covered": null,
+          "unavailable_reasons": [
+            "Declared contamination/correlation/quantization is outside the assumed independent Gaussian range model"
+          ]
+        },
+        {
+          "seed": 119,
+          "status": "success",
+          "interval_available": false,
+          "covered": null,
+          "unavailable_reasons": [
+            "Declared contamination/correlation/quantization is outside the assumed independent Gaussian range model"
+          ]
+        },
+        {
+          "seed": 120,
+          "status": "success",
+          "interval_available": false,
+          "covered": null,
+          "unavailable_reasons": [
+            "Declared contamination/correlation/quantization is outside the assumed independent Gaussian range model"
+          ]
+        },
+        {
+          "seed": 121,
+          "status": "success",
+          "interval_available": false,
+          "covered": null,
+          "unavailable_reasons": [
+            "Declared contamination/correlation/quantization is outside the assumed independent Gaussian range model"
+          ]
+        },
+        {
+          "seed": 122,
+          "status": "success",
+          "interval_available": false,
+          "covered": null,
+          "unavailable_reasons": [
+            "Declared contamination/correlation/quantization is outside the assumed independent Gaussian range model"
+          ]
+        },
+        {
+          "seed": 123,
+          "status": "success",
+          "interval_available": false,
+          "covered": null,
+          "unavailable_reasons": [
+            "Declared contamination/correlation/quantization is outside the assumed independent Gaussian range model"
+          ]
+        },
+        {
+          "seed": 124,
+          "status": "success",
+          "interval_available": false,
+          "covered": null,
+          "unavailable_reasons": [
+            "Declared contamination/correlation/quantization is outside the assumed independent Gaussian range model"
+          ]
+        },
+        {
+          "seed": 125,
+          "status": "success",
+          "interval_available": false,
+          "covered": null,
+          "unavailable_reasons": [
+            "Declared contamination/correlation/quantization is outside the assumed independent Gaussian range model"
+          ]
+        },
+        {
+          "seed": 126,
+          "status": "success",
+          "interval_available": false,
+          "covered": null,
+          "unavailable_reasons": [
+            "Declared contamination/correlation/quantization is outside the assumed independent Gaussian range model"
+          ]
+        },
+        {
+          "seed": 127,
+          "status": "success",
+          "interval_available": false,
+          "covered": null,
+          "unavailable_reasons": [
+            "Declared contamination/correlation/quantization is outside the assumed independent Gaussian range model"
+          ]
+        },
+        {
+          "seed": 128,
+          "status": "success",
+          "interval_available": false,
+          "covered": null,
+          "unavailable_reasons": [
+            "Declared contamination/correlation/quantization is outside the assumed independent Gaussian range model"
+          ]
+        },
+        {
+          "seed": 129,
+          "status": "success",
+          "interval_available": false,
+          "covered": null,
+          "unavailable_reasons": [
+            "Declared contamination/correlation/quantization is outside the assumed independent Gaussian range model"
+          ]
+        },
+        {
+          "seed": 130,
+          "status": "success",
+          "interval_available": false,
+          "covered": null,
+          "unavailable_reasons": [
+            "Declared contamination/correlation/quantization is outside the assumed independent Gaussian range model"
+          ]
+        },
+        {
+          "seed": 131,
+          "status": "success",
+          "interval_available": false,
+          "covered": null,
+          "unavailable_reasons": [
+            "Declared contamination/correlation/quantization is outside the assumed independent Gaussian range model"
+          ]
+        }
+      ],
+      "requested_trials": 32,
+      "intervals_available": 0,
+      "covered": 0,
+      "fraction": null,
+      "binomial_wilson_95": null,
+      "interpretation": "Declared misspecification suppresses intervals; unavailable is not failed coverage or zero uncertainty"
+    }
+  },
+  "survey_source": "Explicit MAP constant and masks declared before generation; never extracted from hidden truth",
+  "coverage_design": "32 independent seeded datasets per condition; one preselected coordinate (first knot x) per trial. Fixed known map, planar tag, no motion/height priors. Marginal 95% interval, not simultaneous coverage or uniqueness.",
+  "reflection_check": {
+    "oracle_initialization": true,
+    "maximum_original_residuals_m": [
+      0.0,
+      0.0
+    ],
+    "world_trajectory_rmse_m": [
+      0.0,
+      6.0
+    ],
+    "interpretation": "Both supplied truth-near reflected branches retained. No alignment, scaling or reflection removes the world geometry error."
+  },
+  "run_count": 75,
+  "attempt_count": 94
+}

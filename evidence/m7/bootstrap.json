@@ -1,0 +1,24 @@
+{
+  "date_utc": "2026-10-15T18:51:37.758281+00:00",
+  "baseline": {
+    "command": ".venv/Scripts/python.exe -m unittest discover -s tests -v",
+    "count": 158,
+    "runtime_s": 40.996,
+    "result": "passed",
+    "log": "evidence/m7/baseline_tests.txt"
+  },
+  "preservation_manifest": "evidence/m7/preservation_manifest.json",
+  "existing_servers": [
+    {
+      "port": 5054,
+      "pid": 1908,
+      "command": "Python312/python.exe app.py --port 5054"
+    },
+    {
+      "port": 5056,
+      "pid": 25432,
+      "command": "Python312/python.exe app.py --port 5056"
+    }
+  ],
+  "policy": "Existing processes preserved; validation uses separate port. Prior saved evidence and source current work preserved."
+}

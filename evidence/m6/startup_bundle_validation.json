@@ -1,0 +1,22 @@
+{
+  "startup_s": 112.58009070000116,
+  "sweep_status": 200,
+  "sweep_count": 15,
+  "labels": [
+    "surveyed noisy",
+    "surveyed exact",
+    "quantization",
+    "masking straight line noisy",
+    "masking straight line exact",
+    "masking nearly collinear noisy",
+    "masking nearly collinear exact",
+    "masking informative noisy",
+    "masking informative exact",
+    "dropout",
+    "correlated noise",
+    "combined sources",
+    "burst duration",
+    "beacon offsets",
+    "nlos_prevalence"
+  ]
+}

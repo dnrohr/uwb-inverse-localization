@@ -1,0 +1,80 @@
+{
+  "status": "passed",
+  "base_commit": "38d77728fd5712a9814e4b57aafc5796fc4c1817",
+  "tests": "110 passing; test_results_delivery.txt",
+  "offline_validated_files": [
+    "evidence\\m4\\acceptance_20261014_065254_8317a25a\\demo_runs\\async_eight_beacons.json",
+    "evidence\\m4\\acceptance_20261014_065254_8317a25a\\demo_runs\\async_three_beacons.json",
+    "evidence\\m4\\acceptance_20261014_065254_8317a25a\\demo_runs\\below_beacons_nonplanar.json",
+    "evidence\\m4\\acceptance_20261014_065254_8317a25a\\demo_runs\\collinear_rank_loss.json",
+    "evidence\\m4\\acceptance_20261014_065254_8317a25a\\demo_runs\\coplanar_lower_branch.json",
+    "evidence\\m4\\acceptance_20261014_065254_8317a25a\\demo_runs\\coplanar_reflected_branch.json",
+    "evidence\\m4\\acceptance_20261014_065254_8317a25a\\demo_runs\\forced_nonconverged.json",
+    "evidence\\m4\\acceptance_20261014_065254_8317a25a\\demo_runs\\joint_free_independent_noncoplanar.json",
+    "evidence\\m4\\acceptance_20261014_065254_8317a25a\\demo_runs\\joint_free_shared_coplanar.json",
+    "evidence\\m4\\acceptance_20261014_065254_8317a25a\\demo_runs\\joint_independent_recovery.json",
+    "evidence\\m4\\acceptance_20261014_065254_8317a25a\\demo_runs\\joint_shared_recovery.json",
+    "evidence\\m4\\acceptance_20261014_065254_8317a25a\\demo_runs\\noncoplanar_height_recovery.json",
+    "evidence\\m4\\acceptance_20261014_065254_8317a25a\\demo_runs\\planar_mismatch.json",
+    "evidence\\m4\\acceptance_20261014_065254_8317a25a\\demo_runs\\soft_height_prior.json",
+    "evidence\\m4\\acceptance_20261014_065254_8317a25a\\demo_runs\\tilted_plane.json",
+    "evidence\\m4\\acceptance_20261014_065254_8317a25a\\demo_runs\\warped_spatial.json",
+    "evidence\\m4\\acceptance_20261014_065254_8317a25a\\sweeps\\beacon_count.json",
+    "evidence\\m4\\acceptance_20261014_065254_8317a25a\\sweeps\\beacon_height_model.json",
+    "evidence\\m4\\acceptance_20261014_065254_8317a25a\\sweeps\\coverage.json",
+    "evidence\\m4\\acceptance_20261014_065254_8317a25a\\sweeps\\height_prior_sigma_m.json",
+    "evidence\\m4\\acceptance_20261014_065254_8317a25a\\sweeps\\height_spread.json",
+    "evidence\\m4\\acceptance_20261014_065254_8317a25a\\sweeps\\vertical_separation.json",
+    "evidence\\m4\\visual\\tilted_live_run.json",
+    "evidence\\m4\\visual\\joint_independent_live_run.json",
+    "evidence\\m4\\visual\\custom_eight_live_run.json"
+  ],
+  "preserved_files": 409,
+  "changed_preserved_files": [],
+  "sweep_csv_starts": 32,
+  "fresh_paired_runs": 4,
+  "fresh_estimator_inputs_identical": true,
+  "exported_config_roundtrip": true,
+  "camera_scrub_invariant": true,
+  "numerical_review": "independent_math_review.json",
+  "height_sensitivity": "height_sensitivity.json",
+  "requirement_evidence": {
+    "M4.1": [
+      "tests/test_m4.py",
+      "visual/custom_eight_live_run.json",
+      "visual/custom_eight_config.json"
+    ],
+    "M4.2": [
+      "acceptance_20261014_065254_8317a25a/demo_runs",
+      "tests/test_m4.py",
+      "visual/unsupported_bound.json"
+    ],
+    "M4.3": [
+      "independent_math_review.json",
+      "tests/test_m4.py",
+      "visual/joint_independent_live_run.json"
+    ],
+    "M4.4": [
+      "visual/tilted_height.png",
+      "visual/tilted_plane_errors.png",
+      "visual/below_bound_preserves_warp.jpg",
+      "visual/reference_planes.jpg"
+    ],
+    "M4.5": [
+      "acceptance_20261014_065254_8317a25a/sweeps",
+      "visual/beacon_count_sweep.png"
+    ],
+    "M4.6": [
+      "acceptance_20261014_065254_8317a25a/acceptance_summary.json",
+      "visual/fresh_custom_map_sweep.json"
+    ]
+  },
+  "limitations": [
+    "Local rank is not global uniqueness; reflected and low-residual inaccurate fits remain.",
+    "Joint independent-beacon free/soft below bounds unsupported.",
+    "Piecewise linear knots can produce timing/interpolation/model mismatch.",
+    "Planar speed chart excludes vertical motion.",
+    "Desktop visual verification and modest benchmark sizes; no maximum-size/mobile guarantees."
+  ],
+  "external_publication": false
+}

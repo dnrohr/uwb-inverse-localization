@@ -1,0 +1,51 @@
+{
+  "base_experiment": {
+    "samples": 12,
+    "beacon_layout": {
+      "count": 4,
+      "geometry": "equal"
+    },
+    "noise_std_m": 0.0
+  },
+  "options": {
+    "mode": "known_map",
+    "tag_height_model": "fixed",
+    "starts": 2,
+    "max_nfev": 300
+  },
+  "factor": "nlos_prevalence",
+  "values": [
+    0.0,
+    0.15
+  ],
+  "seeds": [
+    7,
+    8
+  ],
+  "variants": [
+    {
+      "label": "gaussian",
+      "options": {
+        "loss": "gaussian"
+      }
+    },
+    {
+      "label": "huber",
+      "options": {
+        "loss": "huber"
+      }
+    },
+    {
+      "label": "cauchy",
+      "options": {
+        "loss": "cauchy"
+      }
+    },
+    {
+      "label": "hard_rejection",
+      "options": {
+        "loss": "hard_rejection"
+      }
+    }
+  ]
+}

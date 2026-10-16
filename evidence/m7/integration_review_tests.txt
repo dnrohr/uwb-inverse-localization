@@ -1,0 +1,10 @@
+test_compare_uses_selected_parent_source_and_distinct_local_copy_offline (test_m7_library_integration_review.LibrarySourceAuthorityReviewTests.test_compare_uses_selected_parent_source_and_distinct_local_copy_offline) ... ok
+test_corrupt_local_copy_does_not_hide_valid_embedded_source (test_m7_library_integration_review.LibrarySourceAuthorityReviewTests.test_corrupt_local_copy_does_not_hide_valid_embedded_source) ... ok
+test_corrupt_parent_child_never_falls_back_to_valid_same_id_copy (test_m7_library_integration_review.LibrarySourceAuthorityReviewTests.test_corrupt_parent_child_never_falls_back_to_valid_same_id_copy) ... ok
+test_each_sweep_family_rejects_invalid_empty_failure_but_keeps_valid_interruption (test_m7_library_integration_review.LibrarySourceAuthorityReviewTests.test_each_sweep_family_rejects_invalid_empty_failure_but_keeps_valid_interruption) ... ok
+test_imported_comparison_embedded_sources_remain_selectable_offline (test_m7_library_integration_review.LibrarySourceAuthorityReviewTests.test_imported_comparison_embedded_sources_remain_selectable_offline) ... ok
+
+----------------------------------------------------------------------
+Ran 5 tests in 6.717s
+
+OK

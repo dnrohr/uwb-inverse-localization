@@ -1,0 +1,25 @@
+{
+  "attempts": [
+    {
+      "source": "baseline_tests.txt",
+      "tests": 127,
+      "seconds": 9.391
+    },
+    {
+      "source": "integration_tests_attempt1.txt",
+      "tests": 152,
+      "seconds": 27.998
+    },
+    {
+      "source": "earlier final pointer, transcript session 32413",
+      "tests": 158,
+      "seconds": 35.767,
+      "note": "Final pointer was updated; this summary retains the earlier observed result."
+    },
+    {
+      "source": "test_results_final.txt",
+      "tests": 158,
+      "seconds": 27.131
+    }
+  ]
+}

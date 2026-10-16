@@ -1,0 +1,35 @@
+{
+  "before": "{\"up\":{\"x\":0,\"y\":0,\"z\":1},\"center\":{\"x\":0,\"y\":0,\"z\":0},\"eye\":{\"x\":1.55,\"y\":1.45,\"z\":1.25},\"projection\":{\"type\":\"perspective\"}}",
+  "after": "{\"up\":{\"x\":0,\"y\":0,\"z\":1},\"center\":{\"x\":0,\"y\":0,\"z\":0},\"eye\":{\"x\":1.55,\"y\":1.45,\"z\":1.25},\"projection\":{\"type\":\"perspective\"}}",
+  "camera_equal": true,
+  "comparison_before": [
+    {
+      "id": "compareRunA",
+      "value": "6cf001be711451b88625d315cf1dfc27"
+    },
+    {
+      "id": "compareRunB",
+      "value": "221b4bae9cb959bf9e14f327553cf299"
+    },
+    {
+      "id": "compareAlignment",
+      "value": "aligned"
+    }
+  ],
+  "comparison_after": [
+    {
+      "id": "compareRunA",
+      "value": "6cf001be711451b88625d315cf1dfc27"
+    },
+    {
+      "id": "compareRunB",
+      "value": "221b4bae9cb959bf9e14f327553cf299"
+    },
+    {
+      "id": "compareAlignment",
+      "value": "aligned"
+    }
+  ],
+  "comparison_equal": true,
+  "ping_index": "17"
+}

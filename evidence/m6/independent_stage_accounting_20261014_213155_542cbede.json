@@ -1,0 +1,218 @@
+{
+  "status": "passed",
+  "source": "evidence\\m6\\acceptance_20261014_172009_b09e8830",
+  "definition": "Top-level counts describe final estimator outcomes. These counts separately enumerate Gaussian pilot optimizer stages, including pilot outcomes retained on failed hard-rejection attempts. No source solving or generation.",
+  "top_level_status_counts": {
+    "success": 460,
+    "not_converged": 19,
+    "failed": 17
+  },
+  "pilot_stage_counts": {
+    "success": 114,
+    "not_converged": 6
+  },
+  "nonconverged_pilots": [
+    {
+      "path": "evidence\\m6\\acceptance_20261014_172009_b09e8830\\sweeps\\masking_nearly_collinear_exact.json",
+      "seed": 7,
+      "start": 0,
+      "pilot_status": 0,
+      "final_status": "not_converged",
+      "pilot_nfev": 300
+    },
+    {
+      "path": "evidence\\m6\\acceptance_20261014_172009_b09e8830\\sweeps\\masking_nearly_collinear_exact.json",
+      "seed": 7,
+      "start": 1,
+      "pilot_status": 0,
+      "final_status": "not_converged",
+      "pilot_nfev": 300
+    },
+    {
+      "path": "evidence\\m6\\acceptance_20261014_172009_b09e8830\\sweeps\\masking_nearly_collinear_exact.json",
+      "seed": 8,
+      "start": 0,
+      "pilot_status": 0,
+      "final_status": "not_converged",
+      "pilot_nfev": 300
+    },
+    {
+      "path": "evidence\\m6\\acceptance_20261014_172009_b09e8830\\sweeps\\masking_nearly_collinear_exact.json",
+      "seed": 8,
+      "start": 1,
+      "pilot_status": 0,
+      "final_status": "not_converged",
+      "pilot_nfev": 300
+    },
+    {
+      "path": "evidence\\m6\\acceptance_20261014_172009_b09e8830\\fixtures\\forced_nonconvergence_hard_rejection.json",
+      "seed": 7,
+      "start": 0,
+      "pilot_status": 0,
+      "final_status": "failed",
+      "pilot_nfev": 1
+    },
+    {
+      "path": "evidence\\m6\\acceptance_20261014_172009_b09e8830\\fixtures\\forced_nonconvergence_hard_rejection.json",
+      "seed": 7,
+      "start": 1,
+      "pilot_status": 0,
+      "final_status": "not_converged",
+      "pilot_nfev": 1
+    }
+  ],
+  "files": [
+    {
+      "path": "evidence\\m6\\acceptance_20261014_172009_b09e8830\\sweeps\\masking_informative_exact.json",
+      "sha256": "05e4f6c16a7d948bfeef1d318ec1392aee4b5556dcce42d55f2de5372c2c0d3d"
+    },
+    {
+      "path": "evidence\\m6\\acceptance_20261014_172009_b09e8830\\sweeps\\masking_informative_noisy.json",
+      "sha256": "5a72c55888b801488e4aaf45e234a32747a750c574028ff9e3e17c13a14192eb"
+    },
+    {
+      "path": "evidence\\m6\\acceptance_20261014_172009_b09e8830\\sweeps\\masking_nearly_collinear_exact.json",
+      "sha256": "0a851b2d45a869f4109405e6588e8e7f74d3f48e2e61301b70c9c643ea76e14d"
+    },
+    {
+      "path": "evidence\\m6\\acceptance_20261014_172009_b09e8830\\sweeps\\masking_nearly_collinear_noisy.json",
+      "sha256": "69300dcb40c37c8ca66e3ba52b2a000fd1f9d64a32be0d1f58d0fdf565fe7386"
+    },
+    {
+      "path": "evidence\\m6\\acceptance_20261014_172009_b09e8830\\sweeps\\masking_straight_line_exact.json",
+      "sha256": "176e7e05d7321ef374af49dea8859c888917ba906733da7cb972176787ede1f8"
+    },
+    {
+      "path": "evidence\\m6\\acceptance_20261014_172009_b09e8830\\sweeps\\masking_straight_line_noisy.json",
+      "sha256": "5a75aa022c000df4bdc40842f6c4ffed22ee1dbbfee24bdcd701e688d6ce0472"
+    },
+    {
+      "path": "evidence\\m6\\acceptance_20261014_172009_b09e8830\\sweeps\\surveyed_exact.json",
+      "sha256": "0bf59207f177ceb3de347fe3ba137c4e26470cb8ceb6b41951b9deab78e49772"
+    },
+    {
+      "path": "evidence\\m6\\acceptance_20261014_172009_b09e8830\\sweeps\\surveyed_noisy.json",
+      "sha256": "7ef9f8ff5417b31d4743ca2d576d3ae3716d52e2f10b7555c7d9cae5921b1285"
+    },
+    {
+      "path": "evidence\\m6\\acceptance_20261014_172009_b09e8830\\sweeps\\burst_duration.json",
+      "sha256": "ba8663397576bb549e3ab85ed8ceed7686ca358a7b1cd16e095470b0e6518bd5"
+    },
+    {
+      "path": "evidence\\m6\\acceptance_20261014_172009_b09e8830\\sweeps\\beacon_offsets.json",
+      "sha256": "2e21af0af31100cc5c24e02706b69e4e6ce6bf935fdd3d004c2f33eeb6b04517"
+    },
+    {
+      "path": "evidence\\m6\\acceptance_20261014_172009_b09e8830\\sweeps\\correlated_noise.json",
+      "sha256": "b9bc8686eb39093290cd0b9147de24758419a097dc746879c53f8e13e3e0225f"
+    },
+    {
+      "path": "evidence\\m6\\acceptance_20261014_172009_b09e8830\\sweeps\\quantization.json",
+      "sha256": "c6b0a1de183c6af2e252d4cfb3165c22551895de031c16f75b40ad63d28e92b7"
+    },
+    {
+      "path": "evidence\\m6\\acceptance_20261014_172009_b09e8830\\sweeps\\dropout.json",
+      "sha256": "7f85866566550317c465623e05f966143e8b73d413857b53b6764f8e55c4d320"
+    },
+    {
+      "path": "evidence\\m6\\acceptance_20261014_172009_b09e8830\\sweeps\\combined_sources.json",
+      "sha256": "8c55799e88e21392958f41fb5dea5609a1a9d6f0c2de14a15b472dcdeb460592"
+    },
+    {
+      "path": "evidence\\m6\\acceptance_20261014_172009_b09e8830\\fixtures\\forced_nonconvergence_gaussian.json",
+      "sha256": "936831f1d746be51c55b3dbd7eb452f6ef66c2e7c23c11bafa217c36ad4b784d"
+    },
+    {
+      "path": "evidence\\m6\\acceptance_20261014_172009_b09e8830\\fixtures\\forced_nonconvergence_huber.json",
+      "sha256": "e6b72b910fd46aa96c74c1ddf789716e039ef058b0c330682b08c86bafbac9b6"
+    },
+    {
+      "path": "evidence\\m6\\acceptance_20261014_172009_b09e8830\\fixtures\\forced_nonconvergence_cauchy.json",
+      "sha256": "be7cad9808dd7e478f2fd8753b12fd5a472b833aa71b77dcffc13c744bbbadde"
+    },
+    {
+      "path": "evidence\\m6\\acceptance_20261014_172009_b09e8830\\fixtures\\forced_nonconvergence_hard_rejection.json",
+      "sha256": "1a707baedf102fdc48870a74f558bdc38ccc83c3e7a8cbf79356753ad2e4abae"
+    },
+    {
+      "path": "evidence\\m6\\acceptance_20261014_172009_b09e8830\\fixtures\\invalid_initial_geometry_gaussian.json",
+      "sha256": "b58bd98b3611b86d8fbfb35bba37778c73528852bc9193b9eefc19637f66ad5a"
+    },
+    {
+      "path": "evidence\\m6\\acceptance_20261014_172009_b09e8830\\fixtures\\invalid_initial_geometry_huber.json",
+      "sha256": "fed9752584fefe8d14d1886ac1141c16ba894968c7a4e29e6b3314ac26cfb7b3"
+    },
+    {
+      "path": "evidence\\m6\\acceptance_20261014_172009_b09e8830\\fixtures\\invalid_initial_geometry_cauchy.json",
+      "sha256": "037e2764f7f58dc91022c387a7e15d0a10411e5a1a7499e19615edb8989cc064"
+    },
+    {
+      "path": "evidence\\m6\\acceptance_20261014_172009_b09e8830\\fixtures\\invalid_initial_geometry_hard_rejection.json",
+      "sha256": "134505be934335fad4a9bd181c104223f6eba7cea75bfd0cc2844a3e02fb65f4"
+    },
+    {
+      "path": "evidence\\m6\\acceptance_20261014_172009_b09e8830\\fixtures\\all_dropout_gaussian.json",
+      "sha256": "b01339fc421a4d083c238610f4a32dabf54b3953eb10981faab9bf4d6a2a2b06"
+    },
+    {
+      "path": "evidence\\m6\\acceptance_20261014_172009_b09e8830\\fixtures\\all_dropout_huber.json",
+      "sha256": "387e25242505a1328a255e1ff8edea273409f8e14116902070ae4ec7ae07932b"
+    },
+    {
+      "path": "evidence\\m6\\acceptance_20261014_172009_b09e8830\\fixtures\\all_dropout_cauchy.json",
+      "sha256": "2481be868cfacdbe0010aca00a0cdd9c5ecf110ff93806d7615833284e0d985a"
+    },
+    {
+      "path": "evidence\\m6\\acceptance_20261014_172009_b09e8830\\fixtures\\all_dropout_hard_rejection.json",
+      "sha256": "77decd4c278bc4cdf3d3b7015289bf04d10f8ae805c86ea155e74b2e13922650"
+    },
+    {
+      "path": "evidence\\m6\\acceptance_20261014_172009_b09e8830\\fixtures\\asynchronous_gaussian.json",
+      "sha256": "10632c02a3374016fb67a5341129b477795998eafbcdb24732317f3a4acda888"
+    },
+    {
+      "path": "evidence\\m6\\acceptance_20261014_172009_b09e8830\\fixtures\\asynchronous_huber.json",
+      "sha256": "e92dd63d348eb800aa458c04a3847e92f53ccbd55b55499212b6fa4cd4ec550c"
+    },
+    {
+      "path": "evidence\\m6\\acceptance_20261014_172009_b09e8830\\fixtures\\asynchronous_cauchy.json",
+      "sha256": "4d73a0ad80deb338e29b99288361e552a0a06fccabb53dbb83dcf6683abbc6c1"
+    },
+    {
+      "path": "evidence\\m6\\acceptance_20261014_172009_b09e8830\\fixtures\\asynchronous_hard_rejection.json",
+      "sha256": "59ee59a77ca5750bc06ea6ef8952deb9d97c7cbfd0656a0ba7707b950b49077b"
+    },
+    {
+      "path": "evidence\\m6\\acceptance_20261014_172009_b09e8830\\fixtures\\height_prior_gaussian.json",
+      "sha256": "3f0ab3e5593f8933ce834e1f091979d2acd743dfaa6f47d6a5690035ca2db850"
+    },
+    {
+      "path": "evidence\\m6\\acceptance_20261014_172009_b09e8830\\fixtures\\height_prior_huber.json",
+      "sha256": "4b884e9b903016edd4e57c3c08a40dc84c4f29ff261ac17ee268f9551ef3bc18"
+    },
+    {
+      "path": "evidence\\m6\\acceptance_20261014_172009_b09e8830\\fixtures\\height_prior_cauchy.json",
+      "sha256": "edbe66c785db66f316e73ca2544d2c928d8d4a6a09f5385da9692121ee8da976"
+    },
+    {
+      "path": "evidence\\m6\\acceptance_20261014_172009_b09e8830\\fixtures\\height_prior_hard_rejection.json",
+      "sha256": "a50210fb741e93f44874c3606a89513fd9eab17972119a6686784645bf2b9f2b"
+    },
+    {
+      "path": "evidence\\m6\\acceptance_20261014_172009_b09e8830\\fixtures\\spatial_geometry_gaussian.json",
+      "sha256": "2cc2f366b9ea5bd7493e24d33648b8b139c0a538e421d201ab924c9ab0a9b192"
+    },
+    {
+      "path": "evidence\\m6\\acceptance_20261014_172009_b09e8830\\fixtures\\spatial_geometry_huber.json",
+      "sha256": "16aebfc12c450cdf6e00b7b79d1047e2b08481192d001710073a24ca10a1bd45"
+    },
+    {
+      "path": "evidence\\m6\\acceptance_20261014_172009_b09e8830\\fixtures\\spatial_geometry_cauchy.json",
+      "sha256": "183c0c94cc8c167aef700e10f343914ddfc35a48bae685809a3ff1082f9e4c48"
+    },
+    {
+      "path": "evidence\\m6\\acceptance_20261014_172009_b09e8830\\fixtures\\spatial_geometry_hard_rejection.json",
+      "sha256": "23c009de9022fe0c863882c2b633e200509959582f9dfb2f1f0dc4c11aa6b6cd"
+    }
+  ]
+}

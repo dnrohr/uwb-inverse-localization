@@ -1,0 +1,8 @@
+test_failed_initializer_and_all_sweep_attempts_saved (test_m5_service.M5ServiceTests.test_failed_initializer_and_all_sweep_attempts_saved) ... ok
+test_run_offline_import_and_shared_comparison (test_m5_service.M5ServiceTests.test_run_offline_import_and_shared_comparison) ... ok
+test_unsupported_q_rejected_before_queue (test_m5_service.M5ServiceTests.test_unsupported_q_rejected_before_queue) ... ok
+
+----------------------------------------------------------------------
+Ran 3 tests in 0.610s
+
+OK

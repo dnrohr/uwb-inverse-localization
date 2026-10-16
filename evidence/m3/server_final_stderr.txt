@@ -1,0 +1,42 @@
+WARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.
+ * Running on http://127.0.0.1:5052
+Press CTRL+C to quit
+127.0.0.1 - - [13/Oct/2026 22:14:46] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [13/Oct/2026 22:14:46] "GET /style.css HTTP/1.1" 200 -
+127.0.0.1 - - [13/Oct/2026 22:14:46] "GET /vendor/plotly.min.js HTTP/1.1" 200 -
+127.0.0.1 - - [13/Oct/2026 22:14:46] "GET /app.js HTTP/1.1" 304 -
+127.0.0.1 - - [13/Oct/2026 22:14:46] "GET /m2.js HTTP/1.1" 304 -
+127.0.0.1 - - [13/Oct/2026 22:14:46] "GET /m3.js HTTP/1.1" 200 -
+127.0.0.1 - - [13/Oct/2026 22:14:46] "GET /api/scenarios HTTP/1.1" 200 -
+127.0.0.1 - - [13/Oct/2026 22:14:47] "GET /api/sweeps HTTP/1.1" 200 -
+127.0.0.1 - - [13/Oct/2026 22:14:47] "GET /api/comparisons HTTP/1.1" 200 -
+127.0.0.1 - - [13/Oct/2026 22:14:47] "GET /api/m3/sweeps HTTP/1.1" 200 -
+127.0.0.1 - - [13/Oct/2026 22:14:49] "GET /api/runs HTTP/1.1" 200 -
+127.0.0.1 - - [13/Oct/2026 22:14:49] "GET /api/runs HTTP/1.1" 200 -
+127.0.0.1 - - [13/Oct/2026 22:14:50] "GET /api/runs HTTP/1.1" 200 -
+127.0.0.1 - - [13/Oct/2026 22:14:56] "GET /api/runs HTTP/1.1" 200 -
+127.0.0.1 - - [13/Oct/2026 22:15:14] "GET /api/runs/3b528c77e2e657c6982015f8b8b1d1f0 HTTP/1.1" 200 -
+127.0.0.1 - - [13/Oct/2026 22:15:15] "GET /api/runs HTTP/1.1" 200 -
+127.0.0.1 - - [13/Oct/2026 22:17:43] "GET / HTTP/1.1" 304 -
+127.0.0.1 - - [13/Oct/2026 22:17:44] "GET /style.css HTTP/1.1" 304 -
+127.0.0.1 - - [13/Oct/2026 22:17:44] "GET /vendor/plotly.min.js HTTP/1.1" 200 -
+127.0.0.1 - - [13/Oct/2026 22:17:44] "GET /app.js HTTP/1.1" 200 -
+127.0.0.1 - - [13/Oct/2026 22:17:44] "GET /m2.js HTTP/1.1" 304 -
+127.0.0.1 - - [13/Oct/2026 22:17:44] "GET /m3.js HTTP/1.1" 200 -
+127.0.0.1 - - [13/Oct/2026 22:17:44] "GET /api/scenarios HTTP/1.1" 200 -
+127.0.0.1 - - [13/Oct/2026 22:17:44] "GET /api/comparisons HTTP/1.1" 200 -
+127.0.0.1 - - [13/Oct/2026 22:17:44] "GET /api/m3/sweeps HTTP/1.1" 200 -
+127.0.0.1 - - [13/Oct/2026 22:17:44] "GET /api/sweeps HTTP/1.1" 200 -
+127.0.0.1 - - [13/Oct/2026 22:17:45] "GET /api/runs HTTP/1.1" 200 -
+127.0.0.1 - - [13/Oct/2026 22:17:46] "GET /api/runs HTTP/1.1" 200 -
+127.0.0.1 - - [13/Oct/2026 22:17:46] "GET /api/runs HTTP/1.1" 200 -
+127.0.0.1 - - [13/Oct/2026 22:18:04] "GET /api/runs/3b528c77e2e657c6982015f8b8b1d1f0 HTTP/1.1" 200 -
+127.0.0.1 - - [13/Oct/2026 22:18:05] "GET /api/runs HTTP/1.1" 200 -
+127.0.0.1 - - [13/Oct/2026 22:19:38] "GET /api/m3/sweeps/7fc63368697d56c6b580112dd656ec13 HTTP/1.1" 200 -
+127.0.0.1 - - [13/Oct/2026 22:19:38] "GET /api/m3/sweeps HTTP/1.1" 200 -
+127.0.0.1 - - [13/Oct/2026 22:20:33] "POST /api/m3/import HTTP/1.1" 200 -
+127.0.0.1 - - [13/Oct/2026 22:20:33] "GET /api/m3/sweeps HTTP/1.1" 200 -
+127.0.0.1 - - [13/Oct/2026 22:20:57] "GET /api/runs/221b4bae9cb959bf9e14f327553cf299 HTTP/1.1" 200 -
+127.0.0.1 - - [13/Oct/2026 22:20:57] "GET /api/runs/6cf001be711451b88625d315cf1dfc27 HTTP/1.1" 200 -
+127.0.0.1 - - [13/Oct/2026 22:20:57] "POST /api/comparisons HTTP/1.1" 200 -
+127.0.0.1 - - [13/Oct/2026 22:20:57] "GET /api/comparisons HTTP/1.1" 200 -

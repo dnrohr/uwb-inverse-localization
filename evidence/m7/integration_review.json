@@ -1,0 +1,82 @@
+{
+  "status": "passed_after_repairs",
+  "recorded_utc": "2026-10-16T02:24:02.701170+00:00",
+  "review": "Independent delegated numerical agent reviewed Library/UI/service integration read-only and authored source-authority tests. Root completed repair verification and this reconciliation after the reviewer reached its account limit.",
+  "checks": [
+    {
+      "id": "soft_l1_import",
+      "scope": "Reopened/imported soft L1 selection remains selectable and resubmits without fallback",
+      "evidence": "evidence/m7/ui_regressions_20261015T190951Z.json",
+      "status": "passed"
+    },
+    {
+      "id": "source_restore",
+      "scope": "A7 to B6 to same A7 restores settings; same-source redraw retains unsaved edits",
+      "evidence": "evidence/m7/ui_regressions_20261015T190951Z.json",
+      "status": "passed"
+    },
+    {
+      "id": "survey_units",
+      "scope": "Non-world/non-metre and unsupported coupled declarations reject before UI mutation",
+      "evidence": "evidence/m7/ui_regressions_20261015T190951Z.json",
+      "status": "passed"
+    },
+    {
+      "id": "empty_requests",
+      "scope": "M2-M6 corrupt empty failure rejects; valid stopped request retains normalized config and original bytes",
+      "evidence": "tests/test_m7_library_integration_review.py",
+      "status": "passed"
+    },
+    {
+      "id": "source_authority",
+      "scope": "Embedded benchmark/comparison sources never silently substitute divergent local copies; corrupt parent cannot fallback",
+      "evidence": "tests/test_m7_library_integration_review.py",
+      "status": "passed"
+    },
+    {
+      "id": "counts_and_status",
+      "scope": "Grouped/global counts, cell versus run denominators and live parent interruption filters verified",
+      "evidence": "tests/test_m7_library.py",
+      "status": "passed"
+    },
+    {
+      "id": "comparison_sources",
+      "scope": "Imported self-contained comparisons retain usable source keys even without original run IDs",
+      "evidence": "scripts/check_m7_ui_lifecycle.cjs",
+      "status": "passed"
+    },
+    {
+      "id": "import_provenance",
+      "scope": "New local IDs retain supplied ID and source metadata; summary identifies import provenance",
+      "evidence": "tests/test_m7_integration.py",
+      "status": "passed"
+    }
+  ],
+  "independent_functional_log": "evidence/m7/integration_review_tests.txt",
+  "full_suite": "evidence/m7/test_results_final_208.txt",
+  "focused_after_final_metadata_changes": [
+    "evidence/m7/library_final_focused.txt",
+    "evidence/m7/integration_final.txt",
+    "evidence/m7/service_tests_provenance.txt"
+  ],
+  "source_hashes": {
+    "app.py": "3ccf0ee32ffa2e468080ccbfbf38b1ef8e94137f9f5bb0f4437f676320c83e8f",
+    "uwb/library.py": "9a2d654e6614e770f5ef2a23910272d5250079650302d7e1521035cefa07feb0",
+    "uwb/lifecycle.py": "c29c7d367e51813f51404584ec588e84feca9cbf2eee39fba9eeb495416f1097",
+    "uwb/m7_service.py": "80b0e17f934eab86c639f79d1650bbd7f0568b1009c58ad3bf3e6960360f5430",
+    "uwb/sweeps.py": "21c3cf055832334bc8713be78b6bf8d9a3291bab328512e7fa7370195113b709",
+    "web/library.js": "0f2fe520892b9eb343551f85321982daa5508748bbe0c779ca6ca1033539b203",
+    "web/m7.js": "c355b6b24307aca10e74e82445cecf9ce155077fb65702b5249a527cbe4ce91c",
+    "web/m2.js": "2b0ecdc6b353b739c8307d5b3c24ed41f783895ba10caad41407db0f3b9722a5"
+  },
+  "outstanding_reproduced_findings": [],
+  "limitations": [
+    "Node VM evidence establishes control wiring, not browser layout; browser screenshots and measured viewport record are separate.",
+    "No permanent-write durability or internal optimizer restart claim was added."
+  ],
+  "final_ui_regressions": [
+    "evidence/m7/ui_lifecycle_final.json",
+    "evidence/m7/ui_regressions_final.json"
+  ],
+  "final_hash_refresh_utc": "2026-10-16T02:44:42.856572+00:00"
+}

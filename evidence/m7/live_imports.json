@@ -1,0 +1,23 @@
+[
+  {
+    "source": "evidence/m7/acceptance_20261015_190356_30ad31d9/runs/assumed_model_100.json",
+    "source_sha256": "170b52483d071a3d469b2ff279aec6cc9aaf3845d4491d9d5d6a60b0815d0eab",
+    "id": "5e1700838dcb473ca2f60cfbc767ca74",
+    "status": "success",
+    "seconds": 0.18079969999962486
+  },
+  {
+    "source": "evidence/m7/acceptance_20261015_190356_30ad31d9/runs/selected_fixed_coordinates.json",
+    "source_sha256": "ac64933a2c967efde8c7f3ee6e4c786fedc6d5b1db05784d2d0776293c16a680",
+    "id": "7aa25294c20146979850f5f64f88bff1",
+    "status": "success",
+    "seconds": 0.24082159998943098
+  },
+  {
+    "source": "evidence/m7/acceptance_20261015_190356_30ad31d9/runs/invalid_physical_start.json",
+    "source_sha256": "6c2f15723506089df69241512440fb3d8d000d2b1914d90f454d1f253b662e2c",
+    "id": "a161054a21e949ea8615a0ef3fe206d4",
+    "status": "failed",
+    "seconds": 0.12351489998400211
+  }
+]

@@ -1,0 +1,238 @@
+{
+  "status": "passed",
+  "scope": "M5 only",
+  "errors": [],
+  "checks": {
+    "preservation": {
+      "status": "passed",
+      "files": 649,
+      "changes": []
+    },
+    "full_tests": {
+      "status": "passed",
+      "count": 127,
+      "elapsed_s": 11.541,
+      "evidence": "evidence/m5/test_results_final.txt"
+    },
+    "independent_review": {
+      "status": "passed",
+      "checks": 7,
+      "evidence": "evidence/m5/independent_math_review.json"
+    },
+    "backend_lifecycle": {
+      "status": "passed",
+      "evidence": "evidence/m5/backend_final_audit.json",
+      "limitations": [
+        "Recovery requires a readable existing main artifact; malformed or missing main JSON is not recovered from temporary checkpoint by read_sweep",
+        "Six dedicated service tests do not directly inject sweep checkpoint-write failure or permanent double-write failure; source preserves latest in job memory and attempts pending write",
+        "Sweep summary listing reads basic envelope without strict validation; detail/import/export validate complete contents",
+        "Cache key is file mtime_ns and size, so no hash-based same-metadata tamper detection claim is made"
+      ]
+    },
+    "desktop_visual": {
+      "status": "passed",
+      "evidence": "evidence/m5/visual/ui_validation.json",
+      "images": "evidence/m5/visual/",
+      "limits": [
+        "390x844 M5 controls and history fit; entire page horizontal overflow remains, mobile certification excluded",
+        "Scene/chart render times are browser-local single samples, not throughput guarantees"
+      ],
+      "manual_review": "Root inspected exported charts/comparison/scene and final controls/attempts/scene/legacy screenshots using view_image."
+    },
+    "new_exports": {
+      "status": "passed",
+      "offline_files": 22,
+      "new_live_sweep_rows": 4,
+      "run_csv_embedded_start": "exact UTF-8 match"
+    },
+    "performance": {
+      "status": "recorded",
+      "backend": "evidence/m5/benchmark_20261014_123003_fc71f42c/performance_benchmark.json",
+      "browser": "evidence/m5/visual/ui_validation.json",
+      "history": "evidence/m5/history_performance.json",
+      "limits": "Small local fixtures and single browser render samples; no general speed ranking or Ceres comparison."
+    },
+    "roadmap_scope": {
+      "status": "passed",
+      "M5": "checked after numerical/backend/visual evidence",
+      "M6": "unchecked; handoff prompt only",
+      "sha256": "e2151d57db2054410e635e3bcd55fae1e7a2565d4ab47204a3f34b6e852afa40"
+    }
+  },
+  "files": [
+    {
+      "path": "evidence/m5/acceptance_20261014_124422_c74e2389/sweeps/independent_basin.json",
+      "sha256": "96e35272c98f59d60e88690c3ca5fbec08b565288c566f28ee0a83506aa69ff9",
+      "offline_validation": "passed"
+    },
+    {
+      "path": "evidence/m5/acceptance_20261014_124422_c74e2389/sweeps/initializer_degenerate.json",
+      "sha256": "1922f4cc099da29fd065a222ddee6d64d946bcf0175253d08b9646ff2abd57ae",
+      "offline_validation": "passed"
+    },
+    {
+      "path": "evidence/m5/acceptance_20261014_124422_c74e2389/sweeps/initializer_noisy.json",
+      "sha256": "a6a8ab2ec69f222750c9d14431ff3ab4482ef4b64e3b7d938b3b5ae33eb8396d",
+      "offline_validation": "passed"
+    },
+    {
+      "path": "evidence/m5/acceptance_20261014_124422_c74e2389/sweeps/initializer_noisy_relaxed.json",
+      "sha256": "93ca019d85b67572f88f74ac4f978980e7fa755ac27e1fe45985ab6acae13eeb",
+      "offline_validation": "passed"
+    },
+    {
+      "path": "evidence/m5/acceptance_20261014_124422_c74e2389/sweeps/initializer_valid.json",
+      "sha256": "ac349656a8c8d6c50cb6de2e8a6c6127c844448b8ce5f53456536dd1a0cf422a",
+      "offline_validation": "passed"
+    },
+    {
+      "path": "evidence/m5/acceptance_20261014_124422_c74e2389/sweeps/near_zero_height.json",
+      "sha256": "d784d43caa11ad2afe36ffa7795bf4eb6bf09e529562f2c75fb217b886190812",
+      "offline_validation": "passed"
+    },
+    {
+      "path": "evidence/m5/acceptance_20261014_124422_c74e2389/sweeps/noise.json",
+      "sha256": "fc12c30ebf14d1ff014cd632d7a8576b27079345c73d29a177108bf07b0f7c83",
+      "offline_validation": "passed"
+    },
+    {
+      "path": "evidence/m5/acceptance_20261014_124422_c74e2389/sweeps/truth_near_basin.json",
+      "sha256": "58a58fe3bf1abf0358d01d5ed8f4139d360a8166e2fa2019b1f2d94d4b774f0c",
+      "offline_validation": "passed"
+    },
+    {
+      "path": "evidence/m5/acceptance_20261014_124422_c74e2389/sweeps/weak_geometry.json",
+      "sha256": "5384c76bfde8beeb8cdf8382b3c43a5618e0a4f891ab398c1cc9f8eced323d1e",
+      "offline_validation": "passed"
+    },
+    {
+      "path": "evidence/m5/acceptance_20261014_124422_c74e2389/demo_runs/async_knots_lm.json",
+      "sha256": "a0db33c84dae7b683a54e7ec1496538425a9b558bc37b6293928f9d3ee798eb1",
+      "offline_validation": "passed"
+    },
+    {
+      "path": "evidence/m5/acceptance_20261014_124422_c74e2389/demo_runs/async_knots_trf.json",
+      "sha256": "4a9c695012e8ac479d7d3743df302f6c9815e9c554a1f5754ec0ac80314ca894",
+      "offline_validation": "passed"
+    },
+    {
+      "path": "evidence/m5/acceptance_20261014_124422_c74e2389/demo_runs/forced_nonconvergence_lm.json",
+      "sha256": "5a92f67aecade3dbcdd333d134b30ac210aa18c8baf403e0771c1f488731e92c",
+      "offline_validation": "passed"
+    },
+    {
+      "path": "evidence/m5/acceptance_20261014_124422_c74e2389/demo_runs/forced_nonconvergence_trf.json",
+      "sha256": "1c92ae40197b6bce8e5101143b8282d9f2835acb61fca28bdab8c125dbcf24ef",
+      "offline_validation": "passed"
+    },
+    {
+      "path": "evidence/m5/acceptance_20261014_124422_c74e2389/demo_runs/known_height_prior_lm.json",
+      "sha256": "8deb7eb81ed73f22782c9b9afed51def554e67dd491303ac31830aa2762b96e5",
+      "offline_validation": "passed"
+    },
+    {
+      "path": "evidence/m5/acceptance_20261014_124422_c74e2389/demo_runs/known_height_prior_trf.json",
+      "sha256": "d35d84ca98983c24a35fdcb99c78ae80d2169abafd7214dfbaecccd3b9edc479",
+      "offline_validation": "passed"
+    },
+    {
+      "path": "evidence/m5/acceptance_20261014_124422_c74e2389/demo_runs/spatial_diverse_lm.json",
+      "sha256": "eea81355b29399f47eb48b13b1b5cf36f0a15a0fb3233c55aeefc44e58f4df31",
+      "offline_validation": "passed"
+    },
+    {
+      "path": "evidence/m5/acceptance_20261014_124422_c74e2389/demo_runs/spatial_diverse_trf.json",
+      "sha256": "eba6782e8dc854a3a9c31abfb7b2913a91701a0f446cbbeaad04291f7e79ad00",
+      "offline_validation": "passed"
+    },
+    {
+      "path": "evidence/m5/extra_runs/impossible_truth_near_frame_e7f2650e.json",
+      "sha256": "cc89dce0f70e2d6617d2ceb9d6279ecbc0c94a09429ae11fa8f9ae14dded7bdb",
+      "offline_validation": "passed"
+    },
+    {
+      "path": "evidence/m5/extra_runs/negative_shared_height_branch_2a247bbb.json",
+      "sha256": "88fe20c0c86f8dd01db8809b44ad176fa87d262c06a004304442f534b2a55e88",
+      "offline_validation": "passed"
+    },
+    {
+      "path": "evidence/m5/visual/m5-run-428d10d41e3d45cea46d9174d6440ab1.json",
+      "sha256": "6b7199af2ab50097ae7d0ac4d9318c8d8773424317e478a0a841dcd808a580e7",
+      "offline_validation": "passed"
+    },
+    {
+      "path": "evidence/m5/visual/m5-benchmark-a34466afbde95a31ae80f8239bb3fb3c.json",
+      "sha256": "b4ef68876a16a40415a5281985ccc8fe78c9511f6112a169d5294205443c389e",
+      "offline_validation": "passed"
+    },
+    {
+      "path": "evidence/m5/visual/final_live_sweep.json",
+      "sha256": "44638d0316e90a0970348bcf1dce3921d4dc86175c950533061da4c410a2ab45",
+      "offline_validation": "passed"
+    }
+  ],
+  "base_commit": "38d77728fd5712a9814e4b57aafc5796fc4c1817",
+  "requirements": {
+    "M5.1": {
+      "status": "passed including UI controls, retained attempts and exports",
+      "proof": "m5.fit_observations saves analytic derivatives, native/exp bounds, revision2 domain, linear loss, jac scaling and ftol/xtol/gtol=1e-12; four paired solver/coordinate variants retained",
+      "limitations": "TRF closed bounds and LM strict interior differ; residual-count requirement and exponential failures explicit"
+    },
+    "M5.2": {
+      "status": "passed including UI controls, retained attempts and exports",
+      "proof": "independent direct-distance h/q chain-rule review and near_zero_height sweep 16 runs/32 starts; metre/square-metre scaling and positive relative-height branch disclosed",
+      "limitations": "q only supported shared relative-height models; inverse map singular at zero; FLOOR=1e-6 m"
+    },
+    "M5.3": {
+      "status": "passed including UI controls, retained attempts and exports",
+      "proof": "exact three-through-eight beacon initializer tests, independent lifted physical coefficient reconstruction and valid/degenerate/noisy acceptance sweeps",
+      "limitations": "complete synchronous planar shared-height epochs only; invalid proposal saved as failed without fallback"
+    },
+    "M5.4": {
+      "status": "passed including UI controls, retained attempts and exports",
+      "proof": "nine strict paired sweeps retain 160 runs/320 starts including 51 failed and one nonconverged; offline source/aggregate/projection validation and 48 raw timing records validated",
+      "limitations": "finite seeds/starts and modest workload; low residual or convergence do not certify geometry"
+    },
+    "M5.5": {
+      "status": "passed conditional evaluation with justified deferral",
+      "proof": "second_implementation_decision.json defers Ceres and Geomstats with named proper Euclidean rigid alignment operation and revisit criteria",
+      "limitations": "no Ceres implementation/comparison and no cross-implementation or speed claim"
+    }
+  },
+  "source_hashes": {
+    "app.py": "83e84a7932306931b656cb87a1d3da4f4328d1e06f5b7a27c199eed73f7e86cb",
+    "uwb/__init__.py": "5c38ee3026c68f3a0627a297e540a5be1c167186741e46a11f24a02eeba2baf3",
+    "uwb/estimation.py": "a669d0b48a164e36e8972517e91fdd093e2767c45782391d7ce0fc0c3a24149b",
+    "uwb/experiments.py": "7b108c5bf950d38833d2b6f52ff89e9aa47daf69e96994bc7fc295966a19b97d",
+    "uwb/m3.py": "e9f978773d7371569afe89b27a1ccbeed8298f4f3881f90fcda4ca870027f5d2",
+    "uwb/m3_sweeps.py": "27a9f752a917a47f17f47d43763707aa7ea3418f101a7904d612be8acf0ad81b",
+    "uwb/m4.py": "cdc4eed63dd0d53f44db044073d98698928612021227717f6eadf909dc9ae8d3",
+    "uwb/m4_service.py": "1be81feb0ef204a058ea7f685143a8c590f9063432b2386c476f6cd684ccd304",
+    "uwb/m4_sweeps.py": "ccc42f2726b6659dba09eaacf5264660a34827aff78d4db07269a540492b1fac",
+    "uwb/m5.py": "962bc5abb578f9da8e8786ccc0383dcfa23bddf03b52cd37221a7efee16c4560",
+    "uwb/m5_algebraic.py": "2c2b9ec7d016b74e8f8600aff49bbba75c5d7f1024430d6270b2ba75abfb87a3",
+    "uwb/m5_service.py": "18eb36142b2b49ffaf23e09c404904f9febc11385cf5010287e45436f17ebdff",
+    "uwb/m5_sweeps.py": "5389415a2b176f28259a6238530bd8180b997b8071aa79f588b34eb3b4088855",
+    "uwb/sweeps.py": "d3bea0aa85a981f5bf302da61044839b5485bc3d42a7671f2e3a472d11f3de04",
+    "web/app.js": "0c93372addcccdd050b68f4f46cd8e2bf581be67476e10bf96277e78ed9db2d6",
+    "web/m2.js": "59f7980ab81bc39c635585fe229c2983bb9fb1b1dccd15d6b4dd30171dc78d49",
+    "web/m3.js": "9c0ee7715fe565adc485bbd93f58c8ad318e18f461aac68e905dccdd1531270a",
+    "web/m4.js": "b6ebe7efa10a690ae6ddbff3b326afb05553bfd77b175281a594511356bfe73b",
+    "web/m5.js": "1c19d44a2f7c58afc714361082f92f79a3bbf5b95081b4ddf0f2e59936cce9a6",
+    "web/index.html": "b233a23b268ff3cdd36c0442b2d65f1a81a8153f17837c5a60af2f072f46060a",
+    "web/style.css": "2c4f820400d4f030e06912ccea52bd79adade4b5a21637c76624f71cce03d0c4"
+  },
+  "documentation": {
+    "docs/M5.md": "ea611902c66415731111abb84d4b4d9a26627b2309c6601e8e9abfdb01cfca8a",
+    "docs/M5_ACCEPTANCE.md": "52efc33340c48561db38a44a098052f73a8dad8bfc912172aca39c233f17e759",
+    "docs/M5_ALGEBRAIC.md": "e0485e60be7e38b2dee99beb29aef78188f00dd3f29746d13900810897bf2b9e",
+    "README.md": "b877f803d600aeb6a29ee8a3355fb71a0a8ee8e566ee42adb73102153518a351"
+  },
+  "delivery": {
+    "launch": ".\\.venv\\Scripts\\python.exe app.py --port 5054",
+    "url": "http://127.0.0.1:5054/",
+    "worktree": "Uncommitted M3/M4/M5 preserved",
+    "publication": "No push or external publication",
+    "next_milestone": "M6 remains outside this goal"
+  }
+}

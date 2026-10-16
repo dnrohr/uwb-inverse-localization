@@ -1,0 +1,209 @@
+{
+  "status": "passed",
+  "attempt": "20261014_211805_eef8b341",
+  "author": "Independent mathematical review agent",
+  "checks": {
+    "scalar_robust_losses": {
+      "status": "passed",
+      "evidence": {
+        "cases": [
+          {
+            "loss": "gaussian",
+            "scale_sigma": 0.1,
+            "max_cost_disagreement": 0.0,
+            "max_derivative_disagreement": 2.5247572921216488e-09
+          },
+          {
+            "loss": "gaussian",
+            "scale_sigma": 2.0,
+            "max_cost_disagreement": 0.0,
+            "max_derivative_disagreement": 2.5247572921216488e-09
+          },
+          {
+            "loss": "gaussian",
+            "scale_sigma": 20.0,
+            "max_cost_disagreement": 0.0,
+            "max_derivative_disagreement": 2.5247572921216488e-09
+          },
+          {
+            "loss": "huber",
+            "scale_sigma": 0.1,
+            "max_cost_disagreement": 3.552713678800501e-15,
+            "max_derivative_disagreement": 9.65006512199107e-11
+          },
+          {
+            "loss": "huber",
+            "scale_sigma": 2.0,
+            "max_cost_disagreement": 1.7763568394002505e-15,
+            "max_derivative_disagreement": 2.0049438775870954e-09
+          },
+          {
+            "loss": "huber",
+            "scale_sigma": 20.0,
+            "max_cost_disagreement": 2.2737367544323206e-13,
+            "max_derivative_disagreement": 8.415857455368325e-10
+          },
+          {
+            "loss": "soft_l1",
+            "scale_sigma": 0.1,
+            "max_cost_disagreement": 3.469446951953614e-18,
+            "max_derivative_disagreement": 2.401877620406001e-10
+          },
+          {
+            "loss": "soft_l1",
+            "scale_sigma": 2.0,
+            "max_cost_disagreement": 2.842170943040401e-14,
+            "max_derivative_disagreement": 1.4480392579452328e-09
+          },
+          {
+            "loss": "soft_l1",
+            "scale_sigma": 20.0,
+            "max_cost_disagreement": 3.410605131648481e-13,
+            "max_derivative_disagreement": 3.4049977282180066e-09
+          },
+          {
+            "loss": "cauchy",
+            "scale_sigma": 0.1,
+            "max_cost_disagreement": 1.3877787807814457e-17,
+            "max_derivative_disagreement": 2.50002241131142e-11
+          },
+          {
+            "loss": "cauchy",
+            "scale_sigma": 2.0,
+            "max_cost_disagreement": 8.881784197001252e-16,
+            "max_derivative_disagreement": 1.1568001678091688e-10
+          },
+          {
+            "loss": "cauchy",
+            "scale_sigma": 20.0,
+            "max_cost_disagreement": 1.1368683772161603e-13,
+            "max_derivative_disagreement": 2.2464593518733977e-09
+          }
+        ],
+        "cauchy_negative_curvature_preserved": true,
+        "huber_kink_convention": "inside at |r|=scale; second derivative not mathematically defined at kink"
+      }
+    },
+    "range_only_robust_objectives": {
+      "status": "passed",
+      "evidence": {
+        "cases": [
+          {
+            "mode": "joint",
+            "tag_height_model": "fixed",
+            "coordinate": "h",
+            "loss": "gaussian",
+            "objective": 5395.213175438059,
+            "prior_objective": 2811.0797615622914,
+            "max_jacobian_error": 2.9405320844944072e-08
+          },
+          {
+            "mode": "joint",
+            "tag_height_model": "fixed",
+            "coordinate": "h",
+            "loss": "huber",
+            "objective": 3554.3036518472,
+            "prior_objective": 2811.0797615622914,
+            "max_jacobian_error": 1.1480690176313146e-07
+          },
+          {
+            "mode": "joint",
+            "tag_height_model": "fixed",
+            "coordinate": "h",
+            "loss": "soft_l1",
+            "objective": 3489.9294370243633,
+            "prior_objective": 2811.0797615622914,
+            "max_jacobian_error": 3.759399902492078e-08
+          },
+          {
+            "mode": "joint",
+            "tag_height_model": "fixed",
+            "coordinate": "h",
+            "loss": "cauchy",
+            "objective": 3109.3223853500476,
+            "prior_objective": 2811.0797615622914,
+            "max_jacobian_error": 7.484419839443035e-08
+          },
+          {
+            "mode": "joint",
+            "tag_height_model": "fixed",
+            "coordinate": "q",
+            "loss": "gaussian",
+            "objective": 5395.213175438059,
+            "prior_objective": 2811.0797615622914,
+            "max_jacobian_error": 2.9405320844944072e-08
+          },
+          {
+            "mode": "joint",
+            "tag_height_model": "fixed",
+            "coordinate": "q",
+            "loss": "huber",
+            "objective": 3554.3036518472,
+            "prior_objective": 2811.0797615622914,
+            "max_jacobian_error": 1.1480690176313146e-07
+          },
+          {
+            "mode": "joint",
+            "tag_height_model": "fixed",
+            "coordinate": "q",
+            "loss": "soft_l1",
+            "objective": 3489.9294370243633,
+            "prior_objective": 2811.0797615622914,
+            "max_jacobian_error": 3.759399902492078e-08
+          },
+          {
+            "mode": "joint",
+            "tag_height_model": "fixed",
+            "coordinate": "q",
+            "loss": "cauchy",
+            "objective": 3109.3223853500476,
+            "prior_objective": 2811.0797615622914,
+            "max_jacobian_error": 7.484419839443035e-08
+          },
+          {
+            "mode": "known_map",
+            "tag_height_model": "soft",
+            "coordinate": "h",
+            "loss": "gaussian",
+            "objective": 5510.702399821536,
+            "prior_objective": 2823.857425527811,
+            "max_jacobian_error": 2.9405320844944072e-08
+          },
+          {
+            "mode": "known_map",
+            "tag_height_model": "soft",
+            "coordinate": "h",
+            "loss": "huber",
+            "objective": 3585.5733968605623,
+            "prior_objective": 2823.857425527811,
+            "max_jacobian_error": 1.1480690176313146e-07
+          },
+          {
+            "mode": "known_map",
+            "tag_height_model": "soft",
+            "coordinate": "h",
+            "loss": "soft_l1",
+            "objective": 3519.9226327142396,
+            "prior_objective": 2823.857425527811,
+            "max_jacobian_error": 2.774954666051599e-08
+          },
+          {
+            "mode": "known_map",
+            "tag_height_model": "soft",
+            "coordinate": "h",
+            "loss": "cauchy",
+            "objective": 3128.1812268529798,
+            "prior_objective": 2823.857425527811,
+            "max_jacobian_error": 5.339654762792634e-08
+          }
+        ],
+        "prior_terms_checked_independently": true
+      }
+    }
+  },
+  "failures": [],
+  "software_versions": {
+    "numpy": "2.5.4"
+  },
+  "independence": "Scalar robust costs/gradients/weights/curvatures and geometric range/prior equations assembled independently. Existing M5 coordinate unpack/bases define declared model; no native M6 residual/Jacobian is used as expected value."
+}

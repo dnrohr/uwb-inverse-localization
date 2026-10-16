@@ -1,0 +1,15 @@
+{
+  "scope": "Warm loopback GET /api/runs wall time after full cold validation; metadata cache enabled, no solve",
+  "records": [
+    {
+      "wall_s": 0.09658089999720687,
+      "rows": 840,
+      "unreadable": 0
+    },
+    {
+      "wall_s": 0.08884519999992335,
+      "rows": 840,
+      "unreadable": 0
+    }
+  ]
+}

@@ -1,0 +1,194 @@
+{
+  "review": "Independent M6 integration review by numerical-core agent; integration files reviewed read-only",
+  "generated_utc": "2026-10-14T21:29:18.879536+00:00",
+  "status": "passed_after_repairs",
+  "scope": [
+    "uwb/m6.py",
+    "uwb/m6_sweeps.py",
+    "uwb/m6_service.py",
+    "app.py",
+    "web/m6.js",
+    "web/app.js",
+    "web/index.html"
+  ],
+  "methods": [
+    "Read-only source inspection",
+    "In-memory Node evaluation of actual web/m6.js functions with minimal DOM stubs (no browser/source mutation)",
+    "Real generated paired-sweep corruption test with native start/objective recomputation",
+    "Core/service unittest execution"
+  ],
+  "tests": {
+    "command": ".venv/Scripts/python.exe -m unittest tests.test_m6 tests.test_m6_service -q",
+    "result": "passed",
+    "test_count": 23,
+    "runtime_s": 12.938
+  },
+  "findings": [
+    {
+      "id": "INT-1",
+      "priority": "P1",
+      "location": "uwb/m6.py:512",
+      "problem": "New strict robust-disclosure check rejected starts=[] pending job envelopes before queueing; infrastructure failures with no native problem also could not persist.",
+      "original_reproduction": "POST /api/m6/runs =>400 Saved robust assumptions or decision disclosures disagree with options;8service tests had1failure+2errors.",
+      "repair": "Core now validates experiment/options/M4 envelope first, accepts empty pending/running envelopes and explicit infrastructure-failed envelopes with no finite estimates and inspectable messages. Finite outcomes retain all strict numerical recomputation.",
+      "status": "repaired_verified",
+      "verification": "15core+8service tests pass12.938s; added pending/minimal-failed/error-does-not-bypass-finite-validation regression tests."
+    },
+    {
+      "id": "INT-2",
+      "priority": "P1",
+      "location": "uwb/m6_sweeps.py:231",
+      "problem": "Deleting initial_reference_entry allowed an imported paired artifact to contain a different physical initial geometry while retaining pairing claims.",
+      "original_reproduction": "Second variant initial x[2]+=.2; recompute initial geometry/native parameters/initial+second-stage costs; set reference null; validate_artifact accepted.",
+      "repair": "Validator reconstructs first compatible source per value/seed/initializer cell, requires expected reference, rejects negative/boolean indices.",
+      "status": "repaired_verified",
+      "verification": "Same corruption now raises Invalid solver sweep: Initial reference must identify the first compatible saved physical starts in this cell."
+    },
+    {
+      "id": "INT-3",
+      "priority": "P2",
+      "location": "web/m6.js:15",
+      "problem": "Reopening/importing custom contamination seed silently replaced it with measurement seed+606 on rerun.",
+      "original_reproduction": {
+        "saved_seed": 12345,
+        "rerun_seed": 613
+      },
+      "repair": "Explicit contamination seed control is restored and used by payload.",
+      "status": "repaired_verified",
+      "verification": {
+        "saved_seed": 12345,
+        "rerun_seed": 12345
+      }
+    },
+    {
+      "id": "INT-4",
+      "priority": "P2",
+      "location": "web/m6.js:26",
+      "problem": "UI zeroed per-beacon offsets outside affected_beacons even though the backend affected list governs NLOS only.",
+      "original_reproduction": {
+        "affected_beacons": [
+          0
+        ],
+        "saved_offsets": [
+          0,
+          0,
+          0.4,
+          0
+        ],
+        "rerun_offsets": [
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      "repair": "UI uses explicit full offsets vector independently of NLOS affected list.",
+      "status": "repaired_verified",
+      "verification": {
+        "saved_offsets": [
+          0,
+          0,
+          0.4,
+          0
+        ],
+        "rerun_offsets": [
+          0,
+          0,
+          0.4,
+          0
+        ]
+      }
+    },
+    {
+      "id": "INT-5",
+      "priority": "P2",
+      "location": "web/m6.js:90",
+      "problem": "Noisy joint benchmark tables preferred raw errors while aggregate chart used aligned errors, without frame label.",
+      "original_reproduction": {
+        "raw_position_rmse_m": 0.04370023720697213,
+        "aligned_position_rmse_m": 0.029773626476715723,
+        "backend_error_frame": "aligned"
+      },
+      "repair": "Root reports benchmark table changed to backend start_table including explicit error_frame.",
+      "status": "repaired_verified",
+      "verification": "Current renderBenchmark uses backend start_table with error_frame for all validated source artifacts; aggregate plot uses those same backend aggregate metrics."
+    },
+    {
+      "id": "INT-6",
+      "priority": "P1",
+      "location": "web/m6.js:96",
+      "problem": "UI Run CSV and benchmark CSV flatten only available decision/dropped records, omitting failed starts with no decisions and no dropped observations. Attempt status and message also absent. Backend sweep CSV preserves all starts.",
+      "reproduction": {
+        "saved_attempts": 1,
+        "undropped_source_records": 1,
+        "failed_attempt_exported_rows": 0
+      },
+      "required_repair": "Export one row per attempted start (backend start_table for benchmark) and/or include status/error source-observation placeholder rows for unavailable decisions. Preserve dropped ping timing from source_experiment observation.",
+      "status": "repaired_verified",
+      "repair": "allObservationRows now includes every undecided source record with null decision/weight and explicit unavailable message; source timestamps restored. RunCSV includes attempt status/message. Benchmark has separate AttemptsCSV from backend start_table plus separately labeled ObservationsCSV.",
+      "verification": {
+        "saved_seed": 12345,
+        "restored_seed": 12345,
+        "saved_offsets": [
+          0,
+          0,
+          0.4,
+          0
+        ],
+        "restored_offsets": [
+          0,
+          0,
+          0.4,
+          0
+        ],
+        "failed_attempt_csv_rows": 2,
+        "failed_attempt_status": "failed",
+        "failed_attempt_message": "failed proposal",
+        "unavailable_weight": null,
+        "dropped_time_s": 1.4
+      }
+    }
+  ],
+  "positive_checks": [
+    "Independent fit remains isolated from labels; no integration path feeds contamination_reference to optimizer.",
+    "Within each sweep cell variants share the same saved experiment; configurations and derived all-attempt tables recomputed offline.",
+    "Unknown metrics are null in core/aggregate and undefined in decision summary, with failed attempts retained in aggregate denominators.",
+    "Scene schema6 uses shared stable uirevision/camera and M3 ping playback hook; M6 adds no camera reset or comparison-alignment rewrite.",
+    "Scene rays derive estimator decisions; injected labels remain in separate per-range table/hover data.",
+    "Transient/permanent terminal persistence tests retain numerical outcomes in live jobs and distinguish infrastructure status; recovery does not promise unreadable-main-file durability."
+  ],
+  "limitations": [
+    "Static source and Node harness review; visual acceptance remains separate root/UI-agent evidence.",
+    "Readability of every historical M6 acceptance artifact should be checked against final current validators."
+  ],
+  "source_sha256": {
+    "uwb/m6.py": "b4d8532c5e759e92a2afe6851046709ee27cfba40f492bb52a34374e14ffad9c",
+    "uwb/m6_sweeps.py": "d4def7aeac628384b36552777c4b97689bb7d31c8031ad75ef91b46ee3e9403b",
+    "uwb/m6_service.py": "23cfb9e1424ad51aee3ddfb2e55cb13c3f4014bd103e311af8f48c9af568c908",
+    "app.py": "9b38f468507912c89bf0e4444d51beedea9b3af69d9e20d81fc300741e8232a8",
+    "web/m6.js": "4688b20b4fb50f723a3c1fadd6bde3c3c528a10cd1912d7b511e2a6b2c759de7",
+    "web/app.js": "3f6ee89c7c55d124746f56ba06714e55ca54e0cd8606fe457109acc086eded22",
+    "web/index.html": "0bda7e9ad0d11a91e4898b4dab5ab6bf40c8e010bbeccdb7680a5af98428be06"
+  },
+  "final_node_confirmation": {
+    "saved_seed": 12345,
+    "restored_seed": 12345,
+    "saved_offsets": [
+      0,
+      0,
+      0.4,
+      0
+    ],
+    "restored_offsets": [
+      0,
+      0,
+      0.4,
+      0
+    ],
+    "failed_attempt_csv_rows": 2,
+    "failed_attempt_status": "failed",
+    "failed_attempt_message": "failed proposal",
+    "unavailable_weight": null,
+    "dropped_time_s": 1.4
+  }
+}

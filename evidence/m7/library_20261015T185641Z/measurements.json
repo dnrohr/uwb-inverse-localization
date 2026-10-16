@@ -1,0 +1,130 @@
+{
+  "recorded_at": "2026-10-15T18:56:41.910657+00:00",
+  "machine": "win32",
+  "python": "3.12.10 (tags/v3.12.10:0cc8128, Apr  8 2025, 12:21:36) [MSC v.1943 64 bit (AMD64)]",
+  "scope": "Backend metadata only; no browser/DOM/render or startup-bundle certification.",
+  "cases": [
+    {
+      "name": "zero",
+      "constructor_ms": 0.01,
+      "cold_query_ms": 32.238,
+      "cold_scan_ms": 0.316,
+      "source_files": 0,
+      "all_records": 0,
+      "grouped_records": 0,
+      "warm_ms": [
+        2.397,
+        1.09,
+        1.051,
+        1.028,
+        1.009,
+        1.078,
+        1.019
+      ],
+      "warm_median_ms": 1.051,
+      "warm_max_ms": 2.397,
+      "payload_bytes": [
+        476,
+        476,
+        476,
+        476,
+        476,
+        476,
+        476
+      ],
+      "first_page_rows": 0,
+      "max_page_rows": 0,
+      "warm_under_500_ms": true,
+      "warm_source_decode_guard": "passed",
+      "sqlite_bytes": 40960
+    },
+    {
+      "name": "current_retained_history",
+      "constructor_ms": 0.008,
+      "cold_query_ms": 24225.201,
+      "cold_scan_ms": 24188.816,
+      "source_files": 909,
+      "all_records": 909,
+      "grouped_records": 174,
+      "warm_ms": [
+        19.393,
+        18.054,
+        19.043,
+        17.499,
+        19.32,
+        22.979,
+        19.034
+      ],
+      "warm_median_ms": 19.043,
+      "warm_max_ms": 22.979,
+      "payload_bytes": [
+        43922,
+        43922,
+        43922,
+        43920,
+        43922,
+        43922,
+        43922
+      ],
+      "first_page_rows": 25,
+      "max_page_rows": 50,
+      "warm_under_500_ms": true,
+      "warm_source_decode_guard": "passed",
+      "sqlite_bytes": 10219520
+    },
+    {
+      "name": "10000_metadata_records",
+      "constructor_ms": 0.009,
+      "cold_query_ms": 121115.654,
+      "cold_scan_ms": 121066.625,
+      "source_files": 10000,
+      "all_records": 10000,
+      "grouped_records": 10000,
+      "warm_ms": [
+        77.214,
+        76.906,
+        83.275,
+        76.493,
+        76.552,
+        76.492,
+        80.772
+      ],
+      "warm_median_ms": 76.906,
+      "warm_max_ms": 83.275,
+      "payload_bytes": [
+        33147,
+        33147,
+        33147,
+        33146,
+        33147,
+        33147,
+        33147
+      ],
+      "first_page_rows": 25,
+      "max_page_rows": 50,
+      "warm_under_500_ms": true,
+      "warm_source_decode_guard": "passed",
+      "sqlite_bytes": 23838720
+    }
+  ],
+  "fixture_10000": "Small schema-shaped metadata records, not numerically valid runs.",
+  "freshness_limit": "mtime_ns/ctime_ns/size inventory per request; timestamp-preserving same-size edits require rebuild.",
+  "fixture_write_ms": 3283.711,
+  "incremental_one_change": {
+    "ms": 101.648,
+    "changed": 1,
+    "source_files": 10000
+  },
+  "source_corruption": {
+    "ms": 99.882,
+    "unreadable": 1,
+    "source_bytes_preserved": true
+  },
+  "cache_corruption_rebuild": {
+    "ms": 2094.269,
+    "records": 10000,
+    "source_corrupt_still_inspectable": true,
+    "recovery": "Rebuilt corrupt metadata cache: file is not a database"
+  },
+  "all_warm_requests_under_500_ms": true
+}

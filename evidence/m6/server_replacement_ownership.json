@@ -1,0 +1,6 @@
+{
+  "ProcessId": 24248,
+  "ParentProcessId": 26012,
+  "ExecutablePath": "C:\\Users\\dnroh\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+  "CommandLine": "\"C:\\Users\\dnroh\\AppData\\Local\\Programs\\Python\\Python312\\python.exe\" app.py --port 5056"
+}

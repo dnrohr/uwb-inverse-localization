@@ -1,0 +1,239 @@
+{
+  "status": "passed",
+  "errors": [],
+  "recorded_utc": "2026-10-16T02:32:31.370599+00:00",
+  "requirements": {
+    "M7.1": {
+      "status": "passed",
+      "scope": "Partial masks, fixed elimination, survey covariance, world frames and unsupported constraints"
+    },
+    "M7.2": {
+      "status": "passed",
+      "scope": "Conditional uncertainty with independently reconstructed Jacobian/covariance, information sources and finite-sample trial denominators"
+    },
+    "M7.3": {
+      "status": "passed",
+      "scope": "Seven reproducible investigation topics, all94 new attempts plus168 retained study attempts and paired source checks"
+    },
+    "M7.4": {
+      "status": "passed",
+      "scope": "Unified Library, bounded DOM, authoritative sources, preview/Open, A/B, state preservation, keyboard and responsive inspection"
+    },
+    "M7.5": {
+      "status": "passed",
+      "scope": "Metadata cache/index, bounded queries, incremental/corruption behavior, cold/warm/startup/browser measurements"
+    }
+  },
+  "preservation": {
+    "checked": 1665,
+    "exact_hashes_unchanged": 1663,
+    "append_only_live_logs": [
+      {
+        "path": "evidence/m5/server_final_ui_stderr.txt",
+        "original_prefix_bytes": 8662,
+        "appended_bytes": 79,
+        "original_sha256": "18811bd5c9f571d9b23b03d714831beec1f02571ea31ede8f0ccd57f96054070",
+        "current_sha256": "8d7b34e7a91386c3baf8d59c90bf11e6ce8f155c342c2b23f0a6ddaa7b4d8ca5"
+      },
+      {
+        "path": "evidence/m6/server_final_stderr.txt",
+        "original_prefix_bytes": 4434,
+        "appended_bytes": 833,
+        "original_sha256": "84017084fe932b22734f546361d01279413dbc883865b8dd7b84d8e5c243e6bb",
+        "current_sha256": "2b2e01cebff791d20bd0c8fc277fd45cfe84ea17af140622577f49be94c6919b"
+      }
+    ],
+    "unexplained_changes": [],
+    "interpretation": "All original scientific bytes retained. Active preserved servers appended logs; their original prefixes match the initial SHA256 exactly."
+  },
+  "tests": {
+    "count": 208,
+    "seconds": 155.728,
+    "log": "evidence/m7/test_results_final_208.txt",
+    "final_metadata_focus": "evidence/m7/library_final_focused.txt",
+    "final_import_focus": "evidence/m7/integration_final.txt"
+  },
+  "independent_math_review": "evidence\\m7\\independent_review_20261016T021842Z\\review.json",
+  "numerical_acceptance": {
+    "source": "evidence/m7/acceptance_20261015_190356_30ad31d9/acceptance_summary.json",
+    "runs": 75,
+    "attempts": 94,
+    "status_counts": {
+      "success": 90,
+      "not_converged": 3,
+      "failed": 1
+    },
+    "coverage": {
+      "assumed_model": {
+        "requested_trials": 32,
+        "intervals_available": 32,
+        "covered": 31,
+        "fraction": 0.96875,
+        "binomial_wilson_95": [
+          0.8425573617998744,
+          0.9944621398359969
+        ]
+      },
+      "misspecified_offset": {
+        "requested_trials": 32,
+        "intervals_available": 0,
+        "covered": 0,
+        "fraction": null,
+        "binomial_wilson_95": null
+      }
+    }
+  },
+  "investigations": {
+    "source": "evidence\\m7\\investigations_20261015_190554_b32717f8\\investigations.json",
+    "attempts": 262
+  },
+  "offline_runs": [
+    {
+      "source": "runs\\000e19f0c56b5345a88da471b5d21850.json",
+      "schema": "5.0",
+      "status": "success",
+      "sha256": "91bf9ba6549f3fc372b7a3bb3bcdfe695b6cc9f97f402b5e766df7f34acf99a3"
+    },
+    {
+      "source": "runs\\0024f045def25599a6dfc9621377dfec.json",
+      "schema": "6.0",
+      "status": "success",
+      "sha256": "6fcc627895014da69e22dbc5616d5ebdd89add8bf226db13b83f18eb2a788ee9"
+    },
+    {
+      "source": "runs\\019936b713395fcbade6f148fbd30994.json",
+      "schema": "4.0",
+      "status": "success",
+      "sha256": "62973697af523bb15d90b9d7556a388cf5989e3304e088c0400baf25d68b7f3b"
+    },
+    {
+      "source": "runs\\034da6720def5bb481dc17d86b3e05b4.json",
+      "schema": "3.0",
+      "status": "success",
+      "sha256": "c59ad20bf11efb81dab7a7e8a098c22c0179aa47d1c5b1290be53b2db1b38d40"
+    },
+    {
+      "source": "runs\\06a78435fc2e5a0c8d62456aeb895901.json",
+      "schema": "5.0",
+      "status": "failed",
+      "sha256": "373516728d48d3b5a40ff8176b4fd81332aa4633c5b7517295ca6fde3f402b67"
+    },
+    {
+      "source": "runs\\0a71460c0464507ca715af434c12cbad.json",
+      "schema": "1.0",
+      "status": "success",
+      "sha256": "87c151c40b12d5999a6fb74b2e719e3a2034d0afb8506df780514762629d30d2"
+    },
+    {
+      "source": "runs\\0ce6590f255153d59147fe544ee0042a.json",
+      "schema": "1.0",
+      "status": "not_converged",
+      "sha256": "9e83950d87ca4e6760b0d101e5a1cac6a69065bb1aee5e6846fe161a9cc8fb0f"
+    },
+    {
+      "source": "runs\\104bb0957cbc41b8877f37cad89c7b16.json",
+      "schema": "1.0",
+      "status": "failed",
+      "sha256": "9331b0f93c42fdc1f3092c87f769e850e596231c1cd9c4615c9472e6fdd854d5"
+    },
+    {
+      "source": "runs\\15790a95a11250b58be5b6e33f3ccf91.json",
+      "schema": "6.0",
+      "status": "not_converged",
+      "sha256": "bfc9606785d64095813f2de769a5e8264f6f36ab707c6ca4aa1a5eaeff3dc8fa"
+    },
+    {
+      "source": "runs\\1b14a9ca17035bffac35088ff3e928aa.json",
+      "schema": "6.0",
+      "status": "failed",
+      "sha256": "550d0b24d7beea8120360cea0e27c3e385a5e7cc8144aafb2b301c04486a9fa4"
+    },
+    {
+      "source": "runs\\4e2941c806bf5f808a6a571e5225b18d.json",
+      "schema": "4.0",
+      "status": "not_converged",
+      "sha256": "9a4f87b2652c14d4200ff822a0b9d4204333e786bdebbac75001efdeb1adc00e"
+    },
+    {
+      "source": "runs\\5e1700838dcb473ca2f60cfbc767ca74.json",
+      "schema": "7.0",
+      "status": "success",
+      "sha256": "29ffa447563e68ff01965e59e9832b3850715b023c21b582249778ebd6b229d7"
+    },
+    {
+      "source": "runs\\849e1d5bb9b954e3a3d9e6c998b7c489.json",
+      "schema": "3.0",
+      "status": "not_converged",
+      "sha256": "234f3fe69997176ba5f3d40f8e06c6b2dcdda870862383a2fcf87ed2f8a60032"
+    },
+    {
+      "source": "runs\\862fcdb2689d4e11a8674ec9fb5b2ba3.json",
+      "schema": "3.0",
+      "status": "failed",
+      "sha256": "24c8f7aeeec7e9b93391c0a35cb5b03cb43e3dadb9e7eb068e8c5d4ae8a63a26"
+    },
+    {
+      "source": "runs\\9199a962862251fba1d9bc48646ae61e.json",
+      "schema": "5.0",
+      "status": "not_converged",
+      "sha256": "3965c5c0d26a4dcb5b5f2817b4b94045a17dfbc5e0b2dad7f5dd19ee31120aed"
+    },
+    {
+      "source": "runs\\a161054a21e949ea8615a0ef3fe206d4.json",
+      "schema": "7.0",
+      "status": "failed",
+      "sha256": "999dd63bcf01c2a41cca0a2780637f41444d2987550d5d14b7733523f6e51330"
+    }
+  ],
+  "offline_artifacts": [
+    {
+      "source": "runs\\artifacts\\05314394993557e394be2dcf5f3e1515.json",
+      "kind": "solver_sweep",
+      "sha256": "1159c57c32a88a691907755bbe8fad2af2653cbf7db7a49a4034287721fa5e9d",
+      "csv_bytes": 15623
+    },
+    {
+      "source": "runs\\artifacts\\05edfbc83014480c9595ef8bf8c0c49b.json",
+      "kind": "comparison",
+      "sha256": "669d49532669c83d9d2551c7b53ec29cdd29aae9f71f9d537b4063c6ffe18490",
+      "csv_bytes": 440
+    },
+    {
+      "source": "runs\\artifacts\\05ef483d30af4369a6e0fa6773b414ff.json",
+      "kind": "sweep",
+      "sha256": "7e1cdfb9448ac690feed1c9c22d33d6abd0e4d1c5fcf79c9a1ff88822a2e726c",
+      "csv_bytes": 2808
+    },
+    {
+      "source": "runs\\artifacts\\09d2f22f2d785b38b122db76f5bc4af9.json",
+      "kind": "timing_sweep",
+      "sha256": "db608ddbfbdd054e39568ea4f3bec93311b1b5ca5d95388063fce176c8d94ef7",
+      "csv_bytes": 5787
+    },
+    {
+      "source": "runs\\artifacts\\0ebec87989975b4a819b075fa34273f6.json",
+      "kind": "geometry_sweep",
+      "sha256": "90d35dbb86c159ec7525d79f04944fbd1043373aa0607a94c37f30084180bfe7",
+      "csv_bytes": 8873
+    },
+    {
+      "source": "runs\\artifacts\\1b836902d2795481863de44bdd148881.json",
+      "kind": "robust_sweep",
+      "sha256": "ea4a20618842f6ea63d05cefa5a6498edb3fa8f8a9527111e3daac970c0cf78d",
+      "csv_bytes": 9514
+    }
+  ],
+  "visual": "evidence/m7/visual/ui_validation.json",
+  "integration_review": "evidence/m7/integration_review.json",
+  "limitations": [
+    "Full Experiment mobile layout is not certified;390x844 certification covers the Library, preview/actions and tray.",
+    "Browser render measurements include metadata fetch and DOM rendering, not solving. Metadata-shaped10k fixtures are deliberately not valid numerical run records.",
+    "Cold scanning remains expensive; successful warm targets do not imply cold usability under1second.",
+    "A tab blocked port5060 as unsafe. The test used a different ordinary local port5070; no browser security warning was bypassed.",
+    "Survey support is physical h with independent beacon heights; unsupported shared/coupled constraints reject explicitly.",
+    "Local covariance is conditional, not global uniqueness or generally calibrated robust uncertainty.",
+    "Cold index building remains material; warm targets do not certify first-ever bundle-copy speed.",
+    "Single-run optimizer internal state is not checkpointed; sweep recovery requires readable main JSON; no permanent-write durability guarantee.",
+    "Historical provisional M7 development evidence remains unchanged; current strict contract is represented by the cited final bundle."
+  ]
+}

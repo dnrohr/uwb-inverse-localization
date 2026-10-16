@@ -1,0 +1,39 @@
+{
+  "passed": true,
+  "scope": "Node VM select-aware DOM double; browser acceptance separate",
+  "checks": [
+    "saved soft_l1 preserved and resubmitted",
+    "imported soft_l1 config preserved and resubmitted",
+    "A7 to B6 to same A7 restores shared and survey controls",
+    "same source redraw preserves unsaved survey edits",
+    "unattempted data cells and scheduled variant runs have distinct denominators",
+    "offline import/inspection made zero API/solve calls",
+    "unsupported survey frame/units/coupling rejected before control mutation"
+  ],
+  "rejected_imports": [
+    "wrong frame",
+    "wrong units",
+    "undeclared frame",
+    "unsupported coupling",
+    "unknown row field",
+    "invalid covariance"
+  ],
+  "restores": [
+    {
+      "marker": "A",
+      "loss": "soft_l1"
+    },
+    {
+      "marker": "B",
+      "loss": "gaussian"
+    },
+    {
+      "marker": "A",
+      "loss": "soft_l1"
+    },
+    {
+      "marker": "Imported",
+      "loss": "soft_l1"
+    }
+  ]
+}

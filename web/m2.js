@@ -38,13 +38,7 @@
     return tokens.map(Number);
   }
   function sweepSummary(sweep) { return `${sweep.factor || sweep.kind || 'Sweep'} · ${sweep.status || 'saved'} · ${String(sweep.id || '').slice(0, 8)}`; }
-  async function refreshSweeps(selectId = '') {
-    try {
-      const result = await api('/api/sweeps'); state.sweeps = Array.isArray(result) ? result : rows(result.sweeps);
-      $('#sweepsList').innerHTML = state.sweeps.length ? state.sweeps.map(item => `<button class="run-item ${item.id === selectId ? 'selected' : ''}" data-sweep-id="${esc(item.id)}"><span class="run-runmark ${esc(item.status || '')}"></span><span class="run-info"><span class="run-name">${esc(sweepSummary(item))}</span><span class="run-meta">${esc(item.id)}</span></span><span class="run-open">›</span></button>`).join('') : '<div class="empty-runs">No saved sweeps yet.</div>';
-      document.querySelectorAll('[data-sweep-id]').forEach(button => button.addEventListener('click', () => loadSweep(button.dataset.sweepId)));
-    } catch (error) { console.warn('Sweep list unavailable:', error); }
-  }
+  async function refreshSweeps() { window.RangeLabLibrary?.invalidate(); }
   function attemptRecords(sweep) {
     const entries = rows(sweep.entries || sweep.attempts || sweep.results);
     const startRows = rows(sweep.start_table);
@@ -162,33 +156,16 @@
     catch (error) { toast(`Could not start sweep: ${error.message}`); }
   }
   function pointList(value) { return rows(value).map(p => Array.isArray(p) && p.slice(0, 3).every(v => finite(v) !== null) ? p.slice(0, 3).map(Number) : null).filter(Boolean); }
-  function updateRunSelectors() {
-    const previousA = $('#compareRunA').value || state.activeComparison?.runs?.[0]?.id;
-    const previousB = $('#compareRunB').value || state.activeComparison?.runs?.[1]?.id;
-    const opts = state.runs.map(run => `<option value="${esc(run.id)}">${esc(run.reference_name || (run.path_type ? `${run.path_type.replace(/_/g, ' ')} path` : run.scenario) || run.id)} · ${esc(run.status || 'saved')} · ${esc(run.id.slice(0, 8))}</option>`).join('');
-    $('#compareRunA').innerHTML = opts; $('#compareRunB').innerHTML = opts;
-    if (state.runs.length > 1) $('#compareRunB').selectedIndex = 1;
-    if (state.runs.some(run => run.id === previousA)) $('#compareRunA').value = previousA;
-    if (state.runs.some(run => run.id === previousB)) $('#compareRunB').value = previousB;
-  }
-  async function refreshRunList() {
-    try { const result = await api('/api/runs'); state.runs = Array.isArray(result) ? result : rows(result.runs); updateRunSelectors(); }
-    catch (error) { console.warn('Run list unavailable for comparisons:', error); }
-  }
-  async function refreshComparisons(selectId = '') {
-    try {
-      const result = await api('/api/comparisons'); const list = Array.isArray(result) ? result : rows(result.comparisons);
-      $('#savedComparisons').innerHTML = list.length ? list.map(item => `<option value="${esc(item.id)}" ${item.id === selectId ? 'selected' : ''}>${esc(item.label || `${rows(item.run_ids).join(' ↔ ') || item.id}`)}</option>`).join('') : '<option value="">No saved comparisons</option>';
-      state.comparisons = list;
-    } catch (error) { console.warn('Saved comparison list unavailable:', error); }
-  }
+  function updateRunSelectors() { /* A/B slots are owned by the Library. */ }
+  async function refreshRunList() { window.RangeLabLibrary?.invalidate(); }
+  async function refreshComparisons() { window.RangeLabLibrary?.invalidate(); }
   function drawComparison(artifact) {
     const views = rows(artifact.views);
     if (views.length !== 2) throw new Error('Saved comparison does not contain two fitted views.');
     const a = views.map((view, i) => {
       const estimate = pointList(view.estimate?.trajectory), errors = rows(view.position_errors_m).map(finite);
       const count = Math.min(estimate.length, errors.length);
-      return { label: artifact.runs?.[i]?.reference_name || (view.id ? String(view.id).slice(0, 8) : `Run ${i + 1}`), truth: pointList(view.truth?.trajectory), estimate: estimate.slice(0, count), interpolated: rows(view.interpolated_trajectory), errors: errors.slice(0, count), times: rows(view.times_elapsed_s).slice(0, count).map(finite), truthGeometry: view.truth, fitGeometry: view.estimate };
+      return { label: artifact.runs?.[i]?.reference_name || (view.id ? String(view.id).slice(0, 8) : `Run ${i + 1}`), truth: pointList(view.truth?.trajectory), estimate: estimate.slice(0, count), interpolated: rows(view.interpolated_trajectory), errors: errors.slice(0, count), times: rows(view.times_elapsed_s).slice(0, count).map(finite), truthGeometry: view.truth, fitGeometry: view.estimate, m3: ["3.0","4.0","5.0","6.0","7.0"].includes(artifact.runs?.[i]?.schema_version) };
     });
     const maxError = Math.max(1e-9, ...a.flatMap(run => run.errors).filter(value => value !== null));
     const traces = [];
@@ -196,7 +173,7 @@
       traces.push({ type: 'scatter3d', mode: 'lines', name: `${run.label} · ground truth`, x: run.truth.map(p => p[0]), y: run.truth.map(p => p[1]), z: run.truth.map(p => p[2]), line: { color: palette[index], width: 3 }, hovertemplate: `${esc(run.label)} truth<br>(%{x:.3f}, %{y:.3f}, %{z:.3f}) m<extra></extra>` });
       const interpolated = run.interpolated.length ? run.interpolated : run.estimate;
       traces.push({ type: 'scatter3d', mode: 'lines', name: `${run.label} · fit path`, x: interpolated.map(p => p?.[0] ?? null), y: interpolated.map(p => p?.[1] ?? null), z: interpolated.map(p => p?.[2] ?? null), line: { color: palette[index], width: 2, dash: 'dash' }, hovertemplate: `${esc(run.label)} fit path<br>(%{x:.3f}, %{y:.3f}, %{z:.3f}) m<extra></extra>` });
-      traces.push({ type: 'scatter3d', mode: 'markers', name: `${run.label} · fitted epochs`, x: run.estimate.map(p => p[0]), y: run.estimate.map(p => p[1]), z: run.estimate.map(p => p[2]), marker: { size: 4, color: run.errors, cmin: 0, cmax: maxError, colorscale: 'Viridis', showscale: index === 1, colorbar: { title: { text: 'Position error (m)' } } }, customdata: run.errors.map((value, i) => [value, run.times[i]]), hovertemplate: `${esc(run.label)} fitted epoch<br>t=%{customdata[1]:.3f} s<br>(%{x:.3f}, %{y:.3f}, %{z:.3f}) m<br>error=%{customdata[0]:.4f} m<extra></extra>` });
+      traces.push({ type: 'scatter3d', mode: 'markers', name: `${run.label} · ${run.m3 ? "display samples" : "fitted epochs"}`, x: run.estimate.map(p => p[0]), y: run.estimate.map(p => p[1]), z: run.estimate.map(p => p[2]), marker: { size: 4, color: run.errors, cmin: 0, cmax: maxError, colorscale: 'Viridis', showscale: index === 1, colorbar: { title: { text: 'Position error (m)' } } }, customdata: run.errors.map((value, i) => [value, run.times[i]]), hovertemplate: `${esc(run.label)} ${run.m3 ? "interpolated display sample" : "fitted epoch"}<br>t=%{customdata[1]:.3f} s<br>(%{x:.3f}, %{y:.3f}, %{z:.3f}) m<br>error=%{customdata[0]:.4f} m<extra></extra>` });
       const truthBeacons = pointList(run.truthGeometry?.beacons), fitBeacons = pointList(run.fitGeometry?.beacons);
       if (truthBeacons.length) traces.push({ type: 'scatter3d', mode: 'markers+text', name: `${run.label} · truth beacons`, x: truthBeacons.map(p => p[0]), y: truthBeacons.map(p => p[1]), z: truthBeacons.map(p => p[2]), text: truthBeacons.map((_, i) => `B${i}`), textposition: 'top center', marker: { size: 6, color: palette[index], symbol: 'circle' }, hovertemplate: `${esc(run.label)} truth %{text}<br>(%{x:.3f}, %{y:.3f}, %{z:.3f}) m<extra></extra>` });
       if (fitBeacons.length) traces.push({ type: 'scatter3d', mode: 'markers+text', name: `${run.label} · fit beacons`, x: fitBeacons.map(p => p[0]), y: fitBeacons.map(p => p[1]), z: fitBeacons.map(p => p[2]), text: fitBeacons.map((_, i) => `B${i}`), textposition: 'bottom center', marker: { size: 5, color: palette[index], symbol: 'diamond', line: { color: '#fff', width: 1 } }, hovertemplate: `${esc(run.label)} fit %{text}<br>(%{x:.3f}, %{y:.3f}, %{z:.3f}) m<extra></extra>` });
@@ -219,15 +196,22 @@
     $('#exportComparePng').disabled = false; $('#exportCompareChart').disabled = false; $('#exportCompareJson').disabled = false;
     $('#comparisonMetrics').innerHTML = `<table class="m2-table"><thead><tr><th>RUN</th><th>STATUS</th><th>MODE</th><th>SAMPLES</th><th>STARTS</th><th>SELECTED</th><th>POSITION RMSE (M)</th><th>MAP RMSE (M)</th><th>RANGE RMSE (M)</th><th>RUNTIME (S)</th><th>CONVERGED</th><th>FULL RANK</th></tr></thead><tbody>${rows(artifact.table).map((item, i) => `<tr><td title="${esc(item.id)}">${esc(String(item.id || a[i]?.label).slice(0, 8))}</td><td>${esc(item.status)}</td><td>${esc(item.mode)}</td><td>${esc(item.samples)}</td><td>${esc(item.starts)}</td><td>${esc(item.selected_start ?? '—')}</td><td>${displayNumber(item.position_rmse_m)}</td><td>${displayNumber(item.map_rmse_m)}</td><td>${displayNumber(item.range_rmse_m)}</td><td>${displayNumber(item.runtime_s)}</td><td>${esc(item.optimizer_converged)}</td><td>${esc(item.full_column_rank ?? '—')}</td></tr>`).join('')}</tbody></table>`;
     const hasKnownMap = rows(artifact.runs).some(run => run.options?.mode === 'known_map');
-    const labels = artifact.alignment === 'aligned' ? (hasKnownMap ? 'Joint-map fits use independent proper rigid alignment to truth at scale 1; known-map runs stay in their surveyed frame.' : 'Each joint-map fit uses proper rigid alignment to truth at scale 1; reflections are forbidden.') : 'Raw coordinates shown; joint-map errors depend on the frame.';
-    $('#compareNotice').textContent = `${labels} Fit markers show matched-time Euclidean position error on a shared 0–${displayNumber(maxError)} m scale. Scene lines use the saved piecewise interpolation; time-chart points and error statistics use original fit epochs only. ${artifact.time_reference || ''}`; $('#compareNotice').classList.remove('hidden');
+    const surveyRuns=rows(artifact.runs).filter(run=>run.schema_version==='7.0').length;
+    const labels = surveyRuns===2?'Both survey fits stay in their declared world frame; no truth alignment is fitted.':surveyRuns===1?'The survey fit stays in its declared world frame. The other fit uses its recorded model alignment policy.':artifact.alignment === 'aligned' ? (hasKnownMap ? 'Joint-map fits use independent proper rigid alignment to truth at scale 1; known-map runs stay in their surveyed frame.' : 'Each joint-map fit uses proper rigid alignment to truth at scale 1; reflections are forbidden.') : 'Raw coordinates shown; joint-map errors depend on the frame.';
+    $('#compareNotice').textContent = `${labels} Fit markers show matched-time Euclidean position error on a shared 0–${displayNumber(maxError)} m scale. Scene lines use saved rendering interpolation; time-chart points and error statistics use ${a.some(run => run.m3) ? "saved display samples (M3–M7), fitted epochs (M0–M2)" : "original fitted epochs"} only. ${artifact.time_reference || ''}`; $('#compareNotice').classList.remove('hidden');
   }
   async function compareRuns() {
-    const aId = $('#compareRunA').value, bId = $('#compareRunB').value, alignment = $('#compareAlignment').value;
+    const [aId, bId] = window.RangeLabLibrary?.runIds() || []; const keys = window.RangeLabLibrary?.runKeys() || []; const alignment = $('#compareAlignment').value;
+    if (keys.length === 2 && keys.every(Boolean)) {
+      if(keys[0] === keys[1]) return toast('Choose two different saved source records.');
+      try { const saved=await api('/api/library/compare',{method:'POST',body:JSON.stringify({keys,alignment})});state.activeComparison=saved.artifact || saved;drawComparison(state.activeComparison);window.RangeLabLibrary?.reportPairing(...(state.activeComparison.runs || []));await refreshComparisons(saved.id);$('#m2Subtitle').textContent='Saved comparison · validated retained Library source records'; } catch(error) { toast(`Could not compare retained sources: ${error.message}`); }
+      return;
+    }
     if (!aId || !bId || aId === bId) return toast('Choose two different saved runs.');
     try {
       const [a, b] = await Promise.all([api(`/api/runs/${encodeURIComponent(aId)}`), api(`/api/runs/${encodeURIComponent(bId)}`)]);
       a.id ||= aId; b.id ||= bId;
+      window.RangeLabLibrary?.reportPairing(a, b);
       const saved = await api('/api/comparisons', { method: 'POST', body: JSON.stringify({ run_ids: [aId, bId], alignment }) });
       state.activeComparison = saved.artifact || saved; drawComparison(state.activeComparison); await refreshComparisons(saved.id);
       $('#m2Subtitle').textContent = `Saved comparison · ${aId.slice(0, 8)} vs ${bId.slice(0, 8)} · ${alignment}`;
@@ -237,7 +221,7 @@
     if (!id) return;
     try {
       const stored = await api(`/api/comparisons/${encodeURIComponent(id)}`); const artifact = stored.artifact || stored; state.activeComparison = artifact;
-      if (artifact.runs?.length === 2) { $('#compareRunA').value = artifact.runs[0].id; $('#compareRunB').value = artifact.runs[1].id; $('#compareAlignment').value = artifact.alignment || 'raw'; }
+      if (artifact.runs?.length === 2) { window.RangeLabLibrary?.setComparisonRuns(artifact.runs,artifact.library_sources,artifact.id); $('#compareAlignment').value = artifact.alignment || 'raw'; }
       drawComparison(artifact);
     } catch (error) { toast(`Could not open comparison: ${error.message}`); }
   }
@@ -279,6 +263,6 @@
     $('#exportConfigButton').addEventListener('click', () => { const config = formConfig(), active = window.RangeLab?.state?.activeRun; const sameConfig = active?.experiment?.config && JSON.stringify(active.experiment.config) === JSON.stringify(config); download('uwb-experiment-config.json', 'application/json', JSON.stringify({ schema_version: '1.0', artifact_type: 'experiment_config', config, options: { ...selectedOptions(), max_nfev: 2000 }, path_motion: sameConfig ? active.path_motion || null : null, sampling_density_hz: Math.max(0, config.samples - 1) / config.duration_s }, null, 2)); });
     refreshSweeps(); refreshRunList(); refreshComparisons();
   }
-  window.RangeLabM2 = { formConfig, refresh() { refreshSweeps(); refreshRunList(); refreshComparisons(); } };
+  window.RangeLabM2 = { openArtifact(artifact) { if(artifact.artifact_type==='comparison'){state.activeComparison=artifact;$('#compareAlignment').value=artifact.alignment || 'raw';drawComparison(artifact);if(artifact.runs?.length===2)window.RangeLabLibrary?.setComparisonRuns(artifact.runs,artifact.library_sources,artifact.id);}else renderSweep(artifact); }, openSweep: loadSweep, openComparison, compareRuns, formConfig, acceptRuns: refreshRunList, refresh() { refreshSweeps(); refreshRunList(); refreshComparisons(); } };
   document.addEventListener('DOMContentLoaded', init);
 })();

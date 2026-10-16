@@ -1,0 +1,370 @@
+{
+  "source": "evidence\\m6\\benchmark_20261014_172044_0a5af126",
+  "run_count": 48,
+  "paired_data_start_cells": 12,
+  "status_counts": {
+    "success": 48
+  },
+  "scope": {
+    "wrapper": "perf_counter around solve_experiment, includes objective/diagnostic construction and offline validation, excludes generation and disk saving",
+    "solver": "sum saved per-start runtime_s; includes hard-rejection pilot and second stage, excludes wrapper truth evaluation",
+    "limits": "Local small fixtures, one start, three repeated paired seeded data realizations; no general solver ranking or throughput claim"
+  },
+  "timing_distributions": [
+    {
+      "samples": 12,
+      "beacons": 4,
+      "loss": "gaussian",
+      "repeats": 3,
+      "wrapper_median_s": 0.1920252999989316,
+      "wrapper_min_s": 0.18809499999770196,
+      "wrapper_max_s": 0.19271870000375202,
+      "solver_median_s": 0.013725900003919378
+    },
+    {
+      "samples": 12,
+      "beacons": 4,
+      "loss": "huber",
+      "repeats": 3,
+      "wrapper_median_s": 0.19756819999747677,
+      "wrapper_min_s": 0.19381609999982174,
+      "wrapper_max_s": 0.20256759999756468,
+      "solver_median_s": 0.021639599995978642
+    },
+    {
+      "samples": 12,
+      "beacons": 4,
+      "loss": "cauchy",
+      "repeats": 3,
+      "wrapper_median_s": 0.19977420000213897,
+      "wrapper_min_s": 0.19675979999738047,
+      "wrapper_max_s": 0.2038036999947508,
+      "solver_median_s": 0.015264900001056958
+    },
+    {
+      "samples": 12,
+      "beacons": 4,
+      "loss": "hard_rejection",
+      "repeats": 3,
+      "wrapper_median_s": 0.22616159999597585,
+      "wrapper_min_s": 0.21622429999843007,
+      "wrapper_max_s": 0.2538734999980079,
+      "solver_median_s": 0.03196679999382468
+    },
+    {
+      "samples": 12,
+      "beacons": 8,
+      "loss": "gaussian",
+      "repeats": 3,
+      "wrapper_median_s": 0.25723179999476997,
+      "wrapper_min_s": 0.2447020999970846,
+      "wrapper_max_s": 0.2653193000005558,
+      "solver_median_s": 0.013539499996113591
+    },
+    {
+      "samples": 12,
+      "beacons": 8,
+      "loss": "huber",
+      "repeats": 3,
+      "wrapper_median_s": 0.26717520000238437,
+      "wrapper_min_s": 0.2529644999958691,
+      "wrapper_max_s": 0.273494799999753,
+      "solver_median_s": 0.025836599998001475
+    },
+    {
+      "samples": 12,
+      "beacons": 8,
+      "loss": "cauchy",
+      "repeats": 3,
+      "wrapper_median_s": 0.2820627999972203,
+      "wrapper_min_s": 0.255660099996021,
+      "wrapper_max_s": 0.3185388999991119,
+      "solver_median_s": 0.025856000000203494
+    },
+    {
+      "samples": 12,
+      "beacons": 8,
+      "loss": "hard_rejection",
+      "repeats": 3,
+      "wrapper_median_s": 0.27093600000080187,
+      "wrapper_min_s": 0.27007650000450667,
+      "wrapper_max_s": 0.2841857999956119,
+      "solver_median_s": 0.026888400003372226
+    },
+    {
+      "samples": 24,
+      "beacons": 4,
+      "loss": "gaussian",
+      "repeats": 3,
+      "wrapper_median_s": 0.28284610000264365,
+      "wrapper_min_s": 0.28133710000111023,
+      "wrapper_max_s": 0.29966330000024755,
+      "solver_median_s": 0.041507300004013814
+    },
+    {
+      "samples": 24,
+      "beacons": 4,
+      "loss": "huber",
+      "repeats": 3,
+      "wrapper_median_s": 0.3511394000015571,
+      "wrapper_min_s": 0.33011740000074496,
+      "wrapper_max_s": 0.5851187000007485,
+      "solver_median_s": 0.10234330000093905
+    },
+    {
+      "samples": 24,
+      "beacons": 4,
+      "loss": "cauchy",
+      "repeats": 3,
+      "wrapper_median_s": 0.29751240000041435,
+      "wrapper_min_s": 0.2828704000057769,
+      "wrapper_max_s": 0.32309340000210796,
+      "solver_median_s": 0.055148100000224076
+    },
+    {
+      "samples": 24,
+      "beacons": 4,
+      "loss": "hard_rejection",
+      "repeats": 3,
+      "wrapper_median_s": 0.3341613000011421,
+      "wrapper_min_s": 0.32672099999763304,
+      "wrapper_max_s": 0.35702799999853596,
+      "solver_median_s": 0.0776527000052738
+    },
+    {
+      "samples": 24,
+      "beacons": 8,
+      "loss": "gaussian",
+      "repeats": 3,
+      "wrapper_median_s": 0.4150616999977501,
+      "wrapper_min_s": 0.4054298999981256,
+      "wrapper_max_s": 0.41817579999769805,
+      "solver_median_s": 0.04523170000175014
+    },
+    {
+      "samples": 24,
+      "beacons": 8,
+      "loss": "huber",
+      "repeats": 3,
+      "wrapper_median_s": 0.43672249999508495,
+      "wrapper_min_s": 0.4188116000004811,
+      "wrapper_max_s": 0.44807500000024447,
+      "solver_median_s": 0.07457440000143833
+    },
+    {
+      "samples": 24,
+      "beacons": 8,
+      "loss": "cauchy",
+      "repeats": 3,
+      "wrapper_median_s": 0.5017137999966508,
+      "wrapper_min_s": 0.4285345999960555,
+      "wrapper_max_s": 0.511751700003515,
+      "solver_median_s": 0.1190160999976797
+    },
+    {
+      "samples": 24,
+      "beacons": 8,
+      "loss": "hard_rejection",
+      "repeats": 3,
+      "wrapper_median_s": 0.48955699999351054,
+      "wrapper_min_s": 0.48710180000489345,
+      "wrapper_max_s": 0.49649330000102054,
+      "solver_median_s": 0.08931220000522444
+    }
+  ],
+  "files": [
+    {
+      "path": "evidence\\m6\\benchmark_20261014_172044_0a5af126\\12_4_0_gaussian.json",
+      "sha256": "d576fa80064b5447e2f82a5bf2c98ba3d21646a33db022a7cbb90ce0a7c36115"
+    },
+    {
+      "path": "evidence\\m6\\benchmark_20261014_172044_0a5af126\\12_4_0_huber.json",
+      "sha256": "368cec2758f1ee4cf883c0eedd5e050ca4be18f2ac6f15c51df2542734dd2f61"
+    },
+    {
+      "path": "evidence\\m6\\benchmark_20261014_172044_0a5af126\\12_4_0_cauchy.json",
+      "sha256": "36096d9acabc70c4fffdee8e5e94be953d653b95999f10cfda4b6346279c96c3"
+    },
+    {
+      "path": "evidence\\m6\\benchmark_20261014_172044_0a5af126\\12_4_0_hard_rejection.json",
+      "sha256": "0e5a9e124e7b2895a7db04b30b6af1cc077b1aeeae93a38e4c8c3b45af7acca1"
+    },
+    {
+      "path": "evidence\\m6\\benchmark_20261014_172044_0a5af126\\12_4_1_gaussian.json",
+      "sha256": "46593368b1f832f6a06b995d1c4d67e541f7c38a257494a66adb6e1eb7670f6a"
+    },
+    {
+      "path": "evidence\\m6\\benchmark_20261014_172044_0a5af126\\12_4_1_huber.json",
+      "sha256": "e55b0d19a75076c0dee83eea7bc909a6c69999ea5f5e6e9eeb12f91009b4d17a"
+    },
+    {
+      "path": "evidence\\m6\\benchmark_20261014_172044_0a5af126\\12_4_1_cauchy.json",
+      "sha256": "6747847bbdec807ab422080be0892c0bb2fa1002a770703b8ca47766acb3fb63"
+    },
+    {
+      "path": "evidence\\m6\\benchmark_20261014_172044_0a5af126\\12_4_1_hard_rejection.json",
+      "sha256": "c0b8e8d97972a8dc136c32fa36a44639ed44a7479d77f1a5466235aa2bfed793"
+    },
+    {
+      "path": "evidence\\m6\\benchmark_20261014_172044_0a5af126\\12_4_2_gaussian.json",
+      "sha256": "0644e94c4bffdcb89c186c0f0c81c9ee598b32b4cf2609ee6f2d3d82cbc537cd"
+    },
+    {
+      "path": "evidence\\m6\\benchmark_20261014_172044_0a5af126\\12_4_2_huber.json",
+      "sha256": "caf7a61ed23d7edb7c27cb02a3835557707f81901f9c21d0f4c26f4661a7756a"
+    },
+    {
+      "path": "evidence\\m6\\benchmark_20261014_172044_0a5af126\\12_4_2_cauchy.json",
+      "sha256": "753147635dd08462335f7912df87749131ff201bea5dd3ff7d1fbb83b9c526a0"
+    },
+    {
+      "path": "evidence\\m6\\benchmark_20261014_172044_0a5af126\\12_4_2_hard_rejection.json",
+      "sha256": "a6d861427baabed7ebd357ebd19ffe7f53952310958c4e3fbf8723a84fea0096"
+    },
+    {
+      "path": "evidence\\m6\\benchmark_20261014_172044_0a5af126\\12_8_0_gaussian.json",
+      "sha256": "3176e24fed4af187713aa23e72cfc720ecf69d958e2ac5a2c920de14a96278c6"
+    },
+    {
+      "path": "evidence\\m6\\benchmark_20261014_172044_0a5af126\\12_8_0_huber.json",
+      "sha256": "d37f0da8c4467ed8dc9c86e5ded6af70e07f2c25688f265ba175dee673d858a9"
+    },
+    {
+      "path": "evidence\\m6\\benchmark_20261014_172044_0a5af126\\12_8_0_cauchy.json",
+      "sha256": "5a6afea855858b871623e7834af5a0684efcfd31fb2034324d33c82177a2ea8e"
+    },
+    {
+      "path": "evidence\\m6\\benchmark_20261014_172044_0a5af126\\12_8_0_hard_rejection.json",
+      "sha256": "4e1215367682b6d29931c5266b640b551c886a0cea8881d1ab923d3d1eb665e5"
+    },
+    {
+      "path": "evidence\\m6\\benchmark_20261014_172044_0a5af126\\12_8_1_gaussian.json",
+      "sha256": "99690dd232df1211be9816cce8064ccc9b1c0a588d20dab883cb5c6e8f60fa72"
+    },
+    {
+      "path": "evidence\\m6\\benchmark_20261014_172044_0a5af126\\12_8_1_huber.json",
+      "sha256": "f5b2808bcea1164ae91b4c5c182ddc3dda08ea011da1897e4fe1a2e2441e482d"
+    },
+    {
+      "path": "evidence\\m6\\benchmark_20261014_172044_0a5af126\\12_8_1_cauchy.json",
+      "sha256": "ccd7d3d4c661fefd144a6ae502630da283200acc43e24aa6ae5c85f48eaafb60"
+    },
+    {
+      "path": "evidence\\m6\\benchmark_20261014_172044_0a5af126\\12_8_1_hard_rejection.json",
+      "sha256": "7eb91ddf300988566882edec48417831ddf9a83c66706f8e1ca3ff1534f3a81a"
+    },
+    {
+      "path": "evidence\\m6\\benchmark_20261014_172044_0a5af126\\12_8_2_gaussian.json",
+      "sha256": "cc55d279cdfb78452e1e7cd1257cf1cf18a66675c0efe8c25f35899cfe6c816e"
+    },
+    {
+      "path": "evidence\\m6\\benchmark_20261014_172044_0a5af126\\12_8_2_huber.json",
+      "sha256": "2a11540f51078d2d44031bb46db9c6bf1d960116191bf481079ec2eba598bfdb"
+    },
+    {
+      "path": "evidence\\m6\\benchmark_20261014_172044_0a5af126\\12_8_2_cauchy.json",
+      "sha256": "b0a4b710e226222c22eb54951841e54467c0d8af0c9579e4b8cbe8280851a631"
+    },
+    {
+      "path": "evidence\\m6\\benchmark_20261014_172044_0a5af126\\12_8_2_hard_rejection.json",
+      "sha256": "4e031ed268095b83b5f23cb60d339e6103c10353ddae1c70c8502c038234b42c"
+    },
+    {
+      "path": "evidence\\m6\\benchmark_20261014_172044_0a5af126\\24_4_0_gaussian.json",
+      "sha256": "e08066f855498f75b491ed03f67a3d7c2a1a575bb1fa7cb963e36ba4363c9371"
+    },
+    {
+      "path": "evidence\\m6\\benchmark_20261014_172044_0a5af126\\24_4_0_huber.json",
+      "sha256": "3bff1280cc1f8ca7ca713fe93b0ba9cb0b5ce650cdb92c86b23fcdb4cf598ee6"
+    },
+    {
+      "path": "evidence\\m6\\benchmark_20261014_172044_0a5af126\\24_4_0_cauchy.json",
+      "sha256": "2020a3608a919e0cea45801b4bce1e2691f4ca097b63a30ab77ef979ed41fa4d"
+    },
+    {
+      "path": "evidence\\m6\\benchmark_20261014_172044_0a5af126\\24_4_0_hard_rejection.json",
+      "sha256": "453358232c6086ae22bef37a7e4ca294b29213969d8a2f22d7513c3f459427e1"
+    },
+    {
+      "path": "evidence\\m6\\benchmark_20261014_172044_0a5af126\\24_4_1_gaussian.json",
+      "sha256": "05ff281fa4a8013ae883a13bf7ed0deff1fe52af7e912c19ac1b0215ef4145b0"
+    },
+    {
+      "path": "evidence\\m6\\benchmark_20261014_172044_0a5af126\\24_4_1_huber.json",
+      "sha256": "2acf17a5a2fc1fb5c29266acd68e935458abcea0c33cd8029b8d4f82bce9f190"
+    },
+    {
+      "path": "evidence\\m6\\benchmark_20261014_172044_0a5af126\\24_4_1_cauchy.json",
+      "sha256": "e0225b42d7dacd4da8a9b538717b03140a78c0edb47f7de9b71e947e2c7bff78"
+    },
+    {
+      "path": "evidence\\m6\\benchmark_20261014_172044_0a5af126\\24_4_1_hard_rejection.json",
+      "sha256": "58a44b0f0bfddfe66706809b35717fc05177c30165a1e5f550ca14914ec4b054"
+    },
+    {
+      "path": "evidence\\m6\\benchmark_20261014_172044_0a5af126\\24_4_2_gaussian.json",
+      "sha256": "375d4c13d4890763ba9c85784e572b3d1482cffaeecccd65957a148ea96d8555"
+    },
+    {
+      "path": "evidence\\m6\\benchmark_20261014_172044_0a5af126\\24_4_2_huber.json",
+      "sha256": "605d1828e25472a851d266757cee91d19f21840a3d6f8e8e6384022dee2cf74d"
+    },
+    {
+      "path": "evidence\\m6\\benchmark_20261014_172044_0a5af126\\24_4_2_cauchy.json",
+      "sha256": "8515b2e5a6d071278aa492bec2ca4bb8cf4ba25097bbb17d4cfd8938932ea18f"
+    },
+    {
+      "path": "evidence\\m6\\benchmark_20261014_172044_0a5af126\\24_4_2_hard_rejection.json",
+      "sha256": "faa994a6c3419fffc7869216416014ad4b1d9046b9fdbc65d41c8b041bab95d0"
+    },
+    {
+      "path": "evidence\\m6\\benchmark_20261014_172044_0a5af126\\24_8_0_gaussian.json",
+      "sha256": "577b10d35f329fa172aed188ebf3c8a921973eb52c64d3c07dd15721be534990"
+    },
+    {
+      "path": "evidence\\m6\\benchmark_20261014_172044_0a5af126\\24_8_0_huber.json",
+      "sha256": "defa565d5039379058f63a177eb434f457bc1904df5f1d072d7160573d3d48ee"
+    },
+    {
+      "path": "evidence\\m6\\benchmark_20261014_172044_0a5af126\\24_8_0_cauchy.json",
+      "sha256": "880197e8ade1953cd3ddd292c0da377952ca7565d1110ed940b8137deffb72a5"
+    },
+    {
+      "path": "evidence\\m6\\benchmark_20261014_172044_0a5af126\\24_8_0_hard_rejection.json",
+      "sha256": "5f15342283c1e124fc2a73d1e94901bb7323daf405a4d9af8d176d4e574eaf4f"
+    },
+    {
+      "path": "evidence\\m6\\benchmark_20261014_172044_0a5af126\\24_8_1_gaussian.json",
+      "sha256": "25b0184e580f6e5415f7c1d3a8d95c66cff79b8973e7fb564ad0e1040f4db556"
+    },
+    {
+      "path": "evidence\\m6\\benchmark_20261014_172044_0a5af126\\24_8_1_huber.json",
+      "sha256": "567f3f9073c5455db7aaa8326d88ccadbd53809639a3cec3ede4d332e1226122"
+    },
+    {
+      "path": "evidence\\m6\\benchmark_20261014_172044_0a5af126\\24_8_1_cauchy.json",
+      "sha256": "8b1cc3021b8a3e1b03aab6e282227e7fc7e110e236d7c3ff1167901ed797c2f1"
+    },
+    {
+      "path": "evidence\\m6\\benchmark_20261014_172044_0a5af126\\24_8_1_hard_rejection.json",
+      "sha256": "b128202e0519da36bb5aa042328d73020e8d7f9ff1b19407140280edbfb2b6ef"
+    },
+    {
+      "path": "evidence\\m6\\benchmark_20261014_172044_0a5af126\\24_8_2_gaussian.json",
+      "sha256": "6e2bcc611c20caff45d4a3e27f0383f187dbd82c424c022ec6bede02cf2c0f48"
+    },
+    {
+      "path": "evidence\\m6\\benchmark_20261014_172044_0a5af126\\24_8_2_huber.json",
+      "sha256": "155dffaa583f588a4bdcab85ec67186740667d407aaccad4cb0d568ad775ebc5"
+    },
+    {
+      "path": "evidence\\m6\\benchmark_20261014_172044_0a5af126\\24_8_2_cauchy.json",
+      "sha256": "88ed4709ddf3aaa817fa1f33a9110565f6fbd5d365c659d05e435587686fc748"
+    },
+    {
+      "path": "evidence\\m6\\benchmark_20261014_172044_0a5af126\\24_8_2_hard_rejection.json",
+      "sha256": "e2957f966507b59068e2ffec79f22100911d7a8edc388401c1298d0880d01561"
+    }
+  ],
+  "interpretation": "Paired local small-fixture timings include diagnostics/validation overhead and system contention. They do not establish general speed rankings."
+}

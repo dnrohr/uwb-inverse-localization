@@ -17,6 +17,15 @@
   const toRows = value => Array.isArray(value) ? value : [];
   const xyz = value => Array.isArray(value) && value.length >= 3 && value.slice(0, 3).every(Number.isFinite) ? value.slice(0, 3) : null;
   const points = value => toRows(value).map(xyz).filter(Boolean);
+  function transformPoint(p, alignment) {
+    if (!alignment?.applied) return p.slice();
+    if (Array.isArray(alignment.rotation_xyz) && Array.isArray(alignment.translation_xyz_m)) {
+      return [0, 1, 2].map(j => p.reduce((sum, value, i) => sum + value * alignment.rotation_xyz[i][j], 0) + alignment.translation_xyz_m[j]);
+    }
+    const r = alignment.rotation_xy, t = alignment.translation_xy_m;
+    if (!r || !t) return p.slice();
+    return [p[0]*r[0][0]+p[1]*r[1][0]+t[0], p[0]*r[0][1]+p[1]*r[1][1]+t[1], p[2]+(alignment.gauge_translation_z_m || 0)];
+  }
   const number = value => value === null || value === undefined || value === '' || !Number.isFinite(Number(value)) ? null : Number(value);
   const fmt = (value, digits = 4) => Number.isFinite(value) ? (value !== 0 && Math.abs(value) < 10 ** (-digits) ? value.toExponential(2) : value.toFixed(digits)) : '—';
   const escapeHtml = value => String(value ?? '').replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[c]);
@@ -36,19 +45,8 @@
   function pathLabel(type) { return type ? `${String(type).replace(/_/g, ' ').replace(/\b\w/g, char => char.toUpperCase())} path` : null; }
   function runLabel(run) { const customPath = pathLabel(run.path_type || run.experiment?.config?.path?.type); return `${run.reference_name ? `${String(run.reference_name).replace(/_/g, ' ')} · ` : ''}${customPath || scenarioLabel(run.scenario)} · ${run.mode === 'known_map' ? 'Known map' : 'Joint map'}`; }
 
-  async function refreshRuns(selectId) {
-    try {
-      const result = await api('/api/runs'); state.runs = Array.isArray(result) ? result : (result.runs || []);
-      renderRuns(selectId || (state.activeRun && state.activeRun.id));
-    } catch (error) { console.warn('Could not load saved runs:', error); }
-  }
-  function renderRuns(selectedId) {
-    const list = $('#runsList'); $('#runCount').textContent = String(state.runs.length);
-    if (!state.runs.length) { list.innerHTML = '<div class="empty-runs">Your completed runs will appear here.</div>'; return; }
-    list.innerHTML = state.runs.map(run => `<button type="button" class="run-item ${run.id === selectedId ? 'selected' : ''}" data-run-id="${escapeHtml(run.id)}"><span class="run-runmark ${escapeHtml(run.status || '')}"></span><span class="run-info"><span class="run-name">${escapeHtml(runLabel(run))}</span><span class="run-meta">${escapeHtml(run.id)} · ${escapeHtml(run.status || 'saved')}</span></span><span class="run-open">›</span></button>`).join('');
-    $$('.run-item', list).forEach(button => button.addEventListener('click', () => loadRun(button.dataset.runId)));
-  }
-
+  async function refreshRuns() { window.RangeLabLibrary?.invalidate(); }
+  function renderRuns() { window.RangeLabLibrary?.activeResult(state.activeRun); }
   async function startRun(event) {
     event.preventDefault();
     const submit = $('#runButton');
@@ -107,12 +105,13 @@
   }
   function renderRun(run) {
     if (!run) return;
+    window.RangeLabLibrary?.activeResult(run);
     state.activeRun = run; state.truth = run.experiment && run.experiment.truth || {};
     state.selectedStart = state.selectedStart ?? (pickStart(run) && pickStart(run).index);
     state.start = pickStart(run, state.selectedStart); state.runMeta = run;
     const rawStatus = run.status || 'complete';
     const status = rawStatus === 'success' || rawStatus === 'not_converged' ? 'complete' : rawStatus;
-    const initLabel = run.options && run.options.initialization === 'truth_near' ? 'Truth-near diagnostic' : 'Independent initialization';
+    const initLabel = run.options?.initialization === 'truth_near' ? 'Truth-near diagnostic' : run.options?.initialization === 'algebraic' ? 'Algebraic initialization · measurement only' : 'Independent initialization';
     setStatus(status, status === 'complete' ? `${rawStatus === 'success' ? 'Converged' : rawStatus === 'not_converged' ? 'Not converged' : 'Run complete'} · ${initLabel}` : status === 'failed' ? 'Run failed · outcome retained' : 'Run running');
     const mode = run.options && run.options.mode || run.mode || 'joint';
     const scenario = run.experiment && run.experiment.config && run.experiment.config.scenario || run.scenario || '';
@@ -124,6 +123,7 @@
     updateExport(run);
     $('#pngButton').disabled = !window.Plotly || !$('#scene').data;
     drawScene(run, state.start); drawMetrics(run, state.start); drawCharts(run, state.start); drawDiagnostics(run, state.start);
+    window.RangeLabM7?.onRun(run, state.start);
   }
 
   function updateExport(run) {
@@ -316,35 +316,39 @@
   }
   function drawScene(run, start) {
     if (!window.Plotly) { state.sceneTraces = []; $('#pngButton').disabled = true; $('#scene').innerHTML = '<div class="scene-empty"><b>Plotly is unavailable</b><span>Check that /vendor/plotly.min.js is being served.</span></div>'; return; }
-    const target = $('#scene'); const truth = points(state.truth.trajectory); const truthBeacons = points(state.truth.beacons);
+    const target = $('#scene'); let truth = points(state.truth.trajectory), truthBeacons = points(state.truth.beacons);
+    target.dataset.generation = String(Number(target.dataset.generation || 0) + 1);
     const estimate = points(start && start.estimate && start.estimate.trajectory); const estimateBeacons = points(start && start.estimate && start.estimate.beacons);
     const initial = points(start && start.initial && start.initial.trajectory); const initialBeacons = points(start && start.initial && start.initial.beacons);
     const mode = ((run.options && run.options.mode) || run.mode) === 'known_map' ? 'known_map' : 'joint';
     const rawEstimate = estimate;
     const evaluation = start && start.diagnostics && start.diagnostics.evaluation || {};
     const aligned = start && start.aligned_estimate || evaluation.aligned_geometry;
-    if (mode !== 'joint' || !aligned) $('#coordinateMode').value = 'raw';
+    if (mode !== 'joint' || !aligned || run.schema_version === '7.0') $('#coordinateMode').value = 'raw';
     const coordMode = $('#coordinateMode').value;
     const useAligned = coordMode === 'aligned' && mode === 'joint' && aligned;
+    const canonical = ['4.0','5.0','6.0'].includes(run.schema_version) && mode === 'joint' && !useAligned ? evaluation.truth_canonical_transform || run.diagnostics?.truth_canonical_transform : null;
+    const truthTransform = p => canonical ? transformPoint(p, {...canonical, applied:true}) : p;
+    truth = truth.map(truthTransform); truthBeacons = truthBeacons.map(truthTransform);
     const shownEstimate = useAligned ? points(aligned.trajectory || aligned.estimated_trajectory) : rawEstimate;
     const shownBeacons = mode === 'known_map' ? truthBeacons : (useAligned ? points(aligned.beacons || aligned.estimated_beacons) : estimateBeacons);
     let shownInitial = initial, shownInitialBeacons = initialBeacons;
-    if (useAligned && evaluation.alignment && Array.isArray(evaluation.alignment.rotation_xy) && Array.isArray(evaluation.alignment.translation_xy_m)) {
-      const rotation = evaluation.alignment.rotation_xy, translation = evaluation.alignment.translation_xy_m;
-      const transform = p => [p[0] * rotation[0][0] + p[1] * rotation[1][0] + translation[0], p[0] * rotation[0][1] + p[1] * rotation[1][1] + translation[1], p[2]];
+    if (useAligned && evaluation.alignment) {
+      const transform = p => transformPoint(p, evaluation.alignment);
       shownInitial = initial.map(transform); shownInitialBeacons = initialBeacons.map(transform);
     }
-    if (mode === 'joint') { $('#coordinateMode').disabled = false; $('#coordinateMode').options[1].disabled = !aligned; }
+    if (mode === 'joint') { $('#coordinateMode').disabled = false; $('#coordinateMode').options[1].disabled = !aligned || run.schema_version === '7.0'; }
     else { $('#coordinateMode').value = 'raw'; $('#coordinateMode').options[1].disabled = true; $('#coordinateMode').disabled = true; }
     const scenario = run.experiment && run.experiment.config && run.experiment.config.scenario;
     const motion = run.path_motion || {};
     const pathInfo = motion.length_m !== undefined ? ` · ${fmt(motion.length_m, 2)} m path · ${fmt(motion.speed_m_s, 2)} m/s · ${fmt(Math.max(0, (run.experiment?.config?.samples || 0) - 1) / (run.experiment?.config?.duration_s || 1), 2)} samples/s` : '';
     const pathTitle = run.experiment?.config?.path?.type ? pathLabel(run.experiment.config.path.type) : null;
-    $('#sceneSubtitle').textContent = `${pathTitle || scenarioLabel(scenario)} · ${mode === 'known_map' ? 'Known surveyed map' : `Joint map · ${coordMode} frame`} · ${run.options && run.options.initialization === 'truth_near' ? 'Truth-near diagnostic' : 'Independent initialization'} · ${toRows(run.starts).length} starts${pathInfo}`;
+    $('#sceneSubtitle').textContent = `${pathTitle || scenarioLabel(scenario)} · ${run.schema_version==='7.0'?'Joint map · surveyed world frame':mode === 'known_map' ? 'Known surveyed map' : `Joint map · ${coordMode} frame`} · ${run.options?.initialization === 'truth_near' ? 'Truth-near diagnostic' : run.options?.initialization === 'algebraic' ? 'Algebraic initialization · measurement only' : 'Independent initialization'} · ${toRows(run.starts).length} starts${pathInfo}`;
     const notice = $('#plotNotice'); const alignment = evaluation.alignment || {};
     const runWarnings = toRows(run.diagnostics && run.diagnostics.warnings);
-    if (mode === 'joint' && coordMode === 'raw') { notice.textContent = 'Raw coordinates: joint-map geometric errors depend on frame until aligned.'; notice.classList.remove('hidden'); }
-    else if (mode === 'joint' && coordMode === 'aligned') { notice.textContent = `Rigid alignment · scale fixed to 1 · reflections ${alignment.reflection_allowed === false ? 'disallowed' : 'resolved by model convention'}.`; notice.classList.remove('hidden'); }
+    if (run.schema_version === '7.0') { notice.textContent = 'Surveyed world frame: only declared fixed coordinates and survey priors constrain the fit. Remaining rigid freedoms are retained in rank; no canonical transform, scale or reflection fit is applied.'; notice.classList.remove('hidden'); }
+    else if (mode === 'joint' && coordMode === 'raw') { notice.textContent = ['4.0','5.0','6.0'].includes(run.schema_version) ? 'Raw estimator frame: truth is converted to the declared gauge. Absolute joint-map world height requires a datum; no scale or reflection fit is applied.' : 'Raw coordinates: joint-map geometric errors depend on frame until aligned.'; notice.classList.remove('hidden'); }
+    else if (mode === 'joint' && coordMode === 'aligned') { notice.textContent = `Rigid alignment · scale fixed to 1 · reflections ${alignment.reflection_allowed === false ? 'disallowed' : 'resolved by model convention'}. ${['4.0','5.0','6.0'].includes(run.schema_version) ? alignment.description || '' : ''}`; notice.classList.remove('hidden'); }
     else if (runWarnings.length) { notice.textContent = runWarnings.join(' · '); notice.classList.remove('hidden'); }
     else notice.classList.add('hidden');
     const traces = [];
@@ -353,7 +357,14 @@
     add(pathTrace(truth, 'Ground truth · samples', colors.teal, 'solid', 'truth', true, true), 'truth');
     add(beaconTrace(truthBeacons, 'Ground truth · beacons', colors.teal, 'circle', 'truth'), 'truth');
     add(pathTrace(shownEstimate, useAligned ? 'Estimate · aligned' : 'Estimate · raw', colors.coral, 'dash', 'estimate'), 'estimate');
-    add(pathTrace(shownEstimate, 'Estimated samples', colors.coral, 'solid', 'estimate', true, true), 'estimate');
+    add(pathTrace(shownEstimate, ['3.0','4.0','5.0','6.0','7.0'].includes(run.schema_version) ? 'Estimate · interpolated display samples' : 'Estimated samples', colors.coral, 'solid', 'estimate', true, true), 'estimate');
+    if (['3.0','4.0','5.0','6.0','7.0'].includes(run.schema_version) && start?.estimate?.knot_trajectory) {
+      const knots = points(start.estimate.knot_trajectory).map(p => {
+        if (!useAligned || !evaluation.alignment?.applied) return p;
+        return transformPoint(p, evaluation.alignment);
+      });
+      add(pathTrace(knots, 'Fitted trajectory knots', colors.coral, 'solid', 'estimate', true, true), 'estimate');
+    }
     if (mode !== 'known_map') add(beaconTrace(shownBeacons, useAligned ? 'Estimated beacons · aligned' : 'Estimated beacons · raw', colors.coral, 'diamond', 'estimate'), 'estimate');
     add(pathTrace(shownInitial, 'Initial trajectory', colors.amber, 'dot', 'initial'), 'initial');
     add(pathTrace(shownInitial, 'Initial samples', colors.amber, 'dot', 'initial', true, true), 'initial');
@@ -369,16 +380,48 @@
       for (let i = 0; i < total; i += step) {
         const obs = observations[i]; const epoch = number(obs.epoch); const beaconId = number(obs.beacon_id);
         if (epoch === null || beaconId === null) continue;
-        const p = shownEstimate[epoch]; const b = map[beaconId] || map[beaconId - 1]; if (p && b) add(line3d(p, b, '#a9bcc0', 'Sampled fit range rays', 'rays', 'solid'), 'rays');
+        let p = ['3.0','4.0','5.0','6.0','7.0'].includes(run.schema_version) ? xyz(start?.estimate?.ping_trajectory?.[i]) : shownEstimate[epoch];
+        if (p && ['3.0','4.0','5.0','6.0','7.0'].includes(run.schema_version) && useAligned && evaluation.alignment?.applied) {
+          p = transformPoint(p, evaluation.alignment);
+        }
+        const b = map[beaconId] || map[beaconId - 1];
+        const decision = start?.diagnostics?.observation_decisions?.[i];
+        if (p && b) {
+          const color = decision?.rejected ? '#c13943' : decision?.weight < .999 ? '#db931e' : '#a9bcc0';
+          const name = decision?.rejected ? 'Rejected fit ranges · red' : decision?.weight < .999 ? 'Downweighted fit ranges · amber' : 'Retained fit ranges · gray';
+          add(line3d(p, b, color, run.schema_version === '6.0' ? name : 'Sampled fit range rays', 'rays', 'solid'), 'rays');
+          if (run.schema_version === '6.0' && (decision?.rejected || decision?.weight < .999)) {
+            add({x:[p[0]],y:[p[1]],z:[p[2]],type:'scatter3d',mode:'markers',name:'Trajectory at downweighted/rejected ping',showlegend:false,marker:{color,size:6,symbol:'circle'},hovertemplate:'Trajectory at affected ping<extra></extra>'}, 'rays');
+            const knots = start.estimate.knot_trajectory || [], times = start.estimate.knot_times_s || [];
+            let k = times.findIndex((t, j) => j < times.length - 1 && obs.assumed_time_s >= t && obs.assumed_time_s <= times[j + 1]);
+            if (k >= 0 && knots[k] && knots[k + 1]) {
+              const a = useAligned ? transformPoint(knots[k], evaluation.alignment) : knots[k];
+              const c = useAligned ? transformPoint(knots[k + 1], evaluation.alignment) : knots[k + 1];
+              const affected = line3d(a, c, color, 'Knot segment supporting affected ping · sampled', 'rays', 'solid');
+              affected.line.width = 7; add(affected, 'rays');
+            }
+          }
+        }
       }
     }
-    add(planeTrace(planeRectangle(truth, 0), 'Tag reference plane', '#c7dfda', 'tagPlane'), 'tagPlane');
+    const height = start?.diagnostics?.height || run.diagnostics?.height || {};
+    add(planeTrace(['4.0','5.0','6.0'].includes(run.schema_version) ? points(height.truth_planarity?.plane_corners).map(truthTransform) : planeRectangle(truth, 0), ['4.0','5.0','6.0'].includes(run.schema_version) ? 'Truth tag best-fit plane' : 'Tag reference plane', '#c7dfda', 'tagPlane'), 'tagPlane');
     const beaconZ = truthBeacons.length ? truthBeacons.reduce((sum, p) => sum + p[2], 0) / truthBeacons.length : 0;
-    add(planeTrace(planeRectangle(truthBeacons, beaconZ), 'Beacon reference plane', '#a9c9c1', 'beaconPlane'), 'beaconPlane');
+    add(planeTrace(['4.0','5.0','6.0'].includes(run.schema_version) ? points(height.truth_beacon_planarity?.plane_corners).map(truthTransform) : planeRectangle(truthBeacons, beaconZ), ['4.0','5.0','6.0'].includes(run.schema_version) ? 'Truth beacon best-fit plane' : 'Beacon reference plane', '#a9c9c1', 'beaconPlane'), 'beaconPlane');
     // One trace per segment layer keeps toggles responsive instead of issuing
     // dozens of separate WebGL redraws for sampled rays and error vectors.
     for (const layer of ['errors', 'rays']) {
       const segments = traces.filter(trace => trace._layer === layer);
+      if (run.schema_version === '6.0' && layer === 'rays') {
+        const groups = new Map();
+        for (const segment of segments) {
+          const key = `${segment.name}/${segment.line?.color || segment.marker?.color}`;
+          if (!groups.has(key)) groups.set(key, {...segment, x:[], y:[], z:[]});
+          const combined = groups.get(key); combined.x.push(...segment.x); combined.y.push(...segment.y); combined.z.push(...segment.z);
+        }
+        for (let i = traces.length - 1; i >= 0; i--) if (traces[i]._layer === layer) traces.splice(i, 1);
+        traces.push(...groups.values()); continue;
+      }
       if (segments.length > 1) {
         const combined = { ...segments[0], x: [], y: [], z: [] };
         for (const segment of segments) {
@@ -402,18 +445,24 @@
       let low = Math.min(...vals), high = Math.max(...vals); const pad = Math.max((high - low) * .08, .1); return [low - pad, high + pad];
     });
     const layout = sceneLayout();
+    if (run.schema_version === '6.0') layout.annotations = [{xref:'paper',yref:'paper',x:.01,y:.01,xanchor:'left',yanchor:'bottom',showarrow:false,font:{size:10,color:'#536768'},bgcolor:'rgba(255,255,255,.88)',text:'M6 sampled fit rays: gray w ≥ 0.999; amber 0 &lt; w &lt; 0.999; red w = 0.<br>Thick knot segments support affected pings. Injected labels never set these colors.'}];
     ['xaxis', 'yaxis', 'zaxis'].forEach((axis, i) => { layout.scene[axis].range = ranges[i]; layout.scene[axis].autorange = false; });
     target.querySelectorAll('.scene-empty').forEach(node => node.remove());
     const sceneStarted = performance.now();
     Plotly.react(target, traces, layout, { responsive: true, displaylogo: false, modeBarButtonsToRemove: ['toImage', 'sendDataToCloud', 'sendChartToCloud'], scrollZoom: true }).then(() => {
       target.dataset.renderMs = (performance.now() - sceneStarted).toFixed(2);
       if (!state.sceneCameraHandler && typeof target.on === 'function') {
-        state.sceneCameraHandler = () => { const camera = target._fullLayout && target._fullLayout.scene && target._fullLayout.scene.camera; if (camera) state.camera = JSON.parse(JSON.stringify(camera)); };
+        state.sceneCameraHandler = () => { const camera = target._fullLayout && target._fullLayout.scene && target._fullLayout.scene.camera; if (camera) { state.camera = JSON.parse(JSON.stringify(camera)); target.dataset.camera = JSON.stringify(state.camera); } };
         target.on('plotly_relayout', state.sceneCameraHandler);
       }
       const scene = target._fullLayout && target._fullLayout.scene;
       if (scene && scene.camera) state.camera = scene.camera;
+      if (state.camera) target.dataset.camera = JSON.stringify(state.camera);
       $('#pngButton').disabled = false;
+      if (window.RangeLabM3 && state.activeRun === run) window.RangeLabM3.onRun(run);
+      if (window.RangeLabM4 && state.activeRun === run) window.RangeLabM4.onRun(run);
+      if (window.RangeLabM5 && state.activeRun === run) window.RangeLabM5.onRun(run);
+      if (window.RangeLabM6 && state.activeRun === run) window.RangeLabM6.onRun(run);
     }).catch(error => { console.error('Scene drawing failed:', error); showToast(`Scene could not render: ${error.message}`); });
   }
 
@@ -505,7 +554,7 @@
     const runNotes = arrAttr(summary, ['warnings']);
     content.innerHTML = `${starts.length > 1 ? `<div class="start-selector"><label for="startSelect">Inspect outcome</label><select id="startSelect">${options}</select></div>` : ''}<div class="diagnostics-table-wrap"><table class="diagnostics-table"><thead><tr><th>START</th><th>OUTCOME</th><th>SUCCESS</th><th>FINAL OBJECTIVE</th><th>RUNTIME (S)</th><th>RANK / PARAMS</th></tr></thead><tbody>${rows || '<tr><td colspan="6">No per-start outcomes were saved.</td></tr>'}</tbody></table></div><div class="diag-columns">${values}${recoveryBoxes}</div>${summary.ambiguity ? `<p style="margin-top:10px">${escapeHtml(summary.ambiguity)}</p>` : ''}${runNotes ? `<p style="margin-top:10px">${escapeHtml(Array.isArray(runNotes) ? runNotes.join(' · ') : runNotes)}</p>` : ''}${starts.length ? '' : '<p style="margin-top:10px">This run contains no start records. Raw data follows.</p>'}<details class="raw-json"><summary>View raw run JSON</summary><pre>${escapeHtml(JSON.stringify(run, null, 2))}</pre></details>`;
     const selector = $('#startSelect', content);
-    if (selector) selector.addEventListener('change', () => { state.selectedStart = selector.value; state.start = pickStart(run, state.selectedStart); drawScene(run, state.start); drawMetrics(run, state.start); drawCharts(run, state.start); drawDiagnostics(run, state.start); });
+    if (selector) selector.addEventListener('change', () => { state.selectedStart = selector.value; state.start = pickStart(run, state.selectedStart); drawScene(run, state.start); drawMetrics(run, state.start); drawCharts(run, state.start); drawDiagnostics(run, state.start); window.RangeLabM7?.onRun(run, state.start); });
   }
 
   function setCamera(view) {
@@ -586,6 +635,6 @@
     } catch (error) { console.warn('Scenario list unavailable; using built-in defaults.', error); }
     await refreshRuns();
   }
-  window.RangeLab = { state, renderRun, refreshRuns, openRun: loadRun, api, pickStart, setSelectedStart(index) { state.selectedStart = index; } };
+  window.RangeLab = { importFile:importRun, state, renderRun, refreshRuns, acceptRunSummaries(runs, selectedId) { state.runs = runs; renderRuns(selectedId || state.activeRun?.id); }, openRun: loadRun, api, pickStart, setSelectedStart(index) { state.selectedStart = index; } };
   document.addEventListener('DOMContentLoaded', init);
 })();

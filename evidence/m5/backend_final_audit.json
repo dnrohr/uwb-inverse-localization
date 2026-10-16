@@ -1,0 +1,413 @@
+{
+  "scope": "Backend only, UI/overall completion excluded",
+  "errors": [],
+  "files": [
+    {
+      "path": "evidence/m5/acceptance_20261014_124422_c74e2389/sweeps/independent_basin.json",
+      "sha256": "96e35272c98f59d60e88690c3ca5fbec08b565288c566f28ee0a83506aa69ff9",
+      "status": "passed",
+      "starts": 48
+    },
+    {
+      "path": "evidence/m5/acceptance_20261014_124422_c74e2389/sweeps/initializer_degenerate.json",
+      "sha256": "1922f4cc099da29fd065a222ddee6d64d946bcf0175253d08b9646ff2abd57ae",
+      "status": "passed",
+      "starts": 32
+    },
+    {
+      "path": "evidence/m5/acceptance_20261014_124422_c74e2389/sweeps/initializer_noisy.json",
+      "sha256": "a6a8ab2ec69f222750c9d14431ff3ab4482ef4b64e3b7d938b3b5ae33eb8396d",
+      "status": "passed",
+      "starts": 32
+    },
+    {
+      "path": "evidence/m5/acceptance_20261014_124422_c74e2389/sweeps/initializer_noisy_relaxed.json",
+      "sha256": "93ca019d85b67572f88f74ac4f978980e7fa755ac27e1fe45985ab6acae13eeb",
+      "status": "passed",
+      "starts": 32
+    },
+    {
+      "path": "evidence/m5/acceptance_20261014_124422_c74e2389/sweeps/initializer_valid.json",
+      "sha256": "ac349656a8c8d6c50cb6de2e8a6c6127c844448b8ce5f53456536dd1a0cf422a",
+      "status": "passed",
+      "starts": 32
+    },
+    {
+      "path": "evidence/m5/acceptance_20261014_124422_c74e2389/sweeps/near_zero_height.json",
+      "sha256": "d784d43caa11ad2afe36ffa7795bf4eb6bf09e529562f2c75fb217b886190812",
+      "status": "passed",
+      "starts": 32
+    },
+    {
+      "path": "evidence/m5/acceptance_20261014_124422_c74e2389/sweeps/noise.json",
+      "sha256": "fc12c30ebf14d1ff014cd632d7a8576b27079345c73d29a177108bf07b0f7c83",
+      "status": "passed",
+      "starts": 32
+    },
+    {
+      "path": "evidence/m5/acceptance_20261014_124422_c74e2389/sweeps/truth_near_basin.json",
+      "sha256": "58a58fe3bf1abf0358d01d5ed8f4139d360a8166e2fa2019b1f2d94d4b774f0c",
+      "status": "passed",
+      "starts": 48
+    },
+    {
+      "path": "evidence/m5/acceptance_20261014_124422_c74e2389/sweeps/weak_geometry.json",
+      "sha256": "5384c76bfde8beeb8cdf8382b3c43a5618e0a4f891ab398c1cc9f8eced323d1e",
+      "status": "passed",
+      "starts": 32
+    },
+    {
+      "path": "evidence/m5/acceptance_20261014_124422_c74e2389/checkpoints/independent_basin_checkpoint.json",
+      "sha256": "e105c49e174232c677b5af47127ccbdafde5536bbc0cd9f4dcd3235f6e676b57",
+      "status": "passed",
+      "starts": 48
+    },
+    {
+      "path": "evidence/m5/acceptance_20261014_124422_c74e2389/checkpoints/near_zero_height_checkpoint.json",
+      "sha256": "18c6ecd427c6c0456e3d5e0e1121b7e559f3ce88c4a5f35a62385988fe71565d",
+      "status": "passed",
+      "starts": 32
+    },
+    {
+      "path": "evidence/m5/acceptance_20261014_124422_c74e2389/checkpoints/noise_checkpoint.json",
+      "sha256": "c99ffdb7320b824a3f884e69f964d7c928fd51293f121a1da00187a39ce6ec82",
+      "status": "passed",
+      "starts": 32
+    },
+    {
+      "path": "evidence/m5/acceptance_20261014_124422_c74e2389/checkpoints/truth_near_basin_checkpoint.json",
+      "sha256": "19eda6f89f209ce569f664ece703b30d5880fa5124072137fb90d1e4c7b4d60c",
+      "status": "passed",
+      "starts": 48
+    },
+    {
+      "path": "evidence/m5/acceptance_20261014_124422_c74e2389/checkpoints/weak_geometry_checkpoint.json",
+      "sha256": "05acb6c026fd1cf99cc70525f742b487b2cbe437a560c2c13b33b25da504aa2d",
+      "status": "passed",
+      "starts": 32
+    },
+    {
+      "path": "evidence/m5/acceptance_20261014_124422_c74e2389/demo_runs/async_knots_lm.json",
+      "sha256": "a0db33c84dae7b683a54e7ec1496538425a9b558bc37b6293928f9d3ee798eb1",
+      "status": "passed",
+      "starts": 2
+    },
+    {
+      "path": "evidence/m5/acceptance_20261014_124422_c74e2389/demo_runs/async_knots_trf.json",
+      "sha256": "4a9c695012e8ac479d7d3743df302f6c9815e9c554a1f5754ec0ac80314ca894",
+      "status": "passed",
+      "starts": 2
+    },
+    {
+      "path": "evidence/m5/acceptance_20261014_124422_c74e2389/demo_runs/forced_nonconvergence_lm.json",
+      "sha256": "5a92f67aecade3dbcdd333d134b30ac210aa18c8baf403e0771c1f488731e92c",
+      "status": "passed",
+      "starts": 2
+    },
+    {
+      "path": "evidence/m5/acceptance_20261014_124422_c74e2389/demo_runs/forced_nonconvergence_trf.json",
+      "sha256": "1c92ae40197b6bce8e5101143b8282d9f2835acb61fca28bdab8c125dbcf24ef",
+      "status": "passed",
+      "starts": 2
+    },
+    {
+      "path": "evidence/m5/acceptance_20261014_124422_c74e2389/demo_runs/known_height_prior_lm.json",
+      "sha256": "8deb7eb81ed73f22782c9b9afed51def554e67dd491303ac31830aa2762b96e5",
+      "status": "passed",
+      "starts": 2
+    },
+    {
+      "path": "evidence/m5/acceptance_20261014_124422_c74e2389/demo_runs/known_height_prior_trf.json",
+      "sha256": "d35d84ca98983c24a35fdcb99c78ae80d2169abafd7214dfbaecccd3b9edc479",
+      "status": "passed",
+      "starts": 2
+    },
+    {
+      "path": "evidence/m5/acceptance_20261014_124422_c74e2389/demo_runs/spatial_diverse_lm.json",
+      "sha256": "eea81355b29399f47eb48b13b1b5cf36f0a15a0fb3233c55aeefc44e58f4df31",
+      "status": "passed",
+      "starts": 2
+    },
+    {
+      "path": "evidence/m5/acceptance_20261014_124422_c74e2389/demo_runs/spatial_diverse_trf.json",
+      "sha256": "eba6782e8dc854a3a9c31abfb7b2913a91701a0f446cbbeaad04291f7e79ad00",
+      "status": "passed",
+      "starts": 2
+    },
+    {
+      "path": "evidence/m5/extra_runs/impossible_truth_near_frame_e7f2650e.json",
+      "sha256": "cc89dce0f70e2d6617d2ceb9d6279ecbc0c94a09429ae11fa8f9ae14dded7bdb",
+      "status": "passed",
+      "starts": 2
+    },
+    {
+      "path": "evidence/m5/extra_runs/negative_shared_height_branch_2a247bbb.json",
+      "sha256": "88fe20c0c86f8dd01db8809b44ad176fa87d262c06a004304442f534b2a55e88",
+      "status": "passed",
+      "starts": 2
+    },
+    {
+      "path": "evidence/m5/visual/lm_q_algebraic_live.json",
+      "sha256": "4e98be02775a7df1bd229071bded6a112834c2552a9a8b86a57ac553e53621fa",
+      "status": "passed",
+      "starts": 1
+    },
+    {
+      "path": "evidence/m5/visual/m5-benchmark-a34466afbde95a31ae80f8239bb3fb3c.json",
+      "sha256": "b4ef68876a16a40415a5281985ccc8fe78c9511f6112a169d5294205443c389e",
+      "status": "passed",
+      "starts": 32
+    },
+    {
+      "path": "evidence/m5/visual/m5-run-428d10d41e3d45cea46d9174d6440ab1.json",
+      "sha256": "6b7199af2ab50097ae7d0ac4d9318c8d8773424317e478a0a841dcd808a580e7",
+      "status": "passed",
+      "starts": 1
+    }
+  ],
+  "acceptance": {
+    "sweeps": 9,
+    "runs": 160,
+    "starts": 320,
+    "start_statuses": {
+      "success": 268,
+      "failed": 51,
+      "not_converged": 1
+    },
+    "invalid_algebraic": 40,
+    "fixtures": 8,
+    "fixture_starts": 16,
+    "invalid_algebraic_saved_status": "failed (initializer diagnostic status); docs use invalid proposals descriptively"
+  },
+  "visual_csv": [
+    {
+      "path": "evidence/m5/visual/m5-benchmark-a34466afbde95a31ae80f8239bb3fb3c.csv",
+      "rows": 32,
+      "issues": [],
+      "replacement_character_count": 0
+    },
+    {
+      "path": "evidence/m5/visual/m5-run-428d10d41e3d45cea46d9174d6440ab1.csv",
+      "rows": 1,
+      "issues": [],
+      "replacement_character_count": 0,
+      "contents_match": true
+    }
+  ],
+  "performance": {
+    "records": 48,
+    "raw_runs_validated": 48,
+    "same_observations_and_projected_starts": true,
+    "all_success": true,
+    "wrapper_wall_s_range": [
+      0.03426239999680547,
+      0.11713829999644076
+    ],
+    "scope": "solve_experiment timer includes diagnostics/validation, excludes subsequent JSON save; descriptive local workload only"
+  },
+  "preservation": {
+    "checked": 649,
+    "changed": []
+  },
+  "math_review": {
+    "status": "passed",
+    "attempt": "20261014_165451_229006a4",
+    "checks": {
+      "distance_jacobian_scaling": "passed",
+      "all_supported_h_model_jacobians": "passed",
+      "algebraic_physics_support": "passed",
+      "lm_domains_and_failures": "passed",
+      "truth_independence_and_pairing": "passed",
+      "native_projection_and_failed_seeds": "passed",
+      "retained_acceptance_artifacts": "passed"
+    }
+  },
+  "test_delivery_record": {
+    "path": "evidence/m5/test_results_delivery.txt",
+    "tail": "----------------------------------------------------------------------\nRan 127 tests in 10.119s\n\nOK\n"
+  },
+  "status": "backend_numerical_and_offline_persistence_evidence_passed",
+  "offline_service_import_reopen": [
+    {
+      "path": "evidence/m5/acceptance_20261014_124422_c74e2389/sweeps/independent_basin.json",
+      "import_and_reopen": "passed",
+      "starts": 48
+    },
+    {
+      "path": "evidence/m5/acceptance_20261014_124422_c74e2389/sweeps/initializer_degenerate.json",
+      "import_and_reopen": "passed",
+      "starts": 32
+    },
+    {
+      "path": "evidence/m5/acceptance_20261014_124422_c74e2389/sweeps/initializer_noisy.json",
+      "import_and_reopen": "passed",
+      "starts": 32
+    },
+    {
+      "path": "evidence/m5/acceptance_20261014_124422_c74e2389/sweeps/initializer_noisy_relaxed.json",
+      "import_and_reopen": "passed",
+      "starts": 32
+    },
+    {
+      "path": "evidence/m5/acceptance_20261014_124422_c74e2389/sweeps/initializer_valid.json",
+      "import_and_reopen": "passed",
+      "starts": 32
+    },
+    {
+      "path": "evidence/m5/acceptance_20261014_124422_c74e2389/sweeps/near_zero_height.json",
+      "import_and_reopen": "passed",
+      "starts": 32
+    },
+    {
+      "path": "evidence/m5/acceptance_20261014_124422_c74e2389/sweeps/noise.json",
+      "import_and_reopen": "passed",
+      "starts": 32
+    },
+    {
+      "path": "evidence/m5/acceptance_20261014_124422_c74e2389/sweeps/truth_near_basin.json",
+      "import_and_reopen": "passed",
+      "starts": 48
+    },
+    {
+      "path": "evidence/m5/acceptance_20261014_124422_c74e2389/sweeps/weak_geometry.json",
+      "import_and_reopen": "passed",
+      "starts": 32
+    },
+    {
+      "path": "evidence/m5/acceptance_20261014_124422_c74e2389/demo_runs/async_knots_lm.json",
+      "import_and_reopen": "passed",
+      "starts": 2
+    },
+    {
+      "path": "evidence/m5/acceptance_20261014_124422_c74e2389/demo_runs/async_knots_trf.json",
+      "import_and_reopen": "passed",
+      "starts": 2
+    },
+    {
+      "path": "evidence/m5/acceptance_20261014_124422_c74e2389/demo_runs/forced_nonconvergence_lm.json",
+      "import_and_reopen": "passed",
+      "starts": 2
+    },
+    {
+      "path": "evidence/m5/acceptance_20261014_124422_c74e2389/demo_runs/forced_nonconvergence_trf.json",
+      "import_and_reopen": "passed",
+      "starts": 2
+    },
+    {
+      "path": "evidence/m5/acceptance_20261014_124422_c74e2389/demo_runs/known_height_prior_lm.json",
+      "import_and_reopen": "passed",
+      "starts": 2
+    },
+    {
+      "path": "evidence/m5/acceptance_20261014_124422_c74e2389/demo_runs/known_height_prior_trf.json",
+      "import_and_reopen": "passed",
+      "starts": 2
+    },
+    {
+      "path": "evidence/m5/acceptance_20261014_124422_c74e2389/demo_runs/spatial_diverse_lm.json",
+      "import_and_reopen": "passed",
+      "starts": 2
+    },
+    {
+      "path": "evidence/m5/acceptance_20261014_124422_c74e2389/demo_runs/spatial_diverse_trf.json",
+      "import_and_reopen": "passed",
+      "starts": 2
+    },
+    {
+      "path": "evidence/m5/extra_runs/impossible_truth_near_frame_e7f2650e.json",
+      "import_and_reopen": "passed",
+      "starts": 2
+    },
+    {
+      "path": "evidence/m5/extra_runs/negative_shared_height_branch_2a247bbb.json",
+      "import_and_reopen": "passed",
+      "starts": 2
+    }
+  ],
+  "offline_patch_scope": "m5,m4,m3 generate_experiment and solve_experiment patched to raise throughout strict file and service import/reopen validation",
+  "service_tests": {
+    "tests": 6,
+    "status": "passed",
+    "elapsed_s": 1.019,
+    "coverage": [
+      "run import/reopen under no-solve/no-generate patch",
+      "shared comparison",
+      "failed initializer all-attempt sweep retention",
+      "unsupported q before queue",
+      "unique temporary checkpoint recovery and no implicit restart",
+      "single-write infrastructure failure preserves numerical success",
+      "summary metadata cache invalidation and strict detail rejection"
+    ]
+  },
+  "requirements": {
+    "M5.1": {
+      "status": "backend evidence passed",
+      "proof": "m5.fit_observations saves analytic derivatives, native/exp bounds, revision2 domain, linear loss, jac scaling and ftol/xtol/gtol=1e-12; four paired solver/coordinate variants retained",
+      "limitations": "TRF closed bounds and LM strict interior differ; residual-count requirement and exponential failures explicit"
+    },
+    "M5.2": {
+      "status": "backend evidence passed",
+      "proof": "independent direct-distance h/q chain-rule review and near_zero_height sweep 16 runs/32 starts; metre/square-metre scaling and positive relative-height branch disclosed",
+      "limitations": "q only supported shared relative-height models; inverse map singular at zero; FLOOR=1e-6 m"
+    },
+    "M5.3": {
+      "status": "backend evidence passed",
+      "proof": "exact three-through-eight beacon initializer tests, independent lifted physical coefficient reconstruction and valid/degenerate/noisy acceptance sweeps",
+      "limitations": "complete synchronous planar shared-height epochs only; invalid proposal saved as failed without fallback"
+    },
+    "M5.4": {
+      "status": "backend evidence passed",
+      "proof": "nine strict paired sweeps retain 160 runs/320 starts including 51 failed and one nonconverged; offline source/aggregate/projection validation and 48 raw timing records validated",
+      "limitations": "finite seeds/starts and modest workload; low residual or convergence do not certify geometry"
+    },
+    "M5.5": {
+      "status": "decision recorded",
+      "proof": "second_implementation_decision.json defers Ceres and Geomstats with named proper Euclidean rigid alignment operation and revisit criteria",
+      "limitations": "no Ceres implementation/comparison and no cross-implementation or speed claim"
+    }
+  },
+  "lifecycle_source_review": {
+    "save": "save_json validates run; save_artifact validates source/aggregate/pairing then writes unique temp with retry replacement",
+    "import": "explicit m5 validation, new identities, sweep embedded runs retained separately; no optimizer/generator calls",
+    "reopen": "full numeric run/sweep validation; main plus valid fixed/unique temp checkpoint inspected; stopped running sweeps reported failed without restart",
+    "retention": "all attempted start rows and every sweep run persisted; infrastructure failure preserves numerical run status when selected estimate exists",
+    "limitations": [
+      "Recovery requires a readable existing main artifact; malformed or missing main JSON is not recovered from temporary checkpoint by read_sweep",
+      "Six dedicated service tests do not directly inject sweep checkpoint-write failure or permanent double-write failure; source preserves latest in job memory and attempts pending write",
+      "Sweep summary listing reads basic envelope without strict validation; detail/import/export validate complete contents",
+      "Cache key is file mtime_ns and size, so no hash-based same-metadata tamper detection claim is made"
+    ]
+  },
+  "documentation_consistency": {
+    "numeric_counts_and_timing": "verified",
+    "pending_statements": "M5.md and M5_ACCEPTANCE.md currently state root persistence/UI acceptance pending; root should update after its acceptance decision",
+    "claims": "No unsupported Ceres, Geomstats, global uniqueness, or general TRF/LM speed superiority claim found"
+  },
+  "visual_json_validation": [
+    {
+      "path": "evidence/m5/visual/final_comparison.json",
+      "kind": "comparison",
+      "status": "passed",
+      "sha256": "6c0908c8718c1f2e4ea10caa08db6bdc1d603b50018401fd0570e59b4001a021"
+    },
+    {
+      "path": "evidence/m5/visual/lm_q_algebraic_live.json",
+      "kind": "run",
+      "status": "passed",
+      "sha256": "4e98be02775a7df1bd229071bded6a112834c2552a9a8b86a57ac553e53621fa"
+    },
+    {
+      "path": "evidence/m5/visual/m5-benchmark-a34466afbde95a31ae80f8239bb3fb3c.json",
+      "kind": "solver_sweep",
+      "status": "passed",
+      "sha256": "b4ef68876a16a40415a5281985ccc8fe78c9511f6112a169d5294205443c389e"
+    },
+    {
+      "path": "evidence/m5/visual/m5-run-428d10d41e3d45cea46d9174d6440ab1.json",
+      "kind": "run",
+      "status": "passed",
+      "sha256": "6b7199af2ab50097ae7d0ac4d9318c8d8773424317e478a0a841dcd808a580e7"
+    }
+  ],
+  "visual_csv_encoding_note": "Original CSV files contain correct UTF-8 superscript C2B2, zero replacement EF BF BD bytes; run embedded start_record matches JSON exactly under explicit UTF-8 decoding. Earlier default-encoding diagnostic was corrected."
+}

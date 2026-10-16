@@ -1,0 +1,8 @@
+test_import_keeps_supplied_identifier_and_original_metadata (test_m7_integration.M7IntegrationTests.test_import_keeps_supplied_identifier_and_original_metadata) ... ok
+test_summary_preview_never_calls_full_record_validator (test_m7_integration.M7IntegrationTests.test_summary_preview_never_calls_full_record_validator) ... ok
+test_survey_world_comparison_and_strict_offline_import (test_m7_integration.M7IntegrationTests.test_survey_world_comparison_and_strict_offline_import) ... ok
+
+----------------------------------------------------------------------
+Ran 3 tests in 2.493s
+
+OK

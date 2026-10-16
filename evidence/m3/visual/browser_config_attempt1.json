@@ -1,0 +1,69 @@
+{
+  "schema_version": "3.0",
+  "artifact_type": "experiment_config",
+  "config": {
+    "scenario": "informative",
+    "samples": 16,
+    "duration_s": 8,
+    "noise_std_m": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "assumed_std_m": [
+      0.05,
+      0.05,
+      0.05,
+      0.05
+    ],
+    "seed": 7,
+    "path": {
+      "type": "rectangle",
+      "center_m": [
+        5,
+        4
+      ],
+      "size_m": [
+        7,
+        5.6
+      ],
+      "scale": 1,
+      "rotation_deg": 0
+    },
+    "motion": {
+      "profile": "variable",
+      "speed_scale": 1
+    },
+    "acquisition": {
+      "cycle_rate_hz": 1.875,
+      "spacing_s": 0.04,
+      "jitter_s": 0,
+      "beacon_order": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "beacon_every_cycles": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "timestamp_offset_s": 0,
+      "timestamp_jitter_s": 0,
+      "delivery_latency_s": 0,
+      "missing_probability": 0
+    }
+  },
+  "options": {
+    "mode": "known_map",
+    "initialization": "truth_near",
+    "starts": 1,
+    "seed": 19,
+    "timing_model": "timestamp_aware",
+    "knot_spacing_s": 0,
+    "prior_sigma_m": 0
+  }
+}

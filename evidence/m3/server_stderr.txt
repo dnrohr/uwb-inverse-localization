@@ -1,0 +1,34 @@
+WARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.
+ * Running on http://127.0.0.1:5052
+Press CTRL+C to quit
+127.0.0.1 - - [13/Oct/2026 22:12:47] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [13/Oct/2026 22:12:47] "GET /style.css HTTP/1.1" 200 -
+127.0.0.1 - - [13/Oct/2026 22:12:47] "GET /vendor/plotly.min.js HTTP/1.1" 200 -
+127.0.0.1 - - [13/Oct/2026 22:12:47] "GET /app.js HTTP/1.1" 200 -
+127.0.0.1 - - [13/Oct/2026 22:12:47] "GET /m2.js HTTP/1.1" 200 -
+127.0.0.1 - - [13/Oct/2026 22:12:47] "GET /m3.js HTTP/1.1" 200 -
+127.0.0.1 - - [13/Oct/2026 22:12:48] "GET /api/scenarios HTTP/1.1" 200 -
+127.0.0.1 - - [13/Oct/2026 22:12:48] "GET /favicon.ico HTTP/1.1" 404 -
+127.0.0.1 - - [13/Oct/2026 22:12:48] "GET /api/m3/sweeps HTTP/1.1" 200 -
+127.0.0.1 - - [13/Oct/2026 22:12:48] "GET /api/comparisons HTTP/1.1" 200 -
+127.0.0.1 - - [13/Oct/2026 22:12:48] "GET /api/sweeps HTTP/1.1" 200 -
+127.0.0.1 - - [13/Oct/2026 22:12:48] "GET /api/runs HTTP/1.1" 200 -
+127.0.0.1 - - [13/Oct/2026 22:12:48] "GET /api/runs HTTP/1.1" 200 -
+127.0.0.1 - - [13/Oct/2026 22:12:48] "GET /api/runs HTTP/1.1" 200 -
+127.0.0.1 - - [13/Oct/2026 22:13:07] "GET / HTTP/1.1" 304 -
+127.0.0.1 - - [13/Oct/2026 22:13:08] "GET /style.css HTTP/1.1" 304 -
+127.0.0.1 - - [13/Oct/2026 22:13:08] "GET /vendor/plotly.min.js HTTP/1.1" 200 -
+127.0.0.1 - - [13/Oct/2026 22:13:08] "GET /app.js HTTP/1.1" 304 -
+127.0.0.1 - - [13/Oct/2026 22:13:08] "GET /m2.js HTTP/1.1" 304 -
+127.0.0.1 - - [13/Oct/2026 22:13:08] "GET /m3.js HTTP/1.1" 200 -
+127.0.0.1 - - [13/Oct/2026 22:13:08] "GET /api/scenarios HTTP/1.1" 200 -
+127.0.0.1 - - [13/Oct/2026 22:13:08] "GET /api/m3/sweeps HTTP/1.1" 200 -
+127.0.0.1 - - [13/Oct/2026 22:13:08] "GET /api/comparisons HTTP/1.1" 200 -
+127.0.0.1 - - [13/Oct/2026 22:13:08] "GET /api/sweeps HTTP/1.1" 200 -
+127.0.0.1 - - [13/Oct/2026 22:13:08] "GET /api/runs HTTP/1.1" 200 -
+127.0.0.1 - - [13/Oct/2026 22:13:08] "POST /api/m3/runs HTTP/1.1" 202 -
+127.0.0.1 - - [13/Oct/2026 22:13:08] "GET /api/runs HTTP/1.1" 200 -
+127.0.0.1 - - [13/Oct/2026 22:13:09] "GET /api/runs HTTP/1.1" 200 -
+127.0.0.1 - - [13/Oct/2026 22:13:09] "GET /api/runs HTTP/1.1" 200 -
+127.0.0.1 - - [13/Oct/2026 22:13:09] "GET /api/jobs/3b0d38ccdc1d449dac420f40964d1ad5 HTTP/1.1" 200 -
+127.0.0.1 - - [13/Oct/2026 22:13:09] "GET /api/runs HTTP/1.1" 200 -

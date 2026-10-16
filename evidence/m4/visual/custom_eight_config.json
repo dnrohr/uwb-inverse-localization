@@ -1,0 +1,133 @@
+{
+  "schema_version": "4.0",
+  "artifact_type": "experiment_config",
+  "config": {
+    "scenario": "informative",
+    "samples": 12,
+    "duration_s": 20,
+    "noise_std_m": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "assumed_std_m": [
+      0.05,
+      0.05,
+      0.05,
+      0.05,
+      0.05,
+      0.05,
+      0.05,
+      0.05
+    ],
+    "seed": 7,
+    "motion": {
+      "profile": "constant",
+      "speed_scale": 1
+    },
+    "acquisition": {
+      "cycle_rate_hz": 0.55,
+      "spacing_s": 0,
+      "jitter_s": 0,
+      "beacon_order": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ],
+      "beacon_every_cycles": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "timestamp_offset_s": 0,
+      "timestamp_jitter_s": 0,
+      "delivery_latency_s": 0,
+      "missing_probability": 0
+    },
+    "beacon_layout": {
+      "count": 8,
+      "geometry": "diverse",
+      "height_m": 3,
+      "height_spread_m": 1,
+      "baseline_scale": 1,
+      "coordinates_m": [
+        [
+          0,
+          0,
+          3
+        ],
+        [
+          10,
+          0,
+          3.3
+        ],
+        [
+          10,
+          8,
+          4
+        ],
+        [
+          0,
+          8,
+          2.7
+        ],
+        [
+          5,
+          -2,
+          3.8
+        ],
+        [
+          12,
+          4,
+          3.2
+        ],
+        [
+          5,
+          10,
+          4.2
+        ],
+        [
+          -2,
+          4,
+          2.9
+        ]
+      ]
+    },
+    "truth_height": {
+      "type": "spatial",
+      "offset_m": 0,
+      "amplitude_m": 0.3,
+      "tilt_deg": 12
+    }
+  },
+  "options": {
+    "mode": "known_map",
+    "initialization": "independent",
+    "starts": 1,
+    "seed": 19,
+    "max_nfev": 2000,
+    "timing_model": "timestamp_aware",
+    "knot_spacing_s": 0,
+    "prior_sigma_m": 0,
+    "tag_height_model": "free",
+    "beacon_height_model": "independent",
+    "fixed_tag_z_m": 0,
+    "height_prior_sigma_m": 0.25,
+    "below_beacons": false
+  }
+}

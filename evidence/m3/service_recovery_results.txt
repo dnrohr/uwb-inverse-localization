@@ -1,0 +1,10 @@
+test_invalid_config_before_worker_and_failure_retention (test_m3_service.M3ServiceTests.test_invalid_config_before_worker_and_failure_retention) ... ok
+test_persistence_failure_keeps_optimizer_outcome (test_m3_service.M3ServiceTests.test_persistence_failure_keeps_optimizer_outcome) ... ok
+test_restart_recovers_complete_unique_temporary_checkpoint (test_m3_service.M3ServiceTests.test_restart_recovers_complete_unique_temporary_checkpoint) ... ok
+test_run_reopen_import_comparison_without_solving (test_m3_service.M3ServiceTests.test_run_reopen_import_comparison_without_solving) ... ok
+test_sweep_checkpoint_csv_import_and_reopen (test_m3_service.M3ServiceTests.test_sweep_checkpoint_csv_import_and_reopen) ... ok
+
+----------------------------------------------------------------------
+Ran 5 tests in 1.115s
+
+OK

@@ -1,0 +1,22 @@
+{
+  "checked": 1665,
+  "exact_hashes_unchanged": 1663,
+  "append_only_live_logs": [
+    {
+      "path": "evidence/m5/server_final_ui_stderr.txt",
+      "original_prefix_bytes": 8662,
+      "appended_bytes": 79,
+      "original_sha256": "18811bd5c9f571d9b23b03d714831beec1f02571ea31ede8f0ccd57f96054070",
+      "current_sha256": "8d7b34e7a91386c3baf8d59c90bf11e6ce8f155c342c2b23f0a6ddaa7b4d8ca5"
+    },
+    {
+      "path": "evidence/m6/server_final_stderr.txt",
+      "original_prefix_bytes": 4434,
+      "appended_bytes": 833,
+      "original_sha256": "84017084fe932b22734f546361d01279413dbc883865b8dd7b84d8e5c243e6bb",
+      "current_sha256": "2b2e01cebff791d20bd0c8fc277fd45cfe84ea17af140622577f49be94c6919b"
+    }
+  ],
+  "unexplained_changes": [],
+  "interpretation": "All original scientific bytes retained. Active preserved servers appended logs; their original prefixes match the initial SHA256 exactly."
+}

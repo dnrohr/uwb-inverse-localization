@@ -1,0 +1,96 @@
+{
+  "message": "Enter exactly 6 integer values separated by commas.",
+  "controls": [
+    {
+      "checked": false,
+      "id": "m4BeaconCount",
+      "value": "6"
+    },
+    {
+      "checked": false,
+      "id": "m4BeaconGeometry",
+      "value": "diverse"
+    },
+    {
+      "checked": false,
+      "id": "m4BeaconHeight",
+      "value": "3"
+    },
+    {
+      "checked": false,
+      "id": "m4HeightSpread",
+      "value": "1"
+    },
+    {
+      "checked": false,
+      "id": "m4Baseline",
+      "value": "1"
+    },
+    {
+      "checked": false,
+      "id": "m4TruthHeightType",
+      "value": "spatial"
+    },
+    {
+      "checked": false,
+      "id": "m4TagOffset",
+      "value": "0"
+    },
+    {
+      "checked": false,
+      "id": "m4TagAmplitude",
+      "value": "0.3"
+    },
+    {
+      "checked": false,
+      "id": "m4Tilt",
+      "value": "10"
+    },
+    {
+      "checked": false,
+      "id": "m4Mode",
+      "value": "joint"
+    },
+    {
+      "checked": false,
+      "id": "m4TagModel",
+      "value": "free"
+    },
+    {
+      "checked": false,
+      "id": "m4BeaconModel",
+      "value": "independent"
+    },
+    {
+      "checked": false,
+      "id": "m4FixedZ",
+      "value": "0"
+    },
+    {
+      "checked": false,
+      "id": "m4HeightPrior",
+      "value": "0.2"
+    },
+    {
+      "checked": false,
+      "id": "m4Below",
+      "value": "on"
+    },
+    {
+      "checked": false,
+      "id": "m4Order",
+      "value": "0,1,2,3"
+    },
+    {
+      "checked": false,
+      "id": "m4Strides",
+      "value": "1,1,1,1"
+    },
+    {
+      "checked": false,
+      "id": "m4ImportFile",
+      "value": ""
+    }
+  ],
+  "resolution": "Update acquisition arrays on both input and change events; validated attempt did not enter solver queue."
+}

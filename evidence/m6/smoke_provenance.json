@@ -1,0 +1,7 @@
+{
+  "source": "evidence\\m6\\smoke_sweep.json",
+  "source_sha256": "f9afcb759c2d7bfcc7afd51138133e926f238b900b63b61e1b586fbfa3d4b473",
+  "note": "Early integration snapshot retained unchanged. Current derived-table validation may differ; rebuilt copy uses identical saved run objects without solving or regeneration.",
+  "original_validation": "Invalid solver sweep: Saved start_table disagrees with retained runs",
+  "current_copy": "evidence/m6/smoke_sweep_current_tables.json"
+}

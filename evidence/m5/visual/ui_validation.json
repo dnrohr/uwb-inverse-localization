@@ -1,0 +1,86 @@
+{
+  "run": {
+    "chartRenderMs": [
+      "32.40",
+      "32.40"
+    ],
+    "rows": 32,
+    "selectedSweep": "initialization_error_mb38cc3495b0a4919ab5155260cd23175 · complete›",
+    "summary": "32 attempted starts · 32 initializer-valid · 0 invalid/unsupported initializer · 28 reported converged · 28 converged within the stated solver domain. Every attempt remains in the table."
+  },
+  "invalidInitializer": {
+    "rows": 32,
+    "summary": "32 attempted starts · 16 initializer-valid · 16 invalid/unsupported initializer · 14 reported converged · 14 converged within the stated solver domain. Every attempt remains in the table.",
+    "termination": "Inspect outcomeStart 0 · failedStart 1 · failedSTARTOUTCOMESUCCESSFINAL OBJECTIVERUNTIME (S)RANK / PARAMS0failedfalse—0.0003—1failedfalse—0.0003—TerminationValueError: Algebraic initializer failed: {'code': 'lifted_rank_loss', 'message': 'Lifted design has fewer than six independent columns; motion or reference geometry does not support this initializer'}SuccessfalseIterations—Iterations note—Function evaluations—Jacobian evaluations—Runtime0.0003Initial objective—Final objective—Measurement count—Parameter count—Numerical rank—Rank tolerance—Scaled Jacobian condition—Full column rank—Truth Ja"
+  },
+  "cameraBefore": "{\"up\":{\"x\":0,\"y\":0,\"z\":1},\"center\":{\"x\":0,\"y\":0,\"z\":0},\"eye\":{\"x\":0,\"y\":-2.5,\"z\":0.25},\"projection\":{\"type\":\"perspective\"}}",
+  "scrub": {
+    "camera": "{\"up\":{\"x\":0,\"y\":0,\"z\":1},\"center\":{\"x\":0,\"y\":0,\"z\":0},\"eye\":{\"x\":0,\"y\":-2.5,\"z\":0.25},\"projection\":{\"type\":\"perspective\"}}",
+    "ping": "3 / 48 · B2"
+  },
+  "playback": {
+    "camera": "{\"up\":{\"x\":0,\"y\":0,\"z\":1},\"center\":{\"x\":0,\"y\":0,\"z\":0},\"eye\":{\"x\":0,\"y\":-2.5,\"z\":0.25},\"projection\":{\"type\":\"perspective\"}}",
+    "ping": "48 / 48 · B3"
+  },
+  "comparison": {
+    "alignment": "aligned",
+    "metrics": "RUNSTATUSMODESAMPLESSTARTSSELECTEDPOSITION RMSE (M)MAP RMSE (M)RANGE RMSE (M)RUNTIME (S)CONVERGEDFULL RANK428d10d4successjoint12103.36e-154.18e-159.02e-160.0044truetrue4f1ab837successjoint12101.21e-152.74e-157.93e-160.0040truetrue",
+    "notice": "Each joint-map fit uses proper rigid alignment to truth at scale 1; reflections are forbidden. Fit markers show matched-time Euclidean position error on a shared 0–1.00e-9 m scale. Scene lines use saved rendering interpolation; time-chart points and error statistics use saved display samples (M3/M4), fitted epochs (M0–M2) only. Elapsed seconds from each run's first saved display time; no time warping",
+    "sceneRenderMs": "230.10"
+  },
+  "comparisonPlayback": {
+    "alignment": "aligned",
+    "camera": "{\"up\":{\"x\":0,\"y\":0,\"z\":1},\"center\":{\"x\":0,\"y\":0,\"z\":0},\"eye\":{\"x\":0,\"y\":-2.5,\"z\":0.25},\"projection\":{\"type\":\"perspective\"}}",
+    "comparison": "df0cfe54041344e19b1f6179b8f0f9f2",
+    "ping": "48 / 48 · B3"
+  },
+  "narrow": {
+    "documentWidth": 832,
+    "historyHeight": 280,
+    "historyOverflow": "auto",
+    "m5Width": 351.20001220703125,
+    "viewport": {
+      "height": 844,
+      "width": 390
+    }
+  },
+  "legacyM3": {
+    "exportM5SceneDisabled": true,
+    "ping": "1 / 32 · B0",
+    "scene": "Rectangle path · Known surveyed map · Truth-near diagnostic · 1 starts"
+  },
+  "legacyM4": {
+    "exportM5SceneDisabled": true,
+    "m4Rows": 2,
+    "ping": "1 / 96 · B0",
+    "scene": "Informative motion · Known surveyed map · Independent initialization · 1 starts"
+  },
+  "finalLiveSweep": {
+    "renderMs": [
+      "107.70",
+      "107.70"
+    ],
+    "rows": 4,
+    "summary": "4 attempted starts · 4 initializer-valid · 0 invalid/unsupported initializer · 4 reported converged · 4 converged within the stated solver domain. Every attempt remains in the table.",
+    "sweep": "initialization_error_m89364a2963e44d908f9f85022fa0fc65 · complete›"
+  },
+  "finalConsole": [],
+  "finalScene": {
+    "renderMs": "250.50",
+    "subtitle": "Informative motion · Joint map · raw frame · Independent initialization · 1 starts"
+  },
+  "status": "passed for desktop workflow; limited narrow control check",
+  "limitations": [
+    "390x844 M5 controls and history fit; entire page horizontal overflow remains, mobile certification excluded",
+    "Scene/chart render times are browser-local single samples, not throughput guarantees"
+  ],
+  "exportedImagesVisuallyInspected": [
+    "m5-scene-428d10d41e3d45cea46d9174d6440ab1.png",
+    "final_residuals.png",
+    "final_geometry.png",
+    "final_comparison.png",
+    "legacy_m3_reopen.png",
+    "legacy_m4_reopen.png",
+    "invalid_initializer_selected.png"
+  ]
+}

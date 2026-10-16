@@ -1,0 +1,11 @@
+test_dynamic_map_run_offline_import_reopen_and_comparison (test_m4_service.M4ServiceTests.test_dynamic_map_run_offline_import_reopen_and_comparison) ... ok
+test_interrupted_unique_temporary_checkpoint_is_recovered (test_m4_service.M4ServiceTests.test_interrupted_unique_temporary_checkpoint_is_recovered) ... ok
+test_invalid_input_and_unsupported_bounds_before_queue (test_m4_service.M4ServiceTests.test_invalid_input_and_unsupported_bounds_before_queue) ... ok
+test_spatial_joint_comparison_uses_proper_xyz_and_common_frame (test_m4_service.M4ServiceTests.test_spatial_joint_comparison_uses_proper_xyz_and_common_frame) ... ok
+test_sweep_attempts_csv_checkpoint_and_offline_reopen (test_m4_service.M4ServiceTests.test_sweep_attempts_csv_checkpoint_and_offline_reopen) ... ok
+test_worker_failure_retention_and_optimizer_persistence_separation (test_m4_service.M4ServiceTests.test_worker_failure_retention_and_optimizer_persistence_separation) ... ok
+
+----------------------------------------------------------------------
+Ran 6 tests in 1.500s
+
+OK

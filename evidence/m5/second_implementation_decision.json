@@ -1,0 +1,14 @@
+{
+  "decision": "defer Ceres implementation; retain SciPy TRF and LM for M5",
+  "date_utc": "2026-10-14T16:26:36.179922+00:00",
+  "basis": [
+    "Paired same-objective solver strategies, analytic derivatives and independent direct-distance/finite-difference review already isolate parameterization/bound/initializer effects.",
+    "No Ceres/pyceres/Geomstats Python package is installed; CMake is available but no C++ compiler was found on current PATH. This is a local environment observation, not a claim that native compilation is impossible.",
+    "A native port would add a separate build/runtime and derivative implementation; no measured unmet numerical operation presently justifies it within the conditional M5.5 item."
+  ],
+  "ceres_comparison_performed": false,
+  "geomstats_named_operation_considered": "Proper rigid map-to-truth alignment in Euclidean 2D/3D",
+  "geomstats_decision": "Existing small NumPy SVD alignment is independently checked and sufficient; no measured benefit supports adding a manifold dependency.",
+  "revisit_condition": "An independently reproduced discrepancy under identical data/objective/settings, or a measured larger-problem performance need, would justify a Ceres study.",
+  "limitation": "This decision does not establish cross-implementation agreement or make a claim about Ceres performance."
+}

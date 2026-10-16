@@ -1,0 +1,122 @@
+[
+  {
+    "kind": "cold_cache_rebuild",
+    "milliseconds": 4097.7802999841515,
+    "bytes": 44600,
+    "rows": 25,
+    "total": 177,
+    "overall_total": 913,
+    "index": {
+      "changed": 912,
+      "checked_at": "2026-10-16T02:11:05.224125+00:00",
+      "discovered": 912,
+      "freshness": "Filesystem timestamps checked at each request; JSON authoritative.",
+      "pending": 0,
+      "removed": 0,
+      "scan_ms": 4046.509,
+      "scanned": 912,
+      "state": "ready",
+      "summary_validation": "Metadata extraction only; strict existing endpoints validate detail/export."
+    }
+  },
+  {
+    "kind": "warm",
+    "milliseconds": 27.023399976314977,
+    "bytes": 44593,
+    "rows": 25,
+    "total": 177,
+    "overall_total": 913,
+    "index": {
+      "changed": 0,
+      "checked_at": "2026-10-16T02:11:05.251712+00:00",
+      "discovered": 912,
+      "freshness": "Filesystem timestamps checked at each request; JSON authoritative.",
+      "pending": 0,
+      "removed": 0,
+      "scan_ms": 3.212,
+      "scanned": 0,
+      "state": "ready",
+      "summary_validation": "Metadata extraction only; strict existing endpoints validate detail/export."
+    }
+  },
+  {
+    "kind": "warm",
+    "milliseconds": 24.844500003382564,
+    "bytes": 44592,
+    "rows": 25,
+    "total": 177,
+    "overall_total": 913,
+    "index": {
+      "changed": 0,
+      "checked_at": "2026-10-16T02:11:05.277214+00:00",
+      "discovered": 912,
+      "freshness": "Filesystem timestamps checked at each request; JSON authoritative.",
+      "pending": 0,
+      "removed": 0,
+      "scan_ms": 3.01,
+      "scanned": 0,
+      "state": "ready",
+      "summary_validation": "Metadata extraction only; strict existing endpoints validate detail/export."
+    }
+  },
+  {
+    "kind": "warm",
+    "milliseconds": 26.245899993227795,
+    "bytes": 44593,
+    "rows": 25,
+    "total": 177,
+    "overall_total": 913,
+    "index": {
+      "changed": 0,
+      "checked_at": "2026-10-16T02:11:05.302531+00:00",
+      "discovered": 912,
+      "freshness": "Filesystem timestamps checked at each request; JSON authoritative.",
+      "pending": 0,
+      "removed": 0,
+      "scan_ms": 2.948,
+      "scanned": 0,
+      "state": "ready",
+      "summary_validation": "Metadata extraction only; strict existing endpoints validate detail/export."
+    }
+  },
+  {
+    "kind": "warm",
+    "milliseconds": 24.66729999287054,
+    "bytes": 44593,
+    "rows": 25,
+    "total": 177,
+    "overall_total": 913,
+    "index": {
+      "changed": 0,
+      "checked_at": "2026-10-16T02:11:05.328512+00:00",
+      "discovered": 912,
+      "freshness": "Filesystem timestamps checked at each request; JSON authoritative.",
+      "pending": 0,
+      "removed": 0,
+      "scan_ms": 3.099,
+      "scanned": 0,
+      "state": "ready",
+      "summary_validation": "Metadata extraction only; strict existing endpoints validate detail/export."
+    }
+  },
+  {
+    "kind": "warm",
+    "milliseconds": 24.598599993623793,
+    "bytes": 44593,
+    "rows": 25,
+    "total": 177,
+    "overall_total": 913,
+    "index": {
+      "changed": 0,
+      "checked_at": "2026-10-16T02:11:05.353513+00:00",
+      "discovered": 912,
+      "freshness": "Filesystem timestamps checked at each request; JSON authoritative.",
+      "pending": 0,
+      "removed": 0,
+      "scan_ms": 3.191,
+      "scanned": 0,
+      "state": "ready",
+      "summary_validation": "Metadata extraction only; strict existing endpoints validate detail/export."
+    }
+  }
+]

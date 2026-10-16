@@ -1,0 +1,15 @@
+{
+  "warm_requests": [
+    {
+      "wall_s": 0.08216150000225753,
+      "count": 564,
+      "unreadable": 0
+    },
+    {
+      "wall_s": 0.045119599999452475,
+      "count": 564,
+      "unreadable": 0
+    }
+  ],
+  "note": "Summaries cache validated records by file modification time and size; detail/import still validates full content."
+}

@@ -1,0 +1,899 @@
+diff --git a/README.md b/README.md
+index 672eec3..34f2197 100644
+--- a/README.md
++++ b/README.md
+@@ -6,7 +6,7 @@ Interactive investigation of joint UWB tag localization and beacon calibration.
+ - [Project requirements](PROJECT_REQUIREMENTS.md): experiment controls, interactive 3D visualization, diagnostics, and delivery stages.
+ - [Roadmap](ROADMAP.md): ordered implementation tasks, dependencies, and milestone acceptance checks.
+ 
+-## Run the M0–M2 application
++## Run the M0–M4 application
+ 
+ From this directory in PowerShell (Python 3.12 tested):
+ 
+@@ -36,10 +36,16 @@ The validation script regenerates saved reference evidence, including a delibera
+ - [Machine-readable M0–M1 acceptance summary](evidence/acceptance_summary.json)
+ - [M2 controls, pairing, classification thresholds and limits](docs/M2.md)
+ - [M2 acceptance, screenshots, exports and performance](docs/M2_ACCEPTANCE.md)
++- [M3 motion, timestamp model, priors and timing sweeps](docs/M3.md)
++- [M3 acceptance, visual evidence, performance and limits](docs/M3_ACCEPTANCE.md)
++- [M4 beacon geometry, tag-height models, priors and sweep controls](docs/M4.md)
++- [M4 acceptance evidence, measured results and pending visual gates](docs/M4_ACCEPTANCE.md)
++- [M5 TRF/LM solvers, `h`/`q` coordinates and initializers](docs/M5.md)
++- [M5 acceptance record, numerical evidence and open release gates](docs/M5_ACCEPTANCE.md)
+ 
+-Python/NumPy/SciPy provides a compact, auditable conventional least-squares baseline with analytic Jacobians and bounded trust-region optimization. Flask separates background fitting from scene interaction. Plotly supplies rotatable 3D geometry and linked numerical charts using the same saved data. Direct dependencies are pinned in `requirements.txt`; the tested complete environment is in `requirements-lock.txt`. Geomstats remains optional until a specific operation warrants it.
++Python/NumPy/SciPy provides a compact, auditable conventional least-squares baseline with analytic Jacobians, bounded TRF, and LM. Flask separates background fitting from scene interaction. Plotly supplies rotatable 3D geometry and linked numerical charts using the same saved data. Direct dependencies are pinned in `requirements.txt`; the tested complete environment is in `requirements-lock.txt`. M5 retains SciPy TRF and LM; its recorded implementation decision defers Ceres and Geomstats because no measured need supports adding either for this milestone.
+ 
+-M0–M2 supports one planar tag, exactly four identified beacons at a shared positive height, synchronized complete observations, 8–100 samples, and 1–12 starts through the application. Timing, free height, additional solvers, missing ranges, and robustness remain in later roadmap milestones. Full local Jacobian rank and solver convergence do not establish global uniqueness. Weak geometry and alternate multistart outcomes remain visible; alignment never fits scale or reflections.
++M0–M2 supports one planar tag, exactly four identified beacons at a shared positive height, synchronized complete observations, 8–100 samples, and 1–12 starts through the application. M3 adds sequential acquisition, variable motion, timestamp-aware/grouped trajectories and imperfect-data experiments described below. M4 adds 3–8 beacon 3D layouts, vertical truth profiles, fixed/shared/soft/free tag-height models, shared/independent beacon-height models, and 3D geometry sweeps. M5 adds paired SciPy TRF/LM comparisons, supported shared-height `h`/`q` coordinates, and independent, truth-near diagnostic, and algebraic initializers. Both M5 coordinates select a positive shared-height branch; its native projection displacement is a model-convention diagnostic, not an optimizer lower bound. M5 passed its defined numerical, backend persistence, and desktop UI scope; the [acceptance record](docs/M5_ACCEPTANCE.md) documents its evidence and limitations. Full local Jacobian rank and solver convergence do not establish global uniqueness. Weak geometry and alternate multistart outcomes remain visible; alignment never fits scale or reflections.
+ 
+ ## Controlled sweeps and saved comparisons (M2)
+ 
+@@ -55,3 +61,56 @@ M2 validation used port 5051 to preserve the existing M1 server on 5050. Launch
+ ```
+ 
+ These scripts write `evidence/m2/`. The existing `scripts/validate.py` regenerates M0–M1 evidence; it is not needed to reopen saved M2 fixtures. M2 allows 40 runs and 240 total starts per sweep, up to 12 starts per run and 100 samples. Local three-start benchmarks measured 0.184–0.200 s at 32 samples and 3.819–4.804 s at 100 samples. Details, render timings and limitations are in the M2 acceptance record.
++
++## Moving tags and sequential pings (M3)
++
++Launch `.\.venv\Scripts\python.exe app.py --port 5052` and open [the M3 viewer](http://127.0.0.1:5052). The separate **Ping timing and motion** panel uses the existing map, path, duration, noise and seed controls. Select variable/constant/stationary motion, beacon order, cycle rate, spacing, acquisition jitter, supplied timestamp errors, delivery latency, missingness and per-beacon strides. Choose timestamp-aware or cycle-start grouped fitting. Knots are piecewise linear; spacing 0 uses the cycle grid. Prior sigma 0 disables the disclosed constant-velocity preference. Maximum evaluations per start is explicit.
++
++Click **Run M3**, or **Run paired sweep** to reuse observations and compatible initial guesses between models. Open the bundled M3 examples or seven timing sweeps without solving. Scrub/play individual retained pings alongside the speed chart; actual position, receiving beacon, measured range ray, common cycle position and fitted position are distinct. Camera and comparison settings survive scrubbing. Select any attempted start, including failures; convergence, geometry, measurement/prior information, interpolation and timing error are separate. Export complete configuration/run/sweep JSON, per-start CSV and scene/chart PNGs. Saved M3 runs also work in the shared comparison workspace.
++
++```powershell
++.\.venv\Scripts\python.exe -m unittest discover -s tests -v
++.\.venv\Scripts\python.exe scripts\validate_m3.py
++.\.venv\Scripts\python.exe scripts\benchmark_m3.py
++```
++
++The final suite has 81 passing tests. M3 scripts create unique directories under `evidence/m3/`, preserving earlier evidence/history. The numerical record retains seven sweeps (68 runs / 136 starts), verifies zero-spacing synchronized equivalence, stationary geometry and batch latency invariance, and includes failed/nonconverged examples. Local two-start-per-model paired wrapper measurements were about 0.193 s at 16 samples and 0.385–0.393 s at 32; one measured ping restyle was 22.3 ms. Limits are 100 display samples/cycles, 150 knots, 12 application starts, 5000 evaluations per start, 40 sweep runs and 240 sweep starts. See the M3 acceptance record for initialization scope, measured errors, timing reference assumptions and remaining limitations. No external push or publication was performed.
++
++## 3D beacon and tag-height experiments (M4)
++
++Launch `.\.venv\Scripts\python.exe app.py --port 5053` and open [the M4 viewer](http://127.0.0.1:5053). The separate **M4 · 3D beacon and tag geometry** panel reuses the path, acquisition, range-noise and solver controls while adding 3–8 beacons, generated or explicit XYZ beacon coordinates, beacon-height diversity, planar/tilted/excursion/spatial truth height, fixed/shared/soft/free tag-height models, and shared/independent beacon heights. The free tag model estimates 3D trajectory knots, not independent unconstrained positions at every display sample.
++
++Use **Run M4** for one experiment or **Run paired sweep** to compare fixed/shared/soft/free tag-height variants over beacon count, nominal beacon height, height spread, path coverage, prior sigma or beacon-height model. The UI exposes measurement-only and prior-augmented rank separately, height and plane diagnostics, all attempted starts, saved runs/sweeps, JSON/CSV import/export, and chart/scene PNG export. Joint soft-height priors are measured from a disclosed canonical plane, not world z; below-beacon bounds are separate branch constraints. See [M4 controls and numerical conventions](docs/M4.md).
++
++Reproduce the numerical acceptance and paired benchmark with:
++
++```powershell
++.\.venv\Scripts\python.exe -m unittest discover -s tests -v
++.\.venv\Scripts\python.exe scripts\validate_m4.py
++.\.venv\Scripts\python.exe scripts\benchmark_m4.py
++```
++
++The recorded integration run has 110 passing tests; six geometry sweeps retained 112 starts, and the paired benchmark measured about 0.178–0.353 s for three beacons and 0.192–0.343 s for eight beacons at 12/24 samples. These are local Python wrapper timings, not browser performance guarantees. [`docs/M4_ACCEPTANCE.md`](docs/M4_ACCEPTANCE.md) maps the numerical, independent mathematical, live-browser, persistence and export evidence with measured performance and limitations.
++
++## Solver and initializer comparisons (M5)
++
++Launch the M5 viewer on its separate local port:
++
++```powershell
++.\.venv\Scripts\python.exe app.py --port 5054
++```
++
++Open [the M5 viewer](http://127.0.0.1:5054). Use the M5 panel to run SciPy TRF or LM with the supported shared-height `h` or `q` coordinate and independent, truth-near diagnostic, or algebraic initialization. Configure a paired benchmark to vary the supported experiment factor, choose labeled solver/coordinate/initializer variants, and set measurement seeds. Saved runs and sweeps retain all attempted starts, including failed algebraic proposals and nonconverged fits; select a row to inspect the attempt and its diagnostics. JSON import reopens a saved artifact without solving it. See [M5 numerical conventions](docs/M5.md) for the positive height branch, initializer support, pairing and objective definitions.
++
++Reproduce the numerical checks and retained evidence with:
++
++```powershell
++.\.venv\Scripts\python.exe -m unittest discover -s tests -v
++.\.venv\Scripts\python.exe scripts/validate_m5.py
++.\.venv\Scripts\python.exe scripts/benchmark_m5.py
++.\.venv\Scripts\python.exe scripts/review_m5.py
++```
++
++The final-source test run passed 127 tests in 11.541 s (`evidence/m5/test_results_final.txt`); the earlier delivery run passed in 10.119 s. Acceptance retains nine sweeps (160 runs, 320 starts) plus eight fixtures (16 starts), including 40 invalid algebraic proposals, 51 failed sweep attempts, and one nonconverged sweep attempt. Limits are 40 runs, 240 starts total, 12 starts per run, and 5,000 function evaluations per start; `q` is restricted to supported shared relative-height models and `FLOOR = 1e-6 m`. Across the 48-record local benchmark, median wrapper times by variant were TRF/h 0.06536 s, TRF/q 0.06297 s, LM/h 0.04844 s, and LM/q 0.05043 s. These modest-workload measurements are descriptive, not general speed guarantees. Single desktop browser samples measured 250.5 ms for the scene, 230.1 ms for comparison, and 32.4–107.7 ms for chart/sweep redraws; they are not throughput guarantees.
++
++M5 acceptance passed for its defined numerical, persistence and desktop UI scope. The [acceptance record](docs/M5_ACCEPTANCE.md), [backend audit](evidence/m5/backend_final_audit.json), [UI validation](evidence/m5/visual/ui_validation.json), and [final audit](evidence/m5/final_audit.json) describe evidence and limitations. At 390×844, M5 controls fit and history lists scroll, while the full page still has horizontal overflow. Checkpoint recovery requires a readable main artifact, and dedicated tests for sweep checkpoint-write failure and permanent double-write failure were not run. M5 defers a second solver implementation; no M6 implementation is included.
+diff --git a/ROADMAP.md b/ROADMAP.md
+index 9881bbf..19fda30 100644
+--- a/ROADMAP.md
++++ b/ROADMAP.md
+@@ -2,7 +2,7 @@
+ 
+ Source: [project requirements](PROJECT_REQUIREMENTS.md), with mathematical background in [the handoff](UWB_PROJECT_HANDOFF.md).
+ 
+-M0, M1 and M2 are complete, with acceptance evidence linked below. M3 and later items remain planned and unchecked. Milestones are ordered by dependency, without speculative completion dates. Completing a milestone means delivering its working interface, numerical evidence, and documented limitations.
++M0–M5 are complete, with acceptance evidence linked below. M6 and later items remain planned and unchecked. Milestones are ordered by dependency, without speculative completion dates. Completing a milestone means delivering its working interface, numerical evidence, and documented limitations.
+ 
+ ## M0 — Establish the experiment foundation
+ 
+@@ -48,39 +48,39 @@ M0, M1 and M2 are complete, with acceptance evidence linked below. M3 and later
+ 
+ **Depends on:** M2. **Outcome:** quantify when a simultaneous-ping approximation distorts the solution.
+ 
+-- [ ] **M3.1 — Add time-dependent motion.** Support variable speed, acceleration, stops, and direction changes; show speed versus time.
+-- [ ] **M3.2 — Generate sequential acquisition.** Control beacon order, cycle rate, within-cycle spacing, and acquisition jitter. Generate ranges at each actual tag position and retain actual/assumed times separately.
+-- [ ] **M3.3 — Implement a timestamp-aware trajectory model.** Choose and document knots/interpolation and optional motion priors; expose knot spacing and prior strength. Evaluate each residual at its measurement time and diagnose measurement information separately from priors.
+-- [ ] **M3.4 — Implement the grouped-time approximation.** State the grouping rule/reference time and fit the same observations as the timestamp-aware estimator.
+-- [ ] **M3.5 — Animate and scrub individual pings.** Show actual ping positions, receiving beacons, range rays, and assumed common cycle position. Preserve camera and comparison settings during playback.
+-- [ ] **M3.6 — Add timing sweeps and imperfect data.** Sweep speed, ping spacing, and knot spacing. Then add timestamp offsets/jitter, missing observations, and unequal beacon rates. Distinguish timestamp error from acquisition spacing and delivery latency.
++- [x] **M3.1 — Add time-dependent motion.** Support variable speed, acceleration, stops, and direction changes; show speed versus time.
++- [x] **M3.2 — Generate sequential acquisition.** Control beacon order, cycle rate, within-cycle spacing, and acquisition jitter. Generate ranges at each actual tag position and retain actual/assumed times separately.
++- [x] **M3.3 — Implement a timestamp-aware trajectory model.** Choose and document knots/interpolation and optional motion priors; expose knot spacing and prior strength. Evaluate each residual at its measurement time and diagnose measurement information separately from priors.
++- [x] **M3.4 — Implement the grouped-time approximation.** State the grouping rule/reference time and fit the same observations as the timestamp-aware estimator.
++- [x] **M3.5 — Animate and scrub individual pings.** Show actual ping positions, receiving beacons, range rays, and assumed common cycle position. Preserve camera and comparison settings during playback.
++- [x] **M3.6 — Add timing sweeps and imperfect data.** Sweep speed, ping spacing, and knot spacing. Then add timestamp offsets/jitter, missing observations, and unequal beacon rates. Distinguish timestamp error from acquisition spacing and delivery latency.
+ 
+-**Exit check:** zero ping spacing reproduces the synchronized baseline; a stationary tag shows no acquisition-spacing geometry effect. Correctly timestamped delivery latency alone leaves batch results unchanged. Moving-tag comparisons report timing approximation error and any interpolation/prior effects, rather than attributing all differences to timing.
++**Exit check:** passed October 13, 2026. Zero spacing reproduces synchronized M1 measurements and fits; stationary known-map tags have no spacing-induced geometry error; correctly timestamped delivery latency leaves both batch models unchanged. Variable-speed motion, sequential acquisition, controlled linear knots, disclosed priors, identical-data grouping, ping playback, seven paired sweeps, imperfect-data examples and offline persistence are delivered. All 81 tests pass, including the original 61. Evidence: [M3 model and measured results](docs/M3.md), [M3 acceptance, visual evidence, performance and limits](docs/M3_ACCEPTANCE.md), and `evidence/m3/`. The final numerical set retains 68 runs / 136 starts, with separate failed/nonconverged examples; initial evidence/history hashes are unchanged. Measurement rank, prior information, interpolation, timing approximation, convergence and geometry remain separate. No external push/publication was performed.
+ 
+ ## M4 — Investigate height constraints and beacon geometry
+ 
+ **Depends on:** M2; use M3 for asynchronous comparisons. **Outcome:** expose height ambiguity, nonplanarity, and geometry sensitivity.
+ 
+-- [ ] **M4.1 — Expand beacon controls.** Support three through eight beacons, editable coordinates, horizontal baselines, height diversity, nearly collinear/coplanar layouts, and paths inside/outside beacon coverage.
+-- [ ] **M4.2 — Compare tag height models with known maps first.** Add fixed/shared plane, soft height constraint with stated uncertainty, and free trajectory heights. Treat below-beacon bounds as a separate option.
+-- [ ] **M4.3 — Extend joint estimation.** Support shared and independent beacon heights where identifiable; define the appropriate 3D frame convention and report remaining reflection/continuous ambiguities. Flag unsupported combinations with explanations.
+-- [ ] **M4.4 — Add height diagnostics.** Show z versus time, height error, best-fit-plane departure, relevant planes, and residual/geometry changes between models.
+-- [ ] **M4.5 — Add model-mismatch scenarios.** Generate small vertical excursions and fully 3D truth paths, and fit them using planar and free-height models.
+-- [ ] **M4.6 — Sweep geometry and constraints.** Compare count, vertical separation, coverage, height-prior strength, and shared versus independent beacon heights using repeated runs and scaled rank diagnostics.
++- [x] **M4.1 — Expand beacon controls.** Support three through eight beacons, editable coordinates, horizontal baselines, height diversity, nearly collinear/coplanar layouts, and paths inside/outside beacon coverage.
++- [x] **M4.2 — Compare tag height models with known maps first.** Add fixed/shared plane, soft height constraint with stated uncertainty, and free trajectory heights. Treat below-beacon bounds as a separate option.
++- [x] **M4.3 — Extend joint estimation.** Support shared and independent beacon heights where identifiable; define the appropriate 3D frame convention and report remaining reflection/continuous ambiguities. Flag unsupported combinations with explanations.
++- [x] **M4.4 — Add height diagnostics.** Show z versus time, height error, best-fit-plane departure, relevant planes, and residual/geometry changes between models.
++- [x] **M4.5 — Add model-mismatch scenarios.** Generate small vertical excursions and fully 3D truth paths, and fit them using planar and free-height models.
++- [x] **M4.6 — Sweep geometry and constraints.** Compare count, vertical separation, coverage, height-prior strength, and shared versus independent beacon heights using repeated runs and scaled rank diagnostics.
+ 
+-**Exit check:** known-map coplanar cases expose reflected solutions; below-plane bounds select a branch without being represented as a planarity constraint. Diagnostics distinguish a tilted plane from a warped trajectory. Joint fits remove valid coordinate freedoms and disclose any remaining unidentifiability.
++**Exit check:** passed October 14, 2026. Known-map coplanar cases expose retained equal-range reflection branches; separate below-plane bounds select a branch without imposing planarity. Tilted/warped paths, editable 3–8 beacon maps, fixed/shared/soft/free heights, proper planar/3D gauges, six paired geometry sweeps (56 runs / 112 starts), saved comparison/import/export and 3D ping playback were numerically and visually verified. All 110 tests pass, including M0–M3; independent derivative and vertical-sensitivity reviews passed. All 409 pre-existing evidence/history hashes remain unchanged. Evidence: [M4 model and support matrix](docs/M4.md), [M4 acceptance and measured performance](docs/M4_ACCEPTANCE.md), and [final audit](evidence/m4/final_audit.json). Limits: local rank does not prove uniqueness; reflections and inaccurate converged fits remain inspectable; joint independent-map free/soft below inequalities are explicitly unsupported; controlled linear knots can introduce asynchronous interpolation error; the speed chart reports planar speed. No external push/publication was performed.
+ 
+ ## M5 — Compare solvers and initialization methods
+ 
+ **Depends on:** M4. **Outcome:** distinguish model/geometry failures from optimizer behavior.
+ 
+-- [ ] **M5.1 — Add a second solver strategy.** Compare LM and a bounded trust-region method where feasible. Record objective, derivatives, tolerances, bounds, scaling, and any positivity transformation; acknowledge differences imposed by solver capabilities.
+-- [ ] **M5.2 — Compare shared-height parameterizations.** Evaluate h and q=h² using stated units, scaling, and physically valid starts, including behavior near zero height.
+-- [ ] **M5.3 — Validate an algebraic initializer.** Numerically check exact-data recovery and physical consistency before noisy comparisons; report invalid algebraic fits explicitly.
+-- [ ] **M5.4 — Run paired solver/initializer benchmarks.** Reuse data and compatible starts; report accuracy, convergence basin, failure rate, runtime, and alternative solutions across representative observable and weak geometries.
+-- [ ] **M5.5 — Evaluate a second implementation if useful.** Consider Ceres on the same saved experiments after the baseline is stable. Record whether observed differences follow from configuration or implementation. Assess Geomstats only for a named operation with measurable benefit.
++- [x] **M5.1 — Add a second solver strategy.** Compare LM and a bounded trust-region method where feasible. Record objective, derivatives, tolerances, bounds, scaling, and any positivity transformation; acknowledge differences imposed by solver capabilities.
++- [x] **M5.2 — Compare shared-height parameterizations.** Evaluate h and q=h² using stated units, scaling, and physically valid starts, including behavior near zero height.
++- [x] **M5.3 — Validate an algebraic initializer.** Numerically check exact-data recovery and physical consistency before noisy comparisons; report invalid algebraic fits explicitly.
++- [x] **M5.4 — Run paired solver/initializer benchmarks.** Reuse data and compatible starts; report accuracy, convergence basin, failure rate, runtime, and alternative solutions across representative observable and weak geometries.
++- [x] **M5.5 — Evaluate a second implementation if useful.** Consider Ceres on the same saved experiments after the baseline is stable. Record whether observed differences follow from configuration or implementation. Assess Geomstats only for a named operation with measurable benefit.
+ 
+-**Exit check:** benchmark results separate solver effects from changed objectives, priors, bounds, and parameterizations. Neither lower cost nor faster runtime alone is reported as better geometric recovery.
++**Exit check:** passed October 14, 2026. Bounded SciPy TRF and strict-interior exponentially transformed LM, supported shared h/q coordinates, and measurement-only algebraic initialization are delivered with controls, all-attempt inspection, comparisons and JSON/CSV/PNG exports. Nine paired sweeps retain 160 runs / 320 starts, plus eight fixtures / 16 starts; all 336 attempts include 280 successful, five nonconverged and 51 failed outcomes, with 40 invalid algebraic proposals retained. Independent review passed seven checks, 127 tests passed, and all 649 pre-existing evidence/history hashes remain unchanged. Offline import/reopen, desktop scene/playback/camera invariance, exports and M3/M4 visual regression passed. Evidence: [M5 numerical conventions](docs/M5.md), [acceptance and performance](docs/M5_ACCEPTANCE.md), [independent algebraic review](docs/M5_ALGEBRAIC.md), and [final requirement audit](evidence/m5/final_audit.json). M5.5 is conditionally closed with a documented Ceres/Geomstats deferral; no cross-implementation comparison is claimed. Limits: q supports only the disclosed shared-height models; both shared h/q select a positive branch; LM underflow/overflow/bound touches remain explicit failures; local rank is not uniqueness. Checkpoint recovery requires readable main JSON, permanent write-failure cases have limited testing, and full mobile layout is not certified. Benchmark results separate solver effects from objectives, priors, bounds and coordinates; lower cost or runtime alone is not better recovery. No external push/publication was performed.
+ 
+ ## M6 — Add multipath simulation and robust estimation
+ 
+@@ -123,5 +123,5 @@ These are deferred research directions, not prerequisites for the milestones abo
+ 
+ ## Next task
+ 
+-M0–M2 is delivered. The next milestone is **M3** (moving tags and non-simultaneous pings), subject to a separate request.
++M0–M5 is delivered. The next milestone is **M6** (multipath simulation and robust estimation), subject to a separate request.
+ 
+diff --git a/app.py b/app.py
+index 9b1ac0a..4c8e671 100644
+--- a/app.py
++++ b/app.py
+@@ -11,6 +11,7 @@ from uwb.experiments import generate_experiment, save_json, load_json, path_meta
+ from uwb.estimation import solve_experiment
+ from uwb.sweeps import (run_sweep, validate_sweep_config, build_comparison,
+                         save_artifact, load_artifact, validate_artifact)
++from uwb import m3, m3_sweeps
+ 
+ ROOT = Path(__file__).resolve().parent
+ 
+@@ -137,6 +138,176 @@ def create_app(run_dir=None):
+         executor.submit(execute_sweep, identifier, config)
+         return jsonify(id=identifier), 202
+ 
++    def execute_m3(identifier, experiment, options):
++        run = {'schema_version': '3.0', 'id': identifier, 'status': 'running',
++               'experiment': experiment, 'options': options, 'starts': [], 'diagnostics': {}}
++        try:
++            run = m3.solve_experiment(experiment, options)
++            run['id'] = identifier
++            save_json(path_for(identifier), run)
++            with lock:
++                jobs[identifier] = {'status': 'complete', 'run': run}
++        except Exception as exc:
++            run['error'] = f'{type(exc).__name__}: {exc}'
++            if run.get('selected_start') is None:
++                run['status'] = 'failed'
++            else:
++                # Persistence errors must not rewrite optimizer convergence.
++                run['infrastructure_status'] = 'failed'
++                run.setdefault('diagnostics', {}).setdefault('warnings', []).append(run['error'])
++            try:
++                save_json(path_for(identifier), run)
++            except (OSError, ValueError) as error:
++                run['persistence_error'] = str(error)
++            with lock:
++                jobs[identifier] = {'status': 'failed', 'run': run, 'error': run['error']}
++
++    if run_dir is None:
++        accepted = sorted((ROOT / 'evidence' / 'm3').glob('acceptance_*/acceptance_summary.json'))
++        if accepted:
++            bundled = accepted[-1].parent
++            for reference in (bundled / 'demo_runs').glob('*.json'):
++                data = load_json(reference)
++                identifier = uuid.uuid5(uuid.NAMESPACE_URL, 'uwb-m3/demo/' + reference.stem).hex
++                if not path_for(identifier).exists():
++                    data.update(id=identifier, reference_name='M3_' + reference.stem)
++                    save_json(path_for(identifier), data)
++            for reference in (bundled / 'sweeps').glob('*.json'):
++                identifier = uuid.uuid5(uuid.NAMESPACE_URL, 'uwb-m3/sweep/' + reference.stem).hex
++                if not artifact_path(identifier).exists():
++                    data = m3_sweeps.load_artifact(reference)
++                    data['id'] = identifier
++                    retain_sweep_runs(data)
++                    m3_sweeps.save_artifact(artifact_path(identifier), data)
++
++    @app.post('/api/m3/runs')
++    def submit_m3():
++        body = request.get_json()
++        if not isinstance(body, dict):
++            raise ValueError('Expected M3 configuration and options')
++        if not isinstance(body.get('config', {}), dict) or not isinstance(body.get('options', {}), dict):
++            raise ValueError('Configuration and options must be objects')
++        options = m3.validate_options(body.get('options', {}))
++        if options['starts'] > 12 or options['max_nfev'] > 5000:
++            raise ValueError('Application limits: 12 starts and 5000 evaluations per start')
++        experiment = m3.generate_experiment(body.get('config', {}))
++        identifier = uuid.uuid4().hex
++        save_json(path_for(identifier), {'schema_version': '3.0', 'id': identifier,
++                  'experiment': experiment, 'options': options, 'starts': [], 'diagnostics': {}, 'status': 'running'})
++        with lock:
++            jobs[identifier] = {'status': 'running'}
++        executor.submit(execute_m3, identifier, experiment, options)
++        return jsonify(id=identifier), 202
++
++    def execute_m3_sweep(identifier, config):
++        latest = {'schema_version': '3.0', 'artifact_type': 'timing_sweep',
++                  'id': identifier, 'status': 'running', 'config': config, 'entries': []}
++        try:
++            def checkpoint(data):
++                nonlocal latest
++                data['id'] = identifier
++                latest = data
++                retain_sweep_runs(data)
++                m3_sweeps.save_artifact(artifact_path(identifier), data)
++                with lock:
++                    jobs[identifier] = {'status': 'running', 'completed_runs': len(data['entries'])}
++            latest = m3_sweeps.run_sweep(config, on_progress=checkpoint)
++            latest['id'] = identifier
++            retain_sweep_runs(latest)
++            m3_sweeps.save_artifact(artifact_path(identifier), latest)
++            with lock:
++                jobs[identifier] = {'status': 'complete', 'artifact': latest}
++        except Exception as exc:
++            latest.update(status='failed', error=f'{type(exc).__name__}: {exc}')
++            with lock:
++                jobs[identifier] = {'status': 'failed', 'artifact': latest, 'error': latest['error']}
++            try:
++                save_pending(artifact_path(identifier), latest)
++            except OSError as error:
++                latest['persistence_error'] = str(error)
++
++    @app.post('/api/m3/sweeps')
++    def submit_m3_sweep():
++        body = request.get_json()
++        if not isinstance(body, dict):
++            raise ValueError('Expected a timing sweep configuration')
++        config = m3_sweeps.validate_sweep_config(body)
++        if config['options']['starts'] > 12 or config['options']['max_nfev'] > 5000:
++            raise ValueError('Application limits: 12 starts and 5000 evaluations per start')
++        identifier = uuid.uuid4().hex
++        save_pending(artifact_path(identifier), {'schema_version': '3.0',
++                     'artifact_type': 'timing_sweep', 'id': identifier,
++                     'status': 'running', 'config': config, 'entries': []})
++        with lock:
++            jobs[identifier] = {'status': 'running'}
++        executor.submit(execute_m3_sweep, identifier, config)
++        return jsonify(id=identifier), 202
++
++    @app.get('/api/m3/sweeps')
++    def list_m3_sweeps():
++        rows = []
++        for path in sorted(artifacts.glob('*.json'), key=lambda p: p.stat().st_mtime, reverse=True):
++            try:
++                data = json.loads(path.read_text(encoding='utf-8'))
++                if data.get('artifact_type') != 'timing_sweep':
++                    continue
++                with lock:
++                    active = jobs.get(path.stem)
++                status = 'interrupted' if data.get('status') == 'running' and active is None else data.get('status')
++                rows.append({'id': path.stem, 'status': status, 'factor': data['config']['factor']})
++            except (ValueError, OSError, KeyError):
++                continue
++        return jsonify(rows)
++
++    @app.get('/api/m3/sweeps/<identifier>')
++    def reopen_m3_sweep(identifier):
++        path = artifact_path(identifier)
++        if not path.exists():
++            return jsonify(error='Unknown timing sweep'), 404
++        with lock:
++            active = jobs.get(identifier)
++        if active and active.get('artifact'):
++            return jsonify(active['artifact'])
++        raw = json.loads(path.read_text(encoding='utf-8'))
++        candidates = list(path.parent.glob(path.name + '.*.tmp'))
++        temporary = path.with_suffix('.json.tmp')
++        if temporary.exists():
++            candidates.append(temporary)
++        for temporary in sorted(candidates, key=lambda p: p.stat().st_mtime):
++            try:
++                recovered = m3_sweeps.load_artifact(temporary)
++                if len(recovered.get('entries', [])) >= len(raw.get('entries', [])):
++                    raw = recovered
++            except (ValueError, OSError):
++                pass
++        if raw.get('entries'):
++            m3_sweeps.validate_artifact(raw)
++        if raw.get('status') == 'running' and active is None:
++            raw.update(status='failed', saved_status='running',
++                       error='Interrupted timing sweep; completed attempts retained, no implicit restart.')
++        return jsonify(raw)
++
++    @app.get('/api/m3/sweeps/<identifier>/csv')
++    def m3_csv(identifier):
++        return Response(m3_sweeps.table_csv(m3_sweeps.load_artifact(artifact_path(identifier))),
++                        mimetype='text/csv')
++
++    @app.post('/api/m3/import')
++    def import_m3():
++        data = request.get_json()
++        if not isinstance(data, dict) or data.get('schema_version') != '3.0':
++            raise ValueError('Expected a version 3.0 run or timing sweep')
++        identifier = uuid.uuid4().hex
++        data['id'] = identifier
++        if data.get('artifact_type') == 'timing_sweep':
++            m3_sweeps.validate_artifact(data)
++            retain_sweep_runs(data)
++            m3_sweeps.save_artifact(artifact_path(identifier), data)
++            return jsonify(id=identifier, artifact=data)
++        m3.validate_run(data)
++        save_json(path_for(identifier), data)
++        return jsonify(id=identifier, run=data)
++
+     @app.post('/api/comparisons')
+     def compare_saved():
+         body = request.get_json()
+@@ -276,23 +447,38 @@ def create_app(run_dir=None):
+             return jsonify(error='Unknown job'), 404
+         return jsonify(result)
+ 
++    run_summary_cache, run_summary_lock = {}, Lock()
++
+     @app.get('/api/runs')
+     def list_runs():
+         rows = []
+-        for path in sorted(directory.glob('*.json'), key=lambda p: p.stat().st_mtime, reverse=True):
+-            try:
+-                data = load_json(path)
+-            except (ValueError, OSError) as exc:
+-                rows.append({'id': path.stem, 'status': 'unreadable', 'scenario': 'Invalid saved file',
+-                             'mode': 'unknown', 'error': str(exc)})
+-                continue
+-            if 'experiment' not in data:
+-                continue  # Standalone generator exports are not fitted run envelopes.
+-            rows.append({'id': path.stem, 'status': data.get('status'),
++        # Summary-only cache avoids repeated strict spectral validation for each
++        # independent UI panel; file detail/import always validates the full run.
++        with run_summary_lock:
++            for path in sorted(directory.glob('*.json'), key=lambda p: p.stat().st_mtime, reverse=True):
++                stamp = (path.stat().st_mtime_ns,path.stat().st_size)
++                cached = run_summary_cache.get(path)
++                if cached and cached[0] == stamp:
++                    if cached[1] is not None: rows.append(cached[1].copy())
++                    continue
++                try: data = load_json(path)
++                except (ValueError,OSError) as exc:
++                    summary = {'id':path.stem,'status':'unreadable','scenario':'Invalid saved file','mode':'unknown','error':str(exc)}
++                    run_summary_cache[path]=(stamp,summary);rows.append(summary.copy());continue
++                if 'experiment' not in data:
++                    run_summary_cache[path]=(stamp,None);continue
++                summary = {'id': path.stem, 'status': data.get('status'),
++                         'schema_version': data.get('schema_version'), 'solver': data.get('options', {}).get('solver'), 'height_parameterization': data.get('options', {}).get('height_parameterization'), 'initialization': data.get('options', {}).get('initialization'),
++                         'timing_model': data.get('options', {}).get('timing_model'),
++                         'tag_height_model': data.get('options', {}).get('tag_height_model'),
++                         'beacon_height_model': data.get('options', {}).get('beacon_height_model'),
++                         'beacon_count': len(data['experiment']['truth']['beacons']),
+                          'scenario': data['experiment']['config']['scenario'],
+                          'path_type': data['experiment']['config'].get('path', {}).get('type'),
+                          'reference_name': data.get('reference_name'),
+-                         'mode': data.get('options', {}).get('mode', 'joint')})
++                         'mode': data.get('options', {}).get('mode', 'joint')}
++                run_summary_cache[path]=(stamp,summary)
++                rows.append(summary.copy())
+         return jsonify(rows)
+ 
+     @app.get('/api/runs/<identifier>')
+@@ -307,8 +493,8 @@ def create_app(run_dir=None):
+         data = request.get_json()
+         if not isinstance(data, dict):
+             raise ValueError('Expected a saved-run JSON object')
+-        if data.get('schema_version') != '1.0' or not isinstance(data.get('experiment'), dict):
+-            raise ValueError('Expected a version 1.0 saved run with experiment')
++        if data.get('schema_version') not in ('1.0', '3.0', '4.0', '5.0') or not isinstance(data.get('experiment'), dict):
++            raise ValueError('Expected a saved run with experiment')
+         if not isinstance(data.get('starts'), list):
+             raise ValueError('Saved run must contain per-start outcomes')
+         identifier = uuid.uuid4().hex
+@@ -320,6 +506,11 @@ def create_app(run_dir=None):
+     def bad_request(exc):
+         return jsonify(error=str(exc)), 400
+ 
++    from uwb.m4_service import register_m4_routes
++    register_m4_routes(app, directory, artifacts, executor, jobs, lock,
++                       bundled_root=ROOT/'evidence'/'m4' if run_dir is None else None)
++    from uwb.m5_service import register_m5_routes
++    register_m5_routes(app, directory, artifacts, executor, jobs, lock, bundled_root=ROOT/'evidence'/'m5' if run_dir is None else None)
+     return app
+ 
+ 
+diff --git a/uwb/experiments.py b/uwb/experiments.py
+index aae130c..1c6b5a0 100644
+--- a/uwb/experiments.py
++++ b/uwb/experiments.py
+@@ -409,6 +409,24 @@ def _validate_payload(data: Any) -> None:
+     an ``error`` message) so they can be inspected later.
+     """
+     _validate_json_values(data)
++    if isinstance(data, dict) and data.get("schema_version") == "5.0":
++        from .m5 import validate_experiment, validate_run
++        (validate_experiment if "estimator_input" in data else validate_run)(data)
++        return
++    if isinstance(data, dict) and data.get("schema_version") == "4.0":
++        from .m4 import validate_experiment, validate_run
++        if "estimator_input" in data:
++            validate_experiment(data)
++        else:
++            validate_run(data)
++        return
++    if isinstance(data, dict) and data.get("schema_version") == "3.0":
++        from .m3 import validate_experiment, validate_run
++        if "estimator_input" in data:
++            validate_experiment(data)
++        else:
++            validate_run(data)
++        return
+     if not isinstance(data, dict):
+         raise ExperimentFormatError("saved payload must be a JSON object")
+     if "config" in data and "estimator_input" in data:
+diff --git a/uwb/sweeps.py b/uwb/sweeps.py
+index da3aa4e..819ae67 100644
+--- a/uwb/sweeps.py
++++ b/uwb/sweeps.py
+@@ -371,14 +371,30 @@ def build_comparison(left_run, right_run, alignment="aligned", *, _validate=True
+         truth = copy.deepcopy(run["experiment"]["truth"])
+         selected = next((s for s in run["starts"] if s["index"] == run.get("selected_start")), None)
+         estimate = selected.get("estimate") if selected else None
+-        evaluation = evaluate_geometry(estimate, truth, run.get("options", {}).get("mode", "joint")) if estimate else None
++        if estimate and run.get("schema_version") in ("4.0","5.0"):
++            from .m4 import evaluate_geometry as evaluate_m4
++            options = run.get("options", {})
++            if run.get("schema_version") == "5.0":
++                from .m5 import base_options
++                options = base_options(options)
++            evaluation = evaluate_m4(estimate, truth, options)
++            if alignment == "raw" and run.get("options", {}).get("mode") == "joint":
++                canonical = evaluation["truth_canonical_transform"]
++                for key in ("trajectory", "beacons"):
++                    truth[key] = (np.asarray(truth[key]) @ np.asarray(canonical["rotation_xyz"]) + np.asarray(canonical["translation_xyz_m"])).tolist()
++        else:
++            evaluation = evaluate_geometry(estimate, truth, run.get("options", {}).get("mode", "joint")) if estimate else None
+         geometry = copy.deepcopy(evaluation["aligned_geometry"] if alignment == "aligned" and evaluation else estimate)
+         transform = evaluation["alignment"] if alignment == "aligned" and evaluation else {"applied": False, "scale": 1., "reflection_allowed": False}
+         initial = copy.deepcopy(selected.get("initial")) if selected else None
+         if initial and transform.get("applied"):
+             for key in ("trajectory", "beacons"):
+                 array = np.asarray(initial[key], dtype=float)
+-                array[:, :2] = array[:, :2] @ np.asarray(transform["rotation_xy"]) + np.asarray(transform["translation_xy_m"])
++                if "rotation_xyz" in transform:
++                    array = array @ np.asarray(transform["rotation_xyz"]) + np.asarray(transform["translation_xyz_m"])
++                else:
++                    array[:, :2] = array[:, :2] @ np.asarray(transform["rotation_xy"]) + np.asarray(transform["translation_xy_m"])
++                    array[:, 2] += transform.get("gauge_translation_z_m", 0.)
+                 initial[key] = array.tolist()
+         interpolated = []
+         for t in common:
+@@ -392,8 +408,9 @@ def build_comparison(left_run, right_run, alignment="aligned", *, _validate=True
+                       "truth": truth, "estimate": geometry, "initial": initial,
+                       "alignment": transform, "position_errors_m": error.get("position_errors_m", []),
+                       "residuals_m": diagnostics.get("residuals_m", []),
+-                      "interpolated_trajectory": interpolated, "sample_kind": "fitted epoch samples",
+-                      "color_quantity": "Euclidean matched-time position error in metres at fitted epochs"})
++                      "interpolated_trajectory": interpolated,
++                      "sample_kind": "interpolated M4 display samples; trajectory parameters are saved knots" if run.get("schema_version") in ("4.0","5.0") else "interpolated M3 display samples; trajectory parameters are saved knots" if run.get("schema_version") == "3.0" else "fitted epoch samples",
++                      "color_quantity": "Euclidean matched-time position error in metres at saved display times" if run.get("schema_version") in ("3.0","4.0","5.0") else "Euclidean matched-time position error in metres at fitted epochs"})
+         table.append({"side": "left" if index == 0 else "right", "id": run.get("id"), "status": run["status"],
+                       "mode": run.get("options", {}).get("mode"), "samples": len(times), "starts": len(run["starts"]),
+                       "selected_start": run.get("selected_start"), "position_rmse_m": error.get("position_rmse_m"),
+@@ -412,9 +429,9 @@ def build_comparison(left_run, right_run, alignment="aligned", *, _validate=True
+     bounds = {axis: [float(c - half), float(c + half)] for axis, c in zip(("x", "y", "z"), center)}
+     result = {"schema_version": SCHEMA_VERSION, "artifact_type": "comparison", "runs": [copy.deepcopy(left_run), copy.deepcopy(right_run)],
+               "alignment": alignment, "views": views, "table": table, "shared_bounds_m": bounds,
+-              "common_elapsed_times_s": common.tolist(), "time_reference": "Elapsed seconds from each run's first fitted epoch; no time warping",
+-              "interpolation": "Piecewise linear rendering on the union of elapsed epoch times, no extrapolation; statistics use original fitted samples only",
+-              "spatial_convention": "Shared metre axes and equal aspect ratio; proper planar rigid map-to-truth alignment only, scale=1, reflections forbidden"}
++              "common_elapsed_times_s": common.tolist(), "time_reference": "Elapsed seconds from each run's first saved display time; no time warping" if any(r.get("schema_version") in ("3.0","4.0","5.0") for r in (left_run, right_run)) else "Elapsed seconds from each run's first fitted epoch; no time warping",
++              "interpolation": "Piecewise linear rendering on union of saved display times, no extrapolation; M4 statistics use saved display samples, trajectory parameters are knots" if any(r.get("schema_version") in ("4.0","5.0") for r in (left_run, right_run)) else "Piecewise linear rendering on union of saved display times, no extrapolation; M3 statistics use saved display samples, trajectory parameters are knots" if any(r.get("schema_version") == "3.0" for r in (left_run, right_run)) else "Piecewise linear rendering on the union of elapsed epoch times, no extrapolation; statistics use original fitted samples only",
++              "spatial_convention": "Shared metre axes and equal aspect ratio; model-valid proper planar/3D rigid alignment, scale=1, reflections forbidden" if any(r.get("schema_version") in ("4.0","5.0") for r in (left_run, right_run)) else "Shared metre axes and equal aspect ratio; proper planar rigid map-to-truth alignment only, scale=1, reflections forbidden"}
+     if _validate:
+         validate_artifact(result)
+     return result
+@@ -486,6 +503,13 @@ def _validate_artifact(data):
+                 raise ExperimentFormatError("Comparison alignment must preserve scale and forbid reflections")
+         reference = build_comparison(*data["runs"], alignment=data["alignment"], _validate=False)
+         for key in ("views", "table", "shared_bounds_m", "common_elapsed_times_s", "time_reference", "interpolation", "spatial_convention"):
++            # Early M3 comparison exports used the historical epoch wording.
++            # Accept those exact labels while still validating all source data.
++            legacy_labels = {
++                "time_reference": "Elapsed seconds from each run's first fitted epoch; no time warping",
++                "interpolation": "Piecewise linear rendering on the union of elapsed epoch times, no extrapolation; statistics use original fitted samples only"}
++            if key in legacy_labels and any(run.get("schema_version") == "3.0" for run in data["runs"]) and data.get(key) == legacy_labels[key]:
++                continue
+             if data.get(key) != reference[key]:
+                 raise ExperimentFormatError(f"Saved comparison {key} disagrees with source runs")
+     else:
+diff --git a/web/app.js b/web/app.js
+index 3dda8d4..6b60b6e 100644
+--- a/web/app.js
++++ b/web/app.js
+@@ -17,6 +17,15 @@
+   const toRows = value => Array.isArray(value) ? value : [];
+   const xyz = value => Array.isArray(value) && value.length >= 3 && value.slice(0, 3).every(Number.isFinite) ? value.slice(0, 3) : null;
+   const points = value => toRows(value).map(xyz).filter(Boolean);
++  function transformPoint(p, alignment) {
++    if (!alignment?.applied) return p.slice();
++    if (Array.isArray(alignment.rotation_xyz) && Array.isArray(alignment.translation_xyz_m)) {
++      return [0, 1, 2].map(j => p.reduce((sum, value, i) => sum + value * alignment.rotation_xyz[i][j], 0) + alignment.translation_xyz_m[j]);
++    }
++    const r = alignment.rotation_xy, t = alignment.translation_xy_m;
++    if (!r || !t) return p.slice();
++    return [p[0]*r[0][0]+p[1]*r[1][0]+t[0], p[0]*r[0][1]+p[1]*r[1][1]+t[1], p[2]+(alignment.gauge_translation_z_m || 0)];
++  }
+   const number = value => value === null || value === undefined || value === '' || !Number.isFinite(Number(value)) ? null : Number(value);
+   const fmt = (value, digits = 4) => Number.isFinite(value) ? (value !== 0 && Math.abs(value) < 10 ** (-digits) ? value.toExponential(2) : value.toFixed(digits)) : '—';
+   const escapeHtml = value => String(value ?? '').replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[c]);
+@@ -112,7 +121,7 @@
+     state.start = pickStart(run, state.selectedStart); state.runMeta = run;
+     const rawStatus = run.status || 'complete';
+     const status = rawStatus === 'success' || rawStatus === 'not_converged' ? 'complete' : rawStatus;
+-    const initLabel = run.options && run.options.initialization === 'truth_near' ? 'Truth-near diagnostic' : 'Independent initialization';
++    const initLabel = run.options?.initialization === 'truth_near' ? 'Truth-near diagnostic' : run.options?.initialization === 'algebraic' ? 'Algebraic initialization · measurement only' : 'Independent initialization';
+     setStatus(status, status === 'complete' ? `${rawStatus === 'success' ? 'Converged' : rawStatus === 'not_converged' ? 'Not converged' : 'Run complete'} · ${initLabel}` : status === 'failed' ? 'Run failed · outcome retained' : 'Run running');
+     const mode = run.options && run.options.mode || run.mode || 'joint';
+     const scenario = run.experiment && run.experiment.config && run.experiment.config.scenario || run.scenario || '';
+@@ -316,7 +325,8 @@
+   }
+   function drawScene(run, start) {
+     if (!window.Plotly) { state.sceneTraces = []; $('#pngButton').disabled = true; $('#scene').innerHTML = '<div class="scene-empty"><b>Plotly is unavailable</b><span>Check that /vendor/plotly.min.js is being served.</span></div>'; return; }
+-    const target = $('#scene'); const truth = points(state.truth.trajectory); const truthBeacons = points(state.truth.beacons);
++    const target = $('#scene'); let truth = points(state.truth.trajectory), truthBeacons = points(state.truth.beacons);
++    target.dataset.generation = String(Number(target.dataset.generation || 0) + 1);
+     const estimate = points(start && start.estimate && start.estimate.trajectory); const estimateBeacons = points(start && start.estimate && start.estimate.beacons);
+     const initial = points(start && start.initial && start.initial.trajectory); const initialBeacons = points(start && start.initial && start.initial.beacons);
+     const mode = ((run.options && run.options.mode) || run.mode) === 'known_map' ? 'known_map' : 'joint';
+@@ -326,12 +336,14 @@
+     if (mode !== 'joint' || !aligned) $('#coordinateMode').value = 'raw';
+     const coordMode = $('#coordinateMode').value;
+     const useAligned = coordMode === 'aligned' && mode === 'joint' && aligned;
++    const canonical = ['4.0','5.0'].includes(run.schema_version) && mode === 'joint' && !useAligned ? evaluation.truth_canonical_transform || run.diagnostics?.truth_canonical_transform : null;
++    const truthTransform = p => canonical ? transformPoint(p, {...canonical, applied:true}) : p;
++    truth = truth.map(truthTransform); truthBeacons = truthBeacons.map(truthTransform);
+     const shownEstimate = useAligned ? points(aligned.trajectory || aligned.estimated_trajectory) : rawEstimate;
+     const shownBeacons = mode === 'known_map' ? truthBeacons : (useAligned ? points(aligned.beacons || aligned.estimated_beacons) : estimateBeacons);
+     let shownInitial = initial, shownInitialBeacons = initialBeacons;
+-    if (useAligned && evaluation.alignment && Array.isArray(evaluation.alignment.rotation_xy) && Array.isArray(evaluation.alignment.translation_xy_m)) {
+-      const rotation = evaluation.alignment.rotation_xy, translation = evaluation.alignment.translation_xy_m;
+-      const transform = p => [p[0] * rotation[0][0] + p[1] * rotation[1][0] + translation[0], p[0] * rotation[0][1] + p[1] * rotation[1][1] + translation[1], p[2]];
++    if (useAligned && evaluation.alignment) {
++      const transform = p => transformPoint(p, evaluation.alignment);
+       shownInitial = initial.map(transform); shownInitialBeacons = initialBeacons.map(transform);
+     }
+     if (mode === 'joint') { $('#coordinateMode').disabled = false; $('#coordinateMode').options[1].disabled = !aligned; }
+@@ -340,11 +352,11 @@
+     const motion = run.path_motion || {};
+     const pathInfo = motion.length_m !== undefined ? ` · ${fmt(motion.length_m, 2)} m path · ${fmt(motion.speed_m_s, 2)} m/s · ${fmt(Math.max(0, (run.experiment?.config?.samples || 0) - 1) / (run.experiment?.config?.duration_s || 1), 2)} samples/s` : '';
+     const pathTitle = run.experiment?.config?.path?.type ? pathLabel(run.experiment.config.path.type) : null;
+-    $('#sceneSubtitle').textContent = `${pathTitle || scenarioLabel(scenario)} · ${mode === 'known_map' ? 'Known surveyed map' : `Joint map · ${coordMode} frame`} · ${run.options && run.options.initialization === 'truth_near' ? 'Truth-near diagnostic' : 'Independent initialization'} · ${toRows(run.starts).length} starts${pathInfo}`;
++    $('#sceneSubtitle').textContent = `${pathTitle || scenarioLabel(scenario)} · ${mode === 'known_map' ? 'Known surveyed map' : `Joint map · ${coordMode} frame`} · ${run.options?.initialization === 'truth_near' ? 'Truth-near diagnostic' : run.options?.initialization === 'algebraic' ? 'Algebraic initialization · measurement only' : 'Independent initialization'} · ${toRows(run.starts).length} starts${pathInfo}`;
+     const notice = $('#plotNotice'); const alignment = evaluation.alignment || {};
+     const runWarnings = toRows(run.diagnostics && run.diagnostics.warnings);
+-    if (mode === 'joint' && coordMode === 'raw') { notice.textContent = 'Raw coordinates: joint-map geometric errors depend on frame until aligned.'; notice.classList.remove('hidden'); }
+-    else if (mode === 'joint' && coordMode === 'aligned') { notice.textContent = `Rigid alignment · scale fixed to 1 · reflections ${alignment.reflection_allowed === false ? 'disallowed' : 'resolved by model convention'}.`; notice.classList.remove('hidden'); }
++    if (mode === 'joint' && coordMode === 'raw') { notice.textContent = ['4.0','5.0'].includes(run.schema_version) ? 'Raw estimator frame: truth is converted to the declared gauge. Absolute joint-map world height requires a datum; no scale or reflection fit is applied.' : 'Raw coordinates: joint-map geometric errors depend on frame until aligned.'; notice.classList.remove('hidden'); }
++    else if (mode === 'joint' && coordMode === 'aligned') { notice.textContent = `Rigid alignment · scale fixed to 1 · reflections ${alignment.reflection_allowed === false ? 'disallowed' : 'resolved by model convention'}. ${['4.0','5.0'].includes(run.schema_version) ? alignment.description || '' : ''}`; notice.classList.remove('hidden'); }
+     else if (runWarnings.length) { notice.textContent = runWarnings.join(' · '); notice.classList.remove('hidden'); }
+     else notice.classList.add('hidden');
+     const traces = [];
+@@ -353,7 +365,14 @@
+     add(pathTrace(truth, 'Ground truth · samples', colors.teal, 'solid', 'truth', true, true), 'truth');
+     add(beaconTrace(truthBeacons, 'Ground truth · beacons', colors.teal, 'circle', 'truth'), 'truth');
+     add(pathTrace(shownEstimate, useAligned ? 'Estimate · aligned' : 'Estimate · raw', colors.coral, 'dash', 'estimate'), 'estimate');
+-    add(pathTrace(shownEstimate, 'Estimated samples', colors.coral, 'solid', 'estimate', true, true), 'estimate');
++    add(pathTrace(shownEstimate, ['3.0','4.0','5.0'].includes(run.schema_version) ? 'Estimate · interpolated display samples' : 'Estimated samples', colors.coral, 'solid', 'estimate', true, true), 'estimate');
++    if (['3.0','4.0','5.0'].includes(run.schema_version) && start?.estimate?.knot_trajectory) {
++      const knots = points(start.estimate.knot_trajectory).map(p => {
++        if (!useAligned || !evaluation.alignment?.applied) return p;
++        return transformPoint(p, evaluation.alignment);
++      });
++      add(pathTrace(knots, 'Fitted trajectory knots', colors.coral, 'solid', 'estimate', true, true), 'estimate');
++    }
+     if (mode !== 'known_map') add(beaconTrace(shownBeacons, useAligned ? 'Estimated beacons · aligned' : 'Estimated beacons · raw', colors.coral, 'diamond', 'estimate'), 'estimate');
+     add(pathTrace(shownInitial, 'Initial trajectory', colors.amber, 'dot', 'initial'), 'initial');
+     add(pathTrace(shownInitial, 'Initial samples', colors.amber, 'dot', 'initial', true, true), 'initial');
+@@ -369,12 +388,17 @@
+       for (let i = 0; i < total; i += step) {
+         const obs = observations[i]; const epoch = number(obs.epoch); const beaconId = number(obs.beacon_id);
+         if (epoch === null || beaconId === null) continue;
+-        const p = shownEstimate[epoch]; const b = map[beaconId] || map[beaconId - 1]; if (p && b) add(line3d(p, b, '#a9bcc0', 'Sampled fit range rays', 'rays', 'solid'), 'rays');
++        let p = ['3.0','4.0','5.0'].includes(run.schema_version) ? xyz(start?.estimate?.ping_trajectory?.[i]) : shownEstimate[epoch];
++        if (p && ['3.0','4.0','5.0'].includes(run.schema_version) && useAligned && evaluation.alignment?.applied) {
++          p = transformPoint(p, evaluation.alignment);
++        }
++        const b = map[beaconId] || map[beaconId - 1]; if (p && b) add(line3d(p, b, '#a9bcc0', 'Sampled fit range rays', 'rays', 'solid'), 'rays');
+       }
+     }
+-    add(planeTrace(planeRectangle(truth, 0), 'Tag reference plane', '#c7dfda', 'tagPlane'), 'tagPlane');
++    const height = start?.diagnostics?.height || run.diagnostics?.height || {};
++    add(planeTrace(['4.0','5.0'].includes(run.schema_version) ? points(height.truth_planarity?.plane_corners).map(truthTransform) : planeRectangle(truth, 0), ['4.0','5.0'].includes(run.schema_version) ? 'Truth tag best-fit plane' : 'Tag reference plane', '#c7dfda', 'tagPlane'), 'tagPlane');
+     const beaconZ = truthBeacons.length ? truthBeacons.reduce((sum, p) => sum + p[2], 0) / truthBeacons.length : 0;
+-    add(planeTrace(planeRectangle(truthBeacons, beaconZ), 'Beacon reference plane', '#a9c9c1', 'beaconPlane'), 'beaconPlane');
++    add(planeTrace(['4.0','5.0'].includes(run.schema_version) ? points(height.truth_beacon_planarity?.plane_corners).map(truthTransform) : planeRectangle(truthBeacons, beaconZ), ['4.0','5.0'].includes(run.schema_version) ? 'Truth beacon best-fit plane' : 'Beacon reference plane', '#a9c9c1', 'beaconPlane'), 'beaconPlane');
+     // One trace per segment layer keeps toggles responsive instead of issuing
+     // dozens of separate WebGL redraws for sampled rays and error vectors.
+     for (const layer of ['errors', 'rays']) {
+@@ -408,12 +432,16 @@
+     Plotly.react(target, traces, layout, { responsive: true, displaylogo: false, modeBarButtonsToRemove: ['toImage', 'sendDataToCloud', 'sendChartToCloud'], scrollZoom: true }).then(() => {
+       target.dataset.renderMs = (performance.now() - sceneStarted).toFixed(2);
+       if (!state.sceneCameraHandler && typeof target.on === 'function') {
+-        state.sceneCameraHandler = () => { const camera = target._fullLayout && target._fullLayout.scene && target._fullLayout.scene.camera; if (camera) state.camera = JSON.parse(JSON.stringify(camera)); };
++        state.sceneCameraHandler = () => { const camera = target._fullLayout && target._fullLayout.scene && target._fullLayout.scene.camera; if (camera) { state.camera = JSON.parse(JSON.stringify(camera)); target.dataset.camera = JSON.stringify(state.camera); } };
+         target.on('plotly_relayout', state.sceneCameraHandler);
+       }
+       const scene = target._fullLayout && target._fullLayout.scene;
+       if (scene && scene.camera) state.camera = scene.camera;
++      if (state.camera) target.dataset.camera = JSON.stringify(state.camera);
+       $('#pngButton').disabled = false;
++      if (window.RangeLabM3 && state.activeRun === run) window.RangeLabM3.onRun(run);
++      if (window.RangeLabM4 && state.activeRun === run) window.RangeLabM4.onRun(run);
++      if (window.RangeLabM5 && state.activeRun === run) window.RangeLabM5.onRun(run);
+     }).catch(error => { console.error('Scene drawing failed:', error); showToast(`Scene could not render: ${error.message}`); });
+   }
+ 
+@@ -586,6 +614,6 @@
+     } catch (error) { console.warn('Scenario list unavailable; using built-in defaults.', error); }
+     await refreshRuns();
+   }
+-  window.RangeLab = { state, renderRun, refreshRuns, openRun: loadRun, api, pickStart, setSelectedStart(index) { state.selectedStart = index; } };
++  window.RangeLab = { state, renderRun, refreshRuns, acceptRunSummaries(runs, selectedId) { state.runs = runs; renderRuns(selectedId || state.activeRun?.id); }, openRun: loadRun, api, pickStart, setSelectedStart(index) { state.selectedStart = index; } };
+   document.addEventListener('DOMContentLoaded', init);
+ })();
+diff --git a/web/index.html b/web/index.html
+index 843f229..bd4d004 100644
+--- a/web/index.html
++++ b/web/index.html
+@@ -9,15 +9,18 @@
+   <script src="/vendor/plotly.min.js"></script>
+   <script src="/app.js" defer></script>
+   <script src="/m2.js" defer></script>
++  <script src="/m3.js" defer></script>
++  <script src="/m4.js" defer></script>
++  <script src="/m5.js" defer></script>
+ </head>
+ <body>
+   <header class="topbar">
+     <a class="brand" href="/" aria-label="RangeLab home"><span class="brand-mark">R</span><span>RangeLab</span></a>
+-    <div class="top-context"><span class="live-dot"></span> Synthetic experiment workspace <span class="context-sep">/</span> M2 experiments</div>
++    <div class="top-context"><span class="live-dot"></span> Synthetic experiment workspace <span class="context-sep">/</span> M2 + M3 + M4 + M5 experiments</div>
+     <div class="top-actions"><button id="importButton" class="button button-quiet" type="button">Import run</button><input id="importFile" type="file" accept="application/json,.json" hidden><button id="exportConfigButton" class="button button-quiet" type="button">Export config</button><a id="exportLink" class="button button-quiet disabled" href="#" download="uwb-run.json" aria-disabled="true">Export JSON</a></div>
+   </header>
+   <main class="shell">
+-    <section class="intro"><div><div class="eyebrow">RANGE-ONLY GEOMETRY</div><h1>Inverse localization lab</h1><p>See when four ranges can recover a moving tag and an unknown map.</p></div><div class="intro-badge"><span class="badge-icon">↗</span><span>Distances in metres<br><b>Planar baseline · 4 beacons</b></span></div></section>
++    <section class="intro"><div><div class="eyebrow">RANGE-ONLY GEOMETRY</div><h1>Inverse localization lab</h1><p>Explore moving tags, beacon geometry, and range-only map recovery.</p></div><div class="intro-badge"><span class="badge-icon">↗</span><span>Distances in metres<br><b>Planar / 3D · 3–8 beacons</b></span></div></section>
+     <section class="workspace">
+       <aside class="control-panel panel">
+         <div class="panel-heading"><div><div class="eyebrow">EXPERIMENT SETUP</div><h2>Run configuration</h2></div><span class="step-mark">01</span></div>
+@@ -67,12 +70,109 @@
+         </section>
+       </section>
+     </section>
++    <section class="m3-workspace panel" aria-labelledby="m3Heading">
++      <div class="m2-results-head"><div><div class="eyebrow">M3 · ASYNCHRONOUS RANGE EXPERIMENTS</div><h2 id="m3Heading">Ping timing and motion</h2><p>Simulate sequential beacon pings, timing uncertainty, packet delivery and motion priors.</p></div></div>
++      <div class="m3-grid">
++        <form id="m3Form" class="m3-form">
++          <div class="m3-section-label">TAG MOTION</div>
++          <label class="field-label" for="m3Motion">Motion profile</label><select id="m3Motion"><option value="variable">Variable speed</option><option value="constant">Constant speed</option><option value="stationary">Stationary</option></select>
++          <div class="field-row"><div><label class="field-label" for="m3Speed">Speed scale</label><input id="m3Speed" type="number" min="0" max="10" step="any" value="1"></div><div><label class="field-label" for="m3Order">Beacon order</label><input id="m3Order" type="text" value="0,1,2,3" autocomplete="off"></div></div>
++          <div class="field-row"><div><label class="field-label" for="m3CycleRate">Cycle rate (Hz)</label><input id="m3CycleRate" type="number" min="0.001" step="any" value="1.55"></div><div><label class="field-label" for="m3PingSpacing">Ping spacing (s)</label><input id="m3PingSpacing" type="number" min="0" step="any" value="0.02"></div></div>
++          <label class="field-label" for="m3AcqJitter">Acquisition jitter (s)</label><input id="m3AcqJitter" type="number" min="0" step="any" value="0">
++          <div class="m3-section-label">TIMESTAMP AND DELIVERY</div>
++          <div class="field-row"><div><label class="field-label" for="m3TimestampOffset">Timestamp offset (s)</label><input id="m3TimestampOffset" type="number" step="any" value="0"></div><div><label class="field-label" for="m3TimestampJitter">Timestamp jitter (s)</label><input id="m3TimestampJitter" type="number" min="0" step="any" value="0"></div></div>
++          <div class="field-row"><div><label class="field-label" for="m3Latency">Delivery latency (s)</label><input id="m3Latency" type="number" min="0" step="any" value="0"></div><div><label class="field-label" for="m3Missing">Missing probability</label><input id="m3Missing" type="number" min="0" max="1" step="0.01" value="0"></div></div>
++          <label class="field-label" for="m3Strides">Per-beacon cycle strides · comma separated</label><input id="m3Strides" type="text" value="1,1,1,1" autocomplete="off">
++          <div class="m3-section-label">MOTION MODEL</div>
++          <label class="field-label" for="m3TimingModel">Timing model</label><select id="m3TimingModel"><option value="timestamp_aware">Timestamp aware</option><option value="grouped">Cycle-start grouped approximation</option></select>
++          <div class="field-row"><div><label class="field-label" for="m3KnotSpacing">Knot spacing (s) <span>(0 = cycle grid)</span></label><input id="m3KnotSpacing" type="number" min="0" step="any" value="0"></div><div><label class="field-label" for="m3PriorSigma">Prior σ (m) <span>(0 = disabled)</span></label><input id="m3PriorSigma" type="number" min="0" step="any" value="0"></div></div>
++          <label class="field-label" for="m3MaxNfev">Maximum evaluations per start</label><input id="m3MaxNfev" type="number" min="1" max="5000" step="1" value="2000">
++          <div class="m3-run-actions"><button id="m3RunButton" class="button button-primary run-button" type="submit">▶ Run M3</button><button id="m3ExportConfig" class="button button-quiet" type="button">Export M3 config</button></div>
++        </form>
++        <div class="m3-right">
++          <div class="m3-playback panel"><div class="m3-play-head"><div><div class="eyebrow">PING PLAYBACK</div><b id="m3PlaybackTitle">Run an M3 experiment to inspect ping timing.</b></div><div class="m3-play-buttons"><button id="m3Play" class="button button-quiet" type="button" disabled>▶ Play</button><button id="m3Pause" class="button button-quiet" type="button" disabled>Ⅱ Pause</button></div></div>
++            <div class="m3-speed-chart" id="m3SpeedChart"><div class="chart-empty">Motion speed and ping events will appear here.</div></div>
++            <div class="m3-scrubber"><button id="m3Prev" class="button button-quiet" type="button" disabled>‹</button><input id="m3PingSlider" type="range" aria-label="Select ping event" min="0" max="0" value="0" disabled><button id="m3Next" class="button button-quiet" type="button" disabled>›</button><span id="m3PingLabel">No ping selected</span></div>
++            <div id="m3PingDetail" class="m3-ping-detail">The active ping will show its actual position, receiving beacon, measured range and timestamp.</div>
++          </div>
++          <div class="m3-sweep panel"><div class="saved-title"><div><div class="eyebrow">PAIRED TIMING SWEEP</div><h3>Compare timing model</h3></div></div>
++            <form id="m3SweepForm" class="m3-sweep-form"><div class="field-row"><div><label class="field-label" for="m3SweepFactor">Vary factor</label><select id="m3SweepFactor"><option value="spacing_s">Ping spacing (s)</option><option value="speed_scale">Speed scale</option><option value="knot_spacing_s">Knot spacing (s)</option><option value="timestamp_offset_s">Timestamp offset (s)</option><option value="timestamp_jitter_s">Timestamp jitter (s)</option><option value="missing_probability">Missing probability</option><option value="beacon_every_cycles">Beacon 3 cycle stride</option></select></div><div><label class="field-label" for="m3SweepValues">Values</label><input id="m3SweepValues" type="text" value="0,0.01,0.03" autocomplete="off"></div></div>
++              <label class="field-label" for="m3SweepSeeds">Seeds · comma separated</label><input id="m3SweepSeeds" type="text" value="7,8" autocomplete="off"><button class="button button-primary" type="submit">Run paired sweep</button></form>
++            <div class="eyebrow m2-subhead">SAVED M3 RUNS</div><div id="m3RunsList" class="runs-list"><div class="empty-runs">No M3 runs yet.</div></div>
++            <div class="eyebrow m2-subhead">SAVED TIMING SWEEPS</div><div class="m3-artifact-actions"><button id="m3ImportButton" class="button button-quiet" type="button">Import JSON</button><input id="m3ImportFile" type="file" accept="application/json,.json" hidden><button id="m3ExportJson" class="button button-quiet" type="button" disabled>Export JSON</button><button id="m3ExportCsv" class="button button-quiet" type="button" disabled>Export CSV</button></div><div id="m3SweepsList" class="runs-list"><div class="empty-runs">No timing sweeps yet.</div></div>
++          </div>
++        </div>
++      </div>
++      <section class="m3-results"><div class="eyebrow">ALL-START RESULTS</div><div id="m3NumericalDisclosure" class="note hidden"></div><article class="chart-card m3-sweep-chart-card"><div class="chart-head"><div><h3>Position error vs factor</h3><span id="m3SweepChartLabel">All-start median · saved evaluation frames</span></div><button id="m3ExportChart" class="text-button" type="button" disabled>↓ Save chart PNG</button></div><div id="m3SweepChart" class="m3-sweep-chart"><div class="chart-empty">Open a saved timing sweep to compare models.</div></div></article><div id="m3AllStarts" class="m2-table-wrap"><div class="chart-empty">Run an M3 experiment or open a saved timing sweep.</div></div></section>
++    </section>
++    <section id="m4Workspace" class="m4-workspace panel" aria-labelledby="m4Heading">
++      <div class="m2-results-head"><div><div class="eyebrow">M4 · 3D BEACON AND TAG GEOMETRY</div><h2 id="m4Heading">Recovering vertical geometry</h2><p>Test how beacon height diversity and tag height models affect range-only recovery.</p></div><div class="m4-export-actions"><button id="m4ExportConfig" class="button button-quiet" type="button">Export config</button><button id="m4ExportRunJson" class="button button-quiet" type="button" disabled>Run JSON</button><button id="m4ExportRunCsv" class="button button-quiet" type="button" disabled>Run CSV</button><button id="m4ExportScenePng" class="button button-quiet" type="button" disabled>Scene PNG</button></div></div>
++      <div class="m4-grid">
++        <form id="m4Form" class="m4-form">
++          <div class="m3-section-label">BEACON GEOMETRY</div>
++          <div class="field-row"><div><label class="field-label" for="m4BeaconCount">Beacon count · 3–8</label><input id="m4BeaconCount" type="number" min="3" max="8" step="1" value="4"></div><div><label class="field-label" for="m4BeaconGeometry">Layout</label><select id="m4BeaconGeometry"><option value="equal">Equal height</option><option value="diverse">Height diverse</option><option value="near_collinear">Near collinear</option><option value="collinear">Collinear</option></select></div></div>
++          <div class="field-row"><div><label class="field-label" for="m4BeaconHeight">Nominal height (m)</label><input id="m4BeaconHeight" type="number" step="any" value="2"></div><div><label class="field-label" for="m4HeightSpread">Height spread (m)</label><input id="m4HeightSpread" type="number" min="0" step="any" value="0"></div></div>
++          <label class="field-label" for="m4Baseline">Baseline scale</label><input id="m4Baseline" type="number" min="0.01" step="any" value="1">
++          <label class="field-label" for="m4Coordinates">Optional explicit beacon coordinates · one x,y,z per line</label><textarea id="m4Coordinates" rows="4" placeholder="Leave blank to use generated layout"></textarea>
++          <div class="m3-section-label">TRUTH HEIGHT AND COVERAGE</div>
++          <label class="field-label" for="m4TruthHeightType">Tag truth height profile</label><select id="m4TruthHeightType"><option value="planar">Planar</option><option value="tilted">Tilted plane</option><option value="excursion">Vertical excursion</option><option value="spatial">Spatial motion</option></select>
++          <div class="field-row"><div><label class="field-label" for="m4TagOffset">Height offset (m)</label><input id="m4TagOffset" type="number" step="any" value="0"></div><div><label class="field-label" for="m4TagAmplitude">Excursion amplitude (m)</label><input id="m4TagAmplitude" type="number" min="0" step="any" value="0.5"></div></div>
++          <label class="field-label" for="m4Tilt">Tilt angle (degrees)</label><input id="m4Tilt" type="number" step="any" value="12">
++          <div class="m3-section-label">ESTIMATOR HEIGHT MODEL</div>
++          <label class="field-label" for="m4Mode">Estimation mode</label><select id="m4Mode"><option value="known_map">Known-map diagnostic · fixed surveyed beacons</option><option value="joint">Joint map · estimate beacon geometry</option></select>
++          <label class="field-label" for="m4TagModel">Tag height model</label><select id="m4TagModel"><option value="fixed">Fixed height</option><option value="shared">Shared height</option><option value="soft">Soft height prior</option><option value="free" selected>Free 3D knots</option></select>
++          <div class="field-row"><div><label class="field-label" for="m4BeaconModel">Beacon heights</label><select id="m4BeaconModel"><option value="shared">Shared</option><option value="independent">Independent</option></select></div><div><label class="field-label" for="m4FixedZ">Height datum / prior target (m)</label><input id="m4FixedZ" type="number" step="any" value="0"></div></div>
++          <div class="field-row"><div><label class="field-label" for="m4HeightPrior">Height prior σ (m) · soft model only</label><input id="m4HeightPrior" type="number" min="0.000001" step="any" value="0.25"></div><label class="m4-check"><input id="m4Below" type="checkbox"><span>Constrain tag below beacons</span></label></div>
++          <div class="m3-section-label">MOTION AND TIMING</div>
++          <p class="m4-note">Known-map mode is selected first to establish height recovery against fixed surveyed beacons. Joint-map mode exposes map gauge freedoms. M4 reuses the current M3 motion, acquisition, range-noise, path and solver settings; beacon order and per-beacon cycle strides below support 3–8 receivers.</p>
++          <div class="field-row"><div><label class="field-label" for="m4Order">Beacon order</label><input id="m4Order" type="text" value="0,1,2,3"></div><div><label class="field-label" for="m4Strides">Cycle strides</label><input id="m4Strides" type="text" value="1,1,1,1"></div></div>
++          <div class="m4-run-actions"><button id="m4RunButton" class="button button-primary" type="submit">▶ Run M4</button><button id="m4ImportButton" class="button button-quiet" type="button">Import JSON</button><input id="m4ImportFile" type="file" accept="application/json,.json" hidden></div>
++        </form>
++        <div class="m4-side">
++          <article class="m4-card panel"><div class="eyebrow">SAVED M4 RUNS</div><div id="m4RunsList" class="runs-list"><div class="empty-runs">No saved M4 runs yet.</div></div></article>
++          <article class="m4-card panel"><div class="saved-title"><div><div class="eyebrow">PAIRED GEOMETRY SWEEP</div><h3>Compare height observability</h3></div></div>
++            <form id="m4SweepForm" class="m4-sweep-form"><div class="field-row"><div><label class="field-label" for="m4SweepFactor">Vary geometry</label><select id="m4SweepFactor"><option value="vertical_separation">Nominal beacon height</option><option value="beacon_count">Beacon count</option><option value="height_spread">Beacon height spread</option><option value="coverage">Path coverage scale</option><option value="height_prior_sigma_m">Height prior σ</option><option value="beacon_height_model">Beacon height model</option></select></div><div><label class="field-label" for="m4SweepValues">Values</label><input id="m4SweepValues" type="text" value="2,3,4" autocomplete="off"></div></div>
++              <label class="field-label" for="m4SweepSeeds">Seeds · comma separated</label><input id="m4SweepSeeds" type="text" value="7,8" autocomplete="off"><div class="field-row"><div><label class="field-label" for="m4SweepTagModels">Tag models · comma separated</label><input id="m4SweepTagModels" type="text" value="fixed,shared,soft,free"></div><div><label class="field-label" for="m4SweepBudget">Solver budget</label><input id="m4SweepBudget" type="number" min="1" max="5000" step="1" value="2000"></div></div><button class="button button-primary" type="submit">Run paired geometry sweep</button></form>
++            <div class="eyebrow m2-subhead">SAVED GEOMETRY SWEEPS</div><div class="m4-artifact-actions"><button id="m4ExportJson" class="button button-quiet" type="button" disabled>Export JSON</button><button id="m4ExportCsv" class="button button-quiet" type="button" disabled>Export CSV</button><button id="m4ExportPng" class="button button-quiet" type="button" disabled>Save chart PNG</button></div><div id="m4SweepsList" class="runs-list"><div class="empty-runs">No saved geometry sweeps yet.</div></div>
++          </article>
++        </div>
++      </div>
++      <section class="m4-results"><div class="eyebrow">3D HEIGHT EVIDENCE</div><div id="m4Disclosure" class="note hidden"></div>
++        <div class="m4-chart-grid"><article class="chart-card"><div class="chart-head"><div><h3>Tag height vs time</h3><span id="m4HeightFrame">Truth and selected fitted trajectory</span></div><button id="m4ExportHeightPng" class="button button-quiet" type="button" disabled>PNG</button></div><div id="m4HeightChart" class="m4-chart"><div class="chart-empty">Open an M4 run to inspect tag height.</div></div></article><article class="chart-card"><div class="chart-head"><div><h3>Height reconstruction errors</h3><span>Tag height and best-fit plane departures</span></div><button id="m4ExportPlanePng" class="button button-quiet" type="button" disabled>PNG</button></div><div id="m4PlaneChart" class="m4-chart"><div class="chart-empty">Vertical errors and plane residuals will appear here.</div></div></article></div>
++        <article class="chart-card m4-sweep-card"><div class="chart-head"><div><h3>Recovery error vs geometry</h3><span id="m4SweepLabel">Saved all-start median evaluation frames</span></div></div><div id="m4SweepChart" class="m4-sweep-chart"><div class="chart-empty">Open a saved geometry sweep.</div></div></article>
++        <div id="m4AllStarts" class="m2-table-wrap"><div class="chart-empty">Run an M4 experiment or open a saved geometry sweep.</div></div>
++      </section>
++    </section>
+     <section id="m2Results" class="m2-results panel"><div class="m2-results-head"><div><div class="eyebrow">M2 · COMPARISON WORKSPACE</div><h2>Sweep results and run comparison</h2><p id="m2Subtitle">Choose a saved sweep or compare two runs.</p></div><button id="exportSweepCsv" class="button button-quiet" type="button" disabled>Export CSV</button></div>
+       <div id="sweepDisclosure" class="note hidden"></div><div id="sweepVariability" class="m2-table-wrap"></div><div class="m2-result-grid"><article class="chart-card"><div class="chart-head"><div><h3>Sweep aggregate</h3><span>Click a point to inspect its first matching selected start; rows show every attempt.</span></div><div><button id="exportSweepJson" class="text-button" type="button" disabled>↓ JSON</button><button id="exportSweepChart" class="text-button" type="button" disabled>↓ Chart PNG</button></div></div><div id="sweepChart" class="m2-chart"><div class="chart-empty">Select a saved sweep</div></div></article><article class="chart-card"><div class="chart-head"><div><h3>Attempt outcomes</h3><span>Click any row to inspect that exact start</span></div></div><div id="sweepTable" class="m2-table-wrap"><div class="chart-empty">Select a saved sweep</div></div></article></div>
+           <div class="compare-controls"><div><div class="eyebrow">TWO-RUN COMPARISON</div><h3>Compare saved runs</h3></div><label>Run A<select id="compareRunA"></select></label><label>Run B<select id="compareRunB"></select></label><label>Position alignment<select id="compareAlignment"><option value="raw">Raw coordinates</option><option value="aligned">Rigid alignment · scale 1</option></select></label><button id="compareButton" class="button button-primary" type="button">Compare runs</button><label class="saved-comparison-label">Saved comparisons<select id="savedComparisons"><option value="">No saved comparisons</option></select></label></div>
+-      <div id="compareNotice" class="note hidden"></div><div id="comparisonMetrics" class="m2-table-wrap compare-metrics"></div><div class="compare-grid"><article class="chart-card"><div class="chart-head"><div><h3>Shared 3D scene</h3><span>Common extent · same camera · metres</span></div><div><button id="exportCompareJson" class="text-button" type="button" disabled>↓ JSON</button><button id="exportComparePng" class="text-button" type="button" disabled>↓ Scene PNG</button></div></div><div id="comparisonScene" class="compare-scene"><div class="chart-empty">Choose two saved runs</div></div></article><article class="chart-card"><div class="chart-head"><div><h3>Position error over elapsed time</h3><span>Fitted epochs · elapsed seconds · scale 1</span></div><button id="exportCompareChart" class="text-button" type="button" disabled>↓ Save chart PNG</button></div><div id="comparisonChart" class="compare-chart"><div class="chart-empty">Choose two saved runs</div></div></article></div>
++      <div id="compareNotice" class="note hidden"></div><div id="comparisonMetrics" class="m2-table-wrap compare-metrics"></div><div class="compare-grid"><article class="chart-card"><div class="chart-head"><div><h3>Shared 3D scene</h3><span>Common extent · same camera · metres</span></div><div><button id="exportCompareJson" class="text-button" type="button" disabled>↓ JSON</button><button id="exportComparePng" class="text-button" type="button" disabled>↓ Scene PNG</button></div></div><div id="comparisonScene" class="compare-scene"><div class="chart-empty">Choose two saved runs</div></div></article><article class="chart-card"><div class="chart-head"><div><h3>Position error over elapsed time</h3><span>Saved display/fit samples · elapsed seconds · scale 1</span></div><button id="exportCompareChart" class="text-button" type="button" disabled>↓ Save chart PNG</button></div><div id="comparisonChart" class="compare-chart"><div class="chart-empty">Choose two saved runs</div></div></article></div>
++    </section>
++    <section id="m5Workspace" class="m5-workspace panel" aria-labelledby="m5Heading">
++      <div class="m2-results-head"><div><div class="eyebrow">M5 · SOLVER AND PARAMETERIZATION COMPARISON</div><h2 id="m5Heading">Inverse localization solver study</h2><p>Compare solvers, parameterizations and initializers on shared measurement experiments.</p></div><div class="m4-export-actions"><button id="m5ExportRunJson" class="button button-quiet" type="button" disabled>Run JSON</button><button id="m5ExportRunCsv" class="button button-quiet" type="button" disabled>Run CSV</button><button id="m5ExportPng" class="button button-quiet" type="button" disabled>Scene PNG</button></div></div>
++      <div class="m5-grid">
++        <form id="m5Form" class="m5-form">
++          <div class="m3-section-label">SHARED EXPERIMENT</div><p class="m4-note">M5 uses the current M4 experiment geometry and the shared M3 motion, noise, starts and path controls. Its schema and saved runs remain independent.</p>
++          <div class="m3-section-label">ESTIMATOR MODEL</div>
++          <label class="field-label" for="m5Solver">Solver</label><select id="m5Solver"><option value="trf">Trust region reflective (TRF)</option><option value="lm">Levenberg–Marquardt (LM)</option></select>
++          <label class="field-label" for="m5Parameterization">Height parameterization</label><select id="m5Parameterization"><option value="h">Height coordinates h (metres)</option><option value="q">Transformed coordinates q (m²)</option></select>
++          <label class="field-label" for="m5Initialization">Initialization</label><select id="m5Initialization"><option value="independent">Independent measurement-based</option><option value="truth_near">Truth-near diagnostic</option><option value="algebraic">Algebraic</option></select>
++          <label class="field-label" for="m5AlgebraicTolerance">Algebraic physical consistency tolerance</label><input id="m5AlgebraicTolerance" type="number" min="0.000000000001" max="0.1" step="any" value="0.0000001"><p class="m4-note">Dimensionless squared-range consistency checks after range normalization. A relaxed tolerance permits approximate noisy proposals; it does not alter the final unsquared range objective.</p>
++          <label class="field-label" for="m5InitError">Initialization error (m)</label><input id="m5InitError" type="number" min="0" max="1000" step="any" value="0"><p class="m4-note">Gaussian perturbation scale for generated starts; paired supplied starts skip this perturbation.</p>
++          <p class="m4-note">LM maps finite bounds exponentially and requires strict-interior starts; boundaries are approached asymptotically. h uses metre coordinates; supported shared relative heights select a disclosed positive branch. q represents squared relative height in m², with q ≥ 0 and a positive branch only for supported shared-height geometry.</p>
++          <div class="m5-actions"><button id="m5RunButton" class="button button-primary" type="submit">▶ Run M5</button><button id="m5ImportButton" class="button button-quiet" type="button">Import JSON</button><input id="m5ImportFile" type="file" accept="application/json,.json" hidden></div>
++        </form>
++        <div class="m5-side">
++          <article class="m4-card panel"><div class="eyebrow">SAVED M5 RUNS</div><div id="m5RunsList" class="runs-list"><div class="empty-runs">No saved M5 runs yet.</div></div></article>
++          <article class="m4-card panel"><div class="eyebrow">PAIRED BENCHMARK</div><h3>Compare model variants</h3>
++            <form id="m5SweepForm" class="m4-sweep-form"><label class="field-label" for="m5SweepFactor">Vary shared experiment input</label><select id="m5SweepFactor"><option value="initialization_error_m">Initialization error (m)</option><option value="noise_std_m">Range noise (m)</option></select><label class="field-label" for="m5SweepValues">Values · comma separated</label><input id="m5SweepValues" type="text" value="0,0.25,0.5"><label class="field-label" for="m5Variants">Variants · JSON array with explicit labels</label><textarea id="m5Variants" rows="7">[{"label":"TRF · h · independent","options":{"solver":"trf","height_parameterization":"h","initialization":"independent"}},{"label":"LM · h · independent","options":{"solver":"lm","height_parameterization":"h","initialization":"independent"}},{"label":"TRF · q · independent","options":{"solver":"trf","height_parameterization":"q","initialization":"independent"}}]</textarea><label class="field-label" for="m5Seeds">Measurement seeds · comma separated</label><input id="m5Seeds" type="text" value="7,8,9"><button class="button button-primary" type="submit">Run paired benchmark</button></form>
++            <div class="m5-artifact-actions"><button id="m5ExportJson" class="button button-quiet" type="button" disabled>Export JSON</button><button id="m5ExportCsv" class="button button-quiet" type="button" disabled>Export CSV</button><button id="m5ImportSweep" class="button button-quiet" type="button">Import JSON</button><input id="m5SweepImportFile" type="file" accept="application/json,.json" hidden></div><div id="m5SweepsList" class="runs-list"><div class="empty-runs">No saved M5 benchmarks yet.</div></div></article>
++        </div>
++      </div>
++      <section class="m5-results"><div class="eyebrow">ALL-ATTEMPT EVIDENCE</div><div id="m5Summary" class="note">Run or open an M5 artifact to inspect every attempt.</div><div id="m5AttemptTable" class="m2-table-wrap"><div class="chart-empty">No M5 attempts loaded.</div></div><div class="m5-charts"><article class="chart-card m5-chart-card"><div class="chart-head"><div><h3>Range residual distribution</h3><span id="m5ChartLabel">All-attempt residual distribution by variant</span></div><button id="m5SweepPng" class="text-button" type="button" disabled>↓ Residual PNG</button></div><div id="m5Chart" class="m5-chart"><div class="chart-empty">Open a saved benchmark to compare residuals.</div></div></article><article class="chart-card m5-chart-card"><div class="chart-head"><div><h3>Geometry error by swept factor</h3><span id="m5GeometryChartLabel">All-start median position RMSE by variant</span></div><button id="m5GeometryPng" class="text-button" type="button" disabled>↓ Geometry PNG</button></div><div id="m5GeometryChart" class="m5-chart"><div class="chart-empty">Open a saved benchmark to compare geometry error.</div></div></article></div>
++      <p class="m4-note">Saved M5 runs are also available in the shared M2 comparison controls above.</p></section>
+     </section>
+-    <footer class="page-footer"><span>RangeLab <span>·</span> Four-beacon planar baseline</span><span>Estimator inputs are kept separate from ground truth.</span></footer>
++    <footer class="page-footer"><span>RangeLab <span>·</span> 3–8 beacon spatial experiments</span><span>Estimator inputs are kept separate from ground truth.</span></footer>
+   </main>
+   <div id="toast" class="toast" role="status" aria-live="polite"></div>
+ </body>
+diff --git a/web/m2.js b/web/m2.js
+index c39bdd4..04e5e50 100644
+--- a/web/m2.js
++++ b/web/m2.js
+@@ -171,8 +171,8 @@
+     if (state.runs.some(run => run.id === previousA)) $('#compareRunA').value = previousA;
+     if (state.runs.some(run => run.id === previousB)) $('#compareRunB').value = previousB;
+   }
+-  async function refreshRunList() {
+-    try { const result = await api('/api/runs'); state.runs = Array.isArray(result) ? result : rows(result.runs); updateRunSelectors(); }
++  async function refreshRunList(provided) {
++    try { const result = provided || await api('/api/runs'); state.runs = Array.isArray(result) ? result : rows(result.runs); updateRunSelectors(); }
+     catch (error) { console.warn('Run list unavailable for comparisons:', error); }
+   }
+   async function refreshComparisons(selectId = '') {
+@@ -188,7 +188,7 @@
+     const a = views.map((view, i) => {
+       const estimate = pointList(view.estimate?.trajectory), errors = rows(view.position_errors_m).map(finite);
+       const count = Math.min(estimate.length, errors.length);
+-      return { label: artifact.runs?.[i]?.reference_name || (view.id ? String(view.id).slice(0, 8) : `Run ${i + 1}`), truth: pointList(view.truth?.trajectory), estimate: estimate.slice(0, count), interpolated: rows(view.interpolated_trajectory), errors: errors.slice(0, count), times: rows(view.times_elapsed_s).slice(0, count).map(finite), truthGeometry: view.truth, fitGeometry: view.estimate };
++      return { label: artifact.runs?.[i]?.reference_name || (view.id ? String(view.id).slice(0, 8) : `Run ${i + 1}`), truth: pointList(view.truth?.trajectory), estimate: estimate.slice(0, count), interpolated: rows(view.interpolated_trajectory), errors: errors.slice(0, count), times: rows(view.times_elapsed_s).slice(0, count).map(finite), truthGeometry: view.truth, fitGeometry: view.estimate, m3: ["3.0","4.0","5.0"].includes(artifact.runs?.[i]?.schema_version) };
+     });
+     const maxError = Math.max(1e-9, ...a.flatMap(run => run.errors).filter(value => value !== null));
+     const traces = [];
+@@ -196,7 +196,7 @@
+       traces.push({ type: 'scatter3d', mode: 'lines', name: `${run.label} · ground truth`, x: run.truth.map(p => p[0]), y: run.truth.map(p => p[1]), z: run.truth.map(p => p[2]), line: { color: palette[index], width: 3 }, hovertemplate: `${esc(run.label)} truth<br>(%{x:.3f}, %{y:.3f}, %{z:.3f}) m<extra></extra>` });
+       const interpolated = run.interpolated.length ? run.interpolated : run.estimate;
+       traces.push({ type: 'scatter3d', mode: 'lines', name: `${run.label} · fit path`, x: interpolated.map(p => p?.[0] ?? null), y: interpolated.map(p => p?.[1] ?? null), z: interpolated.map(p => p?.[2] ?? null), line: { color: palette[index], width: 2, dash: 'dash' }, hovertemplate: `${esc(run.label)} fit path<br>(%{x:.3f}, %{y:.3f}, %{z:.3f}) m<extra></extra>` });
+-      traces.push({ type: 'scatter3d', mode: 'markers', name: `${run.label} · fitted epochs`, x: run.estimate.map(p => p[0]), y: run.estimate.map(p => p[1]), z: run.estimate.map(p => p[2]), marker: { size: 4, color: run.errors, cmin: 0, cmax: maxError, colorscale: 'Viridis', showscale: index === 1, colorbar: { title: { text: 'Position error (m)' } } }, customdata: run.errors.map((value, i) => [value, run.times[i]]), hovertemplate: `${esc(run.label)} fitted epoch<br>t=%{customdata[1]:.3f} s<br>(%{x:.3f}, %{y:.3f}, %{z:.3f}) m<br>error=%{customdata[0]:.4f} m<extra></extra>` });
++      traces.push({ type: 'scatter3d', mode: 'markers', name: `${run.label} · ${run.m3 ? "display samples" : "fitted epochs"}`, x: run.estimate.map(p => p[0]), y: run.estimate.map(p => p[1]), z: run.estimate.map(p => p[2]), marker: { size: 4, color: run.errors, cmin: 0, cmax: maxError, colorscale: 'Viridis', showscale: index === 1, colorbar: { title: { text: 'Position error (m)' } } }, customdata: run.errors.map((value, i) => [value, run.times[i]]), hovertemplate: `${esc(run.label)} ${run.m3 ? "interpolated display sample" : "fitted epoch"}<br>t=%{customdata[1]:.3f} s<br>(%{x:.3f}, %{y:.3f}, %{z:.3f}) m<br>error=%{customdata[0]:.4f} m<extra></extra>` });
+       const truthBeacons = pointList(run.truthGeometry?.beacons), fitBeacons = pointList(run.fitGeometry?.beacons);
+       if (truthBeacons.length) traces.push({ type: 'scatter3d', mode: 'markers+text', name: `${run.label} · truth beacons`, x: truthBeacons.map(p => p[0]), y: truthBeacons.map(p => p[1]), z: truthBeacons.map(p => p[2]), text: truthBeacons.map((_, i) => `B${i}`), textposition: 'top center', marker: { size: 6, color: palette[index], symbol: 'circle' }, hovertemplate: `${esc(run.label)} truth %{text}<br>(%{x:.3f}, %{y:.3f}, %{z:.3f}) m<extra></extra>` });
+       if (fitBeacons.length) traces.push({ type: 'scatter3d', mode: 'markers+text', name: `${run.label} · fit beacons`, x: fitBeacons.map(p => p[0]), y: fitBeacons.map(p => p[1]), z: fitBeacons.map(p => p[2]), text: fitBeacons.map((_, i) => `B${i}`), textposition: 'bottom center', marker: { size: 5, color: palette[index], symbol: 'diamond', line: { color: '#fff', width: 1 } }, hovertemplate: `${esc(run.label)} fit %{text}<br>(%{x:.3f}, %{y:.3f}, %{z:.3f}) m<extra></extra>` });
+@@ -220,7 +220,7 @@
+     $('#comparisonMetrics').innerHTML = `<table class="m2-table"><thead><tr><th>RUN</th><th>STATUS</th><th>MODE</th><th>SAMPLES</th><th>STARTS</th><th>SELECTED</th><th>POSITION RMSE (M)</th><th>MAP RMSE (M)</th><th>RANGE RMSE (M)</th><th>RUNTIME (S)</th><th>CONVERGED</th><th>FULL RANK</th></tr></thead><tbody>${rows(artifact.table).map((item, i) => `<tr><td title="${esc(item.id)}">${esc(String(item.id || a[i]?.label).slice(0, 8))}</td><td>${esc(item.status)}</td><td>${esc(item.mode)}</td><td>${esc(item.samples)}</td><td>${esc(item.starts)}</td><td>${esc(item.selected_start ?? '—')}</td><td>${displayNumber(item.position_rmse_m)}</td><td>${displayNumber(item.map_rmse_m)}</td><td>${displayNumber(item.range_rmse_m)}</td><td>${displayNumber(item.runtime_s)}</td><td>${esc(item.optimizer_converged)}</td><td>${esc(item.full_column_rank ?? '—')}</td></tr>`).join('')}</tbody></table>`;
+     const hasKnownMap = rows(artifact.runs).some(run => run.options?.mode === 'known_map');
+     const labels = artifact.alignment === 'aligned' ? (hasKnownMap ? 'Joint-map fits use independent proper rigid alignment to truth at scale 1; known-map runs stay in their surveyed frame.' : 'Each joint-map fit uses proper rigid alignment to truth at scale 1; reflections are forbidden.') : 'Raw coordinates shown; joint-map errors depend on the frame.';
+-    $('#compareNotice').textContent = `${labels} Fit markers show matched-time Euclidean position error on a shared 0–${displayNumber(maxError)} m scale. Scene lines use the saved piecewise interpolation; time-chart points and error statistics use original fit epochs only. ${artifact.time_reference || ''}`; $('#compareNotice').classList.remove('hidden');
++    $('#compareNotice').textContent = `${labels} Fit markers show matched-time Euclidean position error on a shared 0–${displayNumber(maxError)} m scale. Scene lines use saved rendering interpolation; time-chart points and error statistics use ${a.some(run => run.m3) ? "saved display samples (M3/M4), fitted epochs (M0–M2)" : "original fitted epochs"} only. ${artifact.time_reference || ''}`; $('#compareNotice').classList.remove('hidden');
+   }
+   async function compareRuns() {
+     const aId = $('#compareRunA').value, bId = $('#compareRunB').value, alignment = $('#compareAlignment').value;
+@@ -279,6 +279,6 @@
+     $('#exportConfigButton').addEventListener('click', () => { const config = formConfig(), active = window.RangeLab?.state?.activeRun; const sameConfig = active?.experiment?.config && JSON.stringify(active.experiment.config) === JSON.stringify(config); download('uwb-experiment-config.json', 'application/json', JSON.stringify({ schema_version: '1.0', artifact_type: 'experiment_config', config, options: { ...selectedOptions(), max_nfev: 2000 }, path_motion: sameConfig ? active.path_motion || null : null, sampling_density_hz: Math.max(0, config.samples - 1) / config.duration_s }, null, 2)); });
+     refreshSweeps(); refreshRunList(); refreshComparisons();
+   }
+-  window.RangeLabM2 = { formConfig, refresh() { refreshSweeps(); refreshRunList(); refreshComparisons(); } };
++  window.RangeLabM2 = { formConfig, acceptRuns: refreshRunList, refresh() { refreshSweeps(); refreshRunList(); refreshComparisons(); } };
+   document.addEventListener('DOMContentLoaded', init);
+ })();
+diff --git a/web/style.css b/web/style.css
+index 33747c9..6685656 100644
+--- a/web/style.css
++++ b/web/style.css
+@@ -11,3 +11,36 @@
+ @media(max-width:760px){.topbar{height:52px;padding:0 13px;gap:14px}.top-context{display:none}.top-actions{margin-left:auto}.shell{padding:18px 12px}.intro{align-items:flex-start}.intro h1{font-size:22px}.intro-badge{font-size:9px;padding:7px}.workspace{grid-template-columns:1fr}.control-panel{order:1}.main-column{order:0}.scene-layout{grid-template-columns:1fr}.plot-wrap{height:330px}.layer-panel{border-left:0;border-top:1px solid #edf0f0;padding:10px 0 2px;display:flex;flex-wrap:wrap;gap:0 13px}.layer-title{width:100%;margin:0 0 10px}.toggle-row{margin:0 4px 9px 0}.layer-divider{display:none}.align-control{display:flex;align-items:center;margin:0 0 8px 4px;gap:7px}.align-control select{width:125px}.axis-hint{display:none}.view-button{padding:6px 7px}.scene-panel{padding:14px 12px 0}.scene-footer{font-size:8px}.scene-footer i{margin:0 1px}.evidence-heading{gap:8px}.evidence-heading p{max-width:250px;line-height:1.5}.status-pill{white-space:nowrap}.charts-grid{gap:7px}.chart-card{padding:10px 8px 3px}.chart-head h3{font-size:10px}.chart{height:120px}.page-footer{gap:10px;line-height:1.5}.diag-columns{grid-template-columns:1fr 1fr}}
+ @media(max-width:430px){.intro-badge{display:none}.view-buttons{gap:0}.view-button{font-size:8px;padding:5px 6px}.plot-wrap{height:285px}.metric-grid{gap:6px}.metric-card{padding:9px}.metric-value{font-size:19px}.metric-label{font-size:7px}.metric-foot{font-size:8px}.chart{height:105px}.chart-head h3{font-size:9px}.chart-head span{font-size:8px}.page-footer{flex-direction:column}.diag-columns{grid-template-columns:1fr}}
+ .run-info{display:flex;flex-direction:column;align-items:flex-start;gap:3px}.run-name,.run-meta{display:block;max-width:100%;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.run-meta{font-size:8px}
++.m3-workspace{padding:18px;margin-top:18px}.m3-workspace>.m2-results-head{align-items:flex-start}.m3-workspace h2{font:700 16px var(--display);margin:4px 0}.m3-workspace .m2-results-head p{font-size:10px;color:#839293;margin:4px 0 0}.m3-grid{display:grid;grid-template-columns:minmax(270px,340px) minmax(0,1fr);gap:16px;align-items:start}.m3-form{padding:12px;border:1px solid #e7eded;background:#fbfcfc;border-radius:7px}.m3-form .field-label,.m3-sweep-form .field-label{margin-top:9px}.m3-form input[type=text],.m3-sweep-form input[type=text]{width:100%;height:34px;border:1px solid #dfe6e6;border-radius:5px;background:#fff;color:#314548;padding:0 9px;font:11px var(--mono)}.m3-section-label{border-top:1px solid #e7eded;padding-top:12px;margin-top:13px;color:#829293;font:500 8px var(--mono);letter-spacing:.9px}.m3-form .m3-section-label:first-child{border:0;padding-top:0;margin-top:0}.m3-form .run-button{margin-top:15px}.m3-right{display:grid;gap:10px;min-width:0}.m3-playback,.m3-sweep{padding:13px}.m3-playback{box-shadow:none}.m3-play-head{display:flex;justify-content:space-between;align-items:center;gap:12px}.m3-play-head b{display:block;color:#40595b;font-size:10px;margin-top:5px}.m3-play-buttons{display:flex;gap:5px}.m3-play-buttons .button,.m3-artifact-actions .button{height:29px;font-size:9px}.m3-speed-chart{height:150px;margin-top:8px}.m3-scrubber{display:grid;grid-template-columns:32px minmax(50px,1fr) 32px auto;gap:7px;align-items:center;margin-top:4px}.m3-scrubber .button{height:28px;padding:0}.m3-scrubber input{width:100%;accent-color:var(--teal)}.m3-scrubber span{font:9px var(--mono);color:#6e8283;white-space:nowrap}.m3-ping-detail{margin-top:8px;padding:8px 9px;background:#f6f9f8;border-radius:5px;color:#718283;font:9px/1.5 var(--mono);min-height:33px}.m3-sweep{box-shadow:none}.m3-sweep-form{margin-top:6px}.m3-sweep-form .button{width:100%;height:32px;margin-top:10px}.m3-artifact-actions{display:flex;gap:5px;flex-wrap:wrap;margin-top:8px}.m3-results{border-top:1px solid #edf0f0;margin-top:15px;padding-top:13px}.m3-results .note{margin:8px 0}.m3-results .m2-table-wrap{margin-top:8px;max-height:330px}.m3-row{cursor:pointer}.m3-row:hover,.m3-row:focus{background:#f0f8f6;outline:none}.m3-row.selected{background:#edf7f4}.m3-numeric-disclosure{font-size:10px;line-height:1.55;color:#647779}.m3-numeric-disclosure b{color:#425c5e}
++@media(max-width:900px){.m3-grid{grid-template-columns:1fr}.m3-form{display:grid;grid-template-columns:1fr 1fr;column-gap:10px}.m3-form>.m3-section-label,.m3-form>.run-button,.m3-form>.field-row{grid-column:1/-1}.m3-form>.field-label,.m3-form>select,.m3-form>input{min-width:0}}
++.m3-run-actions{display:grid;grid-template-columns:1fr auto;gap:6px;align-items:center}.m3-run-actions .button{margin-top:15px;height:38px}@media(max-width:900px){.m3-form>.m3-run-actions{grid-column:1/-1}}
++.m3-sweep-chart-card{margin:10px 0;padding:12px}.m3-sweep-chart{height:230px}.m3-results .m2-table-wrap{overflow:auto}
++.m4-workspace{padding:18px;margin-top:18px}.m4-workspace>.m2-results-head{align-items:flex-start}.m4-workspace h2{font:700 16px var(--display);margin:4px 0}.m4-workspace .m2-results-head p{font-size:10px;color:#839293;margin:4px 0 0}.m4-export-actions{display:flex;gap:5px;flex-wrap:wrap;justify-content:flex-end}.m4-export-actions .button{height:29px;font-size:9px}.m4-grid{display:grid;grid-template-columns:minmax(280px,380px) minmax(0,1fr);gap:16px;align-items:start}.m4-form{padding:12px;border:1px solid #e7eded;background:#fbfcfc;border-radius:7px}.m4-form .field-label{margin-top:9px}.m4-form input[type=text],.m4-form textarea,.m4-sweep-form input[type=text],.m4-sweep-form input[type=number]{width:100%;min-width:0;border:1px solid #dfe6e6;border-radius:5px;background:#fff;color:#314548;padding:7px 9px;font:11px var(--mono)}.m4-form input[type=number],.m4-form select{width:100%;height:34px;border:1px solid #dfe6e6;border-radius:5px;background:#fff;color:#314548;padding:0 8px}.m4-form textarea{resize:vertical}.m4-form input:disabled,.m4-form textarea:disabled{background:#f0f3f3;color:#97a4a4}.m4-check{display:flex;align-items:center;gap:6px;align-self:end;color:#506466;font-size:9px;padding-bottom:8px}.m4-check input{accent-color:var(--teal)}.m4-note{font-size:9px;line-height:1.5;color:#839293;margin:8px 0}.m4-run-actions{display:flex;gap:6px;margin-top:14px}.m4-run-actions .button{flex:1;height:36px}.m4-side{display:grid;gap:10px;min-width:0}.m4-card{padding:13px;box-shadow:none}.m4-card h3{font:700 12px var(--display);margin:4px 0}.m4-sweep-form{margin-top:6px}.m4-sweep-form .field-label{margin-top:9px}.m4-sweep-form .button{width:100%;margin-top:10px}.m4-artifact-actions{display:flex;gap:5px;flex-wrap:wrap;margin-top:8px}.m4-artifact-actions .button{height:29px;font-size:9px}.m4-results{border-top:1px solid #edf0f0;margin-top:15px;padding-top:13px}.m4-results .note{margin:8px 0}.m4-chart-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:10px}.m4-chart-grid .chart-card{min-width:0;padding:12px}.m4-chart{height:230px}.m4-sweep-card{padding:12px;margin:10px 0}.m4-sweep-chart{height:240px}.m4-results .m2-table-wrap{margin-top:8px;max-height:360px;overflow:auto}
++@media(max-width:900px){.m4-grid{grid-template-columns:1fr}.m4-form{display:grid;grid-template-columns:1fr 1fr;column-gap:10px}.m4-form>.m3-section-label,.m4-form>.m4-run-actions,.m4-form>.field-row,.m4-form>.m4-note{grid-column:1/-1}.m4-form>.field-label,.m4-form>select,.m4-form>input,.m4-form>textarea{min-width:0}}
++@media(max-width:760px){.m4-workspace{padding:12px}.m4-chart-grid{grid-template-columns:1fr}.m4-form{display:block}.m4-form>.m3-section-label{grid-column:auto}}
++.m5-workspace{padding:18px;margin-top:18px}.m5-workspace>.m2-results-head{align-items:flex-start}.m5-workspace h2{font:700 16px var(--display);margin:4px 0}.m5-workspace .m2-results-head p{font-size:10px;color:#839293;margin:4px 0 0}.m5-grid{display:grid;grid-template-columns:minmax(270px,340px) minmax(0,1fr);gap:16px;align-items:start}.m5-form{padding:12px;border:1px solid #e7eded;background:#fbfcfc;border-radius:7px}.m5-form .field-label{margin-top:9px}.m5-form select,.m5-form input[type=text],.m5-form textarea{width:100%;min-width:0;border:1px solid #dfe6e6;border-radius:5px;background:#fff;color:#314548;padding:7px 9px;font:11px var(--mono)}.m5-form select{height:34px;padding:0 8px}.m5-form textarea{resize:vertical}.m5-actions{display:flex;gap:6px;margin-top:13px}.m5-actions .button{flex:1;height:35px}.m5-side{display:grid;gap:10px;min-width:0}.m5-form .m4-note{margin:8px 0}.m5-form .m3-section-label:first-child{border:0;padding-top:0;margin-top:0}.m5-results{border-top:1px solid #edf0f0;margin-top:15px;padding-top:13px}.m5-results>.note{margin:8px 0}.m5-results .m2-table-wrap{margin-top:8px;max-height:420px;overflow:auto}.m5-chart-card{margin-top:10px;padding:12px}.m5-chart{height:260px}.m5-artifact-actions{display:flex;gap:5px;flex-wrap:wrap;margin-top:9px}.m5-artifact-actions .button{height:29px;font-size:9px}.m5-compare-controls{display:flex;align-items:end;gap:10px;flex-wrap:wrap;border-top:1px solid #edf0f0;margin-top:14px;padding:14px 2px 3px}.m5-compare-controls>div:first-child{margin-right:auto}.m5-compare-controls h3{font:700 12px var(--display);margin:4px 0 0}.m5-compare-controls label{display:grid;gap:5px;color:#788b8b;font-size:9px}.m5-compare-controls select{height:31px;min-width:160px}.m5-compare-controls .button{height:31px}.m5-compare-json{max-height:300px;overflow:auto;white-space:pre-wrap;word-break:break-word;padding:10px;background:#f5f7f7;border-radius:5px;color:#526466;font:9px var(--mono)}
++@media(max-width:900px){.m5-grid{grid-template-columns:1fr}.m5-form{display:grid;grid-template-columns:1fr 1fr;column-gap:10px}.m5-form>.m3-section-label,.m5-form>.m4-note,.m5-form>.m5-actions{grid-column:1/-1}.m5-form>.field-label,.m5-form>select{min-width:0}}
++@media(max-width:760px){.m5-workspace{padding:12px}.m5-form{display:block}}
++.m5-form input[type=number]{width:100%;height:34px;padding:0 9px}.m5-charts{display:grid;grid-template-columns:1fr 1fr;gap:10px}.m5-chart-card{min-width:0}.m5-chart-card .chart-head{align-items:center;gap:8px}.m5-chart-card .text-button{white-space:nowrap}
++#m5RunsList,#m5SweepsList{max-height:280px;overflow-y:auto;overscroll-behavior:contain;}
++@media(max-width:760px){.m5-charts{grid-template-columns:1fr}}
++@media(max-width:600px){
++  .m3-workspace,.m4-workspace,.m5-workspace{min-width:0;max-width:100%;}
++  .m3-grid,.m4-grid,.m5-grid,.m3-right,.m4-side,.m5-side,.m3-playback,.m3-sweep,.m4-card,.m5-card,.m5-results,.m5-charts,.m5-chart-card,.m2-results,.main-column{min-width:0;max-width:100%;}
++  .m3-grid>*,.m4-grid>*,.m5-grid>*{min-width:0;}
++  .run-item,.run-info{min-width:0;max-width:100%;}
++  .run-name,.run-meta{max-width:100%;overflow-wrap:anywhere;word-break:break-word;}
++  #m5RunsList,#m5SweepsList{max-height:280px;overflow-y:auto;overscroll-behavior:contain;}
++  .m5-compare-controls>div:first-child{width:100%;min-width:0;margin-right:0;}
++  .m5-compare-controls label{flex:1 1 100%;min-width:0;}
++  .m5-compare-controls select{width:100%;min-width:0;max-width:100%;}
++  .compare-controls>div:first-child{width:100%;min-width:0;margin-right:0;}
++  .compare-controls label{flex:1 1 100%;min-width:0;}
++  .compare-controls select{width:100%;min-width:0;max-width:100%;}
++  .m3-play-head{flex-wrap:wrap;align-items:flex-start;}
++  .m3-play-head>div:first-child{min-width:0;max-width:100%;overflow-wrap:anywhere;}
++  .m3-play-buttons{flex-wrap:wrap;min-width:0;}
++  .m3-scrubber{grid-template-columns:30px minmax(0,1fr) 30px;}
++  .m3-scrubber span{grid-column:1/-1;white-space:normal;overflow-wrap:anywhere;}
++  .m3-results,.m4-results,.m5-results{min-width:0;max-width:100%;}
++}

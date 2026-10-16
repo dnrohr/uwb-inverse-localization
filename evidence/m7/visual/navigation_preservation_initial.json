@@ -1,0 +1,16 @@
+{
+  "hidden": {
+    "alignment": "raw",
+    "notice": "Playback paused at ping 2 while browsing Library.",
+    "ping": "1",
+    "sceneDOM": true,
+    "seed": "999"
+  },
+  "returned": {
+    "alignment": "raw",
+    "notice": "Playback paused at ping 2 while browsing Library.",
+    "ping": "1",
+    "sceneDOM": true,
+    "seed": "999"
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "status": "failed_contract",
+  "method": "Reconstruction of former lower+exp(u), upper-exp(u) equations",
+  "cases": [
+    {
+      "coordinate": -1000.0,
+      "former_lower_plus_exp": 1e-06,
+      "lower_bound": 1e-06,
+      "former_upper_minus_exp": 2.0,
+      "upper_bound": 2.0,
+      "former_derivative_magnitude": 0.0,
+      "failed_strict_interior_contract": true
+    },
+    {
+      "coordinate": -100.0,
+      "former_lower_plus_exp": 1e-06,
+      "lower_bound": 1e-06,
+      "former_upper_minus_exp": 2.0,
+      "upper_bound": 2.0,
+      "former_derivative_magnitude": 3.720075976020836e-44,
+      "failed_strict_interior_contract": true
+    }
+  ]
+}

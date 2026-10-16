@@ -1,0 +1,68 @@
+{
+  "created_utc": "2026-10-15T19:04:36.866962+00:00",
+  "scope": "Static source scans and syntax; browser acceptance retained separately by root",
+  "html": {
+    "mismatched_tags": [],
+    "unclosed_tags": [],
+    "duplicate_ids": []
+  },
+  "javascript": [
+    {
+      "file": "web\\app.js",
+      "sha256": "f3c319985e3baee2cbf2599c479134f87642d4c5b832509bdb631ef87bc5b7fb",
+      "syntax_exit": 0,
+      "stderr": "",
+      "unbounded_list_gets": []
+    },
+    {
+      "file": "web\\library.js",
+      "sha256": "7a493c67dbacd6d5f25fde75c1d4ab0962703da7c0eb211fc66474956989dc34",
+      "syntax_exit": 0,
+      "stderr": "",
+      "unbounded_list_gets": []
+    },
+    {
+      "file": "web\\m2.js",
+      "sha256": "758d78d19dbd38fda87095d964ea2dc956ef8fe19450cec7272320e367982b99",
+      "syntax_exit": 0,
+      "stderr": "",
+      "unbounded_list_gets": []
+    },
+    {
+      "file": "web\\m3.js",
+      "sha256": "f1ecb547c339bdbc35ba07f870f8db19d130e927e79a25bb1406318427640b5a",
+      "syntax_exit": 0,
+      "stderr": "",
+      "unbounded_list_gets": []
+    },
+    {
+      "file": "web\\m4.js",
+      "sha256": "6fb6e1fde5dd4e525688510fb905f8446074f67a05be77e7f439c8ac14bf6b5f",
+      "syntax_exit": 0,
+      "stderr": "",
+      "unbounded_list_gets": []
+    },
+    {
+      "file": "web\\m5.js",
+      "sha256": "49fa2ee4392d65bc254c34cf35fc0096e8c5de7c5c96a1a7a20494adaa3832c4",
+      "syntax_exit": 0,
+      "stderr": "",
+      "unbounded_list_gets": []
+    },
+    {
+      "file": "web\\m6.js",
+      "sha256": "37df693e8d6901f832563477f6996b0824420ce38e6ba5291b64d45317356ec4",
+      "syntax_exit": 0,
+      "stderr": "",
+      "unbounded_list_gets": []
+    },
+    {
+      "file": "web\\m7.js",
+      "sha256": "0038fdf0681c8fca6b55c7904751bd9488a4a916aa56f8795351393841a1b3b4",
+      "syntax_exit": 0,
+      "stderr": "",
+      "unbounded_list_gets": []
+    }
+  ],
+  "passed": true
+}

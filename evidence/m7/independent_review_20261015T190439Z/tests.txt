@@ -1,0 +1,13 @@
+test_constraint_rejection_and_missing_count_are_explicit (tests.test_m7_review.IndependentM7Review.test_constraint_rejection_and_missing_count_are_explicit) ... ok
+test_direct_world_distances_whitening_motion_height_and_loss_derivatives (tests.test_m7_review.IndependentM7Review.test_direct_world_distances_whitening_motion_height_and_loss_derivatives) ... ok
+test_empty_envelopes_validate_survey_count_and_selected_start (tests.test_m7_review.IndependentM7Review.test_empty_envelopes_validate_survey_count_and_selected_start) ... ok
+test_gaussian_information_covariance_and_rigid_nullspace (tests.test_m7_review.IndependentM7Review.test_gaussian_information_covariance_and_rigid_nullspace) ... ok
+test_reflection_remains_despite_full_local_rank (tests.test_m7_review.IndependentM7Review.test_reflection_remains_despite_full_local_rank) ... ok
+test_selected_nonadjacent_axes_and_mahalanobis_cost (tests.test_m7_review.IndependentM7Review.test_selected_nonadjacent_axes_and_mahalanobis_cost) ... ok
+test_truth_annotation_isolation_and_no_survey_baseline (tests.test_m7_review.IndependentM7Review.test_truth_annotation_isolation_and_no_survey_baseline) ... ok
+test_unobservable_and_robust_covariance_guards_with_prior_information_separate (tests.test_m7_review.IndependentM7Review.test_unobservable_and_robust_covariance_guards_with_prior_information_separate) ... ok
+
+----------------------------------------------------------------------
+Ran 8 tests in 0.859s
+
+OK

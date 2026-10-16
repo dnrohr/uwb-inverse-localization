@@ -1,0 +1,21 @@
+sweep speed_scale 12
+sweep spacing_s 12
+sweep knot_spacing_s 12
+sweep timestamp_offset_s 8
+sweep timestamp_jitter_s 8
+sweep missing_probability 8
+sweep beacon_every_cycles 8
+invariant zero_spacing
+invariant stationary
+invariant latency timestamp_aware
+invariant latency grouped
+demo moving_joint_aware success
+demo moving_joint_grouped success
+demo variable_known_map success
+demo timestamp_jitter_missing success
+demo forced_nonconverged not_converged
+isolated acquisition_jitter_zero success
+isolated acquisition_jitter success
+isolated prior_off success
+isolated prior_on success
+saved C:\Users\dnroh\Documents\uwb-inverse-localization\evidence\m3\acceptance_20261013_223058_213b1611

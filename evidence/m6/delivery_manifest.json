@@ -1,0 +1,35 @@
+{
+  "scope": "Final M6 source hashes; includes edited integration files containing preserved M0\u2013M5 work",
+  "base_commit": "38d77728fd5712a9814e4b57aafc5796fc4c1817",
+  "sources": {
+    "app.py": "9b38f468507912c89bf0e4444d51beedea9b3af69d9e20d81fc300741e8232a8",
+    "uwb/experiments.py": "e760b2c88f788c88d8d458769d5996159617ef68eda97149cbfc678289a8af39",
+    "uwb/sweeps.py": "bbbea9f93f2a02af4c6c9602433bdd7ae4500ddd3ff6728a182643eefa636c12",
+    "uwb/m6.py": "b4d8532c5e759e92a2afe6851046709ee27cfba40f492bb52a34374e14ffad9c",
+    "uwb/m6_sweeps.py": "d4def7aeac628384b36552777c4b97689bb7d31c8031ad75ef91b46ee3e9403b",
+    "uwb/m6_service.py": "bad04539062414fee5f2337c5ab37d996fe5ace83323d9cb0bd7d24f00d94313",
+    "web/app.js": "c79f19c7f9f1f22b7a1c120a841de79d1b5d62a84b52be448f0e9a4af3df6e1e",
+    "web/m3.js": "366eb994dc7c0e65577042cb1745034c1fe31cb2518ffaeeaaf0c91f37a23878",
+    "web/m6.js": "2817f9809bc529a04cec4b2edefb38cf200856f22ae91dbec410511f6003e796",
+    "web/index.html": "7c9430f02135682c041e94395896b5155b57439862e16ec70db563d00766fe98",
+    "web/style.css": "ed43284dec37ae8443a618ef550e5fc0e7d9752f6ecd7fb411f14870b2875bfb",
+    "docs/M6.md": "cb63118e008935135cef40113f2e3ea4407790505fd29d5bf65423a14e0303de",
+    "docs/M6_ACCEPTANCE.md": "88a142b558933f4aab12bc65153c1be22acc3f2ee2e7a4c8f07a38a052834409",
+    "README.md": "7936161af90f3db25a247c9a1d8535737bdc6c6948325cdcdf19a9b13cd715fc",
+    "ROADMAP.md": "a1221ccda62e4c95fd72d6c778b25203d3f9f6205963691450b6f0328c9a79b3",
+    "tests\\test_m6.py": "76d22bf4e5553d9df8572eb1da58f4b84503b8ea45e51892a0af467294174681",
+    "tests\\test_m6_review.py": "409f1bb1e7b993cdc985f058e091c9e3fdea2f4f352afa308aa01fda225c1df7",
+    "tests\\test_m6_service.py": "f395463a56d287152cc467d87ffdacf8cd17ef96e5b6aa9e0d4f2537b6c6a2a2",
+    "tests\\test_m6_sweeps.py": "d6d1ac8ca1936470379e4c19d6a5ebd792d0f61ca172d67d9af32fa34e33d559",
+    "scripts\\audit_m6_delivery.py": "ba7a6f6ce3210341033681ca2e84ffd7fa6508f4ecc318cf2904c14197bf46ef",
+    "scripts\\benchmark_m6.py": "3fb67d2653ec99c57fe080e364b84d2390e332e0dff56c1c54aa8e230e2469e0",
+    "scripts\\review_m6.py": "3232f3e5fceea79e02040c745e3708cb931f1ef50874659fa10c4e1a1cb21169",
+    "scripts\\validate_m6.py": "468b329c35c6ca6a68587a39414a40418f858043fe6fe183561f7c59905cb29a"
+  },
+  "audit": "evidence/m6/final_audit.json",
+  "roadmap": {
+    "M6_checked": 5,
+    "M7_checked": 0
+  },
+  "publication": "No commit, push or external publication performed; all changes remain in the shared working tree."
+}

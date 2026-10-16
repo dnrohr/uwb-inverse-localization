@@ -1,0 +1,10 @@
+{
+  "scope": "Repeated server app creation with current already-copied history, no HTTP/browser/index query; imported Python modules already warm. Not first-ever bundle copy or Python interpreter startup.",
+  "milliseconds": [
+    799.4771999947261,
+    141.48030000797007,
+    149.68919999955688
+  ],
+  "existing_m6_full_validation_forbidden": true,
+  "solvers_forbidden": true
+}

@@ -1,0 +1,50 @@
+{
+  "base_experiment": {
+    "samples": 12,
+    "beacon_layout": {
+      "count": 4,
+      "geometry": "equal"
+    }
+  },
+  "options": {
+    "mode": "joint",
+    "tag_height_model": "fixed",
+    "starts": 2,
+    "max_nfev": 300
+  },
+  "factor": "quantization_m",
+  "values": [
+    0.0,
+    0.1
+  ],
+  "seeds": [
+    7,
+    8
+  ],
+  "variants": [
+    {
+      "label": "gaussian",
+      "options": {
+        "loss": "gaussian"
+      }
+    },
+    {
+      "label": "huber",
+      "options": {
+        "loss": "huber"
+      }
+    },
+    {
+      "label": "cauchy",
+      "options": {
+        "loss": "cauchy"
+      }
+    },
+    {
+      "label": "hard_rejection",
+      "options": {
+        "loss": "hard_rejection"
+      }
+    }
+  ]
+}

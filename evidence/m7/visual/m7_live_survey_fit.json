@@ -1,0 +1,7 @@
+{
+  "active": "informative · success · ef91c89e",
+  "info": "Active saved schema 7.0 · success · start 0",
+  "scene": "Informative motion · Joint map · surveyed world frame · Independent initialization · 1 starts",
+  "source": "active",
+  "uncertainty": "Conditional local covariance availableConditional local linear Gaussian approximation with known sigma, no residual variance rescaling. With priors this is a local Gaussian posterior approximation, not unconditional frequentist coverage."
+}

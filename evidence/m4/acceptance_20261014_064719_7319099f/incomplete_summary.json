@@ -1,0 +1,8 @@
+{
+  "output": "evidence\\m4\\acceptance_20261014_064719_7319099f",
+  "sweeps": [],
+  "fixtures": [],
+  "invariants": [],
+  "interpretation": "Every attempt is retained. Full measurement rank is local; height priors and branch constraints are assumptions.",
+  "error": "Traceback (most recent call last):\n  File \"C:\\Users\\dnroh\\Documents\\uwb-inverse-localization\\scripts\\validate_m4.py\", line 65, in main\n    artifact = run_sweep(current, on_progress=lambda data: save_artifact(output/'checkpoints'/(factor+'.json'),data))\n               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\dnroh\\Documents\\uwb-inverse-localization\\uwb\\m4_sweeps.py\", line 133, in run_sweep\n    experiment = m4.generate_experiment(cell)\n                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\dnroh\\Documents\\uwb-inverse-localization\\uwb\\m4.py\", line 169, in generate_experiment\n    validate_experiment(exp)\n  File \"C:\\Users\\dnroh\\Documents\\uwb-inverse-localization\\uwb\\m3.py\", line 33, in wrapped\n    return function(*args, **kwargs)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\dnroh\\Documents\\uwb-inverse-localization\\uwb\\m4.py\", line 205, in validate_experiment\n    _observations(obs, cycles, count)\n  File \"C:\\Users\\dnroh\\Documents\\uwb-inverse-localization\\uwb\\m4.py\", line 178, in _observations\n    raise ValueError(\"Invalid epoch or beacon ID\")\nValueError: Invalid epoch or beacon ID\n"
+}

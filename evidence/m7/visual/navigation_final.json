@@ -1,0 +1,32 @@
+{
+  "before": {
+    "alignment": "raw",
+    "camera": "{\"up\":{\"x\":0,\"y\":0,\"z\":1},\"center\":{\"x\":0,\"y\":0,\"z\":0},\"eye\":{\"x\":0,\"y\":-2.5,\"z\":0.25},\"projection\":{\"type\":\"perspective\"}}",
+    "generation": "2",
+    "layer": true,
+    "ping": "0",
+    "seed": "12345",
+    "survey": "[\n  {\n    \"beacon_id\": 0,\n    \"mask\": [\n      true,\n      true,\n      true\n    ],\n    \"mean_m\": [\n      0,\n      0,\n      3\n    ]\n  },\n  {\n    \"beacon_id\": 1,\n    \"mask\": [\n      true,\n      true,\n      true\n    ],\n    \"mean_m\": [\n      10,\n      0,\n      3\n    ]\n  },\n  {\n    \"beacon_id\": 2,\n    \"mask\": [\n      true,\n      true,\n      true\n    ],\n    \"mean_m\": [\n      1,\n      8,\n      3\n    ]\n  },\n  {\n    \"beacon_id\": 3,\n    \"mask\": [\n      true,\n      true,\n      true\n    ],\n    \"mean_m\": [\n      11,\n      9,\n      3\n    ]\n  }\n]\n "
+  },
+  "hidden": {
+    "alignment": "raw",
+    "camera": "{\"up\":{\"x\":0,\"y\":0,\"z\":1},\"center\":{\"x\":0,\"y\":0,\"z\":0},\"eye\":{\"x\":0,\"y\":-2.5,\"z\":0.25},\"projection\":{\"type\":\"perspective\"}}",
+    "generation": "2",
+    "layer": true,
+    "notice": "Playback paused at ping 1 while browsing Library.",
+    "ping": "0",
+    "seed": "12345",
+    "survey": "[\n  {\n    \"beacon_id\": 0,\n    \"mask\": [\n      true,\n      true,\n      true\n    ],\n    \"mean_m\": [\n      0,\n      0,\n      3\n    ]\n  },\n  {\n    \"beacon_id\": 1,\n    \"mask\": [\n      true,\n      true,\n      true\n    ],\n    \"mean_m\": [\n      10,\n      0,\n      3\n    ]\n  },\n  {\n    \"beacon_id\": 2,\n    \"mask\": [\n      true,\n      true,\n      true\n    ],\n    \"mean_m\": [\n      1,\n      8,\n      3\n    ]\n  },\n  {\n    \"beacon_id\": 3,\n    \"mask\": [\n      true,\n      true,\n      true\n    ],\n    \"mean_m\": [\n      11,\n      9,\n      3\n    ]\n  }\n]\n "
+  },
+  "returned": {
+    "alignment": "raw",
+    "camera": "{\"up\":{\"x\":0,\"y\":0,\"z\":1},\"center\":{\"x\":0,\"y\":0,\"z\":0},\"eye\":{\"x\":0,\"y\":-2.5,\"z\":0.25},\"projection\":{\"type\":\"perspective\"}}",
+    "generation": "2",
+    "layer": true,
+    "notice": "Playback paused at ping 1 while browsing Library.",
+    "ping": "0",
+    "seed": "12345",
+    "survey": "[\n  {\n    \"beacon_id\": 0,\n    \"mask\": [\n      true,\n      true,\n      true\n    ],\n    \"mean_m\": [\n      0,\n      0,\n      3\n    ]\n  },\n  {\n    \"beacon_id\": 1,\n    \"mask\": [\n      true,\n      true,\n      true\n    ],\n    \"mean_m\": [\n      10,\n      0,\n      3\n    ]\n  },\n  {\n    \"beacon_id\": 2,\n    \"mask\": [\n      true,\n      true,\n      true\n    ],\n    \"mean_m\": [\n      1,\n      8,\n      3\n    ]\n  },\n  {\n    \"beacon_id\": 3,\n    \"mask\": [\n      true,\n      true,\n      true\n    ],\n    \"mean_m\": [\n      11,\n      9,\n      3\n    ]\n  }\n]\n "
+  },
+  "equalHiddenReturned": true
+}

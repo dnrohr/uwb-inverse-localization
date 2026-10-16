@@ -1,0 +1,40 @@
+test_checkpoint_storage_failure_retains_latest_sweep (test_m6_service.M6ServiceTests.test_checkpoint_storage_failure_retains_latest_sweep) ... ok
+test_failed_initializer_and_all_sweep_attempts_saved (test_m6_service.M6ServiceTests.test_failed_initializer_and_all_sweep_attempts_saved) ... ok
+test_interrupted_unique_temporary_checkpoint_is_recovered (test_m6_service.M6ServiceTests.test_interrupted_unique_temporary_checkpoint_is_recovered) ... ok
+test_permanent_terminal_write_failure_retains_job_and_live_reopen (test_m6_service.M6ServiceTests.test_permanent_terminal_write_failure_retains_job_and_live_reopen) ... ERROR
+test_persistence_failure_keeps_numerical_success_separate (test_m6_service.M6ServiceTests.test_persistence_failure_keeps_numerical_success_separate) ... ERROR
+test_run_offline_import_and_shared_comparison (test_m6_service.M6ServiceTests.test_run_offline_import_and_shared_comparison) ... FAIL
+test_summary_cache_invalidates_after_file_change_and_details_validate (test_m6_service.M6ServiceTests.test_summary_cache_invalidates_after_file_change_and_details_validate) ... ok
+test_unsupported_q_rejected_before_queue (test_m6_service.M6ServiceTests.test_unsupported_q_rejected_before_queue) ... ok
+
+======================================================================
+ERROR: test_permanent_terminal_write_failure_retains_job_and_live_reopen (test_m6_service.M6ServiceTests.test_permanent_terminal_write_failure_retains_job_and_live_reopen)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\dnroh\Documents\uwb-inverse-localization\tests\test_m6_service.py", line 86, in test_permanent_terminal_write_failure_retains_job_and_live_reopen
+    job=self.wait(response.json['id'])
+                  ~~~~~~~~~~~~~^^^^^^
+KeyError: 'id'
+
+======================================================================
+ERROR: test_persistence_failure_keeps_numerical_success_separate (test_m6_service.M6ServiceTests.test_persistence_failure_keeps_numerical_success_separate)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\dnroh\Documents\uwb-inverse-localization\tests\test_m6_service.py", line 65, in test_persistence_failure_keeps_numerical_success_separate
+    job=self.wait(response.json['id'])
+                  ~~~~~~~~~~~~~^^^^^^
+KeyError: 'id'
+
+======================================================================
+FAIL: test_run_offline_import_and_shared_comparison (test_m6_service.M6ServiceTests.test_run_offline_import_and_shared_comparison)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\dnroh\Documents\uwb-inverse-localization\tests\test_m6_service.py", line 22, in test_run_offline_import_and_shared_comparison
+    self.assertEqual(resp.status_code,202,resp.json);id=resp.json['id'];ids.append(id)
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 400 != 202 : {'error': 'Saved robust assumptions or decision disclosures disagree with options'}
+
+----------------------------------------------------------------------
+Ran 8 tests in 3.885s
+
+FAILED (failures=1, errors=2)

@@ -1,0 +1,9 @@
+{
+  "before": "{\"up\":{\"x\":0,\"y\":1,\"z\":0},\"center\":{\"x\":0,\"y\":0,\"z\":0},\"eye\":{\"x\":0,\"y\":0,\"z\":2.5},\"projection\":{\"type\":\"perspective\"}}",
+  "after": "{\"up\":{\"x\":0,\"y\":1,\"z\":0},\"center\":{\"x\":0,\"y\":0,\"z\":0},\"eye\":{\"x\":0,\"y\":0,\"z\":2.5},\"projection\":{\"type\":\"perspective\"}}",
+  "equal": true,
+  "pingIndex": "41",
+  "render_ms": "308.00",
+  "ping_render_ms": "8.30",
+  "initial_record_note": "camera_check.json spans an intentional Top-view change; use this matched-view check for scrub invariance."
+}

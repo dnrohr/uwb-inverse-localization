@@ -1,0 +1,826 @@
+{
+  "status": "complete",
+  "records": [
+    {
+      "samples": 12,
+      "beacons": 4,
+      "repeat": 0,
+      "loss": "gaussian",
+      "observation_count": 48,
+      "parameter_count": 30,
+      "wrapper_s": 0.1920252999989316,
+      "solver_s": 0.011849299997265916,
+      "statuses": [
+        "success"
+      ],
+      "nfev": [
+        14
+      ],
+      "run": "12_4_0_gaussian.json"
+    },
+    {
+      "samples": 12,
+      "beacons": 4,
+      "repeat": 0,
+      "loss": "huber",
+      "observation_count": 48,
+      "parameter_count": 30,
+      "wrapper_s": 0.20256759999756468,
+      "solver_s": 0.0232800000012503,
+      "statuses": [
+        "success"
+      ],
+      "nfev": [
+        30
+      ],
+      "run": "12_4_0_huber.json"
+    },
+    {
+      "samples": 12,
+      "beacons": 4,
+      "repeat": 0,
+      "loss": "cauchy",
+      "observation_count": 48,
+      "parameter_count": 30,
+      "wrapper_s": 0.2038036999947508,
+      "solver_s": 0.011972899999818765,
+      "statuses": [
+        "success"
+      ],
+      "nfev": [
+        17
+      ],
+      "run": "12_4_0_cauchy.json"
+    },
+    {
+      "samples": 12,
+      "beacons": 4,
+      "repeat": 0,
+      "loss": "hard_rejection",
+      "observation_count": 48,
+      "parameter_count": 30,
+      "wrapper_s": 0.2538734999980079,
+      "solver_s": 0.04657039999437984,
+      "statuses": [
+        "success"
+      ],
+      "nfev": [
+        74
+      ],
+      "run": "12_4_0_hard_rejection.json"
+    },
+    {
+      "samples": 12,
+      "beacons": 4,
+      "repeat": 1,
+      "loss": "gaussian",
+      "observation_count": 48,
+      "parameter_count": 30,
+      "wrapper_s": 0.19271870000375202,
+      "solver_s": 0.0160604000047897,
+      "statuses": [
+        "success"
+      ],
+      "nfev": [
+        27
+      ],
+      "run": "12_4_1_gaussian.json"
+    },
+    {
+      "samples": 12,
+      "beacons": 4,
+      "repeat": 1,
+      "loss": "huber",
+      "observation_count": 48,
+      "parameter_count": 30,
+      "wrapper_s": 0.19381609999982174,
+      "solver_s": 0.014350900004501455,
+      "statuses": [
+        "success"
+      ],
+      "nfev": [
+        20
+      ],
+      "run": "12_4_1_huber.json"
+    },
+    {
+      "samples": 12,
+      "beacons": 4,
+      "repeat": 1,
+      "loss": "cauchy",
+      "observation_count": 48,
+      "parameter_count": 30,
+      "wrapper_s": 0.19977420000213897,
+      "solver_s": 0.015264900001056958,
+      "statuses": [
+        "success"
+      ],
+      "nfev": [
+        20
+      ],
+      "run": "12_4_1_cauchy.json"
+    },
+    {
+      "samples": 12,
+      "beacons": 4,
+      "repeat": 1,
+      "loss": "hard_rejection",
+      "observation_count": 48,
+      "parameter_count": 30,
+      "wrapper_s": 0.22616159999597585,
+      "solver_s": 0.03196679999382468,
+      "statuses": [
+        "success"
+      ],
+      "nfev": [
+        31
+      ],
+      "run": "12_4_1_hard_rejection.json"
+    },
+    {
+      "samples": 12,
+      "beacons": 4,
+      "repeat": 2,
+      "loss": "gaussian",
+      "observation_count": 48,
+      "parameter_count": 30,
+      "wrapper_s": 0.18809499999770196,
+      "solver_s": 0.013725900003919378,
+      "statuses": [
+        "success"
+      ],
+      "nfev": [
+        21
+      ],
+      "run": "12_4_2_gaussian.json"
+    },
+    {
+      "samples": 12,
+      "beacons": 4,
+      "repeat": 2,
+      "loss": "huber",
+      "observation_count": 48,
+      "parameter_count": 30,
+      "wrapper_s": 0.19756819999747677,
+      "solver_s": 0.021639599995978642,
+      "statuses": [
+        "success"
+      ],
+      "nfev": [
+        33
+      ],
+      "run": "12_4_2_huber.json"
+    },
+    {
+      "samples": 12,
+      "beacons": 4,
+      "repeat": 2,
+      "loss": "cauchy",
+      "observation_count": 48,
+      "parameter_count": 30,
+      "wrapper_s": 0.19675979999738047,
+      "solver_s": 0.016343500006769318,
+      "statuses": [
+        "success"
+      ],
+      "nfev": [
+        24
+      ],
+      "run": "12_4_2_cauchy.json"
+    },
+    {
+      "samples": 12,
+      "beacons": 4,
+      "repeat": 2,
+      "loss": "hard_rejection",
+      "observation_count": 48,
+      "parameter_count": 30,
+      "wrapper_s": 0.21622429999843007,
+      "solver_s": 0.026290400004654657,
+      "statuses": [
+        "success"
+      ],
+      "nfev": [
+        27
+      ],
+      "run": "12_4_2_hard_rejection.json"
+    },
+    {
+      "samples": 12,
+      "beacons": 8,
+      "repeat": 0,
+      "loss": "gaussian",
+      "observation_count": 96,
+      "parameter_count": 38,
+      "wrapper_s": 0.2447020999970846,
+      "solver_s": 0.012531799999123905,
+      "statuses": [
+        "success"
+      ],
+      "nfev": [
+        12
+      ],
+      "run": "12_8_0_gaussian.json"
+    },
+    {
+      "samples": 12,
+      "beacons": 8,
+      "repeat": 0,
+      "loss": "huber",
+      "observation_count": 96,
+      "parameter_count": 38,
+      "wrapper_s": 0.273494799999753,
+      "solver_s": 0.025836599998001475,
+      "statuses": [
+        "success"
+      ],
+      "nfev": [
+        26
+      ],
+      "run": "12_8_0_huber.json"
+    },
+    {
+      "samples": 12,
+      "beacons": 8,
+      "repeat": 0,
+      "loss": "cauchy",
+      "observation_count": 96,
+      "parameter_count": 38,
+      "wrapper_s": 0.255660099996021,
+      "solver_s": 0.02098190000106115,
+      "statuses": [
+        "success"
+      ],
+      "nfev": [
+        23
+      ],
+      "run": "12_8_0_cauchy.json"
+    },
+    {
+      "samples": 12,
+      "beacons": 8,
+      "repeat": 0,
+      "loss": "hard_rejection",
+      "observation_count": 96,
+      "parameter_count": 38,
+      "wrapper_s": 0.2841857999956119,
+      "solver_s": 0.03624819999822648,
+      "statuses": [
+        "success"
+      ],
+      "nfev": [
+        39
+      ],
+      "run": "12_8_0_hard_rejection.json"
+    },
+    {
+      "samples": 12,
+      "beacons": 8,
+      "repeat": 1,
+      "loss": "gaussian",
+      "observation_count": 96,
+      "parameter_count": 38,
+      "wrapper_s": 0.25723179999476997,
+      "solver_s": 0.0159228999982588,
+      "statuses": [
+        "success"
+      ],
+      "nfev": [
+        16
+      ],
+      "run": "12_8_1_gaussian.json"
+    },
+    {
+      "samples": 12,
+      "beacons": 8,
+      "repeat": 1,
+      "loss": "huber",
+      "observation_count": 96,
+      "parameter_count": 38,
+      "wrapper_s": 0.2529644999958691,
+      "solver_s": 0.011697400004777592,
+      "statuses": [
+        "success"
+      ],
+      "nfev": [
+        11
+      ],
+      "run": "12_8_1_huber.json"
+    },
+    {
+      "samples": 12,
+      "beacons": 8,
+      "repeat": 1,
+      "loss": "cauchy",
+      "observation_count": 96,
+      "parameter_count": 38,
+      "wrapper_s": 0.3185388999991119,
+      "solver_s": 0.025856000000203494,
+      "statuses": [
+        "success"
+      ],
+      "nfev": [
+        17
+      ],
+      "run": "12_8_1_cauchy.json"
+    },
+    {
+      "samples": 12,
+      "beacons": 8,
+      "repeat": 1,
+      "loss": "hard_rejection",
+      "observation_count": 96,
+      "parameter_count": 38,
+      "wrapper_s": 0.27007650000450667,
+      "solver_s": 0.02513060000637779,
+      "statuses": [
+        "success"
+      ],
+      "nfev": [
+        14
+      ],
+      "run": "12_8_1_hard_rejection.json"
+    },
+    {
+      "samples": 12,
+      "beacons": 8,
+      "repeat": 2,
+      "loss": "gaussian",
+      "observation_count": 96,
+      "parameter_count": 38,
+      "wrapper_s": 0.2653193000005558,
+      "solver_s": 0.013539499996113591,
+      "statuses": [
+        "success"
+      ],
+      "nfev": [
+        13
+      ],
+      "run": "12_8_2_gaussian.json"
+    },
+    {
+      "samples": 12,
+      "beacons": 8,
+      "repeat": 2,
+      "loss": "huber",
+      "observation_count": 96,
+      "parameter_count": 38,
+      "wrapper_s": 0.26717520000238437,
+      "solver_s": 0.03219359999638982,
+      "statuses": [
+        "success"
+      ],
+      "nfev": [
+        36
+      ],
+      "run": "12_8_2_huber.json"
+    },
+    {
+      "samples": 12,
+      "beacons": 8,
+      "repeat": 2,
+      "loss": "cauchy",
+      "observation_count": 96,
+      "parameter_count": 38,
+      "wrapper_s": 0.2820627999972203,
+      "solver_s": 0.04712690000451403,
+      "statuses": [
+        "success"
+      ],
+      "nfev": [
+        51
+      ],
+      "run": "12_8_2_cauchy.json"
+    },
+    {
+      "samples": 12,
+      "beacons": 8,
+      "repeat": 2,
+      "loss": "hard_rejection",
+      "observation_count": 96,
+      "parameter_count": 38,
+      "wrapper_s": 0.27093600000080187,
+      "solver_s": 0.026888400003372226,
+      "statuses": [
+        "success"
+      ],
+      "nfev": [
+        29
+      ],
+      "run": "12_8_2_hard_rejection.json"
+    },
+    {
+      "samples": 24,
+      "beacons": 4,
+      "repeat": 0,
+      "loss": "gaussian",
+      "observation_count": 96,
+      "parameter_count": 54,
+      "wrapper_s": 0.29966330000024755,
+      "solver_s": 0.05714859999716282,
+      "statuses": [
+        "success"
+      ],
+      "nfev": [
+        22
+      ],
+      "run": "24_4_0_gaussian.json"
+    },
+    {
+      "samples": 24,
+      "beacons": 4,
+      "repeat": 0,
+      "loss": "huber",
+      "observation_count": 96,
+      "parameter_count": 54,
+      "wrapper_s": 0.5851187000007485,
+      "solver_s": 0.3328652999989572,
+      "statuses": [
+        "success"
+      ],
+      "nfev": [
+        132
+      ],
+      "run": "24_4_0_huber.json"
+    },
+    {
+      "samples": 24,
+      "beacons": 4,
+      "repeat": 0,
+      "loss": "cauchy",
+      "observation_count": 96,
+      "parameter_count": 54,
+      "wrapper_s": 0.2828704000057769,
+      "solver_s": 0.03737829999590758,
+      "statuses": [
+        "success"
+      ],
+      "nfev": [
+        16
+      ],
+      "run": "24_4_0_cauchy.json"
+    },
+    {
+      "samples": 24,
+      "beacons": 4,
+      "repeat": 0,
+      "loss": "hard_rejection",
+      "observation_count": 96,
+      "parameter_count": 54,
+      "wrapper_s": 0.35702799999853596,
+      "solver_s": 0.09611710000172025,
+      "statuses": [
+        "success"
+      ],
+      "nfev": [
+        32
+      ],
+      "run": "24_4_0_hard_rejection.json"
+    },
+    {
+      "samples": 24,
+      "beacons": 4,
+      "repeat": 1,
+      "loss": "gaussian",
+      "observation_count": 96,
+      "parameter_count": 54,
+      "wrapper_s": 0.28284610000264365,
+      "solver_s": 0.03675890000158688,
+      "statuses": [
+        "success"
+      ],
+      "nfev": [
+        14
+      ],
+      "run": "24_4_1_gaussian.json"
+    },
+    {
+      "samples": 24,
+      "beacons": 4,
+      "repeat": 1,
+      "loss": "huber",
+      "observation_count": 96,
+      "parameter_count": 54,
+      "wrapper_s": 0.33011740000074496,
+      "solver_s": 0.08175019999907818,
+      "statuses": [
+        "success"
+      ],
+      "nfev": [
+        32
+      ],
+      "run": "24_4_1_huber.json"
+    },
+    {
+      "samples": 24,
+      "beacons": 4,
+      "repeat": 1,
+      "loss": "cauchy",
+      "observation_count": 96,
+      "parameter_count": 54,
+      "wrapper_s": 0.29751240000041435,
+      "solver_s": 0.055148100000224076,
+      "statuses": [
+        "success"
+      ],
+      "nfev": [
+        24
+      ],
+      "run": "24_4_1_cauchy.json"
+    },
+    {
+      "samples": 24,
+      "beacons": 4,
+      "repeat": 1,
+      "loss": "hard_rejection",
+      "observation_count": 96,
+      "parameter_count": 54,
+      "wrapper_s": 0.32672099999763304,
+      "solver_s": 0.062167199997929856,
+      "statuses": [
+        "success"
+      ],
+      "nfev": [
+        9
+      ],
+      "run": "24_4_1_hard_rejection.json"
+    },
+    {
+      "samples": 24,
+      "beacons": 4,
+      "repeat": 2,
+      "loss": "gaussian",
+      "observation_count": 96,
+      "parameter_count": 54,
+      "wrapper_s": 0.28133710000111023,
+      "solver_s": 0.041507300004013814,
+      "statuses": [
+        "success"
+      ],
+      "nfev": [
+        16
+      ],
+      "run": "24_4_2_gaussian.json"
+    },
+    {
+      "samples": 24,
+      "beacons": 4,
+      "repeat": 2,
+      "loss": "huber",
+      "observation_count": 96,
+      "parameter_count": 54,
+      "wrapper_s": 0.3511394000015571,
+      "solver_s": 0.10234330000093905,
+      "statuses": [
+        "success"
+      ],
+      "nfev": [
+        40
+      ],
+      "run": "24_4_2_huber.json"
+    },
+    {
+      "samples": 24,
+      "beacons": 4,
+      "repeat": 2,
+      "loss": "cauchy",
+      "observation_count": 96,
+      "parameter_count": 54,
+      "wrapper_s": 0.32309340000210796,
+      "solver_s": 0.06667790000210516,
+      "statuses": [
+        "success"
+      ],
+      "nfev": [
+        25
+      ],
+      "run": "24_4_2_cauchy.json"
+    },
+    {
+      "samples": 24,
+      "beacons": 4,
+      "repeat": 2,
+      "loss": "hard_rejection",
+      "observation_count": 96,
+      "parameter_count": 54,
+      "wrapper_s": 0.3341613000011421,
+      "solver_s": 0.0776527000052738,
+      "statuses": [
+        "success"
+      ],
+      "nfev": [
+        25
+      ],
+      "run": "24_4_2_hard_rejection.json"
+    },
+    {
+      "samples": 24,
+      "beacons": 8,
+      "repeat": 0,
+      "loss": "gaussian",
+      "observation_count": 192,
+      "parameter_count": 62,
+      "wrapper_s": 0.41817579999769805,
+      "solver_s": 0.04523170000175014,
+      "statuses": [
+        "success"
+      ],
+      "nfev": [
+        12
+      ],
+      "run": "24_8_0_gaussian.json"
+    },
+    {
+      "samples": 24,
+      "beacons": 8,
+      "repeat": 0,
+      "loss": "huber",
+      "observation_count": 192,
+      "parameter_count": 62,
+      "wrapper_s": 0.43672249999508495,
+      "solver_s": 0.08439869999710936,
+      "statuses": [
+        "success"
+      ],
+      "nfev": [
+        27
+      ],
+      "run": "24_8_0_huber.json"
+    },
+    {
+      "samples": 24,
+      "beacons": 8,
+      "repeat": 0,
+      "loss": "cauchy",
+      "observation_count": 192,
+      "parameter_count": 62,
+      "wrapper_s": 0.511751700003515,
+      "solver_s": 0.1190160999976797,
+      "statuses": [
+        "success"
+      ],
+      "nfev": [
+        37
+      ],
+      "run": "24_8_0_cauchy.json"
+    },
+    {
+      "samples": 24,
+      "beacons": 8,
+      "repeat": 0,
+      "loss": "hard_rejection",
+      "observation_count": 192,
+      "parameter_count": 62,
+      "wrapper_s": 0.48710180000489345,
+      "solver_s": 0.08357669999531936,
+      "statuses": [
+        "success"
+      ],
+      "nfev": [
+        28
+      ],
+      "run": "24_8_0_hard_rejection.json"
+    },
+    {
+      "samples": 24,
+      "beacons": 8,
+      "repeat": 1,
+      "loss": "gaussian",
+      "observation_count": 192,
+      "parameter_count": 62,
+      "wrapper_s": 0.4150616999977501,
+      "solver_s": 0.057062200001382735,
+      "statuses": [
+        "success"
+      ],
+      "nfev": [
+        17
+      ],
+      "run": "24_8_1_gaussian.json"
+    },
+    {
+      "samples": 24,
+      "beacons": 8,
+      "repeat": 1,
+      "loss": "huber",
+      "observation_count": 192,
+      "parameter_count": 62,
+      "wrapper_s": 0.4188116000004811,
+      "solver_s": 0.05540459999610903,
+      "statuses": [
+        "success"
+      ],
+      "nfev": [
+        16
+      ],
+      "run": "24_8_1_huber.json"
+    },
+    {
+      "samples": 24,
+      "beacons": 8,
+      "repeat": 1,
+      "loss": "cauchy",
+      "observation_count": 192,
+      "parameter_count": 62,
+      "wrapper_s": 0.4285345999960555,
+      "solver_s": 0.06507369999599177,
+      "statuses": [
+        "success"
+      ],
+      "nfev": [
+        22
+      ],
+      "run": "24_8_1_cauchy.json"
+    },
+    {
+      "samples": 24,
+      "beacons": 8,
+      "repeat": 1,
+      "loss": "hard_rejection",
+      "observation_count": 192,
+      "parameter_count": 62,
+      "wrapper_s": 0.49649330000102054,
+      "solver_s": 0.10747509999782778,
+      "statuses": [
+        "success"
+      ],
+      "nfev": [
+        26
+      ],
+      "run": "24_8_1_hard_rejection.json"
+    },
+    {
+      "samples": 24,
+      "beacons": 8,
+      "repeat": 2,
+      "loss": "gaussian",
+      "observation_count": 192,
+      "parameter_count": 62,
+      "wrapper_s": 0.4054298999981256,
+      "solver_s": 0.04460349999862956,
+      "statuses": [
+        "success"
+      ],
+      "nfev": [
+        12
+      ],
+      "run": "24_8_2_gaussian.json"
+    },
+    {
+      "samples": 24,
+      "beacons": 8,
+      "repeat": 2,
+      "loss": "huber",
+      "observation_count": 192,
+      "parameter_count": 62,
+      "wrapper_s": 0.44807500000024447,
+      "solver_s": 0.07457440000143833,
+      "statuses": [
+        "success"
+      ],
+      "nfev": [
+        24
+      ],
+      "run": "24_8_2_huber.json"
+    },
+    {
+      "samples": 24,
+      "beacons": 8,
+      "repeat": 2,
+      "loss": "cauchy",
+      "observation_count": 192,
+      "parameter_count": 62,
+      "wrapper_s": 0.5017137999966508,
+      "solver_s": 0.13339999999880092,
+      "statuses": [
+        "success"
+      ],
+      "nfev": [
+        37
+      ],
+      "run": "24_8_2_cauchy.json"
+    },
+    {
+      "samples": 24,
+      "beacons": 8,
+      "repeat": 2,
+      "loss": "hard_rejection",
+      "observation_count": 192,
+      "parameter_count": 62,
+      "wrapper_s": 0.48955699999351054,
+      "solver_s": 0.08931220000522444,
+      "statuses": [
+        "success"
+      ],
+      "nfev": [
+        28
+      ],
+      "run": "24_8_2_hard_rejection.json"
+    }
+  ],
+  "scope": {
+    "wrapper": "perf_counter around solve_experiment, includes objective/diagnostic construction and offline validation, excludes generation and disk saving",
+    "solver": "sum saved per-start runtime_s; includes hard-rejection pilot and second stage, excludes wrapper truth evaluation",
+    "limits": "Local small fixtures, one start, three repeated paired seeded data realizations; no general solver ranking or throughput claim"
+  }
+}

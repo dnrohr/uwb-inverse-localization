@@ -1,0 +1,7 @@
+test_summary_preview_never_calls_full_record_validator (test_m7_integration.M7IntegrationTests.test_summary_preview_never_calls_full_record_validator) ... ok
+test_survey_world_comparison_and_strict_offline_import (test_m7_integration.M7IntegrationTests.test_survey_world_comparison_and_strict_offline_import) ... ok
+
+----------------------------------------------------------------------
+Ran 2 tests in 2.765s
+
+OK

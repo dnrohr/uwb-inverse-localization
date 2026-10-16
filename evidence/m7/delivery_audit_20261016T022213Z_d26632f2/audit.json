@@ -1,0 +1,15 @@
+{
+  "status": "failed",
+  "errors": [
+    "AssertionError: ['evidence/m5/server_final_ui_stderr.txt', 'evidence/m6/server_final_stderr.txt']"
+  ],
+  "recorded_utc": "2026-10-16T02:22:13.725803+00:00",
+  "requirements": {},
+  "preservation": {
+    "checked": 1665,
+    "changed": [
+      "evidence/m5/server_final_ui_stderr.txt",
+      "evidence/m6/server_final_stderr.txt"
+    ]
+  }
+}

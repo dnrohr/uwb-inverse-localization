@@ -1,0 +1,70 @@
+{
+  "status": "passed",
+  "viewport": {
+    "width": 1360,
+    "height": 900
+  },
+  "live_cauchy": "be7cdc15a90e49d0aa674e912c37d4cf",
+  "live_benchmark": "7574ec5f243846e4bda2198f4793de3a",
+  "attempt_rows": 6,
+  "rejection_summary": "Every attempted start remains listed. Selected attempt: success · injected-NLOS decision precision 0.333, recall 1.000, false-positive rate 0.286 (dropped pings excluded; undefined denominators shown as undefined). 12 false positives · 0 false negatives. Coverage: 30 / 48 positive-weight ranges retained; effective weight sum 30.000; 18 flagged. Measurement information rank 24 → 16 after weighting; squared-singular-value loss 0.386 (computed from original/retained spectra with common physical scaling; local first-order diagnostic, not an ambiguity proof). Loss scale 1.345σ · rejection threshold 3.000σ · flag weight threshold 0.500. Hard rejection is an actual removal only when the frozen pilot weight is zero.",
+  "camera_before": "{\"up\":{\"x\":0,\"y\":0,\"z\":1},\"center\":{\"x\":0,\"y\":0,\"z\":0},\"eye\":{\"x\":1.55,\"y\":1.45,\"z\":1.25},\"projection\":{\"type\":\"perspective\"}}",
+  "comparison_alignment": "aligned",
+  "scrub": {
+    "alignment": "aligned",
+    "camera": "{\"up\":{\"x\":0,\"y\":0,\"z\":1},\"center\":{\"x\":0,\"y\":0,\"z\":0},\"eye\":{\"x\":1.55,\"y\":1.45,\"z\":1.25},\"projection\":{\"type\":\"perspective\"}}",
+    "ping": "11 / 48 · B2"
+  },
+  "playback": {
+    "alignment": "aligned",
+    "camera": "{\"up\":{\"x\":0,\"y\":0,\"z\":1},\"center\":{\"x\":0,\"y\":0,\"z\":0},\"eye\":{\"x\":1.55,\"y\":1.45,\"z\":1.25},\"projection\":{\"type\":\"perspective\"}}",
+    "ping": "48 / 48 · B3"
+  },
+  "failed_import": {
+    "summary": "Every attempted start remains listed. Selected attempt: failed · injected-NLOS decision precision undefined, recall undefined, false-positive rate undefined (dropped pings excluded; undefined denominators shown as undefined). — false positives · — false negatives. Coverage: — / — positive-weight ranges retained; effective weight sum undefined; — flagged. Measurement information rank — → — after weighting; squared-singular-value loss undefined (computed from original/retained spectra with common physical scaling; local first-order diagnostic, not an ambiguity proof). Loss scale 2.000σ · rejection threshold 3.000σ · flag weight threshold 0.500. Continuous losses retain nonzero-weight observations; “flagged” means influence weight is below the configured threshold, not that the range was removed.",
+    "rows": 2
+  },
+  "console_errors": [],
+  "final_render_ms": {
+    "coverage": "20.00",
+    "residual": "31.50",
+    "scene": "446.10"
+  },
+  "reopened_comparison": {
+    "id": "715bbeea71c145eab7428b02638b2669",
+    "metrics": "RUN\tSTATUS\tMODE\tSAMPLES\tSTARTS\tSELECTED\tPOSITION RMSE (M)\tMAP RMSE (M)\tRANGE RMSE (M)\tRUNTIME (S)\tCONVERGED\tFULL RANK\n5e654dc3\tsuccess\tknown_map\t12\t2\t1\t0.5603\t0.0000\t0.4059\t0.0267\ttrue\ttrue\nf897a178\tsuccess\tknown_map\t12\t2\t0\t0.6392\t0.0000\t0.4161\t0.0335\ttrue\ttrue"
+  },
+  "legacy_m5": {
+    "id": "4f1ab837c0ad4009ba707152b6d190c9",
+    "subtitle": "Informative motion · Joint map · raw frame · Algebraic initialization · measurement only · 1 starts"
+  },
+  "final_history_layout": {
+    "runs_height": 280,
+    "runs_scroll_height": 12144,
+    "sweeps_height": 280
+  },
+  "final_attempt_rows": 6,
+  "limitations": [
+    "Desktop 1360×900 and normal compact viewport checked; full mobile layout remains uncertified with inherited overflow.",
+    "Scene/chart rendering samples exclude network and fitting time.",
+    "Scene rays sample at most 45 pings; full source/decision rows are retained in JSON/CSV."
+  ],
+  "exported_images_visually_inspected": [
+    "final_scene.png",
+    "final_residuals.png",
+    "final_coverage.png",
+    "export_benchmark.png",
+    "final_comparison.png",
+    "final_rejection_scene.png",
+    "final_controls_bounded.png",
+    "final_decisions.png",
+    "legacy_m5_reopen.png",
+    "final_decisions_clean.png"
+  ],
+  "final_placeholder_check": {
+    "attempt_rows": 6,
+    "benchmark_placeholders": 0,
+    "coverage_placeholders": 0,
+    "residual_placeholders": 0
+  }
+}

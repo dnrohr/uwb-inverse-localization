@@ -1,0 +1,20 @@
+test_declared_misspecification_and_nonconvergence_stay_inspectable (test_m7.M7Tests.test_declared_misspecification_and_nonconvergence_stay_inspectable) ... ok
+test_derivatives_across_height_models_losses_and_priors (test_m7.M7Tests.test_derivatives_across_height_models_losses_and_priors) ... ok
+test_independent_los_jacobian_and_analytic_covariance (test_m7.M7Tests.test_independent_los_jacobian_and_analytic_covariance) ... ok
+test_legacy_known_map_summary_and_joint_gauge_guard (test_m7.M7Tests.test_legacy_known_map_summary_and_joint_gauge_guard) ... ok
+test_no_survey_is_exact_m6_delegate (test_m7.M7Tests.test_no_survey_is_exact_m6_delegate) ... ok
+test_reject_invalid_units_masks_covariance_duplicates_and_unsupported_models (test_m7.M7Tests.test_reject_invalid_units_masks_covariance_duplicates_and_unsupported_models) ... ok
+test_remaining_rigid_freedoms_never_get_pseudoinverse_covariance (test_m7.M7Tests.test_remaining_rigid_freedoms_never_get_pseudoinverse_covariance) ... ok
+test_robust_nonconverged_and_active_bounds_suppress_covariance (test_m7.M7Tests.test_robust_nonconverged_and_active_bounds_suppress_covariance) ... ok
+test_selected_coordinates_and_coupled_prior_whitening (test_m7.M7Tests.test_selected_coordinates_and_coupled_prior_whitening) ... ok
+test_strict_offline_roundtrip_and_corruption_rejection (test_m7.M7Tests.test_strict_offline_roundtrip_and_corruption_rejection) ... ok
+test_survey_information_can_fill_rank_without_changing_range_information (test_m7.M7Tests.test_survey_information_can_fill_rank_without_changing_range_information) ... ok
+test_trf_lm_exact_physical_starts_and_failure_retention (test_m7.M7Tests.test_trf_lm_exact_physical_starts_and_failure_retention) ... ok
+test_truth_and_label_annotations_do_not_enter_fitter (test_m7.M7Tests.test_truth_and_label_annotations_do_not_enter_fitter) ... ok
+test_world_evaluation_does_not_hide_reflection_or_translation (test_m7.M7Tests.test_world_evaluation_does_not_hide_reflection_or_translation) ... ok
+test_world_fixed_coordinates_eliminated_without_canonical_gauge (test_m7.M7Tests.test_world_fixed_coordinates_eliminated_without_canonical_gauge) ... ok
+
+----------------------------------------------------------------------
+Ran 15 tests in 2.412s
+
+OK

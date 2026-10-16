@@ -1,0 +1,59 @@
+{
+  "created_utc": "2026-10-15T19:01:00.188492+00:00",
+  "html": {
+    "mismatched_tags": [],
+    "unclosed_tags": [],
+    "duplicate_ids": []
+  },
+  "javascript": [
+    {
+      "file": "web\\app.js",
+      "syntax_exit": 0,
+      "stderr": "",
+      "unbounded_list_gets": []
+    },
+    {
+      "file": "web\\library.js",
+      "syntax_exit": 0,
+      "stderr": "",
+      "unbounded_list_gets": []
+    },
+    {
+      "file": "web\\m2.js",
+      "syntax_exit": 0,
+      "stderr": "",
+      "unbounded_list_gets": []
+    },
+    {
+      "file": "web\\m3.js",
+      "syntax_exit": 0,
+      "stderr": "",
+      "unbounded_list_gets": []
+    },
+    {
+      "file": "web\\m4.js",
+      "syntax_exit": 0,
+      "stderr": "",
+      "unbounded_list_gets": []
+    },
+    {
+      "file": "web\\m5.js",
+      "syntax_exit": 0,
+      "stderr": "",
+      "unbounded_list_gets": []
+    },
+    {
+      "file": "web\\m6.js",
+      "syntax_exit": 0,
+      "stderr": "",
+      "unbounded_list_gets": []
+    },
+    {
+      "file": "web\\m7.js",
+      "syntax_exit": 0,
+      "stderr": "",
+      "unbounded_list_gets": []
+    }
+  ],
+  "passed": true
+}

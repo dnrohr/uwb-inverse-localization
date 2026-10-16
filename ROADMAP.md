@@ -2,7 +2,7 @@
 
 Source: [project requirements](PROJECT_REQUIREMENTS.md), with mathematical background in [the handoff](UWB_PROJECT_HANDOFF.md).
 
-M0, M1 and M2 are complete, with acceptance evidence linked below. M3 and later items remain planned and unchecked. Milestones are ordered by dependency, without speculative completion dates. Completing a milestone means delivering its working interface, numerical evidence, and documented limitations.
+M0–M7 are complete for their documented acceptance scope, with evidence linked below. Optional follow-on work remains deferred. Milestones are ordered by dependency, without speculative completion dates. Completing a milestone means delivering its working interface, numerical evidence, and documented limitations.
 
 ## M0 — Establish the experiment foundation
 
@@ -48,61 +48,63 @@ M0, M1 and M2 are complete, with acceptance evidence linked below. M3 and later 
 
 **Depends on:** M2. **Outcome:** quantify when a simultaneous-ping approximation distorts the solution.
 
-- [ ] **M3.1 — Add time-dependent motion.** Support variable speed, acceleration, stops, and direction changes; show speed versus time.
-- [ ] **M3.2 — Generate sequential acquisition.** Control beacon order, cycle rate, within-cycle spacing, and acquisition jitter. Generate ranges at each actual tag position and retain actual/assumed times separately.
-- [ ] **M3.3 — Implement a timestamp-aware trajectory model.** Choose and document knots/interpolation and optional motion priors; expose knot spacing and prior strength. Evaluate each residual at its measurement time and diagnose measurement information separately from priors.
-- [ ] **M3.4 — Implement the grouped-time approximation.** State the grouping rule/reference time and fit the same observations as the timestamp-aware estimator.
-- [ ] **M3.5 — Animate and scrub individual pings.** Show actual ping positions, receiving beacons, range rays, and assumed common cycle position. Preserve camera and comparison settings during playback.
-- [ ] **M3.6 — Add timing sweeps and imperfect data.** Sweep speed, ping spacing, and knot spacing. Then add timestamp offsets/jitter, missing observations, and unequal beacon rates. Distinguish timestamp error from acquisition spacing and delivery latency.
+- [x] **M3.1 — Add time-dependent motion.** Support variable speed, acceleration, stops, and direction changes; show speed versus time.
+- [x] **M3.2 — Generate sequential acquisition.** Control beacon order, cycle rate, within-cycle spacing, and acquisition jitter. Generate ranges at each actual tag position and retain actual/assumed times separately.
+- [x] **M3.3 — Implement a timestamp-aware trajectory model.** Choose and document knots/interpolation and optional motion priors; expose knot spacing and prior strength. Evaluate each residual at its measurement time and diagnose measurement information separately from priors.
+- [x] **M3.4 — Implement the grouped-time approximation.** State the grouping rule/reference time and fit the same observations as the timestamp-aware estimator.
+- [x] **M3.5 — Animate and scrub individual pings.** Show actual ping positions, receiving beacons, range rays, and assumed common cycle position. Preserve camera and comparison settings during playback.
+- [x] **M3.6 — Add timing sweeps and imperfect data.** Sweep speed, ping spacing, and knot spacing. Then add timestamp offsets/jitter, missing observations, and unequal beacon rates. Distinguish timestamp error from acquisition spacing and delivery latency.
 
-**Exit check:** zero ping spacing reproduces the synchronized baseline; a stationary tag shows no acquisition-spacing geometry effect. Correctly timestamped delivery latency alone leaves batch results unchanged. Moving-tag comparisons report timing approximation error and any interpolation/prior effects, rather than attributing all differences to timing.
+**Exit check:** passed October 13, 2026. Zero spacing reproduces synchronized M1 measurements and fits; stationary known-map tags have no spacing-induced geometry error; correctly timestamped delivery latency leaves both batch models unchanged. Variable-speed motion, sequential acquisition, controlled linear knots, disclosed priors, identical-data grouping, ping playback, seven paired sweeps, imperfect-data examples and offline persistence are delivered. All 81 tests pass, including the original 61. Evidence: [M3 model and measured results](docs/M3.md), [M3 acceptance, visual evidence, performance and limits](docs/M3_ACCEPTANCE.md), and `evidence/m3/`. The final numerical set retains 68 runs / 136 starts, with separate failed/nonconverged examples; initial evidence/history hashes are unchanged. Measurement rank, prior information, interpolation, timing approximation, convergence and geometry remain separate. No external push/publication was performed.
 
 ## M4 — Investigate height constraints and beacon geometry
 
 **Depends on:** M2; use M3 for asynchronous comparisons. **Outcome:** expose height ambiguity, nonplanarity, and geometry sensitivity.
 
-- [ ] **M4.1 — Expand beacon controls.** Support three through eight beacons, editable coordinates, horizontal baselines, height diversity, nearly collinear/coplanar layouts, and paths inside/outside beacon coverage.
-- [ ] **M4.2 — Compare tag height models with known maps first.** Add fixed/shared plane, soft height constraint with stated uncertainty, and free trajectory heights. Treat below-beacon bounds as a separate option.
-- [ ] **M4.3 — Extend joint estimation.** Support shared and independent beacon heights where identifiable; define the appropriate 3D frame convention and report remaining reflection/continuous ambiguities. Flag unsupported combinations with explanations.
-- [ ] **M4.4 — Add height diagnostics.** Show z versus time, height error, best-fit-plane departure, relevant planes, and residual/geometry changes between models.
-- [ ] **M4.5 — Add model-mismatch scenarios.** Generate small vertical excursions and fully 3D truth paths, and fit them using planar and free-height models.
-- [ ] **M4.6 — Sweep geometry and constraints.** Compare count, vertical separation, coverage, height-prior strength, and shared versus independent beacon heights using repeated runs and scaled rank diagnostics.
+- [x] **M4.1 — Expand beacon controls.** Support three through eight beacons, editable coordinates, horizontal baselines, height diversity, nearly collinear/coplanar layouts, and paths inside/outside beacon coverage.
+- [x] **M4.2 — Compare tag height models with known maps first.** Add fixed/shared plane, soft height constraint with stated uncertainty, and free trajectory heights. Treat below-beacon bounds as a separate option.
+- [x] **M4.3 — Extend joint estimation.** Support shared and independent beacon heights where identifiable; define the appropriate 3D frame convention and report remaining reflection/continuous ambiguities. Flag unsupported combinations with explanations.
+- [x] **M4.4 — Add height diagnostics.** Show z versus time, height error, best-fit-plane departure, relevant planes, and residual/geometry changes between models.
+- [x] **M4.5 — Add model-mismatch scenarios.** Generate small vertical excursions and fully 3D truth paths, and fit them using planar and free-height models.
+- [x] **M4.6 — Sweep geometry and constraints.** Compare count, vertical separation, coverage, height-prior strength, and shared versus independent beacon heights using repeated runs and scaled rank diagnostics.
 
-**Exit check:** known-map coplanar cases expose reflected solutions; below-plane bounds select a branch without being represented as a planarity constraint. Diagnostics distinguish a tilted plane from a warped trajectory. Joint fits remove valid coordinate freedoms and disclose any remaining unidentifiability.
+**Exit check:** passed October 14, 2026. Known-map coplanar cases expose retained equal-range reflection branches; separate below-plane bounds select a branch without imposing planarity. Tilted/warped paths, editable 3–8 beacon maps, fixed/shared/soft/free heights, proper planar/3D gauges, six paired geometry sweeps (56 runs / 112 starts), saved comparison/import/export and 3D ping playback were numerically and visually verified. All 110 tests pass, including M0–M3; independent derivative and vertical-sensitivity reviews passed. All 409 pre-existing evidence/history hashes remain unchanged. Evidence: [M4 model and support matrix](docs/M4.md), [M4 acceptance and measured performance](docs/M4_ACCEPTANCE.md), and [final audit](evidence/m4/final_audit.json). Limits: local rank does not prove uniqueness; reflections and inaccurate converged fits remain inspectable; joint independent-map free/soft below inequalities are explicitly unsupported; controlled linear knots can introduce asynchronous interpolation error; the speed chart reports planar speed. No external push/publication was performed.
 
 ## M5 — Compare solvers and initialization methods
 
 **Depends on:** M4. **Outcome:** distinguish model/geometry failures from optimizer behavior.
 
-- [ ] **M5.1 — Add a second solver strategy.** Compare LM and a bounded trust-region method where feasible. Record objective, derivatives, tolerances, bounds, scaling, and any positivity transformation; acknowledge differences imposed by solver capabilities.
-- [ ] **M5.2 — Compare shared-height parameterizations.** Evaluate h and q=h² using stated units, scaling, and physically valid starts, including behavior near zero height.
-- [ ] **M5.3 — Validate an algebraic initializer.** Numerically check exact-data recovery and physical consistency before noisy comparisons; report invalid algebraic fits explicitly.
-- [ ] **M5.4 — Run paired solver/initializer benchmarks.** Reuse data and compatible starts; report accuracy, convergence basin, failure rate, runtime, and alternative solutions across representative observable and weak geometries.
-- [ ] **M5.5 — Evaluate a second implementation if useful.** Consider Ceres on the same saved experiments after the baseline is stable. Record whether observed differences follow from configuration or implementation. Assess Geomstats only for a named operation with measurable benefit.
+- [x] **M5.1 — Add a second solver strategy.** Compare LM and a bounded trust-region method where feasible. Record objective, derivatives, tolerances, bounds, scaling, and any positivity transformation; acknowledge differences imposed by solver capabilities.
+- [x] **M5.2 — Compare shared-height parameterizations.** Evaluate h and q=h² using stated units, scaling, and physically valid starts, including behavior near zero height.
+- [x] **M5.3 — Validate an algebraic initializer.** Numerically check exact-data recovery and physical consistency before noisy comparisons; report invalid algebraic fits explicitly.
+- [x] **M5.4 — Run paired solver/initializer benchmarks.** Reuse data and compatible starts; report accuracy, convergence basin, failure rate, runtime, and alternative solutions across representative observable and weak geometries.
+- [x] **M5.5 — Evaluate a second implementation if useful.** Consider Ceres on the same saved experiments after the baseline is stable. Record whether observed differences follow from configuration or implementation. Assess Geomstats only for a named operation with measurable benefit.
 
-**Exit check:** benchmark results separate solver effects from changed objectives, priors, bounds, and parameterizations. Neither lower cost nor faster runtime alone is reported as better geometric recovery.
+**Exit check:** passed October 14, 2026. Bounded SciPy TRF and strict-interior exponentially transformed LM, supported shared h/q coordinates, and measurement-only algebraic initialization are delivered with controls, all-attempt inspection, comparisons and JSON/CSV/PNG exports. Nine paired sweeps retain 160 runs / 320 starts, plus eight fixtures / 16 starts; all 336 attempts include 280 successful, five nonconverged and 51 failed outcomes, with 40 invalid algebraic proposals retained. Independent review passed seven checks, 127 tests passed, and all 649 pre-existing evidence/history hashes remain unchanged. Offline import/reopen, desktop scene/playback/camera invariance, exports and M3/M4 visual regression passed. Evidence: [M5 numerical conventions](docs/M5.md), [acceptance and performance](docs/M5_ACCEPTANCE.md), [independent algebraic review](docs/M5_ALGEBRAIC.md), and [final requirement audit](evidence/m5/final_audit.json). M5.5 is conditionally closed with a documented Ceres/Geomstats deferral; no cross-implementation comparison is claimed. Limits: q supports only the disclosed shared-height models; both shared h/q select a positive branch; LM underflow/overflow/bound touches remain explicit failures; local rank is not uniqueness. Checkpoint recovery requires readable main JSON, permanent write-failure cases have limited testing, and full mobile layout is not certified. Benchmark results separate solver effects from objectives, priors, bounds and coordinates; lower cost or runtime alone is not better recovery. No external push/publication was performed.
 
 ## M6 — Add multipath simulation and robust estimation
 
 **Depends on:** M5. **Outcome:** evaluate rejection and robustness against controlled contamination.
 
-- [ ] **M6.1 — Generate labeled NLOS/outliers.** Add positive range bias, isolated outliers, and bursts with configurable prevalence, magnitude, duration, and affected beacons. Keep synthetic labels out of estimator inputs.
-- [ ] **M6.2 — Add robust estimators.** Compare Gaussian least squares, robust losses, and an explicit rejection or bias model; expose thresholds and assumptions.
-- [ ] **M6.3 — Visualize decisions.** Show rejected/downweighted ranges, residuals, affected trajectory segments, retained coverage, and loss of observability.
-- [ ] **M6.4 — Evaluate rejection quality.** Report precision/recall against injected labels together with trajectory/map error and false rejections on clean data. Test masking by jointly distorted trajectories/maps.
-- [ ] **M6.5 — Expand error models individually.** Add per-beacon offsets, correlated noise, quantization, and dropout experiments before combining contamination sources.
+- [x] **M6.1 — Generate labeled NLOS/outliers.** Add positive range bias, isolated outliers, and bursts with configurable prevalence, magnitude, duration, and affected beacons. Keep synthetic labels out of estimator inputs.
+- [x] **M6.2 — Add robust estimators.** Compare Gaussian least squares, robust losses, and an explicit rejection or bias model; expose thresholds and assumptions.
+- [x] **M6.3 — Visualize decisions.** Show rejected/downweighted ranges, residuals, affected trajectory segments, retained coverage, and loss of observability.
+- [x] **M6.4 — Evaluate rejection quality.** Report precision/recall against injected labels together with trajectory/map error and false rejections on clean data. Test masking by jointly distorted trajectories/maps.
+- [x] **M6.5 — Expand error models individually.** Add per-beacon offsets, correlated noise, quantization, and dropout experiments before combining contamination sources.
 
-**Exit check:** robustness comparisons disclose geometric gains and losses, rejection quality, and retained information. A reduced residual after deleting measurements is insufficient evidence of improvement.
+**Exit check:** passed for the documented M6 scope. Robustness comparisons disclose geometric gains and losses, rejection quality, retained coverage and information. The acceptance matrix retains 248 runs / 496 final attempts, including failures and nonconvergence; 120 nested Gaussian pilot stages are counted separately. A reduced residual after deleting measurements is insufficient evidence of improvement. See [M6 model](docs/M6.md), [acceptance and limits](docs/M6_ACCEPTANCE.md), and [requirement-level audit](evidence/m6/final_audit.json).
 
-## M7 — Strengthen calibration knowledge and uncertainty analysis
+## M7 — Unify saved-data browsing and strengthen calibration knowledge and uncertainty analysis
 
-**Depends on:** M4–M6. **Outcome:** explore what additional information makes estimation reliable.
+**Depends on:** M4–M6. **Outcome:** keep the experiment workspace focused as saved data grows, and explore what additional information makes estimation reliable. Implement the Library and metadata access work (M7.4–M7.5) first, then integrate calibration/uncertainty and package the results. M7 is delivered for the scope and limitations in [M7 acceptance](docs/M7_ACCEPTANCE.md). The original planning handoff remains preserved.
 
-- [ ] **M7.1 — Add partial survey knowledge.** Support selected fixed beacon coordinates and uncertain survey priors with documented units and uncertainty.
-- [ ] **M7.2 — Add conditional uncertainty summaries.** Only compute/report local uncertainty where rank and the assumed error model support it; distinguish local intervals from global alternatives and prior-supplied information.
-- [ ] **M7.3 — Package investigation results.** Save reproducible demonstrations of geometry, timing, height, initialization, and multipath effects; document measured performance limits and unresolved questions.
+- [x] **M7.1 — Add partial survey knowledge.** Support selected fixed beacon coordinates and uncertain survey priors with documented units and uncertainty.
+- [x] **M7.2 — Add conditional uncertainty summaries.** Only compute/report local uncertainty where rank and the assumed error model support it; distinguish local intervals from global alternatives and prior-supplied information.
+- [x] **M7.3 — Package investigation results.** Save reproducible demonstrations of geometry, timing, height, initialization, and multipath effects; document measured performance limits and unresolved questions.
+- [x] **M7.4 — Replace repeated history panels with a unified Library.** Put saved runs, benchmarks/sweeps and comparisons in one dedicated Library view reached from a compact persistent button. Remove inline full-history lists from all experiment/milestone panels. Add search, filters, stable sorting, paginated compact rows, benchmark/child-run grouping, artifact preview, explicit Open in viewer, and a persistent two-run comparison tray. Preserve every artifact and every failed/nonconverged/interrupted attempt; browsing must preserve unsaved controls, camera, alignment and playback state. See [M7 UI plan](docs/M7_UI_PLAN.md).
+- [x] **M7.5 — Make saved-data access scale without crowding or blocking the UI.** Use a rebuildable metadata index and bounded server-side queries; load full records only for detail/open/compare/export and retain strict validation at those boundaries. Avoid repeated whole-history scans, duplicate list fetches, bulk option rendering and numerical validation merely to browse summaries. Keep source JSON authoritative, expose index/loading/error states, and validate current history plus an isolated 10,000-record metadata fixture. Measure cold indexing/startup, warm queries and browser rendering separately.
 
-**Exit check:** conclusions link to saved experiments; uncertainty assumptions and information sources are visible. No unsupported model is presented as uniquely recovered.
+**Exit check: passed for the documented M7 scope.** The [final audit](evidence/m7/final_audit.json) records208 passing tests, independent mathematical/integration review, preserved scientific records,75 new runs/94 attempts, and desktop/compact/narrow Library validation. Saved-data volume no longer controls experiment-page height; one Library supports all retained schemas, outcomes, offline reopen/import/export and comparison without solving. Search/filter/page/selection and viewer state survive navigation; keyboard and narrow-screen Library workflows work. Numerical conclusions link to saved experiments; uncertainty assumptions, measurement versus survey/prior information, and unresolved geometry are visible. No unsupported model is presented as uniquely recovered. Close items only with numerical, preservation, performance and visual evidence. Design and measurable UI acceptance: [M7 UI plan](docs/M7_UI_PLAN.md). Ready-to-hand-off objective: [M7 orchestrator goal](M7_ORCHESTRATOR_GOAL.md).
 
 ## Optional follow-on work
 
@@ -123,5 +125,5 @@ These are deferred research directions, not prerequisites for the milestones abo
 
 ## Next task
 
-M0–M2 is delivered. The next milestone is **M3** (moving tags and non-simultaneous pings), subject to a separate request.
+M0–M7 is delivered for the documented scope. The [M7 acceptance record](docs/M7_ACCEPTANCE.md) lists measured cold-start cost, conditional-uncertainty limitations and remaining mobile/recovery boundaries. Optional follow-on work above remains deferred and requires a separate request.
 

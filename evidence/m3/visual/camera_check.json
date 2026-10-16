@@ -1,0 +1,7 @@
+{
+  "before": "{\"up\":{\"x\":0,\"y\":0,\"z\":1},\"center\":{\"x\":0,\"y\":0,\"z\":0},\"eye\":{\"x\":1.25,\"y\":1.25,\"z\":1.25},\"projection\":{\"type\":\"perspective\"}}",
+  "after": "{\"up\":{\"x\":0,\"y\":1,\"z\":0},\"center\":{\"x\":0,\"y\":0,\"z\":0},\"eye\":{\"x\":0,\"y\":0,\"z\":2.5},\"projection\":{\"type\":\"perspective\"}}",
+  "pingIndex": "17",
+  "render_ms": "308.00",
+  "ping_render_ms": "16.80"
+}

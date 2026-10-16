@@ -1,0 +1,66 @@
+{
+  "base_experiment": {
+    "samples": 12,
+    "beacon_layout": {
+      "count": 4,
+      "geometry": "equal"
+    },
+    "noise_std_m": 0.03,
+    "contamination": {
+      "offsets_m": [
+        0.0,
+        0.03,
+        0.06,
+        0.09
+      ],
+      "correlated_noise_std_m": 0.03,
+      "correlation": 0.6,
+      "quantization_m": 0.05,
+      "dropout_probability": 0.1,
+      "nlos": {
+        "burst_duration_cycles": 2
+      }
+    }
+  },
+  "options": {
+    "mode": "joint",
+    "tag_height_model": "fixed",
+    "starts": 2,
+    "max_nfev": 300
+  },
+  "factor": "nlos_prevalence",
+  "values": [
+    0.0,
+    0.1
+  ],
+  "seeds": [
+    7,
+    8
+  ],
+  "variants": [
+    {
+      "label": "gaussian",
+      "options": {
+        "loss": "gaussian"
+      }
+    },
+    {
+      "label": "huber",
+      "options": {
+        "loss": "huber"
+      }
+    },
+    {
+      "label": "cauchy",
+      "options": {
+        "loss": "cauchy"
+      }
+    },
+    {
+      "label": "hard_rejection",
+      "options": {
+        "loss": "hard_rejection"
+      }
+    }
+  ]
+}
