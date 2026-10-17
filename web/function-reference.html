@@ -1,0 +1,610 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>RangeLab — Function Reference</title>
+<style>body{font:16px/1.65 system-ui,sans-serif;color:#203343;background:#f4f6f8;margin:0}main{max-width:1120px;margin:auto;padding:28px}nav{position:sticky;top:0;padding:12px 24px;background:#fff;border-bottom:1px solid #ccd6de;z-index:1;display:flex;gap:22px;flex-wrap:wrap}a{color:#07677a}h1,h2,h3{line-height:1.25;scroll-margin-top:80px}h2{margin-top:2.5em}code{font-size:.88em;background:#e5ebef;padding:2px 4px;border-radius:3px;overflow-wrap:anywhere}pre{background:#172b3a;color:#edf5fa;padding:18px;overflow:auto;border-radius:6px}pre code{background:none;color:inherit;padding:0;overflow-wrap:normal}.table-wrap{overflow-x:auto}table{border-collapse:collapse;background:white;width:100%;font-size:14px}td,th{border:1px solid #cdd8df;padding:10px;text-align:left;vertical-align:top}th{background:#dfeaf0}li{margin:.45em 0}@media print{nav{position:static}body{background:white}main{padding:0}pre{white-space:pre-wrap}}</style></head>
+<body><nav aria-label="Documentation"><a href="/">← Experiment</a><a href="/user-guide.html">User guide</a><a href="/input-reference.html">All inputs</a><a href="/function-reference.html">Functions and API</a></nav><main><h1 id="function-and-http-reference">Function and HTTP reference</h1>
+<p>Generated from the current Python source by <code>scripts/build_user_docs.py</code>. The <a href="user-guide.html">user guide</a> documents application features; <a href="input-reference.html">input reference</a> documents configuration variables. This appendix inventories every Python function, nested callback, method and HTTP decorator in <code>app.py</code> and <code>uwb/</code>, with exact source signatures. Leading-underscore functions and nested callbacks are implementation details, not stable user APIs. Follow source links for exact return structures and per-function validation.</p>
+<h2 id="python-usage">Python usage</h2>
+<pre><code>from uwb import m6
+
+experiment = m6.generate_experiment({&quot;noise_std_m&quot;: 0.02, &quot;seed&quot;: 7})
+run = m6.solve_experiment(experiment, {&quot;loss&quot;: &quot;huber&quot;, &quot;starts&quot;: 2, &quot;max_nfev&quot;: 500})
+print(run[&quot;status&quot;], run[&quot;selected_start&quot;])</code></pre>
+<p>Generation returns an experiment; solving returns a run and does not itself save it. Use the native strict save/load helpers for persistence. Measurement-only <code>build_problem</code>/<code>fit_observations</code> deliberately receive no truth. Known-map coordinates and declared survey priors are explicit knowledge; solve wrappers separately evaluate against truth. Sweep calls perform fitting and may be expensive; validate settings first. Normalizers/validators may raise ValueError (including ExperimentFormatError); save/load can also raise filesystem errors.</p>
+<h2 id="shared-argument-vocabulary">Shared argument vocabulary</h2>
+<p>Exact required/optional/keyword-only arguments and defaults are shown for each function below; <code>*</code> introduces keyword-only arguments. Repeated names have the following meaning; native option keys and all JSON configuration variables are in the input reference. <code>self</code> is the instance for a method.</p>
+<div class="table-wrap"><table><tbody>
+<tr><th>Argument</th><th>Meaning</th></tr>
+<tr><td><code>config</code></td><td>Native physical generation settings, or native study settings in sweep modules; defaults and accepted fields are model-specific.</td></tr>
+<tr><td><code>options</code></td><td>Native estimator/numerical options; workspace assumptions and numerical sections are merged before calling the native model.</td></tr>
+<tr><td><code>draft</code></td><td>Complete version-1 workspace configuration object (see input reference).</td></tr>
+<tr><td><code>engine</code></td><td>Explicit planar/timing/spatial/solver/robust/survey model key.</td></tr>
+<tr><td><code>experiment / exp</code></td><td>Native experiment record: schema_version, normalized config, estimator_input, separate truth/reference and provenance.</td></tr>
+<tr><td><code>observations</code></td><td>List of measured-range records with epoch, zero-based beacon_id, range_m, sigma_m and assumed_time_s; actual/delivery fields are retained provenance.</td></tr>
+<tr><td><code>times_s</code></td><td>Strictly increasing finite estimator epoch/cycle times in seconds. Interpolation is constructed from these times and options.</td></tr>
+<tr><td><code>display_times_s</code></td><td>Optional display/evaluation sampling times in seconds; separate from acquisition events and fitted knots.</td></tr>
+<tr><td><code>surveyed_beacons</code></td><td>Explicit finite beacon-count × 3 map in metres for known-map mode; forbidden as hidden knowledge in joint fitting.</td></tr>
+<tr><td><code>beacon_count</code></td><td>Explicit integer count, generally 3–8; required where missing observations prevent inferring the physical map size.</td></tr>
+<tr><td><code>initial_geometries</code></td><td>Optional list of retained physical trajectory/beacon starts, one per configured attempt; subject to compatibility validation.</td></tr>
+<tr><td><code>parameters / x / x0 / u</code></td><td>Parameter/start vectors in the function’s model coordinates; u denotes unconstrained LM coordinates.</td></tr>
+<tr><td><code>problem</code></td><td>Validated RangeProblem/TrajectoryProblem/HeightProblem/SolverProblem, containing model-specific packing, interpolation, weights and constraints.</td></tr>
+<tr><td><code>mask</code></td><td>Optional retained-observation Boolean mask for rejection; rows removed by acquisition/dropout are absent before this mask.</td></tr>
+<tr><td><code>augmented</code></td><td>If true, include supported prior rows when inspecting local Jacobian rank.</td></tr>
+<tr><td><code>estimate / truth</code></td><td>Physical trajectory/beacon geometry dictionaries for evaluation; truth is kept outside measurement-only fitting.</td></tr>
+<tr><td><code>run / left_run / right_run</code></td><td>Complete validated saved-run records, including experiment, options and all attempts.</td></tr>
+<tr><td><code>artifact / sweep / data</code></td><td>Native saved payload appropriate to the module; use strict native loaders/validators before inspection.</td></tr>
+<tr><td><code>alignment</code></td><td>raw or aligned rigid comparison; scale remains 1.</td></tr>
+<tr><td><code>path</code></td><td>Filesystem path to the native JSON destination/source; save operations create or replace files.</td></tr>
+<tr><td><code>on_progress</code></td><td>Optional callable receiving the latest study artifact after a completed entry for checkpointing.</td></tr>
+<tr><td><code>fit_callback</code></td><td>Optional alternate fitting callable used by the spatial evaluation wrapper; receives its measurement-only fit inputs.</td></tr>
+<tr><td><code>survey</code></td><td>Explicit world/metre declaration with fixed/prior selected-coordinate blocks; see survey input reference.</td></tr>
+<tr><td><code>assumptions</code></td><td>Optional uncertainty override object, not replacement measurement sigmas.</td></tr>
+<tr><td><code>start_index</code></td><td>Zero-based saved attempt ordinal; None uses the run’s selected_start.</td></tr>
+<tr><td><code>converged</code></td><td>Whether the inspected attempt converged; nonconvergence withholds conditional intervals.</td></tr>
+<tr><td><code>rtol / rank_rtol</code></td><td>Relative singular-value tolerance used for local rank classification.</td></tr>
+<tr><td><code>lower / upper</code></td><td>Coordinate bound arrays, with infinities for unbounded sides; LM rejects two-sided finite bounds.</td></tr>
+<tr><td><code>loss / scale / residual_sigma</code></td><td>Robust loss key, positive scale in sigma units, and standardized range residual vector.</td></tr>
+<tr><td><code>app / directory / artifacts</code></td><td>Flask application and local run/artifact storage directories for route registration.</td></tr>
+<tr><td><code>executor / jobs / lock / job_lock</code></td><td>Shared background executor, job-state dictionary and synchronization locks.</td></tr>
+<tr><td><code>library / cache_path</code></td><td>LibraryIndex used for authoritative source resolution, or optional disposable SQLite cache path.</td></tr>
+<tr><td><code>bundled_root / on_saved</code></td><td>Optional reference-evidence directory or callback to invalidate saved-history metadata after writing.</td></tr>
+<tr><td><code>**options</code></td><td>Model-specific native options expanded as keywords; accepted fields are in the input reference and exact normalized defaults.</td></tr>
+<tr><td><code>**params</code></td><td>Library metadata query: q, type, status, model, source, sort, page, page_size, view and parent; see Library controls in the input reference.</td></tr>
+<tr><td><code>mode / initialization / starts / seed / max_nfev</code></td><td>Native estimator controls with the same meanings as workspace assumptions/numerical fields; exact low-level defaults appear in the signature.</td></tr>
+<tr><td><code>timing_model / knot_spacing_s / prior_sigma_m</code></td><td>Timing approximation, trajectory resolution in seconds and motion-prior SD in metres; equivalent workspace assumptions are documented in the input reference.</td></tr>
+<tr><td><code>cfg / opts / normalized</code></td><td>Already normalized native generation settings, estimator options or workspace settings; obtain them with the matching normalizer.</td></tr>
+<tr><td><code>trajectory / beacons / points / initial</code></td><td>Finite physical XYZ trajectory, beacon or point-cloud arrays in metres; initial is a retained starting geometry or model vector according to its caller.</td></tr>
+<tr><td><code>matrix / n / count</code></td><td>Numerical matrix and parameter/row/point count required by the local linear-algebra helper.</td></tr>
+<tr><td><code>basis / tag_entries / beacon_entries</code></td><td>Coordinate basis arrays and parameter-entry mappings used to propagate local uncertainty to physical geometry.</td></tr>
+<tr><td><code>identifier / ids / key</code></td><td>Server-owned source/job identifier, ID collection, or exact authoritative Library key; do not substitute filesystem paths.</td></tr>
+<tr><td><code>decisions / records</code></td><td>Fitted per-range weight/rejection decisions and separate injected contamination reference records for evaluation.</td></tr>
+<tr><td><code>project</code></td><td>Allow supported projection of supplied physical geometry into the feasible model before packing; false validates it as supplied.</td></tr>
+<tr><td><code>schema / kind / envelope</code></td><td>Native schema version, artifact kind and saved envelope used by lifecycle/import validation.</td></tr>
+<tr><td><code>normalize_config / validate_artifact</code></td><td>Native normalization/strict-validation callables supplied to generic lifecycle validation.</td></tr>
+<tr><td><code>value</code></td><td>Configuration subobject, numeric value or JSON node under normalization; function purpose identifies its expected shape.</td></tr>
+<tr><td><code>_validate</code></td><td>Internal comparison validation switch; keep the default true when calling outside already validated internal paths.</td></tr>
+</tbody></table></div>
+<h2 id="apppy">app.py</h2>
+<div class="table-wrap"><table><tbody>
+<tr><th>Function / exact signature</th><th>Purpose</th></tr>
+<tr><td><code>create_app</code> — <code>create_app(run_dir=None)</code></td><td>Create the local Flask application and register native/workspace/Library routes; run_dir selects the saved-history directory.</td></tr>
+<tr><td><code>create_app.index</code> — <code>create_app.index()</code></td><td>Internal callback or route handler: index. See its enclosing function and the HTTP route table for request/return context.</td></tr>
+<tr><td><code>create_app.plotly_bundle</code> — <code>create_app.plotly_bundle()</code></td><td>Internal callback or route handler: plotly bundle. See its enclosing function and the HTTP route table for request/return context.</td></tr>
+<tr><td><code>create_app.scenarios</code> — <code>create_app.scenarios()</code></td><td>Internal callback or route handler: scenarios. See its enclosing function and the HTTP route table for request/return context.</td></tr>
+<tr><td><code>create_app.path_for</code> — <code>create_app.path_for(identifier)</code></td><td>Internal callback or route handler: path for. See its enclosing function and the HTTP route table for request/return context.</td></tr>
+<tr><td><code>create_app.artifact_path</code> — <code>create_app.artifact_path(identifier)</code></td><td>Internal callback or route handler: artifact path. See its enclosing function and the HTTP route table for request/return context.</td></tr>
+<tr><td><code>create_app.save_pending</code> — <code>create_app.save_pending(path, data)</code></td><td>Internal callback or route handler: save pending. See its enclosing function and the HTTP route table for request/return context.</td></tr>
+<tr><td><code>create_app.retain_sweep_runs</code> — <code>create_app.retain_sweep_runs(data)</code></td><td>Internal callback or route handler: retain sweep runs. See its enclosing function and the HTTP route table for request/return context.</td></tr>
+<tr><td><code>create_app.execute_sweep</code> — <code>create_app.execute_sweep(identifier, config)</code></td><td>Internal callback or route handler: execute sweep. See its enclosing function and the HTTP route table for request/return context.</td></tr>
+<tr><td><code>create_app.execute_sweep.checkpoint</code> — <code>create_app.execute_sweep.checkpoint(data)</code></td><td>Internal callback or route handler: checkpoint. See its enclosing function and the HTTP route table for request/return context.</td></tr>
+<tr><td><code>create_app.submit_sweep</code> — <code>create_app.submit_sweep()</code></td><td>Internal callback or route handler: submit sweep. See its enclosing function and the HTTP route table for request/return context.</td></tr>
+<tr><td><code>create_app.execute_m3</code> — <code>create_app.execute_m3(identifier, experiment, options)</code></td><td>Internal callback or route handler: execute m3. See its enclosing function and the HTTP route table for request/return context.</td></tr>
+<tr><td><code>create_app.submit_m3</code> — <code>create_app.submit_m3()</code></td><td>Internal callback or route handler: submit m3. See its enclosing function and the HTTP route table for request/return context.</td></tr>
+<tr><td><code>create_app.execute_m3_sweep</code> — <code>create_app.execute_m3_sweep(identifier, config)</code></td><td>Internal callback or route handler: execute m3 sweep. See its enclosing function and the HTTP route table for request/return context.</td></tr>
+<tr><td><code>create_app.execute_m3_sweep.checkpoint</code> — <code>create_app.execute_m3_sweep.checkpoint(data)</code></td><td>Internal callback or route handler: checkpoint. See its enclosing function and the HTTP route table for request/return context.</td></tr>
+<tr><td><code>create_app.submit_m3_sweep</code> — <code>create_app.submit_m3_sweep()</code></td><td>Internal callback or route handler: submit m3 sweep. See its enclosing function and the HTTP route table for request/return context.</td></tr>
+<tr><td><code>create_app.list_m3_sweeps</code> — <code>create_app.list_m3_sweeps()</code></td><td>Internal callback or route handler: list m3 sweeps. See its enclosing function and the HTTP route table for request/return context.</td></tr>
+<tr><td><code>create_app.reopen_m3_sweep</code> — <code>create_app.reopen_m3_sweep(identifier)</code></td><td>Internal callback or route handler: reopen m3 sweep. See its enclosing function and the HTTP route table for request/return context.</td></tr>
+<tr><td><code>create_app.m3_csv</code> — <code>create_app.m3_csv(identifier)</code></td><td>Internal callback or route handler: m3 csv. See its enclosing function and the HTTP route table for request/return context.</td></tr>
+<tr><td><code>create_app.import_m3</code> — <code>create_app.import_m3()</code></td><td>Internal callback or route handler: import m3. See its enclosing function and the HTTP route table for request/return context.</td></tr>
+<tr><td><code>create_app.compare_saved</code> — <code>create_app.compare_saved()</code></td><td>Internal callback or route handler: compare saved. See its enclosing function and the HTTP route table for request/return context.</td></tr>
+<tr><td><code>create_app.list_artifacts</code> — <code>create_app.list_artifacts()</code></td><td>Internal callback or route handler: list artifacts. See its enclosing function and the HTTP route table for request/return context.</td></tr>
+<tr><td><code>create_app.reopen_artifact</code> — <code>create_app.reopen_artifact(identifier)</code></td><td>Internal callback or route handler: reopen artifact. See its enclosing function and the HTTP route table for request/return context.</td></tr>
+<tr><td><code>create_app.reopen_artifact.disclose_interruption</code> — <code>create_app.reopen_artifact.disclose_interruption(data)</code></td><td>Internal callback or route handler: disclose interruption. See its enclosing function and the HTTP route table for request/return context.</td></tr>
+<tr><td><code>create_app.import_artifact</code> — <code>create_app.import_artifact()</code></td><td>Internal callback or route handler: import artifact. See its enclosing function and the HTTP route table for request/return context.</td></tr>
+<tr><td><code>create_app.execute</code> — <code>create_app.execute(identifier, experiment, options)</code></td><td>Internal callback or route handler: execute. See its enclosing function and the HTTP route table for request/return context.</td></tr>
+<tr><td><code>create_app.submit</code> — <code>create_app.submit()</code></td><td>Internal callback or route handler: submit. See its enclosing function and the HTTP route table for request/return context.</td></tr>
+<tr><td><code>create_app.job</code> — <code>create_app.job(identifier)</code></td><td>Internal callback or route handler: job. See its enclosing function and the HTTP route table for request/return context.</td></tr>
+<tr><td><code>create_app.list_runs</code> — <code>create_app.list_runs()</code></td><td>Internal callback or route handler: list runs. See its enclosing function and the HTTP route table for request/return context.</td></tr>
+<tr><td><code>create_app.reopen</code> — <code>create_app.reopen(identifier)</code></td><td>Internal callback or route handler: reopen. See its enclosing function and the HTTP route table for request/return context.</td></tr>
+<tr><td><code>create_app.import_run</code> — <code>create_app.import_run()</code></td><td>Internal callback or route handler: import run. See its enclosing function and the HTTP route table for request/return context.</td></tr>
+<tr><td><code>create_app.bad_request</code> — <code>create_app.bad_request(exc)</code></td><td>Internal callback or route handler: bad request. See its enclosing function and the HTTP route table for request/return context.</td></tr>
+<tr><td><code>create_app.compare_library_sources</code> — <code>create_app.compare_library_sources()</code></td><td>Internal callback or route handler: compare library sources. See its enclosing function and the HTTP route table for request/return context.</td></tr>
+</tbody></table></div>
+<h2 id="uwbestimationpy">uwb/estimation.py</h2>
+<div class="table-wrap"><table><tbody>
+<tr><th>Function / exact signature</th><th>Purpose</th></tr>
+<tr><td><code>RangeProblem.parameter_count</code> — <code>RangeProblem.parameter_count(self)</code></td><td>Return the number of free coordinates under the selected map/trajectory parameterization.</td></tr>
+<tr><td><code>RangeProblem.unpack</code> — <code>RangeProblem.unpack(self, parameters)</code></td><td>Convert a model parameter vector into physical trajectory and beacon XYZ arrays.</td></tr>
+<tr><td><code>RangeProblem.pack</code> — <code>RangeProblem.pack(self, trajectory, beacons)</code></td><td>Convert physical trajectory and beacon XYZ arrays into the problem coordinate vector, checking constraints; project permits supported feasibility projection.</td></tr>
+<tr><td><code>build_problem</code> — <code>build_problem(observations, times_s, *, mode=&#x27;joint&#x27;, surveyed_beacons=None)</code></td><td>Build the model parameterization, interpolation, constraints and weighted measurement/prior inputs from observations and times. Truth is not an input.</td></tr>
+<tr><td><code>residuals</code> — <code>residuals(parameters, problem)</code></td><td>Return the model objective residual vector; range terms use predicted minus measured range normalized by saved sigma, with applicable priors/transforms.</td></tr>
+<tr><td><code>jacobian</code> — <code>jacobian(parameters, problem)</code></td><td>Return the analytic objective Jacobian including supported prior/robust/survey terms.</td></tr>
+<tr><td><code>_linear_positions</code> — <code>_linear_positions(problem, beacons)</code></td><td>Known-map squared differences supply a seed, never the fitted objective.</td></tr>
+<tr><td><code>_independent_initial</code> — <code>_independent_initial(problem, rng, index)</code></td><td>Internal independent initial helper. Uses <code>_linear_positions</code>, <code>beacons.tolist</code>, <code>float</code>, <code>len</code>, <code>max</code> among other calls.</td></tr>
+<tr><td><code>jacobian_diagnostics</code> — <code>jacobian_diagnostics(parameters, problem)</code></td><td>Compute local singular values, rank and conditioning; augmented selects measurement-plus-prior information where supported.</td></tr>
+<tr><td><code>fit_observations</code> — <code>fit_observations(observations, times_s, *, mode=&#x27;joint&#x27;, surveyed_beacons=None, starts=3, seed=19, initial_geometries=None, max_nfev=2000)</code></td><td>Fit measurement inputs with explicit options/optional declared survey and physical starts; return every attempt and its solver/diagnostic evidence.</td></tr>
+<tr><td><code>_error_summary</code> — <code>_error_summary(trajectory, beacons, truth_trajectory, truth_beacons)</code></td><td>Internal error summary helper. Uses <code>float</code>, <code>map_error.tolist</code>, <code>np.linalg.norm</code>, <code>np.max</code>, <code>np.mean</code> among other calls.</td></tr>
+<tr><td><code>evaluate_geometry</code> — <code>evaluate_geometry(estimate, truth, mode)</code></td><td>Compare fitted trajectory/beacons against separate truth in disclosed raw/rigid evaluation frames; preserve physical scale.</td></tr>
+<tr><td><code>solve_experiment</code> — <code>solve_experiment(experiment, options=None)</code></td><td>Validate a native experiment, run its estimator, evaluate against separate synthetic truth, and return the complete saved-run structure.</td></tr>
+</tbody></table></div>
+<h2 id="uwbexperimentspy">uwb/experiments.py</h2>
+<div class="table-wrap"><table><tbody>
+<tr><th>Function / exact signature</th><th>Purpose</th></tr>
+<tr><td><code>_std_vector</code> — <code>_std_vector(value: Any, name: str, *, allow_zero: bool) -&gt; list[float]</code></td><td>Internal std vector helper. Uses <code>ValueError</code>, <code>all</code>, <code>float</code>, <code>isinstance</code>, <code>len</code> among other calls.</td></tr>
+<tr><td><code>_normalise_config</code> — <code>_normalise_config(config: Mapping[str, Any] | None) -&gt; dict[str, Any]</code></td><td>Internal normalise config helper. Uses <code>&#x27;, &#x27;.join</code>, <code>ValueError</code>, <code>_bounded_number</code>, <code>_normalise_path</code>, <code>_std_vector</code> among other calls.</td></tr>
+<tr><td><code>_bounded_number</code> — <code>_bounded_number(value: Any, name: str, lower: float, upper: float) -&gt; float</code></td><td>Internal bounded number helper. Uses <code>ValueError</code>, <code>float</code>, <code>isinstance</code>, <code>math.isfinite</code>.</td></tr>
+<tr><td><code>_pair</code> — <code>_pair(value: Any, name: str, lower: float, upper: float) -&gt; list[float]</code></td><td>Internal pair helper. Uses <code>ValueError</code>, <code>_bounded_number</code>, <code>isinstance</code>, <code>len</code>.</td></tr>
+<tr><td><code>_normalise_path</code> — <code>_normalise_path(value: Any) -&gt; dict[str, Any]</code></td><td>Internal normalise path helper. Uses <code>&#x27;, &#x27;.join</code>, <code>ValueError</code>, <code>_bounded_number</code>, <code>_pair</code>, <code>abs</code> among other calls.</td></tr>
+<tr><td><code>_custom_path</code> — <code>_custom_path(spec: Mapping[str, Any], count: int) -&gt; tuple[np.ndarray, float]</code></td><td>Return planar samples and traveled length, including closed-loop endpoint. size_m is full width/height; circle/arc use width as their diameter. Waypoints are local xy offsets before scale, rotation, and translation. Figure-eight arclength uses a fixed 16,385-point polyline approximation.</td></tr>
+<tr><td><code>path_metadata</code> — <code>path_metadata(config: Mapping[str, Any] | None=None) -&gt; dict[str, Any]</code></td><td>Return path type, traveled arclength, speed and interpolation/approximation disclosures from config.</td></tr>
+<tr><td><code>_informative_path</code> — <code>_informative_path(count: int) -&gt; np.ndarray</code></td><td>Sample a spatially broad rectangle-like waypoint loop at constant speed.</td></tr>
+<tr><td><code>_sample_polyline_at_constant_speed</code> — <code>_sample_polyline_at_constant_speed(points: np.ndarray, count: int) -&gt; np.ndarray</code></td><td>Sample a piecewise-linear path evenly by traveled distance.</td></tr>
+<tr><td><code>_trajectory</code> — <code>_trajectory(scenario: str, count: int) -&gt; np.ndarray</code></td><td>Internal trajectory helper. Uses <code>AssertionError</code>, <code>_informative_path</code>, <code>_sample_polyline_at_constant_speed</code>, <code>max</code>, <code>np.column_stack</code> among other calls.</td></tr>
+<tr><td><code>_beacons</code> — <code>_beacons(scenario: str) -&gt; np.ndarray</code></td><td>Internal beacons helper. Uses <code>BEACON_MAP.copy</code>, <code>np.array</code>.</td></tr>
+<tr><td><code>_package_versions</code> — <code>_package_versions() -&gt; dict[str, str | None]</code></td><td>Internal package versions helper. Uses <code>metadata.version</code>, <code>package.lower</code>, <code>platform.python_version</code>.</td></tr>
+<tr><td><code>generate_experiment</code> — <code>generate_experiment(config: Mapping[str, Any] | None=None) -&gt; dict[str, Any]</code></td><td>Normalize generation settings and return a native synthetic experiment with separate estimator_input and truth/reference records; no fit.</td></tr>
+<tr><td><code>_reject_constant</code> — <code>_reject_constant(token: str) -&gt; None</code></td><td>Internal reject constant helper. Uses <code>ExperimentFormatError</code>.</td></tr>
+<tr><td><code>_validate_experiment</code> — <code>_validate_experiment(data: Any) -&gt; None</code></td><td>Internal validate experiment helper. Uses <code>ExperimentFormatError</code>, <code>_normalise_config</code>, <code>all</code>, <code>any</code>, <code>enumerate</code> among other calls.</td></tr>
+<tr><td><code>_validate_json_values</code> — <code>_validate_json_values(value: Any, location: str=&#x27;$&#x27;) -&gt; None</code></td><td>Reject values that JSON cannot represent strictly and portably.</td></tr>
+<tr><td><code>_validate_payload</code> — <code>_validate_payload(data: Any) -&gt; None</code></td><td>Accept either a standalone experiment or a saved run containing one. Run envelopes intentionally allow additional result and diagnostic fields; persistence must retain failed runs (including an empty `<code>starts</code><code> list and an </code><code>error</code>` message) so they can be inspected later.</td></tr>
+<tr><td><code>_replace_with_retry</code> — <code>_replace_with_retry(temporary: Path, target: Path) -&gt; None</code></td><td>Retry atomic replacement when a Windows reader briefly denies deletion.</td></tr>
+<tr><td><code>save_json</code> — <code>save_json(path: str | Path, data: dict[str, Any]) -&gt; None</code></td><td>Validate finite native JSON and save through temporary-file replacement; path is the destination.</td></tr>
+<tr><td><code>load_json</code> — <code>load_json(path: str | Path) -&gt; dict[str, Any]</code></td><td>Read strict native JSON from path and validate its payload; malformed/nonfinite/unsupported records fail.</td></tr>
+</tbody></table></div>
+<h2 id="uwblibrarypy">uwb/library.py</h2>
+<div class="table-wrap"><table><tbody>
+<tr><th>Function / exact signature</th><th>Purpose</th></tr>
+<tr><td><code>_dict</code> — <code>_dict(value)</code></td><td>Internal dict helper. Uses <code>isinstance</code>.</td></tr>
+<tr><td><code>_reject_constant</code> — <code>_reject_constant(value)</code></td><td>Internal reject constant helper. Uses <code>ValueError</code>.</td></tr>
+<tr><td><code>_digest</code> — <code>_digest(value)</code></td><td>Internal digest helper. Uses <code>hashlib.sha256</code>, <code>hashlib.sha256(json.dumps(value, sort_keys=True, separators=(&#x27;,&#x27;, &#x27;:&#x27;), allow_nan=False).encode()).hexdigest</code>, <code>json.dumps</code>, <code>json.dumps(value, sort_keys=True, separators=(&#x27;,&#x27;, &#x27;:&#x27;), allow_nan=False).encode</code>.</td></tr>
+<tr><td><code>_message</code> — <code>_message(value)</code></td><td>Internal message helper. Uses <code>str</code>.</td></tr>
+<tr><td><code>_urls</code> — <code>_urls(kind, identifier, schema, artifact_type)</code></td><td>Internal urls helper. Uses <code>any</code>, <code>len</code>, <code>{&#x27;timing_sweep&#x27;: &#x27;/api/m3/sweeps/&#x27;, &#x27;geometry_sweep&#x27;: &#x27;/api/m4/sweeps/&#x27;, &#x27;solver_sweep&#x27;: &#x27;/api/m5/sweeps/&#x27;, &#x27;robust_sweep&#x27;: &#x27;/api/m6/sweeps/&#x27;}.get</code>.</td></tr>
+<tr><td><code>_summary</code> — <code>_summary(data, key, identifier, stamp, source_path)</code></td><td>Internal summary helper. Uses <code>&#x27; · &#x27;.join</code>, <code>&#x27; ↔ &#x27;.join</code>, <code>&#x27;, &#x27;.join</code>, <code>Counter</code>, <code>ValueError</code> among other calls.</td></tr>
+<tr><td><code>LibraryIndex.__init__</code> — <code>LibraryIndex.__init__(self, directory, *, cache_path=None, jobs=None, job_lock=None)</code></td><td>Internal init helper. Uses <code>Path</code>, <code>RLock</code>.</td></tr>
+<tr><td><code>LibraryIndex._connect</code> — <code>LibraryIndex._connect(self)</code></td><td>Internal connect helper. Uses <code>connection.close</code>, <code>connection.execute</code>, <code>connection.execute(&#x27;PRAGMA quick_check&#x27;).fetchone</code>, <code>connection.execute(&#x27;PRAGMA user_version&#x27;).fetchone</code>, <code>connection.executescript</code> among other calls.</td></tr>
+<tr><td><code>LibraryIndex._recover_connection</code> — <code>LibraryIndex._recover_connection(self)</code></td><td>Internal recover connection helper. Uses <code>self._connect</code>, <code>self.cache_path.exists</code>, <code>self.cache_path.replace</code>, <code>self.cache_path.with_name</code>, <code>str</code> among other calls.</td></tr>
+<tr><td><code>LibraryIndex._inventory</code> — <code>LibraryIndex._inventory(self)</code></td><td>Internal inventory helper. Uses <code>entry.is_file</code>, <code>entry.name.endswith</code>, <code>entry.stat</code>, <code>folder.exists</code>, <code>os.scandir</code>.</td></tr>
+<tr><td><code>LibraryIndex._insert_file</code> — <code>LibraryIndex._insert_file(self, db, relative, stamp)</code></td><td>Internal insert file helper. Uses <code>(self.directory / relative).open</code>, <code>Path</code>, <code>ValueError</code>, <code>_dict</code>, <code>_summary</code> among other calls.</td></tr>
+<tr><td><code>LibraryIndex._insert_item</code> — <code>LibraryIndex._insert_item(self, db, summary, relative, stamp)</code></td><td>Internal insert item helper. Uses <code>&#x27; &#x27;.join</code>, <code>db.execute</code>, <code>json.dumps</code>, <code>searchable.casefold</code>, <code>str</code> among other calls.</td></tr>
+<tr><td><code>LibraryIndex._refresh</code> — <code>LibraryIndex._refresh(self, db)</code></td><td>Internal refresh helper. Uses <code>cached.get</code>, <code>datetime.now</code>, <code>datetime.now(timezone.utc).isoformat</code>, <code>db.execute</code>, <code>enumerate</code> among other calls.</td></tr>
+<tr><td><code>LibraryIndex.rebuild</code> — <code>LibraryIndex.rebuild(self)</code></td><td>Rebuild the disposable Library cache from retained JSON; does not modify scientific source records.</td></tr>
+<tr><td><code>LibraryIndex._active_ids</code> — <code>LibraryIndex._active_ids(self)</code></td><td>Internal active ids helper. Uses <code>self.jobs.items</code>, <code>v.get</code>.</td></tr>
+<tr><td><code>LibraryIndex._decorate</code> — <code>LibraryIndex._decorate(self, db, summary)</code></td><td>Internal decorate helper. Uses <code>db.execute</code>, <code>self._active_ids</code>, <code>summary.get</code>, <code>summary.get(&#x27;parent_key&#x27;, &#x27;&#x27;).removeprefix</code>.</td></tr>
+<tr><td><code>LibraryIndex.query</code> — <code>LibraryIndex.query(self, **params)</code></td><td>Return bounded filtered/sorted/paginated metadata and facets; does not open strict scientific records or fit.</td></tr>
+<tr><td><code>LibraryIndex._query_children</code> — <code>LibraryIndex._query_children(self, db, parent, params, page, page_size)</code></td><td>Internal query children helper. Uses <code>&#x27; AND &#x27;.join</code>, <code>clauses.append</code>, <code>db.execute</code>, <code>db.execute(&#x27;SELECT COUNT(*) FROM children WHERE &#x27; + where, values).fetchone</code>, <code>db.execute(&#x27;SELECT COUNT(*) FROM children WHERE parent=?&#x27;, (parent,)).fetchone</code> among other calls.</td></tr>
+<tr><td><code>LibraryIndex._overall_total</code> — <code>LibraryIndex._overall_total(db)</code></td><td>Internal overall total helper. Uses <code>db.execute</code>, <code>db.execute(&quot;SELECT COUNT(*) FROM items WHERE NOT (instr(key, &#x27;:entry:&#x27;)&gt;0 AND EXISTS (SELECT 1 FROM items r WHERE r.key=&#x27;run:&#x27; || items.id))&quot;).fetchone</code>.</td></tr>
+<tr><td><code>LibraryIndex.preview</code> — <code>LibraryIndex.preview(self, key)</code></td><td>Return indexed metadata/provenance for an exact Library key, or None if unknown.</td></tr>
+<tr><td><code>register_library</code> — <code>register_library(app, directory, *, jobs=None, job_lock=None)</code></td><td>Register metadata query, preview, status and rebuild routes; return the LibraryIndex.</td></tr>
+<tr><td><code>register_library.library_page</code> — <code>register_library.library_page()</code></td><td>Internal callback or route handler: library page. See its enclosing function and the HTTP route table for request/return context.</td></tr>
+<tr><td><code>register_library.library_status</code> — <code>register_library.library_status()</code></td><td>Internal callback or route handler: library status. See its enclosing function and the HTTP route table for request/return context.</td></tr>
+<tr><td><code>register_library.rebuild_library</code> — <code>register_library.rebuild_library()</code></td><td>Internal callback or route handler: rebuild library. See its enclosing function and the HTTP route table for request/return context.</td></tr>
+<tr><td><code>register_library.library_preview</code> — <code>register_library.library_preview(key)</code></td><td>Internal callback or route handler: library preview. See its enclosing function and the HTTP route table for request/return context.</td></tr>
+</tbody></table></div>
+<h2 id="uwblifecyclepy">uwb/lifecycle.py</h2>
+<div class="table-wrap"><table><tbody>
+<tr><th>Function / exact signature</th><th>Purpose</th></tr>
+<tr><td><code>mark_import</code> — <code>mark_import(data)</code></td><td>Mark imported unfinished work conservatively; do not resume a job or alter retained optimizer outcomes.</td></tr>
+<tr><td><code>validate_empty_sweep</code> — <code>validate_empty_sweep(data, schema, kind, normalize_config, validate_artifact)</code></td><td>Validate imported empty/incomplete sweep envelopes through the supplied native normalization and artifact validators.</td></tr>
+</tbody></table></div>
+<h2 id="uwbm3py">uwb/m3.py</h2>
+<div class="table-wrap"><table><tbody>
+<tr><th>Function / exact signature</th><th>Purpose</th></tr>
+<tr><td><code>_format_errors</code> — <code>_format_errors(function)</code></td><td>Internal format errors helper. Uses <code>ValueError</code>, <code>function</code>, <code>wraps</code>.</td></tr>
+<tr><td><code>_format_errors.wrapped</code> — <code>_format_errors.wrapped(*args, **kwargs)</code></td><td>Internal callback or route handler: wrapped. See its enclosing function and the HTTP route table for request/return context.</td></tr>
+<tr><td><code>_number</code> — <code>_number(value, name, lower=0.0, upper=math.inf)</code></td><td>Internal number helper. Uses <code>ValueError</code>, <code>float</code>, <code>isinstance</code>, <code>math.isfinite</code>.</td></tr>
+<tr><td><code>normalize_config</code> — <code>normalize_config(config=None)</code></td><td>Validate and fill native generation defaults; return normalized config, raising ValueError for unsupported or invalid fields.</td></tr>
+<tr><td><code>validate_options</code> — <code>validate_options(options=None)</code></td><td>Validate and fill native estimator/numerical defaults; return normalized options without generating data or fitting.</td></tr>
+<tr><td><code>_path</code> — <code>_path(cfg, fraction)</code></td><td>Continuous arclength path; open/closed paths stop at their endpoints.</td></tr>
+<tr><td><code>_progress</code> — <code>_progress(cfg, times)</code></td><td>Internal progress helper. Uses <code>clipped.copy</code>, <code>len</code>, <code>max</code>, <code>np.asarray</code>, <code>np.clip</code> among other calls.</td></tr>
+<tr><td><code>truth_positions</code> — <code>truth_positions(config, times_s)</code></td><td>Evaluate the synthetic trajectory at requested times for generation/evaluation; do not supply this output to independent fitting.</td></tr>
+<tr><td><code>generate_experiment</code> — <code>generate_experiment(config=None)</code></td><td>Normalize generation settings and return a native synthetic experiment with separate estimator_input and truth/reference records; no fit.</td></tr>
+<tr><td><code>_array</code> — <code>_array(value, shape, name)</code></td><td>Internal array helper. Uses <code>ValueError</code>, <code>np.all</code>, <code>np.asarray</code>, <code>np.isfinite</code>.</td></tr>
+<tr><td><code>validate_experiment</code> — <code>validate_experiment(experiment)</code></td><td>Strictly validate the native experiment representation, shapes and generation consistency; return the accepted experiment or raise ValueError.</td></tr>
+<tr><td><code>_validate_observations</code> — <code>_validate_observations(observations, times)</code></td><td>Internal validate observations helper. Uses <code>ValueError</code>, <code>_number</code>, <code>isinstance</code>, <code>len</code>, <code>np.finfo</code> among other calls.</td></tr>
+<tr><td><code>_weights</code> — <code>_weights(knots, times)</code></td><td>Internal weights helper. Uses <code>ValueError</code>, <code>len</code>, <code>np.any</code>, <code>np.arange</code>, <code>np.asarray</code> among other calls.</td></tr>
+<tr><td><code>TrajectoryProblem.geometry</code> — <code>TrajectoryProblem.geometry(self, parameters)</code></td><td>Evaluate physical trajectory and beacon geometry represented by a parameter vector.</td></tr>
+<tr><td><code>build_problem</code> — <code>build_problem(observations, times_s, *, mode=&#x27;joint&#x27;, surveyed_beacons=None, timing_model=&#x27;timestamp_aware&#x27;, knot_spacing_s=0.0, prior_sigma_m=0.0, display_times_s=None)</code></td><td>Build the model parameterization, interpolation, constraints and weighted measurement/prior inputs from observations and times. Truth is not an input.</td></tr>
+<tr><td><code>measurement_residuals</code> — <code>measurement_residuals(parameters, problem)</code></td><td>Return standardized range residuals only, excluding priors.</td></tr>
+<tr><td><code>prior_residuals</code> — <code>prior_residuals(parameters, problem)</code></td><td>Return motion prior residual rows separately from measurements.</td></tr>
+<tr><td><code>residuals</code> — <code>residuals(parameters, problem)</code></td><td>Return the model objective residual vector; range terms use predicted minus measured range normalized by saved sigma, with applicable priors/transforms.</td></tr>
+<tr><td><code>measurement_jacobian</code> — <code>measurement_jacobian(parameters, problem)</code></td><td>Return the analytic Jacobian of measurement residuals in this model coordinate system.</td></tr>
+<tr><td><code>jacobian</code> — <code>jacobian(parameters, problem)</code></td><td>Return the analytic objective Jacobian including supported prior/robust/survey terms.</td></tr>
+<tr><td><code>jacobian_diagnostics</code> — <code>jacobian_diagnostics(parameters, problem, *, augmented=False)</code></td><td>Compute local singular values, rank and conditioning; augmented selects measurement-plus-prior information where supported.</td></tr>
+<tr><td><code>_initial</code> — <code>_initial(problem, rng, index)</code></td><td>M1-compatible rectangular map and squared-difference position seed.</td></tr>
+<tr><td><code>compatible_initial_geometries</code> — <code>compatible_initial_geometries(run, experiment, options=None)</code></td><td>Validate and adapt retained physical starts for a compatible target experiment/model; reject unsupported pairing.</td></tr>
+<tr><td><code>fit_observations</code> — <code>fit_observations(observations, times_s, *, display_times_s=None, surveyed_beacons=None, initial_geometries=None, **options)</code></td><td>Fit measurement inputs with explicit options/optional declared survey and physical starts; return every attempt and its solver/diagnostic evidence.</td></tr>
+<tr><td><code>solve_experiment</code> — <code>solve_experiment(experiment, options=None, *, initial_geometries=None)</code></td><td>Validate a native experiment, run its estimator, evaluate against separate synthetic truth, and return the complete saved-run structure.</td></tr>
+<tr><td><code>validate_run</code> — <code>validate_run(run)</code></td><td>Strictly validate a saved native run and retained numerical/diagnostic consistency without rerunning optimization.</td></tr>
+</tbody></table></div>
+<h2 id="uwbm3_sweepspy">uwb/m3_sweeps.py</h2>
+<div class="table-wrap"><table><tbody>
+<tr><th>Function / exact signature</th><th>Purpose</th></tr>
+<tr><td><code>_cell</code> — <code>_cell(config, value, seed)</code></td><td>Internal cell helper. Uses <code>copy.deepcopy</code>, <code>experiment.setdefault</code>, <code>m3.normalize_config</code>, <code>m3.validate_options</code>.</td></tr>
+<tr><td><code>validate_sweep_config</code> — <code>validate_sweep_config(config=None)</code></td><td>Normalize a bounded native single-factor study; validate factors, values, seeds, variants, pairing restrictions and workload before fitting.</td></tr>
+<tr><td><code>_failed_run</code> — <code>_failed_run(experiment, options, error, initials=None)</code></td><td>Internal failed run helper. Uses <code>copy.deepcopy</code>, <code>experiment.get</code>, <code>range</code>, <code>type</code>.</td></tr>
+<tr><td><code>run_sweep</code> — <code>run_sweep(config=None, on_progress=None)</code></td><td>Execute paired value/seed/variant cells; retain every outcome, aggregate evidence and invoke optional on_progress checkpoints.</td></tr>
+<tr><td><code>_distribution</code> — <code>_distribution(values)</code></td><td>Internal distribution helper. Uses <code>float</code>, <code>len</code>, <code>math.isfinite</code>, <code>max</code>, <code>min</code> among other calls.</td></tr>
+<tr><td><code>aggregate_sweep</code> — <code>aggregate_sweep(artifact)</code></td><td>Compute distributions, success/failure accounting and all-attempt study summaries from retained entries.</td></tr>
+<tr><td><code>validate_artifact</code> — <code>validate_artifact(data)</code></td><td>Strictly validate saved native study/comparison structure, retained children and derived evidence without fitting.</td></tr>
+<tr><td><code>save_artifact</code> — <code>save_artifact(path, data)</code></td><td>Validate and write a complete study/comparison artifact through temporary-file replacement.</td></tr>
+<tr><td><code>load_artifact</code> — <code>load_artifact(path)</code></td><td>Load finite native study/comparison JSON and strictly validate it.</td></tr>
+<tr><td><code>table_csv</code> — <code>table_csv(artifact)</code></td><td>Return native CSV text containing this module’s saved run, attempt, study or comparison table; per-observation study exports use their separate service route.</td></tr>
+</tbody></table></div>
+<h2 id="uwbm4py">uwb/m4.py</h2>
+<div class="table-wrap"><table><tbody>
+<tr><th>Function / exact signature</th><th>Purpose</th></tr>
+<tr><td><code>_vector</code> — <code>_vector(value, count, name, positive=False)</code></td><td>Internal vector helper. Uses <code>ValueError</code>, <code>isinstance</code>, <code>len</code>, <code>m3._number</code>.</td></tr>
+<tr><td><code>normalize_config</code> — <code>normalize_config(config=None)</code></td><td>Validate and fill native generation defaults; return normalized config, raising ValueError for unsupported or invalid fields.</td></tr>
+<tr><td><code>validate_options</code> — <code>validate_options(options=None)</code></td><td>Validate and fill native estimator/numerical defaults; return normalized options without generating data or fitting.</td></tr>
+<tr><td><code>_proxy_config</code> — <code>_proxy_config(cfg)</code></td><td>Internal proxy config helper. Uses <code>cfg.items</code>, <code>copy.deepcopy</code>.</td></tr>
+<tr><td><code>beacon_coordinates</code> — <code>beacon_coordinates(cfg)</code></td><td>Return generated or explicitly configured beacon XYZ coordinates from normalized physical config.</td></tr>
+<tr><td><code>truth_positions</code> — <code>truth_positions(cfg, times_s)</code></td><td>Evaluate the synthetic trajectory at requested times for generation/evaluation; do not supply this output to independent fitting.</td></tr>
+<tr><td><code>generate_experiment</code> — <code>generate_experiment(config=None)</code></td><td>Normalize generation settings and return a native synthetic experiment with separate estimator_input and truth/reference records; no fit.</td></tr>
+<tr><td><code>_observations</code> — <code>_observations(observations, times, count)</code></td><td>Internal observations helper. Uses <code>ValueError</code>, <code>isinstance</code>, <code>len</code>, <code>m3._number</code>, <code>seen.add</code> among other calls.</td></tr>
+<tr><td><code>validate_experiment</code> — <code>validate_experiment(exp)</code></td><td>Strictly validate the native experiment representation, shapes and generation consistency; return the accepted experiment or raise ValueError.</td></tr>
+<tr><td><code>_spatial</code> — <code>_spatial(opts)</code></td><td>Internal spatial helper. Uses .</td></tr>
+<tr><td><code>_canonical</code> — <code>_canonical(trajectory, beacons, opts)</code></td><td>Internal canonical helper. Uses <code>(-origin @ rotation).tolist</code>, <code>ValueError</code>, <code>_spatial</code>, <code>b[0].copy</code>, <code>np.asarray</code> among other calls.</td></tr>
+<tr><td><code>gauge_metadata</code> — <code>gauge_metadata(opts)</code></td><td>Describe the coordinate gauge and physical height constraints implied by estimator options.</td></tr>
+<tr><td><code>HeightProblem.parameter_count</code> — <code>HeightProblem.parameter_count(self)</code></td><td>Return the number of free coordinates under the selected map/trajectory parameterization.</td></tr>
+<tr><td><code>HeightProblem.beacon_count</code> — <code>HeightProblem.beacon_count(self)</code></td><td>Internal callback or route handler: beacon count. See its enclosing function and the HTTP route table for request/return context.</td></tr>
+<tr><td><code>HeightProblem.unpack</code> — <code>HeightProblem.unpack(self, parameters)</code></td><td>Convert a model parameter vector into physical trajectory and beacon XYZ arrays.</td></tr>
+<tr><td><code>HeightProblem.pack</code> — <code>HeightProblem.pack(self, trajectory, beacons, *, project=False)</code></td><td>Convert physical trajectory and beacon XYZ arrays into the problem coordinate vector, checking constraints; project permits supported feasibility projection.</td></tr>
+<tr><td><code>HeightProblem.geometry</code> — <code>HeightProblem.geometry(self, parameters)</code></td><td>Evaluate physical trajectory and beacon geometry represented by a parameter vector.</td></tr>
+<tr><td><code>build_problem</code> — <code>build_problem(observations, times_s, *, beacon_count=None, display_times_s=None, surveyed_beacons=None, **options)</code></td><td>Build the model parameterization, interpolation, constraints and weighted measurement/prior inputs from observations and times. Truth is not an input.</td></tr>
+<tr><td><code>build_problem.column</code> — <code>build_problem.column(tag_entries=(), beacon_entries=(), lower=-np.inf, upper=np.inf)</code></td><td>Internal callback or route handler: column. See its enclosing function and the HTTP route table for request/return context.</td></tr>
+<tr><td><code>measurement_residuals</code> — <code>measurement_residuals(parameters, problem)</code></td><td>Return standardized range residuals only, excluding priors.</td></tr>
+<tr><td><code>prior_components</code> — <code>prior_components(parameters, problem)</code></td><td>Return separately named motion and height prior residual vectors.</td></tr>
+<tr><td><code>residuals</code> — <code>residuals(parameters, problem)</code></td><td>Return the model objective residual vector; range terms use predicted minus measured range normalized by saved sigma, with applicable priors/transforms.</td></tr>
+<tr><td><code>measurement_jacobian</code> — <code>measurement_jacobian(parameters, problem)</code></td><td>Return the analytic Jacobian of measurement residuals in this model coordinate system.</td></tr>
+<tr><td><code>jacobian</code> — <code>jacobian(parameters, problem)</code></td><td>Return the analytic objective Jacobian including supported prior/robust/survey terms.</td></tr>
+<tr><td><code>jacobian_diagnostics</code> — <code>jacobian_diagnostics(parameters, problem, *, augmented=False)</code></td><td>Compute local singular values, rank and conditioning; augmented selects measurement-plus-prior information where supported.</td></tr>
+<tr><td><code>_project_geometry</code> — <code>_project_geometry(problem, p, b)</code></td><td>Internal project geometry helper. Uses <code>_canonical</code>, <code>problem.geometry</code>, <code>problem.pack</code>.</td></tr>
+<tr><td><code>_initial</code> — <code>_initial(problem, rng, index)</code></td><td>Internal initial helper. Uses <code>_project_geometry</code>, <code>_spatial</code>, <code>float</code>, <code>len</code>, <code>max</code> among other calls.</td></tr>
+<tr><td><code>fit_observations</code> — <code>fit_observations(observations, times_s, *, beacon_count=None, display_times_s=None, surveyed_beacons=None, initial_geometries=None, **options)</code></td><td>Fit measurement inputs with explicit options/optional declared survey and physical starts; return every attempt and its solver/diagnostic evidence.</td></tr>
+<tr><td><code>plane_diagnostics</code> — <code>plane_diagnostics(points)</code></td><td>Fit a point-cloud reference plane and report normal, deviation and degeneracy evidence.</td></tr>
+<tr><td><code>_error</code> — <code>_error(p, b, tp, tb)</code></td><td>Internal error helper. Uses <code>be.tolist</code>, <code>float</code>, <code>np.linalg.norm</code>, <code>np.max</code>, <code>np.mean</code> among other calls.</td></tr>
+<tr><td><code>evaluate_geometry</code> — <code>evaluate_geometry(estimate, truth, options=None)</code></td><td>Compare fitted trajectory/beacons against separate truth in disclosed raw/rigid evaluation frames; preserve physical scale.</td></tr>
+<tr><td><code>_problem</code> — <code>_problem(exp, opts)</code></td><td>Internal problem helper. Uses <code>build_problem</code>.</td></tr>
+<tr><td><code>compatible_initial_geometries</code> — <code>compatible_initial_geometries(run, experiment, options=None)</code></td><td>Validate and adapt retained physical starts for a compatible target experiment/model; reject unsupported pairing.</td></tr>
+<tr><td><code>solve_experiment</code> — <code>solve_experiment(exp, options=None, initial_geometries=None, *, fit_callback=None)</code></td><td>Validate a native experiment, run its estimator, evaluate against separate synthetic truth, and return the complete saved-run structure.</td></tr>
+<tr><td><code>validate_run</code> — <code>validate_run(run)</code></td><td>Strictly validate a saved native run and retained numerical/diagnostic consistency without rerunning optimization.</td></tr>
+</tbody></table></div>
+<p>Re-exported native aliases: <code>MAX_KNOTS = m3.MAX_KNOTS</code>. They retain the referenced function signature and behavior.</p>
+<h2 id="uwbm4_servicepy">uwb/m4_service.py</h2>
+<div class="table-wrap"><table><tbody>
+<tr><th>Function / exact signature</th><th>Purpose</th></tr>
+<tr><td><code>register_m4_routes</code> — <code>register_m4_routes(app, directory, artifacts, executor, jobs, lock, *, bundled_root=None)</code></td><td>Register native model routes with shared local history, background executor, job state and optional bundled reference records.</td></tr>
+<tr><td><code>register_m4_routes.run_path</code> — <code>register_m4_routes.run_path(identifier)</code></td><td>Internal callback or route handler: run path. See its enclosing function and the HTTP route table for request/return context.</td></tr>
+<tr><td><code>register_m4_routes.artifact_path</code> — <code>register_m4_routes.artifact_path(identifier)</code></td><td>Internal callback or route handler: artifact path. See its enclosing function and the HTTP route table for request/return context.</td></tr>
+<tr><td><code>register_m4_routes.pending</code> — <code>register_m4_routes.pending(path, data)</code></td><td>Internal callback or route handler: pending. See its enclosing function and the HTTP route table for request/return context.</td></tr>
+<tr><td><code>register_m4_routes.retain_runs</code> — <code>register_m4_routes.retain_runs(data)</code></td><td>Internal callback or route handler: retain runs. See its enclosing function and the HTTP route table for request/return context.</td></tr>
+<tr><td><code>register_m4_routes.execute</code> — <code>register_m4_routes.execute(identifier, experiment, options)</code></td><td>Internal callback or route handler: execute. See its enclosing function and the HTTP route table for request/return context.</td></tr>
+<tr><td><code>register_m4_routes.submit_m4</code> — <code>register_m4_routes.submit_m4()</code></td><td>Internal callback or route handler: submit m4. See its enclosing function and the HTTP route table for request/return context.</td></tr>
+<tr><td><code>register_m4_routes.execute_sweep</code> — <code>register_m4_routes.execute_sweep(identifier, config)</code></td><td>Internal callback or route handler: execute sweep. See its enclosing function and the HTTP route table for request/return context.</td></tr>
+<tr><td><code>register_m4_routes.execute_sweep.checkpoint</code> — <code>register_m4_routes.execute_sweep.checkpoint(data)</code></td><td>Internal callback or route handler: checkpoint. See its enclosing function and the HTTP route table for request/return context.</td></tr>
+<tr><td><code>register_m4_routes.submit_m4_sweep</code> — <code>register_m4_routes.submit_m4_sweep()</code></td><td>Internal callback or route handler: submit m4 sweep. See its enclosing function and the HTTP route table for request/return context.</td></tr>
+<tr><td><code>register_m4_routes.list_m4_sweeps</code> — <code>register_m4_routes.list_m4_sweeps()</code></td><td>Internal callback or route handler: list m4 sweeps. See its enclosing function and the HTTP route table for request/return context.</td></tr>
+<tr><td><code>register_m4_routes.read_sweep</code> — <code>register_m4_routes.read_sweep(identifier)</code></td><td>Internal callback or route handler: read sweep. See its enclosing function and the HTTP route table for request/return context.</td></tr>
+<tr><td><code>register_m4_routes.reopen_m4_sweep</code> — <code>register_m4_routes.reopen_m4_sweep(identifier)</code></td><td>Internal callback or route handler: reopen m4 sweep. See its enclosing function and the HTTP route table for request/return context.</td></tr>
+<tr><td><code>register_m4_routes.export_m4_csv</code> — <code>register_m4_routes.export_m4_csv(identifier)</code></td><td>Internal callback or route handler: export m4 csv. See its enclosing function and the HTTP route table for request/return context.</td></tr>
+<tr><td><code>register_m4_routes.import_m4</code> — <code>register_m4_routes.import_m4()</code></td><td>Internal callback or route handler: import m4. See its enclosing function and the HTTP route table for request/return context.</td></tr>
+</tbody></table></div>
+<h2 id="uwbm4_sweepspy">uwb/m4_sweeps.py</h2>
+<div class="table-wrap"><table><tbody>
+<tr><th>Function / exact signature</th><th>Purpose</th></tr>
+<tr><td><code>_cell</code> — <code>_cell(config, value, seed)</code></td><td>Internal cell helper. Uses <code>acquisition.pop</code>, <code>copy.deepcopy</code>, <code>experiment.get</code>, <code>experiment.setdefault</code>, <code>isinstance</code> among other calls.</td></tr>
+<tr><td><code>_variant_options</code> — <code>_variant_options(options, variant, factor)</code></td><td>Internal variant options helper. Uses <code>m4.validate_options</code>.</td></tr>
+<tr><td><code>validate_sweep_config</code> — <code>validate_sweep_config(config=None)</code></td><td>Normalize a bounded native single-factor study; validate factors, values, seeds, variants, pairing restrictions and workload before fitting.</td></tr>
+<tr><td><code>_failed_run</code> — <code>_failed_run(experiment, options, error, initials=None)</code></td><td>Internal failed run helper. Uses <code>copy.deepcopy</code>, <code>experiment.get</code>, <code>range</code>, <code>type</code>.</td></tr>
+<tr><td><code>run_sweep</code> — <code>run_sweep(config=None, on_progress=None)</code></td><td>Execute paired value/seed/variant cells; retain every outcome, aggregate evidence and invoke optional on_progress checkpoints.</td></tr>
+<tr><td><code>_distribution</code> — <code>_distribution(values)</code></td><td>Internal distribution helper. Uses <code>float</code>, <code>len</code>, <code>math.isfinite</code>, <code>max</code>, <code>min</code> among other calls.</td></tr>
+<tr><td><code>aggregate_sweep</code> — <code>aggregate_sweep(artifact)</code></td><td>Compute distributions, success/failure accounting and all-attempt study summaries from retained entries.</td></tr>
+<tr><td><code>validate_artifact</code> — <code>validate_artifact(data)</code></td><td>Strictly validate saved native study/comparison structure, retained children and derived evidence without fitting.</td></tr>
+<tr><td><code>save_artifact</code> — <code>save_artifact(path, data)</code></td><td>Validate and write a complete study/comparison artifact through temporary-file replacement.</td></tr>
+<tr><td><code>load_artifact</code> — <code>load_artifact(path)</code></td><td>Load finite native study/comparison JSON and strictly validate it.</td></tr>
+<tr><td><code>table_csv</code> — <code>table_csv(artifact)</code></td><td>Return native CSV text containing this module’s saved run, attempt, study or comparison table; per-observation study exports use their separate service route.</td></tr>
+</tbody></table></div>
+<h2 id="uwbm5py">uwb/m5.py</h2>
+<div class="table-wrap"><table><tbody>
+<tr><th>Function / exact signature</th><th>Purpose</th></tr>
+<tr><td><code>generate_experiment</code> — <code>generate_experiment(config=None)</code></td><td>Normalize generation settings and return a native synthetic experiment with separate estimator_input and truth/reference records; no fit.</td></tr>
+<tr><td><code>_m4_experiment</code> — <code>_m4_experiment(exp)</code></td><td>Internal m4 experiment helper. Uses <code>copy.deepcopy</code>.</td></tr>
+<tr><td><code>validate_experiment</code> — <code>validate_experiment(exp)</code></td><td>Strictly validate the native experiment representation, shapes and generation consistency; return the accepted experiment or raise ValueError.</td></tr>
+<tr><td><code>base_options</code> — <code>base_options(options)</code></td><td>Return validated underlying-engine options with this model extension removed.</td></tr>
+<tr><td><code>validate_options</code> — <code>validate_options(options=None)</code></td><td>Validate and fill native estimator/numerical defaults; return normalized options without generating data or fitting.</td></tr>
+<tr><td><code>SolverProblem.__getattr__</code> — <code>SolverProblem.__getattr__(self, name)</code></td><td>Internal getattr helper. Uses <code>getattr</code>.</td></tr>
+<tr><td><code>SolverProblem.physical_parameters</code> — <code>SolverProblem.physical_parameters(self, parameters)</code></td><td>Convert solver h/q coordinates to the underlying physical metre parameter vector.</td></tr>
+<tr><td><code>SolverProblem.unpack</code> — <code>SolverProblem.unpack(self, parameters)</code></td><td>Convert a model parameter vector into physical trajectory and beacon XYZ arrays.</td></tr>
+<tr><td><code>SolverProblem.geometry</code> — <code>SolverProblem.geometry(self, parameters)</code></td><td>Evaluate physical trajectory and beacon geometry represented by a parameter vector.</td></tr>
+<tr><td><code>SolverProblem.pack</code> — <code>SolverProblem.pack(self, trajectory, beacons, *, project=False)</code></td><td>Convert physical trajectory and beacon XYZ arrays into the problem coordinate vector, checking constraints; project permits supported feasibility projection.</td></tr>
+<tr><td><code>SolverProblem.disclosure</code> — <code>SolverProblem.disclosure(self)</code></td><td>Return height coordinate, bounds, physical units and objective/branch metadata for this solver problem.</td></tr>
+<tr><td><code>build_problem</code> — <code>build_problem(observations, times_s, *, beacon_count=None, display_times_s=None, surveyed_beacons=None, **options)</code></td><td>Build the model parameterization, interpolation, constraints and weighted measurement/prior inputs from observations and times. Truth is not an input.</td></tr>
+<tr><td><code>measurement_residuals</code> — <code>measurement_residuals(parameters, problem)</code></td><td>Return standardized range residuals only, excluding priors.</td></tr>
+<tr><td><code>prior_components</code> — <code>prior_components(parameters, problem)</code></td><td>Return separately named motion and height prior residual vectors.</td></tr>
+<tr><td><code>residuals</code> — <code>residuals(parameters, problem)</code></td><td>Return the model objective residual vector; range terms use predicted minus measured range normalized by saved sigma, with applicable priors/transforms.</td></tr>
+<tr><td><code>measurement_jacobian</code> — <code>measurement_jacobian(parameters, problem)</code></td><td>Return the analytic Jacobian of measurement residuals in this model coordinate system.</td></tr>
+<tr><td><code>jacobian</code> — <code>jacobian(parameters, problem)</code></td><td>Return the analytic objective Jacobian including supported prior/robust/survey terms.</td></tr>
+<tr><td><code>jacobian_diagnostics</code> — <code>jacobian_diagnostics(parameters, problem, *, augmented=False)</code></td><td>Compute local singular values, rank and conditioning; augmented selects measurement-plus-prior information where supported.</td></tr>
+<tr><td><code>BoundTransform.__init__</code> — <code>BoundTransform.__init__(self, lower, upper)</code></td><td>Internal init helper. Uses <code>ValueError</code>, <code>np.any</code>, <code>np.isfinite</code>.</td></tr>
+<tr><td><code>BoundTransform.encode</code> — <code>BoundTransform.encode(self, x)</code></td><td>Map strictly interior physical coordinates into unconstrained logarithmic LM coordinates; reject boundary starts.</td></tr>
+<tr><td><code>BoundTransform.decode</code> — <code>BoundTransform.decode(self, u)</code></td><td>Map unconstrained LM coordinates to physical values and diagonal derivative; reject overflow or lost strict interior.</td></tr>
+<tr><td><code>_initial</code> — <code>_initial(problem, rng, index)</code></td><td>Internal initial helper. Uses <code>m4._initial</code>, <code>problem.geometry</code>, <code>problem.pack</code>.</td></tr>
+<tr><td><code>_perturb</code> — <code>_perturb(problem, initial, rng)</code></td><td>Internal perturb helper. Uses <code>len</code>, <code>np.isfinite</code>, <code>np.maximum</code>, <code>np.minimum</code>, <code>np.where</code> among other calls.</td></tr>
+<tr><td><code>_algebraic</code> — <code>_algebraic(problem, observations, times_s)</code></td><td>Internal algebraic helper. Uses <code>m5_algebraic.propose_initialization</code>.</td></tr>
+<tr><td><code>fit_observations</code> — <code>fit_observations(observations, times_s, *, beacon_count=None, display_times_s=None, surveyed_beacons=None, initial_geometries=None, **options)</code></td><td>Fit measurement inputs with explicit options/optional declared survey and physical starts; return every attempt and its solver/diagnostic evidence.</td></tr>
+<tr><td><code>fit_observations.fun</code> — <code>fit_observations.fun(u)</code></td><td>Internal callback or route handler: fun. See its enclosing function and the HTTP route table for request/return context.</td></tr>
+<tr><td><code>fit_observations.derivative</code> — <code>fit_observations.derivative(u)</code></td><td>Internal callback or route handler: derivative. See its enclosing function and the HTTP route table for request/return context.</td></tr>
+<tr><td><code>_problem</code> — <code>_problem(exp, opts)</code></td><td>Internal problem helper. Uses <code>build_problem</code>.</td></tr>
+<tr><td><code>solve_experiment</code> — <code>solve_experiment(exp, options=None, initial_geometries=None)</code></td><td>Validate a native experiment, run its estimator, evaluate against separate synthetic truth, and return the complete saved-run structure.</td></tr>
+<tr><td><code>solve_experiment.fitter</code> — <code>solve_experiment.fitter(observations, times_s, **kwargs)</code></td><td>Internal callback or route handler: fitter. See its enclosing function and the HTTP route table for request/return context.</td></tr>
+<tr><td><code>make_initial_geometries</code> — <code>make_initial_geometries(exp, options=None)</code></td><td>Create retained physical trajectory/beacon starts for explicit options, before conversion into solver coordinates.</td></tr>
+<tr><td><code>compatible_initial_geometries</code> — <code>compatible_initial_geometries(run, experiment, options=None)</code></td><td>Validate and adapt retained physical starts for a compatible target experiment/model; reject unsupported pairing.</td></tr>
+<tr><td><code>_same_diagnostics</code> — <code>_same_diagnostics(saved, expected)</code></td><td>Internal same diagnostics helper. Uses <code>_same_diagnostics</code>, <code>all</code>, <code>expected.items</code>, <code>isinstance</code>, <code>len</code> among other calls.</td></tr>
+<tr><td><code>validate_run</code> — <code>validate_run(run)</code></td><td>Strictly validate a saved native run and retained numerical/diagnostic consistency without rerunning optimization.</td></tr>
+</tbody></table></div>
+<p>Re-exported native aliases: <code>MAX_KNOTS = m4.MAX_KNOTS</code>; <code>FLOOR = m4.FLOOR</code>; <code>normalize_config = m4.normalize_config</code>. They retain the referenced function signature and behavior.</p>
+<h2 id="uwbm5_algebraicpy">uwb/m5_algebraic.py</h2>
+<div class="table-wrap"><table><tbody>
+<tr><th>Function / exact signature</th><th>Purpose</th></tr>
+<tr><td><code>_Failure.__init__</code> — <code>_Failure.__init__(self, code, message, status=&#x27;failed&#x27;)</code></td><td>Internal init helper. Uses <code>super</code>, <code>super().__init__</code>.</td></tr>
+<tr><td><code>_number</code> — <code>_number(value, name)</code></td><td>Internal number helper. Uses <code>_Failure</code>, <code>float</code>, <code>isinstance</code>, <code>math.isfinite</code>.</td></tr>
+<tr><td><code>_rank</code> — <code>_rank(matrix)</code></td><td>Internal rank helper. Uses <code>float</code>, <code>int</code>, <code>len</code>, <code>np.count_nonzero</code>, <code>np.linalg.svd</code> among other calls.</td></tr>
+<tr><td><code>_coefficient_names</code> — <code>_coefficient_names(values)</code></td><td>Internal coefficient names helper. Uses <code>dict</code>, <code>map</code>, <code>zip</code>.</td></tr>
+<tr><td><code>propose_initialization</code> — <code>propose_initialization(observations, times_s, beacon_count, options=None)</code></td><td>Build an algebraic physical-start proposal and diagnostic evidence from supported complete synchronous planar/shared-height measurements.</td></tr>
+</tbody></table></div>
+<h2 id="uwbm5_servicepy">uwb/m5_service.py</h2>
+<div class="table-wrap"><table><tbody>
+<tr><th>Function / exact signature</th><th>Purpose</th></tr>
+<tr><td><code>register_m5_routes</code> — <code>register_m5_routes(app, directory, artifacts, executor, jobs, lock, *, bundled_root=None)</code></td><td>Register native model routes with shared local history, background executor, job state and optional bundled reference records.</td></tr>
+<tr><td><code>register_m5_routes.run_path</code> — <code>register_m5_routes.run_path(identifier)</code></td><td>Internal callback or route handler: run path. See its enclosing function and the HTTP route table for request/return context.</td></tr>
+<tr><td><code>register_m5_routes.artifact_path</code> — <code>register_m5_routes.artifact_path(identifier)</code></td><td>Internal callback or route handler: artifact path. See its enclosing function and the HTTP route table for request/return context.</td></tr>
+<tr><td><code>register_m5_routes.pending</code> — <code>register_m5_routes.pending(path, data)</code></td><td>Internal callback or route handler: pending. See its enclosing function and the HTTP route table for request/return context.</td></tr>
+<tr><td><code>register_m5_routes.retain_runs</code> — <code>register_m5_routes.retain_runs(data)</code></td><td>Internal callback or route handler: retain runs. See its enclosing function and the HTTP route table for request/return context.</td></tr>
+<tr><td><code>register_m5_routes.execute</code> — <code>register_m5_routes.execute(identifier, experiment, options)</code></td><td>Internal callback or route handler: execute. See its enclosing function and the HTTP route table for request/return context.</td></tr>
+<tr><td><code>register_m5_routes.submit_m5</code> — <code>register_m5_routes.submit_m5()</code></td><td>Internal callback or route handler: submit m5. See its enclosing function and the HTTP route table for request/return context.</td></tr>
+<tr><td><code>register_m5_routes.execute_sweep</code> — <code>register_m5_routes.execute_sweep(identifier, config)</code></td><td>Internal callback or route handler: execute sweep. See its enclosing function and the HTTP route table for request/return context.</td></tr>
+<tr><td><code>register_m5_routes.execute_sweep.checkpoint</code> — <code>register_m5_routes.execute_sweep.checkpoint(data)</code></td><td>Internal callback or route handler: checkpoint. See its enclosing function and the HTTP route table for request/return context.</td></tr>
+<tr><td><code>register_m5_routes.submit_m5_sweep</code> — <code>register_m5_routes.submit_m5_sweep()</code></td><td>Internal callback or route handler: submit m5 sweep. See its enclosing function and the HTTP route table for request/return context.</td></tr>
+<tr><td><code>register_m5_routes.list_m5_sweeps</code> — <code>register_m5_routes.list_m5_sweeps()</code></td><td>Internal callback or route handler: list m5 sweeps. See its enclosing function and the HTTP route table for request/return context.</td></tr>
+<tr><td><code>register_m5_routes.read_sweep</code> — <code>register_m5_routes.read_sweep(identifier)</code></td><td>Internal callback or route handler: read sweep. See its enclosing function and the HTTP route table for request/return context.</td></tr>
+<tr><td><code>register_m5_routes.reopen_m5_sweep</code> — <code>register_m5_routes.reopen_m5_sweep(identifier)</code></td><td>Internal callback or route handler: reopen m5 sweep. See its enclosing function and the HTTP route table for request/return context.</td></tr>
+<tr><td><code>register_m5_routes.export_m5_csv</code> — <code>register_m5_routes.export_m5_csv(identifier)</code></td><td>Internal callback or route handler: export m5 csv. See its enclosing function and the HTTP route table for request/return context.</td></tr>
+<tr><td><code>register_m5_routes.import_m5</code> — <code>register_m5_routes.import_m5()</code></td><td>Internal callback or route handler: import m5. See its enclosing function and the HTTP route table for request/return context.</td></tr>
+</tbody></table></div>
+<h2 id="uwbm5_sweepspy">uwb/m5_sweeps.py</h2>
+<div class="table-wrap"><table><tbody>
+<tr><th>Function / exact signature</th><th>Purpose</th></tr>
+<tr><td><code>_cell</code> — <code>_cell(config, value, seed)</code></td><td>Internal cell helper. Uses <code>acquisition.pop</code>, <code>copy.deepcopy</code>, <code>experiment.get</code>, <code>experiment.setdefault</code>, <code>isinstance</code> among other calls.</td></tr>
+<tr><td><code>_variant_options</code> — <code>_variant_options(options, variant, factor)</code></td><td>Internal variant options helper. Uses <code>m4.validate_options</code>.</td></tr>
+<tr><td><code>validate_sweep_config</code> — <code>validate_sweep_config(config=None)</code></td><td>Normalize a bounded native single-factor study; validate factors, values, seeds, variants, pairing restrictions and workload before fitting.</td></tr>
+<tr><td><code>_failed_run</code> — <code>_failed_run(experiment, options, error, initials=None)</code></td><td>Internal failed run helper. Uses <code>copy.deepcopy</code>, <code>experiment.get</code>, <code>range</code>, <code>type</code>.</td></tr>
+<tr><td><code>run_sweep</code> — <code>run_sweep(config=None, on_progress=None)</code></td><td>Execute paired value/seed/variant cells; retain every outcome, aggregate evidence and invoke optional on_progress checkpoints.</td></tr>
+<tr><td><code>_distribution</code> — <code>_distribution(values)</code></td><td>Internal distribution helper. Uses <code>float</code>, <code>len</code>, <code>math.isfinite</code>, <code>max</code>, <code>min</code> among other calls.</td></tr>
+<tr><td><code>aggregate_sweep</code> — <code>aggregate_sweep(artifact)</code></td><td>Compute distributions, success/failure accounting and all-attempt study summaries from retained entries.</td></tr>
+<tr><td><code>validate_artifact</code> — <code>validate_artifact(data)</code></td><td>Strictly validate saved native study/comparison structure, retained children and derived evidence without fitting.</td></tr>
+<tr><td><code>save_artifact</code> — <code>save_artifact(path, data)</code></td><td>Validate and write a complete study/comparison artifact through temporary-file replacement.</td></tr>
+<tr><td><code>load_artifact</code> — <code>load_artifact(path)</code></td><td>Load finite native study/comparison JSON and strictly validate it.</td></tr>
+<tr><td><code>table_csv</code> — <code>table_csv(artifact)</code></td><td>Return native CSV text containing this module’s saved run, attempt, study or comparison table; per-observation study exports use their separate service route.</td></tr>
+</tbody></table></div>
+<h2 id="uwbm6py">uwb/m6.py</h2>
+<div class="table-wrap"><table><tbody>
+<tr><th>Function / exact signature</th><th>Purpose</th></tr>
+<tr><td><code>normalize_config</code> — <code>normalize_config(config=None)</code></td><td>Validate and fill native generation defaults; return normalized config, raising ValueError for unsupported or invalid fields.</td></tr>
+<tr><td><code>_base_config</code> — <code>_base_config(config)</code></td><td>Internal base config helper. Uses <code>config.items</code>, <code>copy.deepcopy</code>.</td></tr>
+<tr><td><code>_contaminate</code> — <code>_contaminate(source, cfg)</code></td><td>Internal contaminate helper. Uses <code>bool</code>, <code>copy.deepcopy</code>, <code>enumerate</code>, <code>exp.update</code>, <code>float</code> among other calls.</td></tr>
+<tr><td><code>generate_experiment</code> — <code>generate_experiment(config=None)</code></td><td>Normalize generation settings and return a native synthetic experiment with separate estimator_input and truth/reference records; no fit.</td></tr>
+<tr><td><code>_legacy_experiment</code> — <code>_legacy_experiment(exp)</code></td><td>Internal legacy experiment helper. Uses <code>_base_config</code>, <code>copy.deepcopy</code>, <code>result.pop</code>, <code>result.update</code>.</td></tr>
+<tr><td><code>validate_experiment</code> — <code>validate_experiment(exp)</code></td><td>Strictly validate the native experiment representation, shapes and generation consistency; return the accepted experiment or raise ValueError.</td></tr>
+<tr><td><code>base_options</code> — <code>base_options(options)</code></td><td>Return validated underlying-engine options with this model extension removed.</td></tr>
+<tr><td><code>validate_options</code> — <code>validate_options(options=None)</code></td><td>Validate and fill native estimator/numerical defaults; return normalized options without generating data or fitting.</td></tr>
+<tr><td><code>loss_statistics</code> — <code>loss_statistics(residual_sigma, loss, scale)</code></td><td>Return robust influence weights and signed exact scalar curvature from standardized residuals, loss name and scale.</td></tr>
+<tr><td><code>range_transform</code> — <code>range_transform(residual_sigma, loss, scale)</code></td><td>Return signed square-root loss residuals and their derivative, preserving the exact robust range objective.</td></tr>
+<tr><td><code>_objective_vectors</code> — <code>_objective_vectors(x, problem, opts, mask=None)</code></td><td>Internal objective vectors helper. Uses <code>len</code>, <code>m5.jacobian</code>, <code>m5.jacobian(x, problem).copy</code>, <code>m5.measurement_residuals</code>, <code>m5.prior_components</code> among other calls.</td></tr>
+<tr><td><code>build_problem</code> — <code>build_problem(observations, times_s, *, beacon_count=None, display_times_s=None, surveyed_beacons=None, **options)</code></td><td>Build the model parameterization, interpolation, constraints and weighted measurement/prior inputs from observations and times. Truth is not an input.</td></tr>
+<tr><td><code>residuals</code> — <code>residuals(parameters, problem, mask=None)</code></td><td>Return the model objective residual vector; range terms use predicted minus measured range normalized by saved sigma, with applicable priors/transforms.</td></tr>
+<tr><td><code>jacobian</code> — <code>jacobian(parameters, problem, mask=None)</code></td><td>Return the analytic objective Jacobian including supported prior/robust/survey terms.</td></tr>
+<tr><td><code>_optimize</code> — <code>_optimize(problem, opts, x0, mask=None)</code></td><td>Internal optimize helper. Uses <code>ValueError</code>, <code>_objective_vectors</code>, <code>derivative</code>, <code>fun</code>, <code>int</code> among other calls.</td></tr>
+<tr><td><code>_optimize.fun</code> — <code>_optimize.fun(x)</code></td><td>Internal callback or route handler: fun. See its enclosing function and the HTTP route table for request/return context.</td></tr>
+<tr><td><code>_optimize.derivative</code> — <code>_optimize.derivative(x)</code></td><td>Internal callback or route handler: derivative. See its enclosing function and the HTTP route table for request/return context.</td></tr>
+<tr><td><code>_optimize.lm_fun</code> — <code>_optimize.lm_fun(u)</code></td><td>Internal callback or route handler: lm fun. See its enclosing function and the HTTP route table for request/return context.</td></tr>
+<tr><td><code>_optimize.lm_jac</code> — <code>_optimize.lm_jac(u)</code></td><td>Internal callback or route handler: lm jac. See its enclosing function and the HTTP route table for request/return context.</td></tr>
+<tr><td><code>_information</code> — <code>_information(matrix, problem, *, prior_count=0, description)</code></td><td>Internal information helper. Uses <code>float</code>, <code>int</code>, <code>len</code>, <code>max</code>, <code>np.abs</code> among other calls.</td></tr>
+<tr><td><code>_fit_diagnostics</code> — <code>_fit_diagnostics(x, problem, opts, mask=None, pilot=None)</code></td><td>Internal fit diagnostics helper. Uses <code>(mr * problem.sigma_m).tolist</code>, <code>_information</code>, <code>bool</code>, <code>coverage_rows</code>, <code>curvature.tolist</code> among other calls.</td></tr>
+<tr><td><code>_fit_diagnostics.coverage_rows</code> — <code>_fit_diagnostics.coverage_rows(ids, n)</code></td><td>Internal callback or route handler: coverage rows. See its enclosing function and the HTTP route table for request/return context.</td></tr>
+<tr><td><code>_metadata</code> — <code>_metadata(problem, opts)</code></td><td>Internal metadata helper. Uses <code>problem.disclosure</code>.</td></tr>
+<tr><td><code>fit_observations</code> — <code>fit_observations(observations, times_s, *, beacon_count=None, display_times_s=None, surveyed_beacons=None, initial_geometries=None, **options)</code></td><td>Fit measurement inputs with explicit options/optional declared survey and physical starts; return every attempt and its solver/diagnostic evidence.</td></tr>
+<tr><td><code>_m5_experiment</code> — <code>_m5_experiment(exp)</code></td><td>Internal m5 experiment helper. Uses <code>_legacy_experiment</code>.</td></tr>
+<tr><td><code>_problem</code> — <code>_problem(exp, opts)</code></td><td>Internal problem helper. Uses <code>_m5_experiment</code>, <code>base_options</code>, <code>len</code>, <code>m5._problem</code>.</td></tr>
+<tr><td><code>make_initial_geometries</code> — <code>make_initial_geometries(exp, options=None)</code></td><td>Create retained physical trajectory/beacon starts for explicit options, before conversion into solver coordinates.</td></tr>
+<tr><td><code>compatible_initial_geometries</code> — <code>compatible_initial_geometries(run, experiment, options=None)</code></td><td>Validate and adapt retained physical starts for a compatible target experiment/model; reject unsupported pairing.</td></tr>
+<tr><td><code>rejection_evaluation</code> — <code>rejection_evaluation(decisions, records)</code></td><td>Compare fitted rejection decisions against separate injected NLOS reference records for evaluation only.</td></tr>
+<tr><td><code>_robust_disclosure</code> — <code>_robust_disclosure(opts)</code></td><td>Internal robust disclosure helper. Uses .</td></tr>
+<tr><td><code>solve_experiment</code> — <code>solve_experiment(exp, options=None, initial_geometries=None)</code></td><td>Validate a native experiment, run its estimator, evaluate against separate synthetic truth, and return the complete saved-run structure.</td></tr>
+<tr><td><code>solve_experiment.fitter</code> — <code>solve_experiment.fitter(observations, times_s, **kwargs)</code></td><td>Internal callback or route handler: fitter. See its enclosing function and the HTTP route table for request/return context.</td></tr>
+<tr><td><code>validate_run</code> — <code>validate_run(run)</code></td><td>Strictly validate a saved native run and retained numerical/diagnostic consistency without rerunning optimization.</td></tr>
+</tbody></table></div>
+<p>Re-exported native aliases: <code>MAX_KNOTS = m5.MAX_KNOTS</code>; <code>measurement_residuals = m5.measurement_residuals</code>; <code>measurement_jacobian = m5.measurement_jacobian</code>; <code>prior_components = m5.prior_components</code>. They retain the referenced function signature and behavior.</p>
+<h2 id="uwbm6_servicepy">uwb/m6_service.py</h2>
+<div class="table-wrap"><table><tbody>
+<tr><th>Function / exact signature</th><th>Purpose</th></tr>
+<tr><td><code>register_m6_routes</code> — <code>register_m6_routes(app, directory, artifacts, executor, jobs, lock, *, bundled_root=None)</code></td><td>Register native model routes with shared local history, background executor, job state and optional bundled reference records.</td></tr>
+<tr><td><code>register_m6_routes.run_path</code> — <code>register_m6_routes.run_path(identifier)</code></td><td>Internal callback or route handler: run path. See its enclosing function and the HTTP route table for request/return context.</td></tr>
+<tr><td><code>register_m6_routes.artifact_path</code> — <code>register_m6_routes.artifact_path(identifier)</code></td><td>Internal callback or route handler: artifact path. See its enclosing function and the HTTP route table for request/return context.</td></tr>
+<tr><td><code>register_m6_routes.pending</code> — <code>register_m6_routes.pending(path, data)</code></td><td>Internal callback or route handler: pending. See its enclosing function and the HTTP route table for request/return context.</td></tr>
+<tr><td><code>register_m6_routes.retain_runs</code> — <code>register_m6_routes.retain_runs(data)</code></td><td>Internal callback or route handler: retain runs. See its enclosing function and the HTTP route table for request/return context.</td></tr>
+<tr><td><code>register_m6_routes.execute</code> — <code>register_m6_routes.execute(identifier, experiment, options)</code></td><td>Internal callback or route handler: execute. See its enclosing function and the HTTP route table for request/return context.</td></tr>
+<tr><td><code>register_m6_routes.submit_m6</code> — <code>register_m6_routes.submit_m6()</code></td><td>Internal callback or route handler: submit m6. See its enclosing function and the HTTP route table for request/return context.</td></tr>
+<tr><td><code>register_m6_routes.execute_sweep</code> — <code>register_m6_routes.execute_sweep(identifier, config)</code></td><td>Internal callback or route handler: execute sweep. See its enclosing function and the HTTP route table for request/return context.</td></tr>
+<tr><td><code>register_m6_routes.execute_sweep.checkpoint</code> — <code>register_m6_routes.execute_sweep.checkpoint(data)</code></td><td>Internal callback or route handler: checkpoint. See its enclosing function and the HTTP route table for request/return context.</td></tr>
+<tr><td><code>register_m6_routes.submit_m6_sweep</code> — <code>register_m6_routes.submit_m6_sweep()</code></td><td>Internal callback or route handler: submit m6 sweep. See its enclosing function and the HTTP route table for request/return context.</td></tr>
+<tr><td><code>register_m6_routes.list_m6_sweeps</code> — <code>register_m6_routes.list_m6_sweeps()</code></td><td>Internal callback or route handler: list m6 sweeps. See its enclosing function and the HTTP route table for request/return context.</td></tr>
+<tr><td><code>register_m6_routes.read_sweep</code> — <code>register_m6_routes.read_sweep(identifier)</code></td><td>Internal callback or route handler: read sweep. See its enclosing function and the HTTP route table for request/return context.</td></tr>
+<tr><td><code>register_m6_routes.reopen_m6_sweep</code> — <code>register_m6_routes.reopen_m6_sweep(identifier)</code></td><td>Internal callback or route handler: reopen m6 sweep. See its enclosing function and the HTTP route table for request/return context.</td></tr>
+<tr><td><code>register_m6_routes.export_m6_csv</code> — <code>register_m6_routes.export_m6_csv(identifier)</code></td><td>Internal callback or route handler: export m6 csv. See its enclosing function and the HTTP route table for request/return context.</td></tr>
+<tr><td><code>register_m6_routes.import_m6</code> — <code>register_m6_routes.import_m6()</code></td><td>Internal callback or route handler: import m6. See its enclosing function and the HTTP route table for request/return context.</td></tr>
+</tbody></table></div>
+<h2 id="uwbm6_sweepspy">uwb/m6_sweeps.py</h2>
+<div class="table-wrap"><table><tbody>
+<tr><th>Function / exact signature</th><th>Purpose</th></tr>
+<tr><td><code>_cell</code> — <code>_cell(config, value, seed)</code></td><td>Internal cell helper. Uses <code>contamination.setdefault</code>, <code>copy.deepcopy</code>, <code>experiment.setdefault</code>, <code>factor.startswith</code>, <code>m4.normalize_config</code> among other calls.</td></tr>
+<tr><td><code>_variant_options</code> — <code>_variant_options(options, variant, factor)</code></td><td>Internal variant options helper. Uses <code>m4.validate_options</code>.</td></tr>
+<tr><td><code>validate_sweep_config</code> — <code>validate_sweep_config(config=None)</code></td><td>Normalize a bounded native single-factor study; validate factors, values, seeds, variants, pairing restrictions and workload before fitting.</td></tr>
+<tr><td><code>_failed_run</code> — <code>_failed_run(experiment, options, error, initials=None)</code></td><td>Internal failed run helper. Uses <code>copy.deepcopy</code>, <code>experiment.get</code>, <code>range</code>, <code>type</code>.</td></tr>
+<tr><td><code>run_sweep</code> — <code>run_sweep(config=None, on_progress=None)</code></td><td>Execute paired value/seed/variant cells; retain every outcome, aggregate evidence and invoke optional on_progress checkpoints.</td></tr>
+<tr><td><code>_distribution</code> — <code>_distribution(values)</code></td><td>Internal distribution helper. Uses <code>float</code>, <code>len</code>, <code>math.isfinite</code>, <code>max</code>, <code>min</code> among other calls.</td></tr>
+<tr><td><code>aggregate_sweep</code> — <code>aggregate_sweep(artifact)</code></td><td>Compute distributions, success/failure accounting and all-attempt study summaries from retained entries.</td></tr>
+<tr><td><code>validate_artifact</code> — <code>validate_artifact(data)</code></td><td>Strictly validate saved native study/comparison structure, retained children and derived evidence without fitting.</td></tr>
+<tr><td><code>save_artifact</code> — <code>save_artifact(path, data)</code></td><td>Validate and write a complete study/comparison artifact through temporary-file replacement.</td></tr>
+<tr><td><code>load_artifact</code> — <code>load_artifact(path)</code></td><td>Load finite native study/comparison JSON and strictly validate it.</td></tr>
+<tr><td><code>table_csv</code> — <code>table_csv(artifact)</code></td><td>Return native CSV text containing this module’s saved run, attempt, study or comparison table; per-observation study exports use their separate service route.</td></tr>
+</tbody></table></div>
+<h2 id="uwbm7py">uwb/m7.py</h2>
+<div class="table-wrap"><table><tbody>
+<tr><th>Function / exact signature</th><th>Purpose</th></tr>
+<tr><td><code>normalize_survey</code> — <code>normalize_survey(survey, beacon_count=None)</code></td><td>Validate explicit world/metre fixed and uncertain coordinate blocks, axis masks, IDs, non-overlap and positive-definite covariance.</td></tr>
+<tr><td><code>normalize_uncertainty</code> — <code>normalize_uncertainty(value=None)</code></td><td>Normalize the explicit independent-Gaussian known-sigma local-uncertainty assumptions and tolerances.</td></tr>
+<tr><td><code>validate_options</code> — <code>validate_options(options=None)</code></td><td>Validate and fill native estimator/numerical defaults; return normalized options without generating data or fitting.</td></tr>
+<tr><td><code>base_options</code> — <code>base_options(options)</code></td><td>Return validated underlying-engine options with this model extension removed.</td></tr>
+<tr><td><code>build_problem</code> — <code>build_problem(observations, times_s, *, beacon_count=None, display_times_s=None, surveyed_beacons=None, **options)</code></td><td>Build the model parameterization, interpolation, constraints and weighted measurement/prior inputs from observations and times. Truth is not an input.</td></tr>
+<tr><td><code>survey_residuals</code> — <code>survey_residuals(x, problem)</code></td><td>Return whitened uncertain-survey residual rows for selected world coordinates; exact fixed coordinates were eliminated.</td></tr>
+<tr><td><code>residuals</code> — <code>residuals(x, problem, mask=None)</code></td><td>Return the model objective residual vector; range terms use predicted minus measured range normalized by saved sigma, with applicable priors/transforms.</td></tr>
+<tr><td><code>jacobian</code> — <code>jacobian(x, problem, mask=None)</code></td><td>Return the analytic objective Jacobian including supported prior/robust/survey terms.</td></tr>
+<tr><td><code>information</code> — <code>information(matrix, n, rtol=1e-08)</code></td><td>Return matrix singular spectrum, relative-tolerance rank and conditioning for n parameters.</td></tr>
+<tr><td><code>conditional_uncertainty</code> — <code>conditional_uncertainty(x, problem, *, converged=True, mask=None)</code></td><td>Compute supported conditional local Gaussian parameter/geometry intervals, or return available=false and explicit withheld reasons.</td></tr>
+<tr><td><code>conditional_uncertainty.propagate</code> — <code>conditional_uncertainty.propagate(basis)</code></td><td>Internal callback or route handler: propagate. See its enclosing function and the HTTP route table for request/return context.</td></tr>
+<tr><td><code>_diagnostics</code> — <code>_diagnostics(x, problem, converged, mask=None)</code></td><td>Internal diagnostics helper. Uses <code>(r * problem.sigma_m).tolist</code>, <code>bool</code>, <code>conditional_uncertainty</code>, <code>coverage_rows</code>, <code>float</code> among other calls.</td></tr>
+<tr><td><code>_diagnostics.coverage_rows</code> — <code>_diagnostics.coverage_rows(ids, count)</code></td><td>Internal callback or route handler: coverage rows. See its enclosing function and the HTTP route table for request/return context.</td></tr>
+<tr><td><code>_optimize</code> — <code>_optimize(problem, x0, opts, mask=None)</code></td><td>Internal optimize helper. Uses <code>ValueError</code>, <code>int</code>, <code>jacobian</code>, <code>least_squares</code>, <code>len</code> among other calls.</td></tr>
+<tr><td><code>_optimize.fun</code> — <code>_optimize.fun(u)</code></td><td>Internal callback or route handler: fun. See its enclosing function and the HTTP route table for request/return context.</td></tr>
+<tr><td><code>_optimize.jac</code> — <code>_optimize.jac(u)</code></td><td>Internal callback or route handler: jac. See its enclosing function and the HTTP route table for request/return context.</td></tr>
+<tr><td><code>_independent_initial</code> — <code>_independent_initial(problem, rng)</code></td><td>Internal independent initial helper. Uses <code>&#x27;xyz&#x27;.index</code>, <code>declared[a].append</code>, <code>enumerate</code>, <code>float</code>, <code>len</code> among other calls.</td></tr>
+<tr><td><code>fit_observations</code> — <code>fit_observations(observations, times_s, *, beacon_count=None, display_times_s=None, surveyed_beacons=None, initial_geometries=None, **options)</code></td><td>Fit measurement inputs with explicit options/optional declared survey and physical starts; return every attempt and its solver/diagnostic evidence.</td></tr>
+<tr><td><code>_problem</code> — <code>_problem(exp, opts)</code></td><td>Internal problem helper. Uses <code>_source_model_limits</code>, <code>build_problem</code>.</td></tr>
+<tr><td><code>_source_model_limits</code> — <code>_source_model_limits(exp, opts=None)</code></td><td>Declared generation metadata only, never per-observation labels/truth.</td></tr>
+<tr><td><code>summarize_uncertainty</code> — <code>summarize_uncertainty(run, start_index=None, assumptions=None)</code></td><td>Strictly inspect a saved robust/survey attempt offline with optional uncertainty assumptions; does not fit.</td></tr>
+<tr><td><code>make_initial_geometries</code> — <code>make_initial_geometries(exp, options=None)</code></td><td>Create retained physical trajectory/beacon starts for explicit options, before conversion into solver coordinates.</td></tr>
+<tr><td><code>_run_diagnostics</code> — <code>_run_diagnostics(opts, starts)</code></td><td>Internal run diagnostics helper. Uses <code>copy.deepcopy</code>, <code>sum</code>.</td></tr>
+<tr><td><code>evaluate_geometry</code> — <code>evaluate_geometry(estimate, truth, options=None)</code></td><td>Compare fitted trajectory/beacons against separate truth in disclosed raw/rigid evaluation frames; preserve physical scale.</td></tr>
+<tr><td><code>_evaluation_diagnostics</code> — <code>_evaluation_diagnostics(exp, start)</code></td><td>Internal evaluation diagnostics helper. Uses <code>bool</code>, <code>copy.deepcopy</code>, <code>evaluate_geometry</code>, <code>m6.rejection_evaluation</code>, <code>max</code> among other calls.</td></tr>
+<tr><td><code>solve_experiment</code> — <code>solve_experiment(exp, options=None, initial_geometries=None)</code></td><td>Validate a native experiment, run its estimator, evaluate against separate synthetic truth, and return the complete saved-run structure.</td></tr>
+<tr><td><code>validate_run</code> — <code>validate_run(run)</code></td><td>Strictly validate a saved native run and retained numerical/diagnostic consistency without rerunning optimization.</td></tr>
+<tr><td><code>save_run</code> — <code>save_run(path, run)</code></td><td>Validate and atomically save a native survey run to path.</td></tr>
+<tr><td><code>load_run</code> — <code>load_run(path)</code></td><td>Load and strictly validate a native survey run from path.</td></tr>
+<tr><td><code>table_csv</code> — <code>table_csv(run)</code></td><td>Return native CSV text containing this module’s saved run, attempt, study or comparison table; per-observation study exports use their separate service route.</td></tr>
+</tbody></table></div>
+<h2 id="uwbm7_servicepy">uwb/m7_service.py</h2>
+<div class="table-wrap"><table><tbody>
+<tr><th>Function / exact signature</th><th>Purpose</th></tr>
+<tr><td><code>register_m7</code> — <code>register_m7(app, directory, executor=None, jobs=None, lock=None, *, on_saved=None)</code></td><td>Register survey fitting, import/export, comparison and uncertainty routes with optional shared job state and save callback.</td></tr>
+<tr><td><code>register_m7.path_for</code> — <code>register_m7.path_for(identifier)</code></td><td>Internal callback or route handler: path for. See its enclosing function and the HTTP route table for request/return context.</td></tr>
+<tr><td><code>register_m7.save</code> — <code>register_m7.save(identifier, run)</code></td><td>Internal callback or route handler: save. See its enclosing function and the HTTP route table for request/return context.</td></tr>
+<tr><td><code>register_m7.read</code> — <code>register_m7.read(identifier)</code></td><td>Internal callback or route handler: read. See its enclosing function and the HTTP route table for request/return context.</td></tr>
+<tr><td><code>register_m7.execute</code> — <code>register_m7.execute(identifier, experiment, options, initial, envelope)</code></td><td>Internal callback or route handler: execute. See its enclosing function and the HTTP route table for request/return context.</td></tr>
+<tr><td><code>register_m7.submit_m7</code> — <code>register_m7.submit_m7()</code></td><td>Internal callback or route handler: submit m7. See its enclosing function and the HTTP route table for request/return context.</td></tr>
+<tr><td><code>register_m7.reopen_m7</code> — <code>register_m7.reopen_m7(identifier)</code></td><td>Internal callback or route handler: reopen m7. See its enclosing function and the HTTP route table for request/return context.</td></tr>
+<tr><td><code>register_m7.uncertainty_m7</code> — <code>register_m7.uncertainty_m7(identifier)</code></td><td>Internal callback or route handler: uncertainty m7. See its enclosing function and the HTTP route table for request/return context.</td></tr>
+<tr><td><code>register_m7.json_m7</code> — <code>register_m7.json_m7(identifier)</code></td><td>Internal callback or route handler: json m7. See its enclosing function and the HTTP route table for request/return context.</td></tr>
+<tr><td><code>register_m7.csv_m7</code> — <code>register_m7.csv_m7(identifier)</code></td><td>Internal callback or route handler: csv m7. See its enclosing function and the HTTP route table for request/return context.</td></tr>
+<tr><td><code>register_m7.import_m7</code> — <code>register_m7.import_m7()</code></td><td>Internal callback or route handler: import m7. See its enclosing function and the HTTP route table for request/return context.</td></tr>
+</tbody></table></div>
+<h2 id="uwbsweepspy">uwb/sweeps.py</h2>
+<div class="table-wrap"><table><tbody>
+<tr><th>Function / exact signature</th><th>Purpose</th></tr>
+<tr><td><code>_integer</code> — <code>_integer(value, name, lower, upper)</code></td><td>Internal integer helper. Uses <code>ValueError</code>, <code>isinstance</code>.</td></tr>
+<tr><td><code>validate_sweep_config</code> — <code>validate_sweep_config(config)</code></td><td>Normalize a bounded native single-factor study; validate factors, values, seeds, variants, pairing restrictions and workload before fitting.</td></tr>
+<tr><td><code>_cell_config</code> — <code>_cell_config(config, value, seed)</code></td><td>Internal cell config helper. Uses <code>copy.deepcopy</code>, <code>experiment.setdefault</code>.</td></tr>
+<tr><td><code>_initials</code> — <code>_initials(experiment, config, value, seed)</code></td><td>Internal initials helper. Uses <code>_independent_initial</code>, <code>any</code>, <code>beacons.tolist</code>, <code>build_problem</code>, <code>initials.append</code> among other calls.</td></tr>
+<tr><td><code>_solve_cell</code> — <code>_solve_cell(experiment, options, initials)</code></td><td>Internal solve cell helper. Uses <code>build_problem</code>, <code>copy.deepcopy</code>, <code>evaluate_geometry</code>, <code>experiment[&#x27;software_versions&#x27;].copy</code>, <code>fit_observations</code> among other calls.</td></tr>
+<tr><td><code>run_sweep</code> — <code>run_sweep(config=None, on_progress=None)</code></td><td>Execute paired value/seed/variant cells; retain every outcome, aggregate evidence and invoke optional on_progress checkpoints.</td></tr>
+<tr><td><code>_distribution</code> — <code>_distribution(values)</code></td><td>Internal distribution helper. Uses <code>float</code>, <code>len</code>, <code>max</code>, <code>min</code>, <code>np.median</code> among other calls.</td></tr>
+<tr><td><code>aggregate_sweep</code> — <code>aggregate_sweep(sweep)</code></td><td>Compute distributions, success/failure accounting and all-attempt study summaries from retained entries.</td></tr>
+<tr><td><code>_refresh_sweep</code> — <code>_refresh_sweep(sweep)</code></td><td>Internal refresh sweep helper. Uses <code>aggregate_sweep</code>, <code>any</code>, <code>bool</code>, <code>classifications.append</code>, <code>diagnostic.get</code> among other calls.</td></tr>
+<tr><td><code>build_comparison</code> — <code>build_comparison(left_run, right_run, alignment=&#x27;aligned&#x27;, *, _validate=True)</code></td><td>Strictly compare two saved runs in raw or scale-preserving rigid alignment; retain source, pairing and metric evidence.</td></tr>
+<tr><td><code>validate_artifact</code> — <code>validate_artifact(data)</code></td><td>Strictly validate saved native study/comparison structure, retained children and derived evidence without fitting.</td></tr>
+<tr><td><code>_validate_artifact</code> — <code>_validate_artifact(data)</code></td><td>Internal validate artifact helper. Uses <code>(ref[&#x27;initial&#x27;] or {}).get</code>, <code>(s[&#x27;initial&#x27;] or {}).get</code>, <code>ExperimentFormatError</code>, <code>_cell_config</code>, <code>_normalise_config</code> among other calls.</td></tr>
+<tr><td><code>save_artifact</code> — <code>save_artifact(path, data)</code></td><td>Validate and write a complete study/comparison artifact through temporary-file replacement.</td></tr>
+<tr><td><code>load_artifact</code> — <code>load_artifact(path)</code></td><td>Load finite native study/comparison JSON and strictly validate it.</td></tr>
+<tr><td><code>table_csv</code> — <code>table_csv(artifact)</code></td><td>Return native CSV text containing this module’s saved run, attempt, study or comparison table; per-observation study exports use their separate service route.</td></tr>
+</tbody></table></div>
+<h2 id="uwbworkspacepy">uwb/workspace.py</h2>
+<div class="table-wrap"><table><tbody>
+<tr><th>Function / exact signature</th><th>Purpose</th></tr>
+<tr><td><code>split</code> — <code>split(engine, config, options)</code></td><td>Separate native config/options into a version-1 workspace draft; move assumed sigma into assumptions and numerical settings into numerical.</td></tr>
+<tr><td><code>normalize</code> — <code>normalize(draft)</code></td><td>Validate a version-1 workspace draft and return (normalized draft, native config, native options); no generation or fit.</td></tr>
+<tr><td><code>study_payload</code> — <code>study_payload(draft, config, options)</code></td><td>Translate a normalized workspace study into validated native study settings and its submission route.</td></tr>
+<tr><td><code>capabilities</code> — <code>capabilities()</code></td><td>Return six engine defaults, supported features, native schemas, study factors/default variants and application limits.</td></tr>
+<tr><td><code>register_workspace</code> — <code>register_workspace(app, directory, executor, jobs, lock, library)</code></td><td>Register workspace validation/configuration/export/submission routes using the shared history, worker and Library index.</td></tr>
+<tr><td><code>register_workspace.body_object</code> — <code>register_workspace.body_object()</code></td><td>Internal callback or route handler: body object. See its enclosing function and the HTTP route table for request/return context.</td></tr>
+<tr><td><code>register_workspace.source_run</code> — <code>register_workspace.source_run(key)</code></td><td>Internal callback or route handler: source run. See its enclosing function and the HTTP route table for request/return context.</td></tr>
+<tr><td><code>register_workspace.resolve</code> — <code>register_workspace.resolve(draft)</code></td><td>Internal callback or route handler: resolve. See its enclosing function and the HTTP route table for request/return context.</td></tr>
+<tr><td><code>register_workspace.get_capabilities</code> — <code>register_workspace.get_capabilities()</code></td><td>Internal callback or route handler: get capabilities. See its enclosing function and the HTTP route table for request/return context.</td></tr>
+<tr><td><code>register_workspace.workspace_csv</code> — <code>register_workspace.workspace_csv()</code></td><td>Internal callback or route handler: workspace csv. See its enclosing function and the HTTP route table for request/return context.</td></tr>
+<tr><td><code>register_workspace.workspace_validate</code> — <code>register_workspace.workspace_validate()</code></td><td>Internal callback or route handler: workspace validate. See its enclosing function and the HTTP route table for request/return context.</td></tr>
+<tr><td><code>register_workspace.configuration_from_source</code> — <code>register_workspace.configuration_from_source()</code></td><td>Internal callback or route handler: configuration from source. See its enclosing function and the HTTP route table for request/return context.</td></tr>
+<tr><td><code>register_workspace.execute</code> — <code>register_workspace.execute(identifier, normalized, experiment, options)</code></td><td>Internal callback or route handler: execute. See its enclosing function and the HTTP route table for request/return context.</td></tr>
+<tr><td><code>register_workspace.workspace_submit</code> — <code>register_workspace.workspace_submit()</code></td><td>Internal callback or route handler: workspace submit. See its enclosing function and the HTTP route table for request/return context.</td></tr>
+<tr><td><code>register_workspace.workspace_submit_study</code> — <code>register_workspace.workspace_submit_study()</code></td><td>Internal callback or route handler: workspace submit study. See its enclosing function and the HTTP route table for request/return context.</td></tr>
+</tbody></table></div>
+<h2 id="http-routes">HTTP routes</h2>
+<p>GET routes read metadata/native sources, export records, or poll jobs. POST route purpose follows the linked handler; run/sweep/study submissions perform explicit new computation, while validate, import, comparison and uncertainty routes use retained/configured data as described in the guide. Errors normally return JSON error text and HTTP 400; unknown IDs/keys return 404; background failures remain visible in saved records and job status. Consult handlers for exact payloads.</p>
+<p>The current shared entry points are GET <code>/api/workspace/capabilities</code>, POST <code>/api/workspace/validate</code>, <code>/api/workspace/configuration</code>, <code>/api/workspace/runs</code>, <code>/api/workspace/studies</code>, <code>/api/workspace/export/csv</code>, GET <code>/api/jobs/&lt;identifier&gt;</code> and the Library routes. Run/study submissions return a job ID (HTTP 202); poll jobs until completion/failure. Validate returns normalized configuration/native options, and native study settings when applicable. The <a href="workspace.html">workspace API document</a> describes payload semantics.</p>
+<div class="table-wrap"><table><tbody>
+<tr><th>Method</th><th>Route expression</th><th>Handler</th></tr>
+<tr><td>GET</td><td><code>&#x27;/&#x27;</code></td><td><code>create_app.index</code></td></tr>
+<tr><td>GET</td><td><code>&#x27;/vendor/plotly.min.js&#x27;</code></td><td><code>create_app.plotly_bundle</code></td></tr>
+<tr><td>GET</td><td><code>&#x27;/api/scenarios&#x27;</code></td><td><code>create_app.scenarios</code></td></tr>
+<tr><td>POST</td><td><code>&#x27;/api/sweeps&#x27;</code></td><td><code>create_app.submit_sweep</code></td></tr>
+<tr><td>POST</td><td><code>&#x27;/api/m3/runs&#x27;</code></td><td><code>create_app.submit_m3</code></td></tr>
+<tr><td>POST</td><td><code>&#x27;/api/m3/sweeps&#x27;</code></td><td><code>create_app.submit_m3_sweep</code></td></tr>
+<tr><td>GET</td><td><code>&#x27;/api/m3/sweeps&#x27;</code></td><td><code>create_app.list_m3_sweeps</code></td></tr>
+<tr><td>GET</td><td><code>&#x27;/api/m3/sweeps/&lt;identifier&gt;&#x27;</code></td><td><code>create_app.reopen_m3_sweep</code></td></tr>
+<tr><td>GET</td><td><code>&#x27;/api/m3/sweeps/&lt;identifier&gt;/csv&#x27;</code></td><td><code>create_app.m3_csv</code></td></tr>
+<tr><td>POST</td><td><code>&#x27;/api/m3/import&#x27;</code></td><td><code>create_app.import_m3</code></td></tr>
+<tr><td>POST</td><td><code>&#x27;/api/comparisons&#x27;</code></td><td><code>create_app.compare_saved</code></td></tr>
+<tr><td>GET</td><td><code>&#x27;/api/sweeps&#x27;</code></td><td><code>create_app.list_artifacts</code></td></tr>
+<tr><td>GET</td><td><code>&#x27;/api/comparisons&#x27;</code></td><td><code>create_app.list_artifacts</code></td></tr>
+<tr><td>GET</td><td><code>&#x27;/api/sweeps/&lt;identifier&gt;&#x27;</code></td><td><code>create_app.reopen_artifact</code></td></tr>
+<tr><td>GET</td><td><code>&#x27;/api/comparisons/&lt;identifier&gt;&#x27;</code></td><td><code>create_app.reopen_artifact</code></td></tr>
+<tr><td>POST</td><td><code>&#x27;/api/artifacts/import&#x27;</code></td><td><code>create_app.import_artifact</code></td></tr>
+<tr><td>POST</td><td><code>&#x27;/api/runs&#x27;</code></td><td><code>create_app.submit</code></td></tr>
+<tr><td>GET</td><td><code>&#x27;/api/jobs/&lt;identifier&gt;&#x27;</code></td><td><code>create_app.job</code></td></tr>
+<tr><td>GET</td><td><code>&#x27;/api/runs&#x27;</code></td><td><code>create_app.list_runs</code></td></tr>
+<tr><td>GET</td><td><code>&#x27;/api/runs/&lt;identifier&gt;&#x27;</code></td><td><code>create_app.reopen</code></td></tr>
+<tr><td>POST</td><td><code>&#x27;/api/import&#x27;</code></td><td><code>create_app.import_run</code></td></tr>
+<tr><td>POST</td><td><code>&#x27;/api/library/compare&#x27;</code></td><td><code>create_app.compare_library_sources</code></td></tr>
+<tr><td>GET</td><td><code>&#x27;/api/library&#x27;</code></td><td><code>register_library.library_page</code></td></tr>
+<tr><td>GET</td><td><code>&#x27;/api/library/status&#x27;</code></td><td><code>register_library.library_status</code></td></tr>
+<tr><td>POST</td><td><code>&#x27;/api/library/rebuild&#x27;</code></td><td><code>register_library.rebuild_library</code></td></tr>
+<tr><td>GET</td><td><code>&#x27;/api/library/&lt;key&gt;&#x27;</code></td><td><code>register_library.library_preview</code></td></tr>
+<tr><td>POST</td><td><code>&#x27;/api/m4/runs&#x27;</code></td><td><code>register_m4_routes.submit_m4</code></td></tr>
+<tr><td>POST</td><td><code>&#x27;/api/m4/sweeps&#x27;</code></td><td><code>register_m4_routes.submit_m4_sweep</code></td></tr>
+<tr><td>GET</td><td><code>&#x27;/api/m4/sweeps&#x27;</code></td><td><code>register_m4_routes.list_m4_sweeps</code></td></tr>
+<tr><td>GET</td><td><code>&#x27;/api/m4/sweeps/&lt;identifier&gt;&#x27;</code></td><td><code>register_m4_routes.reopen_m4_sweep</code></td></tr>
+<tr><td>GET</td><td><code>&#x27;/api/m4/sweeps/&lt;identifier&gt;/csv&#x27;</code></td><td><code>register_m4_routes.export_m4_csv</code></td></tr>
+<tr><td>POST</td><td><code>&#x27;/api/m4/import&#x27;</code></td><td><code>register_m4_routes.import_m4</code></td></tr>
+<tr><td>POST</td><td><code>&#x27;/api/m5/runs&#x27;</code></td><td><code>register_m5_routes.submit_m5</code></td></tr>
+<tr><td>POST</td><td><code>&#x27;/api/m5/sweeps&#x27;</code></td><td><code>register_m5_routes.submit_m5_sweep</code></td></tr>
+<tr><td>GET</td><td><code>&#x27;/api/m5/sweeps&#x27;</code></td><td><code>register_m5_routes.list_m5_sweeps</code></td></tr>
+<tr><td>GET</td><td><code>&#x27;/api/m5/sweeps/&lt;identifier&gt;&#x27;</code></td><td><code>register_m5_routes.reopen_m5_sweep</code></td></tr>
+<tr><td>GET</td><td><code>&#x27;/api/m5/sweeps/&lt;identifier&gt;/csv&#x27;</code></td><td><code>register_m5_routes.export_m5_csv</code></td></tr>
+<tr><td>POST</td><td><code>&#x27;/api/m5/import&#x27;</code></td><td><code>register_m5_routes.import_m5</code></td></tr>
+<tr><td>POST</td><td><code>&#x27;/api/m6/runs&#x27;</code></td><td><code>register_m6_routes.submit_m6</code></td></tr>
+<tr><td>POST</td><td><code>&#x27;/api/m6/sweeps&#x27;</code></td><td><code>register_m6_routes.submit_m6_sweep</code></td></tr>
+<tr><td>GET</td><td><code>&#x27;/api/m6/sweeps&#x27;</code></td><td><code>register_m6_routes.list_m6_sweeps</code></td></tr>
+<tr><td>GET</td><td><code>&#x27;/api/m6/sweeps/&lt;identifier&gt;&#x27;</code></td><td><code>register_m6_routes.reopen_m6_sweep</code></td></tr>
+<tr><td>GET</td><td><code>&#x27;/api/m6/sweeps/&lt;identifier&gt;/csv&#x27;</code></td><td><code>register_m6_routes.export_m6_csv</code></td></tr>
+<tr><td>POST</td><td><code>&#x27;/api/m6/import&#x27;</code></td><td><code>register_m6_routes.import_m6</code></td></tr>
+<tr><td>POST</td><td><code>&#x27;/api/m7/runs&#x27;</code></td><td><code>register_m7.submit_m7</code></td></tr>
+<tr><td>GET</td><td><code>&#x27;/api/m7/runs/&lt;identifier&gt;&#x27;</code></td><td><code>register_m7.reopen_m7</code></td></tr>
+<tr><td>GET</td><td><code>&#x27;/api/m7/runs/&lt;identifier&gt;/uncertainty&#x27;</code></td><td><code>register_m7.uncertainty_m7</code></td></tr>
+<tr><td>GET</td><td><code>&#x27;/api/m7/runs/&lt;identifier&gt;/json&#x27;</code></td><td><code>register_m7.json_m7</code></td></tr>
+<tr><td>GET</td><td><code>&#x27;/api/m7/runs/&lt;identifier&gt;/csv&#x27;</code></td><td><code>register_m7.csv_m7</code></td></tr>
+<tr><td>POST</td><td><code>&#x27;/api/m7/import&#x27;</code></td><td><code>register_m7.import_m7</code></td></tr>
+<tr><td>GET</td><td><code>&#x27;/api/workspace/capabilities&#x27;</code></td><td><code>register_workspace.get_capabilities</code></td></tr>
+<tr><td>POST</td><td><code>&#x27;/api/workspace/export/csv&#x27;</code></td><td><code>register_workspace.workspace_csv</code></td></tr>
+<tr><td>POST</td><td><code>&#x27;/api/workspace/validate&#x27;</code></td><td><code>register_workspace.workspace_validate</code></td></tr>
+<tr><td>POST</td><td><code>&#x27;/api/workspace/configuration&#x27;</code></td><td><code>register_workspace.configuration_from_source</code></td></tr>
+<tr><td>POST</td><td><code>&#x27;/api/workspace/runs&#x27;</code></td><td><code>register_workspace.workspace_submit</code></td></tr>
+<tr><td>POST</td><td><code>&#x27;/api/workspace/studies&#x27;</code></td><td><code>register_workspace.workspace_submit_study</code></td></tr>
+</tbody></table></div>
+<h2 id="browser-modules">Browser modules</h2>
+<div class="table-wrap"><table><tbody>
+<tr><th>Module</th><th>Responsibilities / entry points</th></tr>
+<tr><td><code>web/workspace.js</code></td><td>Shared draft rendering/validation, submit/poll lifecycle, source import/adoption, result layout/tabs, comparison inspection and drawer. Public <code>RangeLabWorkspace</code>: state, onRun, openRun, openArtifact, useConfiguration, tab, importSource, onComparison, download, comparisonTarget.</td></tr>
+<tr><td><code>web/app.js</code></td><td>Shared API client, selected run/start, base scene layers/camera, baseline diagnostics and exports.</td></tr>
+<tr><td><code>web/library.js</code></td><td>Metadata search/filter/page/preview, authoritative source opening, A/B selection, index refresh/rebuild and navigation state.</td></tr>
+<tr><td><code>web/m2.js</code>–<code>web/m7.js</code></td><td>Native retained-result render adapters, study/comparison tables/charts/exports, ping playback and survey/uncertainty inspection. Their historical forms are detached by the shared workspace.</td></tr>
+<tr><td><code>web/help.js</code></td><td><code>RangeLabHelp.description(node,catalog)</code> resolves exact path, control ID, survey or layer explanations; <code>attach(root,catalog)</code> idempotently adds title and aria-describedby without replacing existing descriptions. Init decorates dynamically added fields and shows/dismisses hover/focus help.</td></tr>
+<tr><td><code>web/input-help.json</code></td><td>Shared GUI explanations used to generate the input reference; exact full paths distinguish similarly named fields.</td></tr>
+</tbody></table></div>
+<p>Scripts under <code>scripts/</code> are development, validation, benchmarking, audit or packaging tools; tests under <code>tests/</code> verify behavior. They are not additional GUI features. Read their module help before running evidence-generation scripts.</p></main></body></html>

@@ -127,13 +127,13 @@ def main():
         report['visual']='evidence/m7/visual/ui_validation.json'
         integration=read('evidence/m7/integration_review.json');assert integration['status']=='passed_after_repairs'
         report['integration_review']='evidence/m7/integration_review.json'
-        for path in ('docs/M7.md','docs/M7_ACCEPTANCE.md','docs/M7_NUMERICS.md','README.md'):
+        for path in ('docs/archive/M7.md','docs/archive/M7_ACCEPTANCE.md','docs/science/SURVEY_UNCERTAINTY.md','README.md'):
             assert (ROOT/path).is_file() and (ROOT/path).stat().st_size>500
-        roadmap=(ROOT/'ROADMAP.md').read_text(encoding='utf-8')
+        roadmap=(ROOT/'docs/archive/ROADMAP.md').read_text(encoding='utf-8')
         assert len(re.findall(r'^- \[x\] \*\*M7\.[1-5]',roadmap,re.M))==5
-        assert 'Status: PASSED' in (ROOT/'docs/M7_ACCEPTANCE.md').read_text(encoding='utf-8')
+        assert 'Status: PASSED' in (ROOT/'docs/archive/M7_ACCEPTANCE.md').read_text(encoding='utf-8')
         assert 'app.py --port 5057' in (ROOT/'README.md').read_text(encoding='utf-8')
-        report['delivery_documents']=['docs/M7.md','docs/M7_ACCEPTANCE.md','docs/M7_NUMERICS.md','README.md','ROADMAP.md']
+        report['delivery_documents']=['docs/archive/M7.md','docs/archive/M7_ACCEPTANCE.md','docs/science/SURVEY_UNCERTAINTY.md','README.md','docs/archive/ROADMAP.md']
         for item,scope in {
             'M7.1':'Partial masks, fixed elimination, survey covariance, world frames and unsupported constraints',
             'M7.2':'Conditional uncertainty with independently reconstructed Jacobian/covariance, information sources and finite-sample trial denominators',

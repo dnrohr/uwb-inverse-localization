@@ -12,6 +12,7 @@ from datetime import datetime, timezone
 import hashlib
 import json
 import os
+import re
 from pathlib import Path
 import sqlite3
 from threading import RLock
@@ -413,7 +414,13 @@ class LibraryIndex:
                         else:
                             clauses.append(field + '=?'); values.append(value)
                 if params.get('q'):
-                    clauses.append('instr(search, ?) > 0'); values.append(str(params['q']).casefold()[:500])
+                    query = str(params['q']).casefold()[:500]
+                    aliases = {'baseline': 'm0', 'planar': 'm1', 'comparison': 'm2', 'timing': 'm3',
+                               'geometry': 'm4', 'solver': 'm5', 'robust': 'm6', 'survey': 'm7'}
+                    historical = re.sub(r'\b(baseline|planar|comparison|timing|geometry|solver|robust|survey)\b',
+                                        lambda match: aliases[match.group()], query)
+                    clauses.append('(instr(search, ?) > 0 OR instr(search, ?) > 0)')
+                    values.extend([query, historical])
                 where = ' AND '.join(clauses) or '1'
                 filtered = db.execute('SELECT COUNT(*) FROM items WHERE ' + where, values).fetchone()[0]
                 pages = max(1, (filtered + page_size - 1) // page_size)

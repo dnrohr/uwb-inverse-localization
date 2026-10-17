@@ -1,0 +1,307 @@
+{
+  "recorded_utc": "2026-10-16T16:08:38.991595+00:00",
+  "status": "passed",
+  "errors": [],
+  "preservation": {
+    "checked": 1966,
+    "exact_unchanged": 1965,
+    "changed": [
+      "runs/.library.sqlite3"
+    ],
+    "interpretation": "Only the rebuildable metadata cache changed; original scientific JSON, runs, starts and prior evidence bytes are unchanged."
+  },
+  "scientific_implementations_unchanged": [
+    "uwb/estimation.py",
+    "uwb/experiments.py",
+    "uwb/m3.py",
+    "uwb/m4.py",
+    "uwb/m5.py",
+    "uwb/m6.py",
+    "uwb/m7.py",
+    "uwb/sweeps.py",
+    "uwb/m3_sweeps.py",
+    "uwb/m4_sweeps.py",
+    "uwb/m5_sweeps.py",
+    "uwb/m6_sweeps.py"
+  ],
+  "tests": {
+    "baseline_tests.txt": {
+      "count": 208,
+      "seconds": 198.743
+    },
+    "final_tests.txt": {
+      "count": 218,
+      "seconds": 172.327
+    },
+    "adapter_tests_final.txt": {
+      "count": 10,
+      "seconds": 14.659
+    },
+    "library_tests_final.txt": {
+      "count": 9,
+      "seconds": 114.085
+    }
+  },
+  "exports": {
+    "strict_json_valid": true,
+    "exact_record_roundtrip": true,
+    "csv_observations": 128,
+    "csv_attempts": 1,
+    "source_id": "f82a19674cb14c33977eb3d9590d002b"
+  },
+  "performance": {
+    "backend": [
+      {
+        "phase": "cold",
+        "elapsed_ms": 121894.57199999015,
+        "bytes": 36373,
+        "rows": 25,
+        "filtered": 10000
+      },
+      {
+        "phase": "warm",
+        "elapsed_ms": 135.7906999764964,
+        "bytes": 36361,
+        "rows": 25,
+        "filtered": 10000
+      },
+      {
+        "phase": "warm",
+        "elapsed_ms": 110.29399998369627,
+        "bytes": 36361,
+        "rows": 25,
+        "filtered": 10000
+      },
+      {
+        "phase": "warm",
+        "elapsed_ms": 112.9025999980513,
+        "bytes": 36360,
+        "rows": 25,
+        "filtered": 10000
+      },
+      {
+        "phase": "warm",
+        "elapsed_ms": 140.3578000026755,
+        "bytes": 36361,
+        "rows": 25,
+        "filtered": 10000
+      },
+      {
+        "phase": "warm",
+        "elapsed_ms": 126.93500000750646,
+        "bytes": 36361,
+        "rows": 25,
+        "filtered": 10000
+      }
+    ],
+    "browser": {
+      "counts": "10000 matching groups \u00c2\u00b7 10000 groups \u00c2\u00b7 10000 saved records",
+      "libraryDom": 242,
+      "pageHeight": 720,
+      "pageWidth": 1280,
+      "queryRenderMs": 89.4,
+      "rows": 25,
+      "viewport": [
+        1280,
+        720
+      ],
+      "warmRepeatsMs": [
+        114.9,
+        84.1,
+        85.4
+      ],
+      "strictOpenMessage": "Open failed: robust experiment requires schema6.0"
+    }
+  },
+  "browser": {
+    "status": "passed",
+    "checks": {
+      "openPreservesDraft": true,
+      "draftDuration": 24,
+      "startSelectors": 0,
+      "reuseSource": {
+        "key": "run:18aa74b3fdbb4a2d94ff7cf48eee2dfc",
+        "kind": "saved"
+      },
+      "liveReuseResult": "informative \u00b7 success \u00b7 f82a1967",
+      "comparisonCanvas": "198.90",
+      "benchmarkRows": 32,
+      "studyLayout": {
+        "attemptRows": 32,
+        "pageWidth": 1345,
+        "tableViewport": 928.7999877929688,
+        "viewport": [
+          1360,
+          900
+        ]
+      },
+      "failedOutcome": "informative \u00b7 failed \u00b7 a161054a",
+      "failedAttempt": "Active run physical starts \u00b7 a161054a\nStart\tOutcome\tTermination / failure\n0\tfailed\tValueError: Physical start violates bounds",
+      "historicalViews": [
+        {
+          "expected": "1.0",
+          "rendered": "1.0"
+        },
+        {
+          "expected": "3.0",
+          "rendered": "3.0"
+        },
+        {
+          "expected": "4.0",
+          "rendered": "4.0"
+        },
+        {
+          "expected": "5.0",
+          "rendered": "5.0"
+        }
+      ],
+      "draftEngineAfterHistoricalViews": "survey",
+      "mobileScene": {
+        "headerBottom": 100.8000030517578,
+        "headingTop": 114.8000030517578,
+        "pageWidth": 375,
+        "viewport": [
+          390,
+          844
+        ]
+      },
+      "drawerFocusTrapped": true,
+      "drawerEscapes": true,
+      "mobileInformation": {
+        "canonicalDisclosureHidden": true,
+        "pageWidth": 375,
+        "viewport": [
+          390,
+          844
+        ]
+      },
+      "finalNavigation": {
+        "draft": true,
+        "camera": true,
+        "sameSceneGeneration": true,
+        "pingBefore": "2",
+        "pingReturned": "2",
+        "tray": true,
+        "notice": "Playback paused at ping 3 while browsing Library."
+      },
+      "liveStudyStatus": "Study saved \u00b7 complete",
+      "liveStudyRows": 2,
+      "historicalStudies": [
+        {
+          "schema": "3.0",
+          "expected": 16,
+          "rows": 16,
+          "rendered": "3.0"
+        },
+        {
+          "schema": "4.0",
+          "expected": 16,
+          "rows": 16,
+          "rendered": "4.0"
+        },
+        {
+          "schema": "5.0",
+          "expected": 32,
+          "rows": 32,
+          "rendered": "5.0"
+        }
+      ],
+      "liveStudyAccounting": "complete \u00b7 2 recorded runs \u00b7 2 retained attempts \u00b7 1 scheduled data cells \u00b7 0 unattempted runs \u00b7 0 unattempted data cells. Every outcome remains in the table.",
+      "liveStudyFinalRows": 2,
+      "liveStudyAutomaticSource": "6.0",
+      "invalidSurvey": {
+        "unchangedDraft": true,
+        "message": "Survey requires explicit frame='world', units='m'"
+      },
+      "desktopFinal": {
+        "groups": 6,
+        "legacyForms": 0,
+        "pageHeight": 1367,
+        "pageWidth": 1345,
+        "viewport": [
+          1360,
+          900
+        ]
+      },
+      "mobileFinal": {
+        "headerBottom": 100.8000030517578,
+        "headingTop": 114.8000030517578,
+        "pageWidth": 375,
+        "viewport": [
+          390,
+          844
+        ]
+      },
+      "compactFinal": {
+        "pageHeight": 1367,
+        "pageWidth": 1265,
+        "viewport": [
+          1280,
+          720
+        ],
+        "visibleMilestoneLabels": []
+      },
+      "errors": []
+    },
+    "errors": [],
+    "screenshots": [
+      "desktop_final.png",
+      "mobile_final.png",
+      "mobile_survey.png",
+      "mobile_information.png",
+      "comparison.png",
+      "study_final.png",
+      "scale_library.png"
+    ],
+    "limitations": [
+      "Recorded viewport/workflow coverage; not every possible numerical configuration.",
+      "Advanced covariance, vector and variant editing retains JSON controls and contained horizontal scrolling."
+    ],
+    "repaired_during_validation": [
+      "Draft number changes now commit on input and blur",
+      "Text-label observer handles detached nodes",
+      "Native JSON Unicode metadata preserved through download and strict import",
+      "Study tables constrained to the inspection width",
+      "Survey world views omit legacy canonical-gauge disclosure",
+      "Native study context remains intact when selecting the active source"
+    ]
+  },
+  "source_sha256": {
+    "app.py": "f609e33f765806835271cc00d8cd62bbf73b00a64dcabfc9d93c497bc9904afd",
+    "uwb/workspace.py": "d4bbd913f9a006048e1f50236c49449c3faa203b7b336ba7db9db8019cccf80f",
+    "uwb/library.py": "848ba54e23eaf236f3945403cc4e2d51f31690a4c57788f110609a42e4f22826",
+    "web/workspace.js": "02fff28b32a58d00884d42e09620f4cfce86842c29a2a5895ab667a0558fb103",
+    "web/workspace.css": "ac333727e7280db93abf81ba37026004ddbc62ae772835eefd9275ac89c22aa6",
+    "web/index.html": "17e3041fe0b8ef5855c5e7a02e1d85afbe62c56b8e42a73f327644e5ada65e11",
+    "web/app.js": "25f49ce036bcd14a69642e7d56410a55c98a45571ea798a31a52f56b54cf14b1",
+    "web/m2.js": "8a56f82a0196f448b70eb0920d8235b3f35e6960966242879495132cb1f7c8f2",
+    "web/m3.js": "db4dae730ee334c17b42b54754e4a02a2f87f4acce6e022893952d6b4833c018",
+    "web/m4.js": "882b34c8220cf9a0780f454c4404ad08c5e7b33135d54a94dadecb8ce3a6cd2f",
+    "web/m5.js": "19a81f6bf9de4889f0d4811fab3e7f4ff7ca1ae9815eb5f154a103668e0d6334",
+    "web/m6.js": "22f28acdabbe74423f2fadc24cc74893aa7650e0b886a7e1144d95d463677f88",
+    "web/m7.js": "3402fb25adec0a5e15686cc08f1ef5a12eca37ed285ab5d58316c9395fb5b934",
+    "web/library.js": "8c76e2c80eea728209266f91e87119b545f2f2c1a8cb5bcd33351451c8b4b7a0",
+    "tests/test_workspace.py": "875394afb00ed0fb1e3696fe5271a5abae1134c1c3ff0408f9e1c256cb070bf7"
+  },
+  "requirements": {
+    "shared_draft_and_model_capabilities": "passed",
+    "single_execution_flow": "passed",
+    "shared_scene_and_diagnostics": "passed",
+    "native_historical_sources_and_exports": "passed",
+    "paired_studies_and_all_outcomes": "passed",
+    "scientific_engine_parity": "passed",
+    "offline_strict_workflows": "passed",
+    "responsive_keyboard_state_preservation": "passed",
+    "bounded_library_performance": "passed",
+    "original_data_and_evidence_preservation": "passed"
+  },
+  "limitations": [
+    "Cold metadata indexing remains expensive; warm response/render targets do not imply cold usability below one second.",
+    "Saved observations require compatible native schema and unchanged physical configuration and saved sigmas; no silent schema conversion.",
+    "Timing studies use the original fixed timing-model pair; survey studies have no native engine and reject explicitly.",
+    "Conditional covariance retains its original Gaussian/local/full-rank assumptions and withholding policies; it is not a global uniqueness claim.",
+    "Existing recovery boundaries remain: no internal optimizer checkpoint or permanent-write durability guarantee.",
+    "Native numerical controls and covariance/variant arrays retain advanced JSON editing; narrow tables use contained horizontal scrolling.",
+    "Browser validation covers the recorded workflows and viewports, not every possible scientific configuration."
+  ]
+}

@@ -1,0 +1,7 @@
+{
+  "strict_json_valid": true,
+  "exact_record_roundtrip": true,
+  "csv_observations": 128,
+  "csv_attempts": 1,
+  "source_id": "f82a19674cb14c33977eb3d9590d002b"
+}

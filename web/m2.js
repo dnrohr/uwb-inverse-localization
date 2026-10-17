@@ -159,7 +159,9 @@
   function updateRunSelectors() { /* A/B slots are owned by the Library. */ }
   async function refreshRunList() { window.RangeLabLibrary?.invalidate(); }
   async function refreshComparisons() { window.RangeLabLibrary?.invalidate(); }
+  function comparisonTarget(){return window.RangeLabWorkspace?.comparisonTarget() || $('#comparisonScene');}
   function drawComparison(artifact) {
+    window.RangeLabWorkspace?.onComparison(artifact);
     const views = rows(artifact.views);
     if (views.length !== 2) throw new Error('Saved comparison does not contain two fitted views.');
     const a = views.map((view, i) => {
@@ -173,17 +175,17 @@
       traces.push({ type: 'scatter3d', mode: 'lines', name: `${run.label} · ground truth`, x: run.truth.map(p => p[0]), y: run.truth.map(p => p[1]), z: run.truth.map(p => p[2]), line: { color: palette[index], width: 3 }, hovertemplate: `${esc(run.label)} truth<br>(%{x:.3f}, %{y:.3f}, %{z:.3f}) m<extra></extra>` });
       const interpolated = run.interpolated.length ? run.interpolated : run.estimate;
       traces.push({ type: 'scatter3d', mode: 'lines', name: `${run.label} · fit path`, x: interpolated.map(p => p?.[0] ?? null), y: interpolated.map(p => p?.[1] ?? null), z: interpolated.map(p => p?.[2] ?? null), line: { color: palette[index], width: 2, dash: 'dash' }, hovertemplate: `${esc(run.label)} fit path<br>(%{x:.3f}, %{y:.3f}, %{z:.3f}) m<extra></extra>` });
-      traces.push({ type: 'scatter3d', mode: 'markers', name: `${run.label} · ${run.m3 ? "display samples" : "fitted epochs"}`, x: run.estimate.map(p => p[0]), y: run.estimate.map(p => p[1]), z: run.estimate.map(p => p[2]), marker: { size: 4, color: run.errors, cmin: 0, cmax: maxError, colorscale: 'Viridis', showscale: index === 1, colorbar: { title: { text: 'Position error (m)' } } }, customdata: run.errors.map((value, i) => [value, run.times[i]]), hovertemplate: `${esc(run.label)} ${run.m3 ? "interpolated display sample" : "fitted epoch"}<br>t=%{customdata[1]:.3f} s<br>(%{x:.3f}, %{y:.3f}, %{z:.3f}) m<br>error=%{customdata[0]:.4f} m<extra></extra>` });
+      traces.push({ type: 'scatter3d', mode: 'markers', name: `${run.label} · ${run.m3 ? "display samples" : "fitted epochs"}`, x: run.estimate.map(p => p[0]), y: run.estimate.map(p => p[1]), z: run.estimate.map(p => p[2]), marker: { size: 4, color: run.errors, cmin: 0, cmax: maxError, colorscale: 'Viridis', showscale: index === 1, colorbar: { len:.75, y:.45, title: { text: 'Position error (m)' } } }, customdata: run.errors.map((value, i) => [value, run.times[i]]), hovertemplate: `${esc(run.label)} ${run.m3 ? "interpolated display sample" : "fitted epoch"}<br>t=%{customdata[1]:.3f} s<br>(%{x:.3f}, %{y:.3f}, %{z:.3f}) m<br>error=%{customdata[0]:.4f} m<extra></extra>` });
       const truthBeacons = pointList(run.truthGeometry?.beacons), fitBeacons = pointList(run.fitGeometry?.beacons);
       if (truthBeacons.length) traces.push({ type: 'scatter3d', mode: 'markers+text', name: `${run.label} · truth beacons`, x: truthBeacons.map(p => p[0]), y: truthBeacons.map(p => p[1]), z: truthBeacons.map(p => p[2]), text: truthBeacons.map((_, i) => `B${i}`), textposition: 'top center', marker: { size: 6, color: palette[index], symbol: 'circle' }, hovertemplate: `${esc(run.label)} truth %{text}<br>(%{x:.3f}, %{y:.3f}, %{z:.3f}) m<extra></extra>` });
       if (fitBeacons.length) traces.push({ type: 'scatter3d', mode: 'markers+text', name: `${run.label} · fit beacons`, x: fitBeacons.map(p => p[0]), y: fitBeacons.map(p => p[1]), z: fitBeacons.map(p => p[2]), text: fitBeacons.map((_, i) => `B${i}`), textposition: 'bottom center', marker: { size: 5, color: palette[index], symbol: 'diamond', line: { color: '#fff', width: 1 } }, hovertemplate: `${esc(run.label)} fit %{text}<br>(%{x:.3f}, %{y:.3f}, %{z:.3f}) m<extra></extra>` });
     });
     const bounds = artifact.shared_bounds_m || {};
     const range = axis => bounds[axis] || [-1, 1];
-    clearChartPlaceholder($('#comparisonScene')); const sceneStarted = performance.now();
-    const comparisonLayout = { margin: { l: 2, r: 2, t: 5, b: 2 }, paper_bgcolor: '#ffffff', showlegend: true, font: { color: '#44595b', size: 10 }, legend: { orientation: 'h', y: 1.08, font: { size: 10 } }, scene: { bgcolor: '#ffffff', xaxis: { title: { text: 'X (m)' }, range: range('x'), autorange: false }, yaxis: { title: { text: 'Y (m)' }, range: range('y'), autorange: false }, zaxis: { title: { text: 'Z (m)' }, range: range('z'), autorange: false }, aspectmode: 'data', ...(state.comparisonCamera ? { camera: state.comparisonCamera } : {}) }, uirevision: 'm2-comparison-shared-camera' };
-    Plotly.react($('#comparisonScene'), traces, comparisonLayout, { responsive: true, displaylogo: false, scrollZoom: true, modeBarButtonsToRemove: ['toImage', 'sendDataToCloud', 'sendChartToCloud'] }).then(() => {
-      const scene = $('#comparisonScene'); scene.dataset.renderMs = (performance.now() - sceneStarted).toFixed(2);
+    clearChartPlaceholder(comparisonTarget()); const sceneStarted = performance.now();
+    const comparisonLayout = { margin: { l: 2, r: 2, t: 5, b: 2 }, paper_bgcolor: '#ffffff', showlegend: true, font: { color: '#44595b', size: 10 }, legend: { orientation: 'h', maxheight:.22, y: 1, yanchor:'top', font: { size: 10 } }, scene: { bgcolor: '#ffffff', xaxis: { title: { text: 'X (m)' }, range: range('x'), autorange: false }, yaxis: { title: { text: 'Y (m)' }, range: range('y'), autorange: false }, zaxis: { title: { text: 'Z (m)' }, range: range('z'), autorange: false }, aspectmode: 'data', ...(state.comparisonCamera ? { camera: state.comparisonCamera } : {}) }, uirevision: 'm2-comparison-shared-camera' };
+    Plotly.react(comparisonTarget(), traces, comparisonLayout, { responsive: true, displaylogo: false, scrollZoom: true, modeBarButtonsToRemove: ['toImage', 'sendDataToCloud', 'sendChartToCloud'] }).then(() => {
+      const scene = comparisonTarget(); scene.dataset.renderMs = (performance.now() - sceneStarted).toFixed(2);
       if (!state.comparisonCameraHandler && typeof scene.on === 'function') {
         state.comparisonCameraHandler = () => { const camera = scene._fullLayout?.scene?.camera; if (camera) { state.comparisonCamera = JSON.parse(JSON.stringify(camera)); scene.dataset.camera = JSON.stringify(camera); } };
         scene.on('plotly_relayout', state.comparisonCameraHandler);
@@ -225,7 +227,7 @@
       drawComparison(artifact);
     } catch (error) { toast(`Could not open comparison: ${error.message}`); }
   }
-  function download(name, mime, contents) { const url = URL.createObjectURL(new Blob([contents], { type: mime })); const link = document.createElement('a'); link.href = url; link.download = name; link.click(); setTimeout(() => URL.revokeObjectURL(url), 1000); }
+  function download(name, mime, contents) { if(window.RangeLabWorkspace?.download)return window.RangeLabWorkspace.download(name,contents,mime); const url = URL.createObjectURL(new Blob([contents], { type: mime })); const link = document.createElement('a'); link.href = url; link.download = name; link.click(); setTimeout(() => URL.revokeObjectURL(url), 1000); }
   function exportSweepCsv() {
     if (!state.activeSweep) return;
     const records = attemptRecords(state.activeSweep);
@@ -255,12 +257,12 @@
     $('#pathWidth').addEventListener('input', syncPathControls);
     $('#sweepForm').addEventListener('submit', createSweep); $('#compareButton').addEventListener('click', compareRuns); $('#exportSweepCsv').addEventListener('click', exportSweepCsv);
     $('#savedComparisons').addEventListener('change', () => openComparison($('#savedComparisons').value));
-    $('#exportComparePng').addEventListener('click', () => { if ($('#comparisonScene').data) Plotly.downloadImage($('#comparisonScene'), { format: 'png', filename: 'uwb-run-comparison', width: 1500, height: 1000, scale: 1 }); });
+    $('#exportComparePng').addEventListener('click', () => { if (comparisonTarget().data) Plotly.downloadImage(comparisonTarget(), { format: 'png', filename: 'uwb-run-comparison', width: 1500, height: 1000, scale: 1 }); });
     $('#exportCompareChart').addEventListener('click', () => { if ($('#comparisonChart').data) Plotly.downloadImage($('#comparisonChart'), { format: 'png', filename: 'uwb-comparison-position-error', width: 1400, height: 700, scale: 1 }); });
     $('#exportSweepChart').addEventListener('click', () => { if ($('#sweepChart').data) Plotly.downloadImage($('#sweepChart'), { format: 'png', filename: 'uwb-sweep-aggregate', width: 1400, height: 700, scale: 1 }); });
     $('#exportSweepJson').addEventListener('click', () => { if (state.activeSweep) download(`sweep-${state.activeSweep.id}.json`, 'application/json', JSON.stringify(state.activeSweep, null, 2)); });
     $('#exportCompareJson').addEventListener('click', () => { if (state.activeComparison) download(`comparison-${state.activeComparison.id || 'saved'}.json`, 'application/json', JSON.stringify(state.activeComparison, null, 2)); });
-    $('#exportConfigButton').addEventListener('click', () => { const config = formConfig(), active = window.RangeLab?.state?.activeRun; const sameConfig = active?.experiment?.config && JSON.stringify(active.experiment.config) === JSON.stringify(config); download('uwb-experiment-config.json', 'application/json', JSON.stringify({ schema_version: '1.0', artifact_type: 'experiment_config', config, options: { ...selectedOptions(), max_nfev: 2000 }, path_motion: sameConfig ? active.path_motion || null : null, sampling_density_hz: Math.max(0, config.samples - 1) / config.duration_s }, null, 2)); });
+    $('#exportConfigButton').addEventListener('click', () => { if(window.RangeLabWorkspace)return; const config = formConfig(), active = window.RangeLab?.state?.activeRun; const sameConfig = active?.experiment?.config && JSON.stringify(active.experiment.config) === JSON.stringify(config); download('uwb-experiment-config.json', 'application/json', JSON.stringify({ schema_version: '1.0', artifact_type: 'experiment_config', config, options: { ...selectedOptions(), max_nfev: 2000 }, path_motion: sameConfig ? active.path_motion || null : null, sampling_density_hz: Math.max(0, config.samples - 1) / config.duration_s }, null, 2)); });
     refreshSweeps(); refreshRunList(); refreshComparisons();
   }
   window.RangeLabM2 = { openArtifact(artifact) { if(artifact.artifact_type==='comparison'){state.activeComparison=artifact;$('#compareAlignment').value=artifact.alignment || 'raw';drawComparison(artifact);if(artifact.runs?.length===2)window.RangeLabLibrary?.setComparisonRuns(artifact.runs,artifact.library_sources,artifact.id);}else renderSweep(artifact); }, openSweep: loadSweep, openComparison, compareRuns, formConfig, acceptRuns: refreshRunList, refresh() { refreshSweeps(); refreshRunList(); refreshComparisons(); } };

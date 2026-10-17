@@ -1,0 +1,40 @@
+ * Serving Flask app 'app'
+ * Debug mode: off
+WARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.
+ * Running on http://127.0.0.1:5058
+Press CTRL+C to quit
+127.0.0.1 - - [16/Oct/2026 08:57:58] "GET /api/library?q=&type=all&status=&model=&source=&sort=newest&page=1&page_size=25&view=grouped HTTP/1.1" 200 -
+127.0.0.1 - - [16/Oct/2026 08:57:58] "GET /api/library/run:18aa74b3fdbb4a2d94ff7cf48eee2dfc HTTP/1.1" 200 -
+127.0.0.1 - - [16/Oct/2026 08:57:59] "GET /api/runs/18aa74b3fdbb4a2d94ff7cf48eee2dfc HTTP/1.1" 200 -
+127.0.0.1 - - [16/Oct/2026 09:02:03] "GET / HTTP/1.1" 304 -
+127.0.0.1 - - [16/Oct/2026 09:02:03] "GET /style.css HTTP/1.1" 304 -
+127.0.0.1 - - [16/Oct/2026 09:02:03] "GET /vendor/plotly.min.js HTTP/1.1" 200 -
+127.0.0.1 - - [16/Oct/2026 09:02:03] "GET /workspace.css HTTP/1.1" 200 -
+127.0.0.1 - - [16/Oct/2026 09:02:03] "GET /app.js HTTP/1.1" 200 -
+127.0.0.1 - - [16/Oct/2026 09:02:03] "GET /m2.js HTTP/1.1" 304 -
+127.0.0.1 - - [16/Oct/2026 09:02:03] "GET /m3.js HTTP/1.1" 304 -
+127.0.0.1 - - [16/Oct/2026 09:02:03] "GET /m4.js HTTP/1.1" 304 -
+127.0.0.1 - - [16/Oct/2026 09:02:03] "GET /m5.js HTTP/1.1" 304 -
+127.0.0.1 - - [16/Oct/2026 09:02:03] "GET /m6.js HTTP/1.1" 304 -
+127.0.0.1 - - [16/Oct/2026 09:02:03] "GET /library.js HTTP/1.1" 304 -
+127.0.0.1 - - [16/Oct/2026 09:02:03] "GET /m7.js HTTP/1.1" 304 -
+127.0.0.1 - - [16/Oct/2026 09:02:04] "GET /workspace.js HTTP/1.1" 200 -
+127.0.0.1 - - [16/Oct/2026 09:02:04] "GET /api/scenarios HTTP/1.1" 200 -
+127.0.0.1 - - [16/Oct/2026 09:02:04] "GET /api/workspace/capabilities HTTP/1.1" 200 -
+127.0.0.1 - - [16/Oct/2026 09:02:04] "GET /api/library?q=&type=all&status=&model=&source=&sort=newest&page=1&page_size=25&view=grouped HTTP/1.1" 200 -
+127.0.0.1 - - [16/Oct/2026 09:02:14] "GET /api/runs/18aa74b3fdbb4a2d94ff7cf48eee2dfc HTTP/1.1" 200 -
+127.0.0.1 - - [16/Oct/2026 09:03:05] "GET / HTTP/1.1" 304 -
+127.0.0.1 - - [16/Oct/2026 09:03:05] "GET /style.css HTTP/1.1" 304 -
+127.0.0.1 - - [16/Oct/2026 09:03:05] "GET /workspace.css HTTP/1.1" 304 -
+127.0.0.1 - - [16/Oct/2026 09:03:05] "GET /vendor/plotly.min.js HTTP/1.1" 200 -
+127.0.0.1 - - [16/Oct/2026 09:03:05] "GET /app.js HTTP/1.1" 304 -
+127.0.0.1 - - [16/Oct/2026 09:03:05] "GET /m2.js HTTP/1.1" 304 -
+127.0.0.1 - - [16/Oct/2026 09:03:05] "GET /m3.js HTTP/1.1" 304 -
+127.0.0.1 - - [16/Oct/2026 09:03:05] "GET /m4.js HTTP/1.1" 304 -
+127.0.0.1 - - [16/Oct/2026 09:03:05] "GET /m5.js HTTP/1.1" 304 -
+127.0.0.1 - - [16/Oct/2026 09:03:05] "GET /m6.js HTTP/1.1" 304 -
+127.0.0.1 - - [16/Oct/2026 09:03:06] "GET /library.js HTTP/1.1" 304 -
+127.0.0.1 - - [16/Oct/2026 09:03:06] "GET /m7.js HTTP/1.1" 304 -
+127.0.0.1 - - [16/Oct/2026 09:03:06] "GET /workspace.js HTTP/1.1" 200 -
+127.0.0.1 - - [16/Oct/2026 09:03:06] "GET /api/scenarios HTTP/1.1" 200 -
+127.0.0.1 - - [16/Oct/2026 09:03:06] "GET /api/workspace/capabilities HTTP/1.1" 200 -

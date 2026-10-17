@@ -1,0 +1,33 @@
+{"fixture_count": 10000, "directory": "C:\\Users\\dnroh\\AppData\\Local\\Temp\\uwb-m7-browser-3v9gvyby", "creation_seconds": 4.754162699973676, "scope": "Metadata-only synthetic records deliberately fail strict numerical Open; not user history"}
+ * Serving Flask app 'app'
+ * Debug mode: off
+WARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.
+ * Running on http://127.0.0.1:5059
+Press CTRL+C to quit
+127.0.0.1 - - [16/Oct/2026 09:03:28] "GET /api/library?page=1&page_size=25 HTTP/1.1" 200 -
+127.0.0.1 - - [16/Oct/2026 09:03:28] "GET /api/library?page=1&page_size=25 HTTP/1.1" 200 -
+127.0.0.1 - - [16/Oct/2026 09:03:28] "GET /api/library?page=1&page_size=25 HTTP/1.1" 200 -
+127.0.0.1 - - [16/Oct/2026 09:03:28] "GET /api/library?page=1&page_size=25 HTTP/1.1" 200 -
+127.0.0.1 - - [16/Oct/2026 09:03:28] "GET /api/library?page=1&page_size=25 HTTP/1.1" 200 -
+127.0.0.1 - - [16/Oct/2026 09:03:29] "GET /api/library?page=1&page_size=25 HTTP/1.1" 200 -
+127.0.0.1 - - [16/Oct/2026 09:15:06] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [16/Oct/2026 09:15:06] "GET /style.css HTTP/1.1" 304 -
+127.0.0.1 - - [16/Oct/2026 09:15:06] "GET /vendor/plotly.min.js HTTP/1.1" 200 -
+127.0.0.1 - - [16/Oct/2026 09:15:06] "GET /workspace.css HTTP/1.1" 200 -
+127.0.0.1 - - [16/Oct/2026 09:15:06] "GET /app.js HTTP/1.1" 200 -
+127.0.0.1 - - [16/Oct/2026 09:15:06] "GET /m2.js HTTP/1.1" 200 -
+127.0.0.1 - - [16/Oct/2026 09:15:06] "GET /m3.js HTTP/1.1" 200 -
+127.0.0.1 - - [16/Oct/2026 09:15:06] "GET /m4.js HTTP/1.1" 200 -
+127.0.0.1 - - [16/Oct/2026 09:15:06] "GET /m5.js HTTP/1.1" 200 -
+127.0.0.1 - - [16/Oct/2026 09:15:06] "GET /m6.js HTTP/1.1" 200 -
+127.0.0.1 - - [16/Oct/2026 09:15:06] "GET /library.js HTTP/1.1" 200 -
+127.0.0.1 - - [16/Oct/2026 09:15:06] "GET /m7.js HTTP/1.1" 200 -
+127.0.0.1 - - [16/Oct/2026 09:15:06] "GET /workspace.js HTTP/1.1" 200 -
+127.0.0.1 - - [16/Oct/2026 09:15:07] "GET /api/scenarios HTTP/1.1" 200 -
+127.0.0.1 - - [16/Oct/2026 09:15:07] "GET /api/workspace/capabilities HTTP/1.1" 200 -
+127.0.0.1 - - [16/Oct/2026 09:15:14] "GET /api/library?q=&type=all&status=&model=&source=&sort=newest&page=1&page_size=25&view=grouped HTTP/1.1" 200 -
+127.0.0.1 - - [16/Oct/2026 09:15:36] "GET /api/library?q=&type=all&status=&model=&source=&sort=newest&page=1&page_size=25&view=grouped HTTP/1.1" 200 -
+127.0.0.1 - - [16/Oct/2026 09:15:36] "GET /api/library?q=&type=all&status=&model=&source=&sort=newest&page=1&page_size=25&view=grouped HTTP/1.1" 200 -
+127.0.0.1 - - [16/Oct/2026 09:15:36] "GET /api/library?q=&type=all&status=&model=&source=&sort=newest&page=1&page_size=25&view=grouped HTTP/1.1" 200 -
+127.0.0.1 - - [16/Oct/2026 09:15:42] "GET /api/library/run:0000000000000000000000000000270e HTTP/1.1" 200 -
+127.0.0.1 - - [16/Oct/2026 09:15:42] "GET /api/runs/0000000000000000000000000000270e HTTP/1.1" 400 -

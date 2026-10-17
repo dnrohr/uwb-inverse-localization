@@ -1,0 +1,10 @@
+{
+  "passed": true,
+  "checks": [
+    "object JSON round trip",
+    "preformatted JSON round trip",
+    "objective superscript preservation",
+    "surrogate pair preservation",
+    "ASCII transport with explicit UTF-8 MIME"
+  ]
+}

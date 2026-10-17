@@ -1,0 +1,44 @@
+[
+  {
+    "phase": "cold",
+    "elapsed_ms": 121894.57199999015,
+    "bytes": 36373,
+    "rows": 25,
+    "filtered": 10000
+  },
+  {
+    "phase": "warm",
+    "elapsed_ms": 135.7906999764964,
+    "bytes": 36361,
+    "rows": 25,
+    "filtered": 10000
+  },
+  {
+    "phase": "warm",
+    "elapsed_ms": 110.29399998369627,
+    "bytes": 36361,
+    "rows": 25,
+    "filtered": 10000
+  },
+  {
+    "phase": "warm",
+    "elapsed_ms": 112.9025999980513,
+    "bytes": 36360,
+    "rows": 25,
+    "filtered": 10000
+  },
+  {
+    "phase": "warm",
+    "elapsed_ms": 140.3578000026755,
+    "bytes": 36361,
+    "rows": 25,
+    "filtered": 10000
+  },
+  {
+    "phase": "warm",
+    "elapsed_ms": 126.93500000750646,
+    "bytes": 36361,
+    "rows": 25,
+    "filtered": 10000
+  }
+]

@@ -1,0 +1,22 @@
+{
+  "passed": true,
+  "scope": "Node VM DOM double; browser visual/lifecycle verification is separate",
+  "checks": [
+    "scene identity",
+    "camera object",
+    "selected start",
+    "selected ping",
+    "paused playback after return",
+    "unsaved controls",
+    "alignment",
+    "scroll",
+    "search/page/A-slot retention",
+    "bounded metadata-only request",
+    "imported comparisons use their own authoritative embedded source keys",
+    "comparison source keys survive navigation",
+    "comparison sources without original run IDs remain selectable"
+  ],
+  "requests": [
+    "/api/library?q=&type=all&status=&model=&source=&sort=newest&page=1&page_size=25&view=grouped"
+  ]
+}

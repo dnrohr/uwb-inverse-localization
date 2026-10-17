@@ -1,0 +1,171 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>RangeLab — User Guide</title>
+<style>body{font:16px/1.65 system-ui,sans-serif;color:#203343;background:#f4f6f8;margin:0}main{max-width:1120px;margin:auto;padding:28px}nav{position:sticky;top:0;padding:12px 24px;background:#fff;border-bottom:1px solid #ccd6de;z-index:1;display:flex;gap:22px;flex-wrap:wrap}a{color:#07677a}h1,h2,h3{line-height:1.25;scroll-margin-top:80px}h2{margin-top:2.5em}code{font-size:.88em;background:#e5ebef;padding:2px 4px;border-radius:3px;overflow-wrap:anywhere}pre{background:#172b3a;color:#edf5fa;padding:18px;overflow:auto;border-radius:6px}pre code{background:none;color:inherit;padding:0;overflow-wrap:normal}.table-wrap{overflow-x:auto}table{border-collapse:collapse;background:white;width:100%;font-size:14px}td,th{border:1px solid #cdd8df;padding:10px;text-align:left;vertical-align:top}th{background:#dfeaf0}li{margin:.45em 0}@media print{nav{position:static}body{background:white}main{padding:0}pre{white-space:pre-wrap}}</style></head>
+<body><nav aria-label="Documentation"><a href="/">← Experiment</a><a href="/user-guide.html">User guide</a><a href="/input-reference.html">All inputs</a><a href="/function-reference.html">Functions and API</a></nav><main><h1 id="rangelab-user-guide">RangeLab user guide</h1>
+<p>RangeLab simulates UWB range measurements and fits a moving tag trajectory and beacon map. Use it to investigate geometry, timing, height assumptions, numerical methods, contamination and survey knowledge. It is a local research application for synthetic data; recorded-device ingestion, IMU/odometry, online estimation, multiple tags and heading estimation are not implemented.</p>
+<p>This guide describes the Experiment and Library interface, from configuring a first experiment through comparing and exporting saved results.</p>
+<h2 id="guide-contents">Guide contents</h2>
+<ul>
+<li><a href="#start-the-application">Start the application</a></li>
+<li><a href="#first-experiment">First experiment</a></li>
+<li><a href="#choose-a-numerical-model">Choose a numerical model</a></li>
+<li><a href="#edit-inputs">Edit inputs</a></li>
+<li><a href="#paths-and-explicit-coordinates">Paths and explicit coordinates</a></li>
+<li><a href="#survey-knowledge">Survey knowledge</a></li>
+<li><a href="#run-parameter-studies">Run parameter studies</a></li>
+<li><a href="#inspect-results">Inspect results</a></li>
+<li><a href="#library-and-comparisons">Library and comparisons</a></li>
+<li><a href="#import-export-and-reproducibility">Import, export and reproducibility</a></li>
+<li><a href="#troubleshooting">Troubleshooting</a></li>
+<li><a href="input-reference.html">Input reference</a>: every editable configuration field, defaults, units, bounds and model availability.</li>
+<li><a href="function-reference.html">Function reference</a>: Python functions/methods, arguments, source links and HTTP routes.</li>
+<li><a href="workspace.html">Workspace architecture and API semantics</a>, <a href="math-review.html">mathematics</a>, <a href="survey-uncertainty.html">survey uncertainty</a>.</li>
+</ul>
+<h2 id="start-the-application">Start the application</h2>
+<p>Python 3.12 is the tested environment. Open PowerShell in the repository:</p>
+<pre><code>python -m venv .venv
+.\.venv\Scripts\python.exe -m pip install -r requirements-lock.txt
+.\.venv\Scripts\python.exe app.py --port 5057</code></pre>
+<p>Visit <a href="http://127.0.0.1:5057">RangeLab</a>. Keep the terminal running; Ctrl+C stops the server. The server binds to <code>127.0.0.1</code> and serves Plotly locally. The page needs the Python server; opening index.html directly is insufficient. If the port is occupied, choose another <code>--port</code> and change the browser URL. If omitted, the command-line port defaults to <code>5050</code>.</p>
+<p>Saved results live in <code>runs/</code>, studies/comparisons in <code>runs/artifacts/</code>, and the disposable Library metadata index in <code>runs/.library.sqlite3</code>. Keep the JSON files to retain your work. Browser session storage retains the editable draft and Library preferences independently of the saved scientific records.</p>
+<h2 id="first-experiment">First experiment</h2>
+<ol>
+<li>In <strong>Experiment</strong>, choose <strong>Planar synchronized ranges</strong> under <strong>Numerical model</strong>. Selecting a model loads its defaults, replacing the current editable draft. Export Draft JSON first if you need those settings later.</li>
+<li>Open <strong>Geometry</strong>. Leave scenario <code>informative</code>, samples <code>32</code>, duration <code>20</code>, noise <code>[0,0,0,0]</code> and seed <code>7</code>.</li>
+<li>In <strong>Estimator assumptions</strong>, use map knowledge <code>joint</code> and assumed range sigma <code>[0.05,0.05,0.05,0.05]</code>. A noiseless simulation still requires positive assumed sigma.</li>
+<li>In <strong>Numerical method</strong>, retain independent initialization, two starts, seed <code>19</code> and budget <code>1000</code>.</li>
+<li>Select <strong>Validate draft</strong>. Validation checks settings; it creates no observations and performs no optimization.</li>
+<li>Select <strong>Run experiment</strong>. A background worker creates and saves a result. Keep the page open for completion status. Existing displayed results remain visible while another job runs.</li>
+<li>Choose a <strong>Physical start</strong>, inspect <strong>Overview</strong>, then examine <strong>Residuals</strong> and <strong>Observability and uncertainty</strong>. Review every attempt before interpreting the selected outcome.</li>
+<li>Download <strong>Run JSON</strong> for the full record and <strong>Draft JSON</strong> for the editable setup.</li>
+</ol>
+<p>Editing controls changes only the draft. Opening a saved source changes only inspection. <strong>Use configuration</strong> copies a saved setup to the draft; <strong>Reuse observations</strong> also selects its exact saved observation source. Only an explicit Run creates a new fit. Validation errors leave a message near the run controls; there is no automatic switch to another numerical model.</p>
+<h2 id="choose-a-numerical-model">Choose a numerical model</h2>
+<div class="table-wrap"><table><tbody>
+<tr><th>Model key and displayed name</th><th>Use it for</th><th>Main restrictions</th></tr>
+<tr><td><code>planar</code> — Planar synchronized ranges</td><td>Baseline joint map/trajectory recovery, noise, sample count and optimizer budget studies</td><td>Four synchronized beacons, planar tags, shared beacon height, Gaussian/TRF</td></tr>
+<tr><td><code>timing</code> — Timestamp-aware trajectory</td><td>Sequential pings, variable motion, clock errors, missingness, knot spacing and motion priors</td><td>Four beacons; planar tags/shared height; timestamp-aware or grouped timing; Gaussian/TRF</td></tr>
+<tr><td><code>spatial</code> — Spatial height models</td><td>3–8 beacons, vertical diversity, tag height profiles and height priors</td><td>TRF, physical height coordinates; independent or truth-near starts</td></tr>
+<tr><td><code>solver</code> — Solver and height parameterization</td><td>Paired TRF/LM, h/q and initializer investigations</td><td>q needs a single supported relative height; algebraic has stricter input requirements</td></tr>
+<tr><td><code>robust</code> — Contaminated ranges and robust estimation</td><td>NLOS, offsets, temporal correlation, quantization/dropout and robust losses</td><td>Inherits solver/model restrictions; robust uncertainty is not calibrated Gaussian covariance</td></tr>
+<tr><td><code>survey</code> — Partial surveyed-world knowledge</td><td>Fixed survey coordinates, uncertain survey blocks and conditional local intervals</td><td>Joint world frame, independent beacon heights, physical h, no algebraic initialization; single fits only</td></tr>
+</tbody></table></div>
+<p>The initial page uses robust-model defaults unless your browser session has a retained draft. These defaults use clean, Gaussian measurements. A dropdown may offer values unsupported in the chosen combination; <strong>Validate draft</strong> gives the authoritative acceptance result. See the input reference for exact defaults by model.</p>
+<p>TRF enforces physical bounds directly. LM maps finite bounds through exponential transforms and operates strictly inside them; its behavior near a bound can differ from TRF. LM also requires the retained range/prior residual count to be at least the parameter count. <code>q = h²</code> changes a positive shared relative-height coordinate, not the range objective. It is unavailable for free heights, a nonhorizontal known beacon plane, or partial survey.</p>
+<p>Independent starts use measurement inputs. Truth-near starts deliberately use synthetic truth and are diagnostic. Algebraic initialization is available only in solver/robust models for supported complete, synchronous planar/shared-height cases. Unsupported, rank-deficient or physically inconsistent algebraic proposals fail explicitly; they do not silently become independent starts.</p>
+<h2 id="edit-inputs">Edit inputs</h2>
+<p>The six configuration groups separate physical truth from fitting assumptions:</p>
+<div class="table-wrap"><table><tbody>
+<tr><th>Group</th><th>What it controls</th></tr>
+<tr><td>Geometry</td><td>Reference scenario, duration/display samples, beacon layout, custom XY path and synthetic tag Z</td></tr>
+<tr><td>Motion and acquisition</td><td>True speed profile, beacon ping order/rate/spacing, clock errors, missing pings and delivery latency</td></tr>
+<tr><td>Measurement model</td><td>White range noise, physical/contamination seeds, positive NLOS, biases, AR(1) noise, quantization and dropout</td></tr>
+<tr><td>Estimator assumptions</td><td>Assumed sigma, known/unknown map, timing approximation, knot/prior settings, height models, robust losses, survey and uncertainty assumptions</td></tr>
+<tr><td>Numerical method</td><td>Solver, height coordinate, initializer, perturbation, start count/seed and evaluation budget</td></tr>
+<tr><td>Study design</td><td>Single fit or parameter study, swept factor/values, measurement seeds and named variants</td></tr>
+</tbody></table></div>
+<p>Hover over a field, or focus it with the keyboard, to see its explanation. Escape dismisses the visible help. Screen readers receive the same help through field descriptions. Existing labels remain available. The <a href="input-reference.html">input reference</a> is the searchable list of all explanations, including optional fields.</p>
+<p>Numeric controls require finite numbers. Integer fields (samples, seeds, counts, strides, budgets) must contain integers. Array controls use <strong>JSON</strong>, e.g. <code>[0.02,0.02,0.02,0.02]</code>, not bare comma-separated text. Use lowercase <code>true</code>, <code>false</code>, <code>null</code> in JSON, double-quoted strings and no trailing commas. JSON editors for optional geometry, survey, variants and draft imports take effect when their <strong>Apply</strong> button succeeds; ordinary fields edit immediately. Incomplete JSON may show a validation message while being typed.</p>
+<p>Lengths are metres, times seconds, angles degrees and covariance entries square metres. IDs start at zero. Assumed sigma controls the weighted residual <code>(predicted range − measured range) / sigma</code>; injected noise changes simulated measurements. They are independent quantities. Physical, contamination and numerical seeds control different random streams.</p>
+<p>In timing and later models, <code>samples</code> sets display resolution. The number of acquisition cycles is <code>floor(duration_s * cycle_rate_hz + 1e-10) + 1</code>, limited to 2–100. Editing samples/duration does not recompute an already explicit rate. Within a cycle, actual ping time is cycle start plus order-slot × spacing plus uniform acquisition jitter; supplied timestamp adds offset and uniform clock jitter. Delivery time adds latency to actual acquisition time. Delivery delay does not move the tag at measurement time. Timestamp-aware fitting uses supplied timestamps; grouped fitting approximates every cycle at its start.</p>
+<p>For 3–8-beacon models, changing count can require changing noise/sigma arrays, ping order, stride arrays, offsets, NLOS IDs, survey IDs and explicit coordinates. Normalized defaults expand scalar noise/sigma into per-beacon arrays, so update those arrays or replace them with a scalar using full draft JSON before validation.</p>
+<p>Contamination is applied in order: base acquisition/white noise, per-beacon offsets, stationary per-beacon AR(1), positive NLOS, nearest-even quantization, then independent dropout. NLOS prevalence is a burst-onset probability; the realized fraction can be larger when bursts span multiple cycles. AR correlation is per adjacent cycle, not per elapsed second. Acquisition missingness and contamination dropout remove inputs before fitting; hard rejection removes ranges according to a fitted pilot. Synthetic labels are kept for evaluation and never set fitted weights.</p>
+<h2 id="paths-and-explicit-coordinates">Paths and explicit coordinates</h2>
+<p>Expand <strong>Optional path and explicit beacon coordinates</strong>, enter JSON, then select <strong>Apply optional geometry</strong>. For example:</p>
+<pre><code>{
+  &quot;path&quot;: {
+    &quot;type&quot;: &quot;circle&quot;,
+    &quot;center_m&quot;: [5, 4],
+    &quot;size_m&quot;: [7, 7],
+    &quot;scale&quot;: 1,
+    &quot;rotation_deg&quot;: 0
+  }
+}</code></pre>
+<p>Line, rectangle and figure-eight use full width/height. Circle and arc use equal size entries giving diameter. Arc also accepts starting angle and signed sweep. Waypoint paths take local XY points; scale and rotation apply before translating by center. Adjacent repeated points are allowed if total path length remains positive. Motion speed and truth-height models operate separately. Figure-eight arclength uses a dense polyline approximation, disclosed in path metadata.</p>
+<p>For a four-beacon spatial model, explicit world coordinates can be included as:</p>
+<pre><code>{
+  &quot;path&quot;: {&quot;type&quot;: &quot;rectangle&quot;, &quot;size_m&quot;: [7, 5.6]},
+  &quot;coordinates_m&quot;: [[0,0,3], [10,0,3.5], [1,8,2.5], [11,9,4]]
+}</code></pre>
+<p>Explicit coordinates override generated layout geometry, nominal height, spread and baseline. They are generation truth; only known-map fitting or an explicit survey supplies coordinate knowledge to the estimator. Planar/timing models do not support explicit beacon arrays in this editor. Omit <code>path</code> to remove the custom path. Omit <code>coordinates_m</code> or set it to <code>null</code> to remove explicit coordinates. Applying <code>{}</code> removes both optional overrides; it does not reset other draft settings.</p>
+<h2 id="survey-knowledge">Survey knowledge</h2>
+<p>Select <strong>Partial surveyed-world knowledge</strong>. Under estimator assumptions, <strong>Add survey row</strong> adds a fixed X coordinate for beacon 0. Set Beacon, Knowledge type, selected X/Y/Z axes and Mean XYZ. Uncertain rows also need selected-axis covariance; the default single-axis block <code>[[0.01]]</code> means a 0.1 m SD. For XY use a 2×2 covariance, e.g. <code>[[0.01,0],[0,0.04]]</code>. A three-axis mean is always required even when only one axis is selected. Remove a row with ×.</p>
+<p>The exact declaration is also available in <strong>Advanced survey JSON</strong>:</p>
+<pre><code>{
+  &quot;frame&quot;: &quot;world&quot;,
+  &quot;units&quot;: &quot;m&quot;,
+  &quot;fixed&quot;: [{&quot;beacon_id&quot;:0,&quot;mask&quot;:[true,true,true],&quot;mean_m&quot;:[0,0,3]}],
+  &quot;priors&quot;: [{&quot;beacon_id&quot;:1,&quot;mask&quot;:[true,true,false],&quot;mean_m&quot;:[10,0,3],&quot;covariance_m2&quot;:[[0.01,0],[0,0.04]]}]
+}</code></pre>
+<p>Fixed coordinates are exact eliminated constraints. Priors add uncertain information and must have symmetric positive-definite covariance. Axis order is selected XYZ order. Cross-beacon covariance, duplicate coordinates and fixed/prior overlaps reject. At most 24 rows per list are supported; at least one coordinate must be selected overall. Fixing one beacon does not by itself guarantee that all orientation freedoms are removed. Inspect measurement-only and survey-augmented ranks.</p>
+<p>Survey fitting requires joint mode, independent beacon heights, h coordinates and a nonalgebraic initializer. Below-beacon bounds with non-fixed world tag height reject. <strong>Validate draft</strong> also checks survey IDs against beacon count. Table edits update the draft; full model validation happens through Validate/Run. Advanced JSON Apply validates before adoption.</p>
+<h2 id="run-parameter-studies">Run parameter studies</h2>
+<p>Under <strong>Study design</strong>, choose <strong>Parameter study</strong>, select a supported factor and enter values/seeds as JSON arrays. Example for robust model: factor <code>nlos_prevalence</code>, values <code>[0,0.1]</code>, seeds <code>[7,8]</code>, default variants. This creates 2 × 2 × 4 = 16 runs; with 3 starts each, 48 attempts. Choose <strong>Validate draft</strong>, then <strong>Run study</strong>. Review the source and cell accounting in <strong>Attempts and study results</strong>.</p>
+<p>Native studies allow 1–10 distinct values, 1–10 distinct unsigned 32-bit seeds, usually 1–4 uniquely labeled variants (labels at most 80 characters), at most 40 runs and 240 physical starts. The app limits each start to 5000 evaluations and start count to 12. Timing always has two variants; survey has no study engine. Studies generate paired cells and do not accept saved-observation reuse.</p>
+<div class="table-wrap"><table><tbody>
+<tr><th>Model</th><th>Factors and meanings</th></tr>
+<tr><td>Planar</td><td><code>noise_std_m</code>, <code>assumed_std_m</code>, <code>samples</code>; <code>path_scale</code> sets custom horizontal path scale; <code>initial_error_m</code> is truth-near diagnostic initialization error and requires truth_near explicitly in the workspace</td></tr>
+<tr><td>Timing</td><td><code>speed_scale</code>, <code>spacing_s</code>, <code>knot_spacing_s</code>, <code>timestamp_offset_s</code>, <code>timestamp_jitter_s</code>, <code>missing_probability</code>; <code>beacon_every_cycles</code> varies only beacon 3&#x27;s stride, leaving other beacons at 1</td></tr>
+<tr><td>Spatial</td><td><code>beacon_count</code>, <code>vertical_separation</code> (nominal beacon world Z, not measured separation), <code>height_spread</code>, <code>coverage</code> (custom path scale), <code>height_prior_sigma_m</code>, <code>beacon_height_model</code></td></tr>
+<tr><td>Solver</td><td><code>initialization_error_m</code>, <code>noise_std_m</code>, <code>beacon_count</code>, <code>vertical_separation</code>, <code>coverage</code></td></tr>
+<tr><td>Robust</td><td><code>nlos_prevalence</code>, <code>nlos_magnitude_m</code>, <code>burst_duration_cycles</code>, <code>offset_m</code> (same offset on every beacon), <code>correlated_noise_std_m</code>, <code>correlation</code>, <code>quantization_m</code>, <code>dropout_probability</code>, <code>noise_std_m</code></td></tr>
+</tbody></table></div>
+<p>Values inherit the target field&#x27;s units/bounds; <code>beacon_height_model</code> values are JSON strings. Coverage/path-scale studies need an explicit path for straight-line/narrow-coverage reference scenarios. Layout studies require generated beacon coordinates. Count studies can resize homogeneous noise/sigma defaults; heterogeneous vectors require a compatible setup.</p>
+<p><strong>Named estimator variants</strong> accepts native JSON. Planar variants may change mode/budget:</p>
+<pre><code>[{&quot;label&quot;:&quot;short budget&quot;,&quot;max_nfev&quot;:200},{&quot;label&quot;:&quot;long budget&quot;,&quot;max_nfev&quot;:1000}]</code></pre>
+<p>Spatial, solver and robust variants use option objects:</p>
+<pre><code>[{&quot;label&quot;:&quot;Gaussian&quot;,&quot;options&quot;:{&quot;loss&quot;:&quot;gaussian&quot;}},{&quot;label&quot;:&quot;Huber&quot;,&quot;options&quot;:{&quot;loss&quot;:&quot;huber&quot;,&quot;loss_scale_sigma&quot;:2}}]</code></pre>
+<p>The latter example is for robust. Solver variants can change solver/height coordinate/initializer within native pairing rules; spatial variants compare height models. <code>null</code> selects recorded defaults. Timing requires <code>null</code> or an omitted variants field because its timestamp-aware/grouped pair is fixed. Variants cannot override shared seed/start count or the swept option; further model-specific restrictions are validated explicitly. Compatible physical starts and observations are paired; failed or nonconverged outcomes remain part of accounting and aggregates. Check the retained pairing disclosure before claiming two variants used identical starts.</p>
+<h2 id="inspect-results">Inspect results</h2>
+<p><strong>Physical start</strong> selects one saved attempt consistently across plots, metrics, playback and provenance. Switching it does not refit. The default selected outcome is not a substitute for examining multistart spread and failures.</p>
+<p>Rotate, pan and zoom the 3D scene with Plotly controls. Use the named camera buttons to reset/view geometry. The layer switches show truth, estimate, initial guess, error vectors, measurement rays and tag/beacon planes. All axes use metres. <strong>Coordinates</strong> selects raw or supported rigid-aligned evaluation coordinates. Alignment preserves scale; it can remove frame differences while leaving physical map distortion visible. In comparison mode some per-run controls are disabled; use Inspect A/B to return to them.</p>
+<p>Ping playback supports Play, Pause, previous/next and the scrubber. The detail panel shows the selected event&#x27;s beacon, measured range and timing/position evidence. Actual, supplied and delivery times have distinct meanings. Unsupported playback/diagnostics remain unavailable or give an explanation. Browsing Library pauses playback and it remains paused on return.</p>
+<div class="table-wrap"><table><tbody>
+<tr><th>Diagnostic tab</th><th>How to use it</th></tr>
+<tr><td>Overview</td><td>Read saved outcome, warnings and accuracy/residual metrics together. A converged optimizer may still recover a distorted map.</td></tr>
+<tr><td>Residuals</td><td>Examine distribution, per-beacon and time structure. Robust models add signed residuals, influence decisions, retained coverage and detailed per-range records. Residual sign is predicted minus measured.</td></tr>
+<tr><td>Geometry and timing</td><td>Inspect trajectory/map error, speed/pings, recovered heights and plane diagnostics when supported. Distinguish display samples, estimator knots and actual pings.</td></tr>
+<tr><td>Observability and uncertainty</td><td>Inspect singular spectrum, local measurement rank and augmented rank. Request conditional local uncertainty explicitly with its supported assumptions; export its result when available.</td></tr>
+<tr><td>Attempts and study results</td><td>Examine every initial start, failure, nonconvergence, budget, study factor/seed/variant and source/cell accounting. Use native study tables and chart exports.</td></tr>
+<tr><td>Configuration and provenance</td><td>Read immutable original source and selected attempt; inspect/export the separate editable draft; paste exact workspace JSON and Apply to validate/adopt it.</td></tr>
+</tbody></table></div>
+<p>Residual RMS in metres measures range agreement. Standardized residuals divide by assumed sigma. Geometry RMSE/max errors compare against separate synthetic truth in disclosed evaluation frames. Solver cost may include robust transforms and priors and is not interchangeable across objectives. Rank and condition number describe local sensitivity; small singular values reveal weak directions. Full local rank does not prove global uniqueness or eliminate reflected/alternate solutions.</p>
+<p>Robust scenes sample at most 45 measurement rays: gray weight ≥ 0.999, amber positive downweighting, red zero-weight rejection. Decision markers are flagged below the configured threshold and sized by influence weight. These fitted decisions are separate from injected NLOS labels. A robust fit may reject useful geometry, so inspect retained coverage and rank as well as residual reduction.</p>
+<p>Conditional intervals assume the supported local representation, independent Gaussian ranges with known saved sigmas, chosen constraints/priors and a converged interior full-rank solution. Rank deficiency, active bounds, contamination/noise assumptions, robust loss or rejection can withhold covariance. Read the reported reason; absence is not zero uncertainty. Curvature diagnostics for robust objectives are not calibrated covariance. These intervals cannot establish global uniqueness.</p>
+<h2 id="library-and-comparisons">Library and comparisons</h2>
+<p>Select <strong>Library</strong> to browse saved runs, studies and comparisons. Search names/scenarios/IDs/settings, filter type/status/model/source, sort newest/oldest/name/outcome, and choose grouped parents/standalone or all items. Default page size is 25; maximum is 50. Previous/Next pages and filters preserve A/B selections. Refresh updates metadata; Rebuild index reconstructs the disposable cache from authoritative JSON. Cold scans of large histories can be slow.</p>
+<p>Select a row to preview settings/provenance. <strong>Open in viewer</strong> strictly validates and opens it without fitting or changing the draft. For a benchmark, browse its recorded children and inspect all attempts, including failed/nonconverged entries. Unsupported historical editable representations remain inspectable/exportable but cannot be silently converted into a supported draft.</p>
+<p>Choose <strong>Use as A</strong> and <strong>Use as B</strong> on two runs, then <strong>Compare A / B</strong>. Set the offered alignment to raw or rigid alignment with scale 1. Both sources share scene scale, camera and elapsed-time reference. <strong>Inspect A/B</strong> returns to source-specific diagnostics. Pairing is asserted only when saved observation/start records support it. Comparison JSON and PNG retain/export the comparison view; comparison CSV uses the native table exporter.</p>
+<p>To repeat a saved physical realization with different supported solver assumptions, open its run and select <strong>Reuse observations</strong>. It requires an exact authoritative Library source key and a compatible native schema. Physical settings and original observation sigmas must remain identical. Change solver/loss/budget as supported, then Run for a new record. To change truth, noise or assumed saved sigmas, select <strong>Generate new observations</strong> first. <strong>Use configuration</strong> copies settings without retaining an observation reuse requirement.</p>
+<h2 id="import-export-and-reproducibility">Import, export and reproducibility</h2>
+<div class="table-wrap"><table><tbody>
+<tr><th>Action</th><th>Result</th></tr>
+<tr><td>Import run / Library Import JSON</td><td>Workspace draft or native configuration updates the editable setup; validated native run/study/comparison imports are saved and opened without solving</td></tr>
+<tr><td>Draft JSON / Export config</td><td>Version-1 workspace settings, including physical/assumption/numerical/study/source sections; no retained observations unless referencing an existing source key</td></tr>
+<tr><td>Run JSON</td><td>Complete saved run, observations, truth/reference data, starts, options, diagnostics and provenance; in comparison mode exports comparison JSON</td></tr>
+<tr><td>Complete CSV</td><td>Typed source, experiment, estimator_input, observation and attempt rows with <code>complete_record_json</code> preserving full records; comparison uses native tables</td></tr>
+<tr><td>Native study JSON / CSV</td><td>Complete study with all entries; attempt tables, and robust per-observation tables through their native controls</td></tr>
+<tr><td>Scene/chart PNG</td><td>Current scene or supported chart, reflecting selected source/start/view; an image does not replace source JSON</td></tr>
+<tr><td>Uncertainty export</td><td>Explicit uncertainty inspection result and assumption/reason disclosures where supported</td></tr>
+</tbody></table></div>
+<p>Imports accept strict finite JSON; NaN/Infinity, unsupported versions and malformed records reject. The server request limit is 100 MiB. Exported JSON escapes Unicode with explicit UTF-8 transport so mathematical symbols survive reimport. Back up native JSON plus the draft when reproducibility matters. A saved-source key refers to local history and does not embed that history inside a draft export; import the corresponding native source and reselect reuse on a different installation.</p>
+<p>The app uses one background fitting worker. Do not assume closing the browser cancels a job. There is no general job-cancel or solver-state resume UI. Study checkpoints preserve completed entries, not optimizer internals. Imported incomplete work is marked conservatively; reopening it does not resume fitting. Saved IDs are server-owned on import to avoid overwriting unrelated history. JSON records are authoritative; the SQLite index can be rebuilt. Saving and atomic file replacement do not claim permanent-write durability.</p>
+<h2 id="troubleshooting">Troubleshooting</h2>
+<div class="table-wrap"><table><tbody>
+<tr><th>Symptom</th><th>Explanation and next step</th></tr>
+<tr><td>Page fails to initialize or fetch</td><td>Check the Python server is running and open the matching localhost port; reload after restoring the server</td></tr>
+<tr><td>Unsupported keys/combination</td><td>Use the chosen model&#x27;s field reference and Validate; remove foreign fields or choose another explicit model before applying its defaults</td></tr>
+<tr><td>Arrays have wrong length</td><td>Match beacon count in noise/sigma/order/strides/offsets/coordinates and verify all zero-based IDs</td></tr>
+<tr><td>Invalid JSON while editing</td><td>Complete brackets, quote strings and use JSON arrays; Apply advanced editors explicitly</td></tr>
+<tr><td>Too many cycles/knots/runs</td><td>Adjust duration/rate or knot spacing; reduce study values, seeds, variants or starts</td></tr>
+<tr><td>Saved source config is immutable</td><td>Restore source physical settings and sigma exactly, or choose generation to simulate a new realization</td></tr>
+<tr><td>q rejected</td><td>Use fixed/shared tag and one supported shared relative height; otherwise select h</td></tr>
+<tr><td>Algebraic initialization fails</td><td>Check synchronous complete observations and supported planar/shared geometry; inspect failure instead of assuming a fallback</td></tr>
+<tr><td>LM fails or approaches a bound slowly</td><td>Check residual count and strict-interior constraints; compare a supported TRF fit on the same observations/starts</td></tr>
+<tr><td>Small residual, poor map</td><td>Inspect weak geometry, reflections, alternative starts, rank and truth errors in the disclosed frame</td></tr>
+<tr><td>Uncertainty unavailable</td><td>Read withheld reasons; robust loss, rejected ranges, unsupported noise, rank deficiency, active bounds or nonconvergence can invalidate Gaussian intervals</td></tr>
+<tr><td>Imported/old work cannot become a draft</td><td>Export and retain native JSON; use a supported native model/configuration rather than silently converting schema</td></tr>
+<tr><td>Library is slow/stale</td><td>Refresh; allow cold inventory to finish; Rebuild index if needed while retaining source JSON</td></tr>
+<tr><td>Configuration is hidden on narrow screen</td><td>Select Configuration to open the drawer; Close or Escape returns to results; Tab stays within the open drawer</td></tr>
+</tbody></table></div>
+<p>For numerical interpretation consult the mathematical documents linked above. To verify a local change, run <code>.\.venv\Scripts\python.exe -m unittest discover -s tests -v</code> and the relevant checks under <code>scripts/</code>. Validation/benchmark scripts can generate new evidence and are not required for ordinary browsing.</p></main></body></html>

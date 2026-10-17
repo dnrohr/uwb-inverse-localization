@@ -75,7 +75,7 @@
     if ($('m4Below').checked && options.mode !== 'known_map' && options.beacon_height_model === 'independent' && ['free', 'soft'].includes(options.tag_height_model)) throw new Error('The below-beacons constraint is unsupported for joint independent-beacon free/soft height estimation.');
     return { config, options };
   }
-  function download(name, type, content) {
+  function download(name, type, content) { if(window.RangeLabWorkspace?.download)return window.RangeLabWorkspace.download(name,content,type);
     const blob = new Blob([content], { type }), url = URL.createObjectURL(blob), link = document.createElement('a');
     link.href = url; link.download = name; link.click(); setTimeout(() => URL.revokeObjectURL(url), 1000);
   }
@@ -221,6 +221,8 @@
     catch (error) { toast(`Could not open M4 run: ${error.message}`); }
   }
   function restore(run) {
+    if (window.RangeLabWorkspace) return;
+
     const c = run?.experiment?.config || {}, l = c.beacon_layout || {}, h = c.truth_height || {}, o = run?.options || {};
     const set = (id, value) => { if (value !== undefined && value !== null && $(id)) $(id).value = value; };
     set('m4BeaconCount', l.count); set('m4BeaconGeometry', l.geometry); set('m4BeaconHeight', l.height_m); set('m4HeightSpread', l.height_spread_m); set('m4Baseline', l.baseline_scale); set('m4Coordinates', rows(l.coordinates_m).map(point => point.join(',')).join('\n'));
@@ -337,7 +339,7 @@
   }
   window.RangeLabM4 = { restoreRun:restore, openArtifact: renderArtifact, formPayload, restoreConfig(config, options) { restore({experiment:{config},options}); }, onRun(run) {
     if (run && (String(run.schema_version || '').startsWith('4') || run.experiment?.config?.beacon_layout)) {
-      if (state.artifact && run.id && run.id === state.inspectingRunId) { state.run = run; renderRun(run); }
+      if (state.artifact?.entries?.some(entry=>entry.run===run) || state.artifact && run.id && run.id === state.inspectingRunId) { state.inspectingRunId = run.id; state.run = run; renderRun(run); }
       else { if (state.artifact) clearArtifact(); state.inspectingRunId = null; renderRun(run); }
     } else { if (state.artifact) clearArtifact(); state.inspectingRunId = null; clearRun(); }
   }, refresh() { refreshRuns(); refreshSweeps(); }, openRun, openSweep };

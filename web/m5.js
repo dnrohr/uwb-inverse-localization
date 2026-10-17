@@ -9,7 +9,7 @@
     return response.json();
   }
   function toast(message) { const node = $('toast'); if (node) { node.textContent = message; node.classList.add('visible'); setTimeout(() => node.classList.remove('visible'), 3000); } }
-  function download(name, type, content) { const blob = new Blob([content], { type: `${type};charset=utf-8` }), url = URL.createObjectURL(blob), link = document.createElement('a'); link.href = url; link.download = name; link.click(); setTimeout(() => URL.revokeObjectURL(url), 1000); }
+  function download(name, type, content) { if(window.RangeLabWorkspace?.download)return window.RangeLabWorkspace.download(name,content,type); const blob = new Blob([content], { type: `${type};charset=utf-8` }), url = URL.createObjectURL(blob), link = document.createElement('a'); link.href = url; link.download = name; link.click(); setTimeout(() => URL.revokeObjectURL(url), 1000); }
   function csv(items, filename) { const keys = [...new Set(items.flatMap(item => Object.keys(item)))], quote = value => `"${String(value ?? '').replace(/"/g, '""')}"`; download(filename, 'text/csv', [keys.map(quote).join(','), ...items.map(item => keys.map(key => quote(typeof item[key] === 'object' ? JSON.stringify(item[key]) : item[key])).join(','))].join('\n')); }
   function payload() {
     const shared = window.RangeLabM4?.formPayload?.();
@@ -68,6 +68,8 @@
     $('m5SweepPng').disabled = traces.length === 0; $('m5GeometryPng').disabled = geometryTraces.length === 0;
   }
   function restoreControls(run) {
+    if (window.RangeLabWorkspace) return;
+
     const config = run?.experiment?.config || {}, options = run?.options || {};
     window.RangeLabM4?.restoreConfig?.(config, options);
     $('m5Solver').value = options.solver || 'trf'; $('m5Parameterization').value = options.height_parameterization || 'h'; $('m5Initialization').value = options.initialization || 'independent'; $('m5InitError').value = options.initialization_error_m ?? 0; $('m5AlgebraicTolerance').value = options.algebraic_physical_tolerance ?? 1e-7;

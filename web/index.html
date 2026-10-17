@@ -15,11 +15,15 @@
   <script src="/m6.js" defer></script>
   <script src="/library.js" defer></script>
   <script src="/m7.js" defer></script>
+  <script src="/workspace.js" defer></script>
+  <script src="/help.js" defer></script>
+  <link rel="stylesheet" href="/help.css">
+  <link rel="stylesheet" href="/workspace.css">
 </head>
 <body>
   <header class="topbar">
     <a class="brand" href="/" aria-label="RangeLab home"><span class="brand-mark">R</span><span>RangeLab</span></a>
-    <nav class="workspace-nav" aria-label="Workspace"><button id="experimentNav" type="button" aria-pressed="true">Experiment</button><button id="libraryNav" type="button" aria-pressed="false">Library <span id="libraryNavCount"></span></button></nav><div class="top-context"><span class="live-dot"></span> Synthetic experiment workspace <span class="context-sep">/</span> M2 + M3 + M4 + M5 + M6 experiments</div>
+    <nav class="workspace-nav" aria-label="Workspace"><button id="experimentNav" type="button" aria-pressed="true">Experiment</button><button id="libraryNav" type="button" aria-pressed="false">Library <span id="libraryNavCount"></span></button><a href="/user-guide.html" target="_blank" rel="noopener" class="button button-quiet">User guide</a></nav><div class="top-context"><span class="live-dot"></span> Synthetic experiment workspace <span class="context-sep">/</span> M2 + M3 + M4 + M5 + M6 experiments</div>
     <div class="top-actions"><button id="importButton" class="button button-quiet" type="button">Import run</button><input id="importFile" type="file" accept="application/json,.json" hidden><button id="exportConfigButton" class="button button-quiet" type="button">Export config</button><a id="exportLink" class="button button-quiet disabled" href="#" download="uwb-run.json" aria-disabled="true">Export JSON</a></div>
   </header>
   <main id="experimentView" class="shell">

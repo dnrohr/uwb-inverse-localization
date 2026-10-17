@@ -585,6 +585,8 @@ def create_app(run_dir=None):
         comparison.update(id=uuid.uuid4().hex, library_sources=sources)
         save_artifact(artifact_path(comparison['id']), comparison)
         return jsonify(id=comparison['id'], artifact=comparison)
+    from uwb.workspace import register_workspace
+    register_workspace(app, directory, executor, jobs, lock, library)
     return app
 
 

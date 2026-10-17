@@ -124,6 +124,7 @@
     $('#pngButton').disabled = !window.Plotly || !$('#scene').data;
     drawScene(run, state.start); drawMetrics(run, state.start); drawCharts(run, state.start); drawDiagnostics(run, state.start);
     window.RangeLabM7?.onRun(run, state.start);
+    window.RangeLabWorkspace?.onRun(run);
   }
 
   function updateExport(run) {
@@ -271,7 +272,7 @@
   }
 
   function plotLayout(extra = {}) {
-    return { margin: { l: 4, r: 4, t: 4, b: 4 }, paper_bgcolor: '#ffffff', plot_bgcolor: '#ffffff', font: { family: 'Inter, Segoe UI, sans-serif', color: '#627577', size: 10 }, showlegend: true, legend: { orientation: 'h', x: 0.01, y: 0.99, bgcolor: 'rgba(255,255,255,.78)', bordercolor: '#edf0f0', borderwidth: 1, font: { size: 9 } }, ...extra };
+    return { margin: { l: 4, r: 4, t: 4, b: 4 }, paper_bgcolor: '#ffffff', plot_bgcolor: '#ffffff', font: { family: 'Inter, Segoe UI, sans-serif', color: '#627577', size: 10 }, showlegend: true, legend: { orientation: 'h', maxheight: .22, x: 0.01, y: 0.99, yanchor:'top', bgcolor: 'rgba(255,255,255,.78)', bordercolor: '#edf0f0', borderwidth: 1, font: { size: 9 } }, ...extra };
   }
   function reactChart(target, data, layout, config) {
     if (!target.data) target.innerHTML = '';
@@ -445,7 +446,7 @@
       let low = Math.min(...vals), high = Math.max(...vals); const pad = Math.max((high - low) * .08, .1); return [low - pad, high + pad];
     });
     const layout = sceneLayout();
-    if (run.schema_version === '6.0') layout.annotations = [{xref:'paper',yref:'paper',x:.01,y:.01,xanchor:'left',yanchor:'bottom',showarrow:false,font:{size:10,color:'#536768'},bgcolor:'rgba(255,255,255,.88)',text:'M6 sampled fit rays: gray w ≥ 0.999; amber 0 &lt; w &lt; 0.999; red w = 0.<br>Thick knot segments support affected pings. Injected labels never set these colors.'}];
+    if (run.schema_version === '6.0' && window.innerWidth > 700) layout.annotations = [{xref:'paper',yref:'paper',x:.01,y:.01,xanchor:'left',yanchor:'bottom',showarrow:false,font:{size:10,color:'#536768'},bgcolor:'rgba(255,255,255,.88)',text:'Sampled fit rays: gray w ≥ 0.999; amber 0 &lt; w &lt; 0.999; red w = 0.<br>Thick knot segments support affected pings. Injected labels never set these colors.'}];
     ['xaxis', 'yaxis', 'zaxis'].forEach((axis, i) => { layout.scene[axis].range = ranges[i]; layout.scene[axis].autorange = false; });
     target.querySelectorAll('.scene-empty').forEach(node => node.remove());
     const sceneStarted = performance.now();
@@ -552,7 +553,7 @@
       return `<tr><td>${escapeHtml(item.index)}</td><td class="${result ? 'diag-pass' : 'diag-fail'}">${escapeHtml(stateLabel)}</td><td>${escapeHtml(String(item.success ?? '—'))}</td><td>${fmt(number(arrAttr(itemSolver, ['final_objective', 'final_cost', 'cost_final', 'cost'])))}</td><td>${fmt(number(arrAttr(itemSolver, ['runtime_s', 'wall_time_s', 'elapsed_s'])))}</td><td>${escapeHtml(String(itemD.rank ?? '—'))}${itemD.params !== null ? ` / ${escapeHtml(String(itemD.params))}` : ''}</td></tr>`;
     }).join('');
     const runNotes = arrAttr(summary, ['warnings']);
-    content.innerHTML = `${starts.length > 1 ? `<div class="start-selector"><label for="startSelect">Inspect outcome</label><select id="startSelect">${options}</select></div>` : ''}<div class="diagnostics-table-wrap"><table class="diagnostics-table"><thead><tr><th>START</th><th>OUTCOME</th><th>SUCCESS</th><th>FINAL OBJECTIVE</th><th>RUNTIME (S)</th><th>RANK / PARAMS</th></tr></thead><tbody>${rows || '<tr><td colspan="6">No per-start outcomes were saved.</td></tr>'}</tbody></table></div><div class="diag-columns">${values}${recoveryBoxes}</div>${summary.ambiguity ? `<p style="margin-top:10px">${escapeHtml(summary.ambiguity)}</p>` : ''}${runNotes ? `<p style="margin-top:10px">${escapeHtml(Array.isArray(runNotes) ? runNotes.join(' · ') : runNotes)}</p>` : ''}${starts.length ? '' : '<p style="margin-top:10px">This run contains no start records. Raw data follows.</p>'}<details class="raw-json"><summary>View raw run JSON</summary><pre>${escapeHtml(JSON.stringify(run, null, 2))}</pre></details>`;
+    content.innerHTML = `${starts.length > 1 && !window.RangeLabWorkspace ? `<div class="start-selector"><label for="startSelect">Inspect outcome</label><select id="startSelect">${options}</select></div>` : ''}<div class="diagnostics-table-wrap"><table class="diagnostics-table"><thead><tr><th>START</th><th>OUTCOME</th><th>SUCCESS</th><th>FINAL OBJECTIVE</th><th>RUNTIME (S)</th><th>RANK / PARAMS</th></tr></thead><tbody>${rows || '<tr><td colspan="6">No per-start outcomes were saved.</td></tr>'}</tbody></table></div><div class="diag-columns">${values}${recoveryBoxes}</div>${summary.ambiguity ? `<p style="margin-top:10px">${escapeHtml(summary.ambiguity)}</p>` : ''}${runNotes ? `<p style="margin-top:10px">${escapeHtml(Array.isArray(runNotes) ? runNotes.join(' · ') : runNotes)}</p>` : ''}${starts.length ? '' : '<p style="margin-top:10px">This run contains no start records. Raw data follows.</p>'}<details class="raw-json"><summary>View raw run JSON</summary><pre>${escapeHtml(JSON.stringify(run, null, 2))}</pre></details>`;
     const selector = $('#startSelect', content);
     if (selector) selector.addEventListener('change', () => { state.selectedStart = selector.value; state.start = pickStart(run, state.selectedStart); drawScene(run, state.start); drawMetrics(run, state.start); drawCharts(run, state.start); drawDiagnostics(run, state.start); window.RangeLabM7?.onRun(run, state.start); });
   }

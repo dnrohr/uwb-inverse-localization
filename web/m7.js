@@ -4,7 +4,7 @@
   const esc=v=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
   const api=(...args)=>window.RangeLab.api(...args);
   const state={run:null,start:null,summary:null,importedExperiment:null};
-  const download=(name,value,type='application/json')=>{const url=URL.createObjectURL(new Blob([typeof value==='string'?value:JSON.stringify(value,null,2)],{type}));const a=document.createElement('a');a.href=url;a.download=name;a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);};
+  const download=(name,value,type='application/json')=>{if(window.RangeLabWorkspace?.download)return window.RangeLabWorkspace.download(name,value,type);const url=URL.createObjectURL(new Blob([typeof value==='string'?value:JSON.stringify(value,null,2)],{type}));const a=document.createElement('a');a.href=url;a.download=name;a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);};
   const fmt=v=>typeof v==='number'&&Number.isFinite(v)?v.toPrecision(5):'unavailable';
   function message(text,error=false){$('m7Status').textContent=text;$('m7Status').classList.toggle('is-error',error);}
   function validateSurveyDeclaration(survey,beaconCount=8){
@@ -86,7 +86,7 @@
     if(!$('m7Workspace'))return;
     state.run=run;state.start=start;
     if(run?.schema_version!=='7.0')state.restoredSource=null;
-    if(run?.schema_version==='7.0' && state.restoredSource!==(run.id || run)){
+    if(!window.RangeLabWorkspace && run?.schema_version==='7.0' && state.restoredSource!==(run.id || run)){
       state.restoredSource=run.id || run;
       window.RangeLabM6.restoreConfig(run.experiment.config,run.options);
       const o=run.options,u=o.uncertainty || {};

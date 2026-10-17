@@ -84,11 +84,11 @@ def main():
         result["requirements"]["M5.5"]["status"] = "passed conditional evaluation with justified deferral"
         result["checks"]["performance"] = {"status": "recorded", "backend": "evidence/m5/benchmark_20261014_123003_fc71f42c/performance_benchmark.json", "browser": "evidence/m5/visual/ui_validation.json", "history": "evidence/m5/history_performance.json", "limits": "Small local fixtures and single browser render samples; no general speed ranking or Ceres comparison."}
         result["source_hashes"] = {str(p.relative_to(ROOT)).replace("\\", "/"): hashlib.sha256(p.read_bytes()).hexdigest() for p in [ROOT/"app.py", *sorted((ROOT/"uwb").glob("*.py")), *sorted((ROOT/"web").glob("*.js")), ROOT/"web/index.html", ROOT/"web/style.css"]}
-        result["documentation"] = {name: hashlib.sha256((ROOT/name).read_bytes()).hexdigest() for name in ["docs/M5.md", "docs/M5_ACCEPTANCE.md", "docs/M5_ALGEBRAIC.md", "README.md"]}
-        roadmap = (ROOT/"ROADMAP.md").read_text(encoding="utf-8")
+        result["documentation"] = {name: hashlib.sha256((ROOT/name).read_bytes()).hexdigest() for name in ["docs/archive/M5.md", "docs/archive/M5_ACCEPTANCE.md", "docs/science/ALGEBRAIC_INITIALIZATION.md", "README.md"]}
+        roadmap = (ROOT/"docs/archive/ROADMAP.md").read_text(encoding="utf-8")
         assert all(f"[x] **M5.{i}" in roadmap for i in range(1, 6))
         assert all(f"[ ] **M6.{i}" in roadmap for i in range(1, 6))
-        result["checks"]["roadmap_scope"] = {"status": "passed", "M5": "checked after numerical/backend/visual evidence", "M6": "unchecked; handoff prompt only", "sha256": hashlib.sha256((ROOT/"ROADMAP.md").read_bytes()).hexdigest()}
+        result["checks"]["roadmap_scope"] = {"status": "passed", "M5": "checked after numerical/backend/visual evidence", "M6": "unchecked; handoff prompt only", "sha256": hashlib.sha256((ROOT/"docs/archive/ROADMAP.md").read_bytes()).hexdigest()}
         result["delivery"] = {"launch": ".\\.venv\\Scripts\\python.exe app.py --port 5054", "url": "http://127.0.0.1:5054/", "worktree": "Uncommitted M3/M4/M5 preserved", "publication": "No push or external publication", "next_milestone": "M6 remains outside this goal"}
         result["status"] = "passed"
     except Exception as exc:

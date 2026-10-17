@@ -1,0 +1,11 @@
+test_capability_normalization_never_generates_or_solves (test_workspace.WorkspaceTests.test_capability_normalization_never_generates_or_solves) ... ok
+test_native_parity_for_every_engine (test_workspace.WorkspaceTests.test_native_parity_for_every_engine) ... ok
+test_native_study_dispatch_and_pairing (test_workspace.WorkspaceTests.test_native_study_dispatch_and_pairing) ... ok
+test_request_failure_remains_inspectable (test_workspace.WorkspaceTests.test_request_failure_remains_inspectable) ... ok
+test_saved_reuse_and_complete_offline_csv (test_workspace.WorkspaceTests.test_saved_reuse_and_complete_offline_csv) ... ok
+test_unsupported_combinations_never_fallback (test_workspace.WorkspaceTests.test_unsupported_combinations_never_fallback) ... ok
+
+----------------------------------------------------------------------
+Ran 6 tests in 11.651s
+
+OK

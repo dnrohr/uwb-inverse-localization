@@ -101,13 +101,15 @@
       if(!item.open_url)throw new Error(item.error || 'Unreadable source; strict Open is unavailable.');
       const data=await api(item.open_url); const value=data.run || data.artifact || data;
       show('experiment',false);
+      if(window.RangeLabWorkspace && item.kind==='benchmark'){window.RangeLabWorkspace.openArtifact(value);return;}
       if(item.kind==='comparison' || item.artifact_type==='comparison') { window.RangeLabM2.openArtifact(value); $('#m2Results').scrollIntoView({block:'start'}); }
       else if(item.kind==='benchmark') { moduleFor(item).openArtifact(value); const version=String(item.schema_version).split('.')[0]; const target=$(`#m${version}Workspace`) || $(`#m${version}Heading`) || $('#m2Results'); target.scrollIntoView({block:'start'}); }
       else {
         const run=item.comparison_side!==undefined && Array.isArray(value.runs)?value.runs[item.comparison_side]:item.parent_key && value.entries ? value.entries[item.entry_ordinal]?.run : value;
         if(!run || !run.experiment)throw new Error('Validated source has no recorded run at this entry.');
         if(item.run_id)run.id ||= item.run_id;
-        const restoreModule=window[`RangeLabM${String(run.schema_version).split('.')[0]}`];restoreModule?.restoreRun?.(run);
+        const restoreModule=window[`RangeLabM${String(run.schema_version).split('.')[0]}`];if(!window.RangeLabWorkspace)restoreModule?.restoreRun?.(run);
+        if(window.RangeLabWorkspace)window.RangeLabWorkspace.state.sourceKey=item.key;
         window.RangeLab.state.activeRun=run; window.RangeLab.state.selectedStart=item.start_index ?? null;
         window.RangeLab.renderRun(run); $('#scene').scrollIntoView({block:'center'});
       }
@@ -154,7 +156,7 @@
     $('#libraryFilters').onsubmit=e=>{e.preventDefault();clearTimeout(debounce);state.q=$('#librarySearch').value;state.page=1;load();};
     $('#librarySearch').oninput=()=>{clearTimeout(debounce);debounce=setTimeout(()=>{state.q=$('#librarySearch').value;state.page=1;load();},250);};
     $('#libraryImport').onclick=()=>$('#libraryImportFile').click();
-    $('#libraryImportFile').onchange=async e=>{const file=e.target.files?.[0];if(!file)return;try{const data=JSON.parse(await file.text());const record=data.run || data.artifact || data;const version=String(record.schema_version).split('.')[0];if(record.artifact_type==='experiment_config'&&version!=='7'){await window.RangeLab.importFile(file);show('experiment',false);return;}if(record.artifact_type==='experiment_config'&&version==='7'){window.RangeLabM7.importConfig(record);show('experiment',false);$('#m7Workspace').scrollIntoView({block:'start'});return;}const url=['3','4','5','6','7'].includes(version)?`/api/m${version}/import`:record.artifact_type?'/api/artifacts/import':'/api/import';await api(url,{method:'POST',body:JSON.stringify(record)});invalidate();status('Imported source JSON and retained a new saved record.');}catch(err){status(`Import failed: ${err.message}`,true);}finally{e.target.value='';}};
+    $('#libraryImportFile').onchange=async e=>{const file=e.target.files?.[0];if(!file)return;try{if(window.RangeLabWorkspace){await window.RangeLabWorkspace.importSource(file);show('experiment',false);return;}const data=JSON.parse(await file.text());const record=data.run || data.artifact || data;const version=String(record.schema_version).split('.')[0];if(record.artifact_type==='experiment_config'&&version!=='7'){await window.RangeLab.importFile(file);show('experiment',false);return;}if(record.artifact_type==='experiment_config'&&version==='7'){window.RangeLabM7.importConfig(record);show('experiment',false);$('#m7Workspace').scrollIntoView({block:'start'});return;}const url=['3','4','5','6','7'].includes(version)?`/api/m${version}/import`:record.artifact_type?'/api/artifacts/import':'/api/import';await api(url,{method:'POST',body:JSON.stringify(record)});invalidate();status('Imported source JSON and retained a new saved record.');}catch(err){status(`Import failed: ${err.message}`,true);}finally{e.target.value='';}};
     $('#libraryRebuild').onclick=async()=>{status('Rebuilding metadata index; scientific source files remain unchanged.');$('#libraryRebuild').disabled=true;try{await api('/api/library/rebuild',{method:'POST'});await load();}catch(e){status(`Index rebuild failed: ${e.message}`,true);}finally{$('#libraryRebuild').disabled=false;}};
     $('#libraryRefresh').onclick=()=>{state.dirty=true;load();if(state.selected)preview(state.selected);};
     $('#libraryPrevious').onclick=()=>{state.page--;load();};$('#libraryNext').onclick=()=>{state.page++;load();};

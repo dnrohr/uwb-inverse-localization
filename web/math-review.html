@@ -1,0 +1,191 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>RangeLab — Math Review</title>
+<style>body{font:16px/1.65 system-ui,sans-serif;color:#203343;background:#f4f6f8;margin:0}main{max-width:1120px;margin:auto;padding:28px}nav{position:sticky;top:0;padding:12px 24px;background:#fff;border-bottom:1px solid #ccd6de;z-index:1;display:flex;gap:22px;flex-wrap:wrap}a{color:#07677a}h1,h2,h3{line-height:1.25;scroll-margin-top:80px}h2{margin-top:2.5em}code{font-size:.88em;background:#e5ebef;padding:2px 4px;border-radius:3px;overflow-wrap:anywhere}pre{background:#172b3a;color:#edf5fa;padding:18px;overflow:auto;border-radius:6px}pre code{background:none;color:inherit;padding:0;overflow-wrap:normal}.table-wrap{overflow-x:auto}table{border-collapse:collapse;background:white;width:100%;font-size:14px}td,th{border:1px solid #cdd8df;padding:10px;text-align:left;vertical-align:top}th{background:#dfeaf0}li{margin:.45em 0}@media print{nav{position:static}body{background:white}main{padding:0}pre{white-space:pre-wrap}}</style></head>
+<body><nav aria-label="Documentation"><a href="/">← Experiment</a><a href="/user-guide.html">User guide</a><a href="/input-reference.html">All inputs</a><a href="/function-reference.html">Functions and API</a></nav><main><h1 id="independent-mathematical-review-synchronized-planar">Independent mathematical review: synchronized planar</h1>
+<p>Reviewed October 13, 2026 against <code>docs/archive/PROJECT_REQUIREMENTS.md</code>,</p>
+<p><code>docs/archive/UWB_PROJECT_HANDOFF.md</code>, the generator and estimator, and the nine final saved</p>
+<p>reference runs. This review covers synchronized measurements, four beacons,</p>
+<p>planar tag positions, and a shared positive beacon height. It supplies no</p>
+<p>validation of timing, free-height, multipath, or historical Ceres experiments.</p>
+<h2 id="assessment">Assessment</h2>
+<p>The baseline mathematics and saved reference evidence pass independent checks.</p>
+<p>No blocking mathematical defect was found. The informative exact experiment</p>
+<p>recovers geometry from independent initialization; the straight-line experiment</p>
+<p>correctly exposes a continuous ambiguity. Weak geometry also demonstrates</p>
+<p>converged solutions with substantial geometric error. These outcomes support</p>
+<p>the synchronized planar baseline, rather than a general guarantee of unique recovery.</p>
+<h2 id="objective-derivatives-and-frame">Objective, derivatives, and frame</h2>
+<p>Each residual is <code>(predicted_range - observed_range) / sigma_m</code>. This is an</p>
+<p>unsquared range residual with one positive assumed standard deviation per</p>
+<p>observation; its least-squares objective is half the sum of squared normalized</p>
+<p>residuals. The Gaussian noise injected by the generator and uncertainty used</p>
+<p>by the estimator are separate settings. Squared-range differences are used</p>
+<p>only to initialize positions.</p>
+<p>For horizontal tag coordinates the derivative is <code>(p_xy - b_xy)/(R sigma)</code>;</p>
+<p>estimated horizontal beacon coordinates have the opposite sign. The shared</p>
+<p>height derivative is <code>h/(R sigma)</code>, because every tag has z=0. Finite differences</p>
+<p>verified both known-map and joint derivatives, including heterogeneous</p>
+<p>uncertainties and reversed observation ordering. The reference check&#x27;s largest</p>
+<p>absolute derivative discrepancy was approximately <code>1.93e-9</code>; the regression</p>
+<p>check uses <code>rtol=atol=2e-8</code> with a central-difference step of <code>1e-5 m</code>.</p>
+<p>The joint variables are <code>2N</code> planar tag coordinates and six map variables</p>
+<p><code>(d,a,b,c,e,h)</code>, all in metres: <code>b0=(0,0,h)</code>, <code>b1=(d,0,h)</code>,</p>
+<p><code>b2=(a,b,h)</code>, <code>b3=(c,e,h)</code>. Fixing b0&#x27;s horizontal position and b1&#x27;s</p>
+<p>horizontal direction removes the two translations and one rotation. The</p>
+<p>positive b2 y coordinate selects the horizontal handedness convention. The</p>
+<p>positive shared height encodes beacons above the fixed tag plane and selects</p>
+<p>the vertical sign branch. These conventions are explicit model choices;</p>
+<p>range data alone cannot establish an external compass direction or vertical</p>
+<p>sign. Joint bounds use a <code>1e-6 m</code> positive floor for d, b, and h. Exact collinear</p>
+<p>b0/b1/b2 geometry and zero height fall outside this canonical parameter domain.</p>
+<p>Known-map localization estimates only <code>2N</code> tag coordinates and keeps the</p>
+<p>explicitly supplied surveyed map fixed. It receives that map from synthetic</p>
+<p>truth in the experiment wrapper, which is appropriate for this declared</p>
+<p>known-map comparison. Independent joint fitting accepts observations, epoch</p>
+<p>times, solver settings, and optional explicit initial geometries; it accepts</p>
+<p>no truth object. Replacing the wrapper&#x27;s valid truth trajectory and map while</p>
+<p>holding observations fixed produced identical independent initial and fitted</p>
+<p>joint geometries. Truth-near initialization is a separate, labeled diagnostic.</p>
+<h2 id="rank-and-alignment">Rank and alignment</h2>
+<p>The diagnostic spectrum is calculated from <code>scale * J</code>, where J is the</p>
+<p>measurement-only Jacobian of normalized residuals and</p>
+<p><code>scale=max(median(abs(observed_ranges)),1 m)</code>. This is differentiation with</p>
+<p>respect to dimensionless coordinates <code>theta/scale</code>. It supplies no priors or</p>
+<p>motion information. All coordinates receive the same length scale, so that</p>
+<p>scale does not change the condition number. Uniformly multiplying all assumed</p>
+<p>uncertainties rescales the spectrum and absolute threshold together, preserving</p>
+<p>the reported rank and condition number; a regression test verifies this.</p>
+<p>Heterogeneous uncertainties do change the row weights and weighted spectrum.</p>
+<p>Numerical rank counts singular values exceeding <code>1e-8 * largest_singular_value</code>.</p>
+<p>This is a stated numerical separation rule, not a physical uncertainty limit,</p>
+<p>a proof of global uniqueness, or the solver&#x27;s termination tolerance. Full rank</p>
+<p>means local measurement sensitivity in the chosen parameterization. Small</p>
+<p>nonzero singular values still permit severe noise amplification. Condition</p>
+<p>warnings are heuristics and should be interpreted alongside the full spectrum.</p>
+<p>The weak-condition warning uses a disclosed condition-number threshold of</p>
+<p>1000 and checks truth as well as the selected fitted geometry.</p>
+<p>Active positivity bounds can additionally affect a constrained solution;</p>
+<p>the measurement Jacobian does not attribute information to those bounds.</p>
+<p>Joint evaluation uses a map-only least-squares proper planar rigid transform.</p>
+<p>Tests confirm that it preserves all pairwise tag/beacon ranges and recovers</p>
+<p>an arbitrary common planar rotation/translation. It fixes scale to one,</p>
+<p>preserves z, and does not allow reflection or 3D tilt. Separate tests verify</p>
+<p>that scale changes, mirrored geometry, vertical shifts, and tilt cannot be</p>
+<p>hidden by this alignment. Known-map evaluation applies no alignment. Raw</p>
+<p>canonical errors remain available independently of the aligned display.</p>
+<h2 id="saved-reference-evidence">Saved reference evidence</h2>
+<p>The following numbers are from the saved 32-epoch runs, with 128 measurements</p>
+<p>and three starts each. Joint problems have 70 variables; known-map problems</p>
+<p>have 64. Position error is the selected start&#x27;s maximum raw error at matched</p>
+<p>sample times, and map error is its maximum raw per-beacon error.</p>
+<div class="table-wrap"><table><tbody>
+<tr><th>Run</th><th>Truth rank</th><th>Truth condition</th><th>Max position error (m)</th><th>Max map error (m)</th></tr>
+<tr><td>Exact joint, independent</td><td>70/70</td><td>41.44</td><td>2.60e-15</td><td>9.49e-16</td></tr>
+<tr><td>Exact joint, truth-near</td><td>70/70</td><td>41.44</td><td>1.78e-15</td><td>2.22e-16</td></tr>
+<tr><td>Exact known map</td><td>64/64</td><td>1.40</td><td>1.26e-15</td><td>0</td></tr>
+<tr><td>Gaussian joint, seed 7</td><td>70/70</td><td>41.44</td><td>0.1813</td><td>0.1448</td></tr>
+<tr><td>Gaussian joint, seed 8</td><td>70/70</td><td>41.44</td><td>0.1931</td><td>0.1841</td></tr>
+<tr><td>Straight line</td><td>69/70</td><td>Rank deficient</td><td>0.1134</td><td>0.1713</td></tr>
+<tr><td>Narrow coverage</td><td>70/70</td><td>1056.57</td><td>1.91e-14</td><td>3.54e-14</td></tr>
+<tr><td>Nearly collinear map</td><td>70/70</td><td>10829.73</td><td>2.80e-13</td><td>1.13e-13</td></tr>
+<tr><td>Forced nonconvergence</td><td>70/70</td><td>41.44</td><td>1.3727</td><td>1.7084</td></tr>
+</tbody></table></div>
+<p>All three informative independent exact starts recover geometry, and their</p>
+<p>maximum absolute range residuals are at most <code>1.78e-15 m</code>. These comfortably</p>
+<p>satisfy the declared exact-data acceptance thresholds: <code>1e-5 m</code> maximum tag</p>
+<p>and beacon error and <code>1e-7 m</code> maximum absolute range residual. The thresholds</p>
+<p>are implementation/recovery acceptance criteria; they are not confidence</p>
+<p>intervals, uncertainty estimates, or useful accuracy targets for noisy data.</p>
+<p>The two Gaussian runs have selected range RMSE below the injected <code>0.05 m</code></p>
+<p>standard deviation because parameters are fitted; that alone establishes</p>
+<p>neither overfitting nor superior geometry. Their geometric errors remain visible.</p>
+<p>Narrow coverage and nearly collinear beacons remain locally full rank but have</p>
+<p>approximately 26 and 261 times the informative condition number. Their exact</p>
+<p>selected solutions establish feasibility, not stability under noise. Two of</p>
+<p>the nearly collinear starts converge to distorted local minima with trajectory</p>
+<p>RMSE <code>6.83 m</code> and <code>6.42 m</code>; their objectives are <code>0.0158</code> and <code>0.0191</code>, compared</p>
+<p>with approximately <code>1.61e-26</code> for the recovered third start. A solver success</p>
+<p>flag must therefore be distinguished from geometric recovery and range-fit</p>
+<p>acceptance. Finite-start variability cannot certify that every alternative</p>
+<p>solution has been found, even when all starts agree.</p>
+<h2 id="exact-straight-line-ambiguity">Exact straight-line ambiguity</h2>
+<p>The straight-line truth has tag y coordinate k=2 m and h=3 m. There is an exact</p>
+<p>continuous family even after the prescribed gauge is fixed. For q=1 square</p>
+<p>metre, keep all x coordinates unchanged and set</p>
+<pre><code>k_new = sqrt(k^2 - q)
+h_new = sqrt(h^2 + q)
+tag_y_new = k_new
+beacon_y_new[j] = k_new + sign(beacon_y[j] - k)
+                             * sqrt((beacon_y[j] - k)^2 - q)</code></pre>
+<p>This leaves b0.y=b1.y=0, d&gt;0, b2.y&gt;0, and h&gt;0, while changing trajectory and</p>
+<p>map geometry. Every range remains identical: the change in squared height</p>
+<p>exactly cancels the change in squared perpendicular offset. The independent</p>
+<p>test verifies this to <code>8e-14</code> in normalized residuals and observes rank <code>21/22</code></p>
+<p>for an eight-epoch version. Height changes cannot be removed by permitted</p>
+<p>planar rigid alignment. The 32-epoch saved run has rank <code>69/70</code>; three starts</p>
+<p>reach distinct geometries with effectively zero residuals. This is genuine</p>
+<p>unidentifiability, not an optimizer defect or an unfixed planar gauge.</p>
+<h2 id="reproducibility-and-retained-failures">Reproducibility and retained failures</h2>
+<p>All 27 final saved starts retain their initial geometries, estimates, objectives,</p>
+<p>normalized/metre residuals, rank diagnostics, and solver settings. Independently</p>
+<p>recomputed residuals match the serialized values exactly, and recomputed</p>
+<p>objectives/ranks agree. Every saved initial geometry satisfies its declared</p>
+<p>frame and positive initialization requirements. Run persistence preserves the</p>
+<p>measurement realization and can be reopened without invoking a solver.</p>
+<p>Forced one-evaluation runs retain both <code>not_converged</code> starts, including their</p>
+<p>finite estimates. An explicit invalid negative-d start is retained as <code>failed</code></p>
+<p>with its exception message and no estimate. SciPy evaluation counts are saved;</p>
+<p>iteration count is correctly left unavailable rather than inferred. Recorded</p>
+<p>per-start runtime measures solving, not full application latency. Convergence</p>
+<p>failure counts and distinct-geometry grouping should be read according to their</p>
+<p>saved definitions; solution groups may include finite nonconverged or imperfect</p>
+<p>fits. The final diagnostic code separately records per-start optimizer status,</p>
+<p>geometry acceptance, range acceptance, and groups satisfying the exact-range</p>
+<p>threshold. Thus the nearly collinear case has one accepted exact-range group,</p>
+<p>while the straight-line case has three. These exact-data flags intentionally</p>
+<p>do not quantify useful noisy accuracy; inspect the continuous error metrics.</p>
+<p>Final diagnostic changes were inspected after the initial evidence audit and</p>
+<p>do not alter the objective, derivatives, initialization, or selected fits.</p>
+<p>Validation command: `.venv\Scripts\python -m unittest discover -s tests -p</p>
+<p>test_review.py -v` passes five independent structural tests. Review computations</p>
+<p>also checked the nine final saved run files, truth replacement, and forced failure</p>
+<p>paths. The remaining scientific limitation is global ambiguity and basin</p>
+<p>coverage: local rank and three starts do not prove uniqueness or robustness</p>
+<p>over arbitrary configurations.</p>
+<h2 id="integration-review-addendum">Integration review addendum</h2>
+<p>A focused code review of <code>app.py</code>, <code>web/app.js</code>, and persistence boundaries</p>
+<p>identified and prompted corrections to the displayed default start, reopening</p>
+<p>a saved run during solving, immediate failed-job rendering, small-number</p>
+<p>formatting, and separation of inspected-start recovery flags from whole-run</p>
+<p>statistics. The default now honors the saved <code>selected_start</code>, which matters</p>
+<p>particularly for the nearly collinear reference: the recovered third start</p>
+<p>must not silently be replaced by the distorted first start. Missing metrics</p>
+<p>remain unavailable rather than becoming zero; sufficiently small nonzero</p>
+<p>values use scientific notation, so the <code>1e-8</code> rank tolerance remains legible.</p>
+<p>Scenes use <code>aspectmode=&#x27;data&#x27;</code>, explicit metre axes, and shared ranges for</p>
+<p>displayed geometry, preserving equal metric scale. Aligned fitted geometry,</p>
+<p>initial geometry, error vectors, and measurement rays use the same permitted</p>
+<p>planar rigid frame. Reported raw/aligned errors select the matching evaluation.</p>
+<p>Layer checkbox state is reapplied when a new scene is drawn. Empty charts now</p>
+<p>purge the previous Plotly chart, and empty scenes clear traces and disable PNG</p>
+<p>export. Camera changes are captured through a relayout handler; interactive</p>
+<p>camera and visual rendering checks are performed separately by the main agent.</p>
+<p>Unavailable alignment resets the coordinate selector to raw, and scene purge</p>
+<p>resets the camera-handler marker so later scenes can bind it again. The scene</p>
+<p>subtitle follows the actual coordinate choice.</p>
+<p>The review reproduced a malformed import that previously returned HTTP 200</p>
+<p>and then broke run history with HTTP 500. Final validation rejects non-object</p>
+<p>options/diagnostics and per-start records, invalid or repeated start indices,</p>
+<p>malformed geometry, and invalid selected-start references. Rechecks confirm</p>
+<p>HTTP 400 for <code>options:null</code>, <code>starts:[null]</code>, and a selected index absent from</p>
+<p>the outcomes. A complete failed envelope with <code>starts:[]</code> still imports and</p>
+<p>reopens successfully, and run history remains HTTP 200.</p>
+<p>Submissions now reject non-finite JSON, invalid initialization seeds, and</p>
+<p>unknown solver options before queueing. Independent probes confirm HTTP 400</p>
+<p>for a NaN seed, negative seed, and unknown option; these cases cannot become</p>
+<p>permanently running jobs through an unserializable failure envelope. A pending</p>
+<p>envelope is saved before dispatch, and atomic temporary-file replacement</p>
+<p>prevents readers from seeing a partially written result. The regenerated</p>
+<p>evidence includes three retained one-evaluation <code>not_converged</code> starts, with</p>
+<p>selected maximum range error <code>1.3579 m</code>. All 27 final saved starts were</p>
+<p>independently rechecked for residual, objective, and rank agreement.</p></main></body></html>

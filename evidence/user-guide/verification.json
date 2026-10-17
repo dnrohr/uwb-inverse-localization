@@ -1,0 +1,35 @@
+{
+  "scope": "User guide, input reference, function reference and input hover/focus help",
+  "catalog": {
+    "configuration_fields": 72,
+    "other_controls": 22,
+    "survey_controls": 5,
+    "scene_layers": 7,
+    "python_function_and_method_inventory": 385
+  },
+  "python": {
+    "tests/test_user_guide.py": {"tests": 3, "passed": true},
+    "tests/test_workspace.py": {"tests": 10, "passed": true}
+  },
+  "javascript": {
+    "node --check web/help.js": "passed",
+    "scripts/check_workspace_download.cjs": "passed",
+    "scripts/check_m7_ui_lifecycle.cjs": "passed",
+    "scripts/check_m7_ui_regressions.cjs": "passed"
+  },
+  "browser": {
+    "environment": "Codex in-app browser, isolated temporary run directory on loopback port 5058",
+    "default_model_editor_fields_checked": {"planar": 15, "timing": 29, "spatial": 43, "solver": 47, "robust": 61, "survey": 73},
+    "missing_help_or_description_in_model_editors": 0,
+    "study_form_rebuild": "passed; no missing titles/descriptions or duplicate help IDs",
+    "existing_source_description": "workspaceSourceSummary preserved alongside generated help ID",
+    "library_inputs_checked": 8,
+    "keyboard_focus_help": "visible with contextual text",
+    "escape": "hides help and retains open configuration drawer",
+    "reference_navigation": "User guide, All inputs and Functions and API load successfully",
+    "documentation_console_errors": 0,
+    "existing_application_warning": "Baseline app.js init can warn that the legacy scenario control is absent after the workspace detaches forms. Numerical model defaults and new documentation/help remain available; this unrelated existing initialization warning was not changed."
+  },
+  "screenshots": ["field-help.png", "guide.png"],
+  "scientific_scope": "No numerical engine or saved scientific records changed by this task. Existing unrelated working-tree changes preserved."
+}

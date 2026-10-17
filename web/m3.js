@@ -280,6 +280,8 @@
     } catch (error) { toast(`Could not open M3 run: ${error.message}`); }
   }
   function restoreControls(run) {
+    if (window.RangeLabWorkspace) return;
+
     const config = run?.experiment?.config || {}, motion = config.motion || {}, acquisition = config.acquisition || {}, options = run?.options || {};
     $('m3MaxNfev').value = options.max_nfev || 2000;
     const set = (id, value) => { if (value !== undefined && value !== null && $(id)) $(id).value = value; };
@@ -385,7 +387,7 @@
       }, 1000);
     } catch (error) { toast(`Could not start timing sweep: ${error.message}`); }
   }
-  function download(filename, type, text) { const url = URL.createObjectURL(new Blob([text], { type })), link = document.createElement('a'); link.href = url; link.download = filename; link.click(); setTimeout(() => URL.revokeObjectURL(url), 1000); }
+  function download(filename, type, text) { if(window.RangeLabWorkspace?.download)return window.RangeLabWorkspace.download(filename,text,type); const url = URL.createObjectURL(new Blob([text], { type })), link = document.createElement('a'); link.href = url; link.download = filename; link.click(); setTimeout(() => URL.revokeObjectURL(url), 1000); }
   function exportCsv() {
     if (!state.activeSweep) return;
     const items = summarizeArtifact(state.activeSweep), keys = [...new Set(items.flatMap(item => Object.keys(item)))], csv = value => `"${String(value ?? '').replace(/"/g, '""')}"`;
@@ -433,7 +435,7 @@
   }, onRun(run) {
     if (['4.0','5.0','6.0','7.0'].includes(run?.schema_version)) { showRun(run, false, true); return; }
     if (run && (run.schema_version === '3.0' || run.experiment?.config?.acquisition)) {
-      const preserveSweep = Boolean(state.activeSweep && run.id && run.id === state.inspectingSweepRunId);
+      const preserveSweep = Boolean(state.activeSweep?.entries?.some(entry=>entry.run===run) || state.activeSweep && run.id && run.id === state.inspectingSweepRunId);
       if (!preserveSweep) clearSweepView();
       showRun(run, preserveSweep);
     } else { clearSweepView(); clearPlayback(); }

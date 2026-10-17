@@ -1,0 +1,18 @@
+{
+  "counts": "10000 matching groups · 10000 groups · 10000 saved records",
+  "libraryDom": 242,
+  "pageHeight": 720,
+  "pageWidth": 1280,
+  "queryRenderMs": 89.4,
+  "rows": 25,
+  "viewport": [
+    1280,
+    720
+  ],
+  "warmRepeatsMs": [
+    114.9,
+    84.1,
+    85.4
+  ],
+  "strictOpenMessage": "Open failed: robust experiment requires schema6.0"
+}

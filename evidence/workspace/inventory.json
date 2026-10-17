@@ -1,0 +1,1652 @@
+{
+  "baseline_head": "c84fcfb00ea869d7eddad80eab8beb22b78eef1d",
+  "original_controls": [
+    {
+      "id": "experimentNav",
+      "tag": "button",
+      "type": "button",
+      "new_location": "Workspace configuration / native compatibility renderer"
+    },
+    {
+      "id": "libraryNav",
+      "tag": "button",
+      "type": "button",
+      "new_location": "Workspace configuration / native compatibility renderer"
+    },
+    {
+      "id": "importButton",
+      "tag": "button",
+      "type": "button",
+      "new_location": "Shared inspection or Library"
+    },
+    {
+      "id": "importFile",
+      "tag": "input",
+      "type": "file",
+      "new_location": "Shared inspection or Library"
+    },
+    {
+      "id": "exportConfigButton",
+      "tag": "button",
+      "type": "button",
+      "new_location": "Shared inspection or Library"
+    },
+    {
+      "id": "scenario",
+      "tag": "select",
+      "type": null,
+      "new_location": "Workspace configuration / native compatibility renderer"
+    },
+    {
+      "id": "mode",
+      "tag": "select",
+      "type": null,
+      "new_location": "Workspace configuration / native compatibility renderer"
+    },
+    {
+      "id": "samples",
+      "tag": "input",
+      "type": "number",
+      "new_location": "Workspace configuration / native compatibility renderer"
+    },
+    {
+      "id": "duration",
+      "tag": "input",
+      "type": "number",
+      "new_location": "Workspace configuration / native compatibility renderer"
+    },
+    {
+      "id": "noise",
+      "tag": "input",
+      "type": "number",
+      "new_location": "Workspace configuration / native compatibility renderer"
+    },
+    {
+      "id": "sigma",
+      "tag": "input",
+      "type": "number",
+      "new_location": "Workspace configuration / native compatibility renderer"
+    },
+    {
+      "id": "usePath",
+      "tag": "input",
+      "type": "checkbox",
+      "new_location": "Workspace configuration / native compatibility renderer"
+    },
+    {
+      "id": "pathType",
+      "tag": "select",
+      "type": null,
+      "new_location": "Workspace configuration / native compatibility renderer"
+    },
+    {
+      "id": "pathCenterX",
+      "tag": "input",
+      "type": "number",
+      "new_location": "Workspace configuration / native compatibility renderer"
+    },
+    {
+      "id": "pathCenterY",
+      "tag": "input",
+      "type": "number",
+      "new_location": "Workspace configuration / native compatibility renderer"
+    },
+    {
+      "id": "pathWidth",
+      "tag": "input",
+      "type": "number",
+      "new_location": "Workspace configuration / native compatibility renderer"
+    },
+    {
+      "id": "pathHeight",
+      "tag": "input",
+      "type": "number",
+      "new_location": "Workspace configuration / native compatibility renderer"
+    },
+    {
+      "id": "pathScale",
+      "tag": "input",
+      "type": "number",
+      "new_location": "Workspace configuration / native compatibility renderer"
+    },
+    {
+      "id": "pathRotation",
+      "tag": "input",
+      "type": "number",
+      "new_location": "Workspace configuration / native compatibility renderer"
+    },
+    {
+      "id": "arcStart",
+      "tag": "input",
+      "type": "number",
+      "new_location": "Workspace configuration / native compatibility renderer"
+    },
+    {
+      "id": "arcSweep",
+      "tag": "input",
+      "type": "number",
+      "new_location": "Workspace configuration / native compatibility renderer"
+    },
+    {
+      "id": "waypoints",
+      "tag": "textarea",
+      "type": null,
+      "new_location": "Workspace configuration / native compatibility renderer"
+    },
+    {
+      "id": "init",
+      "tag": "select",
+      "type": null,
+      "new_location": "Workspace configuration / native compatibility renderer"
+    },
+    {
+      "id": "starts",
+      "tag": "input",
+      "type": "number",
+      "new_location": "Workspace configuration / native compatibility renderer"
+    },
+    {
+      "id": "seed",
+      "tag": "input",
+      "type": "number",
+      "new_location": "Workspace configuration / native compatibility renderer"
+    },
+    {
+      "id": "initSeed",
+      "tag": "input",
+      "type": "number",
+      "new_location": "Workspace configuration / native compatibility renderer"
+    },
+    {
+      "id": "runButton",
+      "tag": "button",
+      "type": "submit",
+      "new_location": "Workspace configuration / native compatibility renderer"
+    },
+    {
+      "id": "sweepParameter",
+      "tag": "select",
+      "type": null,
+      "new_location": "Workspace configuration / native compatibility renderer"
+    },
+    {
+      "id": "sweepValues",
+      "tag": "input",
+      "type": "text",
+      "new_location": "Workspace configuration / native compatibility renderer"
+    },
+    {
+      "id": "sweepSeeds",
+      "tag": "input",
+      "type": "text",
+      "new_location": "Workspace configuration / native compatibility renderer"
+    },
+    {
+      "id": "sweepBudget",
+      "tag": "select",
+      "type": null,
+      "new_location": "Workspace configuration / native compatibility renderer"
+    },
+    {
+      "id": "coordinateMode",
+      "tag": "select",
+      "type": null,
+      "new_location": "Workspace configuration / native compatibility renderer"
+    },
+    {
+      "id": "pngButton",
+      "tag": "button",
+      "type": "button",
+      "new_location": "Shared inspection or Library"
+    },
+    {
+      "id": "m3Motion",
+      "tag": "select",
+      "type": null,
+      "new_location": "Workspace configuration / native compatibility renderer"
+    },
+    {
+      "id": "m3Speed",
+      "tag": "input",
+      "type": "number",
+      "new_location": "Workspace configuration / native compatibility renderer"
+    },
+    {
+      "id": "m3Order",
+      "tag": "input",
+      "type": "text",
+      "new_location": "Workspace configuration / native compatibility renderer"
+    },
+    {
+      "id": "m3CycleRate",
+      "tag": "input",
+      "type": "number",
+      "new_location": "Workspace configuration / native compatibility renderer"
+    },
+    {
+      "id": "m3PingSpacing",
+      "tag": "input",
+      "type": "number",
+      "new_location": "Shared inspection or Library"
+    },
+    {
+      "id": "m3AcqJitter",
+      "tag": "input",
+      "type": "number",
+      "new_location": "Workspace configuration / native compatibility renderer"
+    },
+    {
+      "id": "m3TimestampOffset",
+      "tag": "input",
+      "type": "number",
+      "new_location": "Workspace configuration / native compatibility renderer"
+    },
+    {
+      "id": "m3TimestampJitter",
+      "tag": "input",
+      "type": "number",
+      "new_location": "Workspace configuration / native compatibility renderer"
+    },
+    {
+      "id": "m3Latency",
+      "tag": "input",
+      "type": "number",
+      "new_location": "Workspace configuration / native compatibility renderer"
+    },
+    {
+      "id": "m3Missing",
+      "tag": "input",
+      "type": "number",
+      "new_location": "Workspace configuration / native compatibility renderer"
+    },
+    {
+      "id": "m3Strides",
+      "tag": "input",
+      "type": "text",
+      "new_location": "Workspace configuration / native compatibility renderer"
+    },
+    {
+      "id": "m3TimingModel",
+      "tag": "select",
+      "type": null,
+      "new_location": "Workspace configuration / native compatibility renderer"
+    },
+    {
+      "id": "m3KnotSpacing",
+      "tag": "input",
+      "type": "number",
+      "new_location": "Workspace configuration / native compatibility renderer"
+    },
+    {
+      "id": "m3PriorSigma",
+      "tag": "input",
+      "type": "number",
+      "new_location": "Workspace configuration / native compatibility renderer"
+    },
+    {
+      "id": "m3MaxNfev",
+      "tag": "input",
+      "type": "number",
+      "new_location": "Workspace configuration / native compatibility renderer"
+    },
+    {
+      "id": "m3RunButton",
+      "tag": "button",
+      "type": "submit",
+      "new_location": "Workspace configuration / native compatibility renderer"
+    },
+    {
+      "id": "m3ExportConfig",
+      "tag": "button",
+      "type": "button",
+      "new_location": "Shared inspection or Library"
+    },
+    {
+      "id": "m3Play",
+      "tag": "button",
+      "type": "button",
+      "new_location": "Shared inspection or Library"
+    },
+    {
+      "id": "m3Pause",
+      "tag": "button",
+      "type": "button",
+      "new_location": "Workspace configuration / native compatibility renderer"
+    },
+    {
+      "id": "m3Prev",
+      "tag": "button",
+      "type": "button",
+      "new_location": "Workspace configuration / native compatibility renderer"
+    },
+    {
+      "id": "m3PingSlider",
+      "tag": "input",
+      "type": "range",
+      "new_location": "Shared inspection or Library"
+    },
+    {
+      "id": "m3Next",
+      "tag": "button",
+      "type": "button",
+      "new_location": "Workspace configuration / native compatibility renderer"
+    },
+    {
+      "id": "m3SweepFactor",
+      "tag": "select",
+      "type": null,
+      "new_location": "Workspace configuration / native compatibility renderer"
+    },
+    {
+      "id": "m3SweepValues",
+      "tag": "input",
+      "type": "text",
+      "new_location": "Workspace configuration / native compatibility renderer"
+    },
+    {
+      "id": "m3SweepSeeds",
+      "tag": "input",
+      "type": "text",
+      "new_location": "Workspace configuration / native compatibility renderer"
+    },
+    {
+      "id": "m3ImportButton",
+      "tag": "button",
+      "type": "button",
+      "new_location": "Shared inspection or Library"
+    },
+    {
+      "id": "m3ImportFile",
+      "tag": "input",
+      "type": "file",
+      "new_location": "Shared inspection or Library"
+    },
+    {
+      "id": "m3ExportJson",
+      "tag": "button",
+      "type": "button",
+      "new_location": "Shared inspection or Library"
+    },
+    {
+      "id": "m3ExportCsv",
+      "tag": "button",
+      "type": "button",
+      "new_location": "Shared inspection or Library"
+    },
+    {
+      "id": "m3ExportChart",
+      "tag": "button",
+      "type": "button",
+      "new_location": "Shared inspection or Library"
+    },
+    {
+      "id": "m4ExportConfig",
+      "tag": "button",
+      "type": "button",
+      "new_location": "Shared inspection or Library"
+    },
+    {
+      "id": "m4ExportRunJson",
+      "tag": "button",
+      "type": "button",
+      "new_location": "Shared inspection or Library"
+    },
+    {
+      "id": "m4ExportRunCsv",
+      "tag": "button",
+      "type": "button",
+      "new_location": "Shared inspection or Library"
+    },
+    {
+      "id": "m4ExportScenePng",
+      "tag": "button",
+      "type": "button",
+      "new_location": "Shared inspection or Library"
+    },
+    {
+      "id": "m4BeaconCount",
+      "tag": "input",
+      "type": "number",
+      "new_location": "Workspace configuration / native compatibility renderer"
+    },
+    {
+      "id": "m4BeaconGeometry",
+      "tag": "select",
+      "type": null,
+      "new_location": "Workspace configuration / native compatibility renderer"
+    },
+    {
+      "id": "m4BeaconHeight",
+      "tag": "input",
+      "type": "number",
+      "new_location": "Workspace configuration / native compatibility renderer"
+    },
+    {
+      "id": "m4HeightSpread",
+      "tag": "input",
+      "type": "number",
+      "new_location": "Workspace configuration / native compatibility renderer"
+    },
+    {
+      "id": "m4Baseline",
+      "tag": "input",
+      "type": "number",
+      "new_location": "Workspace configuration / native compatibility renderer"
+    },
+    {
+      "id": "m4Coordinates",
+      "tag": "textarea",
+      "type": null,
+      "new_location": "Workspace configuration / native compatibility renderer"
+    },
+    {
+      "id": "m4TruthHeightType",
+      "tag": "select",
+      "type": null,
+      "new_location": "Workspace configuration / native compatibility renderer"
+    },
+    {
+      "id": "m4TagOffset",
+      "tag": "input",
+      "type": "number",
+      "new_location": "Workspace configuration / native compatibility renderer"
+    },
+    {
+      "id": "m4TagAmplitude",
+      "tag": "input",
+      "type": "number",
+      "new_location": "Workspace configuration / native compatibility renderer"
+    },
+    {
+      "id": "m4Tilt",
+      "tag": "input",
+      "type": "number",
+      "new_location": "Workspace configuration / native compatibility renderer"
+    },
+    {
+      "id": "m4Mode",
+      "tag": "select",
+      "type": null,
+      "new_location": "Workspace configuration / native compatibility renderer"
+    },
+    {
+      "id": "m4TagModel",
+      "tag": "select",
+      "type": null,
+      "new_location": "Workspace configuration / native compatibility renderer"
+    },
+    {
+      "id": "m4BeaconModel",
+      "tag": "select",
+      "type": null,
+      "new_location": "Workspace configuration / native compatibility renderer"
+    },
+    {
+      "id": "m4FixedZ",
+      "tag": "input",
+      "type": "number",
+      "new_location": "Workspace configuration / native compatibility renderer"
+    },
+    {
+      "id": "m4HeightPrior",
+      "tag": "input",
+      "type": "number",
+      "new_location": "Workspace configuration / native compatibility renderer"
+    },
+    {
+      "id": "m4Below",
+      "tag": "input",
+      "type": "checkbox",
+      "new_location": "Workspace configuration / native compatibility renderer"
+    },
+    {
+      "id": "m4Order",
+      "tag": "input",
+      "type": "text",
+      "new_location": "Workspace configuration / native compatibility renderer"
+    },
+    {
+      "id": "m4Strides",
+      "tag": "input",
+      "type": "text",
+      "new_location": "Workspace configuration / native compatibility renderer"
+    },
+    {
+      "id": "m4RunButton",
+      "tag": "button",
+      "type": "submit",
+      "new_location": "Workspace configuration / native compatibility renderer"
+    },
+    {
+      "id": "m4ImportButton",
+      "tag": "button",
+      "type": "button",
+      "new_location": "Shared inspection or Library"
+    },
+    {
+      "id": "m4ImportFile",
+      "tag": "input",
+      "type": "file",
+      "new_location": "Shared inspection or Library"
+    },
+    {
+      "id": "m4SweepFactor",
+      "tag": "select",
+      "type": null,
+      "new_location": "Workspace configuration / native compatibility renderer"
+    },
+    {
+      "id": "m4SweepValues",
+      "tag": "input",
+      "type": "text",
+      "new_location": "Workspace configuration / native compatibility renderer"
+    },
+    {
+      "id": "m4SweepSeeds",
+      "tag": "input",
+      "type": "text",
+      "new_location": "Workspace configuration / native compatibility renderer"
+    },
+    {
+      "id": "m4SweepTagModels",
+      "tag": "input",
+      "type": "text",
+      "new_location": "Workspace configuration / native compatibility renderer"
+    },
+    {
+      "id": "m4SweepBudget",
+      "tag": "input",
+      "type": "number",
+      "new_location": "Workspace configuration / native compatibility renderer"
+    },
+    {
+      "id": "m4ExportJson",
+      "tag": "button",
+      "type": "button",
+      "new_location": "Shared inspection or Library"
+    },
+    {
+      "id": "m4ExportCsv",
+      "tag": "button",
+      "type": "button",
+      "new_location": "Shared inspection or Library"
+    },
+    {
+      "id": "m4ExportPng",
+      "tag": "button",
+      "type": "button",
+      "new_location": "Shared inspection or Library"
+    },
+    {
+      "id": "m4ExportHeightPng",
+      "tag": "button",
+      "type": "button",
+      "new_location": "Shared inspection or Library"
+    },
+    {
+      "id": "m4ExportPlanePng",
+      "tag": "button",
+      "type": "button",
+      "new_location": "Shared inspection or Library"
+    },
+    {
+      "id": "exportSweepCsv",
+      "tag": "button",
+      "type": "button",
+      "new_location": "Shared inspection or Library"
+    },
+    {
+      "id": "exportSweepJson",
+      "tag": "button",
+      "type": "button",
+      "new_location": "Shared inspection or Library"
+    },
+    {
+      "id": "exportSweepChart",
+      "tag": "button",
+      "type": "button",
+      "new_location": "Shared inspection or Library"
+    },
+    {
+      "id": "compareAlignment",
+      "tag": "select",
+      "type": null,
+      "new_location": "Shared inspection or Library"
+    },
+    {
+      "id": "compareButton",
+      "tag": "button",
+      "type": "button",
+      "new_location": "Shared inspection or Library"
+    },
+    {
+      "id": "savedComparisons",
+      "tag": "select",
+      "type": null,
+      "new_location": "Workspace configuration / native compatibility renderer"
+    },
+    {
+      "id": "exportCompareJson",
+      "tag": "button",
+      "type": "button",
+      "new_location": "Shared inspection or Library"
+    },
+    {
+      "id": "exportComparePng",
+      "tag": "button",
+      "type": "button",
+      "new_location": "Shared inspection or Library"
+    },
+    {
+      "id": "exportCompareChart",
+      "tag": "button",
+      "type": "button",
+      "new_location": "Shared inspection or Library"
+    },
+    {
+      "id": "m5ExportRunJson",
+      "tag": "button",
+      "type": "button",
+      "new_location": "Shared inspection or Library"
+    },
+    {
+      "id": "m5ExportRunCsv",
+      "tag": "button",
+      "type": "button",
+      "new_location": "Shared inspection or Library"
+    },
+    {
+      "id": "m5ExportPng",
+      "tag": "button",
+      "type": "button",
+      "new_location": "Shared inspection or Library"
+    },
+    {
+      "id": "m5Solver",
+      "tag": "select",
+      "type": null,
+      "new_location": "Workspace configuration / native compatibility renderer"
+    },
+    {
+      "id": "m5Parameterization",
+      "tag": "select",
+      "type": null,
+      "new_location": "Workspace configuration / native compatibility renderer"
+    },
+    {
+      "id": "m5Initialization",
+      "tag": "select",
+      "type": null,
+      "new_location": "Workspace configuration / native compatibility renderer"
+    },
+    {
+      "id": "m5AlgebraicTolerance",
+      "tag": "input",
+      "type": "number",
+      "new_location": "Workspace configuration / native compatibility renderer"
+    },
+    {
+      "id": "m5InitError",
+      "tag": "input",
+      "type": "number",
+      "new_location": "Workspace configuration / native compatibility renderer"
+    },
+    {
+      "id": "m5RunButton",
+      "tag": "button",
+      "type": "submit",
+      "new_location": "Workspace configuration / native compatibility renderer"
+    },
+    {
+      "id": "m5ImportButton",
+      "tag": "button",
+      "type": "button",
+      "new_location": "Shared inspection or Library"
+    },
+    {
+      "id": "m5ImportFile",
+      "tag": "input",
+      "type": "file",
+      "new_location": "Shared inspection or Library"
+    },
+    {
+      "id": "m5SweepFactor",
+      "tag": "select",
+      "type": null,
+      "new_location": "Workspace configuration / native compatibility renderer"
+    },
+    {
+      "id": "m5SweepValues",
+      "tag": "input",
+      "type": "text",
+      "new_location": "Workspace configuration / native compatibility renderer"
+    },
+    {
+      "id": "m5Variants",
+      "tag": "textarea",
+      "type": null,
+      "new_location": "Workspace configuration / native compatibility renderer"
+    },
+    {
+      "id": "m5Seeds",
+      "tag": "input",
+      "type": "text",
+      "new_location": "Workspace configuration / native compatibility renderer"
+    },
+    {
+      "id": "m5ExportJson",
+      "tag": "button",
+      "type": "button",
+      "new_location": "Shared inspection or Library"
+    },
+    {
+      "id": "m5ExportCsv",
+      "tag": "button",
+      "type": "button",
+      "new_location": "Shared inspection or Library"
+    },
+    {
+      "id": "m5ImportSweep",
+      "tag": "button",
+      "type": "button",
+      "new_location": "Shared inspection or Library"
+    },
+    {
+      "id": "m5SweepImportFile",
+      "tag": "input",
+      "type": "file",
+      "new_location": "Shared inspection or Library"
+    },
+    {
+      "id": "m5SweepPng",
+      "tag": "button",
+      "type": "button",
+      "new_location": "Shared inspection or Library"
+    },
+    {
+      "id": "m5GeometryPng",
+      "tag": "button",
+      "type": "button",
+      "new_location": "Shared inspection or Library"
+    },
+    {
+      "id": "m6ExportRunJson",
+      "tag": "button",
+      "type": "button",
+      "new_location": "Shared inspection or Library"
+    },
+    {
+      "id": "m6ExportRunCsv",
+      "tag": "button",
+      "type": "button",
+      "new_location": "Shared inspection or Library"
+    },
+    {
+      "id": "m6ExportPng",
+      "tag": "button",
+      "type": "button",
+      "new_location": "Shared inspection or Library"
+    },
+    {
+      "id": "m6ContaminationSeed",
+      "tag": "input",
+      "type": "number",
+      "new_location": "Workspace configuration / native compatibility renderer"
+    },
+    {
+      "id": "m6Contamination",
+      "tag": "select",
+      "type": null,
+      "new_location": "Workspace configuration / native compatibility renderer"
+    },
+    {
+      "id": "m6Prevalence",
+      "tag": "input",
+      "type": "number",
+      "new_location": "Workspace configuration / native compatibility renderer"
+    },
+    {
+      "id": "m6Magnitude",
+      "tag": "input",
+      "type": "number",
+      "new_location": "Workspace configuration / native compatibility renderer"
+    },
+    {
+      "id": "m6BurstDuration",
+      "tag": "input",
+      "type": "number",
+      "new_location": "Workspace configuration / native compatibility renderer"
+    },
+    {
+      "id": "m6Beacons",
+      "tag": "input",
+      "type": "text",
+      "new_location": "Workspace configuration / native compatibility renderer"
+    },
+    {
+      "id": "m6Offsets",
+      "tag": "input",
+      "type": "text",
+      "new_location": "Workspace configuration / native compatibility renderer"
+    },
+    {
+      "id": "m6Correlation",
+      "tag": "input",
+      "type": "number",
+      "new_location": "Workspace configuration / native compatibility renderer"
+    },
+    {
+      "id": "m6CorrelatedStd",
+      "tag": "input",
+      "type": "number",
+      "new_location": "Workspace configuration / native compatibility renderer"
+    },
+    {
+      "id": "m6Quantization",
+      "tag": "input",
+      "type": "number",
+      "new_location": "Workspace configuration / native compatibility renderer"
+    },
+    {
+      "id": "m6Dropout",
+      "tag": "input",
+      "type": "number",
+      "new_location": "Workspace configuration / native compatibility renderer"
+    },
+    {
+      "id": "m6Solver",
+      "tag": "select",
+      "type": null,
+      "new_location": "Workspace configuration / native compatibility renderer"
+    },
+    {
+      "id": "m6Parameterization",
+      "tag": "select",
+      "type": null,
+      "new_location": "Workspace configuration / native compatibility renderer"
+    },
+    {
+      "id": "m6Initialization",
+      "tag": "select",
+      "type": null,
+      "new_location": "Workspace configuration / native compatibility renderer"
+    },
+    {
+      "id": "m6InitError",
+      "tag": "input",
+      "type": "number",
+      "new_location": "Workspace configuration / native compatibility renderer"
+    },
+    {
+      "id": "m6AlgebraicTolerance",
+      "tag": "input",
+      "type": "number",
+      "new_location": "Workspace configuration / native compatibility renderer"
+    },
+    {
+      "id": "m6Loss",
+      "tag": "select",
+      "type": null,
+      "new_location": "Workspace configuration / native compatibility renderer"
+    },
+    {
+      "id": "m6LossScale",
+      "tag": "input",
+      "type": "number",
+      "new_location": "Workspace configuration / native compatibility renderer"
+    },
+    {
+      "id": "m6RejectThreshold",
+      "tag": "input",
+      "type": "number",
+      "new_location": "Workspace configuration / native compatibility renderer"
+    },
+    {
+      "id": "m6WeightThreshold",
+      "tag": "input",
+      "type": "number",
+      "new_location": "Workspace configuration / native compatibility renderer"
+    },
+    {
+      "id": "m6SweepFactor",
+      "tag": "select",
+      "type": null,
+      "new_location": "Workspace configuration / native compatibility renderer"
+    },
+    {
+      "id": "m6SweepValues",
+      "tag": "input",
+      "type": "text",
+      "new_location": "Workspace configuration / native compatibility renderer"
+    },
+    {
+      "id": "m6Seeds",
+      "tag": "input",
+      "type": "text",
+      "new_location": "Workspace configuration / native compatibility renderer"
+    },
+    {
+      "id": "m6Variants",
+      "tag": "textarea",
+      "type": null,
+      "new_location": "Workspace configuration / native compatibility renderer"
+    },
+    {
+      "id": "m6RunButton",
+      "tag": "button",
+      "type": "submit",
+      "new_location": "Workspace configuration / native compatibility renderer"
+    },
+    {
+      "id": "m6ImportButton",
+      "tag": "button",
+      "type": "button",
+      "new_location": "Shared inspection or Library"
+    },
+    {
+      "id": "m6ImportFile",
+      "tag": "input",
+      "type": "file",
+      "new_location": "Shared inspection or Library"
+    },
+    {
+      "id": "m6ExportJson",
+      "tag": "button",
+      "type": "button",
+      "new_location": "Shared inspection or Library"
+    },
+    {
+      "id": "m6ExportCsv",
+      "tag": "button",
+      "type": "button",
+      "new_location": "Shared inspection or Library"
+    },
+    {
+      "id": "m6ExportObservationCsv",
+      "tag": "button",
+      "type": "button",
+      "new_location": "Shared inspection or Library"
+    },
+    {
+      "id": "m6ImportBenchmark",
+      "tag": "button",
+      "type": "button",
+      "new_location": "Shared inspection or Library"
+    },
+    {
+      "id": "m6BenchmarkImportFile",
+      "tag": "input",
+      "type": "file",
+      "new_location": "Shared inspection or Library"
+    },
+    {
+      "id": "m6ResidualPng",
+      "tag": "button",
+      "type": "button",
+      "new_location": "Shared inspection or Library"
+    },
+    {
+      "id": "m6CoveragePng",
+      "tag": "button",
+      "type": "button",
+      "new_location": "Shared inspection or Library"
+    },
+    {
+      "id": "m6BenchmarkPng",
+      "tag": "button",
+      "type": "button",
+      "new_location": "Shared inspection or Library"
+    }
+  ],
+  "native_routes": [
+    "'/')",
+    "'/vendor/plotly.min.js')",
+    "'/api/scenarios')",
+    "'/api/sweeps')",
+    "'/api/m3/runs')",
+    "'/api/m3/sweeps')",
+    "'/api/m3/sweeps')",
+    "'/api/m3/sweeps/<identifier>')",
+    "'/api/m3/sweeps/<identifier>/csv')",
+    "'/api/m3/import')",
+    "'/api/comparisons')",
+    "'/api/sweeps')",
+    "'/api/comparisons')",
+    "'/api/sweeps/<identifier>')",
+    "'/api/comparisons/<identifier>')",
+    "'/api/artifacts/import')",
+    "'/api/runs')",
+    "'/api/jobs/<identifier>')",
+    "'/api/runs')",
+    "'/api/runs/<identifier>')",
+    "'/api/import')",
+    "'/api/library/compare')"
+  ],
+  "workspace_capabilities": {
+    "workspace_version": 1,
+    "models": {
+      "planar": {
+        "label": "Planar synchronized ranges",
+        "native_schema": "1.0",
+        "defaults": {
+          "workspace_version": 1,
+          "engine": "planar",
+          "physical": {
+            "scenario": "informative",
+            "samples": 32,
+            "duration_s": 20.0,
+            "noise_std_m": [
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "seed": 7
+          },
+          "observation_source": {
+            "kind": "generate"
+          },
+          "assumptions": {
+            "assumed_std_m": [
+              0.05,
+              0.05,
+              0.05,
+              0.05
+            ],
+            "mode": "joint"
+          },
+          "numerical": {
+            "initialization": "independent",
+            "starts": 2,
+            "seed": 19,
+            "max_nfev": 1000
+          },
+          "study": {
+            "kind": "single"
+          }
+        },
+        "study_factors": [
+          "noise_std_m",
+          "path_scale",
+          "samples",
+          "initial_error_m",
+          "assumed_std_m"
+        ],
+        "study_variants": "native labeled variants"
+      },
+      "timing": {
+        "label": "Timestamp-aware trajectory",
+        "native_schema": "3.0",
+        "defaults": {
+          "workspace_version": 1,
+          "engine": "timing",
+          "physical": {
+            "scenario": "informative",
+            "samples": 32,
+            "duration_s": 20.0,
+            "noise_std_m": [
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "seed": 7,
+            "motion": {
+              "profile": "constant",
+              "speed_scale": 1.0
+            },
+            "acquisition": {
+              "beacon_order": [
+                0,
+                1,
+                2,
+                3
+              ],
+              "cycle_rate_hz": 1.55,
+              "spacing_s": 0.0,
+              "jitter_s": 0.0,
+              "timestamp_offset_s": 0.0,
+              "timestamp_jitter_s": 0.0,
+              "delivery_latency_s": 0.0,
+              "missing_probability": 0.0,
+              "beacon_every_cycles": [
+                1,
+                1,
+                1,
+                1
+              ]
+            }
+          },
+          "observation_source": {
+            "kind": "generate"
+          },
+          "assumptions": {
+            "assumed_std_m": [
+              0.05,
+              0.05,
+              0.05,
+              0.05
+            ],
+            "mode": "joint",
+            "timing_model": "timestamp_aware",
+            "knot_spacing_s": 0.0,
+            "prior_sigma_m": 0.0
+          },
+          "numerical": {
+            "initialization": "independent",
+            "starts": 3,
+            "seed": 19,
+            "max_nfev": 2000
+          },
+          "study": {
+            "kind": "single"
+          }
+        },
+        "study_factors": [
+          "speed_scale",
+          "spacing_s",
+          "knot_spacing_s",
+          "timestamp_offset_s",
+          "timestamp_jitter_s",
+          "missing_probability",
+          "beacon_every_cycles"
+        ],
+        "study_variants": "fixed timestamp-aware/grouped pair"
+      },
+      "spatial": {
+        "label": "Spatial height models",
+        "native_schema": "4.0",
+        "defaults": {
+          "workspace_version": 1,
+          "engine": "spatial",
+          "physical": {
+            "scenario": "informative",
+            "samples": 32,
+            "duration_s": 20.0,
+            "noise_std_m": [
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "seed": 7,
+            "motion": {
+              "profile": "constant",
+              "speed_scale": 1.0
+            },
+            "acquisition": {
+              "beacon_order": [
+                0,
+                1,
+                2,
+                3
+              ],
+              "cycle_rate_hz": 1.55,
+              "spacing_s": 0.0,
+              "jitter_s": 0.0,
+              "timestamp_offset_s": 0.0,
+              "timestamp_jitter_s": 0.0,
+              "delivery_latency_s": 0.0,
+              "missing_probability": 0.0,
+              "beacon_every_cycles": [
+                1,
+                1,
+                1,
+                1
+              ]
+            },
+            "beacon_layout": {
+              "count": 4,
+              "geometry": "equal",
+              "height_m": 3.0,
+              "height_spread_m": 1.0,
+              "baseline_scale": 1.0
+            },
+            "truth_height": {
+              "type": "planar",
+              "offset_m": 0.0,
+              "amplitude_m": 0.3,
+              "tilt_deg": 10.0
+            }
+          },
+          "observation_source": {
+            "kind": "generate"
+          },
+          "assumptions": {
+            "assumed_std_m": [
+              0.05,
+              0.05,
+              0.05,
+              0.05
+            ],
+            "mode": "joint",
+            "timing_model": "timestamp_aware",
+            "knot_spacing_s": 0.0,
+            "prior_sigma_m": 0.0,
+            "tag_height_model": "fixed",
+            "beacon_height_model": "shared",
+            "fixed_tag_z_m": 0.0,
+            "height_prior_sigma_m": 0.2,
+            "below_beacons": false
+          },
+          "numerical": {
+            "initialization": "independent",
+            "starts": 3,
+            "seed": 19,
+            "max_nfev": 2000
+          },
+          "study": {
+            "kind": "single"
+          }
+        },
+        "study_factors": [
+          "beacon_count",
+          "vertical_separation",
+          "height_spread",
+          "coverage",
+          "height_prior_sigma_m",
+          "beacon_height_model"
+        ],
+        "study_variants": "native labeled variants"
+      },
+      "solver": {
+        "label": "Solver and height parameterization",
+        "native_schema": "5.0",
+        "defaults": {
+          "workspace_version": 1,
+          "engine": "solver",
+          "physical": {
+            "scenario": "informative",
+            "samples": 32,
+            "duration_s": 20.0,
+            "noise_std_m": [
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "seed": 7,
+            "motion": {
+              "profile": "constant",
+              "speed_scale": 1.0
+            },
+            "acquisition": {
+              "beacon_order": [
+                0,
+                1,
+                2,
+                3
+              ],
+              "cycle_rate_hz": 1.55,
+              "spacing_s": 0.0,
+              "jitter_s": 0.0,
+              "timestamp_offset_s": 0.0,
+              "timestamp_jitter_s": 0.0,
+              "delivery_latency_s": 0.0,
+              "missing_probability": 0.0,
+              "beacon_every_cycles": [
+                1,
+                1,
+                1,
+                1
+              ]
+            },
+            "beacon_layout": {
+              "count": 4,
+              "geometry": "equal",
+              "height_m": 3.0,
+              "height_spread_m": 1.0,
+              "baseline_scale": 1.0
+            },
+            "truth_height": {
+              "type": "planar",
+              "offset_m": 0.0,
+              "amplitude_m": 0.3,
+              "tilt_deg": 10.0
+            }
+          },
+          "observation_source": {
+            "kind": "generate"
+          },
+          "assumptions": {
+            "assumed_std_m": [
+              0.05,
+              0.05,
+              0.05,
+              0.05
+            ],
+            "mode": "joint",
+            "timing_model": "timestamp_aware",
+            "knot_spacing_s": 0.0,
+            "prior_sigma_m": 0.0,
+            "tag_height_model": "fixed",
+            "beacon_height_model": "shared",
+            "fixed_tag_z_m": 0.0,
+            "height_prior_sigma_m": 0.2,
+            "below_beacons": false
+          },
+          "numerical": {
+            "initialization": "independent",
+            "starts": 3,
+            "seed": 19,
+            "max_nfev": 2000,
+            "solver": "trf",
+            "height_parameterization": "h",
+            "algebraic_physical_tolerance": 1e-07,
+            "initialization_error_m": 0.0
+          },
+          "study": {
+            "kind": "single"
+          }
+        },
+        "study_factors": [
+          "initialization_error_m",
+          "noise_std_m",
+          "beacon_count",
+          "vertical_separation",
+          "coverage"
+        ],
+        "study_variants": "native labeled variants"
+      },
+      "robust": {
+        "label": "Contaminated ranges and robust estimation",
+        "native_schema": "6.0",
+        "defaults": {
+          "workspace_version": 1,
+          "engine": "robust",
+          "physical": {
+            "scenario": "informative",
+            "samples": 32,
+            "duration_s": 20.0,
+            "noise_std_m": [
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "seed": 7,
+            "motion": {
+              "profile": "constant",
+              "speed_scale": 1.0
+            },
+            "acquisition": {
+              "beacon_order": [
+                0,
+                1,
+                2,
+                3
+              ],
+              "cycle_rate_hz": 1.55,
+              "spacing_s": 0.0,
+              "jitter_s": 0.0,
+              "timestamp_offset_s": 0.0,
+              "timestamp_jitter_s": 0.0,
+              "delivery_latency_s": 0.0,
+              "missing_probability": 0.0,
+              "beacon_every_cycles": [
+                1,
+                1,
+                1,
+                1
+              ]
+            },
+            "beacon_layout": {
+              "count": 4,
+              "geometry": "equal",
+              "height_m": 3.0,
+              "height_spread_m": 1.0,
+              "baseline_scale": 1.0
+            },
+            "truth_height": {
+              "type": "planar",
+              "offset_m": 0.0,
+              "amplitude_m": 0.3,
+              "tilt_deg": 10.0
+            },
+            "contamination": {
+              "nlos": {
+                "prevalence": 0.0,
+                "magnitude_m": 1.0,
+                "burst_duration_cycles": 1,
+                "affected_beacons": [
+                  0,
+                  1,
+                  2,
+                  3
+                ]
+              },
+              "offsets_m": [
+                0.0,
+                0.0,
+                0.0,
+                0.0
+              ],
+              "correlated_noise_std_m": 0.0,
+              "correlation": 0.0,
+              "quantization_m": 0.0,
+              "dropout_probability": 0.0,
+              "seed": 613
+            }
+          },
+          "observation_source": {
+            "kind": "generate"
+          },
+          "assumptions": {
+            "assumed_std_m": [
+              0.05,
+              0.05,
+              0.05,
+              0.05
+            ],
+            "mode": "joint",
+            "timing_model": "timestamp_aware",
+            "knot_spacing_s": 0.0,
+            "prior_sigma_m": 0.0,
+            "tag_height_model": "fixed",
+            "beacon_height_model": "shared",
+            "fixed_tag_z_m": 0.0,
+            "height_prior_sigma_m": 0.2,
+            "below_beacons": false,
+            "loss": "gaussian",
+            "loss_scale_sigma": 2.0,
+            "rejection_threshold_sigma": 3.0,
+            "weight_decision_threshold": 0.5
+          },
+          "numerical": {
+            "initialization": "independent",
+            "starts": 3,
+            "seed": 19,
+            "max_nfev": 2000,
+            "solver": "trf",
+            "height_parameterization": "h",
+            "algebraic_physical_tolerance": 1e-07,
+            "initialization_error_m": 0.0
+          },
+          "study": {
+            "kind": "single"
+          }
+        },
+        "study_factors": [
+          "nlos_prevalence",
+          "nlos_magnitude_m",
+          "burst_duration_cycles",
+          "offset_m",
+          "correlated_noise_std_m",
+          "correlation",
+          "quantization_m",
+          "dropout_probability",
+          "noise_std_m"
+        ],
+        "study_variants": "native labeled variants"
+      },
+      "survey": {
+        "label": "Partial surveyed-world knowledge",
+        "native_schema": "7.0",
+        "defaults": {
+          "workspace_version": 1,
+          "engine": "survey",
+          "physical": {
+            "scenario": "informative",
+            "samples": 32,
+            "duration_s": 20.0,
+            "noise_std_m": [
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "seed": 7,
+            "motion": {
+              "profile": "constant",
+              "speed_scale": 1.0
+            },
+            "acquisition": {
+              "beacon_order": [
+                0,
+                1,
+                2,
+                3
+              ],
+              "cycle_rate_hz": 1.55,
+              "spacing_s": 0.0,
+              "jitter_s": 0.0,
+              "timestamp_offset_s": 0.0,
+              "timestamp_jitter_s": 0.0,
+              "delivery_latency_s": 0.0,
+              "missing_probability": 0.0,
+              "beacon_every_cycles": [
+                1,
+                1,
+                1,
+                1
+              ]
+            },
+            "beacon_layout": {
+              "count": 4,
+              "geometry": "equal",
+              "height_m": 3.0,
+              "height_spread_m": 1.0,
+              "baseline_scale": 1.0
+            },
+            "truth_height": {
+              "type": "planar",
+              "offset_m": 0.0,
+              "amplitude_m": 0.3,
+              "tilt_deg": 10.0
+            },
+            "contamination": {
+              "nlos": {
+                "prevalence": 0.0,
+                "magnitude_m": 1.0,
+                "burst_duration_cycles": 1,
+                "affected_beacons": [
+                  0,
+                  1,
+                  2,
+                  3
+                ]
+              },
+              "offsets_m": [
+                0.0,
+                0.0,
+                0.0,
+                0.0
+              ],
+              "correlated_noise_std_m": 0.0,
+              "correlation": 0.0,
+              "quantization_m": 0.0,
+              "dropout_probability": 0.0,
+              "seed": 613
+            }
+          },
+          "observation_source": {
+            "kind": "generate"
+          },
+          "assumptions": {
+            "assumed_std_m": [
+              0.05,
+              0.05,
+              0.05,
+              0.05
+            ],
+            "mode": "joint",
+            "timing_model": "timestamp_aware",
+            "knot_spacing_s": 0.0,
+            "prior_sigma_m": 0.0,
+            "tag_height_model": "fixed",
+            "beacon_height_model": "independent",
+            "fixed_tag_z_m": 0.0,
+            "height_prior_sigma_m": 0.2,
+            "below_beacons": false,
+            "loss": "gaussian",
+            "loss_scale_sigma": 2.0,
+            "rejection_threshold_sigma": 3.0,
+            "weight_decision_threshold": 0.5,
+            "survey": {
+              "frame": "world",
+              "units": "m",
+              "fixed": [
+                {
+                  "beacon_id": 0,
+                  "mask": [
+                    true,
+                    true,
+                    true
+                  ],
+                  "mean_m": [
+                    0.0,
+                    0.0,
+                    3.0
+                  ]
+                }
+              ],
+              "priors": []
+            },
+            "uncertainty": {
+              "enabled": true,
+              "range_model": "independent_gaussian_known_sigma",
+              "rank_rtol": 1e-08,
+              "bound_tolerance_m": 1e-07
+            }
+          },
+          "numerical": {
+            "initialization": "independent",
+            "starts": 3,
+            "seed": 19,
+            "max_nfev": 2000,
+            "solver": "trf",
+            "height_parameterization": "h",
+            "algebraic_physical_tolerance": 1e-07,
+            "initialization_error_m": 0.0
+          },
+          "study": {
+            "kind": "single"
+          }
+        },
+        "study_factors": [],
+        "study_variants": "native labeled variants"
+      }
+    },
+    "limits": {
+      "starts": 12,
+      "max_nfev": 5000,
+      "study_runs": 40,
+      "study_attempts": 240
+    },
+    "disclosures": [
+      "Convergence, residual quality, geometry and identifiability are distinct.",
+      "Known-map coordinates are explicitly supplied survey knowledge.",
+      "Truth-near initialization is diagnostic. Full local rank is not uniqueness.",
+      "Local Gaussian intervals are conditional; robust curvature is not calibrated covariance."
+    ]
+  },
+  "scientific_implementations_unchanged": [
+    "uwb/estimation.py",
+    "uwb/m3.py",
+    "uwb/m4.py",
+    "uwb/m5.py",
+    "uwb/m6.py",
+    "uwb/m7.py"
+  ],
+  "notes": "Historical native form handlers are removed from the live DOM after initialization. Shared draft serializers replace public form hooks; native scientific and strict persistence implementations are unchanged."
+}

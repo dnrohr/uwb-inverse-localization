@@ -1,0 +1,14 @@
+test_10000_metadata_fixture_is_bounded_and_warm_avoids_source_decodes (test_m7_library.LibraryTests.test_10000_metadata_fixture_is_bounded_and_warm_avoids_source_decodes) ... ok
+test_imported_comparison_retains_embedded_sources_without_local_copies (test_m7_library.LibraryTests.test_imported_comparison_retains_embedded_sources_without_local_copies) ... ok
+test_incremental_external_edits_deletions_and_no_warm_json_reads (test_m7_library.LibraryTests.test_incremental_external_edits_deletions_and_no_warm_json_reads) ... ok
+test_interrupted_child_filter_uses_live_parent_worker_state (test_m7_library.LibraryTests.test_interrupted_child_filter_uses_live_parent_worker_state) ... ok
+test_metadata_endpoints_do_not_validate_or_solve_and_strict_open_rejects (test_m7_library.LibraryTests.test_metadata_endpoints_do_not_validate_or_solve_and_strict_open_rejects) ... ok
+test_recorded_parent_grouping_embedded_children_and_attempt_metadata (test_m7_library.LibraryTests.test_recorded_parent_grouping_embedded_children_and_attempt_metadata) ... ok
+test_running_interrupted_and_source_fingerprints (test_m7_library.LibraryTests.test_running_interrupted_and_source_fingerprints) ... ok
+test_unreadable_source_cache_corruption_and_rebuild_preserve_json (test_m7_library.LibraryTests.test_unreadable_source_cache_corruption_and_rebuild_preserve_json) ... ok
+test_zero_bounded_queries_filters_and_stable_sort (test_m7_library.LibraryTests.test_zero_bounded_queries_filters_and_stable_sort) ... ok
+
+----------------------------------------------------------------------
+Ran 9 tests in 114.085s
+
+OK
